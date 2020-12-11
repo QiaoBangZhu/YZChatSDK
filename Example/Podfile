@@ -1,0 +1,32 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'YZChat_Example' do
+  pod 'QMUIKit'
+  pod 'Masonry'
+  pod 'YYModel'
+  pod 'YYText'
+  pod 'AFNetworking', '~> 4.0'
+  pod 'IQKeyboardManager'
+  pod 'MJExtension'
+  pod 'FCFileManager'
+  pod 'BlocksKit'
+  pod 'Bugly'
+  pod 'ZXingObjC'
+
+  pod 'MMLayout', '~> 0.2.0'
+  pod 'SDWebImage', '~> 5.9.0'
+  pod 'ReactiveObjC', '~> 3.1.1'
+  pod 'Toast', '~> 4.0.0'
+  pod 'TXLiteAVSDK_TRTC', '~> 7.8.9515'
+
+  pod 'AMap3DMap-NO-IDFA'
+  pod 'AMapSearch-NO-IDFA'
+
+  target 'YZChat_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
