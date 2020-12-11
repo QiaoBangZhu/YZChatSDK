@@ -1,8 +1,9 @@
 use_frameworks!
 
 platform :ios, '11.0'
+workspace 'YZChat.xcworkspace'
 
-target 'YZChat_Example' do
+def pods
   pod 'QMUIKit'
   pod 'Masonry'
   pod 'YYModel'
@@ -23,4 +24,14 @@ target 'YZChat_Example' do
 
   pod 'AMap3DMap-NO-IDFA'
   pod 'AMapSearch-NO-IDFA'
+end
+
+target 'YZChat_Example' do
+  pods
+end
+
+target 'YZChat' do
+  project '../YZChatFramework/YZChat/YZChat.xcodeproj'
+
+  pods
 end
