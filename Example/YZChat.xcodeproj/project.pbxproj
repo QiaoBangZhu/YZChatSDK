@@ -42,25 +42,6 @@
 		9E0A936133BF5C1804F12E48 /* Pods-YZChat_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E527E480258395CF00531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5CA72B9258461DA00719F72 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
-		E5CA72BA258461DA00719F72 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		E5CA72BB258461DA00719F72 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
-		E5CA72BC258461DA00719F72 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
-		E5CA72BD258461DA00719F72 /* sqflite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqflite.framework; sourceTree = "<group>"; };
-		E5CA72BE258461DA00719F72 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDKForiOS.framework; sourceTree = "<group>"; };
-		E5CA72BF258461DA00719F72 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
-		E5CA72C0258461DA00719F72 /* omp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = omp.framework; sourceTree = "<group>"; };
-		E5CA72C1258461DA00719F72 /* permission_handler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = permission_handler.framework; sourceTree = "<group>"; };
-		E5CA72C2258461DA00719F72 /* wemeet_app_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wemeet_app_sdk.framework; sourceTree = "<group>"; };
-		E5CA72C3258461DA00719F72 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
-		E5CA72C4258461DA00719F72 /* flutter_plugin_android_lifecycle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = flutter_plugin_android_lifecycle.framework; sourceTree = "<group>"; };
-		E5CA72C5258461DA00719F72 /* WeMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeMeet.framework; sourceTree = "<group>"; };
-		E5CA72C6258461DA00719F72 /* camera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = camera.framework; sourceTree = "<group>"; };
-		E5CA72C7258461DA00719F72 /* image_picker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = image_picker.framework; sourceTree = "<group>"; };
-		E5CA72C8258461DA00719F72 /* path_provider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = path_provider.framework; sourceTree = "<group>"; };
-		E5CA72C9258461DA00719F72 /* AuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthSDK.framework; sourceTree = "<group>"; };
-		E5CA72CA258461DA00719F72 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
-		E5CA72CB258461DA00719F72 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +108,6 @@
 				6003F5A6195388D20070C39A /* YZViewController.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
-				E5CA72B8258461DA00719F72 /* Frameworks */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -162,32 +142,6 @@
 			);
 			name = YZChat;
 			path = ../YZChatFramework/YZChat;
-			sourceTree = "<group>";
-		};
-		E5CA72B8258461DA00719F72 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E5CA72B9258461DA00719F72 /* xnn.framework */,
-				E5CA72BA258461DA00719F72 /* ImSDK.framework */,
-				E5CA72BB258461DA00719F72 /* TMRTC.framework */,
-				E5CA72BC258461DA00719F72 /* Flutter.framework */,
-				E5CA72BD258461DA00719F72 /* sqflite.framework */,
-				E5CA72BE258461DA00719F72 /* ImSDKForiOS.framework */,
-				E5CA72BF258461DA00719F72 /* App.framework */,
-				E5CA72C0258461DA00719F72 /* omp.framework */,
-				E5CA72C1258461DA00719F72 /* permission_handler.framework */,
-				E5CA72C2258461DA00719F72 /* wemeet_app_sdk.framework */,
-				E5CA72C3258461DA00719F72 /* FMDB.framework */,
-				E5CA72C4258461DA00719F72 /* flutter_plugin_android_lifecycle.framework */,
-				E5CA72C5258461DA00719F72 /* WeMeet.framework */,
-				E5CA72C6258461DA00719F72 /* camera.framework */,
-				E5CA72C7258461DA00719F72 /* image_picker.framework */,
-				E5CA72C8258461DA00719F72 /* path_provider.framework */,
-				E5CA72C9258461DA00719F72 /* AuthSDK.framework */,
-				E5CA72CA258461DA00719F72 /* xcast.framework */,
-				E5CA72CB258461DA00719F72 /* xnn_media.framework */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,43 +226,17 @@
 				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example-resources.sh",
 				"${PODS_ROOT}/AMap3DMap-NO-IDFA/MAMapKit.framework/AMap.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/QMUIKit/QMUIResources.bundle",
+				"${PODS_ROOT}/../../YZChat.framework/YZChatResource.bundle",
 				"${PODS_ROOT}/../../YZChat.framework/TUIKitResource.bundle",
 				"${PODS_ROOT}/../../YZChat.framework/TUIKitFace.bundle",
-				"${PODS_ROOT}/../../YZChat.framework/1400036169.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400098016.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400115281.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400143280.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400212767.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400244218.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400269600.conf",
-				"${PODS_ROOT}/../../YZChat.framework/1400321069.conf",
-				"${PODS_ROOT}/../../YZChat.framework/00.caf",
-				"${PODS_ROOT}/../../YZChat.framework/01.caf",
-				"${PODS_ROOT}/../../YZChat.framework/sms-received.caf",
-				"${PODS_ROOT}/../../YZChat.framework/voip_call.mp3",
-				"${PODS_ROOT}/../../YZChat.framework/voip_calling_ring.mp3",
-				"${PODS_CONFIGURATION_BUILD_DIR}/YZChat/YZChatResource.bundle.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QMUIResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YZChatResource.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TUIKitResource.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TUIKitFace.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400036169.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400098016.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400115281.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400143280.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400212767.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400244218.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400269600.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/1400321069.conf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/00.caf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/01.caf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sms-received.caf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/voip_call.mp3",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/voip_calling_ring.mp3",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YZChatResource.bundle.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

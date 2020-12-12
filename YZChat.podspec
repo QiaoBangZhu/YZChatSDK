@@ -23,8 +23,7 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'YZChat.framework/Headers/*.{h}'
   s.public_header_files = 'YZChat.framework/Headers/*.{h}'
-  s.resource_bundles = { 'YZChatResource.bundle' =>  'YZChat.framework/Assets.car' }
-  s.resources = ['YZChat.framework/TUIKitResource.bundle', 'YZChat.framework/TUIKitFace.bundle', 'YZChat.framework/*.conf', 'YZChat.framework/*.caf', 'YZChat.framework/*.mp3']
+  s.resources = ['YZChat.framework/YZChatResource.bundle', 'YZChat.framework/TUIKitResource.bundle', 'YZChat.framework/TUIKitFace.bundle']
   s.vendored_frameworks = 'YZChat.framework', 'YZChat/Vendors/*.framework'
 
   s.dependency 'AFNetworking', '~> 4.0'

@@ -275,21 +275,6 @@
 		E527E9942583A17A00531586 /* MapListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E74F2583A17800531586 /* MapListTableViewCell.m */; };
 		E527E9952583A17A00531586 /* TransferGrpOwnerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E7502583A17800531586 /* TransferGrpOwnerCell.m */; };
 		E527E9962583A17A00531586 /* SearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E7512583A17800531586 /* SearchBarView.m */; };
-		E527E9AA2583A17A00531586 /* voip_call.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E527E7672583A17800531586 /* voip_call.mp3 */; };
-		E527E9AB2583A17A00531586 /* YZChatSDK.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E527E7682583A17800531586 /* YZChatSDK.xcassets */; };
-		E527E9AC2583A17A00531586 /* 00.caf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7692583A17800531586 /* 00.caf */; };
-		E527E9AD2583A17A00531586 /* 01.caf in Resources */ = {isa = PBXBuildFile; fileRef = E527E76A2583A17800531586 /* 01.caf */; };
-		E527E9AE2583A17A00531586 /* sms-received.caf in Resources */ = {isa = PBXBuildFile; fileRef = E527E76B2583A17800531586 /* sms-received.caf */; };
-		E527E9AF2583A17A00531586 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = E527E76C2583A17800531586 /* .gitkeep */; };
-		E527E9B02583A17A00531586 /* voip_calling_ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E527E76D2583A17800531586 /* voip_calling_ring.mp3 */; };
-		E527E9B12583A17A00531586 /* 1400269600.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E76F2583A17800531586 /* 1400269600.conf */; };
-		E527E9B22583A17A00531586 /* 1400098016.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7702583A17800531586 /* 1400098016.conf */; };
-		E527E9B32583A17A00531586 /* 1400321069.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7712583A17800531586 /* 1400321069.conf */; };
-		E527E9B42583A17A00531586 /* 1400143280.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7722583A17800531586 /* 1400143280.conf */; };
-		E527E9B52583A17A00531586 /* 1400036169.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7732583A17800531586 /* 1400036169.conf */; };
-		E527E9B62583A17A00531586 /* 1400212767.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7742583A17800531586 /* 1400212767.conf */; };
-		E527E9B72583A17A00531586 /* 1400115281.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7752583A17800531586 /* 1400115281.conf */; };
-		E527E9B82583A17A00531586 /* 1400244218.conf in Resources */ = {isa = PBXBuildFile; fileRef = E527E7762583A17800531586 /* 1400244218.conf */; };
 		E527E9E92583A5B300531586 /* SysUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E52583A5B300531586 /* SysUser.m */; };
 		E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E62583A5B300531586 /* YzIMKitAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9EB2583A5B300531586 /* SysUser.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E72583A5B300531586 /* SysUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -571,6 +556,7 @@
 		E5CA71C92584598200719F72 /* TUIImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CA70B32584598100719F72 /* TUIImageCache.h */; };
 		E5CA71CA2584598200719F72 /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CA70B52584598100719F72 /* TUIKitResource.bundle */; };
 		E5CA71CB2584598200719F72 /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CA70B62584598100719F72 /* TUIKitFace.bundle */; };
+		E5CA74D22584B3FD00719F72 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74D12584B3FD00719F72 /* YZChatResource.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -859,21 +845,6 @@
 		E527E74F2583A17800531586 /* MapListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapListTableViewCell.m; sourceTree = "<group>"; };
 		E527E7502583A17800531586 /* TransferGrpOwnerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferGrpOwnerCell.m; sourceTree = "<group>"; };
 		E527E7512583A17800531586 /* SearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarView.m; sourceTree = "<group>"; };
-		E527E7672583A17800531586 /* voip_call.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voip_call.mp3; sourceTree = "<group>"; };
-		E527E7682583A17800531586 /* YZChatSDK.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = YZChatSDK.xcassets; sourceTree = "<group>"; };
-		E527E7692583A17800531586 /* 00.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00.caf; sourceTree = "<group>"; };
-		E527E76A2583A17800531586 /* 01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.caf; sourceTree = "<group>"; };
-		E527E76B2583A17800531586 /* sms-received.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sms-received.caf"; sourceTree = "<group>"; };
-		E527E76C2583A17800531586 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		E527E76D2583A17800531586 /* voip_calling_ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voip_calling_ring.mp3; sourceTree = "<group>"; };
-		E527E76F2583A17800531586 /* 1400269600.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400269600.conf; sourceTree = "<group>"; };
-		E527E7702583A17800531586 /* 1400098016.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400098016.conf; sourceTree = "<group>"; };
-		E527E7712583A17800531586 /* 1400321069.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400321069.conf; sourceTree = "<group>"; };
-		E527E7722583A17800531586 /* 1400143280.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400143280.conf; sourceTree = "<group>"; };
-		E527E7732583A17800531586 /* 1400036169.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400036169.conf; sourceTree = "<group>"; };
-		E527E7742583A17800531586 /* 1400212767.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400212767.conf; sourceTree = "<group>"; };
-		E527E7752583A17800531586 /* 1400115281.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400115281.conf; sourceTree = "<group>"; };
-		E527E7762583A17800531586 /* 1400244218.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400244218.conf; sourceTree = "<group>"; };
 		E527E9E52583A5B300531586 /* SysUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysUser.m; sourceTree = "<group>"; };
 		E527E9E62583A5B300531586 /* YzIMKitAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzIMKitAgent.h; sourceTree = "<group>"; };
 		E527E9E72583A5B300531586 /* SysUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysUser.h; sourceTree = "<group>"; };
@@ -1155,6 +1126,7 @@
 		E5CA70B32584598100719F72 /* TUIImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIImageCache.h; sourceTree = "<group>"; };
 		E5CA70B52584598100719F72 /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIKitResource.bundle; sourceTree = "<group>"; };
 		E5CA70B62584598100719F72 /* TUIKitFace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIKitFace.bundle; sourceTree = "<group>"; };
+		E5CA74D12584B3FD00719F72 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YZChatResource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1212,7 +1184,7 @@
 			children = (
 				E527E3DA258393C800531586 /* YZChat.h */,
 				E527E3DB258393C800531586 /* Info.plist */,
-				E527E7662583A17800531586 /* Assets */,
+				E5CA74D12584B3FD00719F72 /* YZChatResource.bundle */,
 				E527E4E42583A17700531586 /* Classes */,
 			);
 			path = YZChat;
@@ -1774,36 +1746,6 @@
 				E527E7512583A17800531586 /* SearchBarView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		E527E7662583A17800531586 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				E527E7672583A17800531586 /* voip_call.mp3 */,
-				E527E7682583A17800531586 /* YZChatSDK.xcassets */,
-				E527E7692583A17800531586 /* 00.caf */,
-				E527E76A2583A17800531586 /* 01.caf */,
-				E527E76B2583A17800531586 /* sms-received.caf */,
-				E527E76C2583A17800531586 /* .gitkeep */,
-				E527E76D2583A17800531586 /* voip_calling_ring.mp3 */,
-				E527E76E2583A17800531586 /* conf */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		E527E76E2583A17800531586 /* conf */ = {
-			isa = PBXGroup;
-			children = (
-				E527E76F2583A17800531586 /* 1400269600.conf */,
-				E527E7702583A17800531586 /* 1400098016.conf */,
-				E527E7712583A17800531586 /* 1400321069.conf */,
-				E527E7722583A17800531586 /* 1400143280.conf */,
-				E527E7732583A17800531586 /* 1400036169.conf */,
-				E527E7742583A17800531586 /* 1400212767.conf */,
-				E527E7752583A17800531586 /* 1400115281.conf */,
-				E527E7762583A17800531586 /* 1400244218.conf */,
-			);
-			path = conf;
 			sourceTree = "<group>";
 		};
 		E56BEE4A2583C31B00EE4A72 /* IMUIKit */ = {
@@ -2768,23 +2710,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E527E9B32583A17A00531586 /* 1400321069.conf in Resources */,
-				E527E9B62583A17A00531586 /* 1400212767.conf in Resources */,
-				E527E9AA2583A17A00531586 /* voip_call.mp3 in Resources */,
-				E527E9B12583A17A00531586 /* 1400269600.conf in Resources */,
-				E527E9AD2583A17A00531586 /* 01.caf in Resources */,
 				E5CA71CB2584598200719F72 /* TUIKitFace.bundle in Resources */,
-				E527E9B52583A17A00531586 /* 1400036169.conf in Resources */,
-				E527E9B22583A17A00531586 /* 1400098016.conf in Resources */,
-				E527E9AF2583A17A00531586 /* .gitkeep in Resources */,
-				E527E9AC2583A17A00531586 /* 00.caf in Resources */,
-				E527E9B72583A17A00531586 /* 1400115281.conf in Resources */,
-				E527E9B82583A17A00531586 /* 1400244218.conf in Resources */,
-				E527E9B42583A17A00531586 /* 1400143280.conf in Resources */,
-				E527E9AB2583A17A00531586 /* YZChatSDK.xcassets in Resources */,
-				E527E9AE2583A17A00531586 /* sms-received.caf in Resources */,
-				E527E9B02583A17A00531586 /* voip_calling_ring.mp3 in Resources */,
 				E5CA71CA2584598200719F72 /* TUIKitResource.bundle in Resources */,
+				E5CA74D22584B3FD00719F72 /* YZChatResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
