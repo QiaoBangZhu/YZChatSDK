@@ -587,9 +587,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3E2B6CF78209A25BB827FA05 /* Pods-YZChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.release.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.release.xcconfig"; sourceTree = "<group>"; };
+		13F403A9DC32792AE6FA9B58 /* Pods-YZChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.release.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.release.xcconfig"; sourceTree = "<group>"; };
 		7900906001ADABE6BADF2985 /* libPods-YZChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D3335A855E4CED9E54AC2E5 /* Pods-YZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.debug.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.debug.xcconfig"; sourceTree = "<group>"; };
+		8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.debug.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.debug.xcconfig"; sourceTree = "<group>"; };
 		E527E3D7258393C800531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E527E3DA258393C800531586 /* YZChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZChat.h; sourceTree = "<group>"; };
 		E527E3DB258393C800531586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1171,14 +1171,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C8607661721D957880BB161 /* Pods */ = {
+		750663866EE3930D140FAA43 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D3335A855E4CED9E54AC2E5 /* Pods-YZChat.debug.xcconfig */,
-				3E2B6CF78209A25BB827FA05 /* Pods-YZChat.release.xcconfig */,
+				8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */,
+				13F403A9DC32792AE6FA9B58 /* Pods-YZChat.release.xcconfig */,
 			);
 			name = Pods;
-			path = ../../Example/Pods;
+			path = ../Example/Pods;
 			sourceTree = "<group>";
 		};
 		DC85D9878596B4BB189D60FA /* Frameworks */ = {
@@ -1194,8 +1194,8 @@
 			children = (
 				E527E3D9258393C800531586 /* YZChat */,
 				E527E3D8258393C800531586 /* Products */,
-				1C8607661721D957880BB161 /* Pods */,
 				DC85D9878596B4BB189D60FA /* Frameworks */,
+				750663866EE3930D140FAA43 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3227,7 +3227,7 @@
 		};
 		E527E3E0258393C800531586 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D3335A855E4CED9E54AC2E5 /* Pods-YZChat.debug.xcconfig */;
+			baseConfigurationReference = 8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
@@ -3238,7 +3238,7 @@
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/YZChat/Vendors",
+					"$(PROJECT_DIR)/../YZChat/Vendors",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3285,7 +3285,7 @@
 		};
 		E527E3E1258393C800531586 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E2B6CF78209A25BB827FA05 /* Pods-YZChat.release.xcconfig */;
+			baseConfigurationReference = 13F403A9DC32792AE6FA9B58 /* Pods-YZChat.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
@@ -3296,7 +3296,7 @@
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/YZChat/Vendors",
+					"$(PROJECT_DIR)/../YZChat/Vendors",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -14,7 +14,6 @@
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		E527E482258395CF00531586 /* YZChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5CA72E02584717F00719F72 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA72BF258461DA00719F72 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5CA72E22584718000719F72 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA72C9258461DA00719F72 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5CA72E42584718200719F72 /* camera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA72C6258461DA00719F72 /* camera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -53,6 +52,8 @@
 		E5CA73592584901400719F72 /* xcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA72CA258461DA00719F72 /* xcast.framework */; };
 		E5CA735A2584901400719F72 /* xnn_media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA72CB258461DA00719F72 /* xnn_media.framework */; };
 		E5CA735B2584901400719F72 /* xnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA72B9258461DA00719F72 /* xnn.framework */; };
+		E5CA739E258497BE00719F72 /* YZChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; };
+		E5CA739F258497BE00719F72 /* YZChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECBA1A82520DA682D72E7EEC /* libPods-YZChat_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E6222FC4C24A492AC18812 /* libPods-YZChat_Example.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 				E5CA72E02584717F00719F72 /* App.framework in Embed Frameworks */,
 				E5CA72F42584719400719F72 /* omp.framework in Embed Frameworks */,
 				E5CA72E42584718200719F72 /* camera.framework in Embed Frameworks */,
+				E5CA739F258497BE00719F72 /* YZChat.framework in Embed Frameworks */,
 				E5CA72FA2584719B00719F72 /* sqflite.framework in Embed Frameworks */,
 				E5CA72EE2584718C00719F72 /* image_picker.framework in Embed Frameworks */,
 				E5CA72FC2584719D00719F72 /* TMRTC.framework in Embed Frameworks */,
@@ -75,7 +77,6 @@
 				E5CA72EC2584718A00719F72 /* FMDB.framework in Embed Frameworks */,
 				E5CA7302258471A300719F72 /* xcast.framework in Embed Frameworks */,
 				E5CA72FE2584719F00719F72 /* wemeet_app_sdk.framework in Embed Frameworks */,
-				E527E482258395CF00531586 /* YZChat.framework in Embed Frameworks */,
 				E5CA72E22584718000719F72 /* AuthSDK.framework in Embed Frameworks */,
 				E5CA72E82584718600719F72 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */,
 				E5CA734825848F9F00719F72 /* WeMeet.framework in Embed Frameworks */,
@@ -148,6 +149,7 @@
 				E5CA734E2584901400719F72 /* FMDB.framework in Frameworks */,
 				E5CA734F2584901400719F72 /* image_picker.framework in Frameworks */,
 				E5CA73502584901400719F72 /* ImSDK.framework in Frameworks */,
+				E5CA739E258497BE00719F72 /* YZChat.framework in Frameworks */,
 				E5CA73512584901400719F72 /* ImSDKForiOS.framework in Frameworks */,
 				E5CA73522584901400719F72 /* omp.framework in Frameworks */,
 				E5CA73532584901400719F72 /* path_provider.framework in Frameworks */,

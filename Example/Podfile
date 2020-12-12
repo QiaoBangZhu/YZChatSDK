@@ -29,7 +29,7 @@ target 'YZChat_Example' do
 end
 
 target 'YZChat' do
-  project '../YZChatFramework/YZChat/YZChat.xcodeproj'
+  project '../YZChatFramework/YZChat.xcodeproj'
 
   pods
 end

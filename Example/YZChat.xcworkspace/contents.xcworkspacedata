@@ -8,6 +8,6 @@
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../YZChatFramework/YZChat/YZChat.xcodeproj">
+      location = "group:../YZChatFramework/YZChat.xcodeproj">
    </FileRef>
 </Workspace>
