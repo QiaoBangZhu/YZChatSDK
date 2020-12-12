@@ -1,7 +1,7 @@
 platform :ios, '11.0'
 workspace 'YZChat.xcworkspace'
 
-def pods
+def abstract_pods
   pod 'QMUIKit'
   pod 'Masonry'
   pod 'YYModel'
@@ -25,11 +25,15 @@ def pods
 end
 
 target 'YZChat_Example' do
+  abstract_pods
+end
+
+target 'YZChat_Example Pod' do
   pod 'YZChat', :path => '../'
 end
 
 target 'YZChat' do
   project '../YZChatFramework/YZChat.xcodeproj'
 
-  pods
+  abstract_pods
 end

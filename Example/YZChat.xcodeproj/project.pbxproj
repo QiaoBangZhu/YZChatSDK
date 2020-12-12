@@ -14,20 +14,101 @@
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		ECBA1A82520DA682D72E7EEC /* libPods-YZChat_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E6222FC4C24A492AC18812 /* libPods-YZChat_Example.a */; };
+		87D838976975E1CF58D6DA5C /* libPods-YZChat_Example Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D557FBFD3D0EB4F7EFA1E83 /* libPods-YZChat_Example Pod.a */; };
+		E5236C072584C5D3003ECE49 /* YZChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5236C062584C5D3003ECE49 /* YZChat.framework */; };
+		E5236C082584C5D3003ECE49 /* YZChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5236C062584C5D3003ECE49 /* YZChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75062584BE1B00719F72 /* YZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* YZAppDelegate.m */; };
+		E5CA75072584BE1B00719F72 /* YZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* YZViewController.m */; };
+		E5CA75082584BE1B00719F72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
+		E5CA750C2584BE1B00719F72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		E5CA750D2584BE1B00719F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		E5CA750E2584BE1B00719F72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
+		E5CA750F2584BE1B00719F72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
+		E5CA75E02584C2BD00719F72 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75992584C25300719F72 /* App.framework */; };
+		E5CA75E12584C2BD00719F72 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75992584C25300719F72 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75E22584C2BF00719F72 /* AuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A32584C25400719F72 /* AuthSDK.framework */; };
+		E5CA75E32584C2BF00719F72 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A32584C25400719F72 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75E42584C2C000719F72 /* camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A02584C25400719F72 /* camera.framework */; };
+		E5CA75E52584C2C000719F72 /* camera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A02584C25400719F72 /* camera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75E62584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */; };
+		E5CA75E72584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75E82584C2C300719F72 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75962584C25300719F72 /* Flutter.framework */; };
+		E5CA75E92584C2C300719F72 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75962584C25300719F72 /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75EA2584C2C400719F72 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759D2584C25400719F72 /* FMDB.framework */; };
+		E5CA75EB2584C2C400719F72 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759D2584C25400719F72 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75EC2584C2C600719F72 /* image_picker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A12584C25400719F72 /* image_picker.framework */; };
+		E5CA75ED2584C2C600719F72 /* image_picker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A12584C25400719F72 /* image_picker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75EE2584C2C700719F72 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75942584C25300719F72 /* ImSDK.framework */; };
+		E5CA75EF2584C2C700719F72 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75942584C25300719F72 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75F02584C2C900719F72 /* ImSDKForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75982584C25300719F72 /* ImSDKForiOS.framework */; };
+		E5CA75F12584C2C900719F72 /* ImSDKForiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75982584C25300719F72 /* ImSDKForiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75F22584C2CA00719F72 /* omp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759A2584C25300719F72 /* omp.framework */; };
+		E5CA75F32584C2CA00719F72 /* omp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759A2584C25300719F72 /* omp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75F42584C2CC00719F72 /* path_provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A22584C25400719F72 /* path_provider.framework */; };
+		E5CA75F52584C2CC00719F72 /* path_provider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A22584C25400719F72 /* path_provider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75F62584C2CD00719F72 /* permission_handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759B2584C25400719F72 /* permission_handler.framework */; };
+		E5CA75F72584C2CD00719F72 /* permission_handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759B2584C25400719F72 /* permission_handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75F82584C2CF00719F72 /* sqflite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75972584C25300719F72 /* sqflite.framework */; };
+		E5CA75F92584C2CF00719F72 /* sqflite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75972584C25300719F72 /* sqflite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75FA2584C2D100719F72 /* TMRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75952584C25300719F72 /* TMRTC.framework */; };
+		E5CA75FB2584C2D100719F72 /* TMRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75952584C25300719F72 /* TMRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75FC2584C2D200719F72 /* wemeet_app_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */; };
+		E5CA75FD2584C2D200719F72 /* wemeet_app_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA75FE2584C2D400719F72 /* WeMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759F2584C25400719F72 /* WeMeet.framework */; };
+		E5CA75FF2584C2D400719F72 /* WeMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759F2584C25400719F72 /* WeMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA76002584C2D500719F72 /* xcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A42584C25400719F72 /* xcast.framework */; };
+		E5CA76012584C2D500719F72 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A42584C25400719F72 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA76022584C2D700719F72 /* xnn_media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A52584C25400719F72 /* xnn_media.framework */; };
+		E5CA76032584C2D700719F72 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A52584C25400719F72 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5CA76042584C2D900719F72 /* xnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75932584C25300719F72 /* xnn.framework */; };
+		E5CA76052584C2D900719F72 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75932584C25300719F72 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECBA1A82520DA682D72E7EEC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E5CA756C2584C18200719F72 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E5CA76052584C2D900719F72 /* xnn.framework in Embed Frameworks */,
+				E5CA75E12584C2BD00719F72 /* App.framework in Embed Frameworks */,
+				E5CA75EB2584C2C400719F72 /* FMDB.framework in Embed Frameworks */,
+				E5236C082584C5D3003ECE49 /* YZChat.framework in Embed Frameworks */,
+				E5CA75F52584C2CC00719F72 /* path_provider.framework in Embed Frameworks */,
+				E5CA75FF2584C2D400719F72 /* WeMeet.framework in Embed Frameworks */,
+				E5CA75E92584C2C300719F72 /* Flutter.framework in Embed Frameworks */,
+				E5CA75F12584C2C900719F72 /* ImSDKForiOS.framework in Embed Frameworks */,
+				E5CA76012584C2D500719F72 /* xcast.framework in Embed Frameworks */,
+				E5CA75FB2584C2D100719F72 /* TMRTC.framework in Embed Frameworks */,
+				E5CA75EF2584C2C700719F72 /* ImSDK.framework in Embed Frameworks */,
+				E5CA75F32584C2CA00719F72 /* omp.framework in Embed Frameworks */,
+				E5CA75F92584C2CF00719F72 /* sqflite.framework in Embed Frameworks */,
+				E5CA75FD2584C2D200719F72 /* wemeet_app_sdk.framework in Embed Frameworks */,
+				E5CA75ED2584C2C600719F72 /* image_picker.framework in Embed Frameworks */,
+				E5CA75E72584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */,
+				E5CA76032584C2D700719F72 /* xnn_media.framework in Embed Frameworks */,
+				E5CA75E32584C2BF00719F72 /* AuthSDK.framework in Embed Frameworks */,
+				E5CA75F72584C2CD00719F72 /* permission_handler.framework in Embed Frameworks */,
+				E5CA75E52584C2C000719F72 /* camera.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0C1D664B259B86296FC7A1AE /* Pods-YZChat_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Tests.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Tests/Pods-YZChat_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		14D210F1E8F9C9E1E2647038 /* YZChat.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YZChat.podspec; path = ../YZChat.podspec; sourceTree = "<group>"; };
 		1D35C255FCF328DA2397F18B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		22E6222FC4C24A492AC18812 /* libPods-YZChat_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		301384CECDF1484A690B0032 /* Pods-YZChat_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Tests.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Tests/Pods-YZChat_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		516461C946371B7417C01094 /* Pods-YZChat_Example Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example Pod.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* YZChat_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZChat_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F595195388D20070C39A /* YZChat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YZChat-Info.plist"; sourceTree = "<group>"; };
+		6003F595195388D20070C39A /* YZChat_Example-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YZChat_Example-info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* YZChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YZChat-Prefix.pch"; sourceTree = "<group>"; };
@@ -38,10 +119,36 @@
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		745A2BEB6C0E4F2A55257390 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7D557FBFD3D0EB4F7EFA1E83 /* libPods-YZChat_Example Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat_Example Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E0A936133BF5C1804F12E48 /* Pods-YZChat_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B71179544198EC12ECD9B3FF /* Pods-YZChat_Example Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example Pod.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod.release.xcconfig"; sourceTree = "<group>"; };
 		D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		E5236C002584C57C003ECE49 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5236C042584C5A6003ECE49 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5236C062584C5D3003ECE49 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E527E480258395CF00531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZChat_Example_Pod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5CA75392584C0A200719F72 /* YZChat_Example_Pod-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YZChat_Example_Pod-info.plist"; sourceTree = "<group>"; };
+		E5CA75932584C25300719F72 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
+		E5CA75942584C25300719F72 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
+		E5CA75952584C25300719F72 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
+		E5CA75962584C25300719F72 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
+		E5CA75972584C25300719F72 /* sqflite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqflite.framework; sourceTree = "<group>"; };
+		E5CA75982584C25300719F72 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDKForiOS.framework; sourceTree = "<group>"; };
+		E5CA75992584C25300719F72 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
+		E5CA759A2584C25300719F72 /* omp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = omp.framework; sourceTree = "<group>"; };
+		E5CA759B2584C25400719F72 /* permission_handler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = permission_handler.framework; sourceTree = "<group>"; };
+		E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wemeet_app_sdk.framework; sourceTree = "<group>"; };
+		E5CA759D2584C25400719F72 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
+		E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = flutter_plugin_android_lifecycle.framework; sourceTree = "<group>"; };
+		E5CA759F2584C25400719F72 /* WeMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeMeet.framework; sourceTree = "<group>"; };
+		E5CA75A02584C25400719F72 /* camera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = camera.framework; sourceTree = "<group>"; };
+		E5CA75A12584C25400719F72 /* image_picker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = image_picker.framework; sourceTree = "<group>"; };
+		E5CA75A22584C25400719F72 /* path_provider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = path_provider.framework; sourceTree = "<group>"; };
+		E5CA75A32584C25400719F72 /* AuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthSDK.framework; sourceTree = "<group>"; };
+		E5CA75A42584C25400719F72 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
+		E5CA75A52584C25400719F72 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +156,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECBA1A82520DA682D72E7EEC /* libPods-YZChat_Example.a in Frameworks */,
+				E5CA75EC2584C2C600719F72 /* image_picker.framework in Frameworks */,
+				E5CA75FA2584C2D100719F72 /* TMRTC.framework in Frameworks */,
+				E5CA75EA2584C2C400719F72 /* FMDB.framework in Frameworks */,
+				E5CA75F22584C2CA00719F72 /* omp.framework in Frameworks */,
+				E5CA75FC2584C2D200719F72 /* wemeet_app_sdk.framework in Frameworks */,
+				E5CA76042584C2D900719F72 /* xnn.framework in Frameworks */,
+				ECBA1A82520DA682D72E7EEC /* (null) in Frameworks */,
+				E5CA76002584C2D500719F72 /* xcast.framework in Frameworks */,
+				E5236C072584C5D3003ECE49 /* YZChat.framework in Frameworks */,
+				E5CA75F02584C2C900719F72 /* ImSDKForiOS.framework in Frameworks */,
+				E5CA75E62584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Frameworks */,
+				E5CA75E82584C2C300719F72 /* Flutter.framework in Frameworks */,
+				E5CA75F62584C2CD00719F72 /* permission_handler.framework in Frameworks */,
+				E5CA75E22584C2BF00719F72 /* AuthSDK.framework in Frameworks */,
+				E5CA75E42584C2C000719F72 /* camera.framework in Frameworks */,
+				E5CA75F82584C2CF00719F72 /* sqflite.framework in Frameworks */,
+				E5CA75E02584C2BD00719F72 /* App.framework in Frameworks */,
+				E5CA75FE2584C2D400719F72 /* WeMeet.framework in Frameworks */,
+				E5CA75F42584C2CC00719F72 /* path_provider.framework in Frameworks */,
+				E5CA76022584C2D700719F72 /* xnn_media.framework in Frameworks */,
+				E5CA75EE2584C2C700719F72 /* ImSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CA75092584BE1B00719F72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87D838976975E1CF58D6DA5C /* libPods-YZChat_Example Pod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +198,8 @@
 				9E0A936133BF5C1804F12E48 /* Pods-YZChat_Example.release.xcconfig */,
 				0C1D664B259B86296FC7A1AE /* Pods-YZChat_Tests.debug.xcconfig */,
 				301384CECDF1484A690B0032 /* Pods-YZChat_Tests.release.xcconfig */,
+				516461C946371B7417C01094 /* Pods-YZChat_Example Pod.debug.xcconfig */,
+				B71179544198EC12ECD9B3FF /* Pods-YZChat_Example Pod.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -70,7 +207,6 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				E527E3E32583942A00531586 /* YZChat */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for YZChat */,
 				6003F58C195388D20070C39A /* Frameworks */,
@@ -83,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				6003F58A195388D20070C39A /* YZChat_Example.app */,
+				E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,11 +227,14 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5236C062584C5D3003ECE49 /* YZChat.framework */,
+				E5236C042584C5A6003ECE49 /* YZChat.framework */,
+				E5236C002584C57C003ECE49 /* YZChat.framework */,
 				E527E480258395CF00531586 /* YZChat.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
-				22E6222FC4C24A492AC18812 /* libPods-YZChat_Example.a */,
+				7D557FBFD3D0EB4F7EFA1E83 /* libPods-YZChat_Example Pod.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +250,7 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				E5CA75922584C25300719F72 /* Vendors */,
 			);
 			name = "Example for YZChat";
 			path = YZChat;
@@ -118,7 +259,8 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6003F595195388D20070C39A /* YZChat-Info.plist */,
+				E5CA75392584C0A200719F72 /* YZChat_Example_Pod-info.plist */,
+				6003F595195388D20070C39A /* YZChat_Example-info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* YZChat-Prefix.pch */,
@@ -136,12 +278,31 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		E527E3E32583942A00531586 /* YZChat */ = {
+		E5CA75922584C25300719F72 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E5CA75932584C25300719F72 /* xnn.framework */,
+				E5CA75942584C25300719F72 /* ImSDK.framework */,
+				E5CA75952584C25300719F72 /* TMRTC.framework */,
+				E5CA75962584C25300719F72 /* Flutter.framework */,
+				E5CA75972584C25300719F72 /* sqflite.framework */,
+				E5CA75982584C25300719F72 /* ImSDKForiOS.framework */,
+				E5CA75992584C25300719F72 /* App.framework */,
+				E5CA759A2584C25300719F72 /* omp.framework */,
+				E5CA759B2584C25400719F72 /* permission_handler.framework */,
+				E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */,
+				E5CA759D2584C25400719F72 /* FMDB.framework */,
+				E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */,
+				E5CA759F2584C25400719F72 /* WeMeet.framework */,
+				E5CA75A02584C25400719F72 /* camera.framework */,
+				E5CA75A12584C25400719F72 /* image_picker.framework */,
+				E5CA75A22584C25400719F72 /* path_provider.framework */,
+				E5CA75A32584C25400719F72 /* AuthSDK.framework */,
+				E5CA75A42584C25400719F72 /* xcast.framework */,
+				E5CA75A52584C25400719F72 /* xnn_media.framework */,
 			);
-			name = YZChat;
-			path = ../YZChatFramework/YZChat;
+			name = Vendors;
+			path = ../../YZChat/Vendors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,7 +317,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				32FEA4D164749C64CA6CF37A /* [CP] Copy Pods Resources */,
-				EF2246EA03CD9439826943EB /* [CP] Embed Pods Frameworks */,
+				E5CA756C2584C18200719F72 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +326,26 @@
 			name = YZChat_Example;
 			productName = YZChat;
 			productReference = 6003F58A195388D20070C39A /* YZChat_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E5CA75032584BE1B00719F72 /* YZChat_Example_Pod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5CA75122584BE1B00719F72 /* Build configuration list for PBXNativeTarget "YZChat_Example_Pod" */;
+			buildPhases = (
+				E5CA75042584BE1B00719F72 /* [CP] Check Pods Manifest.lock */,
+				E5CA75052584BE1B00719F72 /* Sources */,
+				E5CA75092584BE1B00719F72 /* Frameworks */,
+				E5CA750B2584BE1B00719F72 /* Resources */,
+				E5CA75102584BE1B00719F72 /* [CP] Copy Pods Resources */,
+				E5CA75112584BE1B00719F72 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YZChat_Example_Pod;
+			productName = YZChat;
+			productReference = E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -178,6 +359,10 @@
 				ORGANIZATIONNAME = QiaoBangZhu;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
+						DevelopmentTeam = PKXXVZNV58;
+						ProvisioningStyle = Manual;
+					};
+					E5CA75032584BE1B00719F72 = {
 						DevelopmentTeam = PKXXVZNV58;
 						ProvisioningStyle = Manual;
 					};
@@ -198,6 +383,7 @@
 			projectRoot = "";
 			targets = (
 				6003F589195388D20070C39A /* YZChat_Example */,
+				E5CA75032584BE1B00719F72 /* YZChat_Example_Pod */,
 			);
 		};
 /* End PBXProject section */
@@ -214,6 +400,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5CA750B2584BE1B00719F72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5CA750C2584BE1B00719F72 /* Main.storyboard in Resources */,
+				E5CA750D2584BE1B00719F72 /* LaunchScreen.storyboard in Resources */,
+				E5CA750E2584BE1B00719F72 /* Images.xcassets in Resources */,
+				E5CA750F2584BE1B00719F72 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -224,6 +421,48 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example-resources.sh",
+				"${PODS_ROOT}/AMap3DMap-NO-IDFA/MAMapKit.framework/AMap.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/QMUIKit/QMUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QMUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5CA75042584BE1B00719F72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YZChat_Example Pod-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5CA75102584BE1B00719F72 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod-resources.sh",
 				"${PODS_ROOT}/AMap3DMap-NO-IDFA/MAMapKit.framework/AMap.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/QMUIKit/QMUIResources.bundle",
 				"${PODS_ROOT}/../../YZChat.framework/YZChatResource.bundle",
@@ -240,16 +479,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EF2246EA03CD9439826943EB /* [CP] Embed Pods Frameworks */ = {
+		E5CA75112584BE1B00719F72 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod-frameworks.sh",
 				"${PODS_ROOT}/../../YZChat/Vendors/App.framework",
 				"${PODS_ROOT}/../../YZChat/Vendors/AuthSDK.framework",
 				"${PODS_ROOT}/../../YZChat/Vendors/camera.framework",
@@ -292,7 +531,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2753336F64A822723AA177E /* [CP] Check Pods Manifest.lock */ = {
@@ -327,6 +566,16 @@
 				6003F59E195388D20070C39A /* YZAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* YZViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CA75052584BE1B00719F72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5CA75062584BE1B00719F72 /* YZAppDelegate.m in Sources */,
+				E5CA75072584BE1B00719F72 /* YZViewController.m in Sources */,
+				E5CA75082584BE1B00719F72 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,10 +682,13 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = PKXXVZNV58;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../YZChat/Vendors",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
-				INFOPLIST_FILE = "YZChat/YZChat-Info.plist";
+				INFOPLIST_FILE = "YZChat/YZChat_Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -458,10 +710,70 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VTC5S8ALKF;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../YZChat/Vendors",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
+				INFOPLIST_FILE = "YZChat/YZChat_Example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.chat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = adhoc_chat;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E5CA75132584BE1B00719F72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 516461C946371B7417C01094 /* Pods-YZChat_Example Pod.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = PKXXVZNV58;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
-				INFOPLIST_FILE = "YZChat/YZChat-Info.plist";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"USE_POD=1",
+				);
+				INFOPLIST_FILE = "YZChat/YZChat_Example_Pod-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = ExampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingke.admin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.jingke.admin";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E5CA75142584BE1B00719F72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B71179544198EC12ECD9B3FF /* Pods-YZChat_Example Pod.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = VTC5S8ALKF;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"USE_POD=1",
+				);
+				INFOPLIST_FILE = "YZChat/YZChat_Example_Pod-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -491,6 +803,15 @@
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
 				6003F5C1195388D20070C39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5CA75122584BE1B00719F72 /* Build configuration list for PBXNativeTarget "YZChat_Example_Pod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5CA75132584BE1B00719F72 /* Debug */,
+				E5CA75142584BE1B00719F72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

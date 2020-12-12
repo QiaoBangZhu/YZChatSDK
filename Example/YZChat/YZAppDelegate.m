@@ -8,7 +8,11 @@
 
 #import "YZAppDelegate.h"
 
+#if USE_POD
 #import "YZChat/YZChat.h"
+#else
+#import <YZChat/YZChat.h>
+#endif
 
 @implementation YZAppDelegate
 
