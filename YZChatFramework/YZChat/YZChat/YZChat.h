@@ -2,8 +2,6 @@
 //  YZChat.h
 //  YZChat
 //
-//  Created by 安笑 on 2020/12/11.
-//
 
 #import <Foundation/Foundation.h>
 
@@ -16,3 +14,5 @@ FOUNDATION_EXPORT const unsigned char YZChatVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <YZChat/PublicHeader.h>
 
 
+#import <YZChat/SysUser.h>
+#import <YZChat/YzIMKitAgent.h>

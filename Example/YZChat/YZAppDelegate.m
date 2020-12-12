@@ -8,10 +8,13 @@
 
 #import "YZAppDelegate.h"
 
+#import <YZChat/YZChat.h>
+
 @implementation YZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[YzIMKitAgent shareInstance] initAppId: @"123"];
     // Override point for customization after application launch.
     return YES;
 }

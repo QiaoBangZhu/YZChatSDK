@@ -1,0 +1,6 @@
+framework module TMRTC {
+  umbrella header "TMRTC.h"
+
+  export *
+  module * { export * }
+}
