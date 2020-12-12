@@ -8,7 +8,7 @@
 
 #import "YZAppDelegate.h"
 
-#import <YZChat/YZChat.h>
+#import "YZChat/YZChat.h"
 
 @implementation YZAppDelegate
 

@@ -1,11 +1,3 @@
-#
-# Be sure to run `pod lib lint YZChat.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'YZChat'
   s.version          = '0.1.0'
@@ -22,21 +14,37 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/QiaoBangZhu/YZChat'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'QiaoBangZhu' => 'ios9001@foxmail.com' }
   s.source           = { :git => 'https://github.com/QiaoBangZhu/YZChat.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  s.platform = :ios
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'YZChat/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'YZChat' => ['YZChat/Assets/*.png']
-  # }
+  s.source_files = 'YZChat.framework/Headers/*.{h}'
+  s.public_header_files = 'YZChat.framework/Headers/*.{h}'
+  s.resource_bundles = { 'YZChatResource.bundle' =>  'YZChat.framework/Assets.car' }
+  s.resources = ['YZChat.framework/TUIKitResource.bundle', 'YZChat.framework/TUIKitFace.bundle', 'YZChat.framework/*.conf', 'YZChat.framework/*.caf', 'YZChat.framework/*.mp3']
+  s.vendored_frameworks = 'YZChat.framework', 'YZChat/Vendors/*.framework'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'AFNetworking', '~> 4.0'
+  s.dependency 'QMUIKit'
+  s.dependency 'Masonry'
+  s.dependency 'YYModel'
+  s.dependency 'YYText'
+  s.dependency 'IQKeyboardManager'
+  s.dependency 'MJExtension'
+  s.dependency 'FCFileManager'
+  s.dependency 'BlocksKit'
+  s.dependency 'Bugly'
+  s.dependency 'ZXingObjC'
+  
+  s.dependency 'MMLayout', '~> 0.2.0'
+  s.dependency 'SDWebImage','~> 5.9.0'
+  s.dependency 'ReactiveObjC', '~> 3.1.1'
+  s.dependency 'Toast', '~> 4.0.0'
+  s.dependency 'TXLiteAVSDK_TRTC', '~> 7.8.9515'
+
+  s.dependency 'AMap3DMap-NO-IDFA'
+  s.dependency 'AMapSearch-NO-IDFA'
 end
