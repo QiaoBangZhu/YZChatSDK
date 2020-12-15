@@ -25,7 +25,6 @@
 #import "UIColor+ColorExtension.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "YUIContactViewController.h"
-//#import "AppDelegate.h"
 #import "YUIGroupConversationListController.h"
 #import "YUIBlackListViewController.h"
 #import "UIBarButtonItem+Extensions.h"
@@ -33,6 +32,7 @@
 #import <Masonry/Masonry.h>
 #import "SearchMyFriendsViewController.h"
 #import "SearchMyContactsViewController.h"
+#import "TUITabBarController.h"
 
 @interface ContactsViewController ()
 @property NSArray<TUIContactActionCellData *> *firstGroupData;
@@ -71,51 +71,53 @@
 
 
 - (void)setupView {
-//    UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"contact_search"] target:self action:@selector(searchMyFriends)];
-//    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    spaceItem.width = -15;
-//    self.navigationItem.rightBarButtonItems =  @[spaceItem,moreItem];
-//
-//    NSMutableArray *list = @[].mutableCopy;
-//    [list addObject:({
-//        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-//        UIImage* image = [UIImage imageNamed:@"icon_add_contact"];
-//        data.icon = image;
-//        data.title = @"新的好友";
-//        data.cselector = @selector(onAddNewFriend:);
-//        data;
-//    })];
-//    [list addObject:({
-//        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-//        data.icon = [UIImage imageNamed:@"myGrps"];
-//        data.title = @"我的群聊";
-//        data.cselector = @selector(onGroupConversation:);
-//        data;
-//    })];
-//    [list addObject:({
-//        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-//        data.icon = [UIImage imageNamed:@"icon_blackList"];
-//        data.title = @"黑名单";
-//        data.cselector = @selector(onBlackList:);
-//        data;
-//    })];
-//    self.firstGroupData = [NSArray arrayWithArray:list];
-//    
-//    [RACObserve(self.contactVc.viewModel, pendencyCnt) subscribeNext:^(NSNumber *x) {
-//        self.firstGroupData[0].readNum = [x integerValue];
+    UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:YZChatResource(@"contact_search") target:self action:@selector(searchMyFriends)];
+    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceItem.width = -15;
+    self.navigationItem.rightBarButtonItems =  @[spaceItem,moreItem];
+
+    NSMutableArray *list = @[].mutableCopy;
+    [list addObject:({
+        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+        UIImage* image = YZChatResource(@"icon_add_contact");
+        data.icon = image;
+        data.title = @"新的好友";
+        data.cselector = @selector(onAddNewFriend:);
+        data;
+    })];
+    [list addObject:({
+        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+        data.icon = YZChatResource(@"myGrps");
+        data.title = @"我的群聊";
+        data.cselector = @selector(onGroupConversation:);
+        data;
+    })];
+    [list addObject:({
+        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+        data.icon = YZChatResource(@"icon_blackList");
+        data.title = @"黑名单";
+        data.cselector = @selector(onBlackList:);
+        data;
+    })];
+    self.firstGroupData = [NSArray arrayWithArray:list];
+    
+    [RACObserve(self.contactVc.viewModel, pendencyCnt) subscribeNext:^(NSNumber *x) {
+        self.firstGroupData[0].readNum = [x integerValue];
 //        TUITabBarItem * item = app.tabController.tabBarItems[1];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if ([x integerValue] > 0) {
-//                if ([x integerValue] > 99) {
-//                    item.controller.tabBarItem.badgeValue = @"99+";
-//                }else {
-//                    item.controller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)[x integerValue]];
-//                }
-//            }else {
-//                item.controller.tabBarItem.badgeValue = nil;
-//            }
-//        });
-//    }];
+        TUITabBarItem* item = (TUITabBarItem*)[UIApplication sharedApplication].delegate.window.rootViewController.tabBarController.viewControllers[1];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([x integerValue] > 0) {
+                if ([x integerValue] > 99) {
+                    item.controller.tabBarItem.badgeValue = @"99+";
+                }else {
+                    item.controller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)[x integerValue]];
+                }
+            }else {
+                item.controller.tabBarItem.badgeValue = nil;
+            }
+        });
+    }];
 }
 
 - (void)onRightItem

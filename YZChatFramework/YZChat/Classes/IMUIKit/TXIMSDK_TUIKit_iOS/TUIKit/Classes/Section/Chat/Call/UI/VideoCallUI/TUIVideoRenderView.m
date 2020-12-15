@@ -10,6 +10,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "THeader.h"
 #import <Masonry/Masonry.h>
+#import "CommonConstant.h"
 
 @interface TUIVideoRenderView ()
 
@@ -61,7 +62,7 @@
     BOOL noModel = user.userId.length == 0;
     if (!noModel) {
         self.nicknameLabel.text = user.name;
-        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"] options:SDWebImageHighPriority];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
         self.avatarImageView.hidden = user.isVideoAvaliable;
         self.nicknameLabel.hidden = user.isVideoAvaliable;
     }

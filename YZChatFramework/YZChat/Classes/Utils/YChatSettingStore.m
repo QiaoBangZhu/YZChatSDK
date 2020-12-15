@@ -30,6 +30,14 @@ DEF_SINGLETON(YChatSettingStore);
     return self;
 }
 
+- (NSString *)getMobile {
+    return _userInfo.mobile;
+}
+
+- (NSString*)getNickName {
+    return _userInfo.nickName;
+}
+
 - (NSInteger)getfunctionPerm {
     return _userInfo.functionPerm;
 }

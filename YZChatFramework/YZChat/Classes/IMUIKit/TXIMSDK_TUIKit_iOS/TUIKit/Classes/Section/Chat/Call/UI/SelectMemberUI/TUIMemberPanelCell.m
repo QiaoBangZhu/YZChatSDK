@@ -10,6 +10,7 @@
 #import "UIColor+TUIDarkMode.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "TUIKit.h"
+#import "CommonConstant.h"
 
 @implementation TUIMemberPanelCell
 {
@@ -38,7 +39,7 @@
 
 - (void)fillWithData:(UserModel *)model
 {
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"] options:SDWebImageHighPriority];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
 }
 
 

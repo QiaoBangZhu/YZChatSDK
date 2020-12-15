@@ -7,6 +7,7 @@
 
 #import "TUIAudioCallUserCell.h"
 #import <Masonry/Masonry.h>
+#import "CommonConstant.h"
 
 @implementation TUIAudioCallUserCell
 {
@@ -101,7 +102,7 @@
 
 - (void)fillWithData:(CallUserModel *)model isCurSponsor:(BOOL)iscurSponsor count: (NSInteger)count {
     [self defaultLayout];
-    [_cellImgView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"] options:SDWebImageHighPriority];
+    [_cellImgView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
     _cellUserLabel.text = model.name.length > 0 ? model.name : model.userId;
 //    _volumeProgress.progress = model.volume;
     BOOL noModel = (model.userId.length == 0);

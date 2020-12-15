@@ -291,6 +291,14 @@
     return [YChatRequestMan postRequest:request completion:block];
 }
 
++ (NSURLSessionDataTask *)requestToolKey:(NSString*)toolDomain
+                                 toolKey:(NSString*)toolKey
+                              completion:(YChatURLRequstCompletionBlock)block {
+    NSDictionary* params = @{@"toolDomain":toolDomain,
+                             @"toolKey":toolKey};
+    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:checkToolKey andParams:params];
+    return [YChatRequestMan postRequest:request completion:block];
+}
 
 
 @end

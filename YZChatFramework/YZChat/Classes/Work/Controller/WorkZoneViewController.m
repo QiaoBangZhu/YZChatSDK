@@ -17,9 +17,9 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import <QMUIKit/QMUIKit.h>
 #import "WebViewController.h"
-//#import "AppDelegate.h"
-
 #import <TMRTC/TMRTC.h>
+#import "YZBaseManager.h"
+#import "NSBundle+YZBundle.h"
 
 @interface WorkZoneViewController ()<UITableViewDelegate, UITableViewDataSource,WorkZoneTableViewCellDelegate,TMRTCAuthServiceDelegate,TMRTCAuthServiceDataSource>
 @property (nonatomic, strong)UITableView   * tableView;
@@ -52,7 +52,7 @@
 
 -(void)setupView {
     UIImageView * bgView = [[UIImageView alloc]init];
-    bgView.image = [UIImage imageNamed:@"workzone_bg"];
+    bgView.image = YZChatResource(@"workzone_bg");
     [self.view addSubview:bgView];
     self.bgView = bgView;
     
@@ -294,8 +294,8 @@
 }
 
 - (void)exit {
-//    app.window.rootViewController = [app getMainController];
-//    app.tabController.selectedIndex = 2;
+    [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance]getMainController];
+    [YZBaseManager shareInstance].tabController.selectedIndex = 2;
 }
 
 

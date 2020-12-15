@@ -10,6 +10,7 @@
 #import "CommonConstant.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
+#import "NSBundle+YZBundle.h"
 
 @implementation MapListTableViewCell
 
@@ -75,7 +76,7 @@
 - (UIImageView*)checkbox {
     if (!_checkbox) {
         _checkbox = [[UIImageView alloc]init];
-        _checkbox.image = [UIImage imageNamed:@"checkmark"];
+        _checkbox.image = YZChatResource(@"checkmark");
         _checkbox.hidden = YES;
     }
     return _checkbox;

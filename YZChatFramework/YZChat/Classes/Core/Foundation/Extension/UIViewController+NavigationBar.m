@@ -6,30 +6,30 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "UIViewController+NavigationBar.h"
-#import "ZWhiteNavigationBar.h"
-#import "ZClearNavigationBar.h"
-#import "UIColor+Foundation.h"
-#import "CommonConstant.h"
-#import "UIControl+BlocksKit.h"
-#import "UIView+Foundation.h"
+//#import "UIViewController+NavigationBar.h"
+//#import "ZWhiteNavigationBar.h"
+//#import "ZClearNavigationBar.h"
+//#import "UIColor+Foundation.h"
+//#import "CommonConstant.h"
+//#import "UIControl+BlocksKit.h"
+//#import "UIView+Foundation.h"
+//
+//@implementation UIViewController (NavigationBar)
 
-@implementation UIViewController (NavigationBar)
-
-- (void)viewDidLoad {
-    
-   self.isVisible = NO;
-   
-   self.automaticallyAdjustsScrollViewInsets = NO;
-   //网络状态发生变化的时候的通知方法
-   [[NSNotificationCenter defaultCenter]addObserver:self
-                                           selector:@selector(playerNetWorkStatesChange:) name:@"netWorkChangeEventNotification"
-                                             object:nil];
-   self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-   if (!self.hiddenGobackHomeBtn) {
-       
-   }
-}
+//- (void)viewDidLoad {
+//
+//   self.isVisible = NO;
+//
+//   self.automaticallyAdjustsScrollViewInsets = NO;
+//   //网络状态发生变化的时候的通知方法
+//   [[NSNotificationCenter defaultCenter]addObserver:self
+//                                           selector:@selector(playerNetWorkStatesChange:) name:@"netWorkChangeEventNotification"
+//                                             object:nil];
+//   self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+//   if (!self.hiddenGobackHomeBtn) {
+//
+//   }
+//}
 
 //- (void)viewWillAppear:(BOOL)animated {
 //    [super viewWillAppear:animated];
@@ -273,4 +273,4 @@
 
 
 
-@end
+//@end

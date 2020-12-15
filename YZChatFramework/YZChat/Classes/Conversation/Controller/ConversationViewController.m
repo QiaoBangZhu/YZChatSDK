@@ -28,7 +28,6 @@
 #import "FriendProfileViewController.h"
 #import "GroupInfoController.h"
 #import "ContactSearchViewController.h"
-//#import "AppDelegate.h"
 #import "TUITabBarController.h"
 #import "UIColor+ColorExtension.h"
 #import "SearchBarView.h"
@@ -38,6 +37,8 @@
 #import "SearchConversationViewController.h"
 #import "QRScanViewController.h"
 #import "YChatSettingStore.h"
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @interface ConversationViewController ()<YUIConversationListControllerDelegate, YPopViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) TNaviBarIndicatorView *titleview;
@@ -82,12 +83,12 @@
     conv.tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
     conv.tableView.contentInset = UIEdgeInsetsZero;
 
-//    if (([[YChatSettingStore sharedInstance]getfunctionPerm] & 2) > 0) {
-        UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addFriend_icon"] target:self action:@selector(rightBarButtonClick:)];
+    if (([[YChatSettingStore sharedInstance]getfunctionPerm] & 2) > 0) {
+        UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:YZChatResource(@"addFriend_icon") target:self action:@selector(rightBarButtonClick:)];
         UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         spaceItem.width = -15;
         self.navigationItem.rightBarButtonItems =  @[spaceItem,moreItem];
-//    }
+    }
   
 //    @weakify(self)
 //    [RACObserve(conv.viewModel, dataList) subscribeNext:^(id  _Nullable x) {
@@ -103,23 +104,25 @@
 }
 
 - (void) onChangeUnReadCount:(NSNotification *)notifi{
-//    NSMutableArray *convList = (NSMutableArray *)notifi.object;
-//    int unReadCount = 0;
-//    for (V2TIMConversation *conv in convList) {
-//        unReadCount += conv.unreadCount;
-//    }
+    NSMutableArray *convList = (NSMutableArray *)notifi.object;
+    int unReadCount = 0;
+    for (V2TIMConversation *conv in convList) {
+        unReadCount += conv.unreadCount;
+    }
+    
+    TUITabBarItem* item = (TUITabBarItem*)[UIApplication sharedApplication].delegate.window.rootViewController.tabBarController.viewControllers[0];
 //    TUITabBarItem* item = app.tabController.tabBarItems[0];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        if (unReadCount > 0) {
-//            if (unReadCount > 99) {
-//                item.controller.tabBarItem.badgeValue = @"99+";
-//            }else {
-//                item.controller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)unReadCount];
-//            }
-//        }else {
-//            item.controller.tabBarItem.badgeValue = nil;
-//        }
-//    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (unReadCount > 0) {
+            if (unReadCount > 99) {
+                item.controller.tabBarItem.badgeValue = @"99+";
+            }else {
+                item.controller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)unReadCount];
+            }
+        }else {
+            item.controller.tabBarItem.badgeValue = nil;
+        }
+    });
 }
 
 /**

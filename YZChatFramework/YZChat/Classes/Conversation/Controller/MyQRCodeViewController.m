@@ -16,7 +16,9 @@
 #import <SDWebImage/SDWebImage.h>
 #import "DefaultPortraitView.h"
 #import "YChatRequestBuilder.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
+#import "THelper.h"
 
 @interface MyQRCodeViewController ()
 @property (nonatomic, strong) UIView *qrBgView;
@@ -58,7 +60,7 @@
     self.mobileLabel.text = self.user.mobile;
     if (![self.user.userIcon isEqualToString:@""]) {
         [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:self.user.userIcon]
-                                  placeholderImage:[UIImage imageNamed:@"my_defaultAvatarImage"]];
+                                  placeholderImage:YZChatResource(@"my_defaultAvatarImage")];
     }
     if (!self.portraitImageView.image) {
         self.portraitImageView.image = [DefaultPortraitView portraitView:self.targetId name:self.user.nickName];
@@ -225,7 +227,6 @@
     return _mobileLabel;
 }
 
-
 - (UIImageView *)qrCodeImageView {
     if (!_qrCodeImageView) {
         _qrCodeImageView = [[UIImageView alloc] init];
@@ -324,9 +325,9 @@
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error == nil) {
-        [QMUITips showInfo:@"保存成功"];
+        [THelper makeToast:@"保存成功"];
     } else {
-        [QMUITips showError:@"保存失败"];
+        [THelper makeToast:@"保存失败"];
     }
 }
 

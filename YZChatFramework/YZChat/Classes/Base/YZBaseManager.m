@@ -1,0 +1,100 @@
+//
+//  YZBaseManager.m
+//  YChat
+//
+//  Created by magic on 2020/12/12.
+//  Copyright © 2020 Apple. All rights reserved.
+//
+
+#import "YZBaseManager.h"
+#import "LoginViewController.h"
+#import "ConversationViewController.h"
+#import "ContactsViewController.h"
+#import "WorkZoneViewController.h"
+#import "MyViewController.h"
+#import "TNavigationController.h"
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
+
+@interface YZBaseManager()
+@end
+
+@implementation YZBaseManager
+
++ (YZBaseManager *)shareInstance {
+    static dispatch_once_t onceToken;
+    static YZBaseManager * g_sharedInstance = nil;
+    dispatch_once(&onceToken, ^{
+        g_sharedInstance = [[YZBaseManager alloc] init];
+    });
+    return g_sharedInstance;
+}
+
+- (UIViewController *)getLoginController {
+    LoginViewController *login = [[LoginViewController alloc]init];
+    return [[UINavigationController alloc]initWithRootViewController:login];
+}
+
+- (TUITabBarController *)getMainController {
+    TUITabBarController *tbc = [[TUITabBarController alloc] init];
+    NSMutableArray *items = [NSMutableArray array];
+    if ((self.userInfo.functionPerm & 1) > 0) {
+        TUITabBarItem *msgItem = [[TUITabBarItem alloc] init];
+        msgItem.title = @"消息";
+        msgItem.normalImage = YZChatResource(@"message_normal");
+        msgItem.selectedImage = YZChatResource(@"message_pressed");
+        msgItem.controller = [[TNavigationController alloc] initWithRootViewController:[[ConversationViewController alloc] init]];
+        [items addObject:msgItem];
+    }
+    
+    if ((self.userInfo.functionPerm & 2) > 0) {
+        TUITabBarItem *contactItem = [[TUITabBarItem alloc] init];
+        contactItem.title = @"通讯录";
+        contactItem.selectedImage = YZChatResource(@"contacts_pressed");
+        contactItem.normalImage = YZChatResource(@"contacts_normal");
+        contactItem.controller = [[TNavigationController alloc] initWithRootViewController:[[ContactsViewController alloc] init]];
+        [items addObject:contactItem];
+    }
+    
+    if ((self.userInfo.functionPerm & 4) > 0) {
+        TUITabBarItem *workZoneItem = [[TUITabBarItem alloc] init];
+        workZoneItem.title = @"工作台";
+        workZoneItem.normalImage = YZChatResource(@"workzone_normal");
+        workZoneItem.selectedImage = YZChatResource(@"workzone_selected");
+        workZoneItem.controller = [[TNavigationController alloc] initWithRootViewController:[[WorkZoneViewController alloc] init]];
+        [items addObject:workZoneItem];
+    }
+   
+    if ((self.userInfo.functionPerm & 8) >0) {
+        TUITabBarItem *setItem = [[TUITabBarItem alloc] init];
+        setItem.title = @"我";
+        setItem.selectedImage = YZChatResource(@"setting_pressed");
+        setItem.normalImage = YZChatResource(@"setting_normal");
+        setItem.controller = [[TNavigationController alloc] initWithRootViewController:[[MyViewController alloc] init]];
+        [items addObject:setItem];
+    }
+    
+    tbc.tabBarItems = items;
+    self.tabController = tbc;
+    tbc.tabBar.translucent = NO;
+    
+    if (@available(iOS 13.0, *)) {
+        UITabBarAppearance *standardAppearance = [[UITabBarAppearance alloc] init];
+        standardAppearance.backgroundColor = [UIColor whiteColor];//根据自己的情况设置
+        standardAppearance.shadowColor = [UIColor clearColor];//也可以设置为白色或任何颜色
+        UITabBarItemStateAppearance *normal = standardAppearance.stackedLayoutAppearance.normal;
+          if (normal) {
+              normal.titlePositionAdjustment = UIOffsetMake(0, -3);
+          }
+        tbc.tabBar.standardAppearance = standardAppearance;
+    }else{
+        [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
+        [[UITabBar appearance] setShadowImage:[[UIImage alloc]init]];
+        [UITabBar appearance].backgroundColor = [UIColor whiteColor];//根据自己的情况设置
+    }
+    return tbc;
+}
+
+
+
+@end

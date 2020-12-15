@@ -20,15 +20,15 @@
 #import "YChatSettingStore.h"
 //#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
-
-//#import "AppDelegate.h"
 #import "UIColor+ColorExtension.h"
 #import "TextFieldInputView.h"
 #import "ChangePasswordViewController.h"
 #import "UIColor+ColorExtension.h"
 #import "TUILocalStorage.h"
 #import "TUIKit.h"
-//#import "YzIMKitAgent.h"
+#import "YzIMKitAgent.h"
+#import "YZBaseManager.h"
+#import "CommonConstant.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong)UIScrollView* scrollView;
@@ -151,9 +151,7 @@
         make.centerX.equalTo(@0);
         make.bottom.equalTo(@-25);
     }];
-    
 }
-
 
 - (UIView*)contentView {
     if (!_contentView) {
@@ -173,7 +171,7 @@
 - (UIImageView *)topImageView {
     if (!_topImageView) {
         _topImageView = [[UIImageView alloc]init];
-        _topImageView.image = [UIImage imageNamed:@"login_bg"];
+        _topImageView.image = YZChatResource(@"login_bg");
     }
     return _topImageView;
 }
@@ -181,7 +179,7 @@
 - (UIImageView *)logo {
     if (!_logo) {
         _logo = [[UIImageView alloc]init];
-        _logo.image = [UIImage imageNamed:@"logo"];
+        _logo.image = YZChatResource(@"logo");
         _logo.layer.masksToBounds = YES;
         _logo.layer.cornerRadius = 8;
     }
@@ -333,43 +331,41 @@
             [self loginTencentIM:info];
         }
     }];
-    
 }
 
 - (void)loginTencentIM:(UserInfo*)info {
-//    [QMUITips hideAllTips];
-//    [[V2TIMManager sharedInstance] login:info.userId userSig:info.userSign succ:^{
-//        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//        NSData *deviceToken = delegate.deviceToken;
-//        if (deviceToken) {
-//            TIMTokenParam *param = [[TIMTokenParam alloc] init];
-//            //企业证书 ID
-//            param.busiId = sdkBusiId;
-//            [param setToken:deviceToken];
-//            [[TIMManager sharedInstance] setToken:param succ:^{
-//                NSLog(@"-----> 上传 token 成功 ");
-//                //推送声音的自定义化设置
-//                TIMAPNSConfig *config = [[TIMAPNSConfig alloc] init];
-//                config.openPush = 0;
-//                config.c2cSound = @"sms-received.caf";
-//                config.groupSound = @"sms-received.caf";
-//                [[TIMManager sharedInstance] setAPNS:config succ:^{
-//                    NSLog(@"-----> 设置 APNS 成功");
-//                } fail:^(int code, NSString *msg) {
-//                    NSLog(@"-----> 设置 APNS 失败");
-//                }];
-//            } fail:^(int code, NSString *msg) {
-//                NSLog(@"-----> 上传 token 失败 ");
-//            }];
-//        }
-//        [[YChatSettingStore sharedInstance]saveUserInfo:info];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            app.window.rootViewController = [app getMainController];            
-//        });
-//    } fail:^(int code, NSString *msg) {
-//         [QMUITips showWithText:msg];
-//        [[YChatSettingStore sharedInstance]logout];
-//    }];
+    [QMUITips hideAllTips];
+    [[V2TIMManager sharedInstance] login:info.userId userSig:info.userSign succ:^{
+        NSData* deviceToken = [YZBaseManager shareInstance].deviceToken;
+        if (deviceToken) {
+            TIMTokenParam *param = [[TIMTokenParam alloc] init];
+            //企业证书 ID
+            param.busiId = sdkBusiId;
+            [param setToken:deviceToken];
+            [[TIMManager sharedInstance] setToken:param succ:^{
+                NSLog(@"-----> 上传 token 成功 ");
+                //推送声音的自定义化设置
+                TIMAPNSConfig *config = [[TIMAPNSConfig alloc] init];
+                config.openPush = 0;
+                config.c2cSound = @"sms-received.caf";
+                config.groupSound = @"sms-received.caf";
+                [[TIMManager sharedInstance] setAPNS:config succ:^{
+                    NSLog(@"-----> 设置 APNS 成功");
+                } fail:^(int code, NSString *msg) {
+                    NSLog(@"-----> 设置 APNS 失败");
+                }];
+            } fail:^(int code, NSString *msg) {
+                NSLog(@"-----> 上传 token 失败 ");
+            }];
+        }
+        [[YChatSettingStore sharedInstance]saveUserInfo:info];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getMainController];
+        });
+    } fail:^(int code, NSString *msg) {
+         [QMUITips showWithText:msg];
+        [[YChatSettingStore sharedInstance]logout];
+    }];
 }
 
 - (void)regBtnAction {

@@ -53,7 +53,7 @@
         [self.contentView addSubview:_line];
         
         _accessoryImageView = [[UIImageView alloc]init];
-        _accessoryImageView.image = [UIImage imageNamed:@"accessory_icon"];
+        _accessoryImageView.image = YZChatResource(@"accessory_icon");
         [self.contentView addSubview:_accessoryImageView];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -11,6 +11,7 @@
 #import "UIColor+ColorExtension.h"
 #import "YCommonTextCell.h"
 #import "WebViewController.h"
+#import "NSBundle+YZBundle.h"
 
 @interface AboutViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)UIImageView * logoImageView;
@@ -124,7 +125,7 @@
 - (UIImageView *)logoImageView {
     if (!_logoImageView) {
         _logoImageView = [[UIImageView alloc]init];
-        _logoImageView.image = [UIImage imageNamed:@"logo"];
+        _logoImageView.image = YZChatResource(@"logo");
     }
     return _logoImageView;
 }

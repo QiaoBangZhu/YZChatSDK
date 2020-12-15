@@ -78,7 +78,7 @@
     if(!image){
         image = [UIImage imageWithContentsOfFile:path];
         if (!image) {
-            image = [_faceCache objectForKey:TUIKitFace(@"del_normal")];
+            image = [_faceCache objectForKey:TUIKitFaceUrl(@"del_normal")];
         }
     }
     return image;

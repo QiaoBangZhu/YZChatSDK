@@ -2,6 +2,8 @@
 #ifndef THeader_h
 #define THeader_h
 
+
+#import "NSBundle+YZBundle.h"
 //自定义消息业务版本号
 #define SendLocation @"sendLocation"//发送位置
 #define CardLink @"card_link"//卡片消息
@@ -302,11 +304,15 @@
 //resource
 //#define TUIKitResource(name) [NSString stringWithFormat:@"TUIKitResource.bundle/%@", name]
 //#define TUIKitFace(name) [NSString stringWithFormat:@"TUIKitFace.bundle/%@", name]
-#define TUIKitFace(name) [[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"] == nil ? ([[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"Frameworks/TXIMSDK_TUIKit_iOS.framework/TUIKitFace.bundle"] stringByAppendingPathComponent:name]) : ([[[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"] stringByAppendingPathComponent:name])
-#define TUIKitResource(name) [[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"] == nil ? ([[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"Frameworks/TXIMSDK_TUIKit_iOS.framework/TUIKitResource.bundle"] stringByAppendingPathComponent:name]) : ([[[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"] stringByAppendingPathComponent:name])
-//#define TUIKitResource(name) name
-//#define TUIKitFace(name) name
+//#define TUIKitFace(name) [[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"] == nil ? ([[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"Frameworks/IMUIKit/TXIMSDK_TUIKit_iOS.framework/TUIKitFace.bundle"] stringByAppendingPathComponent:name]) : ([[[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"] stringByAppendingPathComponent:name])
+// #define TUIKitResource(name) [[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"] == nil ? ([[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"YZChatFramework/YZChat/Classes/IMUIKit/TXIMSDK_TUIKit_iOS/TUIKit/Resources/TUIKitResource.bundle"] stringByAppendingPathComponent:name]) : ([[[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"] stringByAppendingPathComponent:name])
 
+#define TUIKitFace(name) [UIImage imageNamed:name inBundle:[NSBundle tUIkitBundle] compatibleWithTraitCollection:nil]
+#define TUIKitResource(name) [UIImage imageNamed:name inBundle:[NSBundle tUIkitBundle] compatibleWithTraitCollection:nil]
+
+#define TUIKitResourceUrl(name) [[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"] == nil ? ([[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"TUIKitResource.bundle"] stringByAppendingPathComponent:name]) : ([[[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"] stringByAppendingPathComponent:name])
+
+#define TUIKitFaceUrl(name) [[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"] == nil ? ([[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"TUIKitFace.bundle"] stringByAppendingPathComponent:name]) : ([[[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"] stringByAppendingPathComponent:name])
 
 //notification
 #define TUIKitNotification_TIMRefreshListener @"TUIKitNotification_TIMRefreshListener"

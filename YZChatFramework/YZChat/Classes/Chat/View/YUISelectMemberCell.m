@@ -10,6 +10,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "THeader.h"
 #import "UIColor+TUIDarkMode.h"
+#import "CommonConstant.h"
 
 @implementation YUISelectMemberCell{
     UIImageView *_selectedMark;
@@ -51,8 +52,8 @@
 - (void)fillWithData:(UserModel *)model isSelect:(BOOL)isSelect
 {
     _userModel = model;
-    _selectedMark.image = isSelect ? [UIImage imageNamed:@"checkbox_selected"] : [UIImage imageNamed:@"checkbox_unselect"];
-    [_userImg sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"]];
+    _selectedMark.image = isSelect ? YZChatResource(@"checkbox_selected") : YZChatResource(@"checkbox_unselect");
+    [_userImg sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage")];
     _nameLabel.text = model.name;
 }
 

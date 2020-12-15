@@ -7,6 +7,7 @@
 //
 
 #import "YZAppDelegate.h"
+#import "ReactiveObjC/ReactiveObjC.h"
 
 #if USE_POD
 #import "YZChat/YZChat.h"
@@ -18,9 +19,66 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[YzIMKitAgent shareInstance] initAppId: @"123"];
+    [self configureNavigationBar];
+    [self registNotification];
+    [[YzIMKitAgent shareInstance]initAppId:@"de241446a50499bb77a8684cf610fd04"];
+    SysUser* user = [[SysUser alloc]init];
+    user.userId = @"95e6bd162f019b60ad8380fba5e0db41";
+    user.nickName = @"大统领";
+    @weakify(self)
+    [[YzIMKitAgent shareInstance]registerWithSysUser:user loginSuccess:^{
+    @strongify(self)
+//        if (self.deviceToken) {
+            [self startLogin];
+//        }r
+     } loginFailed:^(int errCode, NSString * _Nonnull errMsg) {
+         NSLog(@"error =%@",errMsg);
+    }];
+    
     // Override point for customization after application launch.
     return YES;
+}
+
+- (void)startLogin {
+    [[YzIMKitAgent shareInstance]startAutoWithDeviceToken:self.deviceToken];
+}
+
+- (void)registNotification
+{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+}
+
+- (void)configureNavigationBar {
+    //隐藏返回标题文字
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateHighlighted];
+    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].translucent = NO;
+    
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    NSBundle* yzBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[YZAppDelegate class]] pathForResource:@"YZChatResource" ofType:@"bundle"]];
+    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back" inBundle:yzBundle compatibleWithTraitCollection:nil] imageWithTintColor:[UIColor blackColor] renderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    if (@available(iOS 11.0, *)) {
+        [UINavigationBar appearance].backIndicatorImage = backButtonImage;
+        [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
+    }else {
+        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    }
+}
+
+-(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    _deviceToken = deviceToken;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

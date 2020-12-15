@@ -35,6 +35,7 @@
 
 + (NSInteger)compareVersion:(NSString *)version1 toVersion:(NSString *)version2;
 
++ (NSString *)string2JSONString:(NSString *)string;
 
 @end
 

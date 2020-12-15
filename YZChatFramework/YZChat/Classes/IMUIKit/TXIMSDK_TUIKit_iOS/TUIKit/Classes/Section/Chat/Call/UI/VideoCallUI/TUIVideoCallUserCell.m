@@ -9,6 +9,7 @@
 #import "THeader.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import <Masonry/Masonry.h>
+#import "CommonConstant.h"
 
 @interface TUIVideoCallUserCell()
 @property(nonatomic, strong)UILabel     * nameLabel;
@@ -69,7 +70,7 @@
                 self.callingBgContentView.hidden = NO;
             }
             self.nameLabel.text = model.name;
-            [self.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"] options:SDWebImageHighPriority];
+            [self.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
             self.avatar.layer.cornerRadius = 32;
             [self.avatar.layer setMasksToBounds:YES];
             

@@ -9,7 +9,6 @@
 #import "RegViewController.h"
 #import "UIBarButtonItem+Extensions.h"
 #import "LoginViewController.h"
-//#import "AppDelegate.h"
 #import "UIColor+ColorExtension.h"
 #import "TextFieldInputView.h"
 #import <QMUIKit/QMUIKit.h>
@@ -227,8 +226,8 @@
     if (!_checkBoxBtn) {
         _checkBoxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_checkBoxBtn addTarget:self action:@selector(checkBoxBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_checkBoxBtn setImage:[UIImage imageNamed:@"checkbox_unselect"] forState:UIControlStateNormal];
-        [_checkBoxBtn setImage:[UIImage imageNamed:@"checkbox_selected_small"] forState:UIControlStateSelected];
+        [_checkBoxBtn setImage:YZChatResource(@"checkbox_unselect") forState:UIControlStateNormal];
+        [_checkBoxBtn setImage:YZChatResource(@"checkbox_selected_small") forState:UIControlStateSelected];
     }
     return _checkBoxBtn;
 }

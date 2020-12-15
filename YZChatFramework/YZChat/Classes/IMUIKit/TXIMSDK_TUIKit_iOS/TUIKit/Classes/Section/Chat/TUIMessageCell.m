@@ -106,7 +106,7 @@
     self.readReceiptLabel.text = self.messageData.innerMessage.isPeerRead ? @"已读":@"未读";
     if(data.status == Msg_Status_Fail){
         [_indicator stopAnimating];
-        self.retryView.image = [UIImage imageNamed:TUIKitResource(@"msg_error")];
+        self.retryView.image = TUIKitResource(@"msg_error");
         _readReceiptLabel.hidden = YES;
     } else {
         if (data.status == Msg_Status_Sending_2) {

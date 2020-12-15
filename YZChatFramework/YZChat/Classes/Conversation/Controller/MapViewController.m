@@ -17,6 +17,7 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import "NSBundle+YZBundle.h"
 
 static NSString *annotationIdentifier = @"annotationIdentifier";
 
@@ -153,7 +154,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     if (!_backUserLocationBtn) {
         _backUserLocationBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
         _backUserLocationBtn.qmui_outsideEdge = UIEdgeInsetsMake(-10, -10, -10, -10);
-        [_backUserLocationBtn setImage:[UIImage imageNamed:@"schedule_icon_map_back_user_location"] forState:UIControlStateNormal];
+        [_backUserLocationBtn setImage:YZChatResource(@"schedule_icon_map_back_user_location") forState:UIControlStateNormal];
         [_backUserLocationBtn addTarget:self action:@selector(configureUserLocationCenter) forControlEvents:UIControlEventTouchUpInside];
         _backUserLocationBtn.hidden = YES;
     }
@@ -358,7 +359,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
             annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
         }
         annotationView.annotation = annotation;
-        UIImage* image = [UIImage imageNamed:@"map_bubble"];
+        UIImage* image = YZChatResource(@"map_bubble");
         annotationView.image = image;
         annotationView.centerOffset = CGPointMake(0, -image.size.height/2);
         return annotationView;

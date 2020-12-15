@@ -15,8 +15,46 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		87D838976975E1CF58D6DA5C /* libPods-YZChat_Example Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D557FBFD3D0EB4F7EFA1E83 /* libPods-YZChat_Example Pod.a */; };
-		E5236C072584C5D3003ECE49 /* YZChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5236C062584C5D3003ECE49 /* YZChat.framework */; };
-		E5236C082584C5D3003ECE49 /* YZChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5236C062584C5D3003ECE49 /* YZChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195CB525888B680056AFB6 /* YZChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; };
+		E5195CB625888B680056AFB6 /* YZChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D3A258896340056AFB6 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE725888CF60056AFB6 /* App.framework */; };
+		E5195D3B258896340056AFB6 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE725888CF60056AFB6 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D3C258896350056AFB6 /* AuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF125888CF60056AFB6 /* AuthSDK.framework */; };
+		E5195D3D258896350056AFB6 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF125888CF60056AFB6 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D3E258896370056AFB6 /* camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEE25888CF60056AFB6 /* camera.framework */; };
+		E5195D3F258896370056AFB6 /* camera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEE25888CF60056AFB6 /* camera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D40258896380056AFB6 /* flutter_plugin_android_lifecycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */; };
+		E5195D41258896380056AFB6 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D422588963A0056AFB6 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE425888CF60056AFB6 /* Flutter.framework */; };
+		E5195D432588963A0056AFB6 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE425888CF60056AFB6 /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D442588963D0056AFB6 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEB25888CF60056AFB6 /* FMDB.framework */; };
+		E5195D452588963E0056AFB6 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEB25888CF60056AFB6 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D462588963F0056AFB6 /* image_picker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEF25888CF60056AFB6 /* image_picker.framework */; };
+		E5195D472588963F0056AFB6 /* image_picker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEF25888CF60056AFB6 /* image_picker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D48258896400056AFB6 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE225888CF60056AFB6 /* ImSDK.framework */; };
+		E5195D49258896400056AFB6 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE225888CF60056AFB6 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D4A258896420056AFB6 /* ImSDKForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */; };
+		E5195D4B258896420056AFB6 /* ImSDKForiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D4C258896440056AFB6 /* omp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE825888CF60056AFB6 /* omp.framework */; };
+		E5195D4D258896440056AFB6 /* omp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE825888CF60056AFB6 /* omp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D4E258896450056AFB6 /* path_provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF025888CF60056AFB6 /* path_provider.framework */; };
+		E5195D4F258896450056AFB6 /* path_provider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF025888CF60056AFB6 /* path_provider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D50258896470056AFB6 /* permission_handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE925888CF60056AFB6 /* permission_handler.framework */; };
+		E5195D51258896470056AFB6 /* permission_handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE925888CF60056AFB6 /* permission_handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D52258896480056AFB6 /* sqflite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE525888CF60056AFB6 /* sqflite.framework */; };
+		E5195D53258896480056AFB6 /* sqflite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE525888CF60056AFB6 /* sqflite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D542588964A0056AFB6 /* TMRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE325888CF60056AFB6 /* TMRTC.framework */; };
+		E5195D552588964A0056AFB6 /* TMRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE325888CF60056AFB6 /* TMRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D562588964B0056AFB6 /* wemeet_app_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */; };
+		E5195D572588964B0056AFB6 /* wemeet_app_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D582588964D0056AFB6 /* WeMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CED25888CF60056AFB6 /* WeMeet.framework */; };
+		E5195D592588964D0056AFB6 /* WeMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CED25888CF60056AFB6 /* WeMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D5A2588964F0056AFB6 /* xcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF225888CF60056AFB6 /* xcast.framework */; };
+		E5195D5B2588964F0056AFB6 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF225888CF60056AFB6 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D5C258896500056AFB6 /* xnn_media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF325888CF60056AFB6 /* xnn_media.framework */; };
+		E5195D5D258896500056AFB6 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF325888CF60056AFB6 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5195D5E258896520056AFB6 /* xnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE125888CF60056AFB6 /* xnn.framework */; };
+		E5195D5F258896520056AFB6 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE125888CF60056AFB6 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5CA75062584BE1B00719F72 /* YZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* YZAppDelegate.m */; };
 		E5CA75072584BE1B00719F72 /* YZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* YZViewController.m */; };
 		E5CA75082584BE1B00719F72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
@@ -24,74 +62,38 @@
 		E5CA750D2584BE1B00719F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		E5CA750E2584BE1B00719F72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		E5CA750F2584BE1B00719F72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
-		E5CA75E02584C2BD00719F72 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75992584C25300719F72 /* App.framework */; };
-		E5CA75E12584C2BD00719F72 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75992584C25300719F72 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75E22584C2BF00719F72 /* AuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A32584C25400719F72 /* AuthSDK.framework */; };
-		E5CA75E32584C2BF00719F72 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A32584C25400719F72 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75E42584C2C000719F72 /* camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A02584C25400719F72 /* camera.framework */; };
-		E5CA75E52584C2C000719F72 /* camera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A02584C25400719F72 /* camera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75E62584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */; };
-		E5CA75E72584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75E82584C2C300719F72 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75962584C25300719F72 /* Flutter.framework */; };
-		E5CA75E92584C2C300719F72 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75962584C25300719F72 /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75EA2584C2C400719F72 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759D2584C25400719F72 /* FMDB.framework */; };
-		E5CA75EB2584C2C400719F72 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759D2584C25400719F72 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75EC2584C2C600719F72 /* image_picker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A12584C25400719F72 /* image_picker.framework */; };
-		E5CA75ED2584C2C600719F72 /* image_picker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A12584C25400719F72 /* image_picker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75EE2584C2C700719F72 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75942584C25300719F72 /* ImSDK.framework */; };
-		E5CA75EF2584C2C700719F72 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75942584C25300719F72 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75F02584C2C900719F72 /* ImSDKForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75982584C25300719F72 /* ImSDKForiOS.framework */; };
-		E5CA75F12584C2C900719F72 /* ImSDKForiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75982584C25300719F72 /* ImSDKForiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75F22584C2CA00719F72 /* omp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759A2584C25300719F72 /* omp.framework */; };
-		E5CA75F32584C2CA00719F72 /* omp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759A2584C25300719F72 /* omp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75F42584C2CC00719F72 /* path_provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A22584C25400719F72 /* path_provider.framework */; };
-		E5CA75F52584C2CC00719F72 /* path_provider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A22584C25400719F72 /* path_provider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75F62584C2CD00719F72 /* permission_handler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759B2584C25400719F72 /* permission_handler.framework */; };
-		E5CA75F72584C2CD00719F72 /* permission_handler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759B2584C25400719F72 /* permission_handler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75F82584C2CF00719F72 /* sqflite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75972584C25300719F72 /* sqflite.framework */; };
-		E5CA75F92584C2CF00719F72 /* sqflite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75972584C25300719F72 /* sqflite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75FA2584C2D100719F72 /* TMRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75952584C25300719F72 /* TMRTC.framework */; };
-		E5CA75FB2584C2D100719F72 /* TMRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75952584C25300719F72 /* TMRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75FC2584C2D200719F72 /* wemeet_app_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */; };
-		E5CA75FD2584C2D200719F72 /* wemeet_app_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA75FE2584C2D400719F72 /* WeMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759F2584C25400719F72 /* WeMeet.framework */; };
-		E5CA75FF2584C2D400719F72 /* WeMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA759F2584C25400719F72 /* WeMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA76002584C2D500719F72 /* xcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A42584C25400719F72 /* xcast.framework */; };
-		E5CA76012584C2D500719F72 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A42584C25400719F72 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA76022584C2D700719F72 /* xnn_media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A52584C25400719F72 /* xnn_media.framework */; };
-		E5CA76032584C2D700719F72 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75A52584C25400719F72 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5CA76042584C2D900719F72 /* xnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75932584C25300719F72 /* xnn.framework */; };
-		E5CA76052584C2D900719F72 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CA75932584C25300719F72 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ECBA1A82520DA682D72E7EEC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		E5CE7F482588828600D19280 /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CE7F452588828600D19280 /* TUIKitFace.bundle */; };
+		E5CE7F492588828600D19280 /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CE7F462588828600D19280 /* TUIKitResource.bundle */; };
+		E5CE7F4A2588828600D19280 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CE7F472588828600D19280 /* YZChatResource.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E5CA756C2584C18200719F72 /* Embed Frameworks */ = {
+		E5195CB725888B680056AFB6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E5CA76052584C2D900719F72 /* xnn.framework in Embed Frameworks */,
-				E5CA75E12584C2BD00719F72 /* App.framework in Embed Frameworks */,
-				E5CA75EB2584C2C400719F72 /* FMDB.framework in Embed Frameworks */,
-				E5236C082584C5D3003ECE49 /* YZChat.framework in Embed Frameworks */,
-				E5CA75F52584C2CC00719F72 /* path_provider.framework in Embed Frameworks */,
-				E5CA75FF2584C2D400719F72 /* WeMeet.framework in Embed Frameworks */,
-				E5CA75E92584C2C300719F72 /* Flutter.framework in Embed Frameworks */,
-				E5CA75F12584C2C900719F72 /* ImSDKForiOS.framework in Embed Frameworks */,
-				E5CA76012584C2D500719F72 /* xcast.framework in Embed Frameworks */,
-				E5CA75FB2584C2D100719F72 /* TMRTC.framework in Embed Frameworks */,
-				E5CA75EF2584C2C700719F72 /* ImSDK.framework in Embed Frameworks */,
-				E5CA75F32584C2CA00719F72 /* omp.framework in Embed Frameworks */,
-				E5CA75F92584C2CF00719F72 /* sqflite.framework in Embed Frameworks */,
-				E5CA75FD2584C2D200719F72 /* wemeet_app_sdk.framework in Embed Frameworks */,
-				E5CA75ED2584C2C600719F72 /* image_picker.framework in Embed Frameworks */,
-				E5CA75E72584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */,
-				E5CA76032584C2D700719F72 /* xnn_media.framework in Embed Frameworks */,
-				E5CA75E32584C2BF00719F72 /* AuthSDK.framework in Embed Frameworks */,
-				E5CA75F72584C2CD00719F72 /* permission_handler.framework in Embed Frameworks */,
-				E5CA75E52584C2C000719F72 /* camera.framework in Embed Frameworks */,
+				E5195D3B258896340056AFB6 /* App.framework in Embed Frameworks */,
+				E5195D432588963A0056AFB6 /* Flutter.framework in Embed Frameworks */,
+				E5195D49258896400056AFB6 /* ImSDK.framework in Embed Frameworks */,
+				E5195D5D258896500056AFB6 /* xnn_media.framework in Embed Frameworks */,
+				E5195D53258896480056AFB6 /* sqflite.framework in Embed Frameworks */,
+				E5195D5F258896520056AFB6 /* xnn.framework in Embed Frameworks */,
+				E5195D51258896470056AFB6 /* permission_handler.framework in Embed Frameworks */,
+				E5195D472588963F0056AFB6 /* image_picker.framework in Embed Frameworks */,
+				E5195D5B2588964F0056AFB6 /* xcast.framework in Embed Frameworks */,
+				E5195D552588964A0056AFB6 /* TMRTC.framework in Embed Frameworks */,
+				E5195D3F258896370056AFB6 /* camera.framework in Embed Frameworks */,
+				E5195CB625888B680056AFB6 /* YZChat.framework in Embed Frameworks */,
+				E5195D3D258896350056AFB6 /* AuthSDK.framework in Embed Frameworks */,
+				E5195D4B258896420056AFB6 /* ImSDKForiOS.framework in Embed Frameworks */,
+				E5195D592588964D0056AFB6 /* WeMeet.framework in Embed Frameworks */,
+				E5195D452588963E0056AFB6 /* FMDB.framework in Embed Frameworks */,
+				E5195D572588964B0056AFB6 /* wemeet_app_sdk.framework in Embed Frameworks */,
+				E5195D41258896380056AFB6 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */,
+				E5195D4F258896450056AFB6 /* path_provider.framework in Embed Frameworks */,
+				E5195D4D258896440056AFB6 /* omp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +102,7 @@
 
 /* Begin PBXFileReference section */
 		0C1D664B259B86296FC7A1AE /* Pods-YZChat_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Tests.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Tests/Pods-YZChat_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		14D210F1E8F9C9E1E2647038 /* YZChat.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YZChat.podspec; path = ../YZChat.podspec; sourceTree = "<group>"; };
+		14D210F1E8F9C9E1E2647038 /* YZChat.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YZChat.podspec; path = ../YZChat.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1D35C255FCF328DA2397F18B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		301384CECDF1484A690B0032 /* Pods-YZChat_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Tests.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Tests/Pods-YZChat_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		516461C946371B7417C01094 /* Pods-YZChat_Example Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example Pod.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,31 +126,31 @@
 		9E0A936133BF5C1804F12E48 /* Pods-YZChat_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B71179544198EC12ECD9B3FF /* Pods-YZChat_Example Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example Pod.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example Pod/Pods-YZChat_Example Pod.release.xcconfig"; sourceTree = "<group>"; };
 		D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E5236C002584C57C003ECE49 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5236C042584C5A6003ECE49 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5236C062584C5D3003ECE49 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5195CE125888CF60056AFB6 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
+		E5195CE225888CF60056AFB6 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
+		E5195CE325888CF60056AFB6 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
+		E5195CE425888CF60056AFB6 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
+		E5195CE525888CF60056AFB6 /* sqflite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqflite.framework; sourceTree = "<group>"; };
+		E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDKForiOS.framework; sourceTree = "<group>"; };
+		E5195CE725888CF60056AFB6 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
+		E5195CE825888CF60056AFB6 /* omp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = omp.framework; sourceTree = "<group>"; };
+		E5195CE925888CF60056AFB6 /* permission_handler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = permission_handler.framework; sourceTree = "<group>"; };
+		E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wemeet_app_sdk.framework; sourceTree = "<group>"; };
+		E5195CEB25888CF60056AFB6 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
+		E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = flutter_plugin_android_lifecycle.framework; sourceTree = "<group>"; };
+		E5195CED25888CF60056AFB6 /* WeMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeMeet.framework; sourceTree = "<group>"; };
+		E5195CEE25888CF60056AFB6 /* camera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = camera.framework; sourceTree = "<group>"; };
+		E5195CEF25888CF60056AFB6 /* image_picker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = image_picker.framework; sourceTree = "<group>"; };
+		E5195CF025888CF60056AFB6 /* path_provider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = path_provider.framework; sourceTree = "<group>"; };
+		E5195CF125888CF60056AFB6 /* AuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthSDK.framework; sourceTree = "<group>"; };
+		E5195CF225888CF60056AFB6 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
+		E5195CF325888CF60056AFB6 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
 		E527E480258395CF00531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZChat_Example_Pod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CA75392584C0A200719F72 /* YZChat_Example_Pod-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YZChat_Example_Pod-info.plist"; sourceTree = "<group>"; };
-		E5CA75932584C25300719F72 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
-		E5CA75942584C25300719F72 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		E5CA75952584C25300719F72 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
-		E5CA75962584C25300719F72 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
-		E5CA75972584C25300719F72 /* sqflite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqflite.framework; sourceTree = "<group>"; };
-		E5CA75982584C25300719F72 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDKForiOS.framework; sourceTree = "<group>"; };
-		E5CA75992584C25300719F72 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
-		E5CA759A2584C25300719F72 /* omp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = omp.framework; sourceTree = "<group>"; };
-		E5CA759B2584C25400719F72 /* permission_handler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = permission_handler.framework; sourceTree = "<group>"; };
-		E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wemeet_app_sdk.framework; sourceTree = "<group>"; };
-		E5CA759D2584C25400719F72 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
-		E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = flutter_plugin_android_lifecycle.framework; sourceTree = "<group>"; };
-		E5CA759F2584C25400719F72 /* WeMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeMeet.framework; sourceTree = "<group>"; };
-		E5CA75A02584C25400719F72 /* camera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = camera.framework; sourceTree = "<group>"; };
-		E5CA75A12584C25400719F72 /* image_picker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = image_picker.framework; sourceTree = "<group>"; };
-		E5CA75A22584C25400719F72 /* path_provider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = path_provider.framework; sourceTree = "<group>"; };
-		E5CA75A32584C25400719F72 /* AuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthSDK.framework; sourceTree = "<group>"; };
-		E5CA75A42584C25400719F72 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
-		E5CA75A52584C25400719F72 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
+		E5CE7F452588828600D19280 /* TUIKitFace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitFace.bundle; path = ../../YZChat.framework/TUIKitFace.bundle; sourceTree = "<group>"; };
+		E5CE7F462588828600D19280 /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitResource.bundle; path = ../../YZChat.framework/TUIKitResource.bundle; sourceTree = "<group>"; };
+		E5CE7F472588828600D19280 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = ../../YZChat.framework/YZChatResource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,27 +158,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5CA75EC2584C2C600719F72 /* image_picker.framework in Frameworks */,
-				E5CA75FA2584C2D100719F72 /* TMRTC.framework in Frameworks */,
-				E5CA75EA2584C2C400719F72 /* FMDB.framework in Frameworks */,
-				E5CA75F22584C2CA00719F72 /* omp.framework in Frameworks */,
-				E5CA75FC2584C2D200719F72 /* wemeet_app_sdk.framework in Frameworks */,
-				E5CA76042584C2D900719F72 /* xnn.framework in Frameworks */,
-				ECBA1A82520DA682D72E7EEC /* (null) in Frameworks */,
-				E5CA76002584C2D500719F72 /* xcast.framework in Frameworks */,
-				E5236C072584C5D3003ECE49 /* YZChat.framework in Frameworks */,
-				E5CA75F02584C2C900719F72 /* ImSDKForiOS.framework in Frameworks */,
-				E5CA75E62584C2C200719F72 /* flutter_plugin_android_lifecycle.framework in Frameworks */,
-				E5CA75E82584C2C300719F72 /* Flutter.framework in Frameworks */,
-				E5CA75F62584C2CD00719F72 /* permission_handler.framework in Frameworks */,
-				E5CA75E22584C2BF00719F72 /* AuthSDK.framework in Frameworks */,
-				E5CA75E42584C2C000719F72 /* camera.framework in Frameworks */,
-				E5CA75F82584C2CF00719F72 /* sqflite.framework in Frameworks */,
-				E5CA75E02584C2BD00719F72 /* App.framework in Frameworks */,
-				E5CA75FE2584C2D400719F72 /* WeMeet.framework in Frameworks */,
-				E5CA75F42584C2CC00719F72 /* path_provider.framework in Frameworks */,
-				E5CA76022584C2D700719F72 /* xnn_media.framework in Frameworks */,
-				E5CA75EE2584C2C700719F72 /* ImSDK.framework in Frameworks */,
+				E5195D462588963F0056AFB6 /* image_picker.framework in Frameworks */,
+				E5195D542588964A0056AFB6 /* TMRTC.framework in Frameworks */,
+				E5195D442588963D0056AFB6 /* FMDB.framework in Frameworks */,
+				E5195D4C258896440056AFB6 /* omp.framework in Frameworks */,
+				E5195D562588964B0056AFB6 /* wemeet_app_sdk.framework in Frameworks */,
+				E5195D5E258896520056AFB6 /* xnn.framework in Frameworks */,
+				E5195CB525888B680056AFB6 /* YZChat.framework in Frameworks */,
+				E5195D5A2588964F0056AFB6 /* xcast.framework in Frameworks */,
+				E5195D4A258896420056AFB6 /* ImSDKForiOS.framework in Frameworks */,
+				E5195D40258896380056AFB6 /* flutter_plugin_android_lifecycle.framework in Frameworks */,
+				E5195D422588963A0056AFB6 /* Flutter.framework in Frameworks */,
+				E5195D50258896470056AFB6 /* permission_handler.framework in Frameworks */,
+				E5195D3C258896350056AFB6 /* AuthSDK.framework in Frameworks */,
+				E5195D3E258896370056AFB6 /* camera.framework in Frameworks */,
+				E5195D52258896480056AFB6 /* sqflite.framework in Frameworks */,
+				E5195D3A258896340056AFB6 /* App.framework in Frameworks */,
+				E5195D582588964D0056AFB6 /* WeMeet.framework in Frameworks */,
+				E5195D4E258896450056AFB6 /* path_provider.framework in Frameworks */,
+				E5195D5C258896500056AFB6 /* xnn_media.framework in Frameworks */,
+				E5195D48258896400056AFB6 /* ImSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,9 +228,6 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5236C062584C5D3003ECE49 /* YZChat.framework */,
-				E5236C042584C5A6003ECE49 /* YZChat.framework */,
-				E5236C002584C57C003ECE49 /* YZChat.framework */,
 				E527E480258395CF00531586 /* YZChat.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
@@ -242,6 +240,9 @@
 		6003F593195388D20070C39A /* Example for YZChat */ = {
 			isa = PBXGroup;
 			children = (
+				E5CE7F452588828600D19280 /* TUIKitFace.bundle */,
+				E5CE7F462588828600D19280 /* TUIKitResource.bundle */,
+				E5CE7F472588828600D19280 /* YZChatResource.bundle */,
 				6003F59C195388D20070C39A /* YZAppDelegate.h */,
 				6003F5A5195388D20070C39A /* YZViewController.h */,
 				6003F59D195388D20070C39A /* YZAppDelegate.m */,
@@ -250,7 +251,7 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				E5CA75922584C25300719F72 /* Vendors */,
+				E5195CE025888CF60056AFB6 /* Vendors */,
 			);
 			name = "Example for YZChat";
 			path = YZChat;
@@ -278,28 +279,28 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		E5CA75922584C25300719F72 /* Vendors */ = {
+		E5195CE025888CF60056AFB6 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				E5CA75932584C25300719F72 /* xnn.framework */,
-				E5CA75942584C25300719F72 /* ImSDK.framework */,
-				E5CA75952584C25300719F72 /* TMRTC.framework */,
-				E5CA75962584C25300719F72 /* Flutter.framework */,
-				E5CA75972584C25300719F72 /* sqflite.framework */,
-				E5CA75982584C25300719F72 /* ImSDKForiOS.framework */,
-				E5CA75992584C25300719F72 /* App.framework */,
-				E5CA759A2584C25300719F72 /* omp.framework */,
-				E5CA759B2584C25400719F72 /* permission_handler.framework */,
-				E5CA759C2584C25400719F72 /* wemeet_app_sdk.framework */,
-				E5CA759D2584C25400719F72 /* FMDB.framework */,
-				E5CA759E2584C25400719F72 /* flutter_plugin_android_lifecycle.framework */,
-				E5CA759F2584C25400719F72 /* WeMeet.framework */,
-				E5CA75A02584C25400719F72 /* camera.framework */,
-				E5CA75A12584C25400719F72 /* image_picker.framework */,
-				E5CA75A22584C25400719F72 /* path_provider.framework */,
-				E5CA75A32584C25400719F72 /* AuthSDK.framework */,
-				E5CA75A42584C25400719F72 /* xcast.framework */,
-				E5CA75A52584C25400719F72 /* xnn_media.framework */,
+				E5195CE125888CF60056AFB6 /* xnn.framework */,
+				E5195CE225888CF60056AFB6 /* ImSDK.framework */,
+				E5195CE325888CF60056AFB6 /* TMRTC.framework */,
+				E5195CE425888CF60056AFB6 /* Flutter.framework */,
+				E5195CE525888CF60056AFB6 /* sqflite.framework */,
+				E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */,
+				E5195CE725888CF60056AFB6 /* App.framework */,
+				E5195CE825888CF60056AFB6 /* omp.framework */,
+				E5195CE925888CF60056AFB6 /* permission_handler.framework */,
+				E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */,
+				E5195CEB25888CF60056AFB6 /* FMDB.framework */,
+				E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */,
+				E5195CED25888CF60056AFB6 /* WeMeet.framework */,
+				E5195CEE25888CF60056AFB6 /* camera.framework */,
+				E5195CEF25888CF60056AFB6 /* image_picker.framework */,
+				E5195CF025888CF60056AFB6 /* path_provider.framework */,
+				E5195CF125888CF60056AFB6 /* AuthSDK.framework */,
+				E5195CF225888CF60056AFB6 /* xcast.framework */,
+				E5195CF325888CF60056AFB6 /* xnn_media.framework */,
 			);
 			name = Vendors;
 			path = ../../YZChat/Vendors;
@@ -317,7 +318,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				32FEA4D164749C64CA6CF37A /* [CP] Copy Pods Resources */,
-				E5CA756C2584C18200719F72 /* Embed Frameworks */,
+				E5195CB725888B680056AFB6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -355,7 +356,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YZ;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = QiaoBangZhu;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -370,10 +371,9 @@
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "YZChat" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -396,7 +396,10 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				E5CE7F4A2588828600D19280 /* YZChatResource.bundle in Resources */,
+				E5CE7F492588828600D19280 /* TUIKitResource.bundle in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				E5CE7F482588828600D19280 /* TUIKitFace.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,23 +608,38 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -634,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -645,29 +663,44 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -682,14 +715,16 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = PKXXVZNV58;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../YZChat/Vendors",
+					"$(PROJECT_DIR)/YZChat/Vendors",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
 				INFOPLIST_FILE = "YZChat/YZChat_Example-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingke.admin;
@@ -710,14 +745,16 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VTC5S8ALKF;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../YZChat/Vendors",
+					"$(PROJECT_DIR)/YZChat/Vendors",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
 				INFOPLIST_FILE = "YZChat/YZChat_Example-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.chat;
@@ -745,7 +782,7 @@
 					"USE_POD=1",
 				);
 				INFOPLIST_FILE = "YZChat/YZChat_Example_Pod-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingke.admin;
@@ -774,7 +811,7 @@
 					"USE_POD=1",
 				);
 				INFOPLIST_FILE = "YZChat/YZChat_Example_Pod-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.chat;

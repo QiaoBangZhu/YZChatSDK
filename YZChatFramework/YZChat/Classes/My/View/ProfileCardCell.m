@@ -14,6 +14,8 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "UIImage+TUIKIT.h"
 #import "UIColor+TUIDarkMode.h"
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @implementation ProfileCardCellData
 
@@ -84,7 +86,7 @@
     
     
     UIImageView* qrcodeImageView = [[UIImageView alloc]init];
-    qrcodeImageView.image = [UIImage imageNamed:@"icon_qrcode"];
+    qrcodeImageView.image = YZChatResource(@"icon_qrcode");
     [cardbgView addSubview:qrcodeImageView];
     
     [qrcodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {

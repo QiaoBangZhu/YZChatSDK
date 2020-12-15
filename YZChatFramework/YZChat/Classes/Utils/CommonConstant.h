@@ -9,6 +9,14 @@
 #ifndef CommonConstant_h
 #define CommonConstant_h
 
+#ifdef DEBUG
+#define sdkBusiId 22627
+#else
+#define sdkBusiId 22628
+#endif
+
+static const int SDKAPPID = 1400432221;
+
 //高德地图
 static NSString * const amapKey = @"7892fa637e3dffeb7f7352790a510398";
 
@@ -19,6 +27,8 @@ static NSString * const SSOFormatString = @"https://yzmetax-idp.id.meeting.qq.co
 
 static  NSString * const wxPreUrl = @"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb";
 static  NSString * const scheme = @"tg.tripg.com";
+
+#define YZChatResource(name) [UIImage imageNamed:name inBundle:[NSBundle yzBundle] compatibleWithTraitCollection:nil]
 
 //取消了视频或者语音通话
 #define TUIKitNotification_Call_Cancled @"TUIKitNotification_Call_Cancled"

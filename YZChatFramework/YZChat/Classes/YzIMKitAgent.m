@@ -13,9 +13,19 @@
 #import "UserInfo.h"
 #import "YChatSettingStore.h"
 #import <ImSDKForiOS/ImSDK.h>
-//#import "AppDelegate.h"
 #import "TUIConversationCellData.h"
 #import "ChatViewController.h"
+#import "ConversationViewController.h"
+#import "TNavigationController.h"
+#import "ContactsViewController.h"
+#import "WorkZoneViewController.h"
+#import "MyViewController.h"
+#import "TUIKit.h"
+#import "TUITabBarController.h"
+#import "YZBaseManager.h"
+#import "CommonConstant.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
+
 
 @interface YzIMKitAgent()
 @property (nonatomic,   copy)NSString* appId;
@@ -37,6 +47,13 @@
 
 - (void)initAppId:(NSString *)appId {
     self.appId = appId;
+    [self configureTUIKit];
+    [self configureAmap];
+}
+
+//高德地图
+- (void)configureAmap {
+    [AMapServices sharedServices].apiKey = amapKey;
 }
 
 - (void)registerWithSysUser:(SysUser *)sysUser
@@ -66,6 +83,7 @@
                 UserInfo* model = [UserInfo yy_modelWithDictionary:result[@"data"]];
                 model.token = result[@"token"];
                 self.userInfo = model;
+                [YZBaseManager shareInstance].userInfo = model;
                 success();
             }else {
                 fail([result[@"code"]intValue], result[@"msg"]);
@@ -77,38 +95,38 @@
 }
 
 //登录腾讯IM
-- (void)startAuto {
-//    [[V2TIMManager sharedInstance] login:self.userInfo.userId userSig:self.userInfo.userSign succ:^{
-//        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//        NSData *deviceToken = delegate.deviceToken;
-//        if (deviceToken) {
-//            TIMTokenParam *param = [[TIMTokenParam alloc] init];
-//            //企业证书 ID
-//            param.busiId = sdkBusiId;
-//            [param setToken:deviceToken];
-//            [[TIMManager sharedInstance] setToken:param succ:^{
-//                NSLog(@"-----> 上传 token 成功 ");
-//                //推送声音的自定义化设置
-//                TIMAPNSConfig *config = [[TIMAPNSConfig alloc] init];
-//                config.openPush = 0;
-//                config.c2cSound = @"sms-received.caf";
-//                config.groupSound = @"sms-received.caf";
-//                [[TIMManager sharedInstance] setAPNS:config succ:^{
-//                    NSLog(@"-----> 设置 APNS 成功");
-//                } fail:^(int code, NSString *msg) {
-//                    NSLog(@"-----> 设置 APNS 失败");
-//                }];
-//            } fail:^(int code, NSString *msg) {
-//                NSLog(@"-----> 上传 token 失败 ");
-//            }];
-//        }
-//        [[YChatSettingStore sharedInstance]saveUserInfo:self.userInfo];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            app.window.rootViewController = [app getMainController];
-//        });
-//    } fail:^(int code, NSString *msg) {
-//        [[YChatSettingStore sharedInstance]logout];
-//    }];
+- (void)startAutoWithDeviceToken:(NSData *)deviceToken {
+    [YZBaseManager shareInstance].deviceToken = deviceToken;
+    
+    [[V2TIMManager sharedInstance] login:self.userInfo.userId userSig:self.userInfo.userSign succ:^{
+        if (deviceToken) {
+            TIMTokenParam *param = [[TIMTokenParam alloc] init];
+            //企业证书 ID
+            param.busiId = sdkBusiId;
+            [param setToken:deviceToken];
+            [[TIMManager sharedInstance] setToken:param succ:^{
+                NSLog(@"-----> 上传 token 成功 ");
+                //推送声音的自定义化设置
+                TIMAPNSConfig *config = [[TIMAPNSConfig alloc] init];
+                config.openPush = 0;
+                config.c2cSound = @"sms-received.caf";
+                config.groupSound = @"sms-received.caf";
+                [[TIMManager sharedInstance] setAPNS:config succ:^{
+                    NSLog(@"-----> 设置 APNS 成功");
+                } fail:^(int code, NSString *msg) {
+                    NSLog(@"-----> 设置 APNS 失败");
+                }];
+            } fail:^(int code, NSString *msg) {
+                NSLog(@"-----> 上传 token 失败 ");
+            }];
+        }
+        [[YChatSettingStore sharedInstance]saveUserInfo:self.userInfo];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getMainController];
+        });
+    } fail:^(int code, NSString *msg) {
+        [[YChatSettingStore sharedInstance]logout];
+    }];
 
 }
 
@@ -122,6 +140,32 @@
     data.title = self.userInfo.nickName;
     ChatViewController *chat = [[ChatViewController alloc] init];
     chat.conversationData = data;
+}
+
+- (void)configureTUIKit {
+    [[TUIKit sharedInstance] setupWithAppId:SDKAPPID];
+    [TUIKit sharedInstance].config.avatarType = TAvatarTypeRounded;
+    [TUIKit sharedInstance].config.defaultAvatarImage = YZChatResource(@"defaultAvatarImage");
+    [TUIKit sharedInstance].config.defaultGroupAvatarImage = YZChatResource(@"defaultGrpImage");
+}
+
+- (void)configureNavigationBar {
+    //隐藏返回标题文字
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateHighlighted];
+    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].translucent = NO;
+    
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+
+    UIImage* backButtonImage = YZChatResource(@"icon_back");
+    if (@available(iOS 11.0, *)) {
+        [UINavigationBar appearance].backIndicatorImage = backButtonImage;
+        [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
+    }else {
+        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    }
 }
 
 /**
@@ -145,7 +189,5 @@
  
  
  */
-
-
 
 @end

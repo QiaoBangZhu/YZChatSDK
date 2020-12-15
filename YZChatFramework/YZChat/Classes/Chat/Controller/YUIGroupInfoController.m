@@ -532,13 +532,13 @@
     }
     if ([self.groupInfo canInviteMember]) {
         TGroupMemberCellData *add = [[TGroupMemberCellData alloc] init];
-        add.avatarImage = [UIImage imageNamed:@"icon_group_add"];
+        add.avatarImage = YZChatResource(@"icon_group_add");
         add.tag = 1;
         [tmpArray addObject:add];
     }
     if ([self.groupInfo canRemoveMember]) {
         TGroupMemberCellData *delete = [[TGroupMemberCellData alloc] init];
-        delete.avatarImage = [UIImage imageNamed:@"icon_group_delete"];
+        delete.avatarImage = YZChatResource(@"icon_group_delete");
         delete.tag = 2;
         [tmpArray addObject:delete];
     }

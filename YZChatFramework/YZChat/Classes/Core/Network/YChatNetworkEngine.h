@@ -39,6 +39,8 @@ DEF_URL(fetchFriendsByMobile, user/getFriendByMobile)
 DEF_URL(fetchAppUsedInfo, apply/addApplyStatics)
 /**第三方调用元信时候同步用户信息*/
 DEF_URL(sysUserInfo, api/sysUser)
+/**验证工具的key接口*/
+DEF_URL(checkToolKey, api/checkToolToken)
 
 //群相关
 
@@ -200,6 +202,14 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                          departmentId:(NSString*)departmentId
                                            departName:(NSString*)departName
                                            completion:(YChatURLRequstCompletionBlock)block;
+
++ (NSURLSessionDataTask *)requestToolKey:(NSString*)toolDomain
+                                 toolKey:(NSString*)toolKey
+                              completion:(YChatURLRequstCompletionBlock)block;
+
+
+
+
 
 /**
  

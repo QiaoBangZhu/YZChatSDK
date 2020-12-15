@@ -16,6 +16,7 @@
 #import "TUICall+TRTC.h"
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
+#import "CommonConstant.h"
 
 #import "TCUtil.h"
 
@@ -349,7 +350,7 @@
 - (UIButton *)hangup {
     if (!_hangup.superview) {
         _hangup = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_hangup setImage:[UIImage imageNamed:@"ic_hangup"] forState:UIControlStateNormal];
+        [_hangup setImage:YZChatResource(@"ic_hangup") forState:UIControlStateNormal];
         [_hangup addTarget:self action:@selector(hangupClick) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_hangup];
     }
@@ -359,7 +360,7 @@
 - (UIButton *)accept {
     if (!_accept.superview) {
         _accept = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_accept setImage:[UIImage imageNamed:@"ic_dialing"] forState:UIControlStateNormal];
+        [_accept setImage:YZChatResource(@"ic_dialing") forState:UIControlStateNormal];
         [_accept addTarget:self action:@selector(acceptClick) forControlEvents:UIControlEventTouchUpInside];
         _accept.hidden = (self.curSponsor == nil);
         [self.view addSubview:_accept];
@@ -370,7 +371,7 @@
 - (QMUIButton *)mute {
     if (!_mute.superview) {
         _mute = [QMUIButton buttonWithType:UIButtonTypeCustom];
-        [_mute setImage:[UIImage imageNamed:@"ic_mute"] forState:UIControlStateNormal];
+        [_mute setImage:YZChatResource(@"ic_dialing") forState:UIControlStateNormal];
         [_mute addTarget:self action:@selector(muteClick) forControlEvents:UIControlEventTouchUpInside];
         [_mute setTitle:@"静音" forState:UIControlStateNormal];
         _mute.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -384,8 +385,8 @@
 - (QMUIButton *)handsfree {
     if (!_handsfree.superview) {
         _handsfree = [QMUIButton buttonWithType:UIButtonTypeCustom];
-        [_handsfree setImage:[UIImage imageNamed:@"ic_handsfree_on"] forState:UIControlStateNormal];
-        [_handsfree setImage:[UIImage imageNamed:@"ic_handsfree"] forState:UIControlStateSelected];
+        [_handsfree setImage:YZChatResource(@"ic_handsfree_on") forState:UIControlStateNormal];
+        [_handsfree setImage:YZChatResource(@"ic_handsfree") forState:UIControlStateSelected];
         [_handsfree addTarget:self action:@selector(handsfreeClick) forControlEvents:UIControlEventTouchUpInside];
         _handsfree.hidden = YES;
         [_handsfree setTitle:@"免提" forState:UIControlStateNormal];
@@ -527,7 +528,7 @@
 - (void)muteClick {
     BOOL micMute = ![TUICall shareInstance].micMute;
     [[TUICall shareInstance] mute:micMute];
-    [self.mute setImage:[TUICall shareInstance].isMicMute ? [UIImage imageNamed:@"ic_mute_on"] : [UIImage imageNamed:@"ic_mute"]  forState:UIControlStateNormal];
+    [self.mute setImage:[TUICall shareInstance].isMicMute ? YZChatResource(@"ic_mute_on") : YZChatResource(@"ic_mute")  forState:UIControlStateNormal];
     if ([TUICall shareInstance].isMicMute) {
         [_mute setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     }else {
@@ -646,7 +647,7 @@
  */
 - (void)shouldRingForIncomingCall {
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_call" ofType:@"mp3"];
+        NSString *ringPath = [[NSBundle yzBundle] pathForResource:@"voip_call" ofType:@"mp3"];
         [self startPlayRing:ringPath];
         self.needPlayingRingAfterForeground = NO;
     } else {
@@ -657,7 +658,7 @@
 - (void)checkApplicationStateAndAlert {
     if (self.curState == AudioCallState_Dailing) {
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
+            NSString *ringPath = [[NSBundle yzBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
             [self startPlayRing:ringPath];
             self.needPlayingAlertAfterForeground = NO;
         } else {

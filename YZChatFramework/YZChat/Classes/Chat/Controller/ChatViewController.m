@@ -39,6 +39,7 @@
 #import "CardMsgCell.h"
 #import "CardMsgCellData.h"
 #import "WebViewController.h"
+#import "CommonConstant.h"
 
 // MLeaksFinder 会对这个类误报，这里需要关闭一下
 @implementation UIImagePickerController (Leak)
@@ -96,12 +97,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopNotify) name:@"POPTOCONVERSIONLIISTNOTIFY" object:nil];
         
     
-    [TUIBubbleMessageCellData setOutgoingBubble:[[UIImage imageNamed:@"SenderTextNodeBkg"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
+    [TUIBubbleMessageCellData setOutgoingBubble:[YZChatResource(@"SenderTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
 
-    [TUIBubbleMessageCellData setOutgoingHighlightedBubble:[[UIImage imageNamed:@"SenderTextNodeBkg"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
+    [TUIBubbleMessageCellData setOutgoingHighlightedBubble:[YZChatResource(@"SenderTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
 
-    [TUIBubbleMessageCellData setIncommingBubble:[[UIImage imageNamed:@"ReceiverTextNodeBkg"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 22, 22, 22) resizingMode:UIImageResizingModeStretch]];
-    [TUIBubbleMessageCellData setIncommingHighlightedBubble:[[UIImage imageNamed:@"ReceiverTextNodeBkg"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 22, 22, 22) resizingMode:UIImageResizingModeStretch]];
+    [TUIBubbleMessageCellData setIncommingBubble:[YZChatResource(@"ReceiverTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 22, 22, 22) resizingMode:UIImageResizingModeStretch]];
+    [TUIBubbleMessageCellData setIncommingHighlightedBubble:[YZChatResource(@"ReceiverTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 22, 22, 22) resizingMode:UIImageResizingModeStretch]];
 //
     // 设置发送文字消息的字体和颜色；设置接收的方法类似
     [TUITextMessageCellData setOutgoingTextColor:[UIColor whiteColor]];
@@ -206,13 +207,13 @@
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightButton addTarget:self action:@selector(rightBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     if(_conversationData.userID.length > 0){
-        [rightButton setImage:[UIImage imageNamed:@"more_nav"] forState:UIControlStateNormal];
+        [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateNormal];
         [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [rightButton setImage:[UIImage imageNamed:@"more_nav"] forState:UIControlStateHighlighted];
+        [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateHighlighted];
     }
     else if(_conversationData.groupID.length > 0){
-        [rightButton setImage:[UIImage imageNamed:@"more_nav"] forState:UIControlStateNormal];
-        [rightButton setImage:[UIImage imageNamed:@"more_nav"] forState:UIControlStateHighlighted];
+        [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateNormal];
+        [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateHighlighted];
     }
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItems = @[rightItem];

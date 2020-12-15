@@ -72,7 +72,7 @@
     ProfileCardCellData *personal = [[ProfileCardCellData alloc] init];
     personal.name = user.nickName;
     personal.signature = user.mobile;
-    personal.avatarImage = [UIImage imageNamed:@"my_defaultAvatarImage"];
+    personal.avatarImage = YZChatResource(@"my_defaultAvatarImage");
     personal.avatarUrl = [NSURL URLWithString:user.userIcon];
     personal.company = user.companyName;
     personal.cselector = @selector(didSelectCommon);
@@ -105,7 +105,7 @@
     CommonTextCellData *email = [CommonTextCellData new];
     email.key = @"邮箱";
     email.value = [user.email length] == 0 ? @"待完善" : user.email;
-    email.thumbnail = [UIImage imageNamed:@"icon_mail"];
+    email.thumbnail = YZChatResource(@"icon_mail");
     email.showAccessory = NO;
     email.showTopLine = NO;
     //@[departmant,position,jobNum,email]
@@ -114,7 +114,7 @@
     CommonTextCellData *setting = [CommonTextCellData new];
     setting.key = @"设置";
     setting.showAccessory = YES;
-    setting.thumbnail = [UIImage imageNamed:@"icon_setting"];
+    setting.thumbnail = YZChatResource(@"icon_setting");
     setting.cselector = @selector(didSelectSetting);
 
     [_data addObject:@[setting]];

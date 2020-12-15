@@ -48,7 +48,7 @@
     NSMutableArray *list = @[].mutableCopy;
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        UIImage* image = [UIImage imageNamed:@"icon_add_contact"] ;
+        UIImage* image = YZChatResource(@"icon_add_contact") ;
         data.icon = image;
         data.title = @"新的好友";
         data.cselector = @selector(onAddNewFriend:);
@@ -56,14 +56,14 @@
     })];
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = [UIImage imageNamed:@"myGrps"];
+        data.icon = YZChatResource(@"myGrps");
         data.title = @"我的群聊";
         data.cselector = @selector(onGroupConversation:);
         data;
     })];
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = [UIImage imageNamed:@"icon_blackList"];
+        data.icon = YZChatResource(@"icon_blackList");
         data.title = @"黑名单";
         data.cselector = @selector(onBlackList:);
         data;

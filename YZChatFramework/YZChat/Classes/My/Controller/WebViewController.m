@@ -12,8 +12,17 @@
 #import <WebKit/WebKit.h>
 #import <QMUIKit/QMUIKit.h>
 #import "UIColor+ColorExtension.h"
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
+#import "YChatNetworkEngine.h"
+#import "YChatSettingStore.h"
+#import "TCUtil.h"
+#import "THelper.h"
 
-@interface WebViewController ()<WKNavigationDelegate>
+#define FETCH_USERINFO @"loadJSSdk"
+#define ARGEE_FETCHUSERINFO @"getUserProfile"
+
+@interface WebViewController ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
 @property (nonatomic, strong)WKWebView *webView;
 @property (nonatomic, strong)UIButton  *backBtn;
 @property (nonatomic, strong)UIButton  *closeBtn;
@@ -62,6 +71,9 @@
         [_closeBtn removeFromSuperview];
     }
     [_backBtn removeFromSuperview];
+    
+    [_webView.configuration.userContentController removeScriptMessageHandlerForName:FETCH_USERINFO];
+    [_webView.configuration.userContentController removeScriptMessageHandlerForName:ARGEE_FETCHUSERINFO];
 }
 
 - (void)setupView {
@@ -80,9 +92,22 @@
 
 - (WKWebView *)webView {
     if (!_webView) {
-        _webView = [[WKWebView alloc]init];
+        // js配置
+        WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+        [userContentController addScriptMessageHandler:self name:ARGEE_FETCHUSERINFO];
+        [userContentController addScriptMessageHandler:self name:FETCH_USERINFO];
+        // WKWebView的配置
+        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+        configuration.userContentController = userContentController;
+        
+        WKPreferences *preferences = [WKPreferences new];
+        preferences.javaScriptCanOpenWindowsAutomatically = YES;
+        configuration.preferences = preferences;
+        _webView = [[WKWebView alloc]initWithFrame:self.view.frame configuration:configuration];
         _webView.navigationDelegate = self;
+        _webView.UIDelegate = self;
         _webView.allowsBackForwardNavigationGestures = YES;
+        
     }
     return _webView;
 }
@@ -100,7 +125,7 @@
     if(!_closeBtn){
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _closeBtn.frame = CGRectMake(KScreenWidth-75,IS_IPHONEX ? 50 : 26, 70, 30);
-        [_closeBtn setImage:[UIImage imageNamed:@"close_icon"] forState:UIControlStateNormal];
+        [_closeBtn setImage:YZChatResource(@"close_icon") forState:UIControlStateNormal];
         [_closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeBtn;
@@ -259,9 +284,95 @@
 -(NSString *)URLDecodedString:(NSString *)str
 {
     NSString *decodedString=(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)str, CFSTR(""), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-    
     return decodedString;
-
 }
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    if ([message.name isEqualToString:FETCH_USERINFO]) {
+        NSDictionary* dict = [TCUtil jsonSring2Dictionary:message.body];
+        [self fetchUserInfoWithAppKey:dict[@"appKey"]];
+    }
+    if ([message.name isEqualToString:ARGEE_FETCHUSERINFO]) {
+        NSDictionary* dict = [TCUtil jsonSring2Dictionary:message.body];
+        
+    }
+    if ([message.name isEqualToString:ARGEE_FETCHUSERINFO]) {
+            NSDictionary* params = @{ @"code":@0,
+                                      @"nickName":[YChatSettingStore sharedInstance].getNickName,
+                                      @"userId":[YChatSettingStore sharedInstance].getUserId,
+                                      @"mobile":[YChatSettingStore sharedInstance].getMobile
+            };
+              NSString* json = [params yy_modelToJSONString];
+              NSString* decodeJson = [TCUtil string2JSONString:json];
+              [self jsCallOC:decodeJson];
+        }
+}
+
+- (void)fetchUserInfoWithAppKey:(NSString*)appKey {
+    [YChatNetworkEngine requestToolKey:self.url.host toolKey:appKey completion:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            if ([result[@"code"]intValue] == 200) {
+                NSDictionary* params = @{ @"code":@0,
+                                          @"nickName":[YChatSettingStore sharedInstance].getNickName,
+                                          @"appName":result[@"data"][@"toolName"],
+                                          @"appIcon":result[@"data"][@"iconUrl"],
+                };
+                NSString* json = [params yy_modelToJSONString];
+                NSString* decodeJson = [TCUtil string2JSONString:json];
+                [self jsCallOC:decodeJson];
+            }else {
+                NSDictionary* errorDic = @{@"code": @-1,@"msg": result[@"msg"]};
+                NSString* json =[errorDic yy_modelToJSONString];
+                NSString* decodeJson = [TCUtil string2JSONString:json];
+                [self jsCallOC:decodeJson];
+            }
+        }
+    }];
+}
+
+#pragma mark js调OC
+- (void)jsCallOC:(NSString*)json {
+    // oc调用js代码
+    NSString *jsStr = [NSString stringWithFormat:@"permissionWindowYzIM('%@')",json];
+    [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"错误:%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"提醒" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }]];
+    [self presentViewController:alert animated:YES completion:nil
+     ];
+}
+
+
+//data =     {
+//    chargeMobile = "<null>";
+//    chargeName = "<null>";
+//    createId = "<null>";
+//    createTime = "<null>";
+//    deleteStatus = 0;
+//    iconUrl = "https://yzkj-im.oss-cn-beijing.aliyuncs.com/tool/jipiao.png";
+//    id = 0;
+//    lastModifyId = "<null>";
+//    lastModifyTime = "<null>";
+//    orderNum = 0;
+//    sdkToken = "<null>";
+//    status = 0;
+//    toolCheckDomain = "wangpan.yzmetax.com";
+//    toolCode = 123;
+//    toolDesc = "\U6d4b\U8bd5";
+//    toolKey = e10adc3949ba59abbe56e057f20f883e1;
+//    toolName = "js-sdk\U6d4b\U8bd5";
+//    toolUrl = "https://wangpan.yzmetax.com/index.html";
+//};
+
+
+
 
 @end

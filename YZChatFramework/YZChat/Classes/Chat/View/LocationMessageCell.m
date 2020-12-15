@@ -10,6 +10,8 @@
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
 #import "MMLayout/UIView+MMLayout.h"
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @implementation LocationMessageCell
 
@@ -33,7 +35,7 @@
         [self.container.layer setCornerRadius:4];
         
         self.mapImageView = [[UIImageView alloc]init];
-        self.mapImageView.image = [UIImage imageNamed:@"sendlocation_mapimage"];
+        self.mapImageView.image = YZChatResource(@"sendlocation_mapimage");
         [self.container addSubview:self.mapImageView];
     }
     return self;

@@ -30,8 +30,8 @@
     self = [super init];
     if(self){
         _avatarCornerRadius = 5.f;
-        _defaultAvatarImage = [UIImage tk_imageNamed:@"default_c2c_head"];
-        _defaultGroupAvatarImage = [UIImage tk_imageNamed:@"default_group_head"];
+        _defaultAvatarImage = TUIKitResource(@"default_c2c_head");
+        _defaultGroupAvatarImage = TUIKitResource(@"default_group_head");
         _enableGroupLiveEntry = YES;
         
         [self defaultResourceCache];
@@ -58,28 +58,29 @@
     NSMutableArray *faceGroups = [NSMutableArray array];
     //emoji group
     NSMutableArray *emojiFaces = [NSMutableArray array];
-    NSArray *emojis = [NSArray arrayWithContentsOfFile:TUIKitFace(@"emoji/emoji.plist")];
+    
+    NSArray *emojis = [NSArray arrayWithContentsOfFile:TUIKitFaceUrl(@"emoji/emoji.plist")];
     for (NSDictionary *dic in emojis) {
         TFaceCellData *data = [[TFaceCellData alloc] init];
         NSString *name = [dic objectForKey:@"face_name"];
         NSString *path = [NSString stringWithFormat:@"emoji/%@", name];
         data.name = name;
-        data.path = TUIKitFace(path);
+        data.path = TUIKitFaceUrl(path);
         [self addFaceToCache:data.path];
         [emojiFaces addObject:data];
     }
     if(emojiFaces.count != 0){
         TFaceGroup *emojiGroup = [[TFaceGroup alloc] init];
         emojiGroup.groupIndex = 0;
-        emojiGroup.groupPath = TUIKitFace(@"emoji/");
+        emojiGroup.groupPath = TUIKitFaceUrl(@"emoji/");
         emojiGroup.faces = emojiFaces;
         emojiGroup.rowCount = 3;
         emojiGroup.itemCountPerRow = 9;
         emojiGroup.needBackDelete = YES;
-        emojiGroup.menuPath = TUIKitFace(@"emoji/menu");
+        emojiGroup.menuPath = TUIKitFaceUrl(@"emoji/menu");
         [self addFaceToCache:emojiGroup.menuPath];
         [faceGroups addObject:emojiGroup];
-        [self addFaceToCache:TUIKitFace(@"del_normal")];
+        [self addFaceToCache:TUIKitFaceUrl(@"del_normal")];
     }
 
 //    //4350 group
@@ -165,32 +166,32 @@
 - (void)defaultResourceCache
 {
     //common
-    [self addResourceToCache:TUIKitResource(@"more_normal")];
-    [self addResourceToCache:TUIKitResource(@"more_pressed")];
-    [self addResourceToCache:TUIKitResource(@"face_normal")];
-    [self addResourceToCache:TUIKitResource(@"face_pressed")];
-    [self addResourceToCache:TUIKitResource(@"keyboard_normal")];
-    [self addResourceToCache:TUIKitResource(@"keyboard_pressed")];
-    [self addResourceToCache:TUIKitResource(@"voice_normal")];
-    [self addResourceToCache:TUIKitResource(@"voice_pressed")];
+    [self addResourceToCache:TUIKitResourceUrl(@"more_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"more_pressed")];
+    [self addResourceToCache:TUIKitResourceUrl(@"face_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"face_pressed")];
+    [self addResourceToCache:TUIKitResourceUrl(@"keyboard_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"keyboard_pressed")];
+    [self addResourceToCache:TUIKitResourceUrl(@"voice_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"voice_pressed")];
     //text msg
-    [self addResourceToCache:TUIKitResource(@"sender_text_normal")];
-    [self addResourceToCache:TUIKitResource(@"sender_text_pressed")];
-    [self addResourceToCache:TUIKitResource(@"receiver_text_normal")];
-    [self addResourceToCache:TUIKitResource(@"receiver_text_pressed")];
+    [self addResourceToCache:TUIKitResourceUrl(@"sender_text_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"sender_text_pressed")];
+    [self addResourceToCache:TUIKitResourceUrl(@"receiver_text_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"receiver_text_pressed")];
     //void msg
-    [self addResourceToCache:TUIKitResource(@"sender_voice")];
-    [self addResourceToCache:TUIKitResource(@"receiver_voice")];
-    [self addResourceToCache:TUIKitResource(@"sender_voice_play_1")];
-    [self addResourceToCache:TUIKitResource(@"sender_voice_play_2")];
-    [self addResourceToCache:TUIKitResource(@"sender_voice_play_3")];
-    [self addResourceToCache:TUIKitResource(@"receiver_voice_play_1")];
-    [self addResourceToCache:TUIKitResource(@"receiver_voice_play_2")];
-    [self addResourceToCache:TUIKitResource(@"receiver_voice_play_3")];
+    [self addResourceToCache:TUIKitResourceUrl(@"sender_voice")];
+    [self addResourceToCache:TUIKitResourceUrl(@"receiver_voice")];
+    [self addResourceToCache:TUIKitResourceUrl(@"sender_voice_play_1")];
+    [self addResourceToCache:TUIKitResourceUrl(@"sender_voice_play_2")];
+    [self addResourceToCache:TUIKitResourceUrl(@"sender_voice_play_3")];
+    [self addResourceToCache:TUIKitResourceUrl(@"receiver_voice_play_1")];
+    [self addResourceToCache:TUIKitResourceUrl(@"receiver_voice_play_2")];
+    [self addResourceToCache:TUIKitResourceUrl(@"receiver_voice_play_3")];
     //file msg
-    [self addResourceToCache:TUIKitResource(@"msg_file")];
+    [self addResourceToCache:TUIKitResourceUrl(@"msg_file")];
     //video msg
-    [self addResourceToCache:TUIKitResource(@"play_normal")];
+    [self addResourceToCache:TUIKitResourceUrl(@"play_normal")];
 }
 
 

@@ -37,7 +37,7 @@ typedef void (^YChatSysUserFail)(int errCode, NSString * errMsg);
 /**
  * 直接启动IM(必须登录成功才可以启动)
  */
-- (void)startAuto;
+- (void)startAutoWithDeviceToken:(NSData*)deviceToken;
 
 /*
  *  直接聊天

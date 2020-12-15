@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80362040B82AD20E994C6587 /* libPods-YZChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7900906001ADABE6BADF2985 /* libPods-YZChat.a */; };
+		300F709925851D8200464F40 /* YZBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F709725851D8200464F40 /* YZBaseManager.m */; };
+		300F709A25851D8200464F40 /* YZBaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 300F709825851D8200464F40 /* YZBaseManager.h */; };
+		300F71202586612000464F40 /* NSBundle+YZBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 300F711E2586612000464F40 /* NSBundle+YZBundle.h */; };
+		300F71212586612000464F40 /* NSBundle+YZBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 300F711F2586612000464F40 /* NSBundle+YZBundle.m */; };
 		E527E3DC258393C800531586 /* YZChat.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E3DA258393C800531586 /* YZChat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E7772583A17900531586 /* AddFriendHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E4E72583A17700531586 /* AddFriendHeaderCell.m */; };
 		E527E7782583A17900531586 /* CommonPendencyCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E4E82583A17700531586 /* CommonPendencyCell.h */; };
@@ -574,7 +577,10 @@
 
 /* Begin PBXFileReference section */
 		13F403A9DC32792AE6FA9B58 /* Pods-YZChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.release.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.release.xcconfig"; sourceTree = "<group>"; };
-		7900906001ADABE6BADF2985 /* libPods-YZChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		300F709725851D8200464F40 /* YZBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBaseManager.m; sourceTree = "<group>"; };
+		300F709825851D8200464F40 /* YZBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBaseManager.h; sourceTree = "<group>"; };
+		300F711E2586612000464F40 /* NSBundle+YZBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+YZBundle.h"; sourceTree = "<group>"; };
+		300F711F2586612000464F40 /* NSBundle+YZBundle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+YZBundle.m"; sourceTree = "<group>"; };
 		8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.debug.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.debug.xcconfig"; sourceTree = "<group>"; };
 		E527E3D7258393C800531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E527E3DA258393C800531586 /* YZChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZChat.h; sourceTree = "<group>"; };
@@ -1136,7 +1142,6 @@
 			files = (
 				E5CA71B92584598200719F72 /* libopencore-amrwb.a in Frameworks */,
 				E5CA71BE2584598200719F72 /* libopencore-amrnb.a in Frameworks */,
-				80362040B82AD20E994C6587 /* libPods-YZChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,7 +1161,6 @@
 		DC85D9878596B4BB189D60FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7900906001ADABE6BADF2985 /* libPods-YZChat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1341,6 +1345,8 @@
 				E527E5362583A17700531586 /* UIImage+Foundation.h */,
 				E527E5372583A17700531586 /* NSString+YChatExtension.m */,
 				E527E5382583A17700531586 /* NSDictionary+YChatExtension.m */,
+				300F711E2586612000464F40 /* NSBundle+YZBundle.h */,
+				300F711F2586612000464F40 /* NSBundle+YZBundle.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1671,6 +1677,8 @@
 		E527E7232583A17800531586 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				300F709825851D8200464F40 /* YZBaseManager.h */,
+				300F709725851D8200464F40 /* YZBaseManager.m */,
 				E527E7242583A17800531586 /* YBaseTableViewController.h */,
 				E527E7252583A17800531586 /* YBaseViewController.h */,
 				E527E7262583A17800531586 /* YBaseTableViewController.m */,
@@ -2440,6 +2448,7 @@
 				E527E98B2583A17A00531586 /* YConversationListViewModel.h in Headers */,
 				E527E7AF2583A17900531586 /* UIViewController+NavigationBar.h in Headers */,
 				E5CA70D12584598200719F72 /* TNavigationController.h in Headers */,
+				300F709A25851D8200464F40 /* YZBaseManager.h in Headers */,
 				E527E7982583A17900531586 /* YChatResponseCode.h in Headers */,
 				E5CA70C82584598200719F72 /* TUIAvatarViewController.h in Headers */,
 				E5CA70D62584598200719F72 /* TCommonSwitchCell.h in Headers */,
@@ -2572,6 +2581,7 @@
 				E5CA71A32584598200719F72 /* TUIConversationCellData.h in Headers */,
 				E5CA71212584598200719F72 /* TUIImageMessageCellData.h in Headers */,
 				E527E83B2583A17900531586 /* YCommonTextCell.h in Headers */,
+				300F71202586612000464F40 /* NSBundle+YZBundle.h in Headers */,
 				E527E7BE2583A17900531586 /* NSDate+Utilities.h in Headers */,
 				E527E7E72583A17900531586 /* GroupMemberController.h in Headers */,
 				E527E7902583A17900531586 /* YCustomSearchController.h in Headers */,
@@ -2680,7 +2690,7 @@
 		E527E3CE258393C800531586 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					E527E3D6258393C800531586 = {
 						CreatedOnToolsVersion = 12.2;
@@ -2902,6 +2912,7 @@
 				E527E81C2583A17900531586 /* TCUtil.m in Sources */,
 				E5CA714B2584598200719F72 /* TUIVideoMessageCell.m in Sources */,
 				E527E80A2583A17900531586 /* YBFuncItemManager.m in Sources */,
+				300F71212586612000464F40 /* NSBundle+YZBundle.m in Sources */,
 				E5CA713F2584598200719F72 /* TUIInputBar.m in Sources */,
 				E527E97E2583A17A00531586 /* MyQRCodeViewController.m in Sources */,
 				E527E7F22583A17900531586 /* LocationMessageCell.m in Sources */,
@@ -3007,6 +3018,7 @@
 				E527E7FA2583A17900531586 /* MyCustomCell.m in Sources */,
 				E5CA71402584598200719F72 /* TUIRecordView.m in Sources */,
 				E527E79F2583A17900531586 /* YChatRequestMan.m in Sources */,
+				300F709925851D8200464F40 /* YZBaseManager.m in Sources */,
 				E527E7A72583A17900531586 /* UIView+Extensions.m in Sources */,
 				E527E8352583A17900531586 /* TextEditViewController.m in Sources */,
 				E527E7DA2583A17900531586 /* GroupMemberController.m in Sources */,
@@ -3087,7 +3099,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3143,7 +3155,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -3189,7 +3201,7 @@
 				);
 				INFOPLIST_FILE = YZChat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3247,7 +3259,7 @@
 				);
 				INFOPLIST_FILE = YZChat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -20,8 +20,8 @@
 #import <SDWebImageManager.h>
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "UIColor+ColorExtension.h"
-//#import "AppDelegate.h"
 #import "AboutViewController.h"
+#import "YZBaseManager.h"
 
 @interface SettingViewController ()
 @property (nonatomic, strong) NSMutableArray *data;
@@ -175,7 +175,7 @@
 - (void)didLogoutInSettingController:(SettingViewController *)controller
 {
     [[YChatSettingStore sharedInstance] logout];
-//    app.window.rootViewController = [app getLoginController];
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getMainController];
 }
 
 - (void)changePwd {

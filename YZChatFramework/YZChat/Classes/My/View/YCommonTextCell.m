@@ -54,7 +54,7 @@
         [self.contentView addSubview:_valueLabel];
         
         _accessoryImageView = [[UIImageView alloc]init];
-        _accessoryImageView.image = [UIImage imageNamed:@"accessory_icon"];
+        _accessoryImageView.image = YZChatResource(@"accessory_icon");
         [self.contentView addSubview:_accessoryImageView];
         
         [_valueLabel mas_makeConstraints:^(MASConstraintMaker *make) {

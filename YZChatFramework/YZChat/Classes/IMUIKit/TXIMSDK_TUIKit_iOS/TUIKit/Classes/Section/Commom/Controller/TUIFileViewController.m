@@ -31,7 +31,7 @@
     //left
     UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [leftButton addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-    [leftButton setImage:[UIImage imageNamed:TUIKitResource(@"back")] forState:UIControlStateNormal];
+    [leftButton setImage:TUIKitResource(@"back") forState:UIControlStateNormal];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spaceItem.width = -10.0f;
@@ -44,7 +44,7 @@
 
     _image = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 80) * 0.5, NavBar_Height + StatusBar_Height + 50, 80, 80)];
     _image.contentMode = UIViewContentModeScaleAspectFit;
-    _image.image = [UIImage imageNamed:TUIKitResource(@"msg_file")];
+    _image.image = TUIKitResource(@"msg_file");
     [self.view addSubview:_image];
 
     _name = [[UILabel alloc] initWithFrame:CGRectMake(0, _image.frame.origin.y + _image.frame.size.height + 20, self.view.frame.size.width, 40)];

@@ -12,6 +12,7 @@
 #import <Masonry/Masonry.h>
 #import "UIColor+Foundation.h"
 #import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 #define Scanner_Width 206                                     /** 扫描器宽度 */
 #define Scanner_X (self.frame.size.width - Scanner_Width) / 2 /** 扫描器初始x值 */
@@ -229,7 +230,7 @@ static char FLASHLIGHT_ON; /** 手电筒开关状态绑定标识符 */
     if (!_scannerLine) {
         _scannerLine = [[UIImageView alloc]
             initWithFrame:CGRectMake(Scanner_X + 20, Scanner_Y, Scanner_Width - 40, Scanner_LineHeight)];
-        _scannerLine.image = [UIImage imageNamed:@"ScannerLine"];
+        _scannerLine.image = YZChatResource(@"ScannerLine");
     }
     return _scannerLine;
 }

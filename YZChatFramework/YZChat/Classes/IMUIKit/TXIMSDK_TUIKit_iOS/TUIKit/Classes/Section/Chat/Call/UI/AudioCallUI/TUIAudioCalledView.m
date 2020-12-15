@@ -12,6 +12,7 @@
 #import "THeader.h"
 #import "UIColor+TUIDarkMode.h"
 #import "TUIKit.h"
+#import "CommonConstant.h"
 
 @implementation TUIAudioCalledView
 {
@@ -47,7 +48,7 @@
 }
 
 - (void)fillWithData:(CallUserModel *)model {
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"] options:SDWebImageHighPriority];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
     if (model.name.length > 0) {
         _label.text = model.name;
     } else {

@@ -28,19 +28,19 @@
     if (self) {
         if (direction == MsgDirectionIncoming) {
             self.cellLayout = [TUIMessageCellLayout incommingVoiceMessageLayout];
-            _voiceImage = [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_receiver_normal")];
+            _voiceImage = [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_receiver_normal"];
             _voiceAnimationImages = [NSArray arrayWithObjects:
-                                      [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_receiver_playing_1")],
-                                      [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_receiver_playing_2")],
-                                      [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_receiver_playing_3")], nil];
+                                      [[TUIImageCache sharedInstance] getResourceFromCache:(@"message_voice_receiver_playing_1")],
+                                      [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_receiver_playing_2"],
+                                      [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_receiver_playing_3"], nil];
             _voiceTop = [[self class] incommingVoiceTop];
         } else {
             self.cellLayout = [TUIMessageCellLayout outgoingVoiceMessageLayout];
-            _voiceImage = [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_sender_normal")];
+            _voiceImage = [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_sender_normal"];
             _voiceAnimationImages = [NSArray arrayWithObjects:
-                                      [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_sender_playing_1")],
-                                      [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_sender_playing_2")],
-                                      [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"message_voice_sender_playing_3")], nil];
+                                      [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_sender_playing_1"],
+                                      [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_sender_playing_2"],
+                                      [[TUIImageCache sharedInstance] getResourceFromCache:@"message_voice_sender_playing_3"], nil];
             _voiceTop = [[self class] outgoingVoiceTop];
         }
     }

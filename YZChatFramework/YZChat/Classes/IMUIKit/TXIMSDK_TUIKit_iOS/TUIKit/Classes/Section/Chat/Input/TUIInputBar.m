@@ -49,27 +49,27 @@
 
     _micButton = [[UIButton alloc] init];
     [_micButton addTarget:self action:@selector(clickVoiceBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_micButton setImage:[[UIImage imageNamed:@"ToolViewInputVoice"] qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_micButton setImage:[[UIImage imageNamed:@"ToolViewInputVoice"] qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
+    [_micButton setImage:[YZChatResource(@"ToolViewInputVoice") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
+    [_micButton setImage:[YZChatResource(@"ToolViewInputVoice") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
     [self addSubview:_micButton];
 
     _faceButton = [[UIButton alloc] init];
     [_faceButton addTarget:self action:@selector(clickFaceBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_faceButton setImage:[[UIImage imageNamed:@"ToolViewEmotion"] qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_faceButton setImage:[[UIImage imageNamed:@"ToolViewEmotion"] qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
+    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
+    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
     [self addSubview:_faceButton];
 
     _keyboardButton = [[UIButton alloc] init];
     [_keyboardButton addTarget:self action:@selector(clickKeyboardBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_keyboardButton setImage:[UIImage imageNamed:@"ToolViewKeyboard"] forState:UIControlStateNormal];
-    [_keyboardButton setImage:[UIImage imageNamed:@"ToolViewKeyboard"] forState:UIControlStateHighlighted];
+    [_keyboardButton setImage:YZChatResource(@"ToolViewKeyboard") forState:UIControlStateNormal];
+    [_keyboardButton setImage:YZChatResource(@"ToolViewKeyboard") forState:UIControlStateHighlighted];
     _keyboardButton.hidden = YES;
     [self addSubview:_keyboardButton];
 
     _moreButton = [[UIButton alloc] init];
     [_moreButton addTarget:self action:@selector(clickMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_moreButton setImage:[[UIImage imageNamed:@"TypeSelectorBtn_Black"] qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_moreButton setImage:[[UIImage imageNamed:@"TypeSelectorBtnHL_Black"] qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
+    [_moreButton setImage:[YZChatResource(@"TypeSelectorBtn_Black") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
+    [_moreButton setImage:[YZChatResource(@"TypeSelectorBtnHL_Black") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
     [self addSubview:_moreButton];
 
     _recordButton = [[UIButton alloc] init];

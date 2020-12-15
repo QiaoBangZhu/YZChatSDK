@@ -10,6 +10,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import <Masonry/Masonry.h>
 #import "UIColor+ColorExtension.h"
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @interface MapInfoViewController ()<MAMapViewDelegate>
 @property (nonatomic, strong)MAMapView          * mapView;
@@ -155,7 +157,7 @@
             annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotationIdentifier"];
         }
         annotationView.annotation = annotation;
-        UIImage* image = [UIImage imageNamed:@"map_bubble"];
+        UIImage* image = YZChatResource(@"map_bubble");
         annotationView.image = image;
         annotationView.centerOffset = CGPointMake(0, -image.size.height/2);
         return annotationView;

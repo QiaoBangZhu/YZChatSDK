@@ -49,6 +49,18 @@
     return [[NSString alloc] initWithData:[self dictionary2JsonData:dict] encoding:NSUTF8StringEncoding];;
 }
 
+//去除转义符
++ (NSString *)string2JSONString:(NSString *)string {
+    NSMutableString *responseString = [NSMutableString stringWithString:string];
+    NSString *character = nil;
+    for (int i = 0; i < responseString.length; i ++) {
+        character = [responseString substringWithRange:NSMakeRange(i, 1)];
+    if ([character isEqualToString:@"\\"])
+        [responseString deleteCharactersInRange:NSMakeRange(i, 1)];
+    }
+    return  responseString;
+}
+
 + (NSDictionary *)jsonSring2Dictionary:(NSString *)jsonString
 {
     if (jsonString == nil) {

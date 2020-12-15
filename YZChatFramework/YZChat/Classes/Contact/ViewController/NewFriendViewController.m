@@ -59,7 +59,7 @@
     }];
     
     UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [moreButton setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+    [moreButton setImage:YZChatResource(@"more") forState:UIControlStateNormal];
     [moreButton addTarget:self action:@selector(onRightItem) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *moreItem = [[UIBarButtonItem alloc] initWithCustomView:moreButton];
     self.navigationItem.rightBarButtonItem = moreItem;

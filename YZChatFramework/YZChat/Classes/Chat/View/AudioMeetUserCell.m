@@ -38,7 +38,7 @@
 
 - (void)fillWithData:(CallUserModel *)model {
     [self defaultLayout];
-    [_cellImgView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:TUIKitResource(@"default_c2c_head")] options:SDWebImageHighPriority];
+    [_cellImgView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:TUIKitResource(@"default_c2c_head") options:SDWebImageHighPriority];
     
     BOOL noModel = (model.userId.length == 0);
     [_cellImgView setHidden:noModel];
