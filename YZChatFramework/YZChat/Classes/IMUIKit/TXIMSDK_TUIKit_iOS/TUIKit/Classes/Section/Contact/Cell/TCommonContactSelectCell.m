@@ -30,10 +30,10 @@
     if (self) {
         self.selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.contentView addSubview:self.selectButton];
-        [self.selectButton setImage:TUIKitResource(@"icon_contact_select_normal") forState:UIControlStateNormal];
-        [self.selectButton setImage:TUIKitResource(@"icon_contact_select_pressed") forState:UIControlStateHighlighted];
-        [self.selectButton setImage:TUIKitResource(@"icon_contact_select_selected") forState:UIControlStateSelected];
-        [self.selectButton setImage:TUIKitResource(@"icon_contact_select_selected_disable") forState:UIControlStateDisabled];
+        [self.selectButton setImage:[UIImage imageNamed:TUIKitResource(@"icon_contact_select_normal")] forState:UIControlStateNormal];
+        [self.selectButton setImage:[UIImage imageNamed:TUIKitResource(@"icon_contact_select_pressed")] forState:UIControlStateHighlighted];
+        [self.selectButton setImage:[UIImage imageNamed:TUIKitResource(@"icon_contact_select_selected")] forState:UIControlStateSelected];
+        [self.selectButton setImage:[UIImage imageNamed:TUIKitResource(@"icon_contact_select_selected_disable")] forState:UIControlStateDisabled];
         self.selectButton.mm_sizeToFit().mm__centerY(self.mm_centerY).mm_left(12);
         self.selectButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 
@@ -41,6 +41,13 @@
         [self.contentView addSubview:self.avatarView];
         self.avatarView.mm_width(34).mm_height(34).mm__centerY(self.mm_centerY).mm_left(self.selectButton.mm_maxX+12);
         self.avatarView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        if ([TUIKit sharedInstance].config.avatarType == TAvatarTypeRounded) {
+            self.avatarView.layer.masksToBounds = YES;
+            self.avatarView.layer.cornerRadius = self.avatarView.frame.size.height/2;
+        }else {
+            self.avatarView.layer.masksToBounds = YES;
+            self.avatarView.layer.cornerRadius = [TUIKit sharedInstance].config.avatarCornerRadius;
+        }
 
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.contentView addSubview:self.titleLabel];

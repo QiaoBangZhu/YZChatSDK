@@ -39,6 +39,7 @@
 #import "CardMsgCell.h"
 #import "CardMsgCellData.h"
 #import "WebViewController.h"
+#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
 // MLeaksFinder 会对这个类误报，这里需要关闭一下
@@ -210,6 +211,7 @@
         [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateNormal];
         [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateHighlighted];
+
     }
     else if(_conversationData.groupID.length > 0){
         [rightButton setImage:YZChatResource(@"more_nav") forState:UIControlStateNormal];
@@ -237,6 +239,7 @@
                     if ([vc isKindOfClass:[UIViewController class]]) {
                         vc.friendProfile = firend;
                         vc.isShowConversationAtTop = YES;
+                        vc.isShowGrpEntrance = YES;
                         [self.navigationController pushViewController:(UIViewController *)vc animated:YES];
                         return;
                     }

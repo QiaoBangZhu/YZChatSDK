@@ -16,9 +16,9 @@
 #import <SDWebImage/SDWebImage.h>
 #import "DefaultPortraitView.h"
 #import "YChatRequestBuilder.h"
-#import "CommonConstant.h"
+#import <QMUIKit/QMUIKit.h>
 #import "NSBundle+YZBundle.h"
-#import "THelper.h"
+#import "CommonConstant.h"
 
 @interface MyQRCodeViewController ()
 @property (nonatomic, strong) UIView *qrBgView;
@@ -227,6 +227,7 @@
     return _mobileLabel;
 }
 
+
 - (UIImageView *)qrCodeImageView {
     if (!_qrCodeImageView) {
         _qrCodeImageView = [[UIImageView alloc] init];
@@ -325,9 +326,9 @@
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error == nil) {
-        [THelper makeToast:@"保存成功"];
+        [QMUITips showSucceed:@"保存成功"];
     } else {
-        [THelper makeToast:@"保存失败"];
+        [QMUITips showError:@"保存失败"];
     }
 }
 

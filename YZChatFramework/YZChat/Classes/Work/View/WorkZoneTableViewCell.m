@@ -44,6 +44,7 @@
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewFlowLayout alloc]init]];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _collectionView.scrollEnabled = false;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator  = NO;
         [_collectionView registerClass:[AppCollectionViewCell class] forCellWithReuseIdentifier:@"AppCollectionViewCell"];
@@ -75,9 +76,9 @@
         make.height.equalTo(@22);
     }];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@24);
-        make.right.equalTo(@-24);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(24);
+        make.left.equalTo(@22);
+        make.right.equalTo(@-22);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(22);
         make.bottom.equalTo(@-20);
     }];
     
@@ -115,11 +116,11 @@
 }
 
 - (CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return CGSizeMake(40,61);
+    return CGSizeMake(44,61);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 45;
+    return 41;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {

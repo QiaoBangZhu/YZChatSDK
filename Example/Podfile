@@ -28,7 +28,7 @@ target 'YZChat_Example' do
   abstract_pods
 end
 
-target 'YZChat_Example Pod' do
+target 'YZChat_Example_Pod' do
   pod 'YZChat', :path => '../'
 end
 

@@ -85,11 +85,11 @@
     RAC(_mobile, text) = [RACObserve(data, signature) takeUntil:self.rac_prepareForReuseSignal];
     [[[RACObserve(data, signature) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {
         @strongify(self)
-        if ([data.signature length] >7) {
-            self.mobile.text = [data.signature stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
-        }else {
+//        if ([data.signature length] >7) {
+//            self.mobile.text = [data.signature stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+//        }else {
             self.mobile.text = data.signature;
-        }
+//        }
     }];
     
     [[[RACObserve(data, name) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {

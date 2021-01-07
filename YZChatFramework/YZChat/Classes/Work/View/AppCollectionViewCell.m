@@ -10,10 +10,11 @@
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
 #import "SDWebImage/UIImageView+WebCache.h"
+#import <YYLabel.h>
 
 @interface AppCollectionViewCell()
 @property (nonatomic, strong) UIImageView *thumbnail;
-@property (nonatomic, strong) UILabel     *titleLabel;
+@property (nonatomic, strong) YYLabel     *titleLabel;
 
 @end
 
@@ -23,17 +24,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         self.thumbnail = [[UIImageView alloc] init];
         self.thumbnail.contentMode = UIViewContentModeScaleAspectFit;
         self.thumbnail.backgroundColor = [UIColor whiteColor];
         self.thumbnail.layer.masksToBounds = YES;
         self.thumbnail.layer.cornerRadius = 20;
         
-        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel = [[YYLabel alloc] init];
         self.titleLabel.font = [UIFont systemFontOfSize:11];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        self.titleLabel.numberOfLines = 2;
         self.titleLabel.textColor = [UIColor colorWithHex:KCommonBlackTextColor];
+        self.titleLabel.preferredMaxLayoutWidth = 48;
         [self.contentView addSubview:self.thumbnail];
         [self.contentView addSubview:self.titleLabel];
 
@@ -47,7 +49,6 @@
             make.top.equalTo(@0);
             make.centerX.equalTo(@0);
         }];
-        
     }
     return self;
 }

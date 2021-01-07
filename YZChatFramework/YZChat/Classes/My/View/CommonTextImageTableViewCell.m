@@ -13,6 +13,7 @@
 #import "CommonConstant.h"
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
+#import "NSBundle+YZBundle.h"
 
 @implementation CommonTextCellData
 - (instancetype)init {
@@ -83,7 +84,7 @@
     [_keyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.thumbnail.mas_right).offset(12);
         make.centerY.equalTo(@0);
-        make.width.equalTo(@60);
+        make.width.equalTo(@100);
     }];
     
     [_valueLabel mas_makeConstraints:^(MASConstraintMaker *make) {

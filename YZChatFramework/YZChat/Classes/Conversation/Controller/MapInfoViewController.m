@@ -10,8 +10,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import <Masonry/Masonry.h>
 #import "UIColor+ColorExtension.h"
-#import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
 @interface MapInfoViewController ()<MAMapViewDelegate>
 @property (nonatomic, strong)MAMapView          * mapView;

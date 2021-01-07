@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString* userId;
 @property (nonatomic, copy)NSString* nickName;
 @property (nonatomic, copy)NSString* userIcon;
+@property (nonatomic, copy)NSString* mobile;
 
 @end
 

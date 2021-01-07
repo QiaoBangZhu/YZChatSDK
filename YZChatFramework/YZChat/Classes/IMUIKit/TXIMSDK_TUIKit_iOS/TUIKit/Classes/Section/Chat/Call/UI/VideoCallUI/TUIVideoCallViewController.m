@@ -22,6 +22,9 @@
 #import "UIColor+Foundation.h"
 #import "VideoCallUserView.h"
 #import "YChatNetworkEngine.h"
+#import "YChatSettingStore.h"
+#import "YZBaseManager.h"
+#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
 #define kSmallVideoWidth 100.0
@@ -155,9 +158,18 @@
 //    [self playAlerm];
     
     //呼出后立刻振铃
-//     if (self.curState == VideoCallState_Dailing) {
-//         [self performSelector:@selector(checkApplicationStateAndAlert) withObject:nil afterDelay:1];
-//     }
+     if (self.curState == VideoCallState_Dailing) {
+         [self performSelector:@selector(checkApplicationStateAndAlert) withObject:nil afterDelay:1];
+     }
+}
+
+- (void)startVibrate {
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    //默认情况按静音或者锁屏键会静音
+    [audioSession setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+    [self triggerVibrate];
+    [audioSession setActive:YES error:nil];
+
 }
 
 - (void)disMiss {
@@ -165,6 +177,7 @@
         dispatch_cancel(self.timer);
         self.timer = nil;
     }
+    [[YZBaseManager shareInstance] statisticsUsedTime:self.callingTime isVideo:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
     if (self.dismissBlock) {
         self.dismissBlock();
@@ -1028,7 +1041,7 @@
  */
 - (void)shouldRingForIncomingCall {
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        NSString *ringPath = [[NSBundle yzBundle] pathForResource:@"voip_call" ofType:@"mp3"];
+        NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_call" ofType:@"mp3"];
         [self startPlayRing:ringPath];
         self.needPlayingRingAfterForeground = NO;
     } else {
@@ -1039,8 +1052,9 @@
 - (void)checkApplicationStateAndAlert {
     if (self.curState == VideoCallState_Dailing) {
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            NSString *ringPath = [[NSBundle yzBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
-            [self startPlayRing:ringPath];
+//            NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
+//            [self startPlayRing:ringPath];
+            [self startVibrate];
             self.needPlayingAlertAfterForeground = NO;
         } else {
             self.needPlayingAlertAfterForeground = YES;
@@ -1192,10 +1206,6 @@
     }
     return NO;
 }
-
-//-(void)uploadVideoUsedTime {
-//    YChatNetworkEngine requestAppUsedInfoByAppId:<#(NSString *)#> UserId:<#(NSString *)#> AudioMinutes:<#(NSInteger)#> VideoMinutes:<#(NSInteger)#> Source:<#(NSString *)#> completion:<#^(NSDictionary *result, NSError *error)block#>
-//}
 
 
 @end

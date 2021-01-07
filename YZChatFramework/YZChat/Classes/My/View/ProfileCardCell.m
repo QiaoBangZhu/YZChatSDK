@@ -77,13 +77,13 @@
     [cardbgView.layer addSublayer:gl];
     
     
-    UIImageView* iconImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"card_bg"]];
+    UIImageView* iconImageView = [[UIImageView alloc]init];
+    iconImageView.image = YZChatResource(@"card_bg");
     [cardbgView addSubview:iconImageView];
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.bottom.equalTo(@0);
         make.top.equalTo(@0);
     }];
-    
     
     UIImageView* qrcodeImageView = [[UIImageView alloc]init];
     qrcodeImageView.image = YZChatResource(@"icon_qrcode");
@@ -92,6 +92,7 @@
     [qrcodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(@-16);
         make.top.equalTo(@26);
+        make.size.equalTo(@16);
     }];
     
     //添加点击二维码的手势
@@ -118,15 +119,31 @@
     
     _signature = [[UILabel alloc] init];
     [_signature setFont:[UIFont systemFontOfSize:14]];
+    _signature.numberOfLines = 2;
     _signature.textColor = [[UIColor whiteColor]colorWithAlphaComponent:0.6];
+    _signature.lineBreakMode = NSLineBreakByCharWrapping;
     [cardbgView addSubview:_signature];
+        
+    _genderView = [[UIView alloc]init];
+    _genderView.layer.cornerRadius = 6;
+    _genderView.layer.masksToBounds = YES;
+    _genderView.hidden = YES;
+    [cardbgView addSubview:_genderView];
     
+    _genderImageView = [[UIImageView alloc]init];
+    _genderImageView.backgroundColor = [UIColor whiteColor];
+    [_genderView addSubview:_genderImageView];
+
     _company = [[UILabel alloc] init];
     [_company setFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
     [_company setTextColor:[UIColor whiteColor]];
+    _company.text = @"未设置";
     [cardbgView addSubview:_company];
-    _company.hidden = YES;
     
+    _locationImageView = [[UIImageView alloc]init];
+    _locationImageView.image = YZChatResource(@"icon_location");
+    [cardbgView addSubview:_locationImageView];
+
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -156,8 +173,24 @@
     
     [[[RACObserve(data, company) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {
         @strongify(self)
-        self.company.text = x;
+        self.company.text = [x length] == 0 ? @"未设置" : x;
     }];
+    
+    [[[RACObserve(data, gender) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSNumber* x) {
+        @strongify(self)
+        int gender = [x intValue];
+        if (gender == 1) {
+            self.genderImageView.image = YZChatResource(@"icon_male");
+            self.genderView.hidden = NO;
+        }else if (gender == 2) {
+            self.genderImageView.image = YZChatResource(@"icon_female");
+            self.genderView.hidden = NO;
+        }else {
+            self.genderImageView.image = nil;
+            self.genderView.hidden = YES;
+        }
+    }];
+    
     
     if (data.showAccessory) {
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -173,19 +206,37 @@
     [_name mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_avatar.mas_right).offset(12);
         make.top.equalTo(_avatar.mas_top).offset(8);
-        make.right.equalTo(@-10);
+        make.right.lessThanOrEqualTo(@-48);
     }];
     
     [_signature mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.name.mas_left);
         make.top.equalTo(self.name.mas_bottom).offset(2);
-        make.right.equalTo(@-10);
+        make.right.equalTo(@-26);
+    }];
+
+    [_genderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.name.mas_right).offset(8);
+        make.centerY.equalTo(self.name.mas_centerY);
+        make.width.equalTo(@18);
+        make.height.equalTo(@12);
+    }];
+    
+    [_genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+         make.center.equalTo(@0);
+    }];
+    
+    [_locationImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@16);
+        make.bottom.equalTo(@-16);
+        make.size.equalTo(@16);
     }];
     
     [_company mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@16);
-        make.bottom.equalTo(@-16);
-        make.right.equalTo(@-16);
+        make.left.equalTo(_locationImageView.mas_right).offset(3);
+        make.centerY.equalTo(_locationImageView.mas_centerY);
+        make.right.lessThanOrEqualTo(@-16);
+        make.height.equalTo(@22);
     }];
 }
 

@@ -145,7 +145,7 @@
     int itemCount = group.rowCount * group.itemCountPerRow;
     if(indexPath.row == itemCount - 1 && group.needBackDelete){
         TFaceCellData *data = [[TFaceCellData alloc] init];
-        data.path = TUIKitFaceUrl(@"del_normal");
+        data.path = TUIKitFace(@"del_normal");
         [cell setData:data];
     }
     else{

@@ -25,7 +25,7 @@
 #import "TUIFriendProfileControllerServiceProtocol.h"
 #import "TCServiceManager.h"
 #import "YChatNetworkEngine.h"
-
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface SearchMyContactsViewController () <SearchBarDelegate,UITableViewDelegate, UITableViewDataSource>
 
@@ -43,7 +43,8 @@
     // Do any additional setup after loading the view.
 
     self.navigationItem.hidesBackButton = YES;
-    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = NO;
+
     UIView* titleView = [[UIView alloc]initWithFrame:self.searchBarView.frame];
     [titleView addSubview:self.searchBarView];
     self.navigationItem.titleView = titleView;

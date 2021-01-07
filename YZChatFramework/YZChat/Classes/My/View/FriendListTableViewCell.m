@@ -80,7 +80,8 @@
 
     self.titleLabel.text = contactData.nickName;
     [self.avatarView sd_setImageWithURL:[NSURL URLWithString:contactData.userIcon] placeholderImage:DefaultAvatarImage];
-    self.subTitleLabel.text = [contactData.mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+//    self.subTitleLabel.text = [contactData.mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    self.subTitleLabel.text = contactData.mobile;
 }
 
 @end

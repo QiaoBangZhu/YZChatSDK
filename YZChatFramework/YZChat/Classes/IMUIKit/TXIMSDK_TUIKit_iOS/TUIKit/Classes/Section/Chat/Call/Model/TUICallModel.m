@@ -41,6 +41,13 @@ int SIGNALING_EXTRA_KEY_TIME_OUT = 60*3;
     return model;
 }
 
+//排序 for 群成员列表等
+- (NSComparisonResult)compare:(UserModel *)data
+{
+    return [self.name localizedCompare:data.name];
+}
+
+
 @end
 
 

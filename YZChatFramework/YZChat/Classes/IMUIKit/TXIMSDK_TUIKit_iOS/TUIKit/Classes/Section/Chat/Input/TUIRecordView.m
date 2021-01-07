@@ -31,7 +31,7 @@
     [self addSubview:_background];
 
     _recordImage = [[UIImageView alloc] init];
-    _recordImage.image = TUIKitResource(@"record_1");
+    _recordImage.image = [UIImage imageNamed:TUIKitResource(@"record_1")];
     _recordImage.alpha = 0.8;
     _recordImage.contentMode = UIViewContentModeCenter;
     [_background addSubview:_recordImage];
@@ -96,7 +96,7 @@
 - (void)setPower:(NSInteger)power
 {
     NSString *imageName = [self getRecordImage:power];
-    _recordImage.image = TUIKitResource(imageName);
+    _recordImage.image = [UIImage imageNamed:TUIKitResource(imageName)];
 }
 
 - (NSString *)getRecordImage:(NSInteger)power

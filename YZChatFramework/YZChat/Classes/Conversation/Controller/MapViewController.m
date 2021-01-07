@@ -17,6 +17,7 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 
 static NSString *annotationIdentifier = @"annotationIdentifier";
@@ -124,7 +125,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
         _doneBtn.frame = CGRectMake(0, 0, 30, 30);
         [_doneBtn addTarget:self action:@selector(confirmAction) forControlEvents:UIControlEventTouchUpInside];
         [_doneBtn setTitleColor:[UIColor colorWithHex:KCommonBlackColor] forState:UIControlStateNormal];
-        [_doneBtn setTitle:@"确定  " forState:UIControlStateNormal];
+        [_doneBtn setTitle:@"确定" forState:UIControlStateNormal];
         _doneBtn.enabled = false;
     }
     return _doneBtn;

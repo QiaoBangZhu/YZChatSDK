@@ -47,7 +47,7 @@
         @strongify(self)
         NSMutableArray *list = @[].mutableCopy;
         for (V2TIMFriendApplication *item in result.applicationList) {
-            if (item.type == V2TIM_FRIEND_APPLICATION_COME_IN) {
+            if (item.type == V2TIM_FRIEND_APPLICATION_COME_IN || V2TIM_FRIEND_APPLICATION_SEND_OUT ) {
                 TCommonPendencyCellData *data = [[TCommonPendencyCellData alloc] initWithPendency:item];
                 [list addObject:data];
             }

@@ -202,4 +202,7 @@
  *  更新 textView 坐标
  */
 - (void)updateTextViewFrame;
+
+- (void)refreshTextViewFrame;
+
 @end

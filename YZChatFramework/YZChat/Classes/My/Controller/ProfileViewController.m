@@ -30,6 +30,8 @@
 #import "YChatUploadManager.h"
 #import "UIColor+ColorExtension.h"
 #import "ModifyMobileViewController.h"
+#import "YZChooseCityViewController.h"
+#import "TUIAvatarViewController.h"
 
 @interface ProfileViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong)NSMutableArray *data;
@@ -81,19 +83,40 @@
     avatarData.showAccessory = YES;
     avatarData.avatarUrl = [NSURL URLWithString:self.profile.userIcon];
     avatarData.cselector = @selector(didSelectAvatar);
+    avatarData.cbuttonSelector = @selector(showAvatarPreview:);
+
 
     TCommonTextCellData *nicknameData = [TCommonTextCellData new];
     nicknameData.key = @"昵称";
     nicknameData.value = self.profile.nickName;
     nicknameData.showAccessory = YES;
     nicknameData.cselector = @selector(didSelectChangeNickname);
+    
+    TCommonTextCellData *genderData = [TCommonTextCellData new];
+    genderData.key = @"性别";
+    genderData.value = @"保密";
+    if (self.profile.gender == 1) {
+        genderData.value = @"男";
+    }
+    if (self.profile.gender == 2) {
+        genderData.value = @"女";
+    }
+    genderData.showAccessory = YES;
+    genderData.cselector = @selector(didSelectGender);
+    
+    TCommonTextCellData *positionData = [TCommonTextCellData new];
+    positionData.key = @"地区";
+    positionData.value = [self.profile.position length] == 0 ? @"未选择": self.profile.position;
+    positionData.showAccessory = YES;
+    positionData.cselector = @selector(didSelectPosition);
+    
+    TCommonTextCellData *signtureData = [TCommonTextCellData new];
+    signtureData.key = @"个性签名";
+    signtureData.value = self.profile.userSignature;
+    signtureData.showAccessory = YES;
+    signtureData.cselector = @selector(didSelectSignture);
 
-    TCommonTextCellData *phoneData = [TCommonTextCellData new];
-    phoneData.key = @"手机号";
-    phoneData.value = self.profile.mobile;
-    phoneData.showAccessory = YES;
-    phoneData.cselector = @selector(didSelectChangeMobile);
-    [_data addObject:@[avatarData,nicknameData, phoneData]];
+    [_data addObject:@[avatarData,nicknameData, genderData, positionData,signtureData]];
 
 //    TCommonTextCellData *departmant = [TCommonTextCellData new];
 //    departmant.key = @"部门";
@@ -113,6 +136,12 @@
 //    jobNum.cselector = @selector(didSelectJobNum);
 //    jobNum.showAccessory = YES;
 
+    TCommonTextCellData *phoneData = [TCommonTextCellData new];
+    phoneData.key = @"手机号";
+    phoneData.value = self.profile.mobile;
+    phoneData.showAccessory = YES;
+    phoneData.cselector = @selector(didSelectChangeMobile);
+    
     TCommonTextCellData *email = [TCommonTextCellData new];
     email.key = @"邮箱";
     email.value = [user.email length] == 0 ? @"待完善" : user.email;
@@ -120,9 +149,22 @@
     email.cselector = @selector(didSelectChangeEmail);
 
     //@[departmant,position,jobNum,email]
-    [_data addObject:@[email]];
+    [_data addObject:@[phoneData,email]];
 
     [self.tableView reloadData];
+}
+
+- (void)showAvatarPreview:(TCommonAvatarCell *)cell {
+    
+    TCommonAvatarCellData* data = (TCommonAvatarCellData*)cell.data;
+    
+    TUIProfileCardCellData* avatarData = [[TUIProfileCardCellData alloc]init];
+    avatarData.avatarUrl = data.avatarUrl;
+    avatarData.avatarImage = data.avatarImage;
+    
+    TUIAvatarViewController *image = [[TUIAvatarViewController alloc] init];
+    image.avatarData = avatarData;
+    [self.navigationController pushViewController:image animated:YES];
 }
 
 - (void)didSelectAvatar
@@ -149,6 +191,48 @@
     [[RACObserve(vc, textValue) skip:1] subscribeNext:^(NSString *x) {
         @strongify(self)
         self.profile.nickName = x;
+        [self requestEditUserInfo];
+    }];
+}
+
+-(void)didSelectGender {
+    WeChatActionSheet *sheet = [WeChatActionSheet showActionSheet:nil buttonTitles:@[@"保密",@"男",@"女"]];
+    [sheet setFunction:^(WeChatActionSheet *actionSheet,NSInteger index){
+       if (index == WECHATCANCELINDEX) {}else{
+           if (index == 0) {
+               self.profile.gender = 0;
+           }
+           if (index == 1) {
+               self.profile.gender = 1;
+           }
+           if (index == 2) {
+               self.profile.gender = 2;
+           }
+           [self requestEditUserInfo];
+       }
+   }];
+}
+
+- (void)didSelectPosition {
+    YZChooseCityViewController* vc = [[YZChooseCityViewController alloc]init];
+    vc.title = @"选择地区";
+    [self.navigationController pushViewController:vc animated:YES];
+    @weakify(self)
+    vc.finishBlock = ^(NSString * city) {
+        @strongify(self)
+        self.profile.position = city;
+        [self requestEditUserInfo];
+    };
+}
+
+- (void)didSelectSignture {
+    TextEditViewController *vc = [[TextEditViewController alloc] initWithText:self.profile.userSignature editType:EditTypeSignture];
+    vc.title = @"修改个性签名";
+    [self.navigationController pushViewController:vc animated:YES];
+    @weakify(self)
+    [[RACObserve(vc, textValue) skip:1] subscribeNext:^(NSString *x) {
+        @strongify(self)
+        self.profile.userSignature = x;
         [self requestEditUserInfo];
     }];
 }
@@ -241,9 +325,9 @@
 - (void)processImagePicker:(NSDictionary *)info {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(processImagePicker:) object:nil];
     UIImage *editImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
-    UIImage* scaleImage = [editImage resizedImageWithMaximumSize:CGSizeMake(150, 150)];
+    UIImage* scaleImage = [editImage resizedImageWithMaximumSize:CGSizeMake(375, 375)];
     NSError* error = nil;
-    [FCFileManager writeFileAtPath:kHeadImageContentFile content:UIImageJPEGRepresentation(scaleImage, .5) error:&error];
+    [FCFileManager writeFileAtPath:kHeadImageContentFile content:UIImageJPEGRepresentation(scaleImage, 1) error:&error];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         @autoreleasepool {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -283,7 +367,17 @@
 }
 
 - (void)requestEditUserInfo {
-    [YChatNetworkEngine requestUpdateUserInfoWithUserId:self.profile.userId avatar:[self.profile.userIcon length] == 0 ? @"" : self.profile.userIcon nickname:[self.profile.nickName length] == 0 ? @"" : self.profile.nickName cardNum:[self.profile.card length] == 0 ? @"" : self.profile.card  position:[self.profile.position length] == 0 ? @"" : self.profile.position emali:[self.profile.email length] == 0 ? @"" : self.profile.email password:[self.profile.password length] ? @"" : self.profile.password  completion:^(NSDictionary *result, NSError *error) {
+    [YChatNetworkEngine requestUpdateUserInfoWithUserId:self.profile.userId
+                                 avatar:[self.profile.userIcon length] == 0 ? @"" : self.profile.userIcon
+                               nickname:[self.profile.nickName length] == 0 ? @"" : self.profile.nickName
+                                 cardNum:[self.profile.card length] == 0 ? @"" : self.profile.card
+                                position:[self.profile.position length] == 0 ? @"" : self.profile.position
+                                   emali:[self.profile.email length] == 0 ? @"" : self.profile.email
+                                password:[self.profile.password length] == 0 ? @"" : self.profile.password
+                               signature:[self.profile.userSignature length] == 0 ? @"" :self.profile.userSignature
+                                    city:[self.profile.city length] == 0 ? @"" : self.profile.city
+                                  gender:self.profile.gender
+                              completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             if ([result[@"code"] intValue] == 200) {
                 [[YChatSettingStore sharedInstance]saveUserInfo:self.profile];

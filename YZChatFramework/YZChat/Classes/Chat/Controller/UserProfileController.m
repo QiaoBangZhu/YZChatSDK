@@ -32,6 +32,7 @@
 #import "UserInfo.h"
 #import "UIColor+ColorExtension.h"
 #import "THelper.h"
+#import "YChatSettingStore.h"
 
 @TCServiceRegister(TUIUserProfileControllerServiceProtocol, UserProfileController)
 @interface UserProfileController ()<AddFriendHeaderCellDelegate>
@@ -114,6 +115,10 @@
         })];
         inlist;
     })];
+    
+    if (![self.user.userId isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
+        self.helloStr = [NSString stringWithFormat:@"我是 %@",[YChatSettingStore sharedInstance].getNickName];
+    }
 
     //当用户状态为请求添加好友/请求添加群组时，视图加载出验证消息模块
     if (self.pendency || self.groupPendency) {
@@ -358,9 +363,5 @@
     return [UIApplication sharedApplication].keyWindow;
 }
 
-- (void)didTapOnAvatar:(ProfileCardCellData*)data{
-    TUIAvatarViewController *image = [[TUIAvatarViewController alloc] init];
-    image.avatarData = (TUIProfileCardCellData*)data;
-    [self.navigationController pushViewController:image animated:true];
-}
+
 @end

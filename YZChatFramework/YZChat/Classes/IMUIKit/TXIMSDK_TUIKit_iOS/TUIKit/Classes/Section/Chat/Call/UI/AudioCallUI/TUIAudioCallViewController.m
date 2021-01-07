@@ -16,9 +16,10 @@
 #import "TUICall+TRTC.h"
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
-#import "CommonConstant.h"
-
+#import "YZBaseManager.h"
 #import "TCUtil.h"
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 #define kUserCalledView_Width  160
 #define kUserCalledView_Top  160
@@ -111,9 +112,9 @@
     [self reloadData:NO];
     
    //呼出后立刻振铃
-//    if (self.curState == AudioCallState_Dailing) {
-//        [self performSelector:@selector(checkApplicationStateAndAlert) withObject:nil afterDelay:1];
-//    }
+    if (self.curState == AudioCallState_Dailing) {
+        [self performSelector:@selector(checkApplicationStateAndAlert) withObject:nil afterDelay:1];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -133,6 +134,7 @@
         dispatch_cancel(self.timer);
         self.timer = nil;
     }
+    [[YZBaseManager shareInstance] statisticsUsedTime:self.callingTime isVideo:NO];
     [self dismissViewControllerAnimated:YES completion:nil];
     if (self.dismissBlock) {
         self.dismissBlock();
@@ -360,7 +362,7 @@
 - (UIButton *)accept {
     if (!_accept.superview) {
         _accept = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_accept setImage:YZChatResource(@"ic_dialing") forState:UIControlStateNormal];
+        [_accept setImage:YZChatResource(@"ic_dialing")  forState:UIControlStateNormal];
         [_accept addTarget:self action:@selector(acceptClick) forControlEvents:UIControlEventTouchUpInside];
         _accept.hidden = (self.curSponsor == nil);
         [self.view addSubview:_accept];
@@ -371,7 +373,7 @@
 - (QMUIButton *)mute {
     if (!_mute.superview) {
         _mute = [QMUIButton buttonWithType:UIButtonTypeCustom];
-        [_mute setImage:YZChatResource(@"ic_dialing") forState:UIControlStateNormal];
+        [_mute setImage:YZChatResource(@"ic_mute") forState:UIControlStateNormal];
         [_mute addTarget:self action:@selector(muteClick) forControlEvents:UIControlEventTouchUpInside];
         [_mute setTitle:@"静音" forState:UIControlStateNormal];
         _mute.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -498,7 +500,7 @@
     if (!self.playingAlerm) {
         return;
     }
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
 //    AudioServicesPlaySystemSoundWithCompletion(1008, ^{
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [weakSelf loopPlayAlert];
@@ -508,6 +510,7 @@
 
 #pragma mark Event
 - (void)hangupClick {
+    [[YZBaseManager shareInstance] statisticsUsedTime:self.callingTime isVideo:NO];
     [[TUICall shareInstance] hangup];
     [self disMiss];
 }
@@ -647,7 +650,7 @@
  */
 - (void)shouldRingForIncomingCall {
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        NSString *ringPath = [[NSBundle yzBundle] pathForResource:@"voip_call" ofType:@"mp3"];
+        NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_call" ofType:@"mp3"];
         [self startPlayRing:ringPath];
         self.needPlayingRingAfterForeground = NO;
     } else {
@@ -658,8 +661,9 @@
 - (void)checkApplicationStateAndAlert {
     if (self.curState == AudioCallState_Dailing) {
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            NSString *ringPath = [[NSBundle yzBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
-            [self startPlayRing:ringPath];
+//            NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
+//            [self startPlayRing:ringPath];
+             [self startVibrate];
             self.needPlayingAlertAfterForeground = NO;
         } else {
             self.needPlayingAlertAfterForeground = YES;
@@ -691,6 +695,15 @@
     else{
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
+}
+
+- (void)startVibrate {
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    //默认情况按静音或者锁屏键会静音
+    [audioSession setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+    [self triggerVibrate];
+    [audioSession setActive:YES error:nil];
+
 }
 
 - (void)startPlayRing:(NSString *)ringPath {

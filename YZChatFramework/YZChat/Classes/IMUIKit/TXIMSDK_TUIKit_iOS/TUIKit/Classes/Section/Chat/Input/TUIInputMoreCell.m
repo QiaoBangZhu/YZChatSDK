@@ -9,6 +9,7 @@
 #import "THeader.h"
 #import "TUIKit.h"
 #import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 static TUIInputMoreCellData *TUI_Photo_MoreCell;
 static TUIInputMoreCellData *TUI_Picture_MoreCell;
@@ -28,6 +29,7 @@ static TUIInputMoreCellData *TUI_Location_MoreCell;
     if (!TUI_Picture_MoreCell) {
         TUI_Picture_MoreCell = [[TUIInputMoreCellData alloc] init];
         TUI_Picture_MoreCell.title = @"拍照";
+        TUI_Picture_MoreCell.image = [UIImage imageNamed:@"more_camera"];
         TUI_Picture_MoreCell.image = YZChatResource(@"more_camera");
 
     }
@@ -129,7 +131,7 @@ static TUIInputMoreCellData *TUI_Location_MoreCell;
     if (!TUI_Location_MoreCell) {
         TUI_Location_MoreCell = [[TUIInputMoreCellData alloc] init];
         TUI_Location_MoreCell.title = @"发送位置";
-        TUI_Location_MoreCell.image = YZChatResource(@"more_location");
+        TUI_Location_MoreCell.image = [UIImage imageNamed:@"more_location"];
     }
     return TUI_Location_MoreCell;
 }

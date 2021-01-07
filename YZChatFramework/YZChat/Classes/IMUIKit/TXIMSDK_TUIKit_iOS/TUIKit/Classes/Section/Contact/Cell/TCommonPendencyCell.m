@@ -77,6 +77,7 @@
     if (pendencyData.avatarUrl) {
          [self.avatarView sd_setImageWithURL:pendencyData.avatarUrl];
     }
+    
     if (pendencyData.isAccepted) {
         [self.agreeButton setTitle:@"已同意" forState:UIControlStateNormal];
         self.agreeButton.enabled = NO;

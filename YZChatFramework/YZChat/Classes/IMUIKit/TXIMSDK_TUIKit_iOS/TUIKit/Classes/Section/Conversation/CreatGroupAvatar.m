@@ -61,7 +61,7 @@
 //                    imageView.layer.cornerRadius = [TUIKit sharedInstance].config.avatarCornerRadius;
 //                }
                 
-                [imageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:TUIKitResource(@"contact_default") completed:^(UIImage * _Nullable image,
+                [imageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:TUIKitResource(@"contact_default")] completed:^(UIImage * _Nullable image,
                                                                                                                               NSError * _Nullable error,
                                                                                                                               SDImageCacheType cacheType,
                                                                                                                               NSURL * _Nullable imageURL) {

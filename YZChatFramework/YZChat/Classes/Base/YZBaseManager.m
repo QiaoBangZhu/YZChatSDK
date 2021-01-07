@@ -15,6 +15,9 @@
 #import "TNavigationController.h"
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
+#import "YzIMKitAgent.h"
+#import "YChatSettingStore.h"
+#import "YChatNetworkEngine.h"
 
 @interface YZBaseManager()
 @end
@@ -33,6 +36,12 @@
 - (UIViewController *)getLoginController {
     LoginViewController *login = [[LoginViewController alloc]init];
     return [[UINavigationController alloc]initWithRootViewController:login];
+}
+
+- (void)logout {
+    [[YChatSettingStore sharedInstance] logout];
+    //退出登录
+    [[NSNotificationCenter defaultCenter]postNotificationName:YZChatSDKNotification_UserStatusListener object:nil];
 }
 
 - (TUITabBarController *)getMainController {
@@ -95,6 +104,17 @@
     return tbc;
 }
 
-
+//统计视频/语音通话的使用时间(如果视频通话过程中切换成了语音也按视频统计)
+-(void)statisticsUsedTime:(int)seconds isVideo:(BOOL)isVideo {
+    if (seconds <= 0) {return;}
+    int minutes = (int)seconds / 60 + 1;
+    [YChatNetworkEngine requestAppUsedInfoByAppId:self.appId UserId:[[YChatSettingStore sharedInstance]getUserId] AudioMinutes:(isVideo == true?0:minutes) VideoMinutes:(isVideo == true ? minutes : 0) Source:@"ios" completion:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            if ([result[@"code"]intValue] == 200) {
+                NSLog(@"同步成功");
+            }
+        }
+    }];
+}
 
 @end

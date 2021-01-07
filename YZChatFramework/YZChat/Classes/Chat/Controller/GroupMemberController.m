@@ -9,6 +9,7 @@
 #import "GroupMemberController.h"
 #import "ContactSelectViewController.h"
 #import "UIColor+ColorExtension.h"
+#import "TUICallModel.h"
 
 @interface GroupMemberController ()
 
@@ -40,8 +41,8 @@
     ContactSelectViewController *vc = [[ContactSelectViewController alloc] initWithNibName:nil bundle:nil];
     vc.title = @"添加联系人";
     vc.viewModel.disableFilter = ^BOOL(TCommonContactSelectCellData *data) {
-        for (TGroupMemberCellData *cd in members) {
-            if ([cd.identifier isEqualToString:data.identifier])
+        for (UserModel *cd in members) {
+            if ([cd.userId isEqualToString:data.identifier])
                 return YES;
         }
         return NO;
@@ -64,8 +65,8 @@
     ContactSelectViewController *vc = [[ContactSelectViewController alloc] initWithNibName:nil bundle:nil];
     vc.title = @"删除联系人";
     vc.viewModel.avaliableFilter = ^BOOL(TCommonContactSelectCellData *data) {
-        for (TGroupMemberCellData *cd in members) {
-            if ([cd.identifier isEqualToString:data.identifier])
+        for (UserModel *cd in members) {
+            if ([cd.userId isEqualToString:data.identifier])
                 return YES;
         }
         return NO;
@@ -102,5 +103,7 @@
         [THelper makeToastError:code msg:desc];
     }];
 }
+
+
 
 @end

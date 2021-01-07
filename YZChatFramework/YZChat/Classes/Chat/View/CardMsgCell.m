@@ -14,6 +14,8 @@
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/SDWebImage.h>
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @implementation CardMsgCell
 

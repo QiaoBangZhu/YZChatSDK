@@ -174,8 +174,9 @@
 
 - (void)didLogoutInSettingController:(SettingViewController *)controller
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YzWorkzonePayReturn" object:nil];
     [[YChatSettingStore sharedInstance] logout];
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getMainController];
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getLoginController];
 }
 
 - (void)changePwd {

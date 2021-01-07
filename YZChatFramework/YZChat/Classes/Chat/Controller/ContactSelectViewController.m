@@ -142,10 +142,6 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
             [self.dataArray addObjectsFromArray:searchDataArray];
         }
     }];
-    
-    
-    
-    
 }
 
 - (void)viewDidLayoutSubviews
@@ -252,6 +248,13 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
         } else {
             data.cselector = NULL;
         }
+        if (self.isFromFriendProfile && (data.identifier == self.friendProfileCellData.identifier)) {
+            data.selected = YES;
+            if (![self.selectArray containsObject:data]) {
+                [self.selectArray addObject:data];
+                [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
+            }
+        }
         [cell fillWithData:data];
         return  cell;
     }
@@ -262,6 +265,13 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
         data.cselector = @selector(didSelectContactCell:);
     } else {
         data.cselector = NULL;
+    }
+    if (self.isFromFriendProfile && ([data.identifier isEqualToString: self.friendProfileCellData.identifier])) {
+        data.selected = YES;
+        if (![self.selectArray containsObject:data]) {
+            [self.selectArray addObject:data];
+            [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
+        }
     }
     [cell fillWithData:data];
     return cell;
@@ -276,6 +286,9 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
             return;
         }
     }
+    if ([data.identifier isEqualToString: self.friendProfileCellData.identifier] && self.isFromFriendProfile && data.isSelected == YES) {
+        return;
+    }
     data.selected = !data.isSelected;
     [cell fillWithData:data];
     if (data.isSelected) {
@@ -285,7 +298,6 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
     }
 //    self.pickerView.selectArray = [self.selectArray copy];
     if ([self.selectArray count] > 0) {
-
         [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
     }else {
         [self.confirmBtn setTitle:@"确定" forState:UIControlStateNormal];

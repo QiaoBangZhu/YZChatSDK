@@ -25,12 +25,20 @@
 #import "YZBaseManager.h"
 #import "CommonConstant.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
-
+#import "ReactiveObjC/ReactiveObjC.h"
+#import "TCUtil.h"
+#import "NSBundle+YZBundle.h"
+#import "UIColor+Foundation.h"
 
 @interface YzIMKitAgent()
 @property (nonatomic,   copy)NSString* appId;
 @property (nonatomic, strong)SysUser * user;
 @property (nonatomic, strong)UserInfo* userInfo;
+
+@property(nonatomic,  copy) NSString *groupID;
+@property(nonatomic,  copy) NSString *userID;
+@property(nonatomic,strong) V2TIMSignalingInfo *signalingInfo;
+@property(nonatomic,strong) NSData   *deviceToken;
 
 @end
 
@@ -47,7 +55,9 @@
 
 - (void)initAppId:(NSString *)appId {
     self.appId = appId;
+    [YZBaseManager shareInstance].appId = appId;
     [self configureTUIKit];
+    [self configureNavigationBar];
     [self configureAmap];
 }
 
@@ -82,6 +92,7 @@
             if ([result[@"code"]intValue] == 200) {
                 UserInfo* model = [UserInfo yy_modelWithDictionary:result[@"data"]];
                 model.token = result[@"token"];
+                model.mobile = sysUser.mobile;
                 self.userInfo = model;
                 [YZBaseManager shareInstance].userInfo = model;
                 success();
@@ -96,29 +107,11 @@
 
 //登录腾讯IM
 - (void)startAutoWithDeviceToken:(NSData *)deviceToken {
-    [YZBaseManager shareInstance].deviceToken = deviceToken;
-    
+    @weakify(self)
     [[V2TIMManager sharedInstance] login:self.userInfo.userId userSig:self.userInfo.userSign succ:^{
+        @strongify(self)
         if (deviceToken) {
-            TIMTokenParam *param = [[TIMTokenParam alloc] init];
-            //企业证书 ID
-            param.busiId = sdkBusiId;
-            [param setToken:deviceToken];
-            [[TIMManager sharedInstance] setToken:param succ:^{
-                NSLog(@"-----> 上传 token 成功 ");
-                //推送声音的自定义化设置
-                TIMAPNSConfig *config = [[TIMAPNSConfig alloc] init];
-                config.openPush = 0;
-                config.c2cSound = @"sms-received.caf";
-                config.groupSound = @"sms-received.caf";
-                [[TIMManager sharedInstance] setAPNS:config succ:^{
-                    NSLog(@"-----> 设置 APNS 成功");
-                } fail:^(int code, NSString *msg) {
-                    NSLog(@"-----> 设置 APNS 失败");
-                }];
-            } fail:^(int code, NSString *msg) {
-                NSLog(@"-----> 上传 token 失败 ");
-            }];
+            [self configureAPNSConfig];
         }
         [[YChatSettingStore sharedInstance]saveUserInfo:self.userInfo];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -126,8 +119,8 @@
         });
     } fail:^(int code, NSString *msg) {
         [[YChatSettingStore sharedInstance]logout];
+        [THelper makeToast:msg];
     }];
-
 }
 
 - (void)startChatWithChatId:(NSString *)toChatId
@@ -140,6 +133,7 @@
     data.title = self.userInfo.nickName;
     ChatViewController *chat = [[ChatViewController alloc] init];
     chat.conversationData = data;
+    [[self getCurrentVC].navigationController pushViewController:chat animated:YES];
 }
 
 - (void)configureTUIKit {
@@ -166,6 +160,198 @@
     }else {
         [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     }
+}
+
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    self.deviceToken = deviceToken;
+    [YZBaseManager shareInstance].deviceToken = deviceToken;
+    [self configureAPNSConfig];
+}
+
+- (void)configureAPNSConfig {
+    TIMTokenParam *param = [[TIMTokenParam alloc] init];
+    //企业证书 ID
+    param.busiId = sdkBusiId;
+    [param setToken: _deviceToken];
+    [[TIMManager sharedInstance] setToken:param succ:^{
+        NSLog(@"-----> 上传 token 成功 ");
+        NSString *c2cSoundPath = [[NSBundle yzBundle] pathForResource:@"sms-received" ofType:@"caf"];
+        NSString *groupSoundPath = [[NSBundle yzBundle] pathForResource:@"sms-received" ofType:@"caf"];
+        //推送声音的自定义化设置
+        TIMAPNSConfig *config = [[TIMAPNSConfig alloc] init];
+        config.openPush = 0;
+        config.c2cSound = c2cSoundPath;
+        config.groupSound = groupSoundPath;
+    
+        [[TIMManager sharedInstance] setAPNS:config succ:^{
+            NSLog(@"-----> 设置 APNS 成功");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"-----> 设置 APNS 失败");
+        }];
+    } fail:^(int code, NSString *msg) {
+        NSLog(@"-----> 上传 token 失败 ");
+    }];
+
+}
+
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSDictionary *extParam = [TCUtil jsonSring2Dictionary:userInfo[@"ext"]];
+    NSDictionary *entity = extParam[@"entity"];
+    if (!entity) {
+        return;
+    }
+    // 业务，action : 1 普通文本推送；2 音视频通话推送
+    NSString *action = entity[@"action"];
+    if (!action) {
+        return;
+    }
+    // 聊天类型，chatType : 1 单聊；2 群聊
+    NSString *chatType = entity[@"chatType"];
+    if (!chatType) {
+        return;
+    }
+    // action : 1 普通消息推送
+    if ([action intValue] == APNs_Business_NormalMsg) {
+        if ([chatType intValue] == 1) {   //C2C
+            self.userID = entity[@"sender"];
+        } else if ([chatType intValue] == 2) { //Group
+            self.groupID = entity[@"sender"];
+        }
+        if ([[V2TIMManager sharedInstance] getLoginStatus] == V2TIM_STATUS_LOGINED) {
+            [self onReceiveNomalMsgAPNs];
+        }
+    }
+    // action : 2 音视频通话推送
+    else if ([action intValue] == APNs_Business_Call) {
+        // 单聊中的音视频邀请推送不需处理，APP 启动后，TUIkit 会自动处理
+        if ([chatType intValue] == 1) {   //C2C
+            return;
+        }
+        // 内容
+        NSDictionary *content = [TCUtil jsonSring2Dictionary:entity[@"content"]];
+        if (!content) {
+            return;
+        }
+        UInt64 sendTime = [entity[@"sendTime"] integerValue];
+        uint32_t timeout = [content[@"timeout"] intValue];
+        UInt64 curTime = (UInt64)[[NSDate date] timeIntervalSince1970];
+        if (curTime - sendTime > timeout) {
+            [THelper makeToast:@"通话接收超时"];
+            return;
+        }
+        self.signalingInfo = [[V2TIMSignalingInfo alloc] init];
+        self.signalingInfo.actionType = (SignalingActionType)[content[@"action"] intValue];
+        self.signalingInfo.inviteID = content[@"call_id"];
+        self.signalingInfo.inviter = entity[@"sender"];
+        self.signalingInfo.inviteeList = content[@"invited_list"];
+        self.signalingInfo.groupID = content[@"group_id"];
+        self.signalingInfo.timeout = timeout;
+        self.signalingInfo.data = [TCUtil dictionary2JsonStr:@{SIGNALING_EXTRA_KEY_ROOM_ID : content[@"room_id"], SIGNALING_EXTRA_KEY_VERSION : content[@"version"], SIGNALING_EXTRA_KEY_CALL_TYPE : content[@"call_type"]}];
+        if ([[V2TIMManager sharedInstance] getLoginStatus] == V2TIM_STATUS_LOGINED) {
+            [self onReceiveGroupCallAPNs];
+        }
+    }
+}
+
+- (void)onReceiveNomalMsgAPNs {
+    if (self.groupID.length > 0 || self.userID.length > 0) {
+        TUITabBarController *tab = [[YZBaseManager shareInstance]getMainController];
+        if (tab.selectedIndex != 0) {
+            [tab setSelectedIndex:0];
+        }
+        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+        UINavigationController *nav = (UINavigationController *)tab.selectedViewController;
+        ConversationViewController *vc = (ConversationViewController *)nav.viewControllers.firstObject;
+        [vc pushToChatViewController:self.groupID userID:self.userID];
+        self.groupID = nil;
+        self.userID = nil;
+    }
+}
+
+- (void)onReceiveGroupCallAPNs {
+    if (self.signalingInfo) {
+        [[TUIKit sharedInstance] onReceiveGroupCallAPNs:self.signalingInfo];
+        self.signalingInfo = nil;
+    }
+}
+
+- (void)onUserStatus:(NSNotification *)notification
+{
+    TUIUserStatus status = [notification.object integerValue];
+    switch (status) {
+        case TUser_Status_ForceOffline:
+        {//强制下线
+            [self didLogout];
+        }
+            break;
+        case TUser_Status_ReConnFailed:
+        {
+            NSLog(@"连网失败");
+        }
+            break;
+        case TUser_Status_SigExpired:
+        {
+            NSLog(@"userSig过期");
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)didLogout
+{
+    [[YChatSettingStore sharedInstance] logout];
+    //退出登录
+    [[NSNotificationCenter defaultCenter]postNotificationName:YZChatSDKNotification_ForceOffline object:nil];
+}
+
+- (void)openURL:(NSURL *)url options:(NSDictionary *)options {
+    if ([[url scheme] isEqualToString:scheme]) {
+        //发送通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"YzWorkzonePayReturn" object:nil];
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+- (UIViewController *)getCurrentVC {
+    UIViewController *result = nil;
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    //app默认windowLevel是UIWindowLevelNormal，如果不是，找到UIWindowLevelNormal的
+    if (window.windowLevel != UIWindowLevelNormal){
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows) {
+         if (tmpWin.windowLevel == UIWindowLevelNormal){
+             window = tmpWin;
+             break;
+           }
+        }
+    }
+    id  nextResponder = nil;
+    UIViewController *appRootVC=window.rootViewController;
+    //如果是present上来的appRootVC.presentedViewController 不为nil
+    if (appRootVC.presentedViewController) {
+        nextResponder = appRootVC.presentedViewController;
+    }else{
+        UIView *frontView = [[window subviews] objectAtIndex:0];
+        nextResponder = [frontView nextResponder];
+    }
+    if ([nextResponder isKindOfClass:[UITabBarController class]]){
+        UITabBarController * tabbar = (UITabBarController *)nextResponder;
+        UINavigationController * nav = (UINavigationController *)tabbar.viewControllers[tabbar.selectedIndex];
+        //        UINavigationController * nav = tabbar.selectedViewController ; 上下两种写法都行
+        result=nav.childViewControllers.lastObject;
+    }else if ([nextResponder isKindOfClass:[UINavigationController class]]){
+        UIViewController * nav = (UIViewController *)nextResponder;
+        result = nav.childViewControllers.lastObject;
+    }else{
+        result = nextResponder;
+    }
+    return result;
+
 }
 
 /**

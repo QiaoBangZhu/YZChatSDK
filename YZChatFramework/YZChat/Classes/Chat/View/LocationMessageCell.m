@@ -23,12 +23,14 @@
         
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         _titleLabel.textColor = [UIColor colorWithHex:KCommonBlackTextColor];
         [self.container addSubview:_titleLabel];
 
         _addressLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _addressLabel.font = [UIFont systemFontOfSize:12];
         _addressLabel.textColor = [UIColor colorWithHex:KCommonBubbleTextGrayColor];
+        _addressLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self.container addSubview:_addressLabel];
         
         [self.container.layer setMasksToBounds:YES];
@@ -69,13 +71,14 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@16);
         make.top.equalTo(@12);
-        make.right.equalTo(@-16);
+        make.right.lessThanOrEqualTo(@-16);
     }];
 
     [self.addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel.mas_left);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(4);
         make.height.equalTo(@12);
+        make.right.lessThanOrEqualTo(@-16);
     }];
 
     [self.mapImageView mas_makeConstraints:^(MASConstraintMaker *make) {

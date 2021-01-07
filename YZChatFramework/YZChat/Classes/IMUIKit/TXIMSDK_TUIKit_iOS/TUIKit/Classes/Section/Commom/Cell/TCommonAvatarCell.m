@@ -66,8 +66,12 @@
     CGSize headSize = CGSizeMake(56, 56);
     _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(TPersonalCommonCell_Margin, TPersonalCommonCell_Margin, headSize.width, headSize.height)];
     _avatar.contentMode = UIViewContentModeScaleAspectFill;
+    _avatar.userInteractionEnabled = YES;
     [self.contentView addSubview:_avatar];
-
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(avatarClick)];
+    [_avatar addGestureRecognizer:tap];
+    
+    
     _keyLabel = self.textLabel;
     _valueLabel = self.detailTextLabel;
 
@@ -91,6 +95,28 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+}
+
+- (void)avatarClick
+{
+    if (self.avatarData.cbuttonSelector) {
+        UIViewController *vc = self.mm_viewController;
+        if ([vc respondsToSelector:self.avatarData.cbuttonSelector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [vc performSelector:self.avatarData.cbuttonSelector withObject:self];
+#pragma clang diagnostic pop
+        }
+    }
+
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ((touch.view == self.avatar)) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

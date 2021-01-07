@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)BOOL isCanEdit;
 @property (nonatomic, copy)NSString *placeholder;
 @property (nonatomic, assign)id<SearchBarDelegate>delegate;
-
+@property (nonatomic, assign)BOOL resginTextView;
 @end
 
 NS_ASSUME_NONNULL_END

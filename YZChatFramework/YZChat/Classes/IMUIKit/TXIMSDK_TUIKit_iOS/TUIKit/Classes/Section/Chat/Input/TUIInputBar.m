@@ -18,6 +18,7 @@
 #import <QMUIKit/QMUIKit.h>
 #import "UIColor+Foundation.h"
 #import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @interface TUIInputBar() <UITextViewDelegate, AVAudioRecorderDelegate>
 @property (nonatomic, strong) TUIRecordView *record;
@@ -56,8 +57,7 @@
     _faceButton = [[UIButton alloc] init];
     [_faceButton addTarget:self action:@selector(clickFaceBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
-    [self addSubview:_faceButton];
+    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];    [self addSubview:_faceButton];
 
     _keyboardButton = [[UIButton alloc] init];
     [_keyboardButton addTarget:self action:@selector(clickKeyboardBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -91,7 +91,7 @@
     _inputTextView = [[TResponderTextView alloc] init];
     _inputTextView.delegate = self;
 //    _inputTextView.placeholder = @"发消息...";
-    [_inputTextView setFont:[UIFont systemFontOfSize:14]];
+    [_inputTextView setFont:[UIFont systemFontOfSize:16]];
     [_inputTextView.layer setMasksToBounds:YES];
     [_inputTextView.layer setCornerRadius:8.0f];
     [_inputTextView.layer setBorderWidth:0.5f];
@@ -297,11 +297,6 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-//    self.inputTextView.placeholderLabel.hidden = YES;
-//    if (self.inputTextView.text.length < 1){
-//        self.inputTextView.placeholderLabel.hidden = NO;
-//    }
-    
     CGSize size = [_inputTextView sizeThatFits:CGSizeMake(_inputTextView.frame.size.width, TTextView_TextView_Height_Max)];
     CGFloat oldHeight = _inputTextView.frame.size.height;
     CGFloat newHeight = size.height;
@@ -509,6 +504,14 @@
     NSString *path = _recorder.url.path;
     if([[NSFileManager defaultManager] fileExistsAtPath:path]){
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    }
+}
+//当进入一个聊天页面，输入框内存在之前输入内容适合 需要判断一下行高超过一行则调用此方法
+- (void)refreshTextViewFrame {
+    CGSize size = [_inputTextView sizeThatFits:CGSizeMake(_inputTextView.frame.size.width, TTextView_TextView_Height_Max)];
+    //大于1行才刷新
+    if (size.height > 35.5) {
+        [self updateTextViewFrame];
     }
 }
 

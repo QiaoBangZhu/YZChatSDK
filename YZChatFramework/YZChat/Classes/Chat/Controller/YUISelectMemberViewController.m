@@ -16,6 +16,8 @@
 #import "TUIMemberPanelCell.h"
 #import "UIColor+ColorExtension.h"
 #import "SearchBarView.h"
+#import "NSString+TUICommon.h"
+#import <Masonry/Masonry.h>
 
 #define kUserBorder 44.0
 #define kUserSpacing 2
@@ -38,6 +40,13 @@
 @property(nonatomic,strong) NSMutableArray *memberList;
 @property(nonatomic,strong) SearchBarView  *searchBar;
 @property(nonatomic,strong) NSMutableArray *searchList;
+
+@property NSDictionary<NSString *, NSArray<UserModel *> *> *dataDict;
+@property NSArray *groupList;
+
+@property NSDictionary<NSString *, NSArray<UserModel *> *> *searchDataDict;
+@property NSArray *searchGroupList;
+
 @end
 
 @implementation YUISelectMemberViewController{
@@ -98,7 +107,7 @@
 - (UIButton *)doneBtn {
     if (!_doneBtn.superview) {
         _doneBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        [_doneBtn setTitle:@"确定  " forState:UIControlStateNormal];
+        [_doneBtn setTitle:@"确定" forState:UIControlStateNormal];
         [_doneBtn setAlpha:0.5];
         [_doneBtn setTitleColor:[UIColor colorWithHex:kCommonBlueTextColor] forState:UIControlStateNormal];
         [_doneBtn addTarget:self action:@selector(onNext) forControlEvents:UIControlEventTouchUpInside];
@@ -152,6 +161,8 @@
         _selectTable.dataSource = self;
         _selectTable.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
         _selectTable.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        [_selectTable setSectionIndexBackgroundColor:[UIColor clearColor]];
+        [_selectTable setSectionIndexColor:[UIColor colorWithHex:KCommonlittleLightGrayColor]];
         [self.view addSubview:_selectTable];
         _selectTable.mm_width(self.view.mm_w).mm_top(self.topStartPosition + 0).mm_flexToBottom(0);
     }
@@ -195,8 +206,26 @@
 }
 
 #pragma mark UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if ([self.searchDataDict count] > 0) {
+        return  [self.searchGroupList count];
+    }
+    return [self.groupList count];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.searchList count] > 0 ? [self.searchList count]:self.memberList.count;
+    
+    if ([self.searchGroupList count] >0) {
+        NSString *group = self.searchGroupList[section];
+        NSArray *list = self.searchDataDict[group];
+        return list.count;
+    }
+    NSString *group = self.groupList[section];
+    NSArray *list = self.dataDict[group];
+    return list.count;
+    
+//    return [self.searchList count] > 0 ? [self.searchList count]:self.memberList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -205,18 +234,78 @@
     if (!cell) {
         cell = [[YUISelectMemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    if ([self.searchList count] > 0) {
-        UserModel *model = self.searchList[indexPath.row];
+    UserModel* model = [[UserModel alloc]init];
+    if ([self.searchGroupList count] > 0) {
+        NSString *group = self.searchGroupList[indexPath.section];
+        NSArray *list = self.searchDataDict[group];
+        model = list[indexPath.row];
         BOOL isSelect = [self isUserSelected:model];
         [cell fillWithData:model isSelect:isSelect];
         return cell;
     }
-    if (indexPath.row < self.memberList.count) {
-        UserModel *model = self.memberList[indexPath.row];
+    if (indexPath.section < [self.groupList count]) {
+        NSString *group = self.groupList[indexPath.section];
+        NSArray *list = self.dataDict[group];
+        model = list[indexPath.row];
         BOOL isSelect = [self isUserSelected:model];
         [cell fillWithData:model isSelect:isSelect];
     }
+//    if ([self.searchList count] > 0) {
+//        UserModel *model = self.searchList[indexPath.row];
+//        BOOL isSelect = [self isUserSelected:model];
+//        [cell fillWithData:model isSelect:isSelect];
+//        return cell;
+//    }
+//    if (indexPath.row < self.memberList.count) {
+//        UserModel *model = self.memberList[indexPath.row];
+//        BOOL isSelect = [self isUserSelected:model];
+//        [cell fillWithData:model isSelect:isSelect];
+//    }
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+#define TEXT_TAG 1
+    static NSString *headerViewId = @"ContactDrawerView";
+    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewId];
+    if (!headerView)
+    {
+        headerView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerViewId];
+        headerView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
+        
+        UIView* leftView = [[UIView alloc]init];
+        [headerView addSubview:leftView];
+        leftView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
+        [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(@0);
+        }];
+        
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        textLabel.tag = TEXT_TAG;
+        textLabel.font = [UIFont systemFontOfSize:14];
+        textLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
+        [headerView addSubview:textLabel];
+        textLabel.mm_fill().mm_left(26);
+        textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    }
+    UILabel *label = [headerView viewWithTag:TEXT_TAG];
+    label.text = self.groupList[section];
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (!section) {
+        return 0;
+    }
+    return 33;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    NSMutableArray *array = [NSMutableArray arrayWithObject:@""];
+    [array addObjectsFromArray:self.groupList];
+    return array;
 }
 
 //- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
@@ -240,18 +329,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BOOL isSelected = NO;
     UserModel *userSelected = [[UserModel alloc] init];
-    
-    if ([self.searchList count] > 0) {
-        if (indexPath.row < self.searchList.count) {
-            UserModel *user = self.searchList[indexPath.row];
+    if ([self.searchGroupList count] > 0) {
+        NSString *group = self.searchGroupList[indexPath.section];
+        NSArray *list = self.searchDataDict[group];
+        if (indexPath.row < list.count) {
+            UserModel *user = list[indexPath.row];
             isSelected = [self isUserSelected:user];
             userSelected = [user copy];
         }
     }else {
-        if (indexPath.row < self.memberList.count) {
-            UserModel *user = self.memberList[indexPath.row];
-            isSelected = [self isUserSelected:user];
-            userSelected = [user copy];
+        if ([self.groupList count] > 0) {
+            NSString *group = self.groupList[indexPath.section];
+            NSArray *list = self.dataDict[group];
+            if (indexPath.row < list.count) {
+                UserModel *user = list[indexPath.row];
+                isSelected = [self isUserSelected:user];
+                userSelected = [user copy];
+            }
         }
     }
     
@@ -355,6 +449,22 @@
     [self getMembersWithOptionalStyle];
     [[V2TIMManager sharedInstance] getGroupMemberList:self.groupId filter:V2TIM_GROUP_MEMBER_FILTER_ALL nextSeq:0 succ:^(uint64_t nextSeq, NSArray<V2TIMGroupMemberFullInfo *> *memberList) {
         @strongify(self)
+        NSMutableDictionary *dataDict = @{}.mutableCopy;
+        NSMutableArray *groupList = @[].mutableCopy;
+        NSMutableArray *nonameList = @[].mutableCopy;
+        if ([self.memberList count] > 0) {
+            UserModel* atModel = self.memberList[0];
+            if ([atModel.userId isEqualToString:kImSDK_MesssageAtALL]) {
+                NSMutableArray *list = [dataDict objectForKey:@" "];
+                if (!list) {
+                    list = @[].mutableCopy;
+                    dataDict[@" "] = list;
+                    [groupList addObject:@" "];
+                }
+                [list addObject:atModel];
+            }
+        }
+    
         for (V2TIMGroupMemberFullInfo *info in memberList) {
             if ([info.userID isEqualToString:[TUICallUtils loginUser]]) {
                 continue;
@@ -374,7 +484,33 @@
                 model.avatar = info.faceURL;
             }
             [self.memberList addObject:model];
+            
+            NSString *group = [[model.name firstPinYin] uppercaseString];
+            if (group.length == 0 || !isalpha([group characterAtIndex:0])) {
+                [nonameList addObject:model];
+                continue;
+            }
+            NSMutableArray *list = [dataDict objectForKey:group];
+            if (!list) {
+                list = @[].mutableCopy;
+                dataDict[group] = list;
+                [groupList addObject:group];
+            }
+            [list addObject:model];
         }
+        
+        [groupList sortUsingSelector:@selector(localizedStandardCompare:)];
+        if (nonameList.count) {
+            [groupList addObject:@"#"];
+            dataDict[@"#"] = nonameList;
+        }
+        for (NSMutableArray *list in [dataDict allValues]) {
+            [list sortUsingSelector:@selector(compare:)];
+        }
+
+        self.groupList = groupList;
+        self.dataDict = dataDict;
+        
         [self.selectTable reloadData];
     } fail:nil];
 }
@@ -398,6 +534,7 @@
         model.name = @"所有人";
         [self.memberList addObject:model];
     }
+
 }
 
 - (BOOL)isUserSelected:(UserModel *)user {
@@ -416,15 +553,55 @@
      dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
      dispatch_async(globalQueue, ^{
      if (searchText != nil && searchText.length > 0) {
+         NSMutableDictionary *dataDict = @{}.mutableCopy;
+         NSMutableArray *groupList = @[].mutableCopy;
+         NSMutableArray *nonameList = @[].mutableCopy;
+         
          //遍历需要搜索的所有内容,其中self.selectedUsers为存放总数据的数组
          for (UserModel *model in self.memberList) {
                NSString *nickname = model.name;
                if ([nickname rangeOfString:searchText options:NSCaseInsensitiveSearch].length >0) {
                  [self.searchList addObject:model];
+                   
+                   NSString *group = [[nickname firstPinYin] uppercaseString];
+                   if ([group isEqualToString:@" "]) {
+                       NSMutableArray *list = [dataDict objectForKey:group];
+                       if (!list) {
+                           list = @[].mutableCopy;
+                           dataDict[group] = list;
+                           [groupList addObject:group];
+                       }
+                       [list addObject:model];
+                       continue;
+                   }
+                   
+                   if (group.length == 0 || !isalpha([group characterAtIndex:0])) {
+                       [nonameList addObject:model];
+                       continue;
+                   }
+                   NSMutableArray *list = [dataDict objectForKey:group];
+                   if (!list) {
+                       list = @[].mutableCopy;
+                       dataDict[group] = list;
+                       [groupList addObject:group];
+                   }
+                   [list addObject:model];
                }
+             [groupList sortUsingSelector:@selector(localizedStandardCompare:)];
+             if (nonameList.count) {
+                 [groupList addObject:@"#"];
+                 dataDict[@"#"] = nonameList;
+             }
+             for (NSMutableArray *list in [dataDict allValues]) {
+                 [list sortUsingSelector:@selector(compare:)];
+             }
+            self.searchGroupList = groupList;
+            self.searchDataDict = dataDict;
            }
       }else{
           self.searchList = [[NSMutableArray alloc]init];
+          self.searchGroupList = [[NSMutableArray alloc]init];
+          self.searchDataDict = @{}.mutableCopy;
       }
        //回到主线程
       dispatch_async(dispatch_get_main_queue(), ^{
@@ -432,5 +609,7 @@
         });
       });
 }
+
+
 
 @end

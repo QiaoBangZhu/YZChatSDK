@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *signature;
 @property (nonatomic, strong) NSString *company;
+@property (nonatomic, assign) int       gender;
 @property BOOL showAccessory;
 
 @end
@@ -40,7 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *name;
 @property (nonatomic, strong) UILabel *signature;
 @property (nonatomic, strong) UILabel *company;
-
+@property (nonatomic, strong) UIImageView* genderImageView;
+@property (nonatomic, strong) UIView  * genderView;
+@property (nonatomic, strong) UIImageView *locationImageView;
 @property (nonatomic, strong) ProfileCardCellData *cardData;
 //实现点击头像的回调委托。
 @property (nonatomic, weak)  id<ProfileCardDelegate> delegate;

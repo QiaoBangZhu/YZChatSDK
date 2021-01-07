@@ -86,20 +86,30 @@
 - (void)onSave {
     if (_type == EditTypeEmail) {
         if (![YChatValidInput isEmail:self.inputTextField.text]) {
-            [QMUITips showInfo:@"请输入正确的邮箱"];
+            [QMUITips showError:@"请输入正确的邮箱"];
             return;
         }
     }
     if (_type == EditTypeNickname) {
-        if ([self.inputTextField.text length] > 15) {
-            [QMUITips showInfo:@"昵称不能超过15个字"];
+        if ([self.inputTextField.text length] > 10) {
+            [QMUITips showError:@"昵称不能超过10个字"];
             return;
         }
     }
     if (_type == EditTypeFriendRemark) {
-        [QMUITips showInfo:@"昵称不能超过6个字"];
-        return;
+        if ([self.inputTextField.text length] > 6) {
+            [QMUITips showError:@"昵称不能超过6个字"];
+            return;
+        }
     }
+    
+    if (_type == EditTypeSignture) {
+        if ([self.inputTextField.text length] > 30) {
+            [QMUITips showError:@"个性签名不能超过30个字"];
+            return;
+        }
+    }
+    
     self.textValue = [self.inputTextField.text stringByTrimmingCharactersInSet:
                       [NSCharacterSet illegalCharacterSet]];
     [self.navigationController popViewControllerAnimated:YES];

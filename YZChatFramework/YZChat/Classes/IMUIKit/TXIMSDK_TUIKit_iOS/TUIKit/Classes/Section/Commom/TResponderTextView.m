@@ -27,17 +27,4 @@
         return [super canPerformAction:action withSender:sender];
 }
 
-- (instancetype)init{
-    if (self = [super init]){
-        self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 7, 100, 18)];
-        self.placeholderLabel.textColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1];
-        [self addSubview:self.placeholderLabel];
-    }
-    return self;
-}
-
-- (void)layoutSubviews{
-    self.placeholderLabel.text = self.placeholder;
-}
-
 @end

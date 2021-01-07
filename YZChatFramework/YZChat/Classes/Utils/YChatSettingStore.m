@@ -54,6 +54,12 @@ DEF_SINGLETON(YChatSettingStore);
     return _userInfo.token;
 }
 
+- (NSString *)getAppId {
+    return _userInfo.companyId;
+}
+
+
+
 - (BOOL)isLogin{
     if ([[self getUserSign] length] > 0 && [[self getUserId] length] > 0 && [self getAuthToken] > 0) {
         return YES;

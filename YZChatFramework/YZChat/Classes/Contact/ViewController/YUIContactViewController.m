@@ -31,6 +31,8 @@
 
 //@import ImSDK;
 #import <ImSDKForiOS/ImSDK.h>
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
 #define kContactCellReuseId @"ContactCellReuseId"
 #define kContactActionCellReuseId @"ContactActionCellReuseId"

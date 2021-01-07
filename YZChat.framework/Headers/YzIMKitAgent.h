@@ -10,6 +10,11 @@
 #import "SysUser.h"
 NS_ASSUME_NONNULL_BEGIN
 
+//手动退出YZChatSDKUI的通知
+#define YZChatSDKNotification_UserStatusListener @"YZChatSDKNotification_UserStatusListener"
+//强制下线通知
+#define YZChatSDKNotification_ForceOffline @"YZChatSDKNotification_ForceOffline"
+
 /// 成功回调
 typedef void (^YChatSysUserSucc)(void);
 /// 失败回调
@@ -50,6 +55,22 @@ typedef void (^YChatSysUserFail)(int errCode, NSString * errMsg);
 - (void)startChatWithChatId:(NSString*)toChatId
                    chatName:(NSString*)chatName
        finishToConversation:(BOOL)finishToConversation;
+/*
+ * 获取device Token(必须调用)
+ */
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+
+/*
+ * 收到的推送消息(必须调用)
+ **/
+- (void)didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+/*
+ * 如使用工作台的打车功能则需要 在需要在appdegate内
+ - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+    方法内调用此函数,并设置app的url scheme 为 tg.tripg.com
+ */
+- (void)openURL:(NSURL *)url options:(NSDictionary *)options;
 
 @end
 

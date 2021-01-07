@@ -33,8 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,   copy) NSString              * userIcon;
 @property (nonatomic ,   copy) NSString              * token;
 @property (nonatomic , assign) NSInteger               functionPerm;
-
-
+@property (nonatomic,    copy) NSString              * userRemark;
+@property (nonatomic,  assign) int                     gender;
+@property (nonatomic,    copy) NSString              * userSignature;
+@property (nonatomic,  assign) NSInteger               userType;
+@property (nonatomic,    copy) NSString              * city;
+@property (nonatomic,    copy) NSString              * addressBookName;
+@end
 
 /**
  //login
@@ -52,8 +57,6 @@ NS_ASSUME_NONNULL_BEGIN
      msg = "";
      token = ae20aad34b30264e55766feef58b9e9f;
  }
-
-
 
 //userInfo
  {
@@ -85,6 +88,39 @@ NS_ASSUME_NONNULL_BEGIN
  }
 
  
+ {
+     code = 200;
+     data =     {
+         card = "";
+         city = "<null>";
+         companyId = de241446a50499bb77a8684cf610fd04;
+         companyName = "\U5e73\U53f0\U7814\U53d1\U4e2d\U5fc3";
+         createId = "system_register";
+         createTime = "2020-12-19 18:45:14";
+         deleteStatus = 0;
+         departName = "\U5e73\U53f0\U7814\U53d1\U4e2d\U5fc3";
+         departmentId = 456580923;
+         dimension = "";
+         email = "";
+         gender = 0;
+         id = 1340246810853875714;
+         lastModifyId = "sys_user_update";
+         lastModifyTime = "2020-12-28 15:57:17";
+         longitude = "<null>";
+         mobile = 13552253631;
+         nickName = q;
+         password = 3e804c2b4af0e53368e3cfdd8ce6d719;
+         position = "";
+         userIcon = "";
+         userId = bd331a601384b9dfb6b7f3631d5b8676;
+         userRemark = "<null>";
+         userSignature = "\U7b7e\U540d";
+         userType = 0;
+     };
+     msg = "\U64cd\U4f5c\U6210\U529f";
+     token = "";
+ }
+ 
  
  
  
@@ -93,6 +129,5 @@ NS_ASSUME_NONNULL_BEGIN
  
  */
 
-@end
 
 NS_ASSUME_NONNULL_END

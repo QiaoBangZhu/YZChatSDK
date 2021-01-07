@@ -8,6 +8,10 @@
 
 #import "YZAppDelegate.h"
 #import "ReactiveObjC/ReactiveObjC.h"
+#import <QMUIKit/QMUIKit.h>
+#import "YZLoginViewController.h"
+#import <UserNotifications/UserNotifications.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 #if USE_POD
 #import "YZChat/YZChat.h"
@@ -15,26 +19,35 @@
 #import <YZChat/YZChat.h>
 #endif
 
+@interface YZAppDelegate()<UNUserNotificationCenterDelegate>
+
+@end
+
 @implementation YZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self configureNavigationBar];
     [self registNotification];
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+
     [[YzIMKitAgent shareInstance]initAppId:@"de241446a50499bb77a8684cf610fd04"];
-    SysUser* user = [[SysUser alloc]init];
-    user.userId = @"95e6bd162f019b60ad8380fba5e0db41";
-    user.nickName = @"大统领";
-    @weakify(self)
-    [[YzIMKitAgent shareInstance]registerWithSysUser:user loginSuccess:^{
-    @strongify(self)
-//        if (self.deviceToken) {
-            [self startLogin];
-//        }r
-     } loginFailed:^(int errCode, NSString * _Nonnull errMsg) {
-         NSLog(@"error =%@",errMsg);
+
+
+    SysUser* u = [[SysUser alloc]init];
+    u.mobile = @"17774942222";
+    u.nickName = @"我的IOS";
+    u.userId = @"ios20210104";
+    [[YzIMKitAgent shareInstance]registerWithSysUser:u loginSuccess:^{
+        YZLoginViewController* loginvc = [[YZLoginViewController alloc]init];
+        self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:loginvc];
+    } loginFailed:^(int errCode, NSString * _Nonnull errMsg) {
+            
     }];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didlogout) name:YZChatSDKNotification_UserStatusListener object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(forceOffline) name:YZChatSDKNotification_ForceOffline object:nil];
+
     // Override point for customization after application launch.
     return YES;
 }
@@ -43,17 +56,36 @@
     [[YzIMKitAgent shareInstance]startAutoWithDeviceToken:self.deviceToken];
 }
 
+- (void)didlogout {
+    [UIApplication sharedApplication].keyWindow.rootViewController = [self getLoginController];
+}
+
+- (void)forceOffline {
+    [UIApplication sharedApplication].keyWindow.rootViewController = [self getLoginController];
+    [QMUITips showWithText:@"您的账号已经在其他终端登录"];
+}
+
+- (UIViewController *)getLoginController {
+    YZLoginViewController *login = [[YZLoginViewController alloc]init];
+    return [[UINavigationController alloc]initWithRootViewController:login];
+}
+
 - (void)registNotification
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-    {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
-    }
+    //iOS10特有
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+            center.delegate = self;
+            [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                if (granted) {
+                    // 点击允许
+                  [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                        NSLog(@"%@", settings);
+                    }];
+          } else {
+                    // 点击不允许
+                    NSLog(@"注册失败");
+         }
+    }];
 }
 
 - (void)configureNavigationBar {
@@ -66,9 +98,7 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    NSBundle* yzBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[YZAppDelegate class]] pathForResource:@"YZChatResource" ofType:@"bundle"]];
-    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back" inBundle:yzBundle compatibleWithTraitCollection:nil] imageWithTintColor:[UIColor blackColor] renderingMode:UIImageRenderingModeAlwaysOriginal];
-
+    UIImage *backButtonImage = [UIImage imageNamed:@"icon_back"];
     if (@available(iOS 11.0, *)) {
         [UINavigationBar appearance].backIndicatorImage = backButtonImage;
         [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
@@ -79,7 +109,15 @@
 
 -(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     _deviceToken = deviceToken;
+    [[YzIMKitAgent shareInstance]didRegisterForRemoteNotificationsWithDeviceToken: deviceToken];
 }
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+    [[YzIMKitAgent shareInstance]didReceiveRemoteNotification:userInfo];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

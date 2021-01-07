@@ -111,6 +111,13 @@
     _searchBar.placeholder = _placeholder;
 }
 
+- (void)setResginTextView:(BOOL)resginTextView {
+    _resginTextView = resginTextView;
+    if (resginTextView) {
+        [self.searchBar resignFirstResponder];
+    }
+}
+
 - (UIButton *)cancleBtn {
     if (!_cancleBtn) {
         _cancleBtn  = [UIButton buttonWithType:UIButtonTypeCustom];

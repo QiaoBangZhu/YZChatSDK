@@ -40,21 +40,21 @@
     NSMutableArray *list = @[].mutableCopy;
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = TUIKitResource(@"new_friend");
+        data.icon = [UIImage imageNamed:TUIKitResource(@"new_friend")];
         data.title = @"新的联系人";
         data.cselector = @selector(onAddNewFriend:);
         data;
     })];
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = TUIKitResource(@"public_group");
+        data.icon = [UIImage imageNamed:TUIKitResource(@"public_group")];
         data.title = @"群聊";
         data.cselector = @selector(onGroupConversation:);
         data;
     })];
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = TUIKitResource(@"blacklist");
+        data.icon = [UIImage imageNamed:TUIKitResource(@"blacklist")];
         data.title = @"黑名单";
         data.cselector = @selector(onBlackList:);
         data;

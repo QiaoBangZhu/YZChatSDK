@@ -11,9 +11,9 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "TUIKit.h"
 #import "UIColor+TUIDarkMode.h"
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
 #import <Masonry/Masonry.h>
+#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
 @implementation TUIFileMessageCell
@@ -37,7 +37,7 @@
         [self.container addSubview:_length];
 
         _image = [[UIImageView alloc] init];
-        _image.image = [[TUIImageCache sharedInstance] getResourceFromCache:@"msg_file"];
+        _image.image = [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"msg_file")];
         _image.contentMode = UIViewContentModeScaleAspectFit;
         [self.container addSubview:_image];
     

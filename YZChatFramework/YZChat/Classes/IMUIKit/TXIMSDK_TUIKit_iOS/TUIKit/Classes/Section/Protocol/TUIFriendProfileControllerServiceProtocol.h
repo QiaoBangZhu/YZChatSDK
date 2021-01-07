@@ -21,8 +21,10 @@
  */
 @property V2TIMFriendInfo *friendProfile;
 
-//在会话页面有置顶消息的选项 magic
+//在会话页面有置顶消息的选项
 @property(nonatomic, assign) BOOL isShowConversationAtTop;
+//是否显示建群的入口(好友信息详情页面是否可以跳转建群页面)
+@property(nonatomic, assign) BOOL isShowGrpEntrance;
 
 @end
 

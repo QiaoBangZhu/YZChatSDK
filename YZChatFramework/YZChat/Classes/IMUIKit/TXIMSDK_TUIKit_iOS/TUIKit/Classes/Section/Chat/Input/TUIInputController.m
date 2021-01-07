@@ -29,6 +29,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
 
 @interface TUIInputController () <TTextViewDelegate, TMenuViewDelegate, TFaceViewDelegate, TMoreViewDelegate>
 @property (nonatomic, assign) InputStatus status;
+/**适配刘海屏的手机*/
+@property (nonatomic, strong) UIView   * fringeView;
+
 @end
 
 @implementation TUIInputController
@@ -76,6 +79,7 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
     //颜色必须和InputBar背景色一致
     view.backgroundColor = [UIColor whiteColor];
     view.hidden = !Is_IPhoneX;
+    self.fringeView = view;
     [self.view addSubview:view];
 }
 
@@ -84,6 +88,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
     // http://tapd.oa.com/20398462/bugtrace/bugs/view?bug_id=1020398462072883317&url_cache_key=b8dc0f6bee40dbfe0e702ef8cebd5d81
     if (_delegate && [_delegate respondsToSelector:@selector(inputController:didChangeHeight:)]){
         [_delegate inputController:self didChangeHeight:_inputBar.frame.size.height + Bottom_SafeHeight];
+    }
+    if(Is_IPhoneX) {
+        self.fringeView.hidden = NO;
     }
 }
 
@@ -100,6 +107,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
         //[self hideMoreAnimation:NO];
     }
     _status = Input_Status_Input_Keyboard;
+    if(Is_IPhoneX) {
+        self.fringeView.hidden = YES;
+    }
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
@@ -112,6 +122,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
 
 - (void)hideFaceAnimation
 {
+    if(Is_IPhoneX) {
+        self.fringeView.hidden = NO;
+    }
     self.faceView.hidden = NO;
     self.faceView.alpha = 1.0;
     self.menuView.hidden = NO;
@@ -132,6 +145,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
 
 - (void)showFaceAnimation
 {
+    if(Is_IPhoneX) {
+        self.fringeView.hidden = YES;
+    }
     [self.view addSubview:self.faceView];
     [self.view addSubview:self.menuView];
 
@@ -159,6 +175,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
 
 - (void)hideMoreAnimation
 {
+    if(Is_IPhoneX) {
+        self.fringeView.hidden = NO;
+    }
     self.moreView.hidden = NO;
     self.moreView.alpha = 1.0;
     __weak typeof(self) ws = self;
@@ -173,6 +192,9 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
 
 - (void)showMoreAnimation
 {
+    if(Is_IPhoneX) {
+        self.fringeView.hidden = YES;
+    }
     [self.view addSubview:self.moreView];
 
     self.moreView.hidden = NO;

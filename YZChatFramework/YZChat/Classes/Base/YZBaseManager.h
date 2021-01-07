@@ -17,12 +17,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)UserInfo *userInfo;
 @property (nonatomic, strong)NSData   *deviceToken;
 @property (nonatomic, strong)TUITabBarController * tabController;
+@property (nonatomic,   copy)NSString* appId;
 
 + (YZBaseManager *)shareInstance;
 
 - (UIViewController *)getLoginController;
 
 - (TUITabBarController *)getMainController;
+
+- (void)logout;
+
+-(void)statisticsUsedTime:(int)seconds isVideo:(BOOL)isVideo;
+
 
 @end
 

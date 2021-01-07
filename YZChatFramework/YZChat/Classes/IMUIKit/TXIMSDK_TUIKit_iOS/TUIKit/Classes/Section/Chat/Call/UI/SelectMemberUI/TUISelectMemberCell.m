@@ -10,6 +10,7 @@
 #import "THeader.h"
 #import "UIColor+TUIDarkMode.h"
 #import "TUIKit.h"
+#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
 @implementation TUISelectMemberCell
@@ -40,7 +41,7 @@
 - (void)fillWithData:(UserModel *)model isSelect:(BOOL)isSelect
 {
     _userModel = model;
-    _selectedMark.image = isSelect ? TUIKitResource(@"add_selected") : TUIKitResource(@"icon_contact_select_pressed");
+    _selectedMark.image = isSelect ? [UIImage imageNamed:TUIKitResource(@"add_selected")] : [UIImage imageNamed:TUIKitResource(@"icon_contact_select_pressed")];
     [_userImg sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage")];
     _nameLabel.text = model.name;
 }

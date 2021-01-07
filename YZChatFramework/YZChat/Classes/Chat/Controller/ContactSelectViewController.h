@@ -19,12 +19,16 @@ typedef void(^ContactSelectFinishBlock)(NSArray<TCommonContactSelectCellData *> 
 
 @interface ContactSelectViewController : UIViewController
 
-@property (nonatomic) TContactSelectViewModel *viewModel;
+//从好友详情页面进入的创建群组页面的
+@property (nonatomic, assign) BOOL isFromFriendProfile;
+@property (nonatomic, strong) TCommonContactSelectCellData* friendProfileCellData;
+
+@property (nonatomic, strong) TContactSelectViewModel * _Nullable viewModel;
 
 /**
  * 选择结束回调
  */
-@property (nonatomic, copy)ContactSelectFinishBlock finishBlock;
+@property (nonatomic, copy)ContactSelectFinishBlock _Nullable finishBlock;
 
 /**
  * 最多选择个数
@@ -34,7 +38,7 @@ typedef void(^ContactSelectFinishBlock)(NSArray<TCommonContactSelectCellData *> 
 /**
  * 自定义的数据列表
  */
-@property NSArray *sourceIds;
+@property NSArray * _Nullable sourceIds;
 
 @end
 

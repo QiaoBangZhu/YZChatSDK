@@ -29,6 +29,7 @@ AS_SINGLETON(YChatSettingStore);
 - (NSString *)getUserSign;
 - (NSString *)getNickName;
 - (NSString *)getMobile;
+- (NSString *)getAppId;
 //当有第三方调用元信时候根据此字段判断展示几个tab
 - (NSInteger)getfunctionPerm;
 

@@ -12,6 +12,8 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry.h>
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
 @implementation YCommonTextCellData
 - (instancetype)init {

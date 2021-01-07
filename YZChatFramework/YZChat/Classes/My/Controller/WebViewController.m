@@ -12,12 +12,12 @@
 #import <WebKit/WebKit.h>
 #import <QMUIKit/QMUIKit.h>
 #import "UIColor+ColorExtension.h"
-#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 #import "YChatNetworkEngine.h"
 #import "YChatSettingStore.h"
 #import "TCUtil.h"
 #import "THelper.h"
+#import "NSBundle+YZBundle.h"
 
 #define FETCH_USERINFO @"loadJSSdk"
 #define ARGEE_FETCHUSERINFO @"getUserProfile"
@@ -38,7 +38,7 @@
     // Do any additional setup after loading the view.
     [self setupView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payBack) name:@"payReturn" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payBack) name:@"YzWorkzonePayReturn" object:nil];
 }
 
 - (void)payBack {
@@ -73,13 +73,11 @@
     [_backBtn removeFromSuperview];
     
     [_webView.configuration.userContentController removeScriptMessageHandlerForName:FETCH_USERINFO];
-    [_webView.configuration.userContentController removeScriptMessageHandlerForName:ARGEE_FETCHUSERINFO];
 }
 
 - (void)setupView {
     [self.view addSubview:self.webView];
     if (_needUA) {
-//        [self.webView setCustomUserAgent:@"hsh_ios"];
         [self setWebViewUA];
     }
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,7 +92,6 @@
     if (!_webView) {
         // js配置
         WKUserContentController *userContentController = [[WKUserContentController alloc] init];
-        [userContentController addScriptMessageHandler:self name:ARGEE_FETCHUSERINFO];
         [userContentController addScriptMessageHandler:self name:FETCH_USERINFO];
         // WKWebView的配置
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
@@ -226,7 +223,7 @@
 //    if (!navigationAction.targetFrame.isMainFrame) {
 //        [webView loadRequest:navigationAction.request];
 //    }
-//    
+//
 //    return nil;
 //}
 
@@ -292,20 +289,7 @@
         NSDictionary* dict = [TCUtil jsonSring2Dictionary:message.body];
         [self fetchUserInfoWithAppKey:dict[@"appKey"]];
     }
-    if ([message.name isEqualToString:ARGEE_FETCHUSERINFO]) {
-        NSDictionary* dict = [TCUtil jsonSring2Dictionary:message.body];
-        
-    }
-    if ([message.name isEqualToString:ARGEE_FETCHUSERINFO]) {
-            NSDictionary* params = @{ @"code":@0,
-                                      @"nickName":[YChatSettingStore sharedInstance].getNickName,
-                                      @"userId":[YChatSettingStore sharedInstance].getUserId,
-                                      @"mobile":[YChatSettingStore sharedInstance].getMobile
-            };
-              NSString* json = [params yy_modelToJSONString];
-              NSString* decodeJson = [TCUtil string2JSONString:json];
-              [self jsCallOC:decodeJson];
-        }
+   
 }
 
 - (void)fetchUserInfoWithAppKey:(NSString*)appKey {
@@ -350,6 +334,25 @@
      ];
 }
 
+#pragma mark - WKUIDelegate delegate method
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt
+    defaultText:(NSString *)defaultText
+    initiatedByFrame:(WKFrameInfo *)frame
+    completionHandler:(void (^)(NSString * _Nullable))completionHandler {
+    if (prompt) {
+        if ([prompt isEqualToString: ARGEE_FETCHUSERINFO]) {
+            
+            NSDictionary* params = @{@"code":@0,
+                                     @"nickName":[[YChatSettingStore sharedInstance].getNickName length] ? [YChatSettingStore sharedInstance].getNickName : @"",
+                                     @"userId":[[YChatSettingStore sharedInstance].getUserId length] ? [YChatSettingStore sharedInstance].getUserId : @"" ,
+                                     @"mobile":[[YChatSettingStore sharedInstance].getMobile length] ? [YChatSettingStore sharedInstance].getMobile : @""
+           };
+           NSString* json = [params yy_modelToJSONString];
+           NSString* decodeJson = [TCUtil string2JSONString:json];
+           completionHandler(decodeJson);
+        }
+    }
+}
 
 //data =     {
 //    chargeMobile = "<null>";

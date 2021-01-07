@@ -20,6 +20,7 @@
 #import <TMRTC/TMRTC.h>
 #import "YZBaseManager.h"
 #import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
 @interface WorkZoneViewController ()<UITableViewDelegate, UITableViewDataSource,WorkZoneTableViewCellDelegate,TMRTCAuthServiceDelegate,TMRTCAuthServiceDataSource>
 @property (nonatomic, strong)UITableView   * tableView;
@@ -60,6 +61,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.estimatedRowHeight = 157;
+    _tableView.showsVerticalScrollIndicator = false;
+    _tableView.showsHorizontalScrollIndicator = false;
     [_tableView registerClass:[WorkZoneTableViewCell class] forCellReuseIdentifier:@"WorkZoneTableViewCell"];
     _tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
@@ -82,7 +85,6 @@
     
 }
 
-
 - (void)requestData {
     [self.data removeAllObjects];
     @weakify(self);
@@ -103,7 +105,6 @@
             }
         }
     }];
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -121,8 +122,13 @@
     }
     WorkZoneModel* model = self.data[indexPath.section];
     if ([model.toolDataList count] > 0) {
-        NSInteger row = [model.toolDataList count]/4 + 1;
-        return (row*61 + 56 + (row/2)*24 + 24);
+        NSInteger row = 1;
+        if ([model.toolDataList count]%4 == 0) {
+            row = model.toolDataList.count/4;
+        }else {
+            row = model.toolDataList.count/4 + 1;
+        }
+        return (row*61 + 56 + (row-1)*24 + 24);
     }
     return 174;
 }
@@ -294,8 +300,8 @@
 }
 
 - (void)exit {
-    [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance]getMainController];
-    [YZBaseManager shareInstance].tabController.selectedIndex = 2;
+    [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
+      [YZBaseManager shareInstance].tabController.selectedIndex = 2;
 }
 
 

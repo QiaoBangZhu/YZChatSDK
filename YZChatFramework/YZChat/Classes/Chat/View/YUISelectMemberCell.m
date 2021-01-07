@@ -10,6 +10,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "THeader.h"
 #import "UIColor+TUIDarkMode.h"
+#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
 @implementation YUISelectMemberCell{

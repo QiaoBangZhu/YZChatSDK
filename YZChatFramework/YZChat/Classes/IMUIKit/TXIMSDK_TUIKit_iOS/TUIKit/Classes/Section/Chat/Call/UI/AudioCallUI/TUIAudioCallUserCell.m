@@ -8,6 +8,8 @@
 #import "TUIAudioCallUserCell.h"
 #import <Masonry/Masonry.h>
 #import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
+
 
 @implementation TUIAudioCallUserCell
 {

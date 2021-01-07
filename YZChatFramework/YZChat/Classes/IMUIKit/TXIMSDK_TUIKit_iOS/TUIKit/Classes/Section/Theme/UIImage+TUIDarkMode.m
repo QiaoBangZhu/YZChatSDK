@@ -1,7 +1,6 @@
 
 #import "UIImage+TUIDarkMode.h"
 #import <objc/message.h>
-#import "NSBundle+YZBundle.h"
 
 @implementation UIImage (TUIDarkMode)
 
@@ -72,12 +71,12 @@
 }
 
 + (UIImage *)d_imageWithImageLight:(NSString *)light dark:(NSString *)dark {
-    UIImage *lightImage = [UIImage imageNamed:light inBundle:[NSBundle tUIkitBundle] compatibleWithTraitCollection:nil];
+    UIImage *lightImage = [UIImage imageNamed:light];
     if (!lightImage) {
         return nil;
     }
     if (@available(iOS 13.0, *)) {
-        UIImage *darkImage= [UIImage imageNamed:dark inBundle:[NSBundle tUIkitBundle] compatibleWithTraitCollection:nil];
+        UIImage *darkImage= [UIImage imageNamed:dark];
         UITraitCollection *const scaleTraitCollection = [UITraitCollection currentTraitCollection];
         UITraitCollection *const darkUnscaledTraitCollection = [UITraitCollection traitCollectionWithUserInterfaceStyle:UIUserInterfaceStyleDark];
         UITraitCollection *const darkScaledTraitCollection = [UITraitCollection traitCollectionWithTraitsFromCollections:@[scaleTraitCollection, darkUnscaledTraitCollection]];

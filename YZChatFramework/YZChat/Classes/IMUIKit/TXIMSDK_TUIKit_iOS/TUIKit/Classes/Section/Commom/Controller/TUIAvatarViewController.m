@@ -5,6 +5,7 @@
 #import "UIImage+TUIKIT.h"
 #import "TScrollView.h"
 #import "TUIKit.h"
+#import <Masonry/Masonry.h>
 
 @interface TUIAvatarViewController ()<UIScrollViewDelegate>
 @property UIImageView *avatarView;
@@ -20,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title = @"查看大图";
     self.saveBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
     self.saveShadowImage = self.navigationController.navigationBar.shadowImage;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -30,7 +31,10 @@
     self.avatarScrollView = [[TScrollView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.avatarScrollView];
     self.avatarScrollView.backgroundColor = [UIColor blackColor];
-    self.avatarScrollView.mm_fill();
+//    self.avatarScrollView.mm_fill();
+    [self.avatarScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
 
     self.avatarView = [[UIImageView alloc] initWithImage:self.avatarData.avatarImage];
     self.avatarScrollView.imageView = self.avatarView;

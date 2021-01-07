@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'YZChat'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of YZChat.'
+  s.version          = '1.0.1'
+  s.summary          = 'This is a UISDK for chat.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -11,20 +11,21 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
-                       DESC
+                        DESC
 
-  s.homepage         = 'https://github.com/QiaoBangZhu/YZChat'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'QiaoBangZhu' => 'ios9001@foxmail.com' }
-  s.source           = { :git => 'https://github.com/QiaoBangZhu/YZChat.git', :tag => s.version.to_s }
+  s.homepage         = 'https://www.yzmetax.com'
+  s.license          = { :type => 'Copyright', :text => 'Copyright © 2021 yzmetax. All Rights Reserved.\n' }
+  s.author           = { 'QiaoBangZhu' => 'magic0230@qq.com' }
+  s.source = { :http => 'https://wangpan.yzmetax.com/yz_ios_sdk_1.0.1.zip' }
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
   s.platform = :ios
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'YZChat.framework/Headers/*.{h}'
-  s.public_header_files = 'YZChat.framework/Headers/*.{h}'
-  s.resources = ['YZChat.framework/YZChatResource.bundle', 'YZChat.framework/TUIKitResource.bundle', 'YZChat.framework/TUIKitFace.bundle']
-  s.vendored_frameworks = 'YZChat.framework', 'YZChat/Vendors/*.framework'
+  s.source_files = 'YZChat/YZChat.framework/Headers/*.{h}'
+  s.public_header_files = 'YZChat/YZChat.framework/Headers/*.{h}'
+  s.resources = ['YZChat/YZChat.framework/YZChatResource.bundle', 'YZChat/YZChat.framework/TUIKitResource.bundle', 'YZChat/YZChat.framework/TUIKitFace.bundle']
+  s.vendored_frameworks = 'YZChat/YZChat.framework', 'YZChat/Vendors/*.framework'
 
   s.dependency 'AFNetworking', '~> 4.0'
   s.dependency 'QMUIKit'
@@ -34,7 +35,6 @@ TODO: Add long description of the pod here.
   s.dependency 'IQKeyboardManager'
   s.dependency 'MJExtension'
   s.dependency 'FCFileManager'
-  s.dependency 'BlocksKit'
   s.dependency 'Bugly'
   s.dependency 'ZXingObjC'
   

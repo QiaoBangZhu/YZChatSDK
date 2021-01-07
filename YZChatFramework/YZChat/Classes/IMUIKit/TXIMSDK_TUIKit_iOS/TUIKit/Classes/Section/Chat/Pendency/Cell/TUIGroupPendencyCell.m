@@ -61,7 +61,7 @@
     self.addWordingLabel.text = pendencyData.requestMsg;
     self.avatarView.image = DefaultAvatarImage;
     if (pendencyData.avatarUrl) {
-        [self.avatarView sd_setImageWithURL:pendencyData.avatarUrl placeholderImage:TUIKitResource(@"default_c2c_head")];
+        [self.avatarView sd_setImageWithURL:pendencyData.avatarUrl placeholderImage:[UIImage imageNamed:TUIKitResource(@"default_c2c_head")]];
     }
 
     @weakify(self)

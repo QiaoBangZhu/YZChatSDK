@@ -16,6 +16,8 @@
 #import "UIColor+TUIDarkMode.h"
 #import <Masonry.h>
 #import "UIColor+ColorExtension.h"
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
 @implementation AvatarProfileCardCellData
 
@@ -54,7 +56,7 @@
     UITapGestureRecognizer *tapAvatar = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapAvatar)];
     [_avatar addGestureRecognizer:tapAvatar];
     _avatar.userInteractionEnabled = YES;
-    [self addSubview:_avatar];
+    [self.contentView addSubview:_avatar];
     
     if ([TUIKit sharedInstance].config.avatarType == TAvatarTypeRounded) {
         _avatar.layer.masksToBounds = YES;
@@ -66,13 +68,20 @@
     
     _name = [[UILabel alloc] init];
     [_name setFont:[UIFont systemFontOfSize:16]];
+    _name.textAlignment = NSTextAlignmentCenter;
     [_name setTextColor:[UIColor colorWithHex:KCommonBlackColor]];
-    [self addSubview:_name];
+    [self.contentView addSubview:_name];
     
     _mobile = [[UILabel alloc] init];
     [_mobile setFont:[UIFont systemFontOfSize:14]];
     [_mobile setTextColor:[UIColor colorWithHex:KCommonBorderColor]];
-    [self addSubview:_mobile];
+    [self.contentView addSubview:_mobile];
+    
+    _createGrp = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_createGrp  addTarget:self action:@selector(createGrpAction) forControlEvents:UIControlEventTouchUpInside];
+    [_createGrp setImage:YZChatResource(@"icon_group_add") forState:UIControlStateNormal];
+    _createGrp.hidden =  YES;
+    [self.contentView addSubview:_createGrp];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
@@ -88,7 +97,10 @@
     RAC(_mobile, text) = [RACObserve(data, mobile) takeUntil:self.rac_prepareForReuseSignal];
     [[[RACObserve(data, mobile) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {
         @strongify(self)
-        self.mobile.text = [data.mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+//        if ([data.mobile length] > 7) {
+//            self.mobile.text = [data.mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+//        }
+        self.mobile.text = data.mobile;
     }];
     [[[RACObserve(data, name) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {
         @strongify(self)
@@ -105,31 +117,56 @@
         self.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    
+    if (data.isShowGrpBtn) {
+        self.mobile.hidden = YES;
+        self.createGrp.hidden = NO;
+    }else {
+        self.mobile.hidden = NO;
+        self.createGrp.hidden = YES;
+    }
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    [_name mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_avatar.mas_right).offset(12);
-        make.top.equalTo(_avatar.mas_top).offset(4);
-        make.right.equalTo(@-10);
-    }];
-    
-    [_mobile mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.name.mas_left);
-        make.bottom.equalTo(self.avatar.mas_bottom).offset(-4);
-        make.right.equalTo(@-10);
-    }];
-    
+    if (self.cardData.isShowGrpBtn) {
+        [_name mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_avatar.mas_centerX);
+            make.top.equalTo(_avatar.mas_bottom).offset(4);
+            make.width.equalTo(@60);
+        }];
+        
+        [_createGrp mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_avatar.mas_right).offset(12);
+            make.centerY.equalTo(_avatar.mas_centerY);
+            make.size.equalTo(@50);
+        }];
+    }else {
+        [_name mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_avatar.mas_right).offset(12);
+            make.top.equalTo(_avatar.mas_top).offset(4);
+            make.right.lessThanOrEqualTo(@-10);
+        }];
+        
+        [_mobile mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.name.mas_left);
+            make.bottom.equalTo(self.avatar.mas_bottom).offset(-4);
+            make.right.equalTo(@-10);
+        }];
+    }
 }
 
 
--(void) onTapAvatar{
+- (void)onTapAvatar{
     if(_delegate && [_delegate respondsToSelector:@selector(didTapOnAvatar:)])
         [_delegate didTapOnAvatar:self];
 }
+
+- (void)createGrpAction{
+    if (_delegate && [_delegate respondsToSelector:@selector(didTapCreateGrp:)]) {
+        [_delegate didTapCreateGrp:self];
+    }
+}
+
 
 @end

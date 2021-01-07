@@ -31,6 +31,7 @@
 #import "MapViewController.h"
 #import "LocationMessageCellData.h"
 #import "YChatDocumentPickerViewController.h"
+#import <QMUIKit/QMUIKit.h>
 
 @interface YUIChatController ()<YMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) TUIConversationCellData *conversationData;
@@ -80,6 +81,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.responseKeyboard = YES;
+    if ([[self.inputController.inputBar getInput] length] > 0) {
+        [self.inputController.inputBar refreshTextViewFrame];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -244,6 +248,7 @@
             NSString *inputText = self.inputController.inputBar.inputTextView.text;
             self.inputController.inputBar.inputTextView.text = [NSString stringWithFormat:@"%@%@ ",inputText,atText];
             [self.inputController.inputBar updateTextViewFrame];
+            [self.inputController.inputBar.inputTextView becomeFirstResponder];
         };
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -584,6 +589,10 @@
     uiVideo.videoItem.length = videoData.length;
     uiVideo.videoItem.type = url.pathExtension;
     uiVideo.uploadProgress = 0;
+    if (duration <= 0) {
+        [QMUITips showError:@"视频太短"];
+        return;
+    }
     [self sendMessage:uiVideo];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {

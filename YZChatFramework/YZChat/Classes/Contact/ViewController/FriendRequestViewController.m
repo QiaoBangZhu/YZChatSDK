@@ -24,6 +24,7 @@
 #import "ButtonTableViewCell.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
+#import "YChatSettingStore.h"
 
 @interface FriendRequestViewController () <UITableViewDataSource, UITableViewDelegate, AddFriendHeaderCellDelegate>
 @property UITableView *tableView;
@@ -157,6 +158,9 @@
         AddFriendHeaderCell *cell = [[AddFriendHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddFriendHeaderCell"];
         cell.delegate = self;
         [cell fillWithData:self.cardCellData];
+        if (![self.user.userId isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
+            cell.textView.text = [NSString stringWithFormat:@"我是 %@",[YChatSettingStore sharedInstance].getNickName];
+        }
         return cell;
     }
     if (indexPath.section == 1) {

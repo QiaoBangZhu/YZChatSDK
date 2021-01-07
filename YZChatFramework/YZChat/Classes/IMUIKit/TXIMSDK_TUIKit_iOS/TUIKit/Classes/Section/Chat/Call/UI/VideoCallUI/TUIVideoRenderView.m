@@ -10,6 +10,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "THeader.h"
 #import <Masonry/Masonry.h>
+#import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
 @interface TUIVideoRenderView ()

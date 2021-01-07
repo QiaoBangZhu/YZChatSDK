@@ -52,10 +52,6 @@
     
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissAction)];
     [self.imageView addGestureRecognizer:tap];
-    
-    UILongPressGestureRecognizer* longtapGes = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(didSaveToAlbum)];
-    [self.imageView addGestureRecognizer:longtapGes];
-    
 
     BOOL isExist = NO;
     [_data getImagePath:TImage_Type_Origin isExist:&isExist];
@@ -186,7 +182,7 @@
     if (error) {
         NSLog(@"保存图片出错%@", error.localizedDescription);
     }else {
-        [QMUITips showInfo:@"保存成功"];
+        [QMUITips showSucceed:@"保存成功"];
     }
 }
 

@@ -35,7 +35,7 @@
         CGSize playSize = TVideoMessageCell_Play_Size;
         _play = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, playSize.width, playSize.height)];
         _play.contentMode = UIViewContentModeScaleAspectFit;
-        _play.image = [[TUIImageCache sharedInstance] getResourceFromCache:@"play_normal"];
+        _play.image = [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"play_normal")];
         [self.container addSubview:_play];
 
 

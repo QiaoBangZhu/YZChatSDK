@@ -25,6 +25,8 @@
 
 + (NSDictionary *)jsonData2Dictionary:(NSData *)jsonData;
 
++ (NSString *)string2JSONString:(NSString *)string;
+
 + (NSString *)getFileCachePath:(NSString *)fileName;
 
 + (NSUInteger)getContentLength:(NSString*)string;
@@ -35,7 +37,6 @@
 
 + (NSInteger)compareVersion:(NSString *)version1 toVersion:(NSString *)version2;
 
-+ (NSString *)string2JSONString:(NSString *)string;
 
 @end
 

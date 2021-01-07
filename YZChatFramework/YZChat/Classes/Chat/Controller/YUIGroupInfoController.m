@@ -35,6 +35,8 @@
 #import "YChatNetworkEngine.h"
 #import "TransferGrpOwnerViewController.h"
 #import <ImSDKForiOS/ImSDK.h>
+#import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 #define ADD_TAG @"-1"
 #define DEL_TAG @"-2"
@@ -332,7 +334,7 @@
             }];
         }];
     }else {
-        [QMUITips showInfo:@"您没有权限修改"];
+        [QMUITips showError:@"您没有权限修改"];
     }
 }
 
@@ -356,7 +358,7 @@
             }];
         }];
     }else {
-        [QMUITips showInfo:@"您没有权限修改"];
+        [QMUITips showError:@"您没有权限修改"];
     }
 }
 

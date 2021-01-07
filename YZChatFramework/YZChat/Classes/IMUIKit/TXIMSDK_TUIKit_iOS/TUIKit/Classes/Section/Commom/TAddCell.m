@@ -54,13 +54,13 @@
     _headImageView.image = [UIImage imageNamed:data.head];
     _nameLabel.text = data.name;
     if(data.state == TAddCell_State_Selected){
-        _selectImageView.image = TUIKitResource(@"add_selected");
+        _selectImageView.image = [UIImage imageNamed:TUIKitResource(@"add_selected")];
     }
     else if(data.state == TAddCell_State_UnSelect){
-        _selectImageView.image = TUIKitResource(@"add_unselect");
+        _selectImageView.image = [UIImage imageNamed:TUIKitResource(@"add_unselect")];
     }
     else if(data.state == TAddCell_State_Solid){
-        _selectImageView.image = TUIKitResource(@"add_unselect");
+        _selectImageView.image = [UIImage imageNamed:TUIKitResource(@"add_solid")];
     }
 }
 @end

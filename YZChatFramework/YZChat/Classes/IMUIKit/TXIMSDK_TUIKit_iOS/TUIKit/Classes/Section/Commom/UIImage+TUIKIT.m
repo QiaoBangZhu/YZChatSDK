@@ -8,13 +8,12 @@
 #import "UIImage+TUIKIT.h"
 #import "THeader.h"
 #import "UIImage+TUIDarkMode.h"
-#import "NSBundle+YZBundle.h"
 
 @implementation UIImage (TUIKIT)
 
 + (UIImage *)tk_imageNamed:(NSString *)name
 {
-    UIImage *image = [UIImage d_imageWithImageLight:name dark:[NSString stringWithFormat:@"%@_dark",name]];
+    UIImage *image = [UIImage d_imageWithImageLight:TUIKitResource(name) dark:[NSString stringWithFormat:@"%@_dark",TUIKitResource(name)]];
     return image;
 }
 

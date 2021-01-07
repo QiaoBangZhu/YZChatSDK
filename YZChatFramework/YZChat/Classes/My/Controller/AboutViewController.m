@@ -11,6 +11,7 @@
 #import "UIColor+ColorExtension.h"
 #import "YCommonTextCell.h"
 #import "WebViewController.h"
+#import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 
 @interface AboutViewController ()<UITableViewDelegate, UITableViewDataSource>

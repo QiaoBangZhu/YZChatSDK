@@ -42,6 +42,19 @@ DEF_URL(sysUserInfo, api/sysUser)
 /**验证工具的key接口*/
 DEF_URL(checkToolKey, api/checkToolToken)
 
+/**根据手机号码获取用户列表
+ * 1.这些手机号中和当前用户已经是好友，userType=1
+ * 2.这些手机号和当前用户不是好友，但是已经是系统的注册用户了,返回这个用户的userId，用户前端可以加好友 userType=2
+ * 3.这些手机号完全不在系统，这时候需要一个邀请的接口 userType=3)
+ */
+DEF_URL(fetchUserListByMobiles, user/getUserListByMobiles)
+
+DEF_URL(fetchCityList, api/getCityList)
+
+DEF_URL(fetchInviteFriend, user/inviteUser)
+
+
+
 //群相关
 
 /**创建群组*/
@@ -58,7 +71,6 @@ DEF_URL(addGroupUser, group/addGroupUser)
 DEF_URL(deleteGroupUser, group/deleteGroupUser)
 /**获取群基础资料*/
 DEF_URL(fetchGroupInfo, group/getGroupMsg)
-
 
 typedef NS_ENUM(NSInteger, SmscodeType)
 {
@@ -124,6 +136,9 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                                 position:(NSString*)position
                                                 emali:(NSString*)email
                                                 password:(NSString*)password
+                                                signature:(NSString*)signature
+                                                     city:(NSString*)city
+                                                   gender:(int)gender
                                                 completion:
                                                 (YChatURLRequstCompletionBlock)block;
 
@@ -182,6 +197,10 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
 
 + (NSURLSessionDataTask *)requestFriendsInfoByMobile:(NSString *)mobile
                                           completion:(YChatURLRequstCompletionBlock)block;
+
++ (NSURLSessionDataTask *)requestFriendsListByMobiles:(NSMutableArray *)mobiles
+                                          completion:(YChatURLRequstCompletionBlock)block;
+
 //使用情况统计
 + (NSURLSessionDataTask *)requestAppUsedInfoByAppId:(NSString *)appId
                                             UserId:(NSString *)userId
@@ -207,9 +226,10 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                  toolKey:(NSString*)toolKey
                               completion:(YChatURLRequstCompletionBlock)block;
 
++ (NSURLSessionDataTask *)requestFetchCityListWithCompletion:(YChatURLRequstCompletionBlock)block;
 
-
-
++ (NSURLSessionDataTask *)requestInviteFriendBy:(NSString*)mobile
+                                     Completion:(YChatURLRequstCompletionBlock)block;
 
 /**
  

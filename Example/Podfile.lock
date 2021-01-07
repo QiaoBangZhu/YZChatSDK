@@ -360,7 +360,6 @@ PODS:
     - AFNetworking (~> 4.0)
     - AMap3DMap-NO-IDFA
     - AMapSearch-NO-IDFA
-    - BlocksKit
     - Bugly
     - FCFileManager
     - IQKeyboardManager
@@ -445,9 +444,9 @@ SPEC CHECKSUMS:
   TXLiteAVSDK_TRTC: c127880c4dbe844bdc7575a655be8042ce96024a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 809b24673565b44d5bbeb0eb5480a9eccd94bc85
+  YZChat: 3dcd506adb93be1f0c0bfbb2537b13c3226fd7ae
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 59bd7308c92511c7a64fbf01a831f758f2eedd2c
+PODFILE CHECKSUM: 7dd28e0974c5b8a2861874fe190c25036591ccb1
 
 COCOAPODS: 1.10.0

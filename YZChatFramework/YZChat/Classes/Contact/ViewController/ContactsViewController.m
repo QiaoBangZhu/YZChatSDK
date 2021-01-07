@@ -14,7 +14,6 @@
 #import "SearchFriendViewController.h"
 #import "SearchGroupViewController.h"
 #import "NewFriendViewController.h"
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
 #import "FriendProfileViewController.h"
 #import "TUIContactActionCellData.h"
@@ -33,8 +32,13 @@
 #import "SearchMyFriendsViewController.h"
 #import "SearchMyContactsViewController.h"
 #import "TUITabBarController.h"
+#import "YZBaseManager.h"
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
+#import <Contacts/Contacts.h>
+#import <ContactsUI/ContactsUI.h>
 
-@interface ContactsViewController ()
+@interface ContactsViewController ()<CNContactPickerDelegate>
 @property NSArray<TUIContactActionCellData *> *firstGroupData;
 @property (nonatomic, strong)YUIContactViewController*  contactVc;
 @end
@@ -69,7 +73,6 @@
     [self setupView];
 }
 
-
 - (void)setupView {
     UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:YZChatResource(@"contact_search") target:self action:@selector(searchMyFriends)];
     UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -81,7 +84,7 @@
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
         UIImage* image = YZChatResource(@"icon_add_contact");
         data.icon = image;
-        data.title = @"新的好友";
+        data.title = @"新的联系人";
         data.cselector = @selector(onAddNewFriend:);
         data;
     })];
@@ -104,7 +107,8 @@
     [RACObserve(self.contactVc.viewModel, pendencyCnt) subscribeNext:^(NSNumber *x) {
         self.firstGroupData[0].readNum = [x integerValue];
 //        TUITabBarItem * item = app.tabController.tabBarItems[1];
-        TUITabBarItem* item = (TUITabBarItem*)[UIApplication sharedApplication].delegate.window.rootViewController.tabBarController.viewControllers[1];
+        
+        TUITabBarItem* item = (TUITabBarItem*)[YZBaseManager shareInstance].tabController.tabBarItems[1];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([x integerValue] > 0) {
@@ -155,5 +159,7 @@
     SearchMyFriendsViewController* searchVc = [[SearchMyFriendsViewController alloc]init];
     [self.navigationController pushViewController:searchVc animated:true];
 }
+
+
 
 @end

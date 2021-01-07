@@ -19,8 +19,10 @@
 #import "ContactSearchViewController.h"
 #import "UIColor+ColorExtension.h"
 #import <ImSDKForiOS/ImSDK.h>
+#import "YZAddressBookViewController.h"
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
-//@import ImSDK;
 
 @interface NewFriendViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property UITableView *tableView;
@@ -55,7 +57,7 @@
     @weakify(self)
     [RACObserve(_viewModel, dataList) subscribeNext:^(id  _Nullable x) {
       @strongify(self)
-      [self.tableView reloadData];
+       [self.tableView reloadData];
     }];
     
     UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -73,12 +75,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (@available(iOS 11.0, *)) {
-        self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
-    } else {
-        // Fallback on earlier versions
-    }
     
     [self loadData];
 }
@@ -144,6 +140,10 @@
 
 - (void)cellClick:(CommonPendencyCell *)cell
 {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (cell.pendencyData.application.type == V2TIM_FRIEND_APPLICATION_SEND_OUT) {
+        return;
+    }
     id<TUIUserProfileControllerServiceProtocol> controller = [[TCServiceManager shareInstance] createService:@protocol(TUIUserProfileControllerServiceProtocol)];
     if ([controller isKindOfClass:[UIViewController class]]) {
         [[V2TIMManager sharedInstance] getUsersInfo:@[cell.pendencyData.identifier] succ:^(NSArray<V2TIMUserFullInfo *> *profiles) {
@@ -153,6 +153,56 @@
             [self.navigationController pushViewController:(UIViewController *)controller animated:YES];
         } fail:nil];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (!section) {
+        return 110;
+    }
+    return .1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Screen_Width, 110)];
+    view.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
+    UIView* topView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, Screen_Width, 60)];
+    topView.backgroundColor = [UIColor whiteColor];
+    [view addSubview:topView];
+    
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showAddressBook)];
+    [topView addGestureRecognizer:tap];
+    
+    UIImageView* icon = [[UIImageView alloc]initWithFrame:CGRectMake(16, 16, 28, 28)];
+    icon.image = YZChatResource(@"contacts_pressed");
+    [topView addSubview:icon];
+    
+    UILabel* titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(icon.frame.origin.x + icon.frame.size.width + 8, 0, 160, 60)];
+    titleLabel.text = @"添加手机联系人";
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
+    [topView addSubview:titleLabel];
+    
+    UIImageView* rightAccessory = [[UIImageView alloc]initWithFrame:CGRectMake(Screen_Width-16-24, 18, 24, 24)];
+    UIImage* image = YZChatResource(@"accessory_icon");
+    
+    rightAccessory.image = image;
+    [topView addSubview:rightAccessory];
+    
+    
+    UILabel* tipsLabel =[[UILabel alloc]initWithFrame:CGRectMake(12, topView.frame.origin.y + topView.frame.size.height + 10, 160, 20)];
+    tipsLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
+    tipsLabel.font = [UIFont systemFontOfSize:12];
+    tipsLabel.text = @"好友申请和添加";
+    [view addSubview:tipsLabel];
+    
+    return view;
+}
+
+- (void)showAddressBook {
+    YZAddressBookViewController* addressBookVc = [[YZAddressBookViewController alloc]init];
+    addressBookVc.title = @"添加联系人";
+    addressBookVc.viewModel = self.viewModel;
+    [self.navigationController pushViewController:addressBookVc animated:YES];
 }
 
 

@@ -29,6 +29,10 @@
 #import <QMUIKit/QMUIKit.h>
 #import "TUICallManager.h"
 #import "TextEditViewController.h"
+#import "ContactSelectViewController.h"
+#import "YChatIMCreateGroupMemberInfo.h"
+#import "YZBaseManager.h"
+#import "ConversationViewController.h"
 
 @TCServiceRegister(TUIFriendProfileControllerServiceProtocol, FriendProfileViewController)
 @interface FriendProfileViewController ()<UserInfoAvatarTableViewCellDelegate>
@@ -42,6 +46,7 @@
 @implementation FriendProfileViewController
 @synthesize friendProfile;
 @synthesize isShowConversationAtTop;
+@synthesize isShowGrpEntrance;
 
 - (instancetype)init
 {
@@ -63,6 +68,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"详细资料";
 //    [self addLongPressGesture];
     [[V2TIMManager sharedInstance] getBlackList:^(NSArray<V2TIMFriendInfo *> *infoList) {
         for (V2TIMFriendInfo *friend in infoList) {
@@ -88,12 +94,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    if (@available(iOS 11.0, *)) {
-        self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
-    } else {
-        // Fallback on earlier versions
-    }
 }
 
 - (void)fetchUserInfo {
@@ -125,6 +125,7 @@
             personal.avatarUrl = [NSURL URLWithString:self.user.userIcon];
             personal.name = self.user.nickName;
             personal.reuseId = @"CardCell";
+            personal.isShowGrpBtn = isShowGrpEntrance;
             personal;
         })];
         inlist;
@@ -469,6 +470,120 @@
     image.avatarData = (TUIProfileCardCellData*)cell.cardData;
     [self.navigationController pushViewController:image animated:true];
 }
+
+- (void)didTapCreateGrp:(UserInfoAvatarTableViewCell *)cell {
+    TCommonContactSelectCellData* data = [[TCommonContactSelectCellData alloc]init];
+    data.identifier = self.friendProfile.userID;
+    ContactSelectViewController *vc = [ContactSelectViewController new];
+    vc.isFromFriendProfile = YES;
+    vc.friendProfileCellData = data;
+    vc.title = @"选择联系人";
+    [self.navigationController pushViewController:vc animated:YES];
+    @weakify(self);
+    vc.finishBlock = ^(NSArray<TCommonContactSelectCellData *> *array) {
+        @strongify(self)
+        [self addGroup:@"Private" addOption:V2TIM_GROUP_ADD_ANY withContacts:array];
+    };
+}
+
+/**
+ *创建讨论组、群聊、聊天室的函数
+ *groupType:创建的具体类型 Private--讨论组  Public--群聊 ChatRoom--聊天室
+ *addOption:创建后加群时的选项          TIM_GROUP_ADD_FORBID       禁止任何人加群
+                                     TIM_GROUP_ADD_AUTH        加群需要管理员审批
+                                     TIM_GROUP_ADD_ANY         任何人可以加群
+ *withContacts:群成员的信息数组。数组内每一个元素分别包含了对应成员的头像、ID等信息。具体信息可参照 TCommonContactSelectCellData 定义
+ */
+- (void)addGroup:(NSString *)groupType addOption:(V2TIMGroupAddOpt)addOption withContacts:(NSArray<TCommonContactSelectCellData *>  *)contacts
+{
+    NSString *loginUser = [[V2TIMManager sharedInstance] getLoginUser];
+    [[V2TIMManager sharedInstance] getUsersInfo:@[loginUser] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
+        NSString *showName = loginUser;
+        if (infoList.firstObject.nickName.length > 0) {
+            showName = infoList.firstObject.nickName;
+        }
+        NSMutableString *groupName = [NSMutableString stringWithString:showName];
+        NSMutableArray *members = [NSMutableArray array];
+
+        //遍历contacts，初始化群组成员信息、群组名称信息
+        for (TCommonContactSelectCellData *item in contacts) {
+            YChatIMCreateGroupMemberInfo *member = [[YChatIMCreateGroupMemberInfo alloc] init];
+            member.Member_Account = item.identifier;
+            [groupName appendFormat:@"、%@", item.title];
+            [members addObject:[member yy_modelToJSONObject]];
+        }
+
+        //群组名称默认长度不超过10，如有需求可在此更改，但可能会出现UI上的显示bug
+        if ([groupName length] > 10) {
+            groupName = [groupName substringToIndex:10].mutableCopy;
+        }
+
+        V2TIMGroupInfo *info = [[V2TIMGroupInfo alloc] init];
+        info.groupName = groupName;
+        info.groupType = groupType;
+        if(![info.groupType isEqualToString:GroupType_Work]){
+            info.groupAddOpt = addOption;
+        }
+        //发送创建请求后的回调函数
+        [self createGroup:info memberList:members showName:showName groupName:groupName owner:loginUser];
+    } fail:^(int code, NSString *msg) {
+        // to do
+    }];
+}
+
+- (void)createGroup:(V2TIMGroupInfo *)info
+         memberList:(NSMutableArray *)members
+           showName:(NSString *)showName
+          groupName:(NSString*)groupName
+              owner:(NSString *)owner {
+    @weakify(self)
+    
+    [YChatNetworkEngine requestCreateMembersGroupWithGroupName:info.groupName type:info.groupType memberList:members ownerAccount:owner     completion:^(NSDictionary *result, NSError *error) {
+        @strongify(self)
+        if (!error) {
+            if ([result[@"code"] intValue] == 200) {
+                if ([result[@"data"][@"ErrorCode"]intValue] != 0) {
+                    [THelper makeToast:result[@"data"][@"ErrorInfo"]];
+                    return;
+                }
+                NSString* groupID = result[@"data"][@"GroupId"];
+                //创建成功后，在群内推送创建成功的信息
+                NSString *content = nil;
+                if([info.groupType isEqualToString:GroupType_Work]) {
+                    content = @"创建讨论组";
+                } else if([info.groupType isEqualToString:GroupType_Public]){
+                    content = @"发起群聊";
+                } else if([info.groupType isEqualToString:GroupType_Meeting]) {
+                    content = @"创建聊天室";
+                } else {
+                    content = @"创建群组";
+                }
+                NSDictionary *dic = @{@"version": @(GroupCreate_Version),@"businessID": GroupCreate,@"opUser":showName,@"content":@"创建群组"};
+                NSData *data= [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+                V2TIMMessage *msg = [[V2TIMManager sharedInstance] createCustomMessage:data];
+                
+                [[V2TIMManager sharedInstance] sendMessage:msg receiver:nil groupID:groupID priority:V2TIM_PRIORITY_DEFAULT onlineUserOnly:NO offlinePushInfo:nil progress:nil succ:nil fail:nil];
+
+                //创建成功后，默认跳转到群组对应的聊天界面
+                TUIConversationCellData *cellData = [[TUIConversationCellData alloc] init];
+                cellData.groupID = groupID;
+                cellData.title = groupName;
+                ChatViewController *chat = [[ChatViewController alloc] init];
+                chat.conversationData = cellData;
+                [self.navigationController pushViewController:chat animated:YES];
+                
+                //删除nav堆栈内其他无关vc用于从聊天页面直接返回会话列表页面
+                NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+                [tempArray removeObjectsInRange:NSMakeRange(1, tempArray.count-2)];
+                self.navigationController.viewControllers = tempArray;
+                
+            }else {
+                [THelper makeToast:result[@"msg"]];
+            }
+        }
+    }];
+}
+
 
 
 @end

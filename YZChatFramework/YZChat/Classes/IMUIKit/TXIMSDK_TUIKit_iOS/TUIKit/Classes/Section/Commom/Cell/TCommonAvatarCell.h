@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property BOOL showAccessory;
 @property (nonatomic, strong) UIImage *avatarImage;
 @property (nonatomic, strong) NSURL *avatarUrl;
+@property SEL cbuttonSelector;
 
 @end
 

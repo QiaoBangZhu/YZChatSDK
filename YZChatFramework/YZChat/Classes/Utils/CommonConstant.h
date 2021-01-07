@@ -16,6 +16,8 @@
 #endif
 
 static const int SDKAPPID = 1400432221;
+//元信的appId
+static NSString*  const yzchatAppId = @"de241446a50499bb77a8684cf610fd04";
 
 //高德地图
 static NSString * const amapKey = @"7892fa637e3dffeb7f7352790a510398";

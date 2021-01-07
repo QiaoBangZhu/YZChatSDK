@@ -20,6 +20,7 @@
 #import "FriendRequestViewController.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import <Masonry/Masonry.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface SearchMyFriendsViewController ()<SearchBarDelegate,UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)SearchBarView  * searchBarView;
@@ -43,18 +44,14 @@
     self.view.backgroundColor =  [UIColor colorWithHex:KCommonBackgroundColor];
     
     self.searchList = [[NSMutableArray alloc]init];
-    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = NO;
     [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-    }];
-    
     [self requestFriendsInfo:@""];
 }
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth,KScreenHeight-safeAreaTopHeight) style:UITableViewStylePlain];
         _tableView.tableFooterView =  [UIView new];
         _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
         _tableView.backgroundColor = [UIColor whiteColor];

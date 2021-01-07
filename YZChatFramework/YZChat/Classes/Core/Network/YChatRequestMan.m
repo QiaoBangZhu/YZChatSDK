@@ -23,7 +23,12 @@
     YChatHTTPClient* mHTTPsClient = [YChatHTTPClient sharedClient];
     if ([[YChatSettingStore sharedInstance]getAuthToken]) {
         [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[YChatSettingStore sharedInstance].getAuthToken] forHTTPHeaderField:@"token"];
+        
     }
+    if ([[YChatSettingStore sharedInstance]getAppId]) {
+        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[[YChatSettingStore sharedInstance]getAppId]] forHTTPHeaderField:@"appId"];
+    }
+    
     return [self postRequest:request mHTTPsClient:mHTTPsClient completion:block];
 }
 

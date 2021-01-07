@@ -21,6 +21,8 @@
 #import "WebViewController.h"
 #import "UIBarButtonItem+Extensions.h"
 #import "YChatValidInput.h"
+#import "NSBundle+YZBundle.h"
+#import "CommonConstant.h"
 
 @interface RegViewController ()<TextFieldInputViewDelegate>
 @property (nonatomic, strong)TextFieldInputView *phoneField;
@@ -265,7 +267,7 @@
         self.isLoading = NO;
         if (!error) {
             if ([result[@"code"] intValue] == 200) {
-                [QMUITips showInfo:@"成功"];
+                [QMUITips showSucceed:@"成功"];
                 [self.navigationController popViewControllerAnimated:true];
             }else {
                 [QMUITips showError:result[@"msg"]];
@@ -285,7 +287,7 @@
         self.isLoading = NO;
         if (!error) {
             if ([result[@"code"] intValue] == 200) {
-                [QMUITips showInfo:@"成功"];
+                [QMUITips showSucceed:@"成功"];
                 [self.navigationController popViewControllerAnimated:true];
             }else {
                 [QMUITips showError:result[@"msg"]];

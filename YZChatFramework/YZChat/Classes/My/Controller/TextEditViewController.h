@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, EditType)
     EditTypeDepartment = 5,
     EditTypeJobNum = 6,
     EditTypeFriendRemark = 7,
+    EditTypeSignture = 8,
 };
 
 NS_ASSUME_NONNULL_BEGIN

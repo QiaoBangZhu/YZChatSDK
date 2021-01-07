@@ -112,6 +112,9 @@
                                                 position:(NSString*)position
                                                 emali:(NSString*)email
                                                 password:(NSString*)password
+                                                signature:(NSString*)signature
+                                                     city:(NSString*)city
+                                                   gender:(int)gender
                                                 completion:
                                                 (YChatURLRequstCompletionBlock)block{
     NSDictionary* params = @{@"userId":userId,
@@ -120,7 +123,10 @@
                              @"card": cardNum,
                              @"position": position,
                              @"email": email,
-                             @"password": password
+                             @"password": password,
+                             @"userSignature":signature,
+                             @"city":city,
+                             @"gender":@(gender)
     };
      YChatURLRequest* request = [YChatRequestBuilder requestWithURL:modifyInfo andParams:params];
      return [YChatRequestMan postRequest:request completion:block];
@@ -249,6 +255,14 @@
     return [YChatRequestMan postRequest:request completion:block];
 }
 
++ (NSURLSessionDataTask *)requestFriendsListByMobiles:(NSMutableArray *)mobiles
+                                          completion:(YChatURLRequstCompletionBlock)block {
+    NSDictionary* params = @{@"paramVal":mobiles,
+                             @"userId":[YChatSettingStore sharedInstance].getUserId};
+    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchUserListByMobiles andParams:params];
+    return [YChatRequestMan postRequest:request completion:block];
+}
+
 + (NSURLSessionDataTask *)requestAppUsedInfoByAppId:(NSString *)appId
                                             UserId:(NSString *)userId
                                             AudioMinutes:(NSInteger)aminutes
@@ -300,5 +314,17 @@
     return [YChatRequestMan postRequest:request completion:block];
 }
 
++ (NSURLSessionDataTask *)requestFetchCityListWithCompletion:(YChatURLRequstCompletionBlock)block {
+    NSDictionary* params = @{};
+    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchCityList andParams:params];
+    return [YChatRequestMan postRequest:request completion:block];
+}
+
++ (NSURLSessionDataTask *)requestInviteFriendBy:(NSString*)mobile
+                                     Completion:(YChatURLRequstCompletionBlock)block{
+    NSDictionary* params = @{@"mobile": mobile, @"userId": [YChatSettingStore sharedInstance].getUserId};
+    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchInviteFriend andParams:params];
+    return [YChatRequestMan postRequest:request completion:block];
+}
 
 @end

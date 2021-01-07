@@ -18,7 +18,6 @@
 #import "RequestUtils.h"
 #import "UserInfo.h"
 #import "YChatSettingStore.h"
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
 #import "UIColor+ColorExtension.h"
 #import "TextFieldInputView.h"
@@ -29,6 +28,7 @@
 #import "YzIMKitAgent.h"
 #import "YZBaseManager.h"
 #import "CommonConstant.h"
+#import "NSBundle+YZBundle.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong)UIScrollView* scrollView;
@@ -278,17 +278,6 @@
 }
 
 - (void)loginBtnAction {
-//    [[YzIMKitAgent shareInstance]initAppId:@"de241446a50499bb77a8684cf610fd04"];
-//    SysUser* user = [[SysUser alloc]init];
-//    user.userId = @"95e6bd162f019b60ad8380fba5e0db41";
-//    user.nickName = @"大统领";
-//
-//    [[YzIMKitAgent shareInstance]registerWithSysUser:user loginSuccess:^{
-//
-//     } loginFailed:^(int errCode, NSString * _Nonnull errMsg) {
-//
-//    }];
-    
     if (![_phoneField.textField.text length]) {
         [QMUITips showWithText:@"请输入手机号"];
         return;
@@ -360,7 +349,7 @@
         }
         [[YChatSettingStore sharedInstance]saveUserInfo:info];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getMainController];
+            [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance] getMainController];
         });
     } fail:^(int code, NSString *msg) {
          [QMUITips showWithText:msg];
@@ -372,7 +361,6 @@
     RegViewController* regVc = [[RegViewController alloc]init];
     regVc.codeType = SmscodeTypeRegUser;
     regVc.title = @"注册";
-//    app.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:regVc];
     [self.navigationController pushViewController:regVc animated:true];
 }
 
@@ -388,7 +376,6 @@
         self.loginBtn.enabled = (textField.text.length > 0 && [self.passwordField.textField.text length] > 0);
     }else {
         self.loginBtn.enabled = (textField.text.length > 0 && [self.phoneField.textField.text length] > 0);
-
     }
 }
 

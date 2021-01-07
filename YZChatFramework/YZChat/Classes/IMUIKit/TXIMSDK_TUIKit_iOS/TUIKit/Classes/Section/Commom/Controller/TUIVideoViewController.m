@@ -153,7 +153,7 @@
        NSLog(@"保存视频失败%@", error.localizedDescription);
    }
    else {
-       [QMUITips showInfo:@"保存视频成功"];
+       [QMUITips showSucceed:@"保存视频成功"];
    }
  
 }
