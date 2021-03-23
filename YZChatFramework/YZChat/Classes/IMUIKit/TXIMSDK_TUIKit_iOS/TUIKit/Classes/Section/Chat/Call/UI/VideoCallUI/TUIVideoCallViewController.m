@@ -15,12 +15,12 @@
 #import "TUICall.h"
 #import "TUICall+TRTC.h"
 #import <AVFoundation/AVFoundation.h>
-#import "TCUtil.h"
+#import "YZUtil.h"
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
 #import <TMRTC/TMRTC.h>
 #import "UIColor+Foundation.h"
-#import "VideoCallUserView.h"
+#import "YZVideoCallUserView.h"
 #import "YChatNetworkEngine.h"
 #import "YChatSettingStore.h"
 #import "YZBaseManager.h"
@@ -65,8 +65,8 @@
 @property(nonatomic, strong) UIImageView* remoteAvatarImageView;
 @property(nonatomic, strong) UILabel* remoteNicknameLabel;
 @property(nonatomic, assign) BOOL isSmallView;
-@property(nonatomic, strong) VideoCallUserView* localPreHiddenCameraView;
-
+@property(nonatomic, strong) YZVideoCallUserView* localPreHiddenCameraView;
+@property(nonatomic, assign) BOOL hasDismiss;
 @end
 
 @implementation TUIVideoCallViewController
@@ -155,8 +155,6 @@
             [self shouldRingForIncomingCall];
         }
     }
-//    [self playAlerm];
-    
     //呼出后立刻振铃
      if (self.curState == VideoCallState_Dailing) {
          [self performSelector:@selector(checkApplicationStateAndAlert) withObject:nil afterDelay:1];
@@ -173,6 +171,7 @@
 }
 
 - (void)disMiss {
+    _hasDismiss = YES;
     if (self.timer) {
         dispatch_cancel(self.timer);
         self.timer = nil;
@@ -188,7 +187,7 @@
 
 - (void)dealloc {
     [[TUICall shareInstance] closeCamara];
-    [self stopPlayRing];
+    [self shouldStopAlertAndRing];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -648,9 +647,9 @@
     return _remoteNicknameLabel;
 }
 
-- (VideoCallUserView *)localPreHiddenCameraView {
+- (YZVideoCallUserView *)localPreHiddenCameraView {
     if (!_localPreHiddenCameraView) {
-        _localPreHiddenCameraView = [[VideoCallUserView alloc]init];
+        _localPreHiddenCameraView = [[YZVideoCallUserView alloc]init];
         _localPreHiddenCameraView.backgroundColor = [UIColor colorWithHex:0x2C2C2C];
     }
     return _localPreHiddenCameraView;
@@ -1050,8 +1049,7 @@
 }
 
 - (void)checkApplicationStateAndAlert {
-    if (self.curState == VideoCallState_Dailing) {
-        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+    if (self.curState == VideoCallState_Dailing && !_hasDismiss) {        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
 //            NSString *ringPath = [[NSBundle mainBundle] pathForResource:@"voip_calling_ring" ofType:@"mp3"];
 //            [self startPlayRing:ringPath];
             [self startVibrate];
@@ -1079,7 +1077,7 @@
 
 - (void)triggerVibrateAction
 {
-    NSInteger checker = [TCUtil compareVersion:[UIDevice currentDevice].systemVersion toVersion:@"9.0"];
+    NSInteger checker = [YZUtil compareVersion:[UIDevice currentDevice].systemVersion toVersion:@"9.0"];
     if (checker >= 0) {
         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{});
     }
@@ -1121,6 +1119,8 @@
         [self.vibrateTimer invalidate];
         self.vibrateTimer = nil;
     }
+    [self.vibrateTimer invalidate];
+    self.vibrateTimer = nil;
     
     if (self.audioPlayer) {
         [self.audioPlayer stop];

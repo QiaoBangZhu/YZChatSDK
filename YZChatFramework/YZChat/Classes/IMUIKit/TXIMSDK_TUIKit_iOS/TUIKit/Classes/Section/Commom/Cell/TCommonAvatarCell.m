@@ -91,6 +91,7 @@
         self.avatar.layer.masksToBounds = YES;
         self.avatar.layer.cornerRadius = [TUIKit sharedInstance].config.avatarCornerRadius;
     }
+    [self configureCorner];
 }
 
 - (void)layoutSubviews{
@@ -118,5 +119,16 @@
     }
     return YES;
 }
+
+- (void)configureCorner {
+    UIRectCorner corners = UIRectCornerTopRight | UIRectCornerTopLeft;
+    CGRect rect = CGRectMake(0, 0,Screen_Width-32, 100);
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:rect   byRoundingCorners: corners cornerRadii:CGSizeMake(8, 8)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = rect;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
 
 @end

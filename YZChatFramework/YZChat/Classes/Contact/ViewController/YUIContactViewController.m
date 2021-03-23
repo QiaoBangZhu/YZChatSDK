@@ -29,10 +29,15 @@
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
 
-//@import ImSDK;
 #import <ImSDKForiOS/ImSDK.h>
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
+#import "YZCardMsgCellData.h"
+#import "YZUtil.h"
+#import "TUICallUtils.h"
+#import "TUISystemMessageCellData.h"
+#import "THelper.h"
+#import "YZMsgManager.h"
 
 #define kContactCellReuseId @"ContactCellReuseId"
 #define kContactActionCellReuseId @"ContactActionCellReuseId"
@@ -48,28 +53,39 @@
     [super viewDidLoad];
 
     NSMutableArray *list = @[].mutableCopy;
-    [list addObject:({
-        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        UIImage* image = YZChatResource(@"icon_add_contact") ;
-        data.icon = image;
-        data.title = @"新的好友";
-        data.cselector = @selector(onAddNewFriend:);
-        data;
-    })];
-    [list addObject:({
-        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = YZChatResource(@"myGrps");
-        data.title = @"我的群聊";
-        data.cselector = @selector(onGroupConversation:);
-        data;
-    })];
-    [list addObject:({
-        TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
-        data.icon = YZChatResource(@"icon_blackList");
-        data.title = @"黑名单";
-        data.cselector = @selector(onBlackList:);
-        data;
-    })];
+    if (_isFromOtherApp) {
+        [list addObject:({
+            TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+            data.icon = YZChatResource(@"myGrps");
+            data.title = @"我的群聊";
+            data.cselector = @selector(onGroupConversation:);
+            data;
+        })];
+    }else {
+        [list addObject:({
+            TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+            UIImage* image = YZChatResource(@"icon_add_contact") ;
+            data.icon = image;
+            data.title = @"新的好友";
+            data.cselector = @selector(onAddNewFriend:);
+            data;
+        })];
+        [list addObject:({
+            TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+            data.icon = YZChatResource(@"myGrps");
+            data.title = @"我的群聊";
+            data.cselector = @selector(onGroupConversation:);
+            data;
+        })];
+        [list addObject:({
+            TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
+            data.icon = YZChatResource(@"icon_blackList");
+            data.title = @"黑名单";
+            data.cselector = @selector(onBlackList:);
+            data;
+        })];
+    }
+    
     self.firstGroupData = [NSArray arrayWithArray:list];
 
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -202,7 +218,7 @@
 {
     if (indexPath.section == 0) {
         TUIContactActionCell *cell = [tableView dequeueReusableCellWithIdentifier:kContactActionCellReuseId forIndexPath:indexPath];
-        cell.avatarView.mm_width(24).mm_height(24).mm__centerY(27).mm_left(16);
+        cell.avatarView.mm_width(30).mm_height(30).mm__centerY(27).mm_left(16);
         cell.titleLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
         cell.titleLabel.mm_left(cell.avatarView.mm_maxX+8).mm_height(22).mm__centerY(cell.avatarView.mm_centerY).mm_flexToRight(0);
         [cell fillWithData:self.firstGroupData[indexPath.row]];
@@ -227,10 +243,31 @@
 
 }
 
+- (void)sendCardMsgFromOtherAppWithData:(TUIConversationCellData*)cdata {
+      @weakify(self)
+     [[YZMsgManager shareInstance]sendMessageWithMsgType:YZSendMsgTypeC2C message:self.customMsg userId:cdata.userID grpId:nil loginSuccess:^{
+        @strongify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+     } loginFailed:^(int errCode, NSString *errMsg) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [THelper makeToastError:errCode msg:errMsg];
+         });
+     }];
+}
 
 - (void)onSelectFriend:(TCommonContactCell *)cell
 {
     TCommonContactCellData *data = cell.contactData;
+    if (_isFromOtherApp) {
+        TUIConversationCellData *cdata = [[TUIConversationCellData alloc] init];
+        cdata.conversationID = [NSString stringWithFormat:@"c2c_%@",@""];
+        cdata.userID = data.friendProfile.userID;
+        cdata.title = [data.friendProfile.userFullInfo showName];
+        [self sendCardMsgFromOtherAppWithData:cdata];
+        return;
+    }
 
     id<TUIFriendProfileControllerServiceProtocol> vc = [[TCServiceManager shareInstance] createService:@protocol(TUIFriendProfileControllerServiceProtocol)];
     if ([vc isKindOfClass:[UIViewController class]]) {
@@ -250,6 +287,8 @@
 - (void)onGroupConversation:(TCommonTableViewCell *)cell
 {
     YUIGroupConversationListController *vc = YUIGroupConversationListController.new;
+    vc.isFromOtherApp = _isFromOtherApp;
+    vc.customMsg = self.customMsg;
     vc.title = @"群聊";
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -259,7 +298,6 @@
     YUIBlackListViewController *vc = YUIBlackListViewController.new;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 - (void)conversationListController:(TUIConversationListController *)conversationController didSelectConversation:(TUIConversationCell *)conversation;
 {
@@ -276,7 +314,6 @@
         void (*func)(id, SEL, id) = (void *)imp;
         func(self, selector, object);
     }
-
 }
 
 @end

@@ -87,8 +87,7 @@
  *  同时，群管理员也可以通过本控制器添加/删除群成员。
  */
 
-@interface YUIGroupInfoController : UITableViewController
-
+@interface YUIGroupInfoController : UIViewController
 /**
  *  群组 ID，当前群组信息所属的群 ID。
  *  请注意：群组名称和群组 ID 有所区别， 此处为群组 ID，是 IM SDK 定位群组的标识。
@@ -108,6 +107,8 @@
  *  在拉取信息成功之后，本函数会将拉取到的信息正确设置并显示在控制器视图中。
  */
 - (void)updateData;
+
+@property (nonatomic, strong)UITableView* tableView;
 
 @end
 

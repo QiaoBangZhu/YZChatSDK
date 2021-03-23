@@ -65,6 +65,9 @@
     _menuCollectionView.backgroundColor = self.backgroundColor;
     _menuCollectionView.alwaysBounceHorizontal = YES;
     [self addSubview:_menuCollectionView];
+    //隐藏最近发布的表情
+    _menuCollectionView.hidden = YES;
+
 }
 
 - (void)defaultLayout

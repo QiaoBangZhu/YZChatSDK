@@ -50,7 +50,7 @@
 - (void)registerService:(Protocol *)service implClass:(Class)implClass withPriority:(int)priority
 {
     NSParameterAssert(service != nil);
-    NSParameterAssert(implClass != nil);
+//    NSParameterAssert(implClass != nil);
 
     if (![implClass conformsToProtocol:service]) {
         if (self.enableException) {

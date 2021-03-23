@@ -26,13 +26,13 @@
 {
     _head = [[UIImageView alloc] init];
     _head.contentMode = UIViewContentModeScaleAspectFill;
-    [self addSubview:_head];
+    [self.contentView addSubview:_head];
 
     _name = [[UILabel alloc] init];
-    [_name setFont:[UIFont systemFontOfSize:14]];
+    [_name setFont:[UIFont systemFontOfSize:12]];
     [_name setTextColor:[UIColor colorWithHex:KCommonBorderColor]];
     _name.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:_name];
+    [self.contentView addSubview:_name];
 }
 
 - (void)defaultLayout
@@ -40,7 +40,7 @@
     CGSize headSize = [[self class] getSize];
     _head.frame = CGRectMake(0, 0, headSize.width, headSize.width);
     
-    _name.frame = CGRectMake(0, _head.frame.origin.y + _head.frame.size.height + TGroupMemberCell_Margin, _head.frame.size.width, TGroupMemberCell_Name_Height);
+    _name.frame = CGRectMake(-7, _head.frame.origin.y + _head.frame.size.height + TGroupMemberCell_Margin, _head.frame.size.width+14, TGroupMemberCell_Name_Height);
     
     if ([TUIKit sharedInstance].config.avatarType == TAvatarTypeRounded) {
         _head.layer.masksToBounds = YES;

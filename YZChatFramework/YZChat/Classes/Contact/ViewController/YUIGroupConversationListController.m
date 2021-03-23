@@ -9,7 +9,16 @@
 #import "YUIGroupConversationListController.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
-#import "ChatViewController.h"
+#import "YZChatViewController.h"
+
+#import "YZCardMsgCellData.h"
+#import "YZUtil.h"
+#import "TUICallUtils.h"
+#import "TUISystemMessageCellData.h"
+#import "THelper.h"
+#import "TUIKit.h"
+#import "ReactiveObjC.h"
+#import "YZMsgManager.h"
 
 @interface YUIGroupConversationListController ()
 
@@ -66,9 +75,27 @@
 {
     TUIConversationCellData *conversationData = [[TUIConversationCellData alloc] init];
     conversationData.groupID = cell.contactData.identifier;
-    ChatViewController *chat = [[ChatViewController alloc] init];
+    if(_isFromOtherApp) {
+        [self sendCardMsgFromOtherAppWithData:conversationData];
+        return;
+    }
+    YZChatViewController *chat = [[YZChatViewController alloc] init];
     chat.conversationData = conversationData;
+    
     [self.navigationController pushViewController:chat animated:YES];
 }
 
+- (void)sendCardMsgFromOtherAppWithData:(TUIConversationCellData*)cdata {
+    @weakify(self)
+   [[YZMsgManager shareInstance]sendMessageWithMsgType:YZSendMsgTypeGrp message:self.customMsg userId:nil grpId:cdata.groupID loginSuccess:^{
+      @strongify(self)
+      dispatch_async(dispatch_get_main_queue(), ^{
+          [self.navigationController popViewControllerAnimated:YES];
+      });
+   } loginFailed:^(int errCode, NSString *errMsg) {
+       dispatch_async(dispatch_get_main_queue(), ^{
+           [THelper makeToastError:errCode msg:errMsg];
+       });
+   }];
+}
 @end

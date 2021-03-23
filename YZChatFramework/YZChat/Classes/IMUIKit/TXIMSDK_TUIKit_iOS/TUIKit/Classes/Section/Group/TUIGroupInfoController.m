@@ -26,7 +26,7 @@
 
 //@import ImSDK;
 
-@interface TUIGroupInfoController () <TModifyViewDelegate, TGroupMembersCellDelegate>
+@interface TUIGroupInfoController () <TModifyViewDelegate, TGroupMembersCellDelegate,TProfileCardDelegate>
 @property (nonatomic, strong) NSMutableArray *data;
 @property (nonatomic, strong) NSMutableArray *memberData;
 @property (nonatomic, strong) V2TIMGroupInfo *groupInfo;
@@ -266,8 +266,8 @@
         TUIGroupMembersCell *cell = [tableView dequeueReusableCellWithIdentifier:TGroupMembersCell_ReuseId];
         if(!cell){
             cell = [[TUIGroupMembersCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TGroupMembersCell_ReuseId];
-            cell.delegate = self;
         }
+        cell.delegate = self;
         [cell setData:(TGroupMembersCellData *)data];
         return cell;
     }

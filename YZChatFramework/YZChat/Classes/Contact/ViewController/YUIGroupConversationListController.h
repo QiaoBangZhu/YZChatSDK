@@ -7,10 +7,13 @@
 //
 
 #import "TUIGroupConversationListController.h"
+#import "YzCustomMsg.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YUIGroupConversationListController : TUIGroupConversationListController
+@property (nonatomic, assign)BOOL isFromOtherApp;
+@property (nonatomic, strong)YzCustomMsg * customMsg;
 
 @end
 

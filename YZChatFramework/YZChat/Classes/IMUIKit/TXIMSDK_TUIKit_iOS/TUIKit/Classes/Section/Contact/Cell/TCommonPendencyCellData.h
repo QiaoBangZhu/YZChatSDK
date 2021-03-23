@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *addWording;
 @property BOOL isAccepted;
 @property SEL cbuttonSelector;
+@property BOOL showCorner;
+@property BOOL showTopCorner;
+@property BOOL showBottomCorner;
+
 
 - (instancetype)initWithPendency:(V2TIMFriendApplication *)application;
 

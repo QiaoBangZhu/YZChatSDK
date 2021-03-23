@@ -7,14 +7,13 @@
 //
 
 #import "SearchMyFriendsViewController.h"
-#import "SearchBarView.h"
+#import "YZSearchBarView.h"
 #import "CommonConstant.h"
 #import "UIColor+ColorExtension.h"
-#import "FriendListTableViewCell.h"
+#import "YZFriendListTableViewCell.h"
 #import "YChatSettingStore.h"
 #import "YChatNetworkEngine.h"
-#import "FriendProfileViewController.h"
-//#import <ImSDK/ImSDK.h>
+#import "YZFriendProfileViewController.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "UIColor+ColorExtension.h"
 #import "FriendRequestViewController.h"
@@ -23,7 +22,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface SearchMyFriendsViewController ()<SearchBarDelegate,UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong)SearchBarView  * searchBarView;
+@property (nonatomic, strong)YZSearchBarView  * searchBarView;
 @property (nonatomic, strong)NSMutableArray * searchList;
 @property (nonatomic, strong)NSMutableArray * dataArray;
 @property (nonatomic, strong)UITableView    * tableView;
@@ -61,9 +60,9 @@
     return _tableView;
 }
 
-- (SearchBarView *)searchBarView {
+- (YZSearchBarView *)searchBarView {
     if (!_searchBarView) {
-        _searchBarView = [[SearchBarView alloc]initWithFrame:CGRectMake(0, 0,KScreenWidth-10,44)];
+        _searchBarView = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0, 0,KScreenWidth-10,44)];
         _searchBarView.placeholder = @"手机号/昵称";
         _searchBarView.isShowCancle = YES;
         _searchBarView.isCanEdit =  YES;
@@ -87,21 +86,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";
-    FriendListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    YZFriendListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[FriendListTableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[YZFriendListTableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     if ([self.searchList count] > 0) {
-        UserInfo *info = [self.searchList objectAtIndex:indexPath.row];
+        YUserInfo *info = [self.searchList objectAtIndex:indexPath.row];
         [cell fillWithData:info];
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UserInfo *info = [self.searchList objectAtIndex:indexPath.row];
+    YUserInfo *info = [self.searchList objectAtIndex:indexPath.row];
     FriendRequestViewController *frc = [[FriendRequestViewController alloc] init];
     frc.user = info;
     [self.navigationController pushViewController:frc animated:YES];
@@ -113,7 +112,7 @@
     [YChatNetworkEngine requestUserListWithParam:keyword completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             for (NSDictionary *dic in result[@"data"]) {
-                UserInfo* model = [UserInfo yy_modelWithDictionary:dic];
+                YUserInfo* model = [YUserInfo yy_modelWithDictionary:dic];
                 [self.dataArray addObject:model];
             }
         }
@@ -127,7 +126,7 @@
      dispatch_async(globalQueue, ^{
      if (searchText != nil && searchText.length > 0) {
          //遍历需要搜索的所有内容，其中self.dataArray为存放总数据的数组
-         for (UserInfo *model in self.dataArray) {
+         for (YUserInfo *model in self.dataArray) {
                NSString *nickname = model.nickName;
                NSString *mobile = model.mobile;
                if ([nickname rangeOfString:searchText options:NSCaseInsensitiveSearch].length >0 || [mobile rangeOfString:searchText options:NSCaseInsensitiveSearch].length >0) {

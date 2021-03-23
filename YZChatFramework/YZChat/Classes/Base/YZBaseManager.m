@@ -7,17 +7,18 @@
 //
 
 #import "YZBaseManager.h"
-#import "LoginViewController.h"
-#import "ConversationViewController.h"
+#import "YLoginViewController.h"
+#import "YZConversationViewController.h"
 #import "ContactsViewController.h"
-#import "WorkZoneViewController.h"
-#import "MyViewController.h"
+#import "YWorkZoneViewController.h"
+#import "YZMyViewController.h"
 #import "TNavigationController.h"
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 #import "YzIMKitAgent.h"
 #import "YChatSettingStore.h"
 #import "YChatNetworkEngine.h"
+#import "YZBaseManager.h"
 
 @interface YZBaseManager()
 @end
@@ -34,7 +35,7 @@
 }
 
 - (UIViewController *)getLoginController {
-    LoginViewController *login = [[LoginViewController alloc]init];
+    YLoginViewController *login = [[YLoginViewController alloc]init];
     return [[UINavigationController alloc]initWithRootViewController:login];
 }
 
@@ -52,7 +53,7 @@
         msgItem.title = @"消息";
         msgItem.normalImage = YZChatResource(@"message_normal");
         msgItem.selectedImage = YZChatResource(@"message_pressed");
-        msgItem.controller = [[TNavigationController alloc] initWithRootViewController:[[ConversationViewController alloc] init]];
+        msgItem.controller = [[TNavigationController alloc] initWithRootViewController:[[YZConversationViewController alloc] init]];
         [items addObject:msgItem];
     }
     
@@ -70,7 +71,7 @@
         workZoneItem.title = @"工作台";
         workZoneItem.normalImage = YZChatResource(@"workzone_normal");
         workZoneItem.selectedImage = YZChatResource(@"workzone_selected");
-        workZoneItem.controller = [[TNavigationController alloc] initWithRootViewController:[[WorkZoneViewController alloc] init]];
+        workZoneItem.controller = [[TNavigationController alloc] initWithRootViewController:[[YWorkZoneViewController alloc] init]];
         [items addObject:workZoneItem];
     }
    
@@ -79,7 +80,7 @@
         setItem.title = @"我";
         setItem.selectedImage = YZChatResource(@"setting_pressed");
         setItem.normalImage = YZChatResource(@"setting_normal");
-        setItem.controller = [[TNavigationController alloc] initWithRootViewController:[[MyViewController alloc] init]];
+        setItem.controller = [[TNavigationController alloc] initWithRootViewController:[[YZMyViewController alloc] init]];
         [items addObject:setItem];
     }
     
@@ -93,7 +94,7 @@
         standardAppearance.shadowColor = [UIColor clearColor];//也可以设置为白色或任何颜色
         UITabBarItemStateAppearance *normal = standardAppearance.stackedLayoutAppearance.normal;
           if (normal) {
-              normal.titlePositionAdjustment = UIOffsetMake(0, -3);
+              normal.titlePositionAdjustment = UIOffsetMake(0,0);
           }
         tbc.tabBar.standardAppearance = standardAppearance;
     }else{

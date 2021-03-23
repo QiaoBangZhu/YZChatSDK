@@ -10,7 +10,7 @@
 #import <QMUIKit/QMUIKit.h>
 #import <Masonry.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
-#import "YZTextFieldInputView.h"
+#import "YTextFieldInputView.h"
 //#import "ChangePasswordViewController.h"
 #import "YZRegViewController.h"
 #import "UIColor+YZFoundation.h"
@@ -29,8 +29,8 @@
 @property (nonatomic, strong)UILabel     * versionLabel;
 @property (nonatomic, strong)UILabel     * welcomeLabel;
 @property (nonatomic, strong)UILabel     * tipsLabel;
-@property (nonatomic, strong)YZTextFieldInputView *phoneField;
-@property (nonatomic, strong)YZTextFieldInputView *passwordField;
+@property (nonatomic, strong)YTextFieldInputView *phoneField;
+@property (nonatomic, strong)YTextFieldInputView *passwordField;
 @property (nonatomic, strong)UIImageView * topImageView;
 
 @end
@@ -54,6 +54,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
+    self.navigationController.navigationBarHidden = NO;
 }
 
 
@@ -161,9 +162,9 @@
     return _logo;
 }
 
-- (YZTextFieldInputView*)phoneField {
+- (YTextFieldInputView*)phoneField {
     if (!_phoneField) {
-        _phoneField = [[YZTextFieldInputView alloc]initWith:YZTextInputTypePhone];
+        _phoneField = [[YTextFieldInputView alloc]initWith:YTextInputTypePhone];
         _phoneField.textField.placeholder = @"请输入手机号码";
         [_phoneField.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _phoneField.textField.tag = 100;
@@ -171,9 +172,9 @@
     return _phoneField;
 }
 
-- (YZTextFieldInputView*)passwordField {
+- (YTextFieldInputView*)passwordField {
     if (!_passwordField) {
-        _passwordField = [[YZTextFieldInputView alloc]initWith:YZTextInputTypeNormal];
+        _passwordField = [[YTextFieldInputView alloc]initWith:YTextInputTypeNormal];
         _passwordField.textField.placeholder = @"请输入密码";
         [_passwordField.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _passwordField.textField.tag = 101;
@@ -252,13 +253,45 @@
     return _tipsLabel;
 }
 
-- (void)startLogin {
-    [[YzIMKitAgent shareInstance]startChatWithChatId:@"95e6bd162f019b60ad8380fba5e0db41" chatName:@"1111" finishToConversation:NO];
-}
-
 - (void)loginBtnAction {
     
-    [[YzIMKitAgent shareInstance]startChatWithChatId:@"android202010104" chatName:@"我的Android" finishToConversation:NO];
+    NSString *text = @"元信IM生态工具元信";
+    NSString *link = @"http://yzmsri.com/";
+    NSString *desc = @"欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！";
+    NSString * logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
+    
+    YzCustomMsg* msg = [[YzCustomMsg alloc]init];
+    msg.title = text;
+    msg.logo = logo;
+    msg.desc = desc;
+    msg.link = link;
+    
+    [[YzIMKitAgent shareInstance]startAutoWithCurrentVc:self];
+    
+    
+    SysUser* loginUser = [[SysUser alloc]init];
+    loginUser.mobile = @"17774942222";
+    loginUser.nickName = @"我的IOS";
+    loginUser.userId = @"ios20210104";
+    @weakify(self)
+    [QMUITips showLoading:@"模拟数据中" inView:self.view];
+
+//    [[YzIMKitAgent shareInstance]registerWithSysUser:loginUser loginSuccess:^{
+//        @strongify(self)
+//        [QMUITips hideAllTips];
+//        UIViewController* vc = [[YzIMKitAgent shareInstance]startChatWithChatId:@"web20200104" chatName:@"我是web" finishToConversation:NO];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
+//        NSLog(@"%@",errMsg);
+//    }];
+
+//   UIViewController* vc = [[YzIMKitAgent shareInstance]startCustomMessageWithChatId:@"ac4405707242f902af6568cf1806a047" chatName:@"magic" message:msg];
+    
+//    UIViewController* vc = [[YzIMKitAgent shareInstance]startChatWithChatId:@"52ac0e63c55ba493dfb7134cd938fe81" chatName:@"汤简简单点" finishToConversation:YES];
+//    [self presentViewController:vc animated:YES completion:nil];
+    
+//    UIViewController* xx = [[YzIMKitAgent shareInstance] showContacts];
+//    [self.navigationController pushViewController:vc animated:YES];
     
     if (![_phoneField.textField.text length]) {
         [QMUITips showWithText:@"请输入手机号"];

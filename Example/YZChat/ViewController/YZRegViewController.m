@@ -10,7 +10,7 @@
 #import <QMUIKit/QMUIKit.h>
 #import "UIBarButtonItem+YZExtensions.h"
 #import "YZLoginViewController.h"
-#import "YZTextFieldInputView.h"
+#import "YTextFieldInputView.h"
 #import <QMUIKit/QMUIKit.h>
 #import <Masonry/Masonry.h>
 #import "YZChatNetworkEngine.h"
@@ -21,11 +21,11 @@
 #import "YZChatNetworkEngine.h"
 #import "UIColor+YZFoundation.h"
 
-@interface YZRegViewController ()<YZTextFieldInputViewDelegate>
-@property (nonatomic, strong)YZTextFieldInputView *phoneField;
-@property (nonatomic, strong)YZTextFieldInputView *smsCodeField;
-@property (nonatomic, strong)YZTextFieldInputView *passwordField;
-@property (nonatomic, strong)YZTextFieldInputView *confirmPasswordField;
+@interface YZRegViewController ()<YTextFieldInputViewDelegate>
+@property (nonatomic, strong)YTextFieldInputView *phoneField;
+@property (nonatomic, strong)YTextFieldInputView *smsCodeField;
+@property (nonatomic, strong)YTextFieldInputView *passwordField;
+@property (nonatomic, strong)YTextFieldInputView *confirmPasswordField;
 @property (nonatomic, strong)QMUIButton           *confirmBtn;
 @property (nonatomic, strong)YYLabel              *userAgreementLabel;
 @property (nonatomic, strong)UIButton             *checkBoxBtn;
@@ -161,9 +161,9 @@
 
 }
 
-- (YZTextFieldInputView*)phoneField {
+- (YTextFieldInputView*)phoneField {
     if (!_phoneField) {
-        _phoneField = [[YZTextFieldInputView alloc]initWith:YZTextInputTypePhone];
+        _phoneField = [[YTextFieldInputView alloc]initWith:YTextInputTypePhone];
         _phoneField.textField.placeholder = @"请输入手机号码";
         [_phoneField.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _phoneField.textField.tag = 100;
@@ -171,9 +171,9 @@
     return _phoneField;
 }
 
-- (YZTextFieldInputView*)smsCodeField {
+- (YTextFieldInputView*)smsCodeField {
     if (!_smsCodeField) {
-        _smsCodeField = [[YZTextFieldInputView alloc]initWith:YZTextInputTypeCode];
+        _smsCodeField = [[YTextFieldInputView alloc]initWith:YTextInputTypeCode];
         _smsCodeField.textField.placeholder = @"请输入验证码";
         _smsCodeField.delegate = self;
         [_smsCodeField.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -182,9 +182,9 @@
     return _smsCodeField;
 }
 
-- (YZTextFieldInputView*)passwordField {
+- (YTextFieldInputView*)passwordField {
     if (!_passwordField) {
-        _passwordField = [[YZTextFieldInputView alloc]initWith:YZTextInputTypeNormal];
+        _passwordField = [[YTextFieldInputView alloc]initWith:YTextInputTypeNormal];
         _passwordField.textField.placeholder = @"请输入密码(6-16位，大小写字母+数字)";
         [_passwordField.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _passwordField.textField.tag = 102;
@@ -193,9 +193,9 @@
     return _passwordField;
 }
 
-- (YZTextFieldInputView*)confirmPasswordField {
+- (YTextFieldInputView*)confirmPasswordField {
     if (!_confirmPasswordField) {
-        _confirmPasswordField = [[YZTextFieldInputView alloc]initWith:YZTextInputTypeNormal];
+        _confirmPasswordField = [[YTextFieldInputView alloc]initWith:YTextInputTypeNormal];
         _confirmPasswordField.textField.placeholder = @"请输入确认密码";
         [_confirmPasswordField.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _confirmPasswordField.textField.tag = 103;
@@ -226,8 +226,8 @@
     if (!_checkBoxBtn) {
         _checkBoxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_checkBoxBtn addTarget:self action:@selector(checkBoxBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_checkBoxBtn setImage:@"checkbox_unselect" forState:UIControlStateNormal];
-        [_checkBoxBtn setImage:@"checkbox_selected_small" forState:UIControlStateSelected];
+        [_checkBoxBtn setImage:[UIImage imageNamed:@"checkbox_unselect"] forState:UIControlStateNormal];
+        [_checkBoxBtn setImage:[UIImage imageNamed:@"checkbox_selected_small"] forState:UIControlStateSelected];
     }
     return _checkBoxBtn;
 }

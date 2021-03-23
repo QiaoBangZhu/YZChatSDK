@@ -16,12 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (getter=isOn) BOOL on;
 @property CGFloat margin;
 @property SEL cswitchSelector;
+@property BOOL showCorner;
+@property BOOL showTopCorner;
+@property BOOL showBottomCorner;
 
 @end
 
 @interface TCommonSwitchCell : TCommonTableViewCell
 @property UILabel *titleLabel;
 @property UISwitch *switcher;
+
+
 
 @property (readonly) TCommonSwitchCellData *switchData;
 

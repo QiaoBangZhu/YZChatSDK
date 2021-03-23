@@ -5,7 +5,6 @@
 
 #import "TCServiceProtocol.h"
 @import UIKit;
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
 
 

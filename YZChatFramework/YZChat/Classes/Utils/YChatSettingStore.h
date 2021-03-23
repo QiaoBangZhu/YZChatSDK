@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CommonConstant.h"
 
-@class  UserInfo;
+@class  YUserInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,8 +20,8 @@ AS_SINGLETON(YChatSettingStore);
 /**
  * userInfo
  */
-- (void)saveUserInfo:(UserInfo *)userInfo;
-- (UserInfo *)getUserInfo;
+- (void)saveUserInfo:(YUserInfo *)userInfo;
+- (YUserInfo *)getUserInfo;
 - (void)logout;
 
 - (NSString *)getAuthToken;
@@ -30,7 +30,7 @@ AS_SINGLETON(YChatSettingStore);
 - (NSString *)getNickName;
 - (NSString *)getMobile;
 - (NSString *)getAppId;
-//当有第三方调用元信时候根据此字段判断展示几个tab
+//当有第三方调用元讯时候根据此字段判断展示几个tab
 - (NSInteger)getfunctionPerm;
 
 - (BOOL)isLogin;

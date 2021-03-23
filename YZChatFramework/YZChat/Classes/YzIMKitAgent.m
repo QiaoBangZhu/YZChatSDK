@@ -10,30 +10,32 @@
 #import "YChatNetworkEngine.h"
 #import "THelper.h"
 #import <YYModel/YYModel.h>
-#import "UserInfo.h"
+#import "YUserInfo.h"
 #import "YChatSettingStore.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "TUIConversationCellData.h"
-#import "ChatViewController.h"
-#import "ConversationViewController.h"
+#import "YZChatViewController.h"
+#import "YZConversationViewController.h"
 #import "TNavigationController.h"
 #import "ContactsViewController.h"
-#import "WorkZoneViewController.h"
-#import "MyViewController.h"
+#import "YWorkZoneViewController.h"
+#import "YZMyViewController.h"
 #import "TUIKit.h"
 #import "TUITabBarController.h"
 #import "YZBaseManager.h"
 #import "CommonConstant.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "ReactiveObjC/ReactiveObjC.h"
-#import "TCUtil.h"
+#import "YZUtil.h"
 #import "NSBundle+YZBundle.h"
 #import "UIColor+Foundation.h"
+#import "YZMsgManager.h"
+#import <Aspects/Aspects.h>
 
 @interface YzIMKitAgent()
 @property (nonatomic,   copy)NSString* appId;
 @property (nonatomic, strong)SysUser * user;
-@property (nonatomic, strong)UserInfo* userInfo;
+@property (nonatomic, strong)YUserInfo* userInfo;
 
 @property(nonatomic,  copy) NSString *groupID;
 @property(nonatomic,  copy) NSString *userID;
@@ -77,27 +79,46 @@
         [THelper makeToast:@"nickName不能为空"];
         return;
     }
+    @weakify(self)
     [YChatNetworkEngine requestSysUserInfoWithAppId:self.appId
                                              userId:self.user.userId
                                            nickName:self.user.nickName
                                            userIcon:[self.user.userIcon length] == 0 ? @"":self.user.userIcon
-                                             mobile:@""
-                                               card:@""
-                                           position:@""
-                                              email:@""
-                                       departmentId:@""
-                                         departName:@""
-                                         completion:^(NSDictionary *result, NSError *error) {
+                                             mobile:[self.user.mobile length] == 0 ? @"" :self.user.mobile
+                                               card:[self.user.card length] == 0 ? @"" : self.user.card
+                                           position:[self.user.position length] == 0 ? @"" : self.user.position
+                                              email:[self.user.email length] == 0 ? @"" : self.user.email
+                                       departmentId:[self.user.departMentId length] == 0 ? @"":self.user.departMentId
+                                        departName:[self.user.departName length] == 0 ? @"":self.user.departName
+                                              city:[self.user.city length] == 0 ? @"" : self.user.city
+                                     userSignature:[self.user.userSignature length] == 0 ? @"" :self.user.userSignature
+                                                          completion:^(NSDictionary *result, NSError *error)  {
         if (!error) {
             if ([result[@"code"]intValue] == 200) {
-                UserInfo* model = [UserInfo yy_modelWithDictionary:result[@"data"]];
+                YUserInfo* model = [YUserInfo yy_modelWithDictionary:result[@"data"]];
+                model.nickName = sysUser.nickName;
+                model.mobile = sysUser.mobile;
+                model.card = sysUser.card;
+                model.position = sysUser.position;
+                model.email = sysUser.email;
+                model.departName = sysUser.departName;
+                model.city = sysUser.city;
+                model.userSignature = sysUser.userSignature;
                 model.token = result[@"token"];
                 model.mobile = sysUser.mobile;
+                model.companyId = self.appId;
                 self.userInfo = model;
                 [YZBaseManager shareInstance].userInfo = model;
-                success();
+                [[V2TIMManager sharedInstance] login:self.userInfo.userId userSig:self.userInfo.userSign succ:^{
+                    @strongify(self)
+                    [[YChatSettingStore sharedInstance]saveUserInfo:self.userInfo];
+                    success();
+                } fail:^(int code, NSString *msg) {
+                    [[YChatSettingStore sharedInstance]logout];
+                    fail(code, result[@"msg"]);
+                }];
             }else {
-                fail([result[@"code"]intValue], result[@"msg"]);
+                fail([result[@"code"]integerValue], result[@"msg"]);
             }
         }else {
             fail(error.code, error.localizedDescription);
@@ -105,35 +126,69 @@
     }];
 }
 
-//登录腾讯IM
-- (void)startAutoWithDeviceToken:(NSData *)deviceToken {
-    @weakify(self)
-    [[V2TIMManager sharedInstance] login:self.userInfo.userId userSig:self.userInfo.userSign succ:^{
-        @strongify(self)
-        if (deviceToken) {
-            [self configureAPNSConfig];
-        }
-        [[YChatSettingStore sharedInstance]saveUserInfo:self.userInfo];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getMainController];
-        });
-    } fail:^(int code, NSString *msg) {
-        [[YChatSettingStore sharedInstance]logout];
-        [THelper makeToast:msg];
-    }];
+//打开元讯IM页面
+- (void)startAutoWithCurrentVc:(UIViewController *)rootVc{
+    if ([V2TIMManager sharedInstance].getLoginStatus == V2TIM_STATUS_LOGOUT) {
+        [THelper makeToast:@"必须先登录IM才能调用此函数"];
+        return;
+    }
+    if (!rootVc) {
+        [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
+        return;
+    }
+    [YZBaseManager shareInstance].rootViewController = rootVc;
+    TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];
+    TNavigationController* nav = (TNavigationController*)tab.viewControllers[0];
+    YZConversationViewController * convc = (YZConversationViewController*)nav.viewControllers[0];
+    convc.isNeedCloseBtn = YES;
+    tab.modalPresentationStyle =UIModalPresentationFullScreen;
+    [rootVc presentViewController:tab animated:YES completion:nil];
+    
+//    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:tab animated:YES completion:nil];
 }
 
-- (void)startChatWithChatId:(NSString *)toChatId
+- (UIViewController*)startChatWithChatId:(NSString *)toChatId
                    chatName:(NSString *)chatName
        finishToConversation:(BOOL)finishToConversation  {
-    
+    if ([toChatId length] == 0) {
+        [THelper makeToast:@"聊天对象的uid不能为空"];
+        return nil;
+    }
+    if ([chatName length] == 0) {
+        [THelper makeToast:@"聊天对象昵称不能为空"];
+        return nil;
+    }
     TUIConversationCellData *data = [[TUIConversationCellData alloc] init];
-    data.conversationID = [NSString stringWithFormat:@"c2c_%@",toChatId];
-    data.userID = self.userInfo.userId;
-    data.title = self.userInfo.nickName;
-    ChatViewController *chat = [[ChatViewController alloc] init];
+    data.conversationID = [NSString stringWithFormat:@"c2c_%@",@""];
+    data.userID = toChatId;
+    data.title = chatName;
+    YZChatViewController *chat = [[YZChatViewController alloc] init];
     chat.conversationData = data;
-    [[self getCurrentVC].navigationController pushViewController:chat animated:YES];
+    if(finishToConversation){
+        TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];
+        TNavigationController* nav = (TNavigationController*)tab.viewControllers[0];
+        YZConversationViewController * convc = (YZConversationViewController*)nav.viewControllers[0];
+        convc.isNeedCloseBtn = YES;
+        [nav pushViewController:chat animated:YES];
+        return tab;
+    }
+    return  chat;
+}
+
+- (UIViewController *)startCustomMessageWithChatId:(NSString *)toChatId chatName:(NSString *)chatName message:(YzCustomMsg *)message {
+    if ([toChatId length] > 0 && [chatName length]> 0) {
+        //直接发送消息
+        [[YZMsgManager shareInstance]sendMessageWithMsgType:YZSendMsgTypeC2C message:message userId:toChatId grpId:nil loginSuccess:^{
+        } loginFailed:^(int errCode, NSString *errMsg) {
+            [THelper makeToastError:errCode msg:errMsg];
+        }];
+        return nil;
+    }else {
+        ContactsViewController* vc = [[ContactsViewController alloc]init];
+        vc.customMsg = message;
+        vc.isFromOtherApp = YES;
+        return vc;
+    }
 }
 
 - (void)configureTUIKit {
@@ -153,13 +208,24 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
 
-    UIImage* backButtonImage = YZChatResource(@"icon_back");
+    UIImage* backButtonImage = [YZChatResource(@"icon_back") imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
     if (@available(iOS 11.0, *)) {
         [UINavigationBar appearance].backIndicatorImage = backButtonImage;
         [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
     }else {
         [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     }
+//    if (@available(iOS 11.0, *)) {
+//        NSError *error;
+//           [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
+//               UIViewController *controller = aspectInfo.instance;
+//               controller.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//           } error:&error];
+//           if (error) NSLog(@"%@", error);
+//    }else {
+//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//    }
+
 }
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -195,7 +261,7 @@
 }
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSDictionary *extParam = [TCUtil jsonSring2Dictionary:userInfo[@"ext"]];
+    NSDictionary *extParam = [YZUtil jsonSring2Dictionary:userInfo[@"ext"]];
     NSDictionary *entity = extParam[@"entity"];
     if (!entity) {
         return;
@@ -228,7 +294,7 @@
             return;
         }
         // 内容
-        NSDictionary *content = [TCUtil jsonSring2Dictionary:entity[@"content"]];
+        NSDictionary *content = [YZUtil jsonSring2Dictionary:entity[@"content"]];
         if (!content) {
             return;
         }
@@ -246,7 +312,7 @@
         self.signalingInfo.inviteeList = content[@"invited_list"];
         self.signalingInfo.groupID = content[@"group_id"];
         self.signalingInfo.timeout = timeout;
-        self.signalingInfo.data = [TCUtil dictionary2JsonStr:@{SIGNALING_EXTRA_KEY_ROOM_ID : content[@"room_id"], SIGNALING_EXTRA_KEY_VERSION : content[@"version"], SIGNALING_EXTRA_KEY_CALL_TYPE : content[@"call_type"]}];
+        self.signalingInfo.data = [YZUtil dictionary2JsonStr:@{SIGNALING_EXTRA_KEY_ROOM_ID : content[@"room_id"], SIGNALING_EXTRA_KEY_VERSION : content[@"version"], SIGNALING_EXTRA_KEY_CALL_TYPE : content[@"call_type"]}];
         if ([[V2TIMManager sharedInstance] getLoginStatus] == V2TIM_STATUS_LOGINED) {
             [self onReceiveGroupCallAPNs];
         }
@@ -261,7 +327,7 @@
         }
         [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         UINavigationController *nav = (UINavigationController *)tab.selectedViewController;
-        ConversationViewController *vc = (ConversationViewController *)nav.viewControllers.firstObject;
+        YZConversationViewController *vc = (YZConversationViewController *)nav.viewControllers.firstObject;
         [vc pushToChatViewController:self.groupID userID:self.userID];
         self.groupID = nil;
         self.userID = nil;
@@ -317,41 +383,29 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-- (UIViewController *)getCurrentVC {
-    UIViewController *result = nil;
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    //app默认windowLevel是UIWindowLevelNormal，如果不是，找到UIWindowLevelNormal的
-    if (window.windowLevel != UIWindowLevelNormal){
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows) {
-         if (tmpWin.windowLevel == UIWindowLevelNormal){
-             window = tmpWin;
-             break;
-           }
+- (UIViewController *)getRootViewController{
+    UIWindow* window = [[[UIApplication sharedApplication] delegate] window];
+    NSAssert(window, @"The window is empty");
+    return window.rootViewController;
+}
+
+- (UIViewController *)findVisibleViewController {
+    UIViewController* currentViewController = [self getRootViewController];
+    BOOL runLoopFind = YES;
+    while (runLoopFind) {
+        if (currentViewController.presentedViewController) {
+            currentViewController = currentViewController.presentedViewController;
+        } else {
+            if ([currentViewController isKindOfClass:[UINavigationController class]]) {
+                currentViewController = ((UINavigationController *)currentViewController).visibleViewController;
+            } else if ([currentViewController isKindOfClass:[UITabBarController class]]) {
+                currentViewController = ((UITabBarController* )currentViewController).selectedViewController;
+            } else {
+                break;
+            }
         }
     }
-    id  nextResponder = nil;
-    UIViewController *appRootVC=window.rootViewController;
-    //如果是present上来的appRootVC.presentedViewController 不为nil
-    if (appRootVC.presentedViewController) {
-        nextResponder = appRootVC.presentedViewController;
-    }else{
-        UIView *frontView = [[window subviews] objectAtIndex:0];
-        nextResponder = [frontView nextResponder];
-    }
-    if ([nextResponder isKindOfClass:[UITabBarController class]]){
-        UITabBarController * tabbar = (UITabBarController *)nextResponder;
-        UINavigationController * nav = (UINavigationController *)tabbar.viewControllers[tabbar.selectedIndex];
-        //        UINavigationController * nav = tabbar.selectedViewController ; 上下两种写法都行
-        result=nav.childViewControllers.lastObject;
-    }else if ([nextResponder isKindOfClass:[UINavigationController class]]){
-        UIViewController * nav = (UIViewController *)nextResponder;
-        result = nav.childViewControllers.lastObject;
-    }else{
-        result = nextResponder;
-    }
-    return result;
-
+    return currentViewController;
 }
 
 /**

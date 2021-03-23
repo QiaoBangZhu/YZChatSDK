@@ -13,13 +13,13 @@
 #import <UIKit/UIKit.h>
 #import <ImSDKForiOS/TIMFriendshipManager.h>
 //#import "TIMFriendshipManager.h"
-#import "UserInfo.h"
+#import "YUserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FriendRequestViewController : UIViewController
 @property V2TIMUserFullInfo *profile;
-@property (nonatomic, strong)UserInfo * user;
+@property (nonatomic, strong)YUserInfo * user;
 @end
 
 NS_ASSUME_NONNULL_END

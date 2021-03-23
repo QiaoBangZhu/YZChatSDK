@@ -16,9 +16,8 @@
 #import "TIMGroupInfo+DataProvider.h"
 #import "TIMUserProfile+DataProvider.h"
 #import "UIColor+TUIDarkMode.h"
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
-#import "SearchBarView.h"
+#import "YZSearchBarView.h"
 #import "UIColor+Foundation.h"
 #import "CommonConstant.h"
 #import "YGroupMembersTableViewCell.h"
@@ -26,14 +25,14 @@
 #import "TUIFriendProfileControllerServiceProtocol.h"
 #import "TUIUserProfileControllerServiceProtocol.h"
 #import "TCServiceManager.h"
-#import "ProfileViewController.h"
+#import "YZProfileViewController.h"
 #import "THelper.h"
 #import "NSString+TUICommon.h"
 
 @interface TUIGroupMemberController ()<SearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray<UserModel *> *members;
 @property V2TIMGroupInfo *groupInfo;
-@property (nonatomic,strong) SearchBarView * searchBar;
+@property (nonatomic,strong) YZSearchBarView * searchBar;
 @property (nonatomic,strong) UITableView   * tableView;
 @property (nonatomic,strong) NSMutableArray* searchList;
 
@@ -42,7 +41,8 @@
 
 @property NSDictionary<NSString *, NSArray<UserModel *> *> *searchDataDict;
 @property NSArray *searchGroupList;
-
+@property (nonatomic, strong)NSMutableArray* tempMemberList;
+@property (nonatomic, assign)NSInteger page;
 
 @end
 
@@ -55,25 +55,39 @@
 
 - (void)updateData
 {
+    _page = 0;
     _members = [NSMutableArray array];
+    _tempMemberList = [[NSMutableArray alloc]init];
     @weakify(self)
     [[V2TIMManager sharedInstance] getGroupsInfo:@[_groupId] succ:^(NSArray<V2TIMGroupInfoResult *> *groupResultList) {
         @strongify(self)
         if(groupResultList.count == 1){
             self.groupInfo = groupResultList[0].info;
+            NSString *title = [NSString stringWithFormat:@"群成员(%ld人)", (long)self.groupInfo.memberCount];
+            self.parentViewController.title = title;;
         }
     } fail:^(int code, NSString *msg) {
         @strongify(self)
         [self.view makeToast:msg];
     }];
-    [[V2TIMManager sharedInstance] getGroupMemberList:_groupId filter:V2TIM_GROUP_MEMBER_FILTER_ALL nextSeq:0 succ:^(uint64_t nextSeq, NSArray<V2TIMGroupMemberFullInfo *> *memberList) {
+    [self fetchListData];
+}
+
+- (void)fetchListData {
+    @weakify(self)
+    [[V2TIMManager sharedInstance] getGroupMemberList:_groupId filter:V2TIM_GROUP_MEMBER_FILTER_ALL nextSeq:_page succ:^(uint64_t nextSeq, NSArray<V2TIMGroupMemberFullInfo *> *memberList) {
         @strongify(self)
-        
+        [self.tempMemberList addObjectsFromArray:memberList];
+        if (nextSeq > 0) {
+            self.page = nextSeq;
+            [self fetchListData];
+            return;
+        }
         NSMutableDictionary *dataDict = @{}.mutableCopy;
         NSMutableArray *groupList = @[].mutableCopy;
         NSMutableArray *nonameList = @[].mutableCopy;
 
-        for (V2TIMGroupMemberFullInfo *member in memberList) {
+        for (V2TIMGroupMemberFullInfo *member in self.tempMemberList) {
             UserModel *user = [[UserModel alloc] init];
             user.userId = member.userID;
             if (member.nameCard.length > 0) {
@@ -113,13 +127,15 @@
         self.dataDict = dataDict;
         
         [self.tableView reloadData];
-        NSString *title = [NSString stringWithFormat:@"群成员(%ld人)", (long)self.members.count];
-        self.parentViewController.title = title;;
     } fail:^(int code, NSString *msg) {
         @strongify(self)
         [self.view makeToast:msg];
     }];
+
 }
+
+
+
 
 - (void)setupViews
 {
@@ -186,9 +202,9 @@
     [self presentViewController:ac animated:YES completion:nil];
 }
 
-- (SearchBarView *)searchBar {
+- (YZSearchBarView *)searchBar {
     if (!_searchBar) {
-        _searchBar = [[SearchBarView alloc]initWithFrame:CGRectMake(0,0, KScreenWidth,44)];
+        _searchBar = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0,0, KScreenWidth,44)];
         _searchBar.backgroundColor = [UIColor whiteColor];
         _searchBar.placeholder = @"昵称/备注";
         _searchBar.isShowCancle = NO;
@@ -407,7 +423,7 @@
             [[V2TIMManager sharedInstance] getUsersInfo:@[memberId] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
                 @strongify(self)
                 if ([infoList.firstObject.userID isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
-                    ProfileViewController* profileVc = [[ProfileViewController alloc]init];
+                    YZProfileViewController* profileVc = [[YZProfileViewController alloc]init];
                     [self.navigationController pushViewController:profileVc animated:true];
                     return;
                 }

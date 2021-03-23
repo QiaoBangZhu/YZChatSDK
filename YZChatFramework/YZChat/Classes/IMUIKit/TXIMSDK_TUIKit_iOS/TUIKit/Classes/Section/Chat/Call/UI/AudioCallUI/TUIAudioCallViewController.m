@@ -17,7 +17,7 @@
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
 #import "YZBaseManager.h"
-#import "TCUtil.h"
+#import "YZUtil.h"
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 
@@ -239,7 +239,13 @@
 #pragma mark UI
 - (void)setupUI {
     self.view.backgroundColor = [UIColor colorWithRed:44/255.0 green:44/255.0 blue:44/255.0 alpha:1.0];
-    
+    UIImageView* bgImageView  = [[UIImageView alloc]initWithImage:YZChatResource(@"audiocall_bg")];
+    bgImageView.contentMode = UIViewContentModeScaleToFill;
+    [self.view addSubview:bgImageView];
+    [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
+
     CGFloat topPadding = 175;
     if (@available(iOS 11.0, *) ){
         topPadding = [UIApplication sharedApplication].keyWindow.safeAreaInsets.top;
@@ -441,7 +447,7 @@
         _userCollectionView.contentMode = UIViewContentModeScaleToFill;
         _userCollectionView.dataSource = self;
         _userCollectionView.delegate = self;
-        _userCollectionView.backgroundColor = [UIColor colorWithRed:44/255.0 green:44/255.0 blue:44/255.0 alpha:1.0];
+        _userCollectionView.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_userCollectionView];
     }
     return _userCollectionView;
@@ -465,7 +471,7 @@
         _invateMembersCollectionView.contentMode = UIViewContentModeScaleToFill;
         _invateMembersCollectionView.dataSource = self;
         _invateMembersCollectionView.delegate = self;
-        _invateMembersCollectionView.backgroundColor = [UIColor colorWithRed:44/255.0 green:44/255.0 blue:44/255.0 alpha:1.0];
+        _invateMembersCollectionView.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_invateMembersCollectionView];
     }
     return _invateMembersCollectionView;
@@ -510,7 +516,6 @@
 
 #pragma mark Event
 - (void)hangupClick {
-    [[YZBaseManager shareInstance] statisticsUsedTime:self.callingTime isVideo:NO];
     [[TUICall shareInstance] hangup];
     [self disMiss];
 }
@@ -688,7 +693,7 @@
 
 - (void)triggerVibrateAction
 {
-    NSInteger checker = [TCUtil compareVersion:[UIDevice currentDevice].systemVersion toVersion:@"9.0"];
+    NSInteger checker = [YZUtil compareVersion:[UIDevice currentDevice].systemVersion toVersion:@"9.0"];
     if (checker >= 0) {
         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate, ^{});
     }

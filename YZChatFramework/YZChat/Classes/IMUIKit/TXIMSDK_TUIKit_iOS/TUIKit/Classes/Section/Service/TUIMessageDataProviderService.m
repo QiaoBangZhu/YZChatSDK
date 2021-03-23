@@ -14,7 +14,7 @@
 #import "TUIFaceMessageCell.h"
 #import "TUIVideoMessageCell.h"
 #import "TUIFileMessageCell.h"
-#import "LocationMessageCellData.h"
+#import "YZLocationMessageCellData.h"
 #import "TUIFaceView.h"
 #import "TUIKit.h"
 #import "NSString+TUICommon.h"
@@ -386,8 +386,8 @@
     return fileData;
 }
 
-- (LocationMessageCellData *) getLocationCellData:(V2TIMMessage *)message fromElem:(V2TIMLocationElem *)elem {
-    LocationMessageCellData *locationData = [[LocationMessageCellData alloc] initWithDirection:(message.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming)];
+- (YZLocationMessageCellData *) getLocationCellData:(V2TIMMessage *)message fromElem:(V2TIMLocationElem *)elem {
+    YZLocationMessageCellData *locationData = [[YZLocationMessageCellData alloc] initWithDirection:(message.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming)];
     locationData.latitude = elem.latitude;
     locationData.longitude = elem.longitude;
     locationData.text = elem.desc;

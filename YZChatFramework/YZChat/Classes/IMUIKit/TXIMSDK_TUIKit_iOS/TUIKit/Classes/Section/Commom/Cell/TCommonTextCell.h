@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *key;
 @property NSString *value;
 @property BOOL showAccessory;
+@property BOOL showCorner;
+@property BOOL showTopCorner;
+@property BOOL showBottomCorner;
 
 @end
 

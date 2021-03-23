@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TContactViewModel.h"
+#import "YZCustomMsg.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /**
@@ -29,7 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic)TContactViewModel *viewModel;
 @property UITableView *tableView;
-
+@property (nonatomic, assign)BOOL isFromOtherApp;
+@property (nonatomic, strong)YzCustomMsg *customMsg;
 @end
 
 NS_ASSUME_NONNULL_END

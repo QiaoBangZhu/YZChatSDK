@@ -15,11 +15,11 @@
 #import "SearchGroupViewController.h"
 #import "NewFriendViewController.h"
 #import <ImSDKForiOS/ImSDK.h>
-#import "FriendProfileViewController.h"
+#import "YZFriendProfileViewController.h"
 #import "TUIContactActionCellData.h"
 #import "TUIGroupConversationListController.h"
 #import "TUIBlackListController.h"
-#import "ContactSearchViewController.h"
+#import "YZContactSearchViewController.h"
 #import "UIImage+YChatExtension.h"
 #import "UIColor+ColorExtension.h"
 #import "ReactiveObjC/ReactiveObjC.h"
@@ -27,7 +27,7 @@
 #import "YUIGroupConversationListController.h"
 #import "YUIBlackListViewController.h"
 #import "UIBarButtonItem+Extensions.h"
-#import "SearchBarView.h"
+#import "YZSearchBarView.h"
 #import <Masonry/Masonry.h>
 #import "SearchMyFriendsViewController.h"
 #import "SearchMyContactsViewController.h"
@@ -37,6 +37,7 @@
 #import "CommonConstant.h"
 #import <Contacts/Contacts.h>
 #import <ContactsUI/ContactsUI.h>
+#import "YzCustomMsg.h"
 
 @interface ContactsViewController ()<CNContactPickerDelegate>
 @property NSArray<TUIContactActionCellData *> *firstGroupData;
@@ -48,16 +49,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleName = @"通讯录";
+    self.titleName = self.isFromOtherApp ? @"请选择":@"通讯录";
     
     YUIContactViewController *contacts = [[YUIContactViewController alloc] init];
+    contacts.isFromOtherApp = self.isFromOtherApp;
+    contacts.customMsg = self.customMsg;
     [self addChildViewController:contacts];
     [self.view addSubview:contacts.view];
     self.contactVc = contacts;
     //如果不加这一行代码，依然可以实现点击反馈，但反馈会有轻微延迟，体验不好。
     contacts.tableView.delaysContentTouches = NO;
     
-    SearchBarView* searchBarView = [[SearchBarView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 52)];
+    YZSearchBarView* searchBarView = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 52)];
     searchBarView.placeholder = @"昵称/备注";
     searchBarView.isShowCancle = NO;
     
@@ -74,11 +77,13 @@
 }
 
 - (void)setupView {
-    UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:YZChatResource(@"contact_search") target:self action:@selector(searchMyFriends)];
-    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    spaceItem.width = -15;
-    self.navigationItem.rightBarButtonItems =  @[spaceItem,moreItem];
-
+    if (!self.isFromOtherApp) {
+        UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:YZChatResource(@"contact_search") target:self action:@selector(searchMyFriends)];
+        UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        spaceItem.width = -15;
+        self.navigationItem.rightBarButtonItems =  @[spaceItem,moreItem];
+    }
+    
     NSMutableArray *list = @[].mutableCopy;
     [list addObject:({
         TUIContactActionCellData *data = [[TUIContactActionCellData alloc] init];
@@ -126,7 +131,7 @@
 
 - (void)onRightItem
 {
-    UIViewController *add = [[ContactSearchViewController alloc] init];
+    UIViewController *add = [[YZContactSearchViewController alloc] init];
     [self.navigationController pushViewController:add animated:YES];
 }
 
@@ -140,6 +145,8 @@
 - (void)onGroupConversation:(TCommonTableViewCell *)cell
 {
     YUIGroupConversationListController *vc = YUIGroupConversationListController.new;
+    vc.customMsg = self.customMsg;
+    vc.isFromOtherApp = self.isFromOtherApp;
     vc.title = @"群聊";
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -48,6 +48,8 @@
  */
 @property TUIFileMessageCellData *fileData;
 
+@property (nonatomic, strong) UIImageView *shadowImageView;
+
 /**
  *  填充数据
  *  根据 data 设置文件消息的数据。

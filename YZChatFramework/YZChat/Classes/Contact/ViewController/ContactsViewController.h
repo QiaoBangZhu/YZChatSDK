@@ -7,10 +7,11 @@
 //
 
 #import "YBaseViewController.h"
-
+@class YzCustomMsg;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactsViewController : YBaseViewController
+@property (nonatomic, strong)YzCustomMsg *customMsg;
 
 @end
 

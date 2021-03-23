@@ -16,12 +16,12 @@
 #import "FriendRequestViewController.h"
 #import "THeader.h"
 #import "YChatNetworkEngine.h"
-#import "UserInfo.h"
+#import "YUserInfo.h"
 #import "UIColor+ColorExtension.h"
 #import "TCommonContactCell.h"
 #import <Masonry/Masonry.h>
-#import "FriendProfileViewController.h"
-#import "SearchFriendsTableViewCell.h"
+#import "YZFriendProfileViewController.h"
+#import "YZSearchFriendsTableViewCell.h"
 
 @interface SearchFriendViewController() <UISearchControllerDelegate,UISearchResultsUpdating,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -77,7 +77,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
-        [_tableView registerClass:[SearchFriendsTableViewCell class] forCellReuseIdentifier:@"SearchFriendsTableViewCell"];
+        [_tableView registerClass:[YZSearchFriendsTableViewCell class] forCellReuseIdentifier:@"SearchFriendsTableViewCell"];
     }
     return _tableView;
 }
@@ -87,7 +87,7 @@
     [YChatNetworkEngine requestUserListWithParam:keyword completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             for (NSDictionary *dic in result[@"data"]) {
-                UserInfo* model = [UserInfo yy_modelWithDictionary:dic];
+                YUserInfo* model = [YUserInfo yy_modelWithDictionary:dic];
                 [self.searchList addObject:model];
             }
             [self.tableView reloadData];
@@ -197,10 +197,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SearchFriendsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchFriendsTableViewCell" forIndexPath:indexPath];
+    YZSearchFriendsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchFriendsTableViewCell" forIndexPath:indexPath];
     if (self.searchController.active) {
         if ([self.searchList count] > 0) {
-            UserInfo *info = [self.searchList objectAtIndex:indexPath.row];
+            YUserInfo *info = [self.searchList objectAtIndex:indexPath.row];
             [cell fillWithData:info];
         }
     }
@@ -210,7 +210,7 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UserInfo *info = [self.searchList objectAtIndex:indexPath.row];
+    YUserInfo *info = [self.searchList objectAtIndex:indexPath.row];
     TCommonContactCellData *data = [[TCommonContactCellData alloc]init];
     V2TIMFriendInfo* friendInfo = [[V2TIMFriendInfo alloc]init];
     friendInfo.userID = info.userId;
@@ -218,7 +218,7 @@
     data.title = info.nickName;
     data.avatarUrl = [NSURL URLWithString:info.userIcon];
     
-    FriendProfileViewController* friendVc = [[FriendProfileViewController alloc]init];
+    YZFriendProfileViewController* friendVc = [[YZFriendProfileViewController alloc]init];
     friendVc.friendProfile  = data.friendProfile;
     [self.navigationController pushViewController:friendVc animated:true];
 }

@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "TUITabBarController.h"
-#import "UserInfo.h"
+#import "YUserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YZBaseManager : NSObject
-@property (nonatomic, strong)UserInfo *userInfo;
+@property (nonatomic, strong)YUserInfo *userInfo;
 @property (nonatomic, strong)NSData   *deviceToken;
 @property (nonatomic, strong)TUITabBarController * tabController;
 @property (nonatomic,   copy)NSString* appId;
+@property (nonatomic, strong)UIViewController* rootViewController;
 
 + (YZBaseManager *)shareInstance;
 

@@ -289,6 +289,8 @@
                                                 email:(NSString *)email
                                          departmentId:(NSString *)departmentId
                                            departName:(NSString *)departName
+                                                 city:(NSString *)city
+                                        userSignature:(NSString *)userSignature
                                            completion:(YChatURLRequstCompletionBlock)block {
     NSDictionary* params = @{@"appid":appId,
                              @"userId":userId,
@@ -300,6 +302,8 @@
                              @"email": email,
                              @"departmentId": departmentId,
                              @"departName":departName,
+                             @"city":city,
+                             @"userSignature": userSignature,
     };
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:sysUserInfo andParams:params];
     return [YChatRequestMan postRequest:request completion:block];

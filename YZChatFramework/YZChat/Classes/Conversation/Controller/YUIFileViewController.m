@@ -12,7 +12,7 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "MMLayout/UIView+MMLayout.h"
 #import "Toast/Toast.h"
-#import "WebViewController.h"
+#import "YZWebViewController.h"
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 
@@ -115,7 +115,7 @@
 //        [_document presentPreviewAnimated:true];
 //        [_document presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
         
-        WebViewController* webvc = [[WebViewController alloc]init];
+        YZWebViewController* webvc = [[YZWebViewController alloc]init];
         webvc.url = url;
         webvc.hiddenCloseBtn = YES;
         [self addChildViewController:webvc];

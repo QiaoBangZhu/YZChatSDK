@@ -15,8 +15,8 @@
 #import "Toast/Toast.h"
 #import "UIColor+TUIDarkMode.h"
 #import "THeader.h"
-#import "CommonPendencyCell.h"
-#import "ContactSearchViewController.h"
+#import "YZCommonPendencyCell.h"
+#import "YZContactSearchViewController.h"
 #import "UIColor+ColorExtension.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "YZAddressBookViewController.h"
@@ -36,15 +36,14 @@
     [super viewDidLoad];
     
     self.title = @"新的好友";
-//    self.view.backgroundColor = [UIColor d_colorWithColorLight:TController_Background_Color dark:TController_Background_Color_Dark];
     self.view.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, KScreenWidth, self.view.frame.size.height - 1) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 1, KScreenWidth-32, self.view.frame.size.height - 1) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView registerClass:[CommonPendencyCell class] forCellReuseIdentifier:@"PendencyCell"];
+    [_tableView registerClass:[YZCommonPendencyCell class] forCellReuseIdentifier:@"PendencyCell"];
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
-    _tableView.separatorInset = UIEdgeInsetsMake(0, 94, 0, 0);
+    _tableView.separatorInset = UIEdgeInsetsMake(0,78, 0, 24);
     _tableView.backgroundColor = self.view.backgroundColor;
 
     _viewModel = TUINewFriendViewModel.new;
@@ -55,10 +54,21 @@
     _moreBtn.hidden = YES;
 
     @weakify(self)
-    [RACObserve(_viewModel, dataList) subscribeNext:^(id  _Nullable x) {
+    [RACObserve(_viewModel, dataList) subscribeNext:^(NSArray*x) {
       @strongify(self)
+        if ([x count] == 1) {
+            TCommonPendencyCellData* data = x[0];
+            data.showCorner = YES;
+        }else if ([x count] > 1) {
+            TCommonPendencyCellData* data = x[0];
+            data.showTopCorner = YES;
+            TCommonPendencyCellData* data_end = x.lastObject;
+            data_end.showBottomCorner = YES;
+        }
        [self.tableView reloadData];
     }];
+
+
     
     UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [moreButton setImage:YZChatResource(@"more") forState:UIControlStateNormal];
@@ -68,7 +78,7 @@
 }
 
 - (void)onRightItem {
-    UIViewController *add = [[ContactSearchViewController alloc] init];
+    UIViewController *add = [[YZContactSearchViewController alloc] init];
     [self.navigationController pushViewController:add animated:YES];
 }
 
@@ -102,7 +112,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CommonPendencyCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PendencyCell" forIndexPath:indexPath];
+    YZCommonPendencyCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PendencyCell" forIndexPath:indexPath];
     TCommonPendencyCellData *data = self.viewModel.dataList[indexPath.row];
     data.cselector = @selector(cellClick:);
     data.cbuttonSelector = @selector(btnClick:);
@@ -132,13 +142,13 @@
     }
 }
 
-- (void)btnClick:(CommonPendencyCell *)cell
+- (void)btnClick:(YZCommonPendencyCell *)cell
 {
     [self.viewModel agreeData:cell.pendencyData];
     [self.tableView reloadData];
 }
 
-- (void)cellClick:(CommonPendencyCell *)cell
+- (void)cellClick:(YZCommonPendencyCell *)cell
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (cell.pendencyData.application.type == V2TIM_FRIEND_APPLICATION_SEND_OUT) {
@@ -157,23 +167,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (!section) {
-        return 110;
+        return 136;
     }
     return .1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Screen_Width, 110)];
+    UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Screen_Width-32, 136)];
     view.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-    UIView* topView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, Screen_Width, 60)];
+    UIView* topView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, Screen_Width-32, 60)];
     topView.backgroundColor = [UIColor whiteColor];
     [view addSubview:topView];
-    
+    topView.layer.cornerRadius = 8;
+    topView.layer.masksToBounds = YES;
+
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showAddressBook)];
     [topView addGestureRecognizer:tap];
     
     UIImageView* icon = [[UIImageView alloc]initWithFrame:CGRectMake(16, 16, 28, 28)];
-    icon.image = YZChatResource(@"contacts_pressed");
+    icon.image = YZChatResource(@"icon_addressbook");
     [topView addSubview:icon];
     
     UILabel* titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(icon.frame.origin.x + icon.frame.size.width + 8, 0, 160, 60)];
@@ -182,16 +194,16 @@
     titleLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
     [topView addSubview:titleLabel];
     
-    UIImageView* rightAccessory = [[UIImageView alloc]initWithFrame:CGRectMake(Screen_Width-16-24, 18, 24, 24)];
+    UIImageView* rightAccessory = [[UIImageView alloc]initWithFrame:CGRectMake(topView.frame.size.width-24-16, 18, 24, 24)];
     UIImage* image = YZChatResource(@"accessory_icon");
     
     rightAccessory.image = image;
     [topView addSubview:rightAccessory];
     
     
-    UILabel* tipsLabel =[[UILabel alloc]initWithFrame:CGRectMake(12, topView.frame.origin.y + topView.frame.size.height + 10, 160, 20)];
+    UILabel* tipsLabel =[[UILabel alloc]initWithFrame:CGRectMake(12, topView.frame.origin.y + topView.frame.size.height + 16, 160, 20)];
     tipsLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
-    tipsLabel.font = [UIFont systemFontOfSize:12];
+    tipsLabel.font = [UIFont systemFontOfSize:15];
     tipsLabel.text = @"好友申请和添加";
     [view addSubview:tipsLabel];
     

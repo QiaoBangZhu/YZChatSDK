@@ -10,6 +10,7 @@
 #import "MMLayout/UIView+MMLayout.h"
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
+#import "WeChatActionSheet.h"
 
 @import MediaPlayer;
 @import AVFoundation;
@@ -80,24 +81,24 @@
         [self addPlayer:path];
     }];
     
-    _downloadBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-    [_downloadBtn setTitle:@"保存相册" forState:UIControlStateNormal];
-    [_downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    _downloadBtn.backgroundColor = [UIColor clearColor];
-    _downloadBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    _downloadBtn.layer.borderWidth = 0.5;
-    _downloadBtn.layer.cornerRadius = 3;
-    [_downloadBtn.layer setMasksToBounds:YES];
-    [_downloadBtn addTarget:self action:@selector(saveVideo) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.downloadBtn];
+//    _downloadBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+//    [_downloadBtn setTitle:@"保存相册" forState:UIControlStateNormal];
+//    [_downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    _downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+//    _downloadBtn.backgroundColor = [UIColor clearColor];
+//    _downloadBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+//    _downloadBtn.layer.borderWidth = 0.5;
+//    _downloadBtn.layer.cornerRadius = 3;
+//    [_downloadBtn.layer setMasksToBounds:YES];
+//    [_downloadBtn addTarget:self action:@selector(saveVideo) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:self.downloadBtn];
 
-    [_downloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@80);
-        make.height.equalTo(@30);
-        make.centerX.equalTo(@0);
-        make.bottom.equalTo(@-100);
-    }];
+//    [_downloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@80);
+//        make.height.equalTo(@30);
+//        make.centerX.equalTo(@0);
+//        make.bottom.equalTo(@-100);
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -133,6 +134,10 @@
     [vc.player play];
     vc.view.frame = self.view.frame;
     self.progress.hidden = YES;
+    
+    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(showAlert:)];
+    longPress.minimumPressDuration = 1;
+    [vc.view addGestureRecognizer:longPress];
 }
 
 - (void)dealloc
@@ -140,13 +145,67 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)saveVideo {
-   if (_videoPath) {
-       if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(_videoPath)) {
-           UISaveVideoAtPathToSavedPhotosAlbum(_videoPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+- (void)showAlert:(UILongPressGestureRecognizer*)ges {
+    if (ges.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    WeChatActionSheet *sheet = [WeChatActionSheet showActionSheet:nil buttonTitles:@[@"保存相册"]];
+    [sheet setFunction:^(WeChatActionSheet *actionSheet,NSInteger index){
+       if (index == WECHATCANCELINDEX) {
+       }else{
+           if (index == 0) {
+               [self saveVideo];
+           }
        }
-   }
+   }];
 }
+
+- (void)saveVideo {
+    PHAuthorizationStatus current = [PHPhotoLibrary authorizationStatus];
+    switch (current) {
+        case PHAuthorizationStatusNotDetermined:    //用户还没有选择(第一次)
+        {
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            //弹出访问权限提示框
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self savePhotosAlbum];
+             }else {
+                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"无法保存" message:@"请在iPhone的\"设置-隐私-照片选项中,允许元讯访问你的照片" preferredStyle:UIAlertControllerStyleAlert];
+                 [ac addAction:[UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:nil]];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [self.navigationController presentViewController:ac animated:YES completion:nil];
+                 });
+                 return;
+            }
+          }];
+        }
+            break;
+        case PHAuthorizationStatusRestricted:       //家长控制
+        {
+        }
+            break;
+        case PHAuthorizationStatusDenied:           //用户拒绝
+        {
+        }
+            break;
+        case PHAuthorizationStatusAuthorized:       //已授权
+        {
+            [self savePhotosAlbum];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)savePhotosAlbum {
+    if (_videoPath) {
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(_videoPath)) {
+            UISaveVideoAtPathToSavedPhotosAlbum(_videoPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        }
+    }
+}
+
 //保存视频完成之后的回调
 - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
    if (error) {

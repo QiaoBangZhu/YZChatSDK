@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "SysUser.h"
+#import "YzCustomMsg.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 //手动退出YZChatSDKUI的通知
@@ -18,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 成功回调
 typedef void (^YChatSysUserSucc)(void);
 /// 失败回调
-typedef void (^YChatSysUserFail)(int errCode, NSString * errMsg);
+typedef void (^YChatSysUserFail)(NSInteger errCode, NSString * errMsg);
 
 @interface YzIMKitAgent : NSObject
 
@@ -41,8 +44,9 @@ typedef void (^YChatSysUserFail)(int errCode, NSString * errMsg);
 
 /**
  * 直接启动IM(必须登录成功才可以启动)
+ *  @param rootVc 当前调用类，如为空则无法返回当前页面
  */
-- (void)startAutoWithDeviceToken:(NSData*)deviceToken;
+- (void)startAutoWithCurrentVc:(UIViewController *)rootVc;
 
 /*
  *  直接聊天
@@ -52,9 +56,18 @@ typedef void (^YChatSysUserFail)(int errCode, NSString * errMsg);
             false 从聊天界面返回到你发起的页面，
             true  回到sdk会话页面。
  */
-- (void)startChatWithChatId:(NSString*)toChatId
-                   chatName:(NSString*)chatName
-       finishToConversation:(BOOL)finishToConversation;
+- (UIViewController *)startChatWithChatId:(NSString*)toChatId
+                                 chatName:(NSString*)chatName
+                     finishToConversation:(BOOL)finishToConversation;
+/*
+ * 打开通讯录页面 发送卡片
+ * @param toChatId 同步数据时候的唯一ID,如果不传将启动通讯里列表。
+ * @param chatName 聊天人的昵称。
+ * @param message  数据模型
+ */
+- (UIViewController *)startCustomMessageWithChatId:(NSString*)toChatId
+                                chatName:(NSString*)chatName
+                                message:(YzCustomMsg*)message;
 /*
  * 获取device Token(必须调用)
  */

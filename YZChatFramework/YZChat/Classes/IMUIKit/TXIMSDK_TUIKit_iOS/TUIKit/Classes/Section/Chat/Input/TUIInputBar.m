@@ -41,7 +41,6 @@
 
 - (void)setupViews
 {
-//    self.backgroundColor = [UIColor d_colorWithColorLight:TInput_Background_Color dark:TInput_Background_Color_Dark];
     self.backgroundColor = [UIColor whiteColor];
 
     _lineView = [[UIView alloc] init];
@@ -84,7 +83,7 @@
     [_recordButton addTarget:self action:@selector(recordBtnExit:) forControlEvents:UIControlEventTouchDragExit];
     [_recordButton addTarget:self action:@selector(recordBtnEnter:) forControlEvents:UIControlEventTouchDragEnter];
     [_recordButton setTitle:@"按住 说话" forState:UIControlStateNormal];
-    [_recordButton setTitleColor:[UIColor colorWithHex:KCommonBlackColor] forState:UIControlStateNormal];
+    [_recordButton setTitleColor:[UIColor colorWithHex:KCommonVoiceTitleColor] forState:UIControlStateNormal];
     _recordButton.hidden = YES;
     [self addSubview:_recordButton];
 
@@ -93,14 +92,35 @@
 //    _inputTextView.placeholder = @"发消息...";
     [_inputTextView setFont:[UIFont systemFontOfSize:16]];
     [_inputTextView.layer setMasksToBounds:YES];
-    [_inputTextView.layer setCornerRadius:8.0f];
+    [_inputTextView.layer setCornerRadius:6.0f];
     [_inputTextView.layer setBorderWidth:0.5f];
-//    [_inputTextView.layer setBorderColor:[UIColor d_colorWithColorLight:TLine_Color dark:TLine_Color_Dark].CGColor];
     [_inputTextView.layer setBorderColor:[UIColor colorWithHex:KCommonBackgroundColor].CGColor];
     [_inputTextView setReturnKeyType:UIReturnKeySend];
     _inputTextView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
     [self addSubview:_inputTextView];
+    [self configureTextView];
 }
+
+- (void)configureTextView {
+    _inputTextView.layer.borderWidth = 0.5;
+    _inputTextView.layer.borderColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4].CGColor;
+    _inputTextView.layer.backgroundColor = [UIColor colorWithRed:249/255.0 green:249/255.0 blue:250/255.0 alpha:1.0].CGColor;
+
+    //gradient
+    CAGradientLayer *gl = [CAGradientLayer layer];
+    gl.frame = _inputTextView.frame;
+    gl.startPoint = CGPointMake(1.22, 1.39);
+    gl.endPoint = CGPointMake(0, -0.1);
+    gl.colors = @[(__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0].CGColor, (__bridge id)[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor];
+    gl.locations = @[@(0), @(1.0f)];
+    _inputTextView.layer.cornerRadius = 6;
+    _inputTextView.layer.shadowColor = [UIColor colorWithRed:166/255.0 green:171/255.0 blue:189/255.0 alpha:0.15].CGColor;
+    _inputTextView.layer.shadowOffset = CGSizeMake(2,2);
+    _inputTextView.layer.shadowOpacity = 1;
+    _inputTextView.layer.shadowRadius = 3;
+    [_inputTextView.layer addSublayer:gl];
+}
+
 
 - (void)defaultLayout
 {
@@ -112,8 +132,8 @@
     _moreButton.frame = CGRectMake(Screen_Width - buttonSize.width - TTextView_Margin, buttonOriginY, buttonSize.width, buttonSize.height);
     _faceButton.frame = CGRectMake(_moreButton.frame.origin.x - buttonSize.width - TTextView_Margin, buttonOriginY, buttonSize.width, buttonSize.height);
 
-    CGFloat beginX = _micButton.frame.origin.x + _micButton.frame.size.width + TTextView_Margin;
-    CGFloat endX = _faceButton.frame.origin.x - TTextView_Margin;
+    CGFloat beginX = _micButton.frame.origin.x + _micButton.frame.size.width + TTextView_Margin-7;
+    CGFloat endX = _faceButton.frame.origin.x - TTextView_Margin + 7;
     _recordButton.frame = CGRectMake(beginX, (TTextView_Height - TTextView_TextView_Height_Min) * 0.5, endX - beginX, TTextView_TextView_Height_Min);
     _inputTextView.frame = _recordButton.frame;
 }

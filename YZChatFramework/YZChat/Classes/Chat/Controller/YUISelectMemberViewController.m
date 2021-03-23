@@ -15,7 +15,7 @@
 #import "TUICallUtils.h"
 #import "TUIMemberPanelCell.h"
 #import "UIColor+ColorExtension.h"
-#import "SearchBarView.h"
+#import "YZSearchBarView.h"
 #import "NSString+TUICommon.h"
 #import <Masonry/Masonry.h>
 
@@ -38,7 +38,7 @@
 @property(nonatomic,assign) NSInteger userPanelRowCount;
 
 @property(nonatomic,strong) NSMutableArray *memberList;
-@property(nonatomic,strong) SearchBarView  *searchBar;
+@property(nonatomic,strong) YZSearchBarView  *searchBar;
 @property(nonatomic,strong) NSMutableArray *searchList;
 
 @property NSDictionary<NSString *, NSArray<UserModel *> *> *dataDict;
@@ -115,9 +115,9 @@
     return _doneBtn;
 }
 
-- (SearchBarView *)searchBar {
+- (YZSearchBarView *)searchBar {
     if (!_searchBar) {
-        _searchBar = [[SearchBarView alloc]initWithFrame:CGRectMake(0,0, KScreenWidth,44)];
+        _searchBar = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0,0, KScreenWidth,44)];
         _searchBar.backgroundColor = [UIColor whiteColor];
         _searchBar.placeholder = @"请输入昵称";
         _searchBar.isShowCancle = NO;

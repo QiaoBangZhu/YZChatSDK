@@ -1,5 +1,5 @@
 #import "TCLoginParam.h"
-#import "TCUtil.h"
+#import "YZUtil.h"
 
 @implementation TCLoginParam
 
@@ -18,7 +18,7 @@
             NSString *useridKey = [defaults objectForKey:kLoginParamKey];
             if (useridKey) {
                 NSString *strLoginParam = [defaults objectForKey:useridKey];
-                NSDictionary *dic = [TCUtil jsonData2Dictionary: strLoginParam];
+                NSDictionary *dic = [YZUtil jsonData2Dictionary: strLoginParam];
                 if (dic) {
                     mgr = [[TCLoginParam alloc] init];
                     mgr.tokenTime = [[dic objectForKey:@"tokenTime"] longValue];
@@ -41,7 +41,7 @@
     NSString *useridKey = [defaults objectForKey:kLoginParamKey];
     if (useridKey) {
         NSString *strLoginParam = [defaults objectForKey:useridKey];
-        NSDictionary *dic = [TCUtil jsonData2Dictionary: strLoginParam];
+        NSDictionary *dic = [YZUtil jsonData2Dictionary: strLoginParam];
         if (dic) {
             TCLoginParam *param = [[TCLoginParam alloc] init];
             param.tokenTime = [[dic objectForKey:@"tokenTime"] longValue];
@@ -73,7 +73,7 @@
     [dic setObject:@(0) forKey:@"isLastAppExt"];
 #endif
     
-    NSData *data = [TCUtil dictionary2JsonData: dic];
+    NSData *data = [YZUtil dictionary2JsonData: dic];
     NSString *strLoginParam = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSString *useridKey = [NSString stringWithFormat:@"%@_LoginParam", self.identifier];
     

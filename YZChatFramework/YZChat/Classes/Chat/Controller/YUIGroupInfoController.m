@@ -27,23 +27,26 @@
 #import "TIMGroupInfo+DataProvider.h"
 #import "TUIAvatarViewController.h"
 #import "UIColor+TUIDarkMode.h"
-#import "ButtonTableViewCell.h"
+#import "YZButtonTableViewCell.h"
 #import "UIColor+ColorExtension.h"
-#import "TextEditViewController.h"
+#import "YZTextEditViewController.h"
 #import "YChatNetworkEngine.h"
 #import <QMUIKit/QMUIKit.h>
 #import "YChatNetworkEngine.h"
-#import "TransferGrpOwnerViewController.h"
+#import "YZTransferGrpOwnerViewController.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
+#import <Masonry/Masonry.h>
+#import "YUIButtonTableViewCell.h"
+
 
 #define ADD_TAG @"-1"
 #define DEL_TAG @"-2"
 
 //@import ImSDK;
 
-@interface YUIGroupInfoController ()<TModifyViewDelegate, TGroupMembersCellDelegate>
+@interface YUIGroupInfoController ()<TModifyViewDelegate, TGroupMembersCellDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *data;
 @property (nonatomic, strong) NSMutableArray *memberData;
 @property (nonatomic, strong) V2TIMGroupInfo *groupInfo;
@@ -62,12 +65,44 @@
     [self updateData];
 }
 
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.tableFooterView = [[UIView alloc] init];
+        _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
+        _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+    
+        [_tableView registerClass:[TCommonTextCell class] forCellReuseIdentifier:TKeyValueCell_ReuseId];
+        [_tableView registerClass:[TUIGroupMembersCell class] forCellReuseIdentifier:TGroupMembersCell_ReuseId];
+        [_tableView registerClass:[TCommonSwitchCell class] forCellReuseIdentifier:TSwitchCell_ReuseId];
+        [_tableView registerClass:[YUIButtonTableViewCell class] forCellReuseIdentifier:TButtonCell_ReuseId];
+        
+        _tableView.layer.cornerRadius = 8;
+        _tableView.layer.shadowColor = [[UIColor colorWithHex:0xAEAEC0] CGColor];
+        _tableView.layer.shadowOffset = CGSizeMake(3,3);
+        _tableView.layer.shadowOpacity = 1;
+        _tableView.layer.shadowRadius = 5;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
+
 
 - (void)setupViews
 {
     self.title = @"详细资料";
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.tableView.backgroundColor = [UIColor d_colorWithColorLight:TController_Background_Color dark:TController_Background_Color_Dark];
+//    self.tableView.tableFooterView = [[UIView alloc] init];
+//    self.tableView.backgroundColor = [UIColor d_colorWithColorLight:TController_Background_Color dark:TController_Background_Color_Dark];
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@16);
+        make.right.equalTo(@-16);
+        make.top.equalTo(@24);
+        make.bottom.equalTo(@0);
+    }];
+
     //加入此行，会让反馈更加灵敏
     self.tableView.delaysContentTouches = NO;
     self.tableView.separatorInset = UIEdgeInsetsZero;
@@ -121,6 +156,7 @@
         countData.key = @"群成员";
         countData.value = [NSString stringWithFormat:@"%d人", self.groupInfo.memberCount];
         countData.cselector = @selector(didSelectMembers);
+        countData.showTopCorner = YES;
         countData.showAccessory = YES;
         self.groupMembersCountCellData = countData;
         [memberArray addObject:countData];
@@ -140,6 +176,7 @@
         groupChatName.value = self.groupInfo.groupName;
         groupChatName.cselector = @selector(didSelectGroupName:);
         groupChatName.showAccessory = YES;
+        groupChatName.showTopCorner = YES;
         [groupInfoArray addObject:groupChatName];
         
         TCommonTextCellData *groupNotice = [[TCommonTextCellData alloc] init];
@@ -147,6 +184,7 @@
         groupNotice.value = self.groupInfo.notification;
         groupNotice.cselector = @selector(didSelectGroupNotice:);
         groupNotice.showAccessory = YES;
+        groupNotice.showBottomCorner = YES;
         [groupInfoArray addObject:groupNotice];
         
         [self.data addObject:groupInfoArray];
@@ -158,6 +196,7 @@
         transferGroupOwner.key = @"转让群主";
         transferGroupOwner.cselector = @selector(didSelectTransferGroupOwner:);
         transferGroupOwner.showAccessory = YES;
+        transferGroupOwner.showCorner = YES;
         [transferArray addObject:transferGroupOwner];
         if ([self.groupInfo isMeOwner]) {
             [self.data addObject:transferArray];
@@ -170,6 +209,7 @@
         nickData.value = self.selfInfo.nameCard;
         nickData.cselector = @selector(didSelectGroupNickname:);
         nickData.showAccessory = YES;
+        nickData.showTopCorner = YES;
         self.groupNickNameCellData = nickData;
         [personalArray addObject:nickData];
         
@@ -186,6 +226,7 @@
             switchData.on = YES;
         }
         switchData.title = @"置顶聊天";
+        switchData.showBottomCorner = YES;
         switchData.cswitchSelector = @selector(didSelectOnTop:);
         [personalArray addObject:switchData];
 
@@ -195,16 +236,16 @@
 
         //群解散按钮
         if ([self.groupInfo isMeOwner]) {
-            ButtonCellData *Deletebutton = [[ButtonCellData alloc] init];
+            YUIButtonCellData *Deletebutton = [[YUIButtonCellData alloc] init];
             Deletebutton.title = @"解散该群";
-            Deletebutton.style = BtnRedText;
+            Deletebutton.style = YButtonRedText;
             Deletebutton.cbuttonSelector = @selector(deleteGroup:);
             [buttonArray addObject:Deletebutton];
         }else {
             //群删除按钮
-            ButtonCellData *quitButton = [[ButtonCellData alloc] init];
+            YUIButtonCellData *quitButton = [[YUIButtonCellData alloc] init];
             quitButton.title = @"退出群聊";
-            quitButton.style = BtnRedText;
+            quitButton.style = YButtonRedText;
             quitButton.cbuttonSelector = @selector(deleteGroup:);
             [buttonArray addObject:quitButton];
         }
@@ -251,9 +292,10 @@
     else if([data isKindOfClass:[TGroupMembersCellData class]]){
         return [TUIGroupMembersCell getHeight:(TGroupMembersCellData *)data];
     }
-    else if([data isKindOfClass:[TUIButtonCellData class]]){
-        return [(TUIButtonCellData *)data heightOfWidth:Screen_Width];;
+    else if([data isKindOfClass:[YUIButtonCellData class]]){
+        return [(YUIButtonCellData *)data heightOfWidth:Screen_Width];;
     }
+
     return 48;
 }
 
@@ -264,8 +306,8 @@
         TCommonTextCell *cell = [tableView dequeueReusableCellWithIdentifier:TKeyValueCell_ReuseId];
         if(!cell){
             cell = [[TCommonTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TKeyValueCell_ReuseId];
-            cell.keyLabel.font = [UIFont systemFontOfSize:16];
-            cell.valueLabel.font = [UIFont systemFontOfSize:16];
+            cell.keyLabel.font = [UIFont systemFontOfSize:14];
+            cell.valueLabel.font = [UIFont systemFontOfSize:14];
             cell.valueLabel.textColor = [UIColor colorWithHex:kCommonBlueTextColor];
         }
         [cell fillWithData:(TCommonTextCellData *)data];
@@ -275,8 +317,8 @@
         TUIGroupMembersCell *cell = [tableView dequeueReusableCellWithIdentifier:TGroupMembersCell_ReuseId];
         if(!cell){
             cell = [[TUIGroupMembersCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TGroupMembersCell_ReuseId];
-            cell.delegate = self;
         }
+        cell.delegate = self;
         [cell setData:(TGroupMembersCellData *)data];
         return cell;
     }
@@ -284,17 +326,17 @@
         TCommonSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:TSwitchCell_ReuseId];
         if(!cell){
             cell = [[TCommonSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TSwitchCell_ReuseId];
-            cell.titleLabel.font = [UIFont systemFontOfSize:16];
+            cell.titleLabel.font = [UIFont systemFontOfSize:14];
         }
         [cell fillWithData:(TCommonSwitchCellData *)data];
         return cell;
     }
-    else if([data isKindOfClass:[ButtonCellData class]]){
-        ButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TButtonCell_ReuseId];
+    else if([data isKindOfClass:[YUIButtonCellData class]]){
+        YUIButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TButtonCell_ReuseId];
         if(!cell){
-            cell = [[ButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TButtonCell_ReuseId];
+            cell = [[YUIButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TButtonCell_ReuseId];
         }
-        [cell fillWithData:(ButtonCellData *)data];
+        [cell fillWithData:(YUIButtonCellData *)data];
         return cell;
     }
     return nil;
@@ -316,7 +358,7 @@
 
 - (void)didSelectGroupName:(TCommonTextCell *)cell {
     if ([self.groupInfo isPrivate] || [self.groupInfo isMeOwner]) {
-        TextEditViewController *vc = [[TextEditViewController alloc] initWithText: self.groupInfo.groupName editType:EditTypeNickname];
+        YZTextEditViewController *vc = [[YZTextEditViewController alloc] initWithText: self.groupInfo.groupName editType:EditTypeNickname];
         vc.title = @"修改群名称";
         [self.navigationController pushViewController:vc animated:YES];
         @weakify(self)
@@ -340,7 +382,7 @@
 
 - (void)didSelectGroupNotice:(TCommonTextCell *)cell {
     if ([self.groupInfo isMeOwner]) {
-        TextEditViewController *vc = [[TextEditViewController alloc] initWithText: self.groupInfo.notification editType:EditTypeNickname];
+        YZTextEditViewController *vc = [[YZTextEditViewController alloc] initWithText: self.groupInfo.notification editType:EditTypeNickname];
         vc.title = @"修改群公告";
         [self.navigationController pushViewController:vc animated:YES];
         @weakify(self)
@@ -363,7 +405,7 @@
 }
 
 -(void)didSelectTransferGroupOwner:(TCommonTextCell *)cell {
-    TransferGrpOwnerViewController* transferGrp = [[TransferGrpOwnerViewController alloc]init];
+    YZTransferGrpOwnerViewController* transferGrp = [[YZTransferGrpOwnerViewController alloc]init];
     transferGrp.dataArray = [self.memberData mutableCopy];
     transferGrp.groupInfo = self.groupInfo;
     [self.navigationController pushViewController:transferGrp animated:YES];
@@ -379,7 +421,7 @@
 
 - (void)didSelectGroupNickname:(TCommonTextCell *)cell
 {
-    TextEditViewController *vc = [[TextEditViewController alloc] initWithText: self.groupNickNameCellData.value editType:EditTypeNickname];
+    YZTextEditViewController *vc = [[YZTextEditViewController alloc] initWithText: self.groupNickNameCellData.value editType:EditTypeNickname];
     vc.title = @"修改我的群昵称";
     [self.navigationController pushViewController:vc animated:YES];
     @weakify(self)

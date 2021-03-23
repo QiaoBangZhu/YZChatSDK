@@ -16,7 +16,7 @@ typedef enum : NSUInteger {
     YButtonGreen,
     YButtonWhite,
     YButtonRedText,
-    YButtonBule,
+    YButtonBlue,
 } YUIButtonStyle;
 
 @interface YUIButtonCellData : TCommonCellData
@@ -28,6 +28,8 @@ typedef enum : NSUInteger {
 
 @interface YUIButtonTableViewCell : TCommonTableViewCell
 @property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) UIView   *shadowView;
+
 @property YUIButtonCellData *buttonData;
 
 - (void)fillWithData:(YUIButtonCellData *)data;

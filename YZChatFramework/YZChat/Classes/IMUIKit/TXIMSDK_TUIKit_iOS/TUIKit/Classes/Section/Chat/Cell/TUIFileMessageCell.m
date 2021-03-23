@@ -16,30 +16,45 @@
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
+@interface TUIFileMessageCell ()
+@property (nonatomic, strong)UIView * bgView;
+@end
+
+
 @implementation TUIFileMessageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.container.backgroundColor = [UIColor d_colorWithColorLight:TCell_Nomal dark:TCell_Nomal_Dark];
+        self.container.backgroundColor = [UIColor clearColor];
         self.container.layer.cornerRadius = 5;
         [self.container.layer setMasksToBounds:YES];
+        
+        self.shadowImageView = [[UIImageView alloc]init];
+        self.shadowImageView.image = YZChatResource(@"file_shadow");
+        [self.container addSubview:self.shadowImageView];
+
+        self.bgView = [[UIView alloc]init];
+        self.bgView.backgroundColor = [UIColor d_colorWithColorLight:TCell_Nomal dark:TCell_Nomal_Dark];
+        self.bgView.layer.cornerRadius = 5;
+        [self.container addSubview:self.bgView];
+
         
         _fileName = [[UILabel alloc] init];
         _fileName.font = [UIFont systemFontOfSize:15];
         _fileName.textColor = [UIColor d_colorWithColorLight:TText_Color dark:TText_Color_Dark];
-        [self.container addSubview:_fileName];
+        [self.bgView addSubview:_fileName];
 
         _length = [[UILabel alloc] init];
         _length.font = [UIFont systemFontOfSize:12];
         _length.textColor = [UIColor d_systemGrayColor];
-        [self.container addSubview:_length];
+        [self.bgView addSubview:_length];
 
         _image = [[UIImageView alloc] init];
         _image.image = [[TUIImageCache sharedInstance] getResourceFromCache:TUIKitResource(@"msg_file")];
         _image.contentMode = UIViewContentModeScaleAspectFit;
-        [self.container addSubview:_image];
+        [self.bgView addSubview:_image];
     
     }
     return self;
@@ -118,16 +133,29 @@
     self.container.frame = containFrame;
     
     CGRect readReceiptFrame = self.readReceiptLabel.frame;
-    readReceiptFrame.origin.y -= 15;
+    readReceiptFrame.origin.y -= 22;
     self.readReceiptLabel.frame = readReceiptFrame;
     
-    CGFloat imageHeight = containerSize.height - 2 * TFileMessageCell_Margin - bottomMargin;
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@6);
+        make.right.equalTo(@-7);
+        make.top.equalTo(@7);
+        make.bottom.equalTo(@-7);
+    }];
+    
+    CGFloat imageHeight = containerSize.height - 2 * TFileMessageCell_Margin - bottomMargin - 14;
     CGFloat imageWidth = imageHeight;
-    _image.frame = CGRectMake(containerSize.width - TFileMessageCell_Margin - imageWidth, TFileMessageCell_Margin, imageWidth, imageHeight);
+    _image.frame = CGRectMake(containerSize.width - TFileMessageCell_Margin - imageWidth-6, TFileMessageCell_Margin, imageWidth, imageHeight);
     CGFloat textWidth = _image.frame.origin.x - 2 * TFileMessageCell_Margin;
     CGSize nameSize = [_fileName sizeThatFits:containerSize];
     _fileName.frame = CGRectMake(TFileMessageCell_Margin, TFileMessageCell_Margin, textWidth, nameSize.height);
     CGSize lengthSize = [_length sizeThatFits:containerSize];
     _length.frame = CGRectMake(TFileMessageCell_Margin, _fileName.frame.origin.y + nameSize.height + TFileMessageCell_Margin * 0.5, textWidth, lengthSize.height);
+    
+    [self.shadowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
+    
 }
+
 @end

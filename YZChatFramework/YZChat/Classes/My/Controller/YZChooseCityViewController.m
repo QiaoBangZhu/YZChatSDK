@@ -8,7 +8,7 @@
 
 #import "YZChooseCityViewController.h"
 #import "UIColor+ColorExtension.h"
-#import "CityModel.h"
+#import "YZCityModel.h"
 #import <Masonry/Masonry.h>
 #import "MMLayout/UIView+MMLayout.h"
 #import "NSString+TUICommon.h"
@@ -55,13 +55,13 @@
     [YChatNetworkEngine requestFetchCityListWithCompletion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             for (NSDictionary* dict in result[@"data"]) {
-                CityModel* model = [CityModel yy_modelWithDictionary:dict];
+                YZCityModel* model = [YZCityModel yy_modelWithDictionary:dict];
                 [self.dataArray addObject:model];
             }
             NSMutableDictionary *dataDict = @{}.mutableCopy;
             NSMutableArray *groupList = @[].mutableCopy;
             NSMutableArray *nonameList = @[].mutableCopy;
-            for (CityModel *cityInfo in self.dataArray) {
+            for (YZCityModel *cityInfo in self.dataArray) {
                 NSString *group = [[cityInfo.city firstPinYin] uppercaseString];
                 if (group.length == 0 || !isalpha([group characterAtIndex:0])) {
                     [nonameList addObject:cityInfo];
@@ -113,7 +113,7 @@
     if (indexPath.section < [self.groupList count]) {
         NSString *group = self.groupList[indexPath.section];
         NSArray *list = self.dataDict[group];
-        CityModel* city = list[indexPath.row];
+        YZCityModel* city = list[indexPath.row];
         cell.textLabel.text = city.city;
     }
     return cell;
@@ -170,7 +170,7 @@
     
     NSString *group = self.groupList[indexPath.section];
     NSArray *list = self.dataDict[group];
-    CityModel* city = list[indexPath.row];
+    YZCityModel* city = list[indexPath.row];
     
     YZAreaView* sheet = [YZAreaView showActionSheet:city.city AreaName:city.area];
     [sheet setFunction:^(YZAreaView * _Nonnull actionSheet, NSInteger index) {

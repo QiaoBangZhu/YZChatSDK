@@ -6,11 +6,11 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import "YBaseModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YChatIMCreateGroupMemberInfo : BaseModel
+@interface YChatIMCreateGroupMemberInfo : YBaseModel
 @property (nonatomic, copy)NSString *Member_Account;
 @property (nonatomic, copy)NSString *Role;
 

@@ -14,7 +14,7 @@
 #import "TUIFaceMessageCell.h"
 #import "TUIVideoMessageCell.h"
 #import "TUIFileMessageCell.h"
-#import "LocationMessageCellData.h"
+#import "YZLocationMessageCellData.h"
 #import "TUIJoinGroupMessageCell.h"
 #import "TUIKitConfig.h"
 #import "TUIFaceView.h"
@@ -606,8 +606,8 @@
     } else if ([data isKindOfClass:[TUIGroupLiveMessageCellData class]]) {
         msg = [(TUIGroupLiveMessageCellData *)data generateInnerMessage];
         
-    } else if ([data isKindOfClass:[LocationMessageCellData class]]) {
-        LocationMessageCellData *uiLocation = (LocationMessageCellData *)data;
+    } else if ([data isKindOfClass:[YZLocationMessageCellData class]]) {
+        YZLocationMessageCellData *uiLocation = (YZLocationMessageCellData *)data;
         msg = [[V2TIMManager sharedInstance] createLocationMessage:uiLocation.text longitude:uiLocation.longitude latitude:uiLocation.latitude];
     }
     data.innerMessage = msg;

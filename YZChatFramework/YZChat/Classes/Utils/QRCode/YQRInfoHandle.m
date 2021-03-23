@@ -8,9 +8,9 @@
 
 #import "YQRInfoHandle.h"
 #import "ReactiveObjC/ReactiveObjC.h"
-#import "FriendProfileViewController.h"
-#import "UserProfileController.h"
-#import "ProfileViewController.h"
+#import "YZFriendProfileViewController.h"
+#import "YUserProfileController.h"
+#import "YZProfileViewController.h"
 #import <ImSDKForiOS/TIMFriendshipManager.h>
 #import "TUIFriendProfileControllerServiceProtocol.h"
 #import "TUIUserProfileControllerServiceProtocol.h"
@@ -65,7 +65,7 @@ DEF_SINGLETON(YQRInfoHandle);
             [[V2TIMManager sharedInstance] getUsersInfo:@[userId] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
                 @strongify(self)
                 if ([infoList.firstObject.userID isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
-                    ProfileViewController* profileVc = [[ProfileViewController alloc]init];
+                    YZProfileViewController* profileVc = [[YZProfileViewController alloc]init];
                     [self.baseController.navigationController pushViewController:profileVc animated:true];
                     return;
                 }

@@ -57,6 +57,11 @@
     [_switcher setOn:switchData.isOn];
 
     _titleLabel.mm_sizeToFit().mm_left(switchData.margin).mm__centerY(self.contentView.mm_h / 2);
+    
+    if (self.switchData.showTopCorner || self.switchData.showBottomCorner || self.switchData.showCorner) {
+        [self configureCorner];
+    }
+
 }
 
 - (void)switchClick
@@ -72,4 +77,28 @@
     }
 
 }
+
+- (void)configureCorner {
+
+    UIRectCorner corners = UIRectCornerTopRight | UIRectCornerTopLeft;
+
+    if (self.switchData.showTopCorner) {
+        corners = UIRectCornerTopRight | UIRectCornerTopLeft;
+    }
+    if (self.switchData.showBottomCorner) {
+        corners = UIRectCornerBottomRight | UIRectCornerBottomLeft;
+    }
+
+    if (self.switchData.showCorner) {
+        corners = UIRectCornerTopRight | UIRectCornerTopLeft | UIRectCornerBottomRight | UIRectCornerBottomLeft;
+    }
+
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds   byRoundingCorners: corners cornerRadii:CGSizeMake(8, 8)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+
 @end

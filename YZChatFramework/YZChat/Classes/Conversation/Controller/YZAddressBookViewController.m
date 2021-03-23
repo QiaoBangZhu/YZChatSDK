@@ -18,17 +18,17 @@
 
 #import <QMUIKit/QMUIKit.h>
 #import "YChatNetworkEngine.h"
-#import "UserInfo.h"
-#import "AddressBookTableViewCell.h"
-#import "AddressBookCellData.h"
+#import "YUserInfo.h"
+#import "YZAddressBookTableViewCell.h"
+#import "YZAddressBookCellData.h"
 #import "NSString+TUICommon.h"
 #import "UIColor+ColorExtension.h"
-#import "ContactsModel.h"
+#import "YZContactsModel.h"
 #import <Masonry/Masonry.h>
 #import "MMLayout/UIView+MMLayout.h"
 #import "TCommonPendencyCellData.h"
 #import "FriendRequestViewController.h"
-#import "ProfileViewController.h"
+#import "YZProfileViewController.h"
 #import "THelper.h"
 #import "YChatValidInput.h"
 
@@ -79,7 +79,7 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [_tableView registerClass:[AddressBookTableViewCell class] forCellReuseIdentifier:@"AddressBookTableViewCell"];
+        [_tableView registerClass:[YZAddressBookTableViewCell class] forCellReuseIdentifier:@"AddressBookTableViewCell"];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
@@ -95,14 +95,18 @@
 }
 
 - (void)fetchContactsInfoFromImServer {
+    @weakify(self)
     [YChatNetworkEngine requestFriendsListByMobiles:self.requestArray completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
+            @strongify(self)
             for (NSDictionary* dic in result[@"data"]) {
-                UserInfo* model = [UserInfo yy_modelWithDictionary:dic];
-                for (UserInfo* info in self.addressArray) {
-                    if ([info.mobile isEqualToString:model.mobile]) {
-                        model.addressBookName = info.addressBookName;
-                        break;
+                YUserInfo* model = [YUserInfo yy_modelWithDictionary:dic];
+                if (![self.addressArray isKindOfClass:[NSNull class]]){
+                    for (YUserInfo* info in self.addressArray) {
+                        if ([info.mobile isEqualToString:model.mobile]) {
+                            model.addressBookName = info.addressBookName;
+                            break;
+                        }
                     }
                 }
                 [self.dataArray addObject:model];
@@ -117,9 +121,9 @@
     NSMutableDictionary *dataDict = @{}.mutableCopy;
     NSMutableArray *groupList = @[].mutableCopy;
     NSMutableArray *nonameList = @[].mutableCopy;
-    for (UserInfo *user in self.dataArray) {
+    for (YUserInfo *user in self.dataArray) {
         
-        AddressBookCellData* data = [[AddressBookCellData alloc]init];
+        YZAddressBookCellData* data = [[YZAddressBookCellData alloc]init];
         data.title = user.addressBookName;
         data.nickname = user.nickName;
         data.identifier = user.userId;
@@ -200,11 +204,11 @@
                phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@" " withString:@""];
                
                NSString* name = [NSString stringWithFormat:@"%@%@",lastname,firstname];
-               UserInfo* model = [[UserInfo alloc]init];
+               YUserInfo* model = [[YUserInfo alloc]init];
                model.addressBookName = [name length] == 0 ? phoneValue : name;
                model.mobile = phoneValue;
                             
-               ContactsModel* contacts = [[ContactsModel alloc]init];
+               YZContactsModel* contacts = [[YZContactsModel alloc]init];
                contacts.mobile = phoneValue;
                
                if ([phoneValue length] > 0 && [YChatValidInput isMobile:phoneValue]) {
@@ -277,16 +281,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     AddressBookTableViewCell*cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressBookTableViewCell" forIndexPath:indexPath];
+     YZAddressBookTableViewCell*cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressBookTableViewCell" forIndexPath:indexPath];
     if (!cell) {
-        cell = [[AddressBookTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddressBookTableViewCell"];
+        cell = [[YZAddressBookTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddressBookTableViewCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.section < [self.groupList count]) {
         NSString *group = self.groupList[indexPath.section];
         NSArray *list = self.dataDict[group];
-        AddressBookCellData* data = list[indexPath.row];
+        YZAddressBookCellData* data = list[indexPath.row];
         data.cselector = @selector(cellClick:);
         data.cbuttonSelector = @selector(btnClick:);
         [cell fillWithData:data];
@@ -303,9 +307,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)btnClick:(AddressBookTableViewCell *)cell
+- (void)btnClick:(YZAddressBookTableViewCell *)cell
 {
-    AddressBookCellData* data = (AddressBookCellData*)cell.data;
+    YZAddressBookCellData* data = (YZAddressBookCellData*)cell.data;
     
     if (data.type == ADDRESSBOOK_APPLICATION_NOT_FRIEND) {
         @weakify(self)
@@ -323,7 +327,7 @@
                 [[V2TIMManager sharedInstance] getUsersInfo:@[data.identifier] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
                     @strongify(self)
                     if ([infoList.firstObject.userID isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
-                        ProfileViewController* profileVc = [[ProfileViewController alloc]init];
+                        YZProfileViewController* profileVc = [[YZProfileViewController alloc]init];
                         [self.navigationController pushViewController:profileVc animated:true];
                         return;
                     }
@@ -350,7 +354,8 @@
                 if (!error) {
                     if ([result[@"code"] intValue] == 200) {
                         [QMUITips showSucceed:result[@"data"]];
-                        [self.tableView reloadData];
+                        data.type = 4;
+                        [cell fillWithData:data];
                     }else {
                         [QMUITips showSucceed:result[@"msg"]];
                     }
@@ -361,8 +366,8 @@
     
 }
 
-- (void)cellClick:(AddressBookTableViewCell *)cell{
-    AddressBookCellData* currData = (AddressBookCellData*)cell.data;
+- (void)cellClick:(YZAddressBookTableViewCell *)cell{
+    YZAddressBookCellData* currData = (YZAddressBookCellData*)cell.data;
     if (currData.type == ADDRESSBOOK_APPLICATION_INVITE) {
         return;
     }
@@ -383,7 +388,7 @@
             [[V2TIMManager sharedInstance] getUsersInfo:@[data.identifier] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
                 @strongify(self)
                 if ([infoList.firstObject.userID isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
-                    ProfileViewController* profileVc = [[ProfileViewController alloc]init];
+                    YZProfileViewController* profileVc = [[YZProfileViewController alloc]init];
                     [self.navigationController pushViewController:profileVc animated:true];
                     return;
                 }

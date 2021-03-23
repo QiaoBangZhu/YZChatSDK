@@ -7,14 +7,13 @@
 //
 
 #import "SearchMyContactsViewController.h"
-#import "SearchBarView.h"
+#import "YZSearchBarView.h"
 #import "CommonConstant.h"
 #import "UIColor+ColorExtension.h"
-#import "FriendListTableViewCell.h"
+#import "YZFriendListTableViewCell.h"
 #import "YChatSettingStore.h"
 #import "YChatNetworkEngine.h"
-#import "FriendProfileViewController.h"
-//#import <ImSDK/ImSDK.h>
+#import "YZFriendProfileViewController.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "UIColor+ColorExtension.h"
 #import "FriendRequestViewController.h"
@@ -29,7 +28,7 @@
 
 @interface SearchMyContactsViewController () <SearchBarDelegate,UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong)SearchBarView  * searchBarView;
+@property (nonatomic, strong)YZSearchBarView  * searchBarView;
 @property (nonatomic, strong)NSMutableArray * searchList;
 @property (nonatomic, strong)NSMutableArray * dataArray;
 @property (nonatomic, strong)UITableView    * tableView;
@@ -75,9 +74,9 @@
 }
 
 
-- (SearchBarView *)searchBarView {
+- (YZSearchBarView *)searchBarView {
     if (!_searchBarView) {
-        _searchBarView = [[SearchBarView alloc]initWithFrame:CGRectMake(0, 0,KScreenWidth-10,44)];
+        _searchBarView = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0, 0,KScreenWidth-10,44)];
         _searchBarView.placeholder = @"昵称/备注";
         _searchBarView.isShowCancle = YES;
         _searchBarView.isCanEdit =  YES;
@@ -122,7 +121,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UserInfo *info = [self.searchList objectAtIndex:indexPath.row];
+    YUserInfo *info = [self.searchList objectAtIndex:indexPath.row];
     FriendRequestViewController *frc = [[FriendRequestViewController alloc] init];
     frc.user = info;
     [self.navigationController pushViewController:frc animated:YES];

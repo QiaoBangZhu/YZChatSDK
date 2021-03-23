@@ -11,7 +11,6 @@
 #import "THeader.h"
 #import <Masonry/Masonry.h>
 #import "NSBundle+YZBundle.h"
-#import "CommonConstant.h"
 
 @interface TUIVideoRenderView ()
 
@@ -49,6 +48,7 @@
         _nicknameLabel = [[UILabel alloc]init];
         _nicknameLabel.font = [UIFont systemFontOfSize:14];
         _nicknameLabel.textColor = [UIColor whiteColor];
+        _nicknameLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _nicknameLabel;
 }
@@ -63,9 +63,19 @@
     BOOL noModel = user.userId.length == 0;
     if (!noModel) {
         self.nicknameLabel.text = user.name;
-        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:[UIImage imageNamed:@"defaultAvatarImage"] options:SDWebImageHighPriority];
         self.avatarImageView.hidden = user.isVideoAvaliable;
         self.nicknameLabel.hidden = user.isVideoAvaliable;
+    }
+}
+
+- (void)setUserModel:(CallUserModel *)userModel {
+    _userModel = userModel;
+    if (userModel) {
+        self.nicknameLabel.text = userModel.name;
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageHighPriority];
+        self.avatarImageView.hidden = userModel.isVideoAvaliable;
+        self.nicknameLabel.hidden = userModel.isVideoAvaliable;
     }
 }
 

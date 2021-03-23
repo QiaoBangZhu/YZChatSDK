@@ -14,7 +14,7 @@
 #import "TUIFaceMessageCell.h"
 #import "TUIVideoMessageCell.h"
 #import "TUIFileMessageCell.h"
-#import "LocationMessageCell.h"
+#import "YZLocationMessageCell.h"
 #import "TUIJoinGroupMessageCell.h"
 #import "TUIKitConfig.h"
 #import "TUIFaceView.h"
@@ -33,11 +33,10 @@
 #import "TUIUserProfileControllerServiceProtocol.h"
 #import "UIColor+TUIDarkMode.h"
 #import "TUICallUtils.h"
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
 #import "YUIFileViewController.h"
 #import "YUIImageViewController.h"
-#import "ProfileViewController.h"
+#import "YZProfileViewController.h"
 
 #define MAX_MESSAGE_SEP_DLAY (5 * 60)
 
@@ -145,7 +144,7 @@
     [self.tableView registerClass:[TUIVideoMessageCell class] forCellReuseIdentifier:TVideoMessageCell_ReuseId];
     [self.tableView registerClass:[TUIFileMessageCell class] forCellReuseIdentifier:TFileMessageCell_ReuseId];
     [self.tableView registerClass:[TUIJoinGroupMessageCell class] forCellReuseIdentifier:TJoinGroupMessageCell_ReuseId];
-    [self.tableView registerClass:[LocationMessageCell class] forCellReuseIdentifier:LocationMessageCell_ReuseId];
+    [self.tableView registerClass:[YZLocationMessageCell class] forCellReuseIdentifier:LocationMessageCell_ReuseId];
 
     _indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, TMessageController_Header_Height)];
     _indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -396,7 +395,7 @@
         else if([data isKindOfClass:[TUISystemMessageCellData class]]) {
             data.reuseId = TSystemMessageCell_ReuseId;
         }
-        else if ([data isKindOfClass:[LocationMessageCellData class]]) {
+        else if ([data isKindOfClass:[YZLocationMessageCellData class]]) {
             data.reuseId = LocationMessageCell_ReuseId;
         }
         else {
@@ -575,8 +574,8 @@
     else if([data isKindOfClass:[TUIFileMessageCellData class]]){
         TUIFileMessageCellData *uiFile = (TUIFileMessageCellData *)data;
         msg = [[V2TIMManager sharedInstance] createFileMessage:uiFile.path fileName:uiFile.fileName];
-    }else if ([data isKindOfClass:[LocationMessageCellData class]]) {
-        LocationMessageCellData *uiLocatioon = (LocationMessageCellData *)data;
+    }else if ([data isKindOfClass:[YZLocationMessageCellData class]]) {
+        YZLocationMessageCellData *uiLocatioon = (YZLocationMessageCellData *)data;
         msg = [[V2TIMManager sharedInstance] createLocationMessage:uiLocatioon.text longitude:uiLocatioon.longitude latitude:uiLocatioon.latitude];
     }
     data.innerMessage = msg;

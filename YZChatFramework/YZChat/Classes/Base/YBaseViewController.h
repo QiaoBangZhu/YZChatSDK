@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YBaseViewController : UIViewController
 @property (nonatomic, copy)NSString *titleName;
-
+@property (nonatomic, assign)BOOL isFromOtherApp;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -89,6 +89,31 @@
     } else {
         self.accessoryImageView.hidden = true;
     }
+    if (self.textData.showTopCorner || self.textData.showBottomCorner || self.textData.showCorner) {
+        [self configureCorner];
+    }
+}
+
+- (void)configureCorner {
+    
+    UIRectCorner corners = UIRectCornerTopRight | UIRectCornerTopLeft;
+
+    if (self.textData.showTopCorner) {
+        corners = UIRectCornerTopRight | UIRectCornerTopLeft;
+    }
+    if (self.textData.showBottomCorner) {
+        corners = UIRectCornerBottomRight | UIRectCornerBottomLeft;
+    }
+
+    if (self.textData.showCorner) {
+        corners = UIRectCornerTopRight | UIRectCornerTopLeft | UIRectCornerBottomRight | UIRectCornerBottomLeft;
+    }
+
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds   byRoundingCorners: corners cornerRadii:CGSizeMake(8, 8)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
 }
 
 

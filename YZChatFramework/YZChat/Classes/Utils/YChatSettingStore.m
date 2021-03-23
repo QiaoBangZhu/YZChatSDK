@@ -7,13 +7,13 @@
 //
 
 #import "YChatSettingStore.h"
-#import "UserInfo.h"
+#import "YUserInfo.h"
 #import "CommonConstant.h"
 #import <FCFileManager/FCFileManager.h>
 
 @interface YChatSettingStore() {
     NSUserDefaults* _userDefault;
-    UserInfo * _userInfo;
+    YUserInfo * _userInfo;
 }
 
 @end
@@ -25,7 +25,7 @@ DEF_SINGLETON(YChatSettingStore);
     self = [super init];
     if (self) {
         _userDefault = [NSUserDefaults standardUserDefaults];
-        _userInfo = [[UserInfo alloc]init];
+        _userInfo = [[YUserInfo alloc]init];
     }
     return self;
 }
@@ -67,7 +67,7 @@ DEF_SINGLETON(YChatSettingStore);
     return NO;
 }
 
-- (void)saveUserInfo:(UserInfo *)userInfo{
+- (void)saveUserInfo:(YUserInfo *)userInfo{
     _userInfo = userInfo;
     
     NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
@@ -77,20 +77,20 @@ DEF_SINGLETON(YChatSettingStore);
     [_userDefault synchronize];
 }
 
-- (UserInfo *)getUserInfo{
+- (YUserInfo *)getUserInfo{
     if([_userInfo.userId length]){
         return _userInfo;
     }
     NSData* data = [_userDefault objectForKey:@"userInfo"];
     _userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (!_userInfo) {
-        _userInfo = [[UserInfo alloc] init];
+        _userInfo = [[YUserInfo alloc] init];
     }
     return _userInfo;
 }
 
 - (void)logout {
-      UserInfo *userInfo = [[UserInfo alloc] init];
+      YUserInfo *userInfo = [[YUserInfo alloc] init];
       _userInfo = userInfo;
       [FCFileManager removeItemAtPath:kHeadImageContentFile error:nil];
       NSData *archiveUserInfo = [NSKeyedArchiver archivedDataWithRootObject:_userInfo];

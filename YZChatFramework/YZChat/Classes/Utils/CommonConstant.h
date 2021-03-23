@@ -16,7 +16,7 @@
 #endif
 
 static const int SDKAPPID = 1400432221;
-//元信的appId
+//元讯的appId
 static NSString*  const yzchatAppId = @"de241446a50499bb77a8684cf610fd04";
 
 //高德地图
@@ -53,11 +53,12 @@ static NSString * const privacyPolicyUrl = @"https://yinsi.yzmetax.com/conceal.h
 
 
 //color
-#define kCommonBlueTextColor            (0x1A7EFF)       //蓝色
-#define KCommonBlackColor               (0x393C42)       //黑色
+#define kCommonBlueTextColor            (0x2F7AFF)       //蓝色
+#define KCommonBlackColor               (0x212121)       //黑色
 #define KCommonBlackTextColor           (0x2D3034)       //黑色标题
 #define KCommonBlueBubbleColor          (0x3386F2)       //蓝色气泡
-#define KCommonBackgroundColor          (0xF4F6F9)       //背景色
+#define KCommonChatBgColor              (0xF6F9FF)       //聊天页面背景色
+#define KCommonBackgroundColor          (0xF0F3F8)       //背景色
 #define kCommonIconGrayColor            (0xE4E6E9)       //灰色
 #define kCommonGrayTextColor            (0x787878)       //浅灰色
 #define KCommonSepareteLineColor        (0xE9EBEC)       //浅色
@@ -68,6 +69,9 @@ static NSString * const privacyPolicyUrl = @"https://yinsi.yzmetax.com/conceal.h
 #define KCommonInputBorderColor         (0xD9D9D9)       //边框颜色
 #define KCommonBubbleTextGrayColor      (0x8B94A1)       //发送位置的气泡文字灰色
 #define KCommonRecordBtnBorderColor     (0xCBCBCB)       //发送语音按钮边框颜色
+#define KCommonSearchBarBackgroundColor (0xF9F9FA)       // 搜索框背景色
+#define KCommonGraySubTextColor         (0x999999)       // 浅灰色
+#define KCommonVoiceTitleColor          (0x6D7587)       // 黑色
 
 #pragma mark - # 设备型号
 

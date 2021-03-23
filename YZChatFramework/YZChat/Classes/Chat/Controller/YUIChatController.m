@@ -27,11 +27,12 @@
 #import "THelper.h"
 #import "UIColor+TUIDarkMode.h"
 #import "TUICallManager.h"
-#import "ProfileViewController.h"
-#import "MapViewController.h"
-#import "LocationMessageCellData.h"
+#import "YZProfileViewController.h"
+#import "YZMapViewController.h"
+#import "YZLocationMessageCellData.h"
 #import "YChatDocumentPickerViewController.h"
 #import <QMUIKit/QMUIKit.h>
+#import "YZBaseManager.h"
 
 @interface YUIChatController ()<YMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) TUIConversationCellData *conversationData;
@@ -42,6 +43,7 @@
 @property (nonatomic, strong) TUIGroupPendencyViewModel *pendencyViewModel;
 @property (nonatomic, strong) NSMutableArray<UserModel *> *atUserList;
 @property (nonatomic, assign) BOOL responseKeyboard;
+@property (nonatomic, assign) BOOL isLoading;
 
 @end
 
@@ -58,9 +60,14 @@
         [moreMenus addObject:[TUIInputMoreCellData pictureData]];
         [moreMenus addObject:[TUIInputMoreCellData videoData]];
         [moreMenus addObject:[TUIInputMoreCellData fileData]];
-        [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
-        [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
+        if (([YZBaseManager shareInstance].userInfo.functionPerm & 32)> 0) {
+            [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
+        }
+        if (([YZBaseManager shareInstance].userInfo.functionPerm & 16)> 0) {
+            [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
+        }
         [moreMenus addObject:[TUIInputMoreCellData locationData]];
+
         _moreMenus = moreMenus;
 
         if (self.conversationData.groupID.length > 0) {
@@ -81,6 +88,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.responseKeyboard = YES;
+    self.isLoading = NO;
     if ([[self.inputController.inputBar getInput] length] > 0) {
         [self.inputController.inputBar refreshTextViewFrame];
     }
@@ -140,7 +148,7 @@
     [self.pendencyBtn addTarget:self action:@selector(openPendency:) forControlEvents:UIControlEventTouchUpInside];
     [self.pendencyBtn sizeToFit];
     self.tipsView.hidden = YES;
-
+    
 
     [RACObserve(self.pendencyViewModel, unReadCnt) subscribeNext:^(NSNumber *unReadCnt) {
         @strongify(self)
@@ -344,7 +352,10 @@
         [self.delegate chatController:self onSelectMessageAvatar:cell];
         return;
     }
-
+    if (_isLoading) {
+        return;
+    }
+    self.isLoading = YES;
     @weakify(self)
     [[V2TIMManager sharedInstance] getFriendsInfo:@[cell.messageData.identifier] succ:^(NSArray<V2TIMFriendInfoResult *> *resultList) {
         V2TIMFriendInfoResult *result = resultList.firstObject;
@@ -360,7 +371,7 @@
             [[V2TIMManager sharedInstance] getUsersInfo:@[cell.messageData.identifier] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
                 @strongify(self)
                 if ([infoList.firstObject.userID isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
-                    ProfileViewController* profileVc = [[ProfileViewController alloc]init];
+                    YZProfileViewController* profileVc = [[YZProfileViewController alloc]init];
                     [self.navigationController pushViewController:profileVc animated:true];
                     return;
                 }
@@ -459,12 +470,12 @@
 }
 
 - (void)sendLocation {
-    MapViewController * mapvc = [[MapViewController alloc]init];
+    YZMapViewController * mapvc = [[YZMapViewController alloc]init];
     @weakify(self)
     mapvc.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
       @strongify(self)
       [self.navigationController popViewControllerAnimated:true];
-      LocationMessageCellData* cellData = [[LocationMessageCellData alloc]initWithDirection:MsgDirectionOutgoing];
+      YZLocationMessageCellData* cellData = [[YZLocationMessageCellData alloc]initWithDirection:MsgDirectionOutgoing];
       cellData.text = [NSString stringWithFormat:@"%@##%@",name,address];
       cellData.latitude = latitude;
       cellData.longitude = longitude;
@@ -639,4 +650,5 @@
 {
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

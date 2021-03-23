@@ -13,7 +13,7 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "TUICallUtils.h"
 #import "TUIMemberPanelCell.h"
-#import "SearchBarView.h"
+#import "YZSearchBarView.h"
 
 #define kUserBorder 44.0
 #define kUserSpacing 2
@@ -34,7 +34,7 @@
 @property(nonatomic,assign) NSInteger userPanelRowCount;
 
 @property(nonatomic,strong) NSMutableArray *memberList;
-@property(nonatomic,strong) SearchBarView  *searchBar;
+@property(nonatomic,strong) YZSearchBarView  *searchBar;
 @property(nonatomic,strong) NSMutableArray *searchList;
 
 @end
@@ -75,9 +75,9 @@
     [self getMembers];
 }
 
-- (SearchBarView *)searchBar {
+- (YZSearchBarView *)searchBar {
     if (!_searchBar) {
-        _searchBar = [[SearchBarView alloc]initWithFrame:CGRectMake(0,0, Screen_Width,44)];
+        _searchBar = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0,0, Screen_Width,44)];
         _searchBar.backgroundColor = [UIColor whiteColor];
         _searchBar.placeholder = @"请输入昵称";
         _searchBar.isShowCancle = NO;

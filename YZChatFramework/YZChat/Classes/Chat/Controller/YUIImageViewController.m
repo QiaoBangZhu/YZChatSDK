@@ -13,6 +13,7 @@
 #import <Masonry/Masonry.h>
 #import <QMUIKit/QMUIKit.h>
 #import "WeChatActionSheet.h"
+#import <Photos/Photos.h>
 
 @interface YUIImageViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIImageView *imageView;
@@ -24,6 +25,7 @@
 
 @property UIImage *saveBackgroundImage;
 @property UIImage *saveShadowImage;
+
 @end
 
 @implementation YUIImageViewController
@@ -52,6 +54,11 @@
     
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissAction)];
     [self.imageView addGestureRecognizer:tap];
+    
+    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(showAlert:)];
+    longPress.minimumPressDuration = 1;
+    [self.imageView addGestureRecognizer:longPress];
+    
 
     BOOL isExist = NO;
     [_data getImagePath:TImage_Type_Origin isExist:&isExist];
@@ -76,45 +83,50 @@
         _progress.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:_progress];
 
-        _button = [[UIButton alloc] initWithFrame:CGRectZero];
-        [_button setTitle:@"查看原图" forState:UIControlStateNormal];
-        [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _button.titleLabel.font = [UIFont systemFontOfSize:13];
-        _button.backgroundColor = [UIColor clearColor];
-        _button.layer.borderColor = [UIColor whiteColor].CGColor;
-        _button.layer.borderWidth = 0.5;
-        _button.layer.cornerRadius = 3;
-        [_button.layer setMasksToBounds:YES];
-        [_button addTarget:self action:@selector(downloadOrigin:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_button];
+//        _button = [[UIButton alloc] initWithFrame:CGRectZero];
+//        [_button setTitle:@"查看原图" forState:UIControlStateNormal];
+//        [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        _button.titleLabel.font = [UIFont systemFontOfSize:13];
+//        _button.backgroundColor = [UIColor clearColor];
+//        _button.layer.borderColor = [UIColor whiteColor].CGColor;
+//        _button.layer.borderWidth = 0.5;
+//        _button.layer.cornerRadius = 3;
+//        [_button.layer setMasksToBounds:YES];
+//        [_button addTarget:self action:@selector(downloadOrigin:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view addSubview:_button];
     }
     
-    _downloadBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-    [_downloadBtn setTitle:@"保存相册" forState:UIControlStateNormal];
-    [_downloadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _downloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    _downloadBtn.backgroundColor = [UIColor clearColor];
-    _downloadBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    _downloadBtn.layer.borderWidth = 0.5;
-    _downloadBtn.layer.cornerRadius = 3;
-    [_downloadBtn.layer setMasksToBounds:YES];
-    [_downloadBtn addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.downloadBtn];
-    
-    [_button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@80);
-        make.height.equalTo(@30);
-        make.centerX.equalTo(@0);
-        make.bottom.equalTo(@-60);
-    }];
-    
-    [_downloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@80);
-        make.height.equalTo(@30);
-        make.centerX.equalTo(@0);
-        make.bottom.equalTo(@-100);
-    }];
+//    [_button mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@80);
+//        make.height.equalTo(@30);
+//        make.centerX.equalTo(@0);
+//        make.bottom.equalTo(@-60);
+//    }];
+//
+//    [_downloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@80);
+//        make.height.equalTo(@30);
+//        make.centerX.equalTo(@0);
+//        make.bottom.equalTo(@-100);
+//    }];
+}
 
+- (void)showAlert:(UILongPressGestureRecognizer*)ges {
+    if (ges.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    WeChatActionSheet *sheet = [WeChatActionSheet showActionSheet:nil buttonTitles:@[@"保存相册",@"查看原图"]];
+    [sheet setFunction:^(WeChatActionSheet *actionSheet,NSInteger index){
+       if (index == WECHATCANCELINDEX) {
+       }else{
+           if (index == 0) {
+               [self saveImage];
+           }
+           if (index == 1) {
+               [self downloadOrigin:nil];
+           }
+       }
+   }];
 }
 
 - (void)downloadOrigin:(id)sender
@@ -170,7 +182,45 @@
 }
 
 - (void)saveImage {
-    //保存图片
+    PHAuthorizationStatus current = [PHPhotoLibrary authorizationStatus];
+    switch (current) {
+        case PHAuthorizationStatusNotDetermined:    //用户还没有选择(第一次)
+        {
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            //弹出访问权限提示框
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self savePhotosAlbum];
+             }else {
+                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"无法保存" message:@"请在iPhone的\"设置-隐私-照片选项中,允许元讯访问你的照片" preferredStyle:UIAlertControllerStyleAlert];
+                 [ac addAction:[UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:nil]];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [self.navigationController presentViewController:ac animated:YES completion:nil];
+                 });
+                 return;
+            }
+          }];
+        }
+            break;
+        case PHAuthorizationStatusRestricted:       //家长控制
+        {
+        }
+            break;
+        case PHAuthorizationStatusDenied:           //用户拒绝
+        {
+        }
+            break;
+        case PHAuthorizationStatusAuthorized:       //已授权
+        {
+            [self savePhotosAlbum];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+//保存图片
+- (void)savePhotosAlbum {
     if (_data.originImage) {
         UIImageWriteToSavedPhotosAlbum(_data.originImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }else {
@@ -178,8 +228,10 @@
     }
 }
 
+
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error) {
+        [QMUITips showError:error.localizedDescription];
         NSLog(@"保存图片出错%@", error.localizedDescription);
     }else {
         [QMUITips showSucceed:@"保存成功"];

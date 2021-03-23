@@ -82,7 +82,7 @@
 
 //file cell
 #define TFileMessageCell_ReuseId @"TFileMessageCell"
-#define TFileMessageCell_Container_Size CGSizeMake((Screen_Width * 0.5), (Screen_Width * 0.15) + 15)
+#define TFileMessageCell_Container_Size CGSizeMake((Screen_Width * 0.5)+13, (Screen_Width * 0.15) + 15 + 14)
 #define TFileMessageCell_Margin 10
 #define TFileMessageCell_Progress_Color  RGBA(0, 0, 0, 0.5)
 
@@ -156,7 +156,7 @@
 //group member cell
 #define TGroupMemberCell_ReuseId @"TGroupMemberCell"
 #define TGroupMemberCell_Margin 5
-#define TGroupMemberCell_Head_Size CGSizeMake(60, 60)
+#define TGroupMemberCell_Head_Size CGSizeMake(36, 36)
 #define TGroupMemberCell_Name_Height 20
 
 //conversation cell
@@ -260,7 +260,7 @@
 #define TGroupMembersCell_ReuseId @"TGroupMembersCell"
 #define TGroupMembersCell_Column_Count 5
 #define TGroupMembersCell_Row_Count 2
-#define TGroupMembersCell_Margin 10
+#define TGroupMembersCell_Margin 24
 #define TGroupMembersCell_Image_Size CGSizeMake(60, 60)
 
 //navigationbar indicator view

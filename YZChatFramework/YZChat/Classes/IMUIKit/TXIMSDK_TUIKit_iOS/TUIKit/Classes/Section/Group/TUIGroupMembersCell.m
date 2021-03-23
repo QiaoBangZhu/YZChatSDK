@@ -31,13 +31,24 @@
 
 - (void)setupViews
 {
+    
+    UIView* maskView = [[UIView alloc]initWithFrame:CGRectMake(0,self.frame.size.height, self.frame.size.width, 20)];
+    [self.contentView addSubview:maskView];
+    
+    //这里设置的是左上和右上角的圆角
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:maskView.bounds   byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight   cornerRadii:CGSizeMake(8, 8)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = maskView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    maskView.layer.mask = maskLayer;
+    
     self.backgroundColor = [UIColor d_colorWithColorLight:TCell_Nomal dark:TCell_Nomal_Dark];
     _memberFlowLayout = [[UICollectionViewFlowLayout alloc] init];
 //    _memberFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
     CGSize cellSize = [TUIGroupMemberCell getSize];
     _memberFlowLayout.itemSize = cellSize;
-    _memberFlowLayout.minimumInteritemSpacing = (Screen_Width - cellSize.width * TGroupMembersCell_Column_Count - 2*TGroupMembersCell_Margin) / (TGroupMembersCell_Column_Count - 1);
+    _memberFlowLayout.minimumInteritemSpacing = (Screen_Width - cellSize.width * TGroupMembersCell_Column_Count - 2*TGroupMembersCell_Margin -16*2) / (TGroupMembersCell_Column_Count - 1);
     _memberFlowLayout.minimumLineSpacing = TGroupMembersCell_Margin;
     _memberFlowLayout.sectionInset = UIEdgeInsetsMake(TGroupMembersCell_Margin, TGroupMembersCell_Margin, TGroupMembersCell_Margin, TGroupMembersCell_Margin);
 
@@ -57,7 +68,7 @@
 - (void)updateLayout
 {
     CGFloat height = [TUIGroupMembersCell getHeight:_data];
-    _memberCollectionView.frame = CGRectMake(0, 0, Screen_Width, height);
+    _memberCollectionView.frame = CGRectMake(0, 0, Screen_Width-16*2, height);
 }
 
 - (void)setData:(TGroupMembersCellData *)data

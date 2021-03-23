@@ -20,11 +20,12 @@
 #import "UIImage+TUIKIT.h"
 #import "TUIKit.h"
 #import "THelper.h"
-#import "AddFriendHeaderCell.h"
-#import "ButtonTableViewCell.h"
+#import "YZAddFriendHeaderCell.h"
+#import "YZButtonTableViewCell.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
 #import "YChatSettingStore.h"
+#import "TUIAvatarViewController.h"
 
 @interface FriendRequestViewController () <UITableViewDataSource, UITableViewDelegate, AddFriendHeaderCellDelegate>
 @property UITableView *tableView;
@@ -155,7 +156,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        AddFriendHeaderCell *cell = [[AddFriendHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddFriendHeaderCell"];
+        YZAddFriendHeaderCell *cell = [[YZAddFriendHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddFriendHeaderCell"];
         cell.delegate = self;
         [cell fillWithData:self.cardCellData];
         if (![self.user.userId isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
@@ -164,7 +165,7 @@
         return cell;
     }
     if (indexPath.section == 1) {
-        ButtonTableViewCell *cell = [[ButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ButtonCell"];
+        YZButtonTableViewCell *cell = [[YZButtonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ButtonCell"];
         [cell fillWithData:self.btnData];
         return cell;
     }
@@ -231,6 +232,18 @@
 - (void)addFriendWords:(NSString *)words {
     self.words = words;
     NSLog(@"%@",self.words);
+}
+
+- (void)didTapOnAvatar:(ProfileCardCellData *)data {
+    TUIProfileCardCellData* celldata = [[TUIProfileCardCellData alloc]init];
+    celldata.avatarUrl = data.avatarUrl;
+    celldata.avatarImage = data.avatarImage;
+    celldata.name = data.name;
+    celldata.signature = data.signature;
+    
+    TUIAvatarViewController *image = [[TUIAvatarViewController alloc] init];
+    image.avatarData = celldata;
+    [self.navigationController pushViewController:image animated:YES];
 }
 
 

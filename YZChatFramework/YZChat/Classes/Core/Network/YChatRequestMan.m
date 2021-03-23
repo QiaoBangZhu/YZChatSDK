@@ -27,6 +27,9 @@
     }
     if ([[YChatSettingStore sharedInstance]getAppId]) {
         [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[[YChatSettingStore sharedInstance]getAppId]] forHTTPHeaderField:@"appId"];
+    }else {
+        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",yzchatAppId] forHTTPHeaderField:@"appId"];
+
     }
     
     return [self postRequest:request mHTTPsClient:mHTTPsClient completion:block];

@@ -10,6 +10,7 @@
 #import "THeader.h"
 #import "MMLayout/UIView+MMLayout.h"
 #import "UIColor+TUIDarkMode.h"
+#import "UIColor+ColorExtension.h"
 
 @implementation YUIButtonCellData
 
@@ -35,15 +36,27 @@
 - (void)setupViews
 {
     self.backgroundColor = [UIColor clearColor];
-
+    //阴影view
+    self.shadowView = [[UIView alloc] initWithFrame:CGRectMake(9, 14, Screen_Width-50, 40)];
+    self.shadowView.layer.shadowOffset = CGSizeMake(5,5);
+    self.shadowView.layer.shadowOpacity = 1;
+    self.shadowView.layer.shadowRadius = 9;
+    self.shadowView.layer.cornerRadius = 6;
+    [self.contentView addSubview:self.shadowView];
+    
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
     [_button.titleLabel setFont:[UIFont systemFontOfSize:18]];
     [_button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+    _button.layer.cornerRadius = 6;
+    _button.layer.shadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.5].CGColor;
+    _button.layer.shadowOffset = CGSizeMake(-5,-5);
+    _button.layer.shadowOpacity = 1;
+    _button.layer.shadowRadius = 9;
     [self.contentView addSubview:_button];
 
     [self setSeparatorInset:UIEdgeInsetsMake(0, Screen_Width, 0, 0)];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-    self.changeColorWhenTouched = YES;
+    self.changeColorWhenTouched = NO;
 }
 
 
@@ -70,19 +83,23 @@
         }
             break;
         case YButtonRedText: {
-            [_button.titleLabel setTextColor:[UIColor systemRedColor]];
-            [_button setTitleColor:[UIColor d_systemRedColor] forState:UIControlStateNormal];
-            _button.backgroundColor = [UIColor d_colorWithColorLight:TCell_Nomal dark:TCell_Nomal_Dark];
-            //对于原本白色背景色的按钮，高亮颜色保持和白色 cell 统一。由于无法直接设置高亮时的背景色，所以高亮背景色的变化通过生成并设置纯色图片来实现。
-            [_button setBackgroundImage:[self imageWithColor:self.colorWhenTouched] forState:UIControlStateHighlighted];
+            [_button.titleLabel setTextColor:[UIColor whiteColor]];
+            [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            _button.backgroundColor = [UIColor colorWithHex:0xD42231];
+            
+            _shadowView.layer.backgroundColor = [UIColor colorWithRed:212/255.0 green:34/255.0 blue:49/255.0 alpha:1.0].CGColor;
+            _shadowView.layer.shadowColor = [UIColor colorWithRed:127/255.0 green:9/255.0 blue:19/255.0 alpha:0.2].CGColor;
 
             break;
         }
-        case YButtonBule:{
-            [_button.titleLabel setTextColor:[UIColor d_colorWithColorLight:[UIColor whiteColor] dark:RGB(180, 180, 180)]];
-            _button.backgroundColor = [UIColor d_colorWithColorLight:RGB(30, 144, 255) dark:RGB(35, 35, 35)];
-            //对于背景色为蓝色的按钮，高亮颜色比原本略深（原本的5/6）。由于无法直接设置高亮时的背景色，所以高亮背景色的变化通过生成并设置纯色图片来实现。
-            [_button setBackgroundImage:[self imageWithColor:[UIColor d_colorWithColorLight:RGB(25, 120, 213) dark:RGB(47, 47, 47)]] forState:UIControlStateHighlighted];
+        case YButtonBlue:{
+            [_button.titleLabel setTextColor:[UIColor whiteColor]];
+            [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            _button.backgroundColor = [UIColor colorWithHex:0x2F7AFF];
+            
+            _shadowView.layer.backgroundColor = [UIColor colorWithRed:47/255.0 green:122/255.0 blue:255/255.0 alpha:1.0].CGColor;
+            _shadowView.layer.shadowColor = [UIColor colorWithRed:7/255.0 green:59/255.0 blue:179/255.0 alpha:0.19].CGColor;
         }
             break;
         default:
@@ -93,9 +110,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    _button.mm_width(Screen_Width)
-    .mm_height(self.mm_h - 2*5)
-    .mm_left(0);
+    _button.mm_width(Screen_Width-50)
+    .mm_height(40)
+    .mm_left(9).mm_top(14);
 }
 
 - (void)onClick:(UIButton *)sender

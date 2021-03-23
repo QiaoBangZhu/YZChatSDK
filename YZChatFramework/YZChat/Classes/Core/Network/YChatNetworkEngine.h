@@ -210,16 +210,18 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                             completion:(YChatURLRequstCompletionBlock)block;
 
 //第三方用户同步用户信息
-+ (NSURLSessionDataTask *)requestSysUserInfoWithAppId:(NSString*)appId
-                                               userId:(NSString*)userId
-                                             nickName:(NSString*)nickName
-                                             userIcon:(NSString*)userIcon
-                                               mobile:(NSString*)mobile
-                                                 card:(NSString*)card
-                                             position:(NSString*)position
-                                                email:(NSString*)email
-                                         departmentId:(NSString*)departmentId
-                                           departName:(NSString*)departName
++ (NSURLSessionDataTask *)requestSysUserInfoWithAppId:(NSString *)appId
+                                               userId:(NSString *)userId
+                                             nickName:(NSString *)nickName
+                                             userIcon:(NSString *)userIcon
+                                               mobile:(NSString *)mobile
+                                                 card:(NSString *)card
+                                             position:(NSString *)position
+                                                email:(NSString *)email
+                                         departmentId:(NSString *)departmentId
+                                           departName:(NSString *)departName
+                                                 city:(NSString *)city
+                                        userSignature:(NSString *)userSignature
                                            completion:(YChatURLRequstCompletionBlock)block;
 
 + (NSURLSessionDataTask *)requestToolKey:(NSString*)toolDomain

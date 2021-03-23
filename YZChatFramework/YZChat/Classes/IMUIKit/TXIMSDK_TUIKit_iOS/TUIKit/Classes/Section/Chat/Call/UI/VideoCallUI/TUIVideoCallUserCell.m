@@ -62,8 +62,8 @@
                     [renderView removeFromSuperview];
                     renderView.frame = self.bounds;
                     [self addSubview:renderView];
-                    renderView.userModel = model;
                 }
+                renderView.userModel = model;
                 self.callingBgContentView.hidden = model.isVideoAvaliable;
                 renderView.hidden = !model.isVideoAvaliable;
             } else {

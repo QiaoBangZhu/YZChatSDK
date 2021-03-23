@@ -4,7 +4,6 @@
 #import "TCServiceManager.h"
 #import "NSString+TUICommon.h"
 #import "THeader.h"
-//#import <ImSDK/ImSDK.h>
 #import <ImSDKForiOS/ImSDK.h>
 
 #import "TUIKit.h"

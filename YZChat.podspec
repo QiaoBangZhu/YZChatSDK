@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'YZChat'
-  s.version          = '1.0.1'
+  s.version          = '1.0.15'
   s.summary          = 'This is a UISDK for chat.'
 
 # This description is used to generate tags and improve search results.
@@ -10,13 +10,13 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  TODO: Add long description of the pod here.
                         DESC
 
   s.homepage         = 'https://www.yzmetax.com'
   s.license          = { :type => 'Copyright', :text => 'Copyright © 2021 yzmetax. All Rights Reserved.\n' }
   s.author           = { 'QiaoBangZhu' => 'magic0230@qq.com' }
-  s.source = { :http => 'https://wangpan.yzmetax.com/yz_ios_sdk_1.0.1.zip' }
+  s.source = { :http => 'https://wangpan.yzmetax.com/yz_ios_sdk_1.0.15.zip' }
   s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
   s.platform = :ios
@@ -37,13 +37,16 @@ TODO: Add long description of the pod here.
   s.dependency 'FCFileManager'
   s.dependency 'Bugly'
   s.dependency 'ZXingObjC'
+  s.dependency 'Aspects'
   
   s.dependency 'MMLayout', '~> 0.2.0'
   s.dependency 'SDWebImage','~> 5.9.0'
   s.dependency 'ReactiveObjC', '~> 3.1.1'
   s.dependency 'Toast', '~> 4.0.0'
-  s.dependency 'TXLiteAVSDK_TRTC', '~> 7.8.9515'
-
+#  s.dependency 'TXLiteAVSDK_TRTC', '~> 7.8.9515'
+  s.dependency 'TXLiteAVSDK_Professional'
   s.dependency 'AMap3DMap-NO-IDFA'
   s.dependency 'AMapSearch-NO-IDFA'
+  s.dependency 'AMapLocation-NO-IDFA'
+  
 end

@@ -17,8 +17,11 @@ PODS:
   - AMap3DMap-NO-IDFA (7.7.0):
     - AMapFoundation-NO-IDFA (~> 1.6.3)
   - AMapFoundation-NO-IDFA (1.6.5.1)
+  - AMapLocation-NO-IDFA (2.6.7):
+    - AMapFoundation-NO-IDFA (~> 1.6.4)
   - AMapSearch-NO-IDFA (7.7.0):
     - AMapFoundation-NO-IDFA (~> 1.6.4)
+  - Aspects (1.4.1)
   - BlocksKit (2.2.5):
     - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
@@ -349,17 +352,19 @@ PODS:
     - QMUIKit/QMUILog
   - QMUIKit/QMUIWeakObjectContainer (4.1.3)
   - ReactiveObjC (3.1.1)
-  - SDWebImage (5.9.4):
-    - SDWebImage/Core (= 5.9.4)
-  - SDWebImage/Core (5.9.4)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
   - Toast (4.0.0)
   - TXLiteAVSDK_TRTC (7.8.9519)
   - YYModel (1.0.4)
   - YYText (1.0.7)
-  - YZChat (0.1.0):
+  - YZChat (1.0.13):
     - AFNetworking (~> 4.0)
     - AMap3DMap-NO-IDFA
+    - AMapLocation-NO-IDFA
     - AMapSearch-NO-IDFA
+    - Aspects
     - Bugly
     - FCFileManager
     - IQKeyboardManager
@@ -381,6 +386,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
   - AMap3DMap-NO-IDFA
+  - AMapLocation-NO-IDFA
   - AMapSearch-NO-IDFA
   - BlocksKit
   - Bugly
@@ -404,7 +410,9 @@ SPEC REPOS:
     - AFNetworking
     - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
+    - AMapLocation-NO-IDFA
     - AMapSearch-NO-IDFA
+    - Aspects
     - BlocksKit
     - Bugly
     - FCFileManager
@@ -429,7 +437,9 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AMap3DMap-NO-IDFA: a56fa103ce65086b522ad81531630ebc9071783b
   AMapFoundation-NO-IDFA: 0cf5f6c6de2725bcd868ed5aa756d12bc1a8f463
+  AMapLocation-NO-IDFA: 2a3edfee336b38481b892e1ecc85df0f6b365851
   AMapSearch-NO-IDFA: 061479dd567486fb59bf3d01b1076c81d910f1b6
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Bugly: fd066c75c4a0eca1440f9b6a84bd37d51bfc85ac
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
@@ -439,14 +449,14 @@ SPEC CHECKSUMS:
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
   QMUIKit: 1063a99f90aedd6e2dd65026ce0df46e6785e67b
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TXLiteAVSDK_TRTC: c127880c4dbe844bdc7575a655be8042ce96024a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 3dcd506adb93be1f0c0bfbb2537b13c3226fd7ae
+  YZChat: 37ff40d4264f0fe244fc2e65ac74ff2b8c2c6e6c
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 7dd28e0974c5b8a2861874fe190c25036591ccb1
+PODFILE CHECKSUM: 8974efe85447fd7188f3eee0ccba74a5e916e745
 
 COCOAPODS: 1.10.0
