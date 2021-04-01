@@ -1,13 +1,17 @@
 //
 //  YZCommonConstant.h
-//  YZChat
+//  YZChat_Example
 //
-//  Created by magic on 2020/12/18.
-//  Copyright © 2020 QiaoBangZhu. All rights reserved.
+//  Created by magic on 2021/3/28.
+//  Copyright © 2021 QiaoBangZhu. All rights reserved.
 //
 
 #ifndef YZCommonConstant_h
 #define YZCommonConstant_h
+
+static NSString*  const yzchatAppId = @"de241446a50499bb77a8684cf610fd04";
+static NSString * const yzuserAgreementUrl = @"https://yinsi.yzmetax.com/agreement.html";
+static NSString * const yzprivacyPolicyUrl = @"https://yinsi.yzmetax.com/conceal.html";
 
 
 // Macro for Singleton
@@ -62,5 +66,7 @@ dispatch_once( &once, ^{ __singleton__ = [[__class alloc] init]; } ); \
 return __singleton__; \
 }
 
-#endif /* CommonConstant_h */
 
+
+
+#endif /* YZCommonConstant_h */

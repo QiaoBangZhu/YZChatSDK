@@ -21,6 +21,7 @@
 
 + (NSURLSessionDataTask*)postRequest:(YChatURLRequest *)request completion:(YChatURLRequstCompletionBlock)block {
     YChatHTTPClient* mHTTPsClient = [YChatHTTPClient sharedClient];
+    
     if ([[YChatSettingStore sharedInstance]getAuthToken]) {
         [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[YChatSettingStore sharedInstance].getAuthToken] forHTTPHeaderField:@"token"];
         
@@ -28,10 +29,8 @@
     if ([[YChatSettingStore sharedInstance]getAppId]) {
         [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[[YChatSettingStore sharedInstance]getAppId]] forHTTPHeaderField:@"appId"];
     }else {
-        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",yzchatAppId] forHTTPHeaderField:@"appId"];
-
+        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",ychatAppId] forHTTPHeaderField:@"appId"];
     }
-    
     return [self postRequest:request mHTTPsClient:mHTTPsClient completion:block];
 }
 

@@ -17,6 +17,8 @@
 #import "YZUserInfoModel.h"
 #import <YZChat/YZChat.h>
 #import <ReactiveObjC/ReactiveObjC.h>
+#import "YZAppDelegate.h"
+#import "YZChatSettingStore.h"
 
 #define StatusBar_Height    (Is_IPhoneX ? (44.0):(20.0))
 
@@ -31,7 +33,7 @@
 @property (nonatomic, strong)UILabel     * tipsLabel;
 @property (nonatomic, strong)YTextFieldInputView *phoneField;
 @property (nonatomic, strong)YTextFieldInputView *passwordField;
-@property (nonatomic, strong)UIImageView * topImageView;
+
 
 @end
 
@@ -60,7 +62,6 @@
 
 - (void)setupView {
     [self.view addSubview:self.contentView];
-    [self.contentView addSubview:self.topImageView];
     [self.contentView addSubview:self.logo];
     [self.contentView  addSubview:self.loginBtn];
     [self.contentView addSubview:self.forgotPwdBtn];
@@ -70,7 +71,7 @@
     [self.contentView addSubview:self.tipsLabel];
     [self.contentView addSubview:self.phoneField];
     [self.contentView addSubview:self.passwordField];
-    self.view.backgroundColor = [UIColor colorWithHex:0xF4F6F9];
+    self.view.backgroundColor = [UIColor colorWithHex:0xF0F3F8];
 }
 
 - (void)makeConstranit {
@@ -79,45 +80,36 @@
         make.width.equalTo(@(self.view.frame.size.width));
     }];
     
-    [_topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(@0);
-        make.height.equalTo(@400);
-    }];
-    
+  
     [_logo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@16);
-        make.top.equalTo(@(44 + StatusBarHeight + 5));
-        make.size.equalTo(@96);
+        make.centerX.equalTo(@0);
+        make.top.equalTo(@(44 + StatusBarHeight));
+        make.size.equalTo(@59);
     }];
     
     [_welcomeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@20);
-        make.top.equalTo(self.logo.mas_bottom).offset(16);
-    }];
-    
-    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@20);
-        make.top.equalTo(_welcomeLabel.mas_bottom).offset(4);
+        make.centerX.equalTo(@0);
+        make.top.equalTo(self.logo.mas_bottom).offset(8);
     }];
     
     [_phoneField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_tipsLabel.mas_bottom).offset(30);
+        make.top.equalTo(_welcomeLabel.mas_bottom).offset(44);
         make.leading.equalTo(@20);
         make.trailing.equalTo(@-20);
-        make.height.equalTo(@50);
+        make.height.equalTo(@40);
     }];
        
     [_passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(@20);
         make.trailing.equalTo(@-20);
         make.top.equalTo(_phoneField.mas_bottom).offset(10);
-        make.height.equalTo(@50);
+        make.height.equalTo(@40);
     }];
    
     [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@20);
         make.right.equalTo(@-20);
-        make.height.equalTo(@48);
+        make.height.equalTo(@44);
         make.top.equalTo(_passwordField.mas_bottom).offset(20);
     }];
     
@@ -142,14 +134,6 @@
         _contentView = [[UIView alloc]init];
     }
     return _contentView;
-}
-
-- (UIImageView *)topImageView {
-    if (!_topImageView) {
-        _topImageView = [[UIImageView alloc]init];
-        _topImageView.image = [UIImage imageNamed:@"login_bg"];
-    }
-    return _topImageView;
 }
 
 - (UIImageView *)logo {
@@ -189,7 +173,7 @@
         [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [_loginBtn addTarget:self action:@selector(loginBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _loginBtn.backgroundColor = [UIColor colorWithHex:0x3386F2];
+        _loginBtn.backgroundColor = [UIColor colorWithHex:0x2F7AFF];
         _loginBtn.layer.masksToBounds = YES;
         _loginBtn.layer.cornerRadius = 4;
         _loginBtn.enabled = false;
@@ -214,7 +198,7 @@
         [_forgotPwdBtn setTitle:@"忘记密码?" forState:UIControlStateNormal];
         [_forgotPwdBtn addTarget:self action:@selector(forgotPwdBtnAction) forControlEvents:UIControlEventTouchUpInside];
         _forgotPwdBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [_forgotPwdBtn setTitleColor:[UIColor colorWithHex:0x787878] forState:UIControlStateNormal];
+        [_forgotPwdBtn setTitleColor:[UIColor colorWithHex:0xBFBFBF] forState:UIControlStateNormal];
     }
     return _forgotPwdBtn;
 }
@@ -236,9 +220,9 @@
 - (UILabel *)welcomeLabel {
     if (!_welcomeLabel) {
         _welcomeLabel = [[UILabel alloc]init];
-        _welcomeLabel.textColor = [UIColor colorWithHex:0x393C42];
-        _welcomeLabel.font = [UIFont systemFontOfSize:24 weight:UIFontWeightMedium];
-        _welcomeLabel.text = @"欢迎使用元信";
+        _welcomeLabel.textColor = [UIColor colorWithHex:0x212121];
+        _welcomeLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+        _welcomeLabel.text = @"欢迎使用元讯";
     }
     return _welcomeLabel;
 }
@@ -254,45 +238,6 @@
 }
 
 - (void)loginBtnAction {
-    
-    NSString *text = @"元信IM生态工具元信";
-    NSString *link = @"http://yzmsri.com/";
-    NSString *desc = @"欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！";
-    NSString * logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
-    
-    YzCustomMsg* msg = [[YzCustomMsg alloc]init];
-    msg.title = text;
-    msg.logo = logo;
-    msg.desc = desc;
-    msg.link = link;
-    
-    [[YzIMKitAgent shareInstance]startAutoWithCurrentVc:self];
-    
-    
-    SysUser* loginUser = [[SysUser alloc]init];
-    loginUser.mobile = @"17774942222";
-    loginUser.nickName = @"我的IOS";
-    loginUser.userId = @"ios20210104";
-    @weakify(self)
-    [QMUITips showLoading:@"模拟数据中" inView:self.view];
-
-//    [[YzIMKitAgent shareInstance]registerWithSysUser:loginUser loginSuccess:^{
-//        @strongify(self)
-//        [QMUITips hideAllTips];
-//        UIViewController* vc = [[YzIMKitAgent shareInstance]startChatWithChatId:@"web20200104" chatName:@"我是web" finishToConversation:NO];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
-//        NSLog(@"%@",errMsg);
-//    }];
-
-//   UIViewController* vc = [[YzIMKitAgent shareInstance]startCustomMessageWithChatId:@"ac4405707242f902af6568cf1806a047" chatName:@"magic" message:msg];
-    
-//    UIViewController* vc = [[YzIMKitAgent shareInstance]startChatWithChatId:@"52ac0e63c55ba493dfb7134cd938fe81" chatName:@"汤简简单点" finishToConversation:YES];
-//    [self presentViewController:vc animated:YES completion:nil];
-    
-//    UIViewController* xx = [[YzIMKitAgent shareInstance] showContacts];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
     if (![_phoneField.textField.text length]) {
         [QMUITips showWithText:@"请输入手机号"];
         return;
@@ -302,51 +247,57 @@
     }
     [QMUITips showLoadingInView:self.view];
     
-//    [YZChatNetworkEngine requestUserLoginMobile:_phoneField.textField.text loginPwd:_passwordField.textField.text completion:^(NSDictionary *result, NSError *error) {
-//        if (!error) {
-//            if ([result[@"code"] intValue] == 200) {
-//                [QMUITips hideAllTips];
-//                YZUserInfoModel* model = [YZUserInfoModel yy_modelWithDictionary:result[@"data"]];
-//                model.token = result[@"token"];
-//                if (model.token) {
-//                    YZUserInfoModel* tokenInfo = [[YZUserInfoModel alloc]init];
-//                    tokenInfo.token = model.token;
-//                    SysUser* user = [[SysUser alloc]init];
-//                    user.userId = model.userId;
-//                    user.nickName = model.nickName;
-//                    user.mobile = model.mobile;
-//                    [[YzIMKitAgent shareInstance]registerWithSysUser:user loginSuccess:^{
-//                         [[YzIMKitAgent shareInstance]startAutoWithDeviceToken:nil];
-//                        } loginFailed:^(int errCode, NSString * _Nonnull errMsg) {
-//                            NSLog(@"error =%@",errMsg);
-//                       }];
-//                }else {
-//                    [QMUITips hideAllTips];
-//                    [QMUITips showWithText:result[@"msg"]];
-//                    return;
-//                }
-//            }else {
-//                [QMUITips hideAllTips];
-//                [QMUITips showWithText:result[@"msg"]];
-//            }
-//        }
-//   }];
+    [YZChatNetworkEngine requestUserLoginMobile:_phoneField.textField.text loginPwd:_passwordField.textField.text completion:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            if ([result[@"code"] intValue] == 200) {
+                [QMUITips hideAllTips];
+                YZUserInfoModel* model = [YZUserInfoModel yy_modelWithDictionary:result[@"data"]];
+                model.token = result[@"token"];
+                if (model.token) {
+                    YZUserInfoModel* tokenInfo = [[YZUserInfoModel alloc]init];
+                    tokenInfo.token = model.token;
+                    [[YZChatSettingStore sharedInstance] saveUserInfo:tokenInfo];
+                    [self fetchUserInfo:model];
+                }else {
+                    [QMUITips hideAllTips];
+                    [QMUITips showWithText:result[@"msg"]];
+                    return;
+                }
+            }else {
+                [QMUITips hideAllTips];
+                [QMUITips showWithText:result[@"msg"]];
+            }
+        }
+   }];
 }
 
+- (void)fetchUserInfo:(YZUserInfoModel*)model {
+    [YZChatNetworkEngine requestUserInfoWithUserId:model.userId completion:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            SysUser* info = [SysUser yy_modelWithDictionary:result[@"data"]];
+            [[YzIMKitAgent shareInstance] registerWithSysUser:info loginSuccess:^{
+                [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil]
+                ;
+             } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
+                 NSLog(@"error =%@",errMsg);
+            }];
+
+        }
+    }];
+}
 
 - (void)regBtnAction {
-//    YZRegViewController* regVc = [[YZRegViewController alloc]init];
-//    regVc.codeType = SmscodeTypeRegUser;
-//    regVc.title = @"注册";
-////    app.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:regVc];
-//    [self.navigationController pushViewController:regVc animated:true];
+    YZRegViewController* regVc = [[YZRegViewController alloc]init];
+    regVc.codeType = YZSmscodeTypeRegUser;
+    regVc.title = @"注册";
+    [self.navigationController pushViewController:regVc animated:YES];
 }
 
 - (void)forgotPwdBtnAction {
-//    RegViewController* forgotPwd = [[RegViewController alloc]init];
-//    forgotPwd.codeType = SmscodeTypeModifyPassword;
-//    forgotPwd.title = @"忘记密码";
-//    [self.navigationController pushViewController:forgotPwd animated:true];
+    YZRegViewController* forgotPwd = [[YZRegViewController alloc]init];
+    forgotPwd.codeType = YZSmscodeTypeModifyPassword;
+    forgotPwd.title = @"忘记密码";
+    [self.navigationController pushViewController:forgotPwd animated:true];
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
@@ -354,10 +305,7 @@
         self.loginBtn.enabled = (textField.text.length > 0 && [self.passwordField.textField.text length] > 0);
     }else {
         self.loginBtn.enabled = (textField.text.length > 0 && [self.phoneField.textField.text length] > 0);
-
     }
 }
-
-
 
 @end

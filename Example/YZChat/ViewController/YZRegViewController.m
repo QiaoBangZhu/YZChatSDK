@@ -20,15 +20,17 @@
 #import "YZChatValidInput.h"
 #import "YZChatNetworkEngine.h"
 #import "UIColor+YZFoundation.h"
+#import "YWebViewController.h"
+#import "YZCommonConstant.h"
 
 @interface YZRegViewController ()<YTextFieldInputViewDelegate>
 @property (nonatomic, strong)YTextFieldInputView *phoneField;
 @property (nonatomic, strong)YTextFieldInputView *smsCodeField;
 @property (nonatomic, strong)YTextFieldInputView *passwordField;
 @property (nonatomic, strong)YTextFieldInputView *confirmPasswordField;
-@property (nonatomic, strong)QMUIButton           *confirmBtn;
-@property (nonatomic, strong)YYLabel              *userAgreementLabel;
-@property (nonatomic, strong)UIButton             *checkBoxBtn;
+@property (nonatomic, strong)QMUIButton          *confirmBtn;
+@property (nonatomic, strong)YYLabel             *userAgreementLabel;
+@property (nonatomic, strong)UIButton            *checkBoxBtn;
 @property (nonatomic, assign)BOOL isLoading;
 
 @end
@@ -45,8 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF4F6F9];
-
+    
     if (@available(iOS 11.0, *)) {
         self.navigationItem.backButtonTitle = @"";
     } else {
@@ -63,33 +64,33 @@
     [self.view addSubview:self.confirmBtn];
     [self.view addSubview:self.checkBoxBtn];
 
-    self.view.backgroundColor = [UIColor colorWithHex:0xF4F6F9];
+    self.view.backgroundColor = [UIColor colorWithHex:0xF0F3F8];
 
 
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"我已阅读并同意服务协议和隐私条款"];
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"我已阅读并同意用户服务协议和隐私政策"];
     text.yy_font = [UIFont systemFontOfSize:12];
-    text.yy_color = [UIColor colorWithHex:0xAAAAAA];
-    [text yy_setColor:[UIColor colorWithHex:0x1A7EFF] range:NSMakeRange(7, 4)];
-    [text yy_setColor:[UIColor colorWithHex:0x1A7EFF] range:NSMakeRange(12, 4)];
+    text.yy_color = [UIColor colorWithHex:0xBFBFBF];
+    [text yy_setColor:[UIColor colorWithHex:0x2373FF] range:NSMakeRange(7, 6)];
+    [text yy_setColor:[UIColor colorWithHex:0x2373FF] range:NSMakeRange(14, 4)];
 
-    [text yy_setTextHighlightRange:NSMakeRange(7, 4)//设置点击的位置
-                             color:[UIColor colorWithHex:0x1A7EFF]
-                   backgroundColor:[UIColor colorWithHex:0xF4F6F9]
+    [text yy_setTextHighlightRange:NSMakeRange(7, 6)//设置点击的位置
+                             color:[UIColor colorWithHex:0x2373FF]
+                   backgroundColor:[UIColor colorWithHex:0xF0F3F8]
                          tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
-//        WebViewController* webVc = [[WebViewController alloc]init];
-//        webVc.url = [NSURL URLWithString:userAgreementUrl];
-//        webVc.title = @"用户协议";
-//        [self.navigationController pushViewController:webVc animated:true];
+        YWebViewController* webVc = [[YWebViewController alloc]init];
+        webVc.url = [NSURL URLWithString:yzuserAgreementUrl];
+        webVc.title = @"用户服务协议";
+        [self.navigationController pushViewController:webVc animated:true];
     }];
 
-    [text yy_setTextHighlightRange:NSMakeRange(12, 4)//设置点击的位置
-                             color:[UIColor colorWithHex:0x1A7EFF]
-                   backgroundColor:[UIColor colorWithHex:0xF4F6F9]
+    [text yy_setTextHighlightRange:NSMakeRange(14, 4)//设置点击的位置
+                             color:[UIColor colorWithHex:0x2373FF]
+                   backgroundColor:[UIColor colorWithHex:0xF0F3F8]
                          tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
-//        WebViewController* webVc = [[WebViewController alloc]init];
-//        webVc.url = [NSURL URLWithString:privacyPolicyUrl];
-//        webVc.title = @"隐私条款";
-//        [self.navigationController pushViewController:webVc animated:true];
+        YWebViewController* webVc = [[YWebViewController alloc]init];
+        webVc.url = [NSURL URLWithString:yzprivacyPolicyUrl];
+        webVc.title = @"隐私条款";
+        [self.navigationController pushViewController:webVc animated:true];
     }];
 
     YYLabel *highlightRangeLabel = [YYLabel new];
@@ -98,67 +99,66 @@
     highlightRangeLabel.backgroundColor = [UIColor colorWithHex:0xF4F6F9];
     self.userAgreementLabel = highlightRangeLabel;
     [self.view addSubview:highlightRangeLabel];
-//
-//    if (self.codeType == SmscodeTypeRegUser) {
-//        self.checkBoxBtn.hidden = false;
-//        self.userAgreementLabel.hidden = false;
-//    }else {
+
+    if (self.codeType == YZSmscodeTypeRegUser) {
+        self.checkBoxBtn.hidden = false;
+        self.userAgreementLabel.hidden = false;
+    }else {
         self.checkBoxBtn.hidden = true;
         self.checkBoxBtn.selected = true;
         self.userAgreementLabel.hidden = true;
-//    }
+    }
 }
 
 - (void)makeConstraint {
     [_phoneField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@20);
-        make.top.equalTo(@(25));
-        make.right.equalTo(@-20);
-        make.height.equalTo(@54);
+        make.left.equalTo(@24);
+        make.top.equalTo(@(24));
+        make.right.equalTo(@-24);
+        make.height.equalTo(@40);
     }];
-
+    
     [_smsCodeField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(@20);
-        make.trailing.equalTo(@-20);
-        make.top.equalTo(_phoneField.mas_bottom).offset(10);
-        make.height.equalTo(@50);
+        make.leading.equalTo(@24);
+        make.trailing.equalTo(@-24);
+        make.top.equalTo(_phoneField.mas_bottom).offset(16);
+        make.height.equalTo(@40);
     }];
-
+    
     [_passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(@20);
-        make.trailing.equalTo(@-20);
-        make.top.equalTo(_smsCodeField.mas_bottom).offset(10);
-        make.height.equalTo(@50);
+        make.leading.equalTo(@24);
+        make.trailing.equalTo(@-24);
+        make.top.equalTo(_smsCodeField.mas_bottom).offset(16);
+        make.height.equalTo(@40);
     }];
-
+    
     [_confirmPasswordField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(@20);
-        make.trailing.equalTo(@-20);
-        make.top.equalTo(_passwordField.mas_bottom).offset(10);
-        make.height.equalTo(@50);
+        make.leading.equalTo(@24);
+        make.trailing.equalTo(@-24);
+        make.top.equalTo(_passwordField.mas_bottom).offset(16);
+        make.height.equalTo(@40);
     }];
-
+    
     [_confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@20);
-        make.right.equalTo(@-20);
-        make.height.equalTo(@48);
-        make.top.equalTo(_confirmPasswordField.mas_bottom).offset(20);
+        make.left.equalTo(@24);
+        make.right.equalTo(@-24);
+        make.height.equalTo(@40);
+        make.top.equalTo(_confirmPasswordField.mas_bottom).offset(24);
     }];
-
+    
     [_checkBoxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_confirmBtn.mas_left);
         make.centerY.equalTo(_userAgreementLabel.mas_centerY);
         make.size.equalTo(@20);
     }];
-
+    
     [_userAgreementLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_checkBoxBtn.mas_right).offset(2);
         make.centerY.equalTo(_checkBoxBtn.mas_centerY);
         make.right.equalTo(@-10);
         make.height.equalTo(@17);
-        make.top.equalTo(_confirmBtn.mas_bottom).offset(30);
+        make.top.equalTo(_confirmBtn.mas_bottom).offset(12);
     }];
-
 }
 
 - (YTextFieldInputView*)phoneField {
@@ -294,7 +294,6 @@
     }];
 }
 
-
 - (void)selectedCodeBtn:(UIButton *)btn {
     if ([_phoneField.textField.text length] == 0) {
         [QMUITips showWithText:@"请输入手机号码"];
@@ -304,22 +303,21 @@
         return;
     }
     _isLoading = YES;
-//    [YChatNetworkEngine requestUserCodeWithMobile:self.phoneField.textField.text type:self.codeType completion:^(NSDictionary *result, NSError *error) {
-//        [UIButton settimer:btn];
-//        self.isLoading = NO;
-//        if (!error) {
-//            if ([result[@"code"]intValue] == 200) {
-//                [QMUITips showSucceed:@"发送成功"];
-//            }else{
-//                [QMUITips showError:result[@"msg"]];
-//            }
-//        }
-//    }];
+    [YZChatNetworkEngine requestUserCodeWithMobile:self.phoneField.textField.text type:self.codeType completion:^(NSDictionary *result, NSError *error) {
+        [UIButton settimer:btn];
+        self.isLoading = NO;
+        if (!error) {
+            if ([result[@"code"]intValue] == 200) {
+                [QMUITips showSucceed:@"发送成功"];
+            }else{
+                [QMUITips showError:result[@"msg"]];
+            }
+        }
+    }];
 }
 
 - (void)checkBoxBtnAction:(UIButton *)btn {
     btn.selected = !btn.selected;
-
     [self checkInput];
 }
 

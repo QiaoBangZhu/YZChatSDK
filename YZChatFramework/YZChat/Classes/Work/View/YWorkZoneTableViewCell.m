@@ -56,7 +56,7 @@
         _collectionView.scrollEnabled = false;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator  = NO;
-        [_collectionView registerClass:[YAppCollectionViewCell class] forCellWithReuseIdentifier:@"AppCollectionViewCell"];
+        [_collectionView registerClass:[YAppCollectionViewCell class] forCellWithReuseIdentifier:@"YAppCollectionViewCell"];
         _collectionView.backgroundColor = [UIColor  whiteColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;

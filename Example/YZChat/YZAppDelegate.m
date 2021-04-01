@@ -14,6 +14,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <Aspects/Aspects.h>
 #import  <objc/runtime.h>
+#import "YZCommonConstant.h"
 
 #if USE_POD
 #import "YZChat/YZChat.h"
@@ -25,30 +26,24 @@
 
 @end
 
+YZAppDelegate *appdel;
+
 @implementation YZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    [self configureNavigationBar];
+    appdel = self;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+
     [self registNotification];
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
 
-   
-    [[YzIMKitAgent shareInstance]initAppId:@"d368eeb23af1881ddf81dd596dfe3cf5"];
+    [[YzIMKitAgent shareInstance]initAppId:yzchatAppId];
 
     YZLoginViewController* loginvc = [[YZLoginViewController alloc]init];
     self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:loginvc];
-    
-    SysUser* user = [[SysUser alloc]init];
-    user.userId = @"ios20210104";
-    user.nickName = @"我的IOS";
-    user.mobile = @"17774942222";
-    [[YzIMKitAgent shareInstance]registerWithSysUser:user loginSuccess:^{
-//        [[YzIMKitAgent shareInstance]startAuto];
-    } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
-        
-    }];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didlogout) name:YZChatSDKNotification_UserStatusListener object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(forceOffline) name:YZChatSDKNotification_ForceOffline object:nil];
@@ -57,9 +52,6 @@
     return YES;
 }
 
-- (void)startLogin {
-//    [[YzIMKitAgent shareInstance]startAuto];
-}
 
 - (void)didlogout {
     [UIApplication sharedApplication].keyWindow.rootViewController = [self getLoginController];
@@ -91,27 +83,6 @@
                     NSLog(@"注册失败");
          }
     }];
-}
-
-- (void)configureNavigationBar {
-    [UINavigationBar appearance].translucent = NO;
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-
-    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [UINavigationBar appearance].backIndicatorImage = backButtonImage;
-    [UINavigationBar appearance].backIndicatorTransitionMaskImage =backButtonImage;
-//    if (@available(iOS 11.0, *)) {
-//        NSError *error;
-//        [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
-//               UIViewController *controller = aspectInfo.instance;
-//               controller.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//           } error:&error];
-//           if (error) NSLog(@"%@", error);
-//    }else {
-//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-//    }
-
 }
 
 -(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

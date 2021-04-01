@@ -14,11 +14,24 @@
 #import "YZ_Precompile.h"
 #import "NSDictionary+YZExtension.h"
 #import "NSDate+YZExtension.h"
+#import "YZCommonConstant.h"
+#import "YZChatSettingStore.h"
 
 @implementation YZChatRequestMan
 
 + (NSURLSessionDataTask*)postRequest:(YZChatURLRequest *)request completion:(YZChatURLRequstCompletionBlock)block {
     YZChatHTTPClient* mHTTPsClient = [YZChatHTTPClient sharedClient];
+    
+    if ([[YZChatSettingStore sharedInstance]getAuthToken]) {
+        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[YZChatSettingStore sharedInstance].getAuthToken] forHTTPHeaderField:@"token"];
+        
+    }
+    if ([[YZChatSettingStore sharedInstance]getAppId]) {
+        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",[[YZChatSettingStore sharedInstance]getAppId]] forHTTPHeaderField:@"appId"];
+    }else {
+        [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",yzchatAppId] forHTTPHeaderField:@"appId"];
+
+    }
     return [self postRequest:request mHTTPsClient:mHTTPsClient completion:block];
 }
 

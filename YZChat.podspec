@@ -38,12 +38,10 @@ Pod::Spec.new do |s|
   s.dependency 'Bugly'
   s.dependency 'ZXingObjC'
   s.dependency 'Aspects'
-  
   s.dependency 'MMLayout', '~> 0.2.0'
   s.dependency 'SDWebImage','~> 5.9.0'
   s.dependency 'ReactiveObjC', '~> 3.1.1'
   s.dependency 'Toast', '~> 4.0.0'
-#  s.dependency 'TXLiteAVSDK_TRTC', '~> 7.8.9515'
   s.dependency 'TXLiteAVSDK_Professional'
   s.dependency 'AMap3DMap-NO-IDFA'
   s.dependency 'AMapSearch-NO-IDFA'

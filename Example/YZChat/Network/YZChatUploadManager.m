@@ -19,7 +19,7 @@ DEF_SINGLETON(YZChatUploadManager);
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.timeoutInterval = 20;
     manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
-    url = [NSString stringWithFormat:@"%@%@", YCHAT_REQUEST_BASE_URLS_PRODUCTION, url];
+    url = [NSString stringWithFormat:@"%@%@", YZCHAT_REQUEST_BASE_URLS_PRODUCTION, url];
     [manager POST:url parameters:params headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         [formData appendPartWithFileData:imageData name:imageName fileName:[NSString stringWithFormat:@"%@.png", imageName] mimeType:@"image/jpeg"];

@@ -36,11 +36,6 @@
     self = [super init];
     if (self) {
         self.type = type;
-        self.layer.masksToBounds = YES;
-        self.layer.cornerRadius = 4;
-        self.layer.borderColor = [[UIColor colorWithHex:0xD9D9D9] CGColor];
-        self.layer.borderWidth = 1;
-        
         [self setup];
     }
     return  self;
@@ -60,7 +55,13 @@
         default:
             break;
     }
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
+    UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"searchBar_shadow"]];
+    [self addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
+    
     [self addSubview:self.textField];
     [self makeConstraint];
 }

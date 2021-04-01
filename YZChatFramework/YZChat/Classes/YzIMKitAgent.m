@@ -143,8 +143,6 @@
     convc.isNeedCloseBtn = YES;
     tab.modalPresentationStyle =UIModalPresentationFullScreen;
     [rootVc presentViewController:tab animated:YES completion:nil];
-    
-//    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:tab animated:YES completion:nil];
 }
 
 - (UIViewController*)startChatWithChatId:(NSString *)toChatId

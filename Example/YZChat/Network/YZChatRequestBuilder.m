@@ -38,7 +38,7 @@
 }
 
 + (NSString *)baseUrlConvertWith:(NSString *)url {
-    NSString *baseUrl = YCHAT_REQUEST_BASE_URLS_PRODUCTION;
+    NSString *baseUrl = YZCHAT_REQUEST_BASE_URLS_PRODUCTION;
     return baseUrl;
 }
 
