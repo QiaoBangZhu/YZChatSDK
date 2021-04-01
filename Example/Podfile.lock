@@ -356,10 +356,10 @@ PODS:
     - SDWebImage/Core (= 5.9.5)
   - SDWebImage/Core (5.9.5)
   - Toast (4.0.0)
-  - TXLiteAVSDK_TRTC (7.8.9519)
+  - TXLiteAVSDK_Professional (8.4.9944)
   - YYModel (1.0.4)
   - YYText (1.0.7)
-  - YZChat (1.0.13):
+  - YZChat (1.0.15):
     - AFNetworking (~> 4.0)
     - AMap3DMap-NO-IDFA
     - AMapLocation-NO-IDFA
@@ -375,7 +375,7 @@ PODS:
     - ReactiveObjC (~> 3.1.1)
     - SDWebImage (~> 5.9.0)
     - Toast (~> 4.0.0)
-    - TXLiteAVSDK_TRTC (~> 7.8.9515)
+    - TXLiteAVSDK_Professional
     - YYModel
     - YYText
     - ZXingObjC
@@ -399,7 +399,7 @@ DEPENDENCIES:
   - ReactiveObjC (~> 3.1.1)
   - SDWebImage (~> 5.9.0)
   - Toast (~> 4.0.0)
-  - TXLiteAVSDK_TRTC (~> 7.8.9515)
+  - TXLiteAVSDK_Professional
   - YYModel
   - YYText
   - YZChat (from `../`)
@@ -424,7 +424,7 @@ SPEC REPOS:
     - ReactiveObjC
     - SDWebImage
     - Toast
-    - TXLiteAVSDK_TRTC
+    - TXLiteAVSDK_Professional
     - YYModel
     - YYText
     - ZXingObjC
@@ -451,12 +451,12 @@ SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TXLiteAVSDK_TRTC: c127880c4dbe844bdc7575a655be8042ce96024a
+  TXLiteAVSDK_Professional: 9b3efeb291a562191cd3f430a4873e1c49bf1873
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 37ff40d4264f0fe244fc2e65ac74ff2b8c2c6e6c
+  YZChat: 9395745620f9b4665409c494045964cf6e33cacc
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 8974efe85447fd7188f3eee0ccba74a5e916e745
+PODFILE CHECKSUM: e49ffecbf8556244a7271d6376471f5b36804b85
 
 COCOAPODS: 1.10.0
