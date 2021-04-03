@@ -19,7 +19,6 @@
 #import <mach/mach.h>
 #import <sys/types.h>
 #import <sys/sysctl.h>
-#import "TCLoginParam.h"
 #import "TCConstants.h"
 #import <CommonCrypto/CommonDigest.h>
 

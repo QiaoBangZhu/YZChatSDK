@@ -14,7 +14,6 @@
 #import <ImSDKForiOS/ImSDK.h>
 #import "YZChangePasswordViewController.h"
 #import "YChatSettingStore.h"
-#import "YLoginViewController.h"
 #import <SDWebImage/SDWebImage.h>
 #import <SDWebImageManager.h>
 #import "ReactiveObjC/ReactiveObjC.h"
@@ -199,7 +198,11 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"YzWorkzonePayReturn" object:nil];
     [[YChatSettingStore sharedInstance] logout];
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[YZBaseManager shareInstance]getLoginController];
+
+    Class cls = NSClassFromString(@"YZLoginViewController");
+    if (cls) {
+        [UIApplication sharedApplication].keyWindow.rootViewController = [[cls alloc] init];
+    }
 }
 
 - (void)changePwd {

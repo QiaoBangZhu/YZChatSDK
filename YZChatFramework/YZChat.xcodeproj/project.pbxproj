@@ -124,9 +124,7 @@
 		30A98ACC25A449F20082D3C9 /* YZCommonTextImageTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9885925A449F00082D3C9 /* YZCommonTextImageTableViewCell.h */; };
 		30A98ACD25A449F20082D3C9 /* YZSearchFriendsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9885A25A449F00082D3C9 /* YZSearchFriendsTableViewCell.h */; };
 		30A98ACE25A449F20082D3C9 /* YZTextFieldInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9885B25A449F00082D3C9 /* YZTextFieldInputView.h */; };
-		30A98ACF25A449F20082D3C9 /* YZRequestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9885D25A449F00082D3C9 /* YZRequestUtils.h */; };
 		30A98AD025A449F20082D3C9 /* YChatValidInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9885E25A449F00082D3C9 /* YChatValidInput.h */; };
-		30A98AD125A449F20082D3C9 /* YZBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9885F25A449F00082D3C9 /* YZBaseResponse.m */; };
 		30A98AD225A449F20082D3C9 /* YZUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9886025A449F00082D3C9 /* YZUtil.h */; };
 		30A98AD325A449F20082D3C9 /* YBSuspensionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9886325A449F00082D3C9 /* YBSuspensionManager.h */; };
 		30A98AD425A449F20082D3C9 /* NSObject+YBSuspensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9886425A449F00082D3C9 /* NSObject+YBSuspensionView.m */; };
@@ -153,9 +151,7 @@
 		30A98AE925A449F20082D3C9 /* WeChatActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9887C25A449F00082D3C9 /* WeChatActionSheet.m */; };
 		30A98AEA25A449F20082D3C9 /* WeChatActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9887D25A449F00082D3C9 /* WeChatActionSheet.h */; };
 		30A98AEB25A449F20082D3C9 /* YChatValidInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9887E25A449F00082D3C9 /* YChatValidInput.m */; };
-		30A98AEC25A449F20082D3C9 /* YZRequestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9887F25A449F00082D3C9 /* YZRequestUtils.m */; };
 		30A98AED25A449F20082D3C9 /* YZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888025A449F00082D3C9 /* YZUtil.m */; };
-		30A98AEE25A449F20082D3C9 /* YZBaseResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888125A449F00082D3C9 /* YZBaseResponse.h */; };
 		30A98AEF25A449F20082D3C9 /* YZPAirSandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888225A449F00082D3C9 /* YZPAirSandbox.h */; };
 		30A98AF025A449F20082D3C9 /* YChatSettingStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888325A449F00082D3C9 /* YChatSettingStore.h */; };
 		30A98AF125A449F20082D3C9 /* YZConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888625A449F00082D3C9 /* YZConversationViewController.m */; };
@@ -559,12 +555,6 @@
 		30A98C7F25A449F30082D3C9 /* TUIImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A4825A449F10082D3C9 /* TUIImageCache.h */; };
 		30A98C8025A449F30082D3C9 /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30A98A4A25A449F10082D3C9 /* TUIKitResource.bundle */; };
 		30A98C8125A449F30082D3C9 /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30A98A4B25A449F10082D3C9 /* TUIKitFace.bundle */; };
-		30A98C8225A449F30082D3C9 /* TCLoginParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A98A4D25A449F10082D3C9 /* TCLoginParam.m */; };
-		30A98C8325A449F30082D3C9 /* YRegViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A4E25A449F10082D3C9 /* YRegViewController.h */; };
-		30A98C8425A449F30082D3C9 /* YLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A98A4F25A449F10082D3C9 /* YLoginViewController.m */; };
-		30A98C8525A449F30082D3C9 /* YRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A98A5025A449F10082D3C9 /* YRegViewController.m */; };
-		30A98C8625A449F30082D3C9 /* TCLoginParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A5125A449F10082D3C9 /* TCLoginParam.h */; };
-		30A98C8725A449F30082D3C9 /* YLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A5225A449F10082D3C9 /* YLoginViewController.h */; };
 		30A98C8825A449F30082D3C9 /* YWorkZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A98A5525A449F20082D3C9 /* YWorkZoneViewController.m */; };
 		30A98C8925A449F30082D3C9 /* YWorkZoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A5625A449F20082D3C9 /* YWorkZoneViewController.h */; };
 		30A98C8A25A449F30082D3C9 /* YWorkZoneModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A5825A449F20082D3C9 /* YWorkZoneModel.h */; };
@@ -712,9 +702,7 @@
 		30A9885925A449F00082D3C9 /* YZCommonTextImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCommonTextImageTableViewCell.h; sourceTree = "<group>"; };
 		30A9885A25A449F00082D3C9 /* YZSearchFriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSearchFriendsTableViewCell.h; sourceTree = "<group>"; };
 		30A9885B25A449F00082D3C9 /* YZTextFieldInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZTextFieldInputView.h; sourceTree = "<group>"; };
-		30A9885D25A449F00082D3C9 /* YZRequestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZRequestUtils.h; sourceTree = "<group>"; };
 		30A9885E25A449F00082D3C9 /* YChatValidInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YChatValidInput.h; sourceTree = "<group>"; };
-		30A9885F25A449F00082D3C9 /* YZBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBaseResponse.m; sourceTree = "<group>"; };
 		30A9886025A449F00082D3C9 /* YZUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZUtil.h; sourceTree = "<group>"; };
 		30A9886325A449F00082D3C9 /* YBSuspensionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBSuspensionManager.h; sourceTree = "<group>"; };
 		30A9886425A449F00082D3C9 /* NSObject+YBSuspensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YBSuspensionView.m"; sourceTree = "<group>"; };
@@ -741,9 +729,7 @@
 		30A9887C25A449F00082D3C9 /* WeChatActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatActionSheet.m; sourceTree = "<group>"; };
 		30A9887D25A449F00082D3C9 /* WeChatActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatActionSheet.h; sourceTree = "<group>"; };
 		30A9887E25A449F00082D3C9 /* YChatValidInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YChatValidInput.m; sourceTree = "<group>"; };
-		30A9887F25A449F00082D3C9 /* YZRequestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZRequestUtils.m; sourceTree = "<group>"; };
 		30A9888025A449F00082D3C9 /* YZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZUtil.m; sourceTree = "<group>"; };
-		30A9888125A449F00082D3C9 /* YZBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBaseResponse.h; sourceTree = "<group>"; };
 		30A9888225A449F00082D3C9 /* YZPAirSandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPAirSandbox.h; sourceTree = "<group>"; };
 		30A9888325A449F00082D3C9 /* YChatSettingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YChatSettingStore.h; sourceTree = "<group>"; };
 		30A9888625A449F00082D3C9 /* YZConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZConversationViewController.m; sourceTree = "<group>"; };
@@ -1147,12 +1133,6 @@
 		30A98A4825A449F10082D3C9 /* TUIImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIImageCache.h; sourceTree = "<group>"; };
 		30A98A4A25A449F10082D3C9 /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIKitResource.bundle; sourceTree = "<group>"; };
 		30A98A4B25A449F10082D3C9 /* TUIKitFace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIKitFace.bundle; sourceTree = "<group>"; };
-		30A98A4D25A449F10082D3C9 /* TCLoginParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLoginParam.m; sourceTree = "<group>"; };
-		30A98A4E25A449F10082D3C9 /* YRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRegViewController.h; sourceTree = "<group>"; };
-		30A98A4F25A449F10082D3C9 /* YLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLoginViewController.m; sourceTree = "<group>"; };
-		30A98A5025A449F10082D3C9 /* YRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRegViewController.m; sourceTree = "<group>"; };
-		30A98A5125A449F10082D3C9 /* TCLoginParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLoginParam.h; sourceTree = "<group>"; };
-		30A98A5225A449F10082D3C9 /* YLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLoginViewController.h; sourceTree = "<group>"; };
 		30A98A5525A449F20082D3C9 /* YWorkZoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWorkZoneViewController.m; sourceTree = "<group>"; };
 		30A98A5625A449F20082D3C9 /* YWorkZoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWorkZoneViewController.h; sourceTree = "<group>"; };
 		30A98A5825A449F20082D3C9 /* YWorkZoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWorkZoneModel.h; sourceTree = "<group>"; };
@@ -1314,24 +1294,24 @@
 		30A9882D25A449F00082D3C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3087B3A725E3B14B002F9A44 /* YZSettingViewController.h */,
-				3087B3A625E3B14B002F9A44 /* YZSettingViewController.m */,
-				30A9882E25A449F00082D3C9 /* YZChangePasswordViewController.h */,
+				30A9883825A449F00082D3C9 /* YZAboutViewController.h */,
 				30A9882F25A449F00082D3C9 /* YZAboutViewController.m */,
+				30A9882E25A449F00082D3C9 /* YZChangePasswordViewController.h */,
+				30A9883725A449F00082D3C9 /* YZChangePasswordViewController.m */,
+				30A9883B25A449F00082D3C9 /* YZChooseCityViewController.h */,
 				30A9883025A449F00082D3C9 /* YZChooseCityViewController.m */,
 				30A9883125A449F00082D3C9 /* YZModifyMobileViewController.h */,
-				30A9883225A449F00082D3C9 /* YZProfileViewController.h */,
-				30A9883425A449F00082D3C9 /* YZTextEditViewController.h */,
-				30A9883525A449F00082D3C9 /* YZWebViewController.m */,
-				30A9883625A449F00082D3C9 /* YZMyViewController.h */,
-				30A9883725A449F00082D3C9 /* YZChangePasswordViewController.m */,
-				30A9883825A449F00082D3C9 /* YZAboutViewController.h */,
-				30A9883925A449F00082D3C9 /* YZProfileViewController.m */,
 				30A9883A25A449F00082D3C9 /* YZModifyMobileViewController.m */,
-				30A9883B25A449F00082D3C9 /* YZChooseCityViewController.h */,
+				30A9883625A449F00082D3C9 /* YZMyViewController.h */,
 				30A9883C25A449F00082D3C9 /* YZMyViewController.m */,
+				30A9883225A449F00082D3C9 /* YZProfileViewController.h */,
+				30A9883925A449F00082D3C9 /* YZProfileViewController.m */,
+				3087B3A725E3B14B002F9A44 /* YZSettingViewController.h */,
+				3087B3A625E3B14B002F9A44 /* YZSettingViewController.m */,
+				30A9883425A449F00082D3C9 /* YZTextEditViewController.h */,
 				30A9883D25A449F00082D3C9 /* YZTextEditViewController.m */,
 				30A9883E25A449F00082D3C9 /* YZWebViewController.h */,
+				30A9883525A449F00082D3C9 /* YZWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1382,15 +1362,11 @@
 				30A9887125A449F00082D3C9 /* QRCode */,
 				30A9886125A449F00082D3C9 /* YBAssistiveTouchLib */,
 				30A9887B25A449F00082D3C9 /* WechatActionSheet */,
-				30A9885F25A449F00082D3C9 /* YZBaseResponse.m */,
-				30A9888125A449F00082D3C9 /* YZBaseResponse.h */,
 				30A9886E25A449F00082D3C9 /* CommonConstant.h */,
 				30A9886F25A449F00082D3C9 /* YChatSettingStore.m */,
 				30A9888225A449F00082D3C9 /* YZPAirSandbox.h */,
 				30A9887025A449F00082D3C9 /* YZPAirSandbox.m */,
 				30A9887A25A449F00082D3C9 /* TCConstants.h */,
-				30A9885D25A449F00082D3C9 /* YZRequestUtils.h */,
-				30A9887F25A449F00082D3C9 /* YZRequestUtils.m */,
 				30A9886025A449F00082D3C9 /* YZUtil.h */,
 				30A9888025A449F00082D3C9 /* YZUtil.m */,
 				30A9888325A449F00082D3C9 /* YChatSettingStore.h */,
@@ -2295,19 +2271,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		30A98A4C25A449F10082D3C9 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				30A98A5125A449F10082D3C9 /* TCLoginParam.h */,
-				30A98A4D25A449F10082D3C9 /* TCLoginParam.m */,
-				30A98A4E25A449F10082D3C9 /* YRegViewController.h */,
-				30A98A5025A449F10082D3C9 /* YRegViewController.m */,
-				30A98A5225A449F10082D3C9 /* YLoginViewController.h */,
-				30A98A4F25A449F10082D3C9 /* YLoginViewController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		30A98A5325A449F20082D3C9 /* Work */ = {
 			isa = PBXGroup;
 			children = (
@@ -2409,7 +2372,6 @@
 				30A9888425A449F00082D3C9 /* Conversation */,
 				30A987E225A449EF0082D3C9 /* Core */,
 				30A9890D25A449F00082D3C9 /* IMUIKit */,
-				30A98A4C25A449F10082D3C9 /* Login */,
 				30A9882725A449EF0082D3C9 /* Model */,
 				30A9882C25A449F00082D3C9 /* My */,
 				30A9885C25A449F00082D3C9 /* Utils */,
@@ -2471,7 +2433,6 @@
 				30A98B9525A449F20082D3C9 /* TUIButtonCell.h in Headers */,
 				30A98B8F25A449F20082D3C9 /* TCommonCell.h in Headers */,
 				30A98A6525A449F20082D3C9 /* YChatNetworkEngine.h in Headers */,
-				30A98C8625A449F30082D3C9 /* TCLoginParam.h in Headers */,
 				30A98BD325A449F20082D3C9 /* TUISystemMessageCellData.h in Headers */,
 				30A98B4D25A449F20082D3C9 /* YZAddressBookTableViewCell.h in Headers */,
 				30A98BE925A449F20082D3C9 /* TUIGroupPendencyCell.h in Headers */,
@@ -2560,7 +2521,6 @@
 				30A98AE325A449F20082D3C9 /* YScannerView.h in Headers */,
 				30A98C3725A449F20082D3C9 /* TUIMenuView.h in Headers */,
 				30A98B4025A449F20082D3C9 /* YZMyCustomCell.h in Headers */,
-				30A98ACF25A449F20082D3C9 /* YZRequestUtils.h in Headers */,
 				30A98AFC25A449F20082D3C9 /* YZContactSearchViewController.h in Headers */,
 				30A98B5925A449F20082D3C9 /* YUIGroupConversationListController.h in Headers */,
 				30A98C7025A449F30082D3C9 /* if_rom.h in Headers */,
@@ -2608,7 +2568,6 @@
 				30A98C0D25A449F20082D3C9 /* TUIVideoMessageCell.h in Headers */,
 				30A98A8B25A449F20082D3C9 /* UIImage+Foundation.h in Headers */,
 				30A98BEC25A449F20082D3C9 /* TUIFaceCell.h in Headers */,
-				30A98C8725A449F30082D3C9 /* YLoginViewController.h in Headers */,
 				30A98BE525A449F20082D3C9 /* TUIGroupPendencyCellData.h in Headers */,
 				30A98AC725A449F20082D3C9 /* YUserInfoAvatarTableViewCell.h in Headers */,
 				30A98BAD25A449F20082D3C9 /* TContactSelectViewModel.h in Headers */,
@@ -2630,7 +2589,6 @@
 				30A98AE825A449F20082D3C9 /* TCConstants.h in Headers */,
 				30A98AB325A449F20082D3C9 /* YZWebViewController.h in Headers */,
 				30A98C4225A449F20082D3C9 /* TUIUserProfileControllerServiceProtocol.h in Headers */,
-				30A98C8325A449F30082D3C9 /* YRegViewController.h in Headers */,
 				30A98A9025A449F20082D3C9 /* ZNavigationPushFadeAnimation.h in Headers */,
 				30A98C3925A449F20082D3C9 /* TUIGroupMembersView.h in Headers */,
 				30A98A6B25A449F20082D3C9 /* YChatUploadManager.h in Headers */,
@@ -2713,7 +2671,6 @@
 				30A98C2025A449F20082D3C9 /* TUIAudioCalledView.h in Headers */,
 				30A98A7D25A449F20082D3C9 /* UIButton+Foundation.h in Headers */,
 				30A98B7225A449F20082D3C9 /* TUITabBarController.h in Headers */,
-				30A98AEE25A449F20082D3C9 /* YZBaseResponse.h in Headers */,
 				30A98B0925A449F20082D3C9 /* YZSearchViewController.h in Headers */,
 				30A98AE025A449F20082D3C9 /* YQRInfoHandle.h in Headers */,
 			);
@@ -2834,7 +2791,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A98C8425A449F30082D3C9 /* YLoginViewController.m in Sources */,
 				30A98C0725A449F20082D3C9 /* TUIImageMessageCell.m in Sources */,
 				30A98A6A25A449F20082D3C9 /* YChatNetworkEngine.m in Sources */,
 				30A98C6525A449F30082D3C9 /* TIMUserProfile+DataProvider.m in Sources */,
@@ -2865,7 +2821,6 @@
 				30A98AB125A449F20082D3C9 /* YZMyViewController.m in Sources */,
 				30A98BB525A449F20082D3C9 /* TUIBlackListController.m in Sources */,
 				30A98BBD25A449F20082D3C9 /* TCommonContactSelectCell.m in Sources */,
-				30A98C8225A449F30082D3C9 /* TCLoginParam.m in Sources */,
 				30A98BC125A449F20082D3C9 /* TContactListPickerCell.m in Sources */,
 				30A98BEB25A449F20082D3C9 /* TUIGroupPendencyController.m in Sources */,
 				30A98C1125A449F20082D3C9 /* TUIBubbleMessageCell.m in Sources */,
@@ -3010,7 +2965,6 @@
 				30A98C4D25A449F30082D3C9 /* TUIUserProfileDataProviderService.m in Sources */,
 				30A98B6225A449F20082D3C9 /* YUIBlackListViewController.m in Sources */,
 				30A98B9225A449F20082D3C9 /* TCommonSwitchCell.m in Sources */,
-				30A98C8525A449F30082D3C9 /* YRegViewController.m in Sources */,
 				30A98A8025A449F20082D3C9 /* UIColor+Foundation.m in Sources */,
 				30A98B1425A449F20082D3C9 /* YPopView.m in Sources */,
 				30A98C4B25A449F30082D3C9 /* TUIGroupInfoDataProviderService.m in Sources */,
@@ -3047,7 +3001,6 @@
 				30A98B9325A449F20082D3C9 /* TCommonAvatarCell.m in Sources */,
 				30A98B8B25A449F20082D3C9 /* TResponderTextView.m in Sources */,
 				30A98C7D25A449F30082D3C9 /* TUIKitConfig.m in Sources */,
-				30A98AD125A449F20082D3C9 /* YZBaseResponse.m in Sources */,
 				30A98B8E25A449F20082D3C9 /* TUIProfileCardCell.m in Sources */,
 				30A98B3C25A449F20082D3C9 /* YZLocationMessageCell.m in Sources */,
 				30A98B1625A449F20082D3C9 /* YZMapListTableViewCell.m in Sources */,
@@ -3086,7 +3039,6 @@
 				30A98C2C25A449F20082D3C9 /* TUICall.m in Sources */,
 				30A98BA725A449F20082D3C9 /* TUIContactSelectController.m in Sources */,
 				30A98A7F25A449F20082D3C9 /* UIView+Foundation.m in Sources */,
-				30A98AEC25A449F20082D3C9 /* YZRequestUtils.m in Sources */,
 				30A98BA425A449F20082D3C9 /* TPopView.m in Sources */,
 				30A98BAB25A449F20082D3C9 /* TContactViewModel.m in Sources */,
 				30A98B6125A449F20082D3C9 /* ContactsViewController.m in Sources */,

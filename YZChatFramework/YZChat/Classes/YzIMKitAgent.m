@@ -30,7 +30,6 @@
 #import "NSBundle+YZBundle.h"
 #import "UIColor+Foundation.h"
 #import "YZMsgManager.h"
-#import <Aspects/Aspects.h>
 
 @interface YzIMKitAgent()
 @property (nonatomic,   copy)NSString* appId;

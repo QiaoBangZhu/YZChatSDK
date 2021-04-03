@@ -12,8 +12,6 @@
 #import "YZLoginViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
-#import <Aspects/Aspects.h>
-#import  <objc/runtime.h>
 #import "YZCommonConstant.h"
 
 #if USE_POD

@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (YZBaseManager *)shareInstance;
 
-- (UIViewController *)getLoginController;
-
 - (TUITabBarController *)getMainController;
 
 - (void)logout;

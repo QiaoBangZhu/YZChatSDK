@@ -7,7 +7,6 @@
 //
 
 #import "YZBaseManager.h"
-#import "YLoginViewController.h"
 #import "YZConversationViewController.h"
 #import "ContactsViewController.h"
 #import "YWorkZoneViewController.h"
@@ -32,11 +31,6 @@
         g_sharedInstance = [[YZBaseManager alloc] init];
     });
     return g_sharedInstance;
-}
-
-- (UIViewController *)getLoginController {
-    YLoginViewController *login = [[YLoginViewController alloc]init];
-    return [[UINavigationController alloc]initWithRootViewController:login];
 }
 
 - (void)logout {

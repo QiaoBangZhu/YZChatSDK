@@ -4,14 +4,12 @@ workspace 'YZChat.xcworkspace'
 def abstract_pods
   pod 'QMUIKit'
   pod 'Masonry'
-  pod 'YYModel'
-  pod 'YYText'
   pod 'AFNetworking', '~> 4.0'
   pod 'IQKeyboardManager'
-  pod 'MJExtension'
+#  pod 'MJExtension'
   pod 'FCFileManager'
-  pod 'BlocksKit'
-  pod 'Bugly'
+#  pod 'BlocksKit'
+#  pod 'Bugly'
   pod 'ZXingObjC'
   pod 'MMLayout', '~> 0.2.0'
   pod 'SDWebImage', '~> 5.9.0'
@@ -23,11 +21,17 @@ def abstract_pods
   pod 'AMap3DMap-NO-IDFA'
   pod 'AMapSearch-NO-IDFA'
   pod 'AMapLocation-NO-IDFA'
-  
+
+end
+
+def project_pods
+  pod 'YYModel'
+  pod 'YYText'
 end
 
 target 'YZChat_Example' do
   abstract_pods
+  project_pods
 end
 
 target 'YZChat_Example_Pod' do
