@@ -19,17 +19,15 @@ AS_SINGLETON(YZChatSettingStore);
 /**
  * userInfo
  */
-- (void)saveUserInfo:(YZUserInfoModel *)userInfo;
-- (YZUserInfoModel *)getUserInfo;
+@property (nonatomic, strong, setter=saveUserInfo:) YZUserInfoModel *userInfo;
+@property (nonatomic, copy, readonly, getter=getAuthToken) NSString *authToken;
+@property (nonatomic, copy, readonly, getter=getUserId) NSString *userId;
+@property (nonatomic, copy, readonly, getter=getUserSign) NSString *userSign;
+@property (nonatomic, copy, readonly) NSString *nickName;
+@property (nonatomic, copy, readonly) NSString *mobile;
+@property (nonatomic, copy, readonly, getter=getAppId) NSString *appId;
 
-- (NSString *)getAuthToken;
-- (NSString *)getUserId;
-- (NSString *)getUserSign;
-- (NSString *)getNickName;
-- (NSString *)getMobile;
-- (NSString *)getAppId;
-
-- (BOOL)isLogin;
+@property (nonatomic, assign, readonly, getter=isLogin) BOOL isLogin;
 
 @end
 

@@ -11,8 +11,7 @@
 #import <FCFileManager/FCFileManager.h>
 
 @interface YZChatSettingStore() {
-    NSUserDefaults* _userDefault;
-    YZUserInfoModel * _userInfo;
+    YZUserInfoModel *_userInfo;
 }
 
 @end
@@ -23,39 +22,32 @@ DEF_SINGLETON(YZChatSettingStore);
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        _userDefault = [NSUserDefaults standardUserDefaults];
-        _userInfo = [[YZUserInfoModel alloc]init];
-    }
+    if (self) {}
     return self;
 }
 
-- (NSString *)getMobile {
-    return _userInfo.mobile;
+- (NSString *)mobile {
+    return self.userInfo.mobile;
 }
 
-- (NSString*)getNickName {
-    return _userInfo.nickName;
-}
-
-- (NSInteger)getfunctionPerm {
-    return _userInfo.functionPerm;
+- (NSString*)nickName {
+    return self.userInfo.nickName;
 }
 
 - (NSString *)getUserId{
-    return _userInfo.userId;
+    return self.userInfo.userId;
 }
 
 - (NSString *)getUserSign {
-    return _userInfo.userSign;
+    return self.userInfo.userSign;
 }
 
 - (NSString *)getAuthToken {
-    return _userInfo.token;
+    return self.userInfo.token;
 }
 
 - (NSString *)getAppId {
-    return _userInfo.companyId;
+    return self.userInfo.companyId;
 }
 
 - (BOOL)isLogin{
@@ -67,23 +59,23 @@ DEF_SINGLETON(YZChatSettingStore);
 
 - (void)saveUserInfo:(YZUserInfoModel *)userInfo{
     _userInfo = userInfo;
-    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-    [_userDefault setObject:data forKey:@"yzuserInfo"];
-    [_userDefault setObject:userInfo.userSign forKey:@"yzUserSign"];
-    [_userDefault setObject:userInfo.userId  forKey:@"yzUserId"];
-    [_userDefault synchronize];
+    NSError *error = nil;
+    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo requiringSecureCoding: YES error:&error];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:data forKey:@"YZZUserInfo"];
+    [userDefault synchronize];
 }
 
-- (YZUserInfoModel *)getUserInfo{
-    if([_userInfo.userId length]){
-        return _userInfo;
+- (YZUserInfoModel *)userInfo {
+    if(!_userInfo){
+        NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey:@"YZZUserInfo"];
+        NSError *error = nil;
+        _userInfo = [NSKeyedUnarchiver unarchivedObjectOfClass:[YZUserInfoModel class] fromData:data error:&error];
+        if (error) {
+            _userInfo = [[YZUserInfoModel alloc] init];
+        }
     }
-    NSData* data = [_userDefault objectForKey:@"yzuserInfo"];
-    _userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    if (!_userInfo) {
-        _userInfo = [[YZUserInfoModel alloc] init];
-    }
-    return _userInfo;
+    return  _userInfo;
 }
 
 @end
