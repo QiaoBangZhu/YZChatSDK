@@ -9,7 +9,7 @@
 #import "YChatSettingStore.h"
 #import "YUserInfo.h"
 #import "CommonConstant.h"
-#import <FCFileManager/FCFileManager.h>
+#import "YzFileManager.h"
 
 @interface YChatSettingStore() {
     NSUserDefaults* _userDefault;
@@ -91,7 +91,7 @@ DEF_SINGLETON(YChatSettingStore);
 - (void)logout {
       YUserInfo *userInfo = [[YUserInfo alloc] init];
       _userInfo = userInfo;
-      [FCFileManager removeItemAtPath:kHeadImageContentFile error:nil];
+      [YzFileManager removeItemAtPath:kHeadImageContentFile error:nil];
       NSData *archiveUserInfo = [NSKeyedArchiver archivedDataWithRootObject:_userInfo];
       [_userDefault setObject:archiveUserInfo forKey:@"yuserInfo"];
       [_userDefault setObject:@"" forKey:@"YUserSign"];

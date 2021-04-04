@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 #  s.dependency 'YYText'
   s.dependency 'IQKeyboardManager'
 #  s.dependency 'MJExtension'
-  s.dependency 'FCFileManager'
+#  s.dependency 'FCFileManager'
 #  s.dependency 'Bugly'
   s.dependency 'ZXingObjC'
 #  s.dependency 'Aspects'

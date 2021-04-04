@@ -24,7 +24,7 @@
 
 #import <QMUIKit.h>
 #import "WeChatActionSheet.h"
-#import <FCFileManager/FCFileManager.h>
+#import "YzFileManager.h"
 #import "UIImage+YChatExtension.h"
 #import "CommonConstant.h"
 #import "YChatUploadManager.h"
@@ -363,7 +363,7 @@
     UIImage *editImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
     UIImage* scaleImage = [editImage resizedImageWithMaximumSize:CGSizeMake(375, 375)];
     NSError* error = nil;
-    [FCFileManager writeFileAtPath:kHeadImageContentFile content:UIImageJPEGRepresentation(scaleImage, 1) error:&error];
+    [YzFileManager writeFileAtPath:kHeadImageContentFile content:UIImageJPEGRepresentation(scaleImage, 1) error:&error];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         @autoreleasepool {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -386,7 +386,7 @@
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSError* error = nil;
-        NSData* imageData = [FCFileManager readFileAtPathAsData:kHeadImageContentFile error:&error];
+        NSData* imageData = [YzFileManager readFileAtPathAsData:kHeadImageContentFile error:&error];
         [YChatUploadManager post:commonUploadFile params: nil imageData:imageData imageName:@"file" onComplete:^(NSDictionary * _Nonnull json, BOOL isSuccess) {
             if (isSuccess) {
                 if ([json[@"code"] intValue] == 200) {

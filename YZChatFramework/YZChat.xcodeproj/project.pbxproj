@@ -569,6 +569,8 @@
 		E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E62583A5B300531586 /* YzIMKitAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9EC2583A5B300531586 /* YzIMKitAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E82583A5B300531586 /* YzIMKitAgent.m */; };
 		E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */; };
+		E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3272619DFE600B4E6C1 /* YzFileManager.m */; };
+		E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AA3282619DFE600B4E6C1 /* YzFileManager.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1151,6 +1153,8 @@
 		E527E9E72583A5B300531586 /* SysUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysUser.h; sourceTree = "<group>"; };
 		E527E9E82583A5B300531586 /* YzIMKitAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzIMKitAgent.m; sourceTree = "<group>"; };
 		E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = Assets/YZChatResource.bundle; sourceTree = "<group>"; };
+		E57AA3272619DFE600B4E6C1 /* YzFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzFileManager.m; sourceTree = "<group>"; };
+		E57AA3282619DFE600B4E6C1 /* YzFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzFileManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1359,6 +1363,7 @@
 		30A9885C25A449F00082D3C9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E57AA3262619DFCA00B4E6C1 /* FileManager */,
 				30A9887125A449F00082D3C9 /* QRCode */,
 				30A9886125A449F00082D3C9 /* YBAssistiveTouchLib */,
 				30A9887B25A449F00082D3C9 /* WechatActionSheet */,
@@ -2380,6 +2385,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		E57AA3262619DFCA00B4E6C1 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				E57AA3282619DFE600B4E6C1 /* YzFileManager.h */,
+				E57AA3272619DFE600B4E6C1 /* YzFileManager.m */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2592,6 +2606,7 @@
 				30A98A9025A449F20082D3C9 /* ZNavigationPushFadeAnimation.h in Headers */,
 				30A98C3925A449F20082D3C9 /* TUIGroupMembersView.h in Headers */,
 				30A98A6B25A449F20082D3C9 /* YChatUploadManager.h in Headers */,
+				E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */,
 				30A98BC225A449F20082D3C9 /* TUIContactActionCellData.h in Headers */,
 				30A98A7325A449F20082D3C9 /* NSObject+YChatTypeConversion.h in Headers */,
 				30A98AA325A449F20082D3C9 /* YZChangePasswordViewController.h in Headers */,
@@ -2986,6 +3001,7 @@
 				30A98C3425A449F20082D3C9 /* TUIMessageController.m in Sources */,
 				30A98BFE25A449F20082D3C9 /* TUIFaceCell.m in Sources */,
 				30A98C2725A449F20082D3C9 /* TUICall+Signal.m in Sources */,
+				E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */,
 				30A98B9925A449F20082D3C9 /* TAddHelper.m in Sources */,
 				30A98AE225A449F20082D3C9 /* YDefaultPortraitView.m in Sources */,
 				30A98BD225A449F20082D3C9 /* TUIGroupLiveMessageCellData.m in Sources */,

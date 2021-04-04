@@ -9,7 +9,6 @@
 #import "UIImage+YChatExtension.h"
 #import <Accelerate/Accelerate.h>
 #import "UIImageView+WebCache.h"
-#import "FCFileManager.h"
 
 
 static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth, float ovalHeight) {

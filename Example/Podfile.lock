@@ -21,7 +21,6 @@ PODS:
     - AMapFoundation-NO-IDFA (~> 1.6.4)
   - AMapSearch-NO-IDFA (7.9.0):
     - AMapFoundation-NO-IDFA (~> 1.6.6)
-  - FCFileManager (1.0.20)
   - IQKeyboardManager (6.5.6)
   - Masonry (1.1.0)
   - MMLayout (0.2.0)
@@ -358,7 +357,6 @@ PODS:
     - AMap3DMap-NO-IDFA
     - AMapLocation-NO-IDFA
     - AMapSearch-NO-IDFA
-    - FCFileManager
     - IQKeyboardManager
     - Masonry
     - MMLayout (~> 0.2.0)
@@ -377,7 +375,6 @@ DEPENDENCIES:
   - AMap3DMap-NO-IDFA
   - AMapLocation-NO-IDFA
   - AMapSearch-NO-IDFA
-  - FCFileManager
   - IQKeyboardManager
   - Masonry
   - MMLayout (~> 0.2.0)
@@ -398,7 +395,6 @@ SPEC REPOS:
     - AMapFoundation-NO-IDFA
     - AMapLocation-NO-IDFA
     - AMapSearch-NO-IDFA
-    - FCFileManager
     - IQKeyboardManager
     - Masonry
     - MMLayout
@@ -421,7 +417,6 @@ SPEC CHECKSUMS:
   AMapFoundation-NO-IDFA: 1003dfaeaf9b6489286cc8e642b3da5218a9b88f
   AMapLocation-NO-IDFA: 2a3edfee336b38481b892e1ecc85df0f6b365851
   AMapSearch-NO-IDFA: 8b4f223cb2a637e4344fc202042f084c862c07b1
-  FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMLayout: 3fb59d58eeb8656c64e61d550fb0088e10666c11
@@ -432,9 +427,9 @@ SPEC CHECKSUMS:
   TXLiteAVSDK_Professional: 165018e2f0570d2608d7ea2b785fc273558f9920
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 443df6665899e57715ca9f46adde589dbf50b475
+  YZChat: 62ce757d8a352804bed6f8111e60884b235ec7fe
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 455c3c5189966803de2e0bfa9c9b3cc86e21c2cc
+PODFILE CHECKSUM: e3784cbf8319bd84c9725671a0715b0f07ffc2f5
 
 COCOAPODS: 1.10.1

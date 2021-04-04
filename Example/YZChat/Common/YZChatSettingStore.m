@@ -8,7 +8,8 @@
 
 #import "YZChatSettingStore.h"
 #import "YZUserInfoModel.h"
-#import <FCFileManager/FCFileManager.h>
+
+static NSString * const kYZUserInfo = @"kYZUserInfo";
 
 @interface YZChatSettingStore() {
     YZUserInfoModel *_userInfo;
@@ -62,13 +63,13 @@ DEF_SINGLETON(YZChatSettingStore);
     NSError *error = nil;
     NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo requiringSecureCoding: YES error:&error];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:data forKey:@"YZZUserInfo"];
+    [userDefault setObject:data forKey:kYZUserInfo];
     [userDefault synchronize];
 }
 
 - (YZUserInfoModel *)userInfo {
     if(!_userInfo){
-        NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey:@"YZZUserInfo"];
+        NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey:kYZUserInfo];
         NSError *error = nil;
         _userInfo = [NSKeyedUnarchiver unarchivedObjectOfClass:[YZUserInfoModel class] fromData:data error:&error];
         if (error) {
