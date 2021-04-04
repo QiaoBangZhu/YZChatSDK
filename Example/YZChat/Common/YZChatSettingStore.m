@@ -67,11 +67,10 @@ DEF_SINGLETON(YZChatSettingStore);
 
 - (void)saveUserInfo:(YZUserInfoModel *)userInfo{
     _userInfo = userInfo;
-    
     NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-    [_userDefault setObject:data forKey:@"userInfo"];
-    [_userDefault setObject:userInfo.userSign forKey:@"YUserSign"];
-    [_userDefault setObject:userInfo.userId  forKey:@"YUserId"];
+    [_userDefault setObject:data forKey:@"yzuserInfo"];
+    [_userDefault setObject:userInfo.userSign forKey:@"yzUserSign"];
+    [_userDefault setObject:userInfo.userId  forKey:@"yzUserId"];
     [_userDefault synchronize];
 }
 
@@ -79,25 +78,12 @@ DEF_SINGLETON(YZChatSettingStore);
     if([_userInfo.userId length]){
         return _userInfo;
     }
-    NSData* data = [_userDefault objectForKey:@"userInfo"];
+    NSData* data = [_userDefault objectForKey:@"yzuserInfo"];
     _userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (!_userInfo) {
         _userInfo = [[YZUserInfoModel alloc] init];
     }
     return _userInfo;
 }
-
-- (void)logout {
-     YZUserInfoModel *userInfo = [[YZUserInfoModel alloc] init];
-      _userInfo = userInfo;
-//      [FCFileManager removeItemAtPath:kHeadImageContentFile error:nil];
-//      NSData *archiveUserInfo = [NSKeyedArchiver archivedDataWithRootObject:_userInfo];
-//      [_userDefault setObject:archiveUserInfo forKey:@"userInfo"];
-//      [_userDefault setObject:@"" forKey:@"YUserSign"];
-//      [_userDefault setObject:@"" forKey:@"YUserId"];
-//      [_userDefault setObject:@"" forKey:@"applicationNameForUserAgent"];
-}
-
-
 
 @end

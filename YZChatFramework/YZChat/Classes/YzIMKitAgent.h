@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^YChatSysUserSucc)(void);
 /// 失败回调
 typedef void (^YChatSysUserFail)(NSInteger errCode, NSString * errMsg);
+///登录失败
+typedef void (^loginFail)(void);
 
 @interface YzIMKitAgent : NSObject
 
@@ -84,6 +86,17 @@ typedef void (^YChatSysUserFail)(NSInteger errCode, NSString * errMsg);
     方法内调用此函数,并设置app的url scheme 为 tg.tripg.com
  */
 - (void)openURL:(NSURL *)url options:(NSDictionary *)options;
+/*
+ * 退出IM
+ */
+- (void)logout;
+/*
+ * 掉线重新登录
+ */
+- (void)reconnectWithId:(NSString*)userId
+               userSign:(NSString*)usersign
+                   fail:(loginFail)fail;
+
 
 @end
 

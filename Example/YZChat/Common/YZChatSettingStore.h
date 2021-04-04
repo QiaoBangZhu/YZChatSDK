@@ -21,7 +21,6 @@ AS_SINGLETON(YZChatSettingStore);
  */
 - (void)saveUserInfo:(YZUserInfoModel *)userInfo;
 - (YZUserInfoModel *)getUserInfo;
-- (void)logout;
 
 - (NSString *)getAuthToken;
 - (NSString *)getUserId;
@@ -29,8 +28,6 @@ AS_SINGLETON(YZChatSettingStore);
 - (NSString *)getNickName;
 - (NSString *)getMobile;
 - (NSString *)getAppId;
-//当有第三方调用元讯时候根据此字段判断展示几个tab
-- (NSInteger)getfunctionPerm;
 
 - (BOOL)isLogin;
 

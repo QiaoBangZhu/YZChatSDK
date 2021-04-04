@@ -254,9 +254,7 @@
                 YZUserInfoModel* model = [YZUserInfoModel yy_modelWithDictionary:result[@"data"]];
                 model.token = result[@"token"];
                 if (model.token) {
-                    YZUserInfoModel* tokenInfo = [[YZUserInfoModel alloc]init];
-                    tokenInfo.token = model.token;
-                    [[YZChatSettingStore sharedInstance] saveUserInfo:tokenInfo];
+                    [[YZChatSettingStore sharedInstance] saveUserInfo:model];
                     [self fetchUserInfo:model];
                 }else {
                     [QMUITips hideAllTips];

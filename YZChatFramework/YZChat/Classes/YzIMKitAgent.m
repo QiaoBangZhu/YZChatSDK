@@ -367,6 +367,7 @@
     [[YChatSettingStore sharedInstance] logout];
     //退出登录
     [[NSNotificationCenter defaultCenter]postNotificationName:YZChatSDKNotification_ForceOffline object:nil];
+    [THelper makeToast:@"您的账号已经在其他终端登录"];
 }
 
 - (void)openURL:(NSURL *)url options:(NSDictionary *)options {
@@ -375,6 +376,40 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"YzWorkzonePayReturn" object:nil];
     }
 }
+
+- (void)logout {
+    [[V2TIMManager sharedInstance]logout:nil fail:nil];
+    [[YChatSettingStore sharedInstance] logout];
+}
+
+- (void)reconnectWithId:(NSString *)userId
+               userSign:(NSString *)usersign
+                   fail:(nonnull loginFail)fail {
+    if ([[V2TIMManager sharedInstance] getLoginStatus] == V2TIM_STATUS_LOGOUT) {
+        @weakify(self);
+        [[TUIKit sharedInstance] login:userId userSig:usersign succ:^{
+        @strongify(self);
+           if (self.deviceToken) {
+               //企业证书 ID
+               V2TIMAPNSConfig *confg = [[V2TIMAPNSConfig alloc] init];
+               confg.businessID = sdkBusiId;
+               confg.token = self.deviceToken;
+               [[V2TIMManager sharedInstance] setAPNS:confg succ:^{
+                } fail:^(int code, NSString *msg) {
+               }];
+               [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
+           }
+           //普通消息推送
+           [self onReceiveNomalMsgAPNs];
+           //音视频消息推送
+           [self onReceiveGroupCallAPNs];
+       } fail:^(int code, NSString *msg) {
+           [[YChatSettingStore sharedInstance]logout];
+           fail();
+       }];
+    }
+}
+
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];

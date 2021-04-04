@@ -69,9 +69,8 @@ DEF_SINGLETON(YChatSettingStore);
 
 - (void)saveUserInfo:(YUserInfo *)userInfo{
     _userInfo = userInfo;
-    
     NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-    [_userDefault setObject:data forKey:@"userInfo"];
+    [_userDefault setObject:data forKey:@"yuserInfo"];
     [_userDefault setObject:userInfo.userSign forKey:@"YUserSign"];
     [_userDefault setObject:userInfo.userId  forKey:@"YUserId"];
     [_userDefault synchronize];
@@ -81,7 +80,7 @@ DEF_SINGLETON(YChatSettingStore);
     if([_userInfo.userId length]){
         return _userInfo;
     }
-    NSData* data = [_userDefault objectForKey:@"userInfo"];
+    NSData* data = [_userDefault objectForKey:@"yuserInfo"];
     _userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (!_userInfo) {
         _userInfo = [[YUserInfo alloc] init];
@@ -94,10 +93,10 @@ DEF_SINGLETON(YChatSettingStore);
       _userInfo = userInfo;
       [FCFileManager removeItemAtPath:kHeadImageContentFile error:nil];
       NSData *archiveUserInfo = [NSKeyedArchiver archivedDataWithRootObject:_userInfo];
-      [_userDefault setObject:archiveUserInfo forKey:@"userInfo"];
+      [_userDefault setObject:archiveUserInfo forKey:@"yuserInfo"];
       [_userDefault setObject:@"" forKey:@"YUserSign"];
       [_userDefault setObject:@"" forKey:@"YUserId"];
-      [_userDefault setObject:@"" forKey:@"applicationNameForUserAgent"];
+      [_userDefault setObject:@"" forKey:@"yapplicationNameForUserAgent"];
 }
 
 

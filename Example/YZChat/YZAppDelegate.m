@@ -13,6 +13,8 @@
 #import <UserNotifications/UserNotifications.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "YZCommonConstant.h"
+#import "YZChatNetworkEngine.h"
+#import "YZChatSettingStore.h"
 
 #if USE_POD
 #import "YZChat/YZChat.h"
@@ -39,9 +41,12 @@ YZAppDelegate *appdel;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
 
     [[YzIMKitAgent shareInstance]initAppId:yzchatAppId];
-
-    YZLoginViewController* loginvc = [[YZLoginViewController alloc]init];
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:loginvc];
+    self.window.rootViewController = [self getLoginController];
+    if ([YZChatSettingStore sharedInstance].isLogin) {
+           [self fetchUserInfo];
+       }else {
+           [self getLoginController];
+    }
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didlogout) name:YZChatSDKNotification_UserStatusListener object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(forceOffline) name:YZChatSDKNotification_ForceOffline object:nil];
@@ -63,6 +68,20 @@ YZAppDelegate *appdel;
 - (UIViewController *)getLoginController {
     YZLoginViewController *login = [[YZLoginViewController alloc]init];
     return [[UINavigationController alloc]initWithRootViewController:login];
+}
+
+- (void)fetchUserInfo {
+    [YZChatNetworkEngine requestUserInfoWithUserId:[[YZChatSettingStore sharedInstance]getUserId] completion:^(NSDictionary *result, NSError *error) {
+        if (!error) {
+            if ([result[@"code"]intValue] != 200) {
+                [[YzIMKitAgent shareInstance] logout];
+            }else{
+                [[YzIMKitAgent shareInstance]reconnectWithId:[[YZChatSettingStore sharedInstance] getUserId] userSign:[[YZChatSettingStore sharedInstance] getUserSign] fail:^{
+                    [self getLoginController];
+                }];
+            }
+        }
+    }];
 }
 
 - (void)registNotification

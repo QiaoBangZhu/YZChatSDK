@@ -131,9 +131,9 @@
 - (void)setWebViewUA {
     if (@available(iOS 12.0, *)){
         //由于iOS12的UA改为异步，所以不管在js还是客户端第一次加载都获取不到，所以此时需要先设置好再去
-        NSString *userAgent = [self.webView valueForKey:@"applicationNameForUserAgent"];
+        NSString *userAgent = [self.webView valueForKey:@"yapplicationNameForUserAgent"];
         NSString *newUserAgent = [NSString stringWithFormat:@"%@%@",userAgent,@"hsh_ios"];
-        [self.webView setValue:newUserAgent forKey:@"applicationNameForUserAgent"];
+        [self.webView setValue:newUserAgent forKey:@"yapplicationNameForUserAgent"];
     }
     [self.webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         NSString *userAgent = result;
@@ -149,7 +149,7 @@
         if (@available(iOS 9.0, *)) {
             [self.webView setCustomUserAgent:newUserAgent];
         } else {
-            [self.webView setValue:newUserAgent forKey:@"applicationNameForUserAgent"];
+            [self.webView setValue:newUserAgent forKey:@"yapplicationNameForUserAgent"];
         }
     }];
 }
