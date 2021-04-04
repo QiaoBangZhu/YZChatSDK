@@ -300,9 +300,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = NO;
 				INFOPLIST_FILE = YZChatResource/Info.plist;
 				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.chat.YZChatResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -315,9 +315,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = NO;
 				INFOPLIST_FILE = YZChatResource/Info.plist;
 				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.chat.YZChatResource;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
