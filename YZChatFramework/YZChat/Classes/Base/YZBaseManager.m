@@ -42,6 +42,7 @@
 - (TUITabBarController *)getMainController {
     TUITabBarController *tbc = [[TUITabBarController alloc] init];
     NSMutableArray *items = [NSMutableArray array];
+    self.userInfo = [[YChatSettingStore sharedInstance]getUserInfo];
     if ((self.userInfo.functionPerm & 1) > 0) {
         TUITabBarItem *msgItem = [[TUITabBarItem alloc] init];
         msgItem.title = @"消息";
