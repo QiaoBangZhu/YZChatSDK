@@ -109,6 +109,7 @@
 				E5CA74812584B0AD00719F72 /* Sources */,
 				E5CA74822584B0AD00719F72 /* Frameworks */,
 				E5CA74832584B0AD00719F72 /* Resources */,
+				E57AA29A261974FC00B4E6C1 /* Copy Bundle To Assets */,
 			);
 			buildRules = (
 			);
@@ -173,6 +174,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E57AA29A261974FC00B4E6C1 /* Copy Bundle To Assets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Bundle To Assets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -rf ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME} ${SRCROOT}/../Assets\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5CA74812584B0AD00719F72 /* Sources */ = {

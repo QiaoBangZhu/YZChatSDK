@@ -76,7 +76,6 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		E5108A332618E882004D972C /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A312618E882004D972C /* TUIKitResource.bundle */; };
 		E5108A352618E882004D972C /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A322618E882004D972C /* TUIKitFace.bundle */; };
-		E5108A392618E895004D972C /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A382618E895004D972C /* YZChatResource.bundle */; };
 		E5195CB525888B680056AFB6 /* YZChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; };
 		E5195D3B258896340056AFB6 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE725888CF60056AFB6 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5195D3D258896350056AFB6 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF125888CF60056AFB6 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -96,6 +95,7 @@
 		E5195D5B2588964F0056AFB6 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF225888CF60056AFB6 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5195D5D258896500056AFB6 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF325888CF60056AFB6 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E5195D5F258896520056AFB6 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE125888CF60056AFB6 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E57AA2B026197A3900B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */; };
 		E5CA75072584BE1B00719F72 /* YZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* YZViewController.m */; };
 		E5CA75082584BE1B00719F72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		E5CA750D2584BE1B00719F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
@@ -206,7 +206,6 @@
 		D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E5108A312618E882004D972C /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitResource.bundle; path = ../../../YZChatFramework/YZChat/Classes/IMUIKit/TXIMSDK_TUIKit_iOS/TUIKit/Resources/TUIKitResource.bundle; sourceTree = "<group>"; };
 		E5108A322618E882004D972C /* TUIKitFace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitFace.bundle; path = ../../../YZChatFramework/YZChat/Classes/IMUIKit/TXIMSDK_TUIKit_iOS/TUIKit/Resources/TUIKitFace.bundle; sourceTree = "<group>"; };
-		E5108A382618E895004D972C /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = ../../../YZChatFramework/YZChat/YZChatResource.bundle; sourceTree = "<group>"; };
 		E5195CE125888CF60056AFB6 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
 		E5195CE225888CF60056AFB6 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		E5195CE325888CF60056AFB6 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
@@ -226,6 +225,7 @@
 		E5195CF225888CF60056AFB6 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
 		E5195CF325888CF60056AFB6 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
 		E527E480258395CF00531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = ../../../YZChatFramework/YZChat/Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZChat_Example_Pod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CA75392584C0A200719F72 /* YZChat_Example_Pod-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YZChat_Example_Pod-info.plist"; sourceTree = "<group>"; };
 		F0259C5E4901BA29E7304751 /* libPods-YZChat_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,7 +445,7 @@
 		E5108A302618E867004D972C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E5108A382618E895004D972C /* YZChatResource.bundle */,
+				E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */,
 				E5108A322618E882004D972C /* TUIKitFace.bundle */,
 				E5108A312618E882004D972C /* TUIKitResource.bundle */,
 			);
@@ -566,9 +566,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5108A392618E895004D972C /* YZChatResource.bundle in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				E5108A352618E882004D972C /* TUIKitFace.bundle in Resources */,
+				E57AA2B026197A3900B4E6C1 /* YZChatResource.bundle in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				E5108A332618E882004D972C /* TUIKitResource.bundle in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,

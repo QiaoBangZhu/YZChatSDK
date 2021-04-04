@@ -568,7 +568,7 @@
 		E527E9E92583A5B300531586 /* SysUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E52583A5B300531586 /* SysUser.m */; };
 		E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E62583A5B300531586 /* YzIMKitAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9EC2583A5B300531586 /* YzIMKitAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E82583A5B300531586 /* YzIMKitAgent.m */; };
-		E5CA74D22584B3FD00719F72 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74D12584B3FD00719F72 /* YZChatResource.bundle */; };
+		E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1150,7 +1150,7 @@
 		E527E9E62583A5B300531586 /* YzIMKitAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzIMKitAgent.h; sourceTree = "<group>"; };
 		E527E9E72583A5B300531586 /* SysUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysUser.h; sourceTree = "<group>"; };
 		E527E9E82583A5B300531586 /* YzIMKitAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzIMKitAgent.m; sourceTree = "<group>"; };
-		E5CA74D12584B3FD00719F72 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YZChatResource.bundle; sourceTree = "<group>"; };
+		E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2351,7 +2351,7 @@
 			children = (
 				E527E3DA258393C800531586 /* YZChat.h */,
 				E527E3DB258393C800531586 /* Info.plist */,
-				E5CA74D12584B3FD00719F72 /* YZChatResource.bundle */,
+				E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */,
 				E527E4E42583A17700531586 /* Classes */,
 			);
 			path = YZChat;
@@ -2737,8 +2737,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				30A98C8125A449F30082D3C9 /* TUIKitFace.bundle in Resources */,
-				E5CA74D22584B3FD00719F72 /* YZChatResource.bundle in Resources */,
 				30A98C8025A449F30082D3C9 /* TUIKitResource.bundle in Resources */,
+				E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
