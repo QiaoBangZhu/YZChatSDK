@@ -48,7 +48,7 @@ typedef void (^loginFail)(void);
  * 直接启动IM(必须登录成功才可以启动)
  *  @param rootVc 当前调用类，如为空则无法返回当前页面
  */
-- (void)startAutoWithCurrentVc:(UIViewController *)rootVc;
+- (void)startAutoWithCurrentVc:(nullable UIViewController *)rootVc;
 
 /*
  *  直接聊天

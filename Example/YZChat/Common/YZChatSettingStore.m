@@ -7,29 +7,18 @@
 //
 
 #import "YZChatSettingStore.h"
-#import "YZUserInfoModel.h"
+#import "AbstractUserModel.h"
 
-static NSString * const kYZUserInfo = @"kYZUserInfo";
+static NSString * const kAbstractUser = @"kAbstractUser";
 
 @interface YZChatSettingStore() {
-    YZUserInfoModel *_userInfo;
+    AbstractUserModel *_userInfo;
 }
 
 @end
 
 @implementation YZChatSettingStore
 DEF_SINGLETON(YZChatSettingStore);
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {}
-    return self;
-}
-
-- (NSString *)mobile {
-    return self.userInfo.mobile;
-}
 
 - (NSString*)nickName {
     return self.userInfo.nickName;
@@ -58,22 +47,22 @@ DEF_SINGLETON(YZChatSettingStore);
     return NO;
 }
 
-- (void)saveUserInfo:(YZUserInfoModel *)userInfo{
+- (void)saveUserInfo:(AbstractUserModel *)userInfo{
     _userInfo = userInfo;
     NSError *error = nil;
     NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo requiringSecureCoding: YES error:&error];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:data forKey:kYZUserInfo];
+    [userDefault setObject:data forKey:kAbstractUser];
     [userDefault synchronize];
 }
 
-- (YZUserInfoModel *)userInfo {
+- (AbstractUserModel *)userInfo {
     if(!_userInfo){
-        NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey:kYZUserInfo];
+        NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey:kAbstractUser];
         NSError *error = nil;
-        _userInfo = [NSKeyedUnarchiver unarchivedObjectOfClass:[YZUserInfoModel class] fromData:data error:&error];
+        _userInfo = [NSKeyedUnarchiver unarchivedObjectOfClass:[AbstractUserModel class] fromData:data error:&error];
         if (error) {
-            _userInfo = [[YZUserInfoModel alloc] init];
+            _userInfo = [[AbstractUserModel alloc] init];
         }
     }
     return  _userInfo;

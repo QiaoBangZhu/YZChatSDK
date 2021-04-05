@@ -15,6 +15,9 @@
 - (NSUInteger)hash { return [self yy_modelHash]; }
 - (BOOL)isEqual:(id)object { return [self yy_modelIsEqual:object]; }
 - (NSString *)description { return [self yy_modelDescription]; }
++ (BOOL)supportsSecureCoding {
+    return  YES;
+}
 
 + (NSDictionary *)modelCustomPropertyMapper{
     

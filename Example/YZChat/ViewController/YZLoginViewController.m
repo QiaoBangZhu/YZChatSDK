@@ -14,7 +14,7 @@
 //#import "ChangePasswordViewController.h"
 #import "YZRegViewController.h"
 #import "UIColor+YZFoundation.h"
-#import "YZUserInfoModel.h"
+#import "AbstractUserModel.h"
 #import <YZChat/YZChat.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "YZAppDelegate.h"
@@ -50,15 +50,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = YES;
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden: YES animated: YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController setNavigationBarHidden: FALSE animated: YES];
 }
-
 
 - (void)setupView {
     [self.view addSubview:self.contentView];
@@ -251,7 +250,7 @@
         if (!error) {
             if ([result[@"code"] intValue] == 200) {
                 [QMUITips hideAllTips];
-                YZUserInfoModel* model = [YZUserInfoModel yy_modelWithDictionary:result[@"data"]];
+                AbstractUserModel* model = [AbstractUserModel yy_modelWithDictionary:result[@"data"]];
                 model.token = result[@"token"];
                 if (model.token) {
                     [[YZChatSettingStore sharedInstance] saveUserInfo:model];
@@ -269,13 +268,12 @@
    }];
 }
 
-- (void)fetchUserInfo:(YZUserInfoModel*)model {
+- (void)fetchUserInfo:(AbstractUserModel*)model {
     [YZChatNetworkEngine requestUserInfoWithUserId:model.userId completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             SysUser* info = [SysUser yy_modelWithDictionary:result[@"data"]];
             [[YzIMKitAgent shareInstance] registerWithSysUser:info loginSuccess:^{
-                [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil]
-                ;
+                [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil];
              } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
                  NSLog(@"error =%@",errMsg);
             }];

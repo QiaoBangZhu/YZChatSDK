@@ -1,14 +1,14 @@
 //
-//  YZUserInfoModel.m
+//  AbstractUserModel.m
 //  YZChat_Example
 //
 //  Created by magic on 2021/1/5.
 //  Copyright © 2021 QiaoBangZhu. All rights reserved.
 //
 
-#import "YZUserInfoModel.h"
+#import "AbstractUserModel.h"
 
-@implementation YZUserInfoModel
+@implementation AbstractUserModel
 
 - (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; }
 - (id)initWithCoder:(NSCoder *)aDecoder { self = [super init]; return [self yy_modelInitWithCoder:aDecoder]; }

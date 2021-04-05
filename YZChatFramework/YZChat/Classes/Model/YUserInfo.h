@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YUserInfo : YBaseModel<NSCoding,NSCopying>
+@interface YUserInfo : YBaseModel<NSSecureCoding,NSCopying>
 @property (nonatomic ,   copy) NSString              * userSign;
 @property (nonatomic ,   copy) NSString              * userId;
 @property (nonatomic ,   copy) NSString              * nickName;

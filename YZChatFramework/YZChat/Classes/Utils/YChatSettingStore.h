@@ -20,8 +20,8 @@ AS_SINGLETON(YChatSettingStore);
 /**
  * userInfo
  */
-- (void)saveUserInfo:(YUserInfo *)userInfo;
-- (YUserInfo *)getUserInfo;
+@property (nonatomic, strong, setter=saveUserInfo:, getter=getUserInfo) YUserInfo *userInfo;
+
 - (void)logout;
 
 - (NSString *)getAuthToken;
@@ -31,7 +31,7 @@ AS_SINGLETON(YChatSettingStore);
 - (NSString *)getMobile;
 - (NSString *)getAppId;
 //当有第三方调用元讯时候根据此字段判断展示几个tab
-- (NSInteger)getfunctionPerm;
+- (NSInteger)getFunctionPerm;
 
 - (BOOL)isLogin;
 

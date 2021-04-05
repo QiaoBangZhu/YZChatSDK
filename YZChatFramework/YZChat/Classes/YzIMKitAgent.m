@@ -126,7 +126,7 @@
 }
 
 //打开元讯IM页面
-- (void)startAutoWithCurrentVc:(UIViewController *)rootVc{
+- (void)startAutoWithCurrentVc:(nullable UIViewController *)rootVc{
     if ([V2TIMManager sharedInstance].getLoginStatus == V2TIM_STATUS_LOGOUT) {
         [THelper makeToast:@"必须先登录IM才能调用此函数"];
         return;

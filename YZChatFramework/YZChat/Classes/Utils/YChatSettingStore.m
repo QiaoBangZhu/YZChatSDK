@@ -11,8 +11,9 @@
 #import "CommonConstant.h"
 #import "YzFileManager.h"
 
+static NSString * const kUserInfo = @"kYZUserInfo";
+
 @interface YChatSettingStore() {
-    NSUserDefaults* _userDefault;
     YUserInfo * _userInfo;
 }
 
@@ -20,45 +21,33 @@
 @implementation YChatSettingStore
 DEF_SINGLETON(YChatSettingStore);
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _userDefault = [NSUserDefaults standardUserDefaults];
-        _userInfo = [[YUserInfo alloc]init];
-    }
-    return self;
-}
-
 - (NSString *)getMobile {
-    return _userInfo.mobile;
+    return self.userInfo.mobile;
 }
 
 - (NSString*)getNickName {
-    return _userInfo.nickName;
+    return self.userInfo.nickName;
 }
 
-- (NSInteger)getfunctionPerm {
-    return _userInfo.functionPerm;
+- (NSInteger)getFunctionPerm {
+    return self.userInfo.functionPerm;
 }
 
 - (NSString *)getUserId{
-    return _userInfo.userId;
+    return self.userInfo.userId;
 }
 
 - (NSString *)getUserSign {
-    return _userInfo.userSign;
+    return self.userInfo.userSign;
 }
 
 - (NSString *)getAuthToken {
-    return _userInfo.token;
+    return self.userInfo.token;
 }
 
 - (NSString *)getAppId {
-    return _userInfo.companyId;
+    return self.userInfo.companyId;
 }
-
-
 
 - (BOOL)isLogin{
     if ([[self getUserSign] length] > 0 && [[self getUserId] length] > 0 && [self getAuthToken] > 0) {
@@ -69,35 +58,54 @@ DEF_SINGLETON(YChatSettingStore);
 
 - (void)saveUserInfo:(YUserInfo *)userInfo{
     _userInfo = userInfo;
-    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-    [_userDefault setObject:data forKey:@"yuserInfo"];
-    [_userDefault setObject:userInfo.userSign forKey:@"YUserSign"];
-    [_userDefault setObject:userInfo.userId  forKey:@"YUserId"];
-    [_userDefault synchronize];
+    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:userInfo requiringSecureCoding: YES error: nil];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:data forKey:kUserInfo];
+    [userDefaults setObject:userInfo.userSign forKey:@"YUserSign"];
+    [userDefaults setObject:userInfo.userId  forKey:@"YUserId"];
+    [userDefaults synchronize];
+    [self p_YZSync];
 }
 
-- (YUserInfo *)getUserInfo{
-    if([_userInfo.userId length]){
-        return _userInfo;
+// 元讯同步
+-(void)p_YZSync {
+    Class cls = NSClassFromString(@"AbstractUserModel");
+    if (!cls) return;
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *kAbstractUser = @"kAbstractUser";
+    NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey: kAbstractUser];
+    NSError *error = nil;
+    id user = [NSKeyedUnarchiver unarchivedObjectOfClass:cls fromData:data error:&error];
+    if (!error) {
+        [user setValue:_userInfo.token forKey:@"token"];
+        NSData* data = [NSKeyedArchiver archivedDataWithRootObject:user requiringSecureCoding: YES error: nil];
+        [userDefaults setObject:data forKey:kAbstractUser];
     }
-    NSData* data = [_userDefault objectForKey:@"yuserInfo"];
-    _userInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    if (!_userInfo) {
-        _userInfo = [[YUserInfo alloc] init];
+    [userDefaults synchronize];
+}
+
+- (YUserInfo *)userInfo {
+    if(!_userInfo){
+        NSData* data = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfo];
+        NSError *error = nil;
+        _userInfo = [NSKeyedUnarchiver unarchivedObjectOfClass:[YUserInfo class] fromData:data error:&error];
+        if (error) {
+            _userInfo = [[YUserInfo alloc] init];
+        }
     }
-    return _userInfo;
+    return  _userInfo;
 }
 
 - (void)logout {
-      YUserInfo *userInfo = [[YUserInfo alloc] init];
-      _userInfo = userInfo;
-      [YzFileManager removeItemAtPath:kHeadImageContentFile error:nil];
-      NSData *archiveUserInfo = [NSKeyedArchiver archivedDataWithRootObject:_userInfo];
-      [_userDefault setObject:archiveUserInfo forKey:@"yuserInfo"];
-      [_userDefault setObject:@"" forKey:@"YUserSign"];
-      [_userDefault setObject:@"" forKey:@"YUserId"];
-      [_userDefault setObject:@"" forKey:@"yapplicationNameForUserAgent"];
+    _userInfo = [[YUserInfo alloc] init];
+    [YzFileManager removeItemAtPath:kHeadImageContentFile error:nil];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey: kUserInfo];
+    [userDefaults setObject:@"" forKey:@"YUserSign"];
+    [userDefaults setObject:@"" forKey:@"YUserId"];
+    [userDefaults setObject:@"" forKey:@"yapplicationNameForUserAgent"];
+    [userDefaults synchronize];
 }
-
 
 @end

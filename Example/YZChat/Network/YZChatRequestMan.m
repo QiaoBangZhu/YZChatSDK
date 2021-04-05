@@ -32,7 +32,6 @@
         [mHTTPsClient.requestSerializer setValue:[NSString stringWithFormat:@"%@",yzchatAppId] forHTTPHeaderField:@"appId"];
 
     }
-
     return [self postRequest:request mHTTPsClient:mHTTPsClient completion:block];
 }
 

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MAGICViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZLoginViewController : UIViewController
+@interface YZLoginViewController : MAGICViewController
 
 @end
 

@@ -16,6 +16,8 @@
 #import "YZChatNetworkEngine.h"
 #import "YZChatSettingStore.h"
 
+#import "MAGICNavigationViewController.h"
+
 #if USE_POD
 #import "YZChat/YZChat.h"
 #else
@@ -48,7 +50,7 @@ YZAppDelegate *appdel;
            [self getLoginController];
     }
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didlogout) name:YZChatSDKNotification_UserStatusListener object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didLogout) name:YZChatSDKNotification_UserStatusListener object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(forceOffline) name:YZChatSDKNotification_ForceOffline object:nil];
 
     // Override point for customization after application launch.
@@ -56,7 +58,7 @@ YZAppDelegate *appdel;
 }
 
 
-- (void)didlogout {
+- (void)didLogout {
     [UIApplication sharedApplication].keyWindow.rootViewController = [self getLoginController];
 }
 
@@ -67,7 +69,7 @@ YZAppDelegate *appdel;
 
 - (UIViewController *)getLoginController {
     YZLoginViewController *login = [[YZLoginViewController alloc]init];
-    return [[UINavigationController alloc]initWithRootViewController:login];
+    return [[MAGICNavigationViewController alloc] initWithRootViewController:login];
 }
 
 - (void)fetchUserInfo {
@@ -76,8 +78,11 @@ YZAppDelegate *appdel;
             if ([result[@"code"]intValue] != 200) {
                 [[YzIMKitAgent shareInstance] logout];
             }else{
-                [[YzIMKitAgent shareInstance]reconnectWithId:[[YZChatSettingStore sharedInstance] getUserId] userSign:[[YZChatSettingStore sharedInstance] getUserSign] fail:^{
-                    [self getLoginController];
+                SysUser *user = [SysUser yy_modelWithDictionary:result[@"data"]];
+                [[YzIMKitAgent shareInstance] registerWithSysUser:user loginSuccess:^{
+                    [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil];
+                 } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
+                     NSLog(@"error =%@",errMsg);
                 }];
             }
         }

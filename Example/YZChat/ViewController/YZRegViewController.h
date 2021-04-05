@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "YZChatNetworkEngine.h"
+#import "MAGICViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZRegViewController : UIViewController
+@interface YZRegViewController: MAGICViewController
 @property (nonatomic, assign)YZSmscodeType codeType;
 
 @end

@@ -82,7 +82,7 @@
     conv.tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
     conv.tableView.contentInset = UIEdgeInsetsZero;
 
-    if (([[YChatSettingStore sharedInstance]getfunctionPerm] & 2) > 0) {
+    if (([[YChatSettingStore sharedInstance]getFunctionPerm] & 2) > 0) {
         UIBarButtonItem* moreItem = [[UIBarButtonItem alloc] initWithImage:YZChatResource(@"addFriend_icon") target:self action:@selector(rightBarButtonClick:)];
         UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         spaceItem.width = -15;

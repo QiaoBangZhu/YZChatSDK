@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YZCommonConstant.h"
-#import "YZUserInfoModel.h"
+#import "AbstractUserModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,15 +19,14 @@ AS_SINGLETON(YZChatSettingStore);
 /**
  * userInfo
  */
-@property (nonatomic, strong, setter=saveUserInfo:) YZUserInfoModel *userInfo;
-@property (nonatomic, copy, readonly, getter=getAuthToken) NSString *authToken;
-@property (nonatomic, copy, readonly, getter=getUserId) NSString *userId;
-@property (nonatomic, copy, readonly, getter=getUserSign) NSString *userSign;
-@property (nonatomic, copy, readonly) NSString *nickName;
-@property (nonatomic, copy, readonly) NSString *mobile;
-@property (nonatomic, copy, readonly, getter=getAppId) NSString *appId;
+@property (nonatomic, strong, setter=saveUserInfo:) AbstractUserModel *userInfo;
 
-@property (nonatomic, assign, readonly, getter=isLogin) BOOL isLogin;
+- (NSString *)getUserId;
+- (NSString *)getUserSign;
+- (NSString *)getAuthToken;
+- (NSString *)getAppId;
+
+- (BOOL)isLogin;
 
 @end
 
