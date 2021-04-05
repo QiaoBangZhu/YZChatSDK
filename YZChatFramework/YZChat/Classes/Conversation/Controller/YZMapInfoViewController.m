@@ -6,20 +6,24 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "YZMapInfoViewController.h"
-#import <MAMapKit/MAMapKit.h>
 #import <Masonry/Masonry.h>
 #import "UIColor+ColorExtension.h"
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
+#import "MKMapView+ZoomLevel.h"
 
-@interface YZMapInfoViewController ()<MAMapViewDelegate>
-@property (nonatomic, strong)MAMapView          * mapView;
-@property (nonatomic, strong)UIView             * locationInfoContentView;
-@property (nonatomic, strong)UILabel            * nameLabel;
-@property (nonatomic, strong)UILabel            * addressLabel;
-@property (nonatomic, strong)MAPointAnnotation  * mapAnnotation;
-@property (nonatomic, assign)BOOL                 isFirstLoad;
+@interface YZMapInfoViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
+
+@property (nonatomic, strong)MKMapView          *mapView;
+@property (nonatomic, strong)UIView             *locationInfoContentView;
+@property (nonatomic, strong)UILabel            *nameLabel;
+@property (nonatomic, strong)UILabel            *addressLabel;
+@property (nonatomic, strong)CLLocationManager  *locationManager;
+
 @end
 
 @implementation YZMapInfoViewController
@@ -29,7 +33,18 @@
     
     self.title = @"位置信息";
     [self setupView];
-    [self.mapView addAnnotation:self.mapAnnotation];
+
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        [_locationManager requestWhenInUseAuthorization];
+    }
+
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(_locationData.latitude, _locationData.longitude);
+    [self.mapView setCenterCoordinate: center zoomLevel: 15 animated: YES];
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = center;
+    [self.mapView addAnnotation: annotation];
 }
 
 - (void)setLocationData:(YZLocationMessageCellData *)locationData {
@@ -46,9 +61,7 @@
 
 - (void)setupView {
     [self.view addSubview:self.mapView];
-    [AMapServices sharedServices].enableHTTPS = YES;
-    [self.view addSubview:self.mapView];
-    
+
     [self.view addSubview:self.locationInfoContentView];
     [self.locationInfoContentView addSubview:self.addressLabel];
     [self.locationInfoContentView addSubview:self.nameLabel];
@@ -77,14 +90,13 @@
     }];
 }
 
-- (MAMapView *)mapView {
+- (MKMapView *)mapView {
     if (!_mapView) {
-        _mapView = [[MAMapView alloc]init];
-        _mapView.zoomLevel = 15;
-        _mapView.rotateEnabled = false;
-        _mapView.rotateCameraEnabled = false;
+        _mapView = [[MKMapView alloc] initWithFrame: self.view.frame];
+        _mapView.rotateEnabled = NO;
         _mapView.showsUserLocation = YES;
         _mapView.showsCompass = NO;
+        _mapView.showsUserLocation = YES;
         _mapView.delegate = self;
     }
     return _mapView;
@@ -119,58 +131,19 @@
 
 #pragma mark mapViewDelegate
 
-- (void)mapViewRequireLocationAuth:(CLLocationManager *)locationManager
-{
-    [locationManager requestAlwaysAuthorization];
-}
-
-- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation {
-    if (updatingLocation && userLocation.location != nil) {
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.locationData.latitude, self.locationData.longitude);
-        self.mapAnnotation.lockedToScreen = false;
-        self.mapAnnotation.coordinate = coordinate;
-        [self.mapView setCenterCoordinate:coordinate animated:true];
-    }
-}
-
-/// 定位失败
-- (void)mapView:(MAMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(39.909604, 116.397228);
-    [self.mapView setCenterCoordinate:coordinate animated:true];
-}
-
-- (void)mapView:(MAMapView *)mapView regionWillChangeAnimated:(BOOL)animated wasUserAction:(BOOL)wasUserAction {
-    if (wasUserAction) {
-//        [self searchAmapPOIAroundSearchRequest:mapView.centerCoordinate];
-    }
-}
-
-- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
-}
-
-- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation {
-    MAPointAnnotation* anno = (MAPointAnnotation*)annotation;
-    if (anno == self.mapAnnotation) {
-        MAAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"annotationIdentifier"];
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass: [MKPointAnnotation class]]) {
+        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier: @"share"];
         if (!annotationView) {
-            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotationIdentifier"];
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"share"];
         }
         annotationView.annotation = annotation;
         UIImage* image = YZChatResource(@"map_bubble");
         annotationView.image = image;
-        annotationView.centerOffset = CGPointMake(0, -image.size.height/2);
         return annotationView;
     }
-    return  nil;
-}
 
-- (MAPointAnnotation*)mapAnnotation {
-    if (!_mapAnnotation) {
-        _mapAnnotation = [[MAPointAnnotation alloc]init];
-    }
-    return _mapAnnotation;
+    return nil;
 }
-
 
 @end

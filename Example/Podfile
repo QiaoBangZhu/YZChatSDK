@@ -18,9 +18,9 @@ def abstract_pods
 #  pod 'TXLiteAVSDK_TRTC', '~> 7.8.9515'
   pod 'TXLiteAVSDK_Professional'
 
-  pod 'AMap3DMap-NO-IDFA'
+#  pod 'AMap3DMap-NO-IDFA'
   pod 'AMapSearch-NO-IDFA'
-  pod 'AMapLocation-NO-IDFA'
+#  pod 'AMapLocation-NO-IDFA'
 
 end
 

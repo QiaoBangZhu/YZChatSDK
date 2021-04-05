@@ -43,8 +43,8 @@ Pod::Spec.new do |s|
   s.dependency 'ReactiveObjC', '~> 3.1.1'
   s.dependency 'Toast', '~> 4.0.0'
   s.dependency 'TXLiteAVSDK_Professional'
-  s.dependency 'AMap3DMap-NO-IDFA'
-  s.dependency 'AMapSearch-NO-IDFA'
-  s.dependency 'AMapLocation-NO-IDFA'
+#  s.dependency 'AMap3DMap-NO-IDFA'
+#  s.dependency 'AMapSearch-NO-IDFA'
+#  s.dependency 'AMapLocation-NO-IDFA'
   
 end

@@ -81,6 +81,7 @@ YZAppDelegate *appdel;
                 SysUser *user = [SysUser yy_modelWithDictionary:result[@"data"]];
                 [[YzIMKitAgent shareInstance] registerWithSysUser:user loginSuccess:^{
                     [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil];
+//                    [[YzIMKitAgent shareInstance] loadConversation:0 type:YzChatTypeSingle | YzChatTypeGroup];
                  } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
                      NSLog(@"error =%@",errMsg);
                 }];

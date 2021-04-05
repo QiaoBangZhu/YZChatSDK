@@ -14,11 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AMap3DMap-NO-IDFA (7.9.0):
-    - AMapFoundation-NO-IDFA (~> 1.6.6)
   - AMapFoundation-NO-IDFA (1.6.6)
-  - AMapLocation-NO-IDFA (2.6.7):
-    - AMapFoundation-NO-IDFA (~> 1.6.4)
   - AMapSearch-NO-IDFA (7.9.0):
     - AMapFoundation-NO-IDFA (~> 1.6.6)
   - IQKeyboardManager (6.5.6)
@@ -354,9 +350,6 @@ PODS:
   - YYText (1.0.7)
   - YZChat (1.0.15):
     - AFNetworking (~> 4.0)
-    - AMap3DMap-NO-IDFA
-    - AMapLocation-NO-IDFA
-    - AMapSearch-NO-IDFA
     - IQKeyboardManager
     - Masonry
     - MMLayout (~> 0.2.0)
@@ -372,8 +365,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
-  - AMap3DMap-NO-IDFA
-  - AMapLocation-NO-IDFA
   - AMapSearch-NO-IDFA
   - IQKeyboardManager
   - Masonry
@@ -391,9 +382,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
-    - AMapLocation-NO-IDFA
     - AMapSearch-NO-IDFA
     - IQKeyboardManager
     - Masonry
@@ -413,9 +402,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  AMap3DMap-NO-IDFA: d0474d32fd22d1f3610192ab37a8637c3e4a5189
   AMapFoundation-NO-IDFA: 1003dfaeaf9b6489286cc8e642b3da5218a9b88f
-  AMapLocation-NO-IDFA: 2a3edfee336b38481b892e1ecc85df0f6b365851
   AMapSearch-NO-IDFA: 8b4f223cb2a637e4344fc202042f084c862c07b1
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -427,9 +414,9 @@ SPEC CHECKSUMS:
   TXLiteAVSDK_Professional: 165018e2f0570d2608d7ea2b785fc273558f9920
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 62ce757d8a352804bed6f8111e60884b235ec7fe
+  YZChat: 18d4be824225936fe3edf0defa254405adb006cc
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: e3784cbf8319bd84c9725671a0715b0f07ffc2f5
+PODFILE CHECKSUM: f13ba2ad15556a14f50f780b248f83feb72f1588
 
 COCOAPODS: 1.10.1

@@ -6,6 +6,11 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+
+#import "MKMapView+ZoomLevel.h"
+
 #import "YZMapViewController.h"
 #import <Masonry/Masonry.h>
 #import "YZMapListTableViewCell.h"
@@ -13,20 +18,18 @@
 #import "UIColor+ColorExtension.h"
 #import <QMUIKit/QMUIKit.h>
 
-#import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 
 static NSString *annotationIdentifier = @"annotationIdentifier";
 
-@interface YZMapViewController ()<UITableViewDelegate, UITableViewDataSource,QMUIKeyboardManagerDelegate,MAMapViewDelegate,AMapSearchDelegate,UISearchBarDelegate>
+@interface YZMapViewController ()<UITableViewDelegate, UITableViewDataSource,QMUIKeyboardManagerDelegate,AMapSearchDelegate,UISearchBarDelegate, MKMapViewDelegate>
 
 @property (nonatomic, strong)UITableView    * tableView;
 @property (nonatomic, strong)NSMutableArray * addressList;
-@property (nonatomic, strong)MAMapView      * mapView;
+@property (nonatomic, strong)MKMapView      * mapView;
 @property (nonatomic, strong)UIView         * bottomView;
 @property (nonatomic, strong)QMUIKeyboardManager *keyboardManager;
 @property (nonatomic, strong)QMUISearchBar  * searchBar;
@@ -34,15 +37,19 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
 @property (nonatomic, strong)UIButton       * doneBtn;
 
 @property (nonatomic, assign)CLLocationCoordinate2D userLocation;
-@property (nonatomic, strong)MAPointAnnotation*     mapAnnotation;
-@property (nonatomic, strong)AMapPOI          *     selectedPOI;
-@property (nonatomic, strong)AMapSearchAPI    *     search;
-@property (nonatomic, strong)NSMutableArray   <AMapPOI *> *pois;
-@property (nonatomic, strong)UIView           *     locationInfoContentView;
-@property (nonatomic, strong)UILabel          *     nameLabel;
-@property (nonatomic, strong)UILabel          *     addressLabel;
+@property (nonatomic, strong)UIImageView       *lockedPointView;
+@property (nonatomic, strong)MKPointAnnotation *pointAnnotation;
+@property (nonatomic, strong)AMapPOI           *     selectedPOI;
+@property (nonatomic, strong)AMapSearchAPI     *     search;
+@property (nonatomic, strong)NSMutableArray    <AMapPOI *> *pois;
+@property (nonatomic, strong)UIView            *     locationInfoContentView;
+@property (nonatomic, strong)UILabel           *     nameLabel;
+@property (nonatomic, strong)UILabel           *     addressLabel;
 @property (nonatomic ,strong)NSIndexPath *selectedIndexPath;
 @property (nonatomic, assign)BOOL isSearching;
+
+@property (nonatomic, strong)CLLocationManager  *locationManager;
+
 @end
 
 @implementation YZMapViewController
@@ -51,9 +58,14 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"位置";
-    self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self setupView];
     [self makeConstraint];
+
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [_locationManager requestWhenInUseAuthorization];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,6 +88,10 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
         make.bottom.equalTo(self.view.mas_centerY).offset(-5);
         make.trailing.equalTo(@-10);
     }];
+
+    [self.lockedPointView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.mapView);
+    }];
     
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.bottom.trailing.equalTo(@0);
@@ -93,12 +109,12 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
         make.leading.bottom.trailing.equalTo(@0);
         make.top.equalTo(self.searchBar.mas_bottom);
     }];
-    
 }
 
 - (void)setupView {
     [AMapServices sharedServices].enableHTTPS = YES;
     [self.view addSubview:self.mapView];
+    [self.view addSubview: self.lockedPointView];
     
     [self.view addSubview:self.backUserLocationBtn];
     [self.view addSubview:self.bottomView];
@@ -131,12 +147,13 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     return _doneBtn;
 }
 
--(MAMapView *)mapView {
+
+-(MKMapView *)mapView {
     if (!_mapView) {
-        _mapView = [[MAMapView alloc]init];
+        _mapView = [[MKMapView alloc]initWithFrame: self.view.frame];
         _mapView.zoomLevel = 15;
         _mapView.rotateEnabled = false;
-        _mapView.rotateCameraEnabled = false;
+//        _mapView.rotateCameraEnabled = false;
         _mapView.showsUserLocation = YES;
         _mapView.showsCompass = NO;
         _mapView.delegate = self;
@@ -144,22 +161,30 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     return _mapView;
 }
 
-- (MAPointAnnotation*)mapAnnotation {
-    if (!_mapAnnotation) {
-        _mapAnnotation = [[MAPointAnnotation alloc]init];
-    }
-    return _mapAnnotation;
-}
-
 - (QMUIButton *)backUserLocationBtn {
     if (!_backUserLocationBtn) {
         _backUserLocationBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
         _backUserLocationBtn.qmui_outsideEdge = UIEdgeInsetsMake(-10, -10, -10, -10);
         [_backUserLocationBtn setImage:YZChatResource(@"schedule_icon_map_back_user_location") forState:UIControlStateNormal];
-        [_backUserLocationBtn addTarget:self action:@selector(configureUserLocationCenter) forControlEvents:UIControlEventTouchUpInside];
-        _backUserLocationBtn.hidden = YES;
+        [_backUserLocationBtn addTarget:self action:@selector(backUserLocation) forControlEvents:UIControlEventTouchUpInside];
     }
     return _backUserLocationBtn;
+}
+
+- (UIImageView *)lockedPointView {
+    if (!_lockedPointView) {
+        _lockedPointView = [[UIImageView alloc] initWithImage: YZChatResource(@"map_bubble")];
+    }
+
+    return _lockedPointView;
+}
+
+- (MKPointAnnotation *)pointAnnotation {
+    if (!_pointAnnotation) {
+        _pointAnnotation = [[MKPointAnnotation alloc] init];
+    }
+
+    return _pointAnnotation;
 }
 
 - (AMapSearchAPI *)search {
@@ -178,6 +203,27 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
         _searchBar.placeholder = @"搜索地点";
     }
     return _searchBar;
+}
+
+- (void)setIsSearching:(BOOL)isSearching {
+    _isSearching = isSearching;
+    if (isSearching) {
+        [self.mapView addAnnotation: self.pointAnnotation];
+        self.lockedPointView.hidden = YES;
+    } else {
+        [self.mapView removeAnnotation: self.pointAnnotation];
+        self.lockedPointView.hidden = NO;
+    }
+}
+
+- (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath {
+    _selectedIndexPath = selectedIndexPath;
+    if (selectedIndexPath && selectedIndexPath.row < _pois.count) {
+        self.selectedPOI = self.pois[selectedIndexPath.row];
+        self.doneBtn.enabled = YES;
+    } else {
+        self.doneBtn.enabled = NO;
+    }
 }
 
 - (UIView *)bottomView {
@@ -217,16 +263,11 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
         cell.titleLabel.text =  poi.name;
         cell.subTitleLabel.text = poi.address;
         
-        if (!_isSearching) {
-            if (indexPath == self.selectedIndexPath) {
-                self.selectedPOI = poi;
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-
-            }
-        }else{
+        if (indexPath == self.selectedIndexPath) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else {
             cell.accessoryType = UITableViewCellAccessoryNone;
+
         }
     }
     return  cell;
@@ -237,10 +278,11 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
         AMapPOI* selectedPOI = self.pois[indexPath.row];
         self.selectedPOI = selectedPOI;
         self.selectedIndexPath = indexPath;
-        self.isSearching = NO;
+        self.isSearching = self.searchBar.text.length > 0;
         [self.tableView reloadData];
         
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(selectedPOI.location.latitude, selectedPOI.location.longitude);
+        self.pointAnnotation.coordinate = coordinate;
         [self.mapView setCenterCoordinate:coordinate animated:true];
     }
 }
@@ -270,109 +312,80 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
 
 - (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response {
     _pois = [response.pois mutableCopy];
+    self.selectedIndexPath = _selectedIndexPath;
     [self.tableView reloadData];
     [self.tableView qmui_scrollToTopAnimated:true];
 }
 
--(void)configureUserLocationCenter {
+-(void)backUserLocation {
     _selectedPOI = nil;
     [self searchAmapPOIAroundSearchRequest:_userLocation];
-    if ([self.backUserLocationBtn isHidden]) {
-        [self.mapView addAnnotation:self.mapAnnotation];
+    [self.mapView setCenterCoordinate: _userLocation zoomLevel: 15 animated: YES];
+    if (!self.isSearching) {
+        self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
-    _backUserLocationBtn.hidden = NO;
-    [self.mapView setCenterCoordinate:_userLocation animated:true];
-    self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView qmui_scrollToTopAnimated:true];
-}
-
--(void)setSelectedPOI:(AMapPOI *)selectedPOI {
-    _selectedPOI = selectedPOI;
-    if (selectedPOI) {
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(selectedPOI.location.latitude, selectedPOI.location.longitude);
-        _doneBtn.enabled = true;
-        self.mapAnnotation.lockedToScreen = false;
-        self.mapAnnotation.coordinate = coordinate;
-    }else {
-        _doneBtn.enabled = false;
-        self.mapAnnotation.lockedToScreen = true;
-        self.mapAnnotation.lockedScreenPoint = CGPointMake(_mapView.frame.size.width / 2, _mapView.frame.size.height / 2);
-    }
+    [self.tableView qmui_scrollToTopAnimated: YES];
 }
 
 #pragma mark mapViewDelegate
 
-- (void)mapViewRequireLocationAuth:(CLLocationManager *)locationManager
-{
-    [locationManager requestAlwaysAuthorization];
-}
-
-- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation {
-    if (updatingLocation && userLocation.location != nil) {
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    if (userLocation.location) {
         if (self.userLocation.latitude == 0 && self.userLocation.longitude == 0) {
             self.userLocation = userLocation.location.coordinate;
-            [self configureUserLocationCenter];
+            [self backUserLocation];
         }
         _userLocation = userLocation.location.coordinate;
     }
 }
 
-/// 定位失败
-- (void)mapView:(MAMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
+- (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
     if (self.userLocation.latitude == 0 && self.userLocation.longitude == 0) {
         _userLocation = CLLocationCoordinate2DMake(39.909604, 116.397228);
-        [self configureUserLocationCenter];
+        [self backUserLocation];
     }
 }
 
-- (void)mapView:(MAMapView *)mapView regionWillChangeAnimated:(BOOL)animated wasUserAction:(BOOL)wasUserAction {
-    if (wasUserAction) {
-        [self searchAmapPOIAroundSearchRequest:mapView.centerCoordinate];
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    if (self.isSearching) {
+        return;
     }
-}
+    [self.mapView removeAnnotations:self.mapView.annotations];
 
-- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated wasUserAction:(BOOL)wasUserAction {
-    if (wasUserAction) {
-        
-        if (self.isSearching) {
-            return;
-        }
-        [self.mapView removeAnnotations:self.mapView.annotations];
-        
-        CLLocationCoordinate2D centerCoordinate = mapView.region.center;
-        self.mapAnnotation.coordinate = centerCoordinate;
-        [self.mapView addAnnotation:self.mapAnnotation];
-        [self searchAmapPOIAroundSearchRequest:centerCoordinate];
-        
-        [self.tableView qmui_scrollToTop];
+    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
+    [self searchAmapPOIAroundSearchRequest:centerCoordinate];
 
+    [self.tableView qmui_scrollToTop];
+
+    if (!self.isSearching) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-
     }
 }
 
-
-- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation {
-    MAPointAnnotation* anno = (MAPointAnnotation*)annotation;
-    if (anno == self.mapAnnotation) {
-        MAAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier: @"point"];
         if (!annotationView) {
-            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"point"];
         }
         annotationView.annotation = annotation;
         UIImage* image = YZChatResource(@"map_bubble");
         annotationView.image = image;
-        annotationView.centerOffset = CGPointMake(0, -image.size.height/2);
         return annotationView;
     }
-    return  nil;
+
+    return nil;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] > 0) {
+        if (!self.isSearching) {
+            self.selectedIndexPath = nil;
+        }
         self.isSearching = YES;
         [self searchLocationWithText:searchBar.text];
     }else {
+        self.isSearching = NO;
         [self.pois removeAllObjects];
         [self.tableView reloadData];
     }
@@ -381,7 +394,6 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar resignFirstResponder];
     if ([searchBar.text length] > 0) {
-        self.isSearching = NO;
         [self searchLocationWithText:searchBar.text];
         [self.searchBar resignFirstResponder];
     }
@@ -397,11 +409,6 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     request.keywords = searchText;
     request.sortrule = 0;
     [self.search AMapPOIKeywordsSearch:request];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:true];
-    self.isSearching = NO;
 }
 
 - (void)searchAmapPOIAroundSearchRequest:(CLLocationCoordinate2D)coordinate {
