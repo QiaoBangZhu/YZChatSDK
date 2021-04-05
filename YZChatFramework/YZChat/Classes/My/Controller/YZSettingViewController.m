@@ -201,7 +201,9 @@
 
     Class cls = NSClassFromString(@"YZLoginViewController");
     if (cls) {
-        [UIApplication sharedApplication].keyWindow.rootViewController = [[cls alloc] init];
+        UINavigationController *navi = [[NSClassFromString(@"MAGICNavigationViewController") alloc] init] ?: [[UINavigationController alloc] init];
+        navi.viewControllers = @[[[cls alloc] init]];
+        [UIApplication sharedApplication].keyWindow.rootViewController = navi;
     }
 }
 

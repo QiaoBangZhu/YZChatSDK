@@ -67,7 +67,6 @@ DEF_SINGLETON(YChatSettingStore);
     [self p_YZSync];
 }
 
-// 元讯同步
 -(void)p_YZSync {
     Class cls = NSClassFromString(@"AbstractUserModel");
     if (!cls) return;
@@ -82,6 +81,12 @@ DEF_SINGLETON(YChatSettingStore);
         NSData* data = [NSKeyedArchiver archivedDataWithRootObject:user requiringSecureCoding: YES error: nil];
         [userDefaults setObject:data forKey:kAbstractUser];
     }
+    [userDefaults synchronize];
+}
+
+-(void)p_YZLogout {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey: @"kAbstractUser"];
     [userDefaults synchronize];
 }
 
@@ -106,6 +111,7 @@ DEF_SINGLETON(YChatSettingStore);
     [userDefaults setObject:@"" forKey:@"YUserId"];
     [userDefaults setObject:@"" forKey:@"yapplicationNameForUserAgent"];
     [userDefaults synchronize];
+    [self p_YZLogout];
 }
 
 @end
