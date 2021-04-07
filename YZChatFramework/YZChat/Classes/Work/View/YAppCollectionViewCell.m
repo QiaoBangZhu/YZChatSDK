@@ -10,11 +10,10 @@
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
 #import "SDWebImage/UIImageView+WebCache.h"
-#import <YYLabel.h>
 
 @interface YAppCollectionViewCell()
 @property (nonatomic, strong) UIImageView *thumbnail;
-@property (nonatomic, strong) YYLabel     *titleLabel;
+@property (nonatomic, strong) UILabel     *titleLabel;
 
 @end
 
@@ -30,7 +29,7 @@
         self.thumbnail.layer.masksToBounds = YES;
         self.thumbnail.layer.cornerRadius = 20;
         
-        self.titleLabel = [[YYLabel alloc] init];
+        self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.font = [UIFont systemFontOfSize:11];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.numberOfLines = 2;
