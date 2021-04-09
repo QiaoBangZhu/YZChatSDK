@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
   s.dependency 'Toast', '~> 4.0.0'
   s.dependency 'TXLiteAVSDK_Professional'
 #  s.dependency 'AMap3DMap-NO-IDFA'
-#  s.dependency 'AMapSearch-NO-IDFA'
+  s.dependency 'AMapSearch-NO-IDFA'
 #  s.dependency 'AMapLocation-NO-IDFA'
   
 end

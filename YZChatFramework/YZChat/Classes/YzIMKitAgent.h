@@ -18,14 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 //强制下线通知
 #define YZChatSDKNotification_ForceOffline @"YZChatSDKNotification_ForceOffline"
 
+@interface YzIMKitAgent : NSObject
+
 /// 成功回调
-typedef void (^YChatSysUserSucc)(void);
+typedef void (^YzChatSysUserSuccess)(void);
 /// 失败回调
-typedef void (^YChatSysUserFail)(NSInteger errCode, NSString * errMsg);
+typedef void (^YzChatSysUserFailure)(NSInteger errCode, NSString * errMsg);
 ///登录失败
 typedef void (^loginFail)(void);
-
-@interface YzIMKitAgent : NSObject
 
 /**
  *  获取 YzIMKitAgent 管理实例
@@ -41,8 +41,8 @@ typedef void (^loginFail)(void);
  * 同步数据,最好每次启动的时候可以调用该接口保持数据同步
  */
 - (void)registerWithSysUser:(SysUser*)sysUser
-               loginSuccess:(YChatSysUserSucc)success
-                loginFailed:(YChatSysUserFail)fail;
+               loginSuccess:(YzChatSysUserSuccess)success
+                loginFailed:(YzChatSysUserFailure)fail;
 
 /**
  * 直接启动IM(必须登录成功才可以启动)
@@ -97,6 +97,48 @@ typedef void (^loginFail)(void);
                userSign:(NSString*)usersign
                    fail:(loginFail)fail;
 
+@end
+
+@protocol YzMessageWatcher <NSObject>
+@optional
+
+- (void)updateUnreadCount:(NSUInteger)unreadCount;
+- (void)updateConversion;
+
+@end
+
+@class V2TIMConversation;
+@class V2TIMGroupAtInfo;
+
+@interface YzIMKitAgent (Conversation)
+
+typedef NS_OPTIONS(NSUInteger, YzChatType) {
+    // 单聊
+    YzChatTypeSingle = 1 << 0,
+    // 群聊
+    YzChatTypeGroup  = 1 << 1,
+};
+
+/// 获取会话列表成功的回调，next：下一次分页拉取的游标 isFinished：会话列表是否已经拉取完毕
+typedef void(^YzChatConversationListSuccess)(NSArray<V2TIMConversation *>*list, NSUInteger next, BOOL isFinished);
+/// 获取单个会话成功回调
+typedef void(^YzChatConversationSuccess)(V2TIMConversation *conversation);
+/// 获取未读消息成功回调
+typedef void(^YzChatUnreadCountSuccess)(NSUInteger unreadCount);
+
+- (void)addMessageWatcher:(id<YzMessageWatcher>)watcher;
+
+- (void)loadConversation:(NSUInteger)next
+                    type:(YzChatType)type
+                 success:(YzChatConversationListSuccess)success
+                 failure:(YzChatSysUserFailure)failure;
+
+- (void)getConversation:(NSString *)conversionId
+                success:(YzChatConversationSuccess)success
+                failure:(YzChatSysUserFailure)failure;
+
+- (void)conversationUnRead:(YzChatUnreadCountSuccess)success
+                   failure:(YzChatSysUserFailure)failure;
 
 @end
 

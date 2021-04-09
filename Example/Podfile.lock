@@ -350,6 +350,7 @@ PODS:
   - YYText (1.0.7)
   - YZChat (1.0.15):
     - AFNetworking (~> 4.0)
+    - AMapSearch-NO-IDFA
     - IQKeyboardManager
     - Masonry
     - MMLayout (~> 0.2.0)
@@ -414,7 +415,7 @@ SPEC CHECKSUMS:
   TXLiteAVSDK_Professional: 165018e2f0570d2608d7ea2b785fc273558f9920
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 18d4be824225936fe3edf0defa254405adb006cc
+  YZChat: 0ad957d397c38c0cb8171b8c407b58d8401a3feb
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
 PODFILE CHECKSUM: f13ba2ad15556a14f50f780b248f83feb72f1588

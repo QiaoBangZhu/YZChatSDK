@@ -40,6 +40,7 @@
 @property(nonatomic,  copy) NSString *userID;
 @property(nonatomic,strong) V2TIMSignalingInfo *signalingInfo;
 @property(nonatomic,strong) NSData   *deviceToken;
+@property(nullable, nonatomic, weak) id<YzMessageWatcher> messageWatcher;
 
 @end
 
@@ -58,8 +59,88 @@
     self.appId = appId;
     [YZBaseManager shareInstance].appId = appId;
     [self configureTUIKit];
+    [self configureObserver];
     [self configureNavigationBar];
     [self configureAmap];
+}
+
+# pragma mark -- configure
+
+- (void)configureTUIKit {
+    [[TUIKit sharedInstance] setupWithAppId:SDKAPPID];
+    [TUIKit sharedInstance].config.avatarType = TAvatarTypeRounded;
+    [TUIKit sharedInstance].config.defaultAvatarImage = YZChatResource(@"defaultAvatarImage");
+    [TUIKit sharedInstance].config.defaultGroupAvatarImage = YZChatResource(@"defaultGrpImage");
+}
+
+- (void)configureObserver {
+    // 有新的会话
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onNewConversation:)
+                                                 name:TUIKitNotification_TIMRefreshListener_Add
+                                               object:nil];
+
+    // 某些会话的关键信息发生变化
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onConversationChanged:)
+                                                 name:TUIKitNotification_TIMRefreshListener_Changed
+                                               object:nil];
+}
+
+// 有新的会话（比如收到一个新同事发来的单聊消息、或者被拉入了一个新的群组中
+- (void)onNewConversation:(NSNotification *)notification {
+    [self updateConversionList: notification];
+}
+
+// 某些会话的关键信息发生变化（未读计数发生变化、最后一条消息被更新等等）
+- (void)onConversationChanged:(NSNotification *)notification {
+    [self updateConversionList: notification];
+}
+
+- (void)updateConversionList:(NSNotification *)notification {
+    NSMutableArray *list = (NSMutableArray *)notification.object;
+    NSUInteger count = 0;
+    for (V2TIMConversation *conversation in list) {
+        count += conversation.unreadCount;
+    }
+
+    if ([self.messageWatcher respondsToSelector: @selector(updateUnreadCount:)]) {
+        [self.messageWatcher updateUnreadCount: count];
+    }
+
+    if ([self.messageWatcher respondsToSelector: @selector(updateConversion)]) {
+        [self.messageWatcher updateConversion];
+    }
+}
+
+- (void)configureNavigationBar {
+    //隐藏返回标题文字
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateHighlighted];
+    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].translucent = NO;
+
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+
+    UIImage* backButtonImage = [YZChatResource(@"icon_back") imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
+    if (@available(iOS 11.0, *)) {
+        [UINavigationBar appearance].backIndicatorImage = backButtonImage;
+        [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
+    }else {
+        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    }
+    //    if (@available(iOS 11.0, *)) {
+    //        NSError *error;
+    //           [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
+    //               UIViewController *controller = aspectInfo.instance;
+    //               controller.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //           } error:&error];
+    //           if (error) NSLog(@"%@", error);
+    //    }else {
+    //        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    //    }
+
 }
 
 //高德地图
@@ -67,9 +148,11 @@
     [AMapServices sharedServices].apiKey = amapKey;
 }
 
+# pragma mark -- Method
+
 - (void)registerWithSysUser:(SysUser *)sysUser
-               loginSuccess:(YChatSysUserSucc)success
-                     loginFailed:(YChatSysUserFail)fail {
+               loginSuccess:(YzChatSysUserSuccess)success
+                loginFailed:(YzChatSysUserFailure)fail {
     self.user = sysUser;
     if (![self.user.userId length]) {
         [THelper makeToast:@"userId不能为空"];
@@ -88,10 +171,10 @@
                                            position:[self.user.position length] == 0 ? @"" : self.user.position
                                               email:[self.user.email length] == 0 ? @"" : self.user.email
                                        departmentId:[self.user.departMentId length] == 0 ? @"":self.user.departMentId
-                                        departName:[self.user.departName length] == 0 ? @"":self.user.departName
-                                              city:[self.user.city length] == 0 ? @"" : self.user.city
-                                     userSignature:[self.user.userSignature length] == 0 ? @"" :self.user.userSignature
-                                                          completion:^(NSDictionary *result, NSError *error)  {
+                                         departName:[self.user.departName length] == 0 ? @"":self.user.departName
+                                               city:[self.user.city length] == 0 ? @"" : self.user.city
+                                      userSignature:[self.user.userSignature length] == 0 ? @"" :self.user.userSignature
+                                         completion:^(NSDictionary *result, NSError *error)  {
         if (!error) {
             if ([result[@"code"]intValue] == 200) {
                 YUserInfo* model = [YUserInfo yy_modelWithDictionary:result[@"data"]];
@@ -145,8 +228,8 @@
 }
 
 - (UIViewController*)startChatWithChatId:(NSString *)toChatId
-                   chatName:(NSString *)chatName
-       finishToConversation:(BOOL)finishToConversation  {
+                                chatName:(NSString *)chatName
+                    finishToConversation:(BOOL)finishToConversation  {
     if ([toChatId length] == 0) {
         [THelper makeToast:@"聊天对象的uid不能为空"];
         return nil;
@@ -188,43 +271,6 @@
     }
 }
 
-- (void)configureTUIKit {
-    [[TUIKit sharedInstance] setupWithAppId:SDKAPPID];
-    [TUIKit sharedInstance].config.avatarType = TAvatarTypeRounded;
-    [TUIKit sharedInstance].config.defaultAvatarImage = YZChatResource(@"defaultAvatarImage");
-    [TUIKit sharedInstance].config.defaultGroupAvatarImage = YZChatResource(@"defaultGrpImage");
-}
-
-- (void)configureNavigationBar {
-    //隐藏返回标题文字
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateNormal];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateHighlighted];
-    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].translucent = NO;
-    
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-
-    UIImage* backButtonImage = [YZChatResource(@"icon_back") imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-    if (@available(iOS 11.0, *)) {
-        [UINavigationBar appearance].backIndicatorImage = backButtonImage;
-        [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
-    }else {
-        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    }
-//    if (@available(iOS 11.0, *)) {
-//        NSError *error;
-//           [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
-//               UIViewController *controller = aspectInfo.instance;
-//               controller.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//           } error:&error];
-//           if (error) NSLog(@"%@", error);
-//    }else {
-//        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-//    }
-
-}
-
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     self.deviceToken = deviceToken;
     [YZBaseManager shareInstance].deviceToken = deviceToken;
@@ -245,7 +291,7 @@
         config.openPush = 0;
         config.c2cSound = c2cSoundPath;
         config.groupSound = groupSoundPath;
-    
+
         [[TIMManager sharedInstance] setAPNS:config succ:^{
             NSLog(@"-----> 设置 APNS 成功");
         } fail:^(int code, NSString *msg) {
@@ -388,25 +434,25 @@
     if ([[V2TIMManager sharedInstance] getLoginStatus] == V2TIM_STATUS_LOGOUT) {
         @weakify(self);
         [[TUIKit sharedInstance] login:userId userSig:usersign succ:^{
-        @strongify(self);
-           if (self.deviceToken) {
-               //企业证书 ID
-               V2TIMAPNSConfig *confg = [[V2TIMAPNSConfig alloc] init];
-               confg.businessID = sdkBusiId;
-               confg.token = self.deviceToken;
-               [[V2TIMManager sharedInstance] setAPNS:confg succ:^{
+            @strongify(self);
+            if (self.deviceToken) {
+                //企业证书 ID
+                V2TIMAPNSConfig *confg = [[V2TIMAPNSConfig alloc] init];
+                confg.businessID = sdkBusiId;
+                confg.token = self.deviceToken;
+                [[V2TIMManager sharedInstance] setAPNS:confg succ:^{
                 } fail:^(int code, NSString *msg) {
-               }];
-               [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
-           }
-           //普通消息推送
-           [self onReceiveNomalMsgAPNs];
-           //音视频消息推送
-           [self onReceiveGroupCallAPNs];
-       } fail:^(int code, NSString *msg) {
-           [[YChatSettingStore sharedInstance]logout];
-           fail();
-       }];
+                }];
+                [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
+            }
+            //普通消息推送
+            [self onReceiveNomalMsgAPNs];
+            //音视频消息推送
+            [self onReceiveGroupCallAPNs];
+        } fail:^(int code, NSString *msg) {
+            [[YChatSettingStore sharedInstance]logout];
+            fail();
+        }];
     }
 }
 
@@ -443,23 +489,107 @@
 /**
  
  {
-     code = 200;
-     data =     {
-         departName = "\U5e73\U53f0\U7814\U53d1\U4e2d\U5fc3";
-         departmentId = de241446a50499bb77a8684cf610fd04;
-         functionPerm = 15;
-         nickName = "\U5927\U7edf\U9886";
-         userIcon = "https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/1607087952606file.png";
-         userId = 95e6bd162f019b60ad8380fba5e0db41;
-         userSign = "eJwtjdEKgjAYhd9lt4X8-za3KXQRFEFJQdZNd47NWpEsHZpE755ol*c7fOd8yCnLo9bWJCU0AjIfszO2Cq50I05iK7RBQUvARAsojGIKSl3EFozm*Hca8yi8d4akyAE4o5Ti1Ni3d7UlqQCuACYW3HMgKECiAsbkf8Ndh0NdNYfkbmXYVUr067z23abF175v5ep8O2Yyu*hZsQ39sluQ7w-rKDh4";
-     };
-     msg = "";
-     token = 7e19d8fa3c6f8e2a5a4767a2bbf8c4e1;
+ code = 200;
+ data =     {
+ departName = "\U5e73\U53f0\U7814\U53d1\U4e2d\U5fc3";
+ departmentId = de241446a50499bb77a8684cf610fd04;
+ functionPerm = 15;
+ nickName = "\U5927\U7edf\U9886";
+ userIcon = "https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/1607087952606file.png";
+ userId = 95e6bd162f019b60ad8380fba5e0db41;
+ userSign = "eJwtjdEKgjAYhd9lt4X8-za3KXQRFEFJQdZNd47NWpEsHZpE755ol*c7fOd8yCnLo9bWJCU0AjIfszO2Cq50I05iK7RBQUvARAsojGIKSl3EFozm*Hca8yi8d4akyAE4o5Ti1Ni3d7UlqQCuACYW3HMgKECiAsbkf8Ndh0NdNYfkbmXYVUr067z23abF175v5ep8O2Yyu*hZsQ39sluQ7w-rKDh4";
+ };
+ msg = "";
+ token = 7e19d8fa3c6f8e2a5a4767a2bbf8c4e1;
  }
  
  
  
  
  */
+
+@end
+
+#pragma mark -- 会话相关
+
+const NSUInteger STEP_LENGTH = 100;
+
+@implementation YzIMKitAgent (Conversation)
+
+- (void)addMessageWatcher:(id<YzMessageWatcher>)watcher {
+    self.messageWatcher = watcher;
+}
+
+- (void)loadConversation:(NSUInteger)next
+                    type:(YzChatType)type
+                 success:(YzChatConversationListSuccess)success
+                 failure:(YzChatSysUserFailure)failure {
+    if (!success) return;
+
+    // 截取开始位置
+    NSUInteger startIndex = next * STEP_LENGTH;
+    NSUInteger maxCount = startIndex + STEP_LENGTH;
+
+    [[V2TIMManager sharedInstance] getConversationList: 0 count: INT_MAX succ:^(NSArray<V2TIMConversation *> *list, uint64_t lastTS, BOOL isFinished) {
+
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        for (V2TIMConversation *conversation in list) {
+            if ((type & conversation.type) == conversation.type) {
+                [temp addObject: conversation];
+            }
+
+            // 多出一个用于判断是否还有更多
+            if (temp.count > startIndex + STEP_LENGTH) break;
+        }
+
+        // 没有更多数据
+        if (temp.count < startIndex) {
+            success(@[], -1, YES);
+        }
+        // 有数据
+        else {
+            BOOL noMore = temp.count <= maxCount;
+            NSUInteger length = STEP_LENGTH;
+            if (noMore) {
+                length = temp.count - startIndex;
+            }
+            NSArray *list = [temp subarrayWithRange: NSMakeRange(startIndex, length)];
+
+            success(list, noMore ? -1 : next + 1, noMore);
+        }
+
+    } fail:^(int code, NSString *msg) {
+        !failure ?: failure(code, msg);
+    }];
+}
+
+- (void)getConversation:(NSString *)conversionId
+                success:(YzChatConversationSuccess)success
+                failure:(YzChatSysUserFailure)failure {
+    if (!success) return;
+
+    [[V2TIMManager sharedInstance] getConversation: conversionId succ:^(V2TIMConversation *conv) {
+        success(conv);
+    } fail:^(int code, NSString *msg) {
+        !failure ?: failure(code, msg);
+    }];
+}
+
+- (void)conversationUnRead:(YzChatUnreadCountSuccess)success
+                   failure:(YzChatSysUserFailure)failure {
+    if (!success) return;
+
+    [[V2TIMManager sharedInstance] getConversationList:0 count:INT_MAX succ:^(NSArray<V2TIMConversation *> *list, uint64_t lastTS, BOOL isFinished) {
+
+        NSUInteger count = 0;
+        for (V2TIMConversation *conversation in list) {
+            count += conversation.unreadCount;
+        }
+        success(count);
+
+    } fail:^(int code, NSString *msg) {
+        !failure ?: failure(code, msg);
+    }];
+}
 
 @end

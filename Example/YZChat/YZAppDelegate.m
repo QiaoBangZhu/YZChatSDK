@@ -81,7 +81,19 @@ YZAppDelegate *appdel;
                 SysUser *user = [SysUser yy_modelWithDictionary:result[@"data"]];
                 [[YzIMKitAgent shareInstance] registerWithSysUser:user loginSuccess:^{
                     [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil];
-//                    [[YzIMKitAgent shareInstance] loadConversation:0 type:YzChatTypeSingle | YzChatTypeGroup];
+//                    [[YzIMKitAgent shareInstance] loadConversation: 0
+//                                                              type: YzChatTypeSingle | YzChatTypeGroup
+//                                                           success:^(NSArray<V2TIMConversation *> * _Nonnull list, NSUInteger next, BOOL isFinished) {
+//                        NSLog(@"list->%@, next->%ld, isFinished->%d", list, next, isFinished);
+//
+//                    } failure:^(NSInteger errCode, NSString * _Nonnull errMsg) {
+//                        NSLog(@"errCode->%ld, errMsg->%@", errCode, errMsg);
+//                    }];
+//                    [[YzIMKitAgent shareInstance] conversationUnRead:^(NSUInteger unreadCount) {
+//                        NSLog(@"unReadCount->%ld", unreadCount);
+//                    } failure:^(NSInteger errCode, NSString * _Nonnull errMsg) {
+//                        NSLog(@"errCode->%ld, errMsg->%@", errCode, errMsg);
+//                    }];
                  } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
                      NSLog(@"error =%@",errMsg);
                 }];
