@@ -1,12 +1,12 @@
 //
-//  YZConversationViewController.m
+//  YConversationViewController.m
 //  YChat
 //
 //  Created by magic on 2020/9/19.
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "YZConversationViewController.h"
+#import "YConversationViewController.h"
 #import "THeader.h"
 #import "YPopView.h"
 #import "YPopCell.h"
@@ -38,14 +38,14 @@
 #import "NSBundle+YZBundle.h"
 #import "YZBaseManager.h"
 
-@interface YZConversationViewController ()<YUIConversationListControllerDelegate, YPopViewDelegate,UISearchBarDelegate>
+@interface YConversationViewController ()<YUIConversationListControllerDelegate, YPopViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) TNaviBarIndicatorView *titleview;
 @property (nonatomic, strong) YUIConversationListController* listController;
 @property (nonatomic, strong) UIButton              *closeBtn;
 
 @end
 
-@implementation YZConversationViewController
+@implementation YConversationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

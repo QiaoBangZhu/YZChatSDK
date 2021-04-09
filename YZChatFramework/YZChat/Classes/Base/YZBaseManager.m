@@ -7,7 +7,7 @@
 //
 
 #import "YZBaseManager.h"
-#import "YZConversationViewController.h"
+#import "YConversationViewController.h"
 #import "ContactsViewController.h"
 #import "YWorkZoneViewController.h"
 #import "YZMyViewController.h"
@@ -48,7 +48,7 @@
         msgItem.title = @"消息";
         msgItem.normalImage = YZChatResource(@"message_normal");
         msgItem.selectedImage = YZChatResource(@"message_pressed");
-        msgItem.controller = [[TNavigationController alloc] initWithRootViewController:[[YZConversationViewController alloc] init]];
+        msgItem.controller = [[TNavigationController alloc] initWithRootViewController:[[YConversationViewController alloc] init]];
         [items addObject:msgItem];
     }
     

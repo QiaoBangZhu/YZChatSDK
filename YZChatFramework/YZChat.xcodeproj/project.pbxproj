@@ -154,7 +154,7 @@
 		30A98AED25A449F20082D3C9 /* YZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888025A449F00082D3C9 /* YZUtil.m */; };
 		30A98AEF25A449F20082D3C9 /* YZPAirSandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888225A449F00082D3C9 /* YZPAirSandbox.h */; };
 		30A98AF025A449F20082D3C9 /* YChatSettingStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888325A449F00082D3C9 /* YChatSettingStore.h */; };
-		30A98AF125A449F20082D3C9 /* YZConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888625A449F00082D3C9 /* YZConversationViewController.m */; };
+		30A98AF125A449F20082D3C9 /* YConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888625A449F00082D3C9 /* YConversationViewController.m */; };
 		30A98AF225A449F20082D3C9 /* YZMyQRCodeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888725A449F00082D3C9 /* YZMyQRCodeViewController.h */; };
 		30A98AF325A449F20082D3C9 /* QDCommonTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888825A449F00082D3C9 /* QDCommonTableViewController.h */; };
 		30A98AF425A449F20082D3C9 /* YUIConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888925A449F00082D3C9 /* YUIConversationListController.h */; };
@@ -167,7 +167,7 @@
 		30A98AFB25A449F20082D3C9 /* QRScanViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889025A449F00082D3C9 /* QRScanViewController.h */; };
 		30A98AFC25A449F20082D3C9 /* YZContactSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889125A449F00082D3C9 /* YZContactSearchViewController.h */; };
 		30A98AFD25A449F20082D3C9 /* YZAddressBookViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889225A449F00082D3C9 /* YZAddressBookViewController.h */; };
-		30A98AFE25A449F20082D3C9 /* YZConversationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889325A449F00082D3C9 /* YZConversationViewController.h */; };
+		30A98AFE25A449F20082D3C9 /* YConversationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889325A449F00082D3C9 /* YConversationViewController.h */; };
 		30A98AFF25A449F20082D3C9 /* YZMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889425A449F00082D3C9 /* YZMyQRCodeViewController.m */; };
 		30A98B0025A449F20082D3C9 /* YZSearchConversationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889525A449F00082D3C9 /* YZSearchConversationViewController.h */; };
 		30A98B0125A449F20082D3C9 /* YZMapViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889625A449F00082D3C9 /* YZMapViewController.h */; };
@@ -740,7 +740,7 @@
 		30A9888025A449F00082D3C9 /* YZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZUtil.m; sourceTree = "<group>"; };
 		30A9888225A449F00082D3C9 /* YZPAirSandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPAirSandbox.h; sourceTree = "<group>"; };
 		30A9888325A449F00082D3C9 /* YChatSettingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YChatSettingStore.h; sourceTree = "<group>"; };
-		30A9888625A449F00082D3C9 /* YZConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZConversationViewController.m; sourceTree = "<group>"; };
+		30A9888625A449F00082D3C9 /* YConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YConversationViewController.m; sourceTree = "<group>"; };
 		30A9888725A449F00082D3C9 /* YZMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMyQRCodeViewController.h; sourceTree = "<group>"; };
 		30A9888825A449F00082D3C9 /* QDCommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonTableViewController.h; sourceTree = "<group>"; };
 		30A9888925A449F00082D3C9 /* YUIConversationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIConversationListController.h; sourceTree = "<group>"; };
@@ -753,7 +753,7 @@
 		30A9889025A449F00082D3C9 /* QRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		30A9889125A449F00082D3C9 /* YZContactSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZContactSearchViewController.h; sourceTree = "<group>"; };
 		30A9889225A449F00082D3C9 /* YZAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZAddressBookViewController.h; sourceTree = "<group>"; };
-		30A9889325A449F00082D3C9 /* YZConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZConversationViewController.h; sourceTree = "<group>"; };
+		30A9889325A449F00082D3C9 /* YConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YConversationViewController.h; sourceTree = "<group>"; };
 		30A9889425A449F00082D3C9 /* YZMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMyQRCodeViewController.m; sourceTree = "<group>"; };
 		30A9889525A449F00082D3C9 /* YZSearchConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSearchConversationViewController.h; sourceTree = "<group>"; };
 		30A9889625A449F00082D3C9 /* YZMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMapViewController.h; sourceTree = "<group>"; };
@@ -1477,8 +1477,8 @@
 				30A9889C25A449F00082D3C9 /* YZAddressBookViewController.m */,
 				30A9889125A449F00082D3C9 /* YZContactSearchViewController.h */,
 				30A9889B25A449F00082D3C9 /* YZContactSearchViewController.m */,
-				30A9889325A449F00082D3C9 /* YZConversationViewController.h */,
-				30A9888625A449F00082D3C9 /* YZConversationViewController.m */,
+				30A9889325A449F00082D3C9 /* YConversationViewController.h */,
+				30A9888625A449F00082D3C9 /* YConversationViewController.m */,
 				30A9889725A449F00082D3C9 /* YZMapInfoViewController.h */,
 				30A9888B25A449F00082D3C9 /* YZMapInfoViewController.m */,
 				30A9889625A449F00082D3C9 /* YZMapViewController.h */,
@@ -2459,7 +2459,7 @@
 				30A98C8F25A449F30082D3C9 /* YWorkZoneTableViewCell.h in Headers */,
 				30A98BCF25A449F20082D3C9 /* TUIJoinGroupMessageCellData.h in Headers */,
 				30A98A8525A449F20082D3C9 /* UIView+Extensions.h in Headers */,
-				30A98AFE25A449F20082D3C9 /* YZConversationViewController.h in Headers */,
+				30A98AFE25A449F20082D3C9 /* YConversationViewController.h in Headers */,
 				30A98BBE25A449F20082D3C9 /* TCommonPendencyCellData.h in Headers */,
 				30A98B3D25A449F20082D3C9 /* YZCardMsgCell.h in Headers */,
 				30A98BB425A449F20082D3C9 /* TUINewFriendViewController.h in Headers */,
@@ -2889,7 +2889,7 @@
 				30A98A9A25A449F20082D3C9 /* ZNavigationBar.m in Sources */,
 				30A98C3825A449F20082D3C9 /* TUIGroupInfoController.m in Sources */,
 				30A98C8E25A449F30082D3C9 /* YAppCollectionViewCell.m in Sources */,
-				30A98AF125A449F20082D3C9 /* YZConversationViewController.m in Sources */,
+				30A98AF125A449F20082D3C9 /* YConversationViewController.m in Sources */,
 				30A98B2525A449F20082D3C9 /* YUserProfileController.m in Sources */,
 				30A98C0125A449F20082D3C9 /* TUIVideoMessageCell.m in Sources */,
 				30A98B7325A449F20082D3C9 /* TModifyView.m in Sources */,

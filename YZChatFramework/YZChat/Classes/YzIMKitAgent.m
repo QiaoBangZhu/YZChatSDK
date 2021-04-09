@@ -15,7 +15,7 @@
 #import <ImSDKForiOS/ImSDK.h>
 #import "TUIConversationCellData.h"
 #import "YChatViewController.h"
-#import "YZConversationViewController.h"
+#import "YConversationViewController.h"
 #import "TNavigationController.h"
 #import "ContactsViewController.h"
 #import "YWorkZoneViewController.h"
@@ -221,7 +221,7 @@
     [YZBaseManager shareInstance].rootViewController = rootVc;
     TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];
     TNavigationController* nav = (TNavigationController*)tab.viewControllers[0];
-    YZConversationViewController * convc = (YZConversationViewController*)nav.viewControllers[0];
+    YConversationViewController * convc = (YConversationViewController*)nav.viewControllers[0];
     convc.isNeedCloseBtn = YES;
     tab.modalPresentationStyle =UIModalPresentationFullScreen;
     [rootVc presentViewController:tab animated:YES completion:nil];
@@ -247,7 +247,7 @@
     if(finishToConversation){
         TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];
         TNavigationController* nav = (TNavigationController*)tab.viewControllers[0];
-        YZConversationViewController * convc = (YZConversationViewController*)nav.viewControllers[0];
+        YConversationViewController * convc = (YConversationViewController*)nav.viewControllers[0];
         convc.isNeedCloseBtn = YES;
         [nav pushViewController:chat animated:YES];
         return tab;
@@ -370,7 +370,7 @@
         }
         [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         UINavigationController *nav = (UINavigationController *)tab.selectedViewController;
-        YZConversationViewController *vc = (YZConversationViewController *)nav.viewControllers.firstObject;
+        YConversationViewController *vc = (YConversationViewController *)nav.viewControllers.firstObject;
         [vc pushToChatViewController:self.groupID userID:self.userID];
         self.groupID = nil;
         self.userID = nil;

@@ -1,5 +1,5 @@
 //
-//  YZConversationViewController.h
+//  YConversationViewController.h
 //  YChat
 //
 //  Created by magic on 2020/9/19.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZConversationViewController : YBaseViewController
+@interface YConversationViewController : YBaseViewController
 @property (nonatomic, assign)BOOL isNeedCloseBtn;
 /**
  *跳转到对应的聊天界面
