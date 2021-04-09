@@ -1,17 +1,17 @@
 //
-//  YzChatViewController.m
+//  YzChatController.m
 //  YZChat
 //
 //  Created by 安笑 on 2021/4/9.
 //
 
-#import "YzChatViewController.h"
+#import "YzChatController.h"
 
-@interface YzChatViewController ()
+@interface YzChatController ()
 
 @end
 
-@implementation YzChatViewController
+@implementation YzChatController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

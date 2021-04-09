@@ -1,5 +1,5 @@
 //
-//  YzChatViewController.h
+//  YzChatController.h
 //  YZChat
 //
 //  Created by 安笑 on 2021/4/9.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YzChatViewController : UIViewController
+@interface YzChatController : UIViewController
 
 @end
 
