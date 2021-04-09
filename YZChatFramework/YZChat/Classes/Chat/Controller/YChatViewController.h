@@ -1,5 +1,5 @@
 //
-//  YZChatViewController.h
+//  YChatViewController.h
 //  YChat
 //
 //  Created by magic on 2020/9/19.
@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @class TUIMessageCellData;
 
-@interface YZChatViewController : UIViewController
+@interface YChatViewController : UIViewController
 
 @property (nonatomic, strong) TUIConversationCellData *conversationData;
 @property (nonatomic, strong) TUnReadView *unRead;

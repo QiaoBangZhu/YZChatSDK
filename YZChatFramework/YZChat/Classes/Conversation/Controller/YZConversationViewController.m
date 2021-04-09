@@ -16,7 +16,7 @@
 #import "THelper.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import <ImSDKForiOS/ImSDK.h>
-#import "YZChatViewController.h"
+#import "YChatViewController.h"
 #import "YContactSelectViewController.h"
 #import "SearchFriendViewController.h"
 #import "YChatNetworkEngine.h"
@@ -188,7 +188,7 @@
  */
 - (void)conversationListController:(YUIConversationListController *)conversationController didSelectConversation:(TUIConversationCell *)conversation
 {
-    YZChatViewController *chat = [[YZChatViewController alloc] init];
+    YChatViewController *chat = [[YChatViewController alloc] init];
     chat.conversationData = conversation.convData;
     [self.navigationController pushViewController:chat animated:YES];
 }
@@ -197,7 +197,7 @@
  *推送默认跳转
  */
 - (void)pushToChatViewController:(NSString *)groupID userID:(NSString *)userID {
-    YZChatViewController *chat = [[YZChatViewController alloc] init];
+    YChatViewController *chat = [[YChatViewController alloc] init];
     TUIConversationCellData *conversationData = [[TUIConversationCellData alloc] init];
     conversationData.groupID = groupID;
     conversationData.userID = userID;
@@ -348,7 +348,7 @@
                 TUIConversationCellData *cellData = [[TUIConversationCellData alloc] init];
                 cellData.groupID = groupID;
                 cellData.title = groupName;
-                YZChatViewController *chat = [[YZChatViewController alloc] init];
+                YChatViewController *chat = [[YChatViewController alloc] init];
                 chat.conversationData = cellData;
                 [self.navigationController pushViewController:chat animated:YES];
 

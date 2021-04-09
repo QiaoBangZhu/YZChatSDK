@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YzConversationListViewController : UIViewController
+@interface YzConversationViewController : UIViewController
 
 @end
 

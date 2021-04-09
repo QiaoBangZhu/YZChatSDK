@@ -8,7 +8,7 @@
 
 #import "YZSearchViewController.h"
 #import <Masonry/Masonry.h>
-#import "YZChatViewController.h"
+#import "YChatViewController.h"
 #import "TCommonContactCell.h"
 #import "YZFriendProfileViewController.h"
 

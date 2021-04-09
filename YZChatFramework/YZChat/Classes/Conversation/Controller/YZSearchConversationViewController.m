@@ -23,7 +23,7 @@
 #import "TCServiceManager.h"
 #import "TUIConversationCell.h"
 #import "TUIConversationCellData.h"
-#import "YZChatViewController.h"
+#import "YChatViewController.h"
 
 @interface YZSearchConversationViewController ()<SearchBarDelegate,UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)YZSearchBarView  * searchBarView;
@@ -117,7 +117,7 @@
 
 - (void)didSelectConversation:(TUIConversationCell *)cell
 {
-    YZChatViewController *chat = [[YZChatViewController alloc] init];
+    YChatViewController *chat = [[YChatViewController alloc] init];
     chat.conversationData = cell.convData;
     [self.navigationController pushViewController:chat animated:YES];
 }

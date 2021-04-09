@@ -6,7 +6,7 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "YZChatViewController.h"
+#import "YChatViewController.h"
 #import "YGroupInfoController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "TUIVideoMessageCell.h"
@@ -52,12 +52,12 @@
 @end
 
 
-@interface YZChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate>
+@interface YChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate>
 @property (nonatomic, strong) YUIChatController *chat;
 
 @end
 
-@implementation YZChatViewController
+@implementation YChatViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

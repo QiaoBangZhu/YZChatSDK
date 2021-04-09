@@ -14,7 +14,7 @@
 #import "YChatSettingStore.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "TUIConversationCellData.h"
-#import "YZChatViewController.h"
+#import "YChatViewController.h"
 #import "YZConversationViewController.h"
 #import "TNavigationController.h"
 #import "ContactsViewController.h"
@@ -242,7 +242,7 @@
     data.conversationID = [NSString stringWithFormat:@"c2c_%@",@""];
     data.userID = toChatId;
     data.title = chatName;
-    YZChatViewController *chat = [[YZChatViewController alloc] init];
+    YChatViewController *chat = [[YChatViewController alloc] init];
     chat.conversationData = data;
     if(finishToConversation){
         TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];

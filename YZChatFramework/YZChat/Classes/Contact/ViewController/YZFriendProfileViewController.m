@@ -13,7 +13,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "THeader.h"
 #import "TTextEditController.h"
-#import "YZChatViewController.h"
+#import "YChatViewController.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "TUIKit.h"
 #import "TUIAvatarViewController.h"
@@ -461,7 +461,7 @@
     data.conversationID = [NSString stringWithFormat:@"c2c_%@",self.userFullInfo.userID];
     data.userID = self.friendProfile.userID;
     data.title = [self.friendProfile.userFullInfo showName];
-    YZChatViewController *chat = [[YZChatViewController alloc] init];
+    YChatViewController *chat = [[YChatViewController alloc] init];
     chat.conversationData = data;
     [self.navigationController pushViewController:chat animated:YES];
 }
@@ -642,7 +642,7 @@
                 TUIConversationCellData *cellData = [[TUIConversationCellData alloc] init];
                 cellData.groupID = groupID;
                 cellData.title = groupName;
-                YZChatViewController *chat = [[YZChatViewController alloc] init];
+                YChatViewController *chat = [[YChatViewController alloc] init];
                 chat.conversationData = cellData;
                 [self.navigationController pushViewController:chat animated:YES];
                 
