@@ -37,7 +37,7 @@
 #import "YUIButtonTableViewCell.h"
 #import "NSBundle+YZBundle.h"
 
-@TCServiceRegister(TUIFriendProfileControllerServiceProtocol, FriendProfileViewController)
+@TCServiceRegister(TUIFriendProfileControllerServiceProtocol, YZFriendProfileViewController)
 @interface YZFriendProfileViewController ()<UserInfoAvatarTableViewCellDelegate,UITableViewDelegate,UITableViewDataSource>
 @property NSArray<NSArray *> *dataList;
 @property BOOL isInBlackList;

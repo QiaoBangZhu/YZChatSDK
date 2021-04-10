@@ -33,7 +33,7 @@
 #import "THelper.h"
 #import "YChatSettingStore.h"
 
-@TCServiceRegister(TUIUserProfileControllerServiceProtocol, UserProfileController)
+@TCServiceRegister(TUIUserProfileControllerServiceProtocol, YUserProfileController)
 @interface YUserProfileController ()<AddFriendHeaderCellDelegate>
 @property NSMutableArray<NSArray *> *dataList;
 @property NSString * helloStr;
