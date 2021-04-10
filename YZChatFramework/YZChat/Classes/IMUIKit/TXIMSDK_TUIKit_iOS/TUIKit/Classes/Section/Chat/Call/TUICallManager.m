@@ -98,7 +98,11 @@ typedef NS_ENUM(NSInteger,VideoUserRemoveReason){
         };
         [videoVC setModalPresentationStyle:UIModalPresentationFullScreen];
         
-        [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:videoVC animated:YES completion:nil];
+        if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController != nil) {
+            [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:videoVC animated:YES completion:nil];
+        }else {
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:videoVC animated:YES completion:nil];
+        }
     } else {
         self.callVC = [[TUIAudioCallViewController alloc] initWithSponsor:sponsor userList:invitedList isInGroup:isInGroup];
         TUIAudioCallViewController *audioVC = (TUIAudioCallViewController *)self.callVC;
@@ -106,7 +110,11 @@ typedef NS_ENUM(NSInteger,VideoUserRemoveReason){
             self.callVC = nil;
         };
         [audioVC setModalPresentationStyle:UIModalPresentationFullScreen];
-        [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:audioVC animated:YES completion:nil];
+        if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController != nil) {
+            [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:audioVC animated:YES completion:nil];
+        }else {
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:audioVC animated:YES completion:nil];
+        }
     }
 }
 
