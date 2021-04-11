@@ -64,11 +64,11 @@
 @implementation YzChatController
 
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
-                          config:(YzChatControllerConfig *)config {
+                          config:(nullable YzChatControllerConfig *)config {
     self = [super init];
     if (self) {
         _chatInfo = chatInfo;
-        _chatConfig = config;
+        _chatConfig = config ?: [[YzChatControllerConfig alloc] init];
     }
     return self;
 }
@@ -205,12 +205,12 @@
     return nil;
 }
 
-- (void)chatController:(YUIChatController *)controller onSelectMessageContent:(TUIMessageCell *)cell
-{
+- (void)chatController:(YUIChatController *)controller onSelectMessageContent:(TUIMessageCell *)cell {
     if ([cell isKindOfClass:[YZMyCustomCell class]]) {
         YZMyCustomCellData *cellData = [(YZMyCustomCell *)cell customData];
         if (cellData.link) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:cellData.link]];
+            [[UIApplication sharedApplication] openURL:
+             [NSURL URLWithString: cellData.link] options: nil completionHandler: nil];
         }
     }else if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
         YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];

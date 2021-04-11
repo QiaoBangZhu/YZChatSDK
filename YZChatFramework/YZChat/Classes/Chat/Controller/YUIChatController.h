@@ -259,8 +259,7 @@
 /**
  * 触发了@功能并且选择完成员
  *
- * @param names 成员姓名列表
- * @param ids 成员id列表
+ * @param users 成员列表
  */
 - (void)updateInputTextByUsers:(NSArray <UserModel *> *)users;
 

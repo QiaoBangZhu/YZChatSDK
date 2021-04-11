@@ -111,7 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable, nonatomic, weak) id<YzChatControllerDelegate> delegate;
 
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
-                          config:(YzChatControllerConfig *)config;
+                          config:(nullable YzChatControllerConfig *)config;
 
 /**
  * 触发了@功能并且选择完成员
