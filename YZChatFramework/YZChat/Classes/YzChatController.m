@@ -29,7 +29,23 @@
 #import "YZMapInfoViewController.h"
 #import "YZWebViewController.h"
 
+#define MyCustomMessageCell_ReuseId @"YZMyCustomCell"
+#define CardMessageCell_ReuseId @"YZCardMsgCell"
+
 @implementation YzChatInfo
+
+- (instancetype)initWithChatId:(NSString *)chatId
+                      chatName:(NSString *)chatName
+                       isGroup:(BOOL)isGroup {
+    self = [super init];
+    if (self) {
+        _chatId = chatId;
+        _chatName = chatName;
+        _isGroup = isGroup;
+    }
+    return self;
+}
+
 @end
 
 @implementation YzChatControllerConfig
@@ -85,6 +101,10 @@
     [self addChildViewController: self.chatController];
     [self.view addSubview: self.chatController.view];
     self.chatController.messageController.tableView.backgroundColor = [UIColor colorWithHex: KCommonChatBgColor];
+    [self.chatController.messageController.tableView registerClass: [YZMyCustomCell class]
+                                            forCellReuseIdentifier: MyCustomMessageCell_ReuseId];
+    [self.chatController.messageController.tableView registerClass: [YZCardMsgCell class]
+                                            forCellReuseIdentifier: CardMessageCell_ReuseId];
     
     [TUIBubbleMessageCellData setOutgoingBubble:[YZChatResource(@"SenderTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
     
@@ -194,11 +214,13 @@
 - (TUIMessageCell *)chatController:(YUIChatController *)controller
                  onShowMessageData:(TUIMessageCellData *)data {
     if ([data isKindOfClass:[YZMyCustomCellData class]]) {
-        YZMyCustomCell *myCell = [[YZMyCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
+        YZMyCustomCell *myCell = [self.chatController.messageController.tableView
+                                  dequeueReusableCellWithIdentifier: MyCustomMessageCell_ReuseId];
         [myCell fillWithData:(YZMyCustomCellData *)data];
         return myCell;
     }else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
-        YZCardMsgCell *cell = [[YZCardMsgCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CardMsgCell"];
+        YZCardMsgCell *cell = [self.chatController.messageController.tableView
+                               dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
         [cell fillWithData:(YZCardMsgCellData *)data];
         return cell;
     }
@@ -210,7 +232,7 @@
         YZMyCustomCellData *cellData = [(YZMyCustomCell *)cell customData];
         if (cellData.link) {
             [[UIApplication sharedApplication] openURL:
-             [NSURL URLWithString: cellData.link] options: nil completionHandler: nil];
+             [NSURL URLWithString: cellData.link] options: @{} completionHandler: nil];
         }
     }else if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
         YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];

@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL isGroup;
 
+- (instancetype)initWithChatId:(NSString *)chatId
+                      chatName:(NSString *)chatName
+                       isGroup:(BOOL)isGroup;
+
 @end
 
 @interface YzChatControllerConfig : NSObject

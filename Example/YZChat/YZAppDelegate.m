@@ -45,9 +45,9 @@ YZAppDelegate *appdel;
     [[YzIMKitAgent shareInstance]initAppId:yzchatAppId];
     self.window.rootViewController = [self getLoginController];
     if ([YZChatSettingStore sharedInstance].isLogin) {
-           [self fetchUserInfo];
-       }else {
-           [self getLoginController];
+        [self fetchUserInfo];
+    }else {
+        [self getLoginController];
     }
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didLogout) name:YZChatSDKNotification_UserStatusListener object:nil];
@@ -81,8 +81,9 @@ YZAppDelegate *appdel;
                 SysUser *user = [SysUser yy_modelWithDictionary:result[@"data"]];
                 [[YzIMKitAgent shareInstance] registerWithSysUser:user loginSuccess:^{
                     [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil];
-                 } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
-                     NSLog(@"error =%@",errMsg);
+//                    self.window.rootViewController = [[MAGICNavigationViewController alloc] initWithRootViewController: [[YzChatController alloc] initWithChatInfo: [[YzChatInfo alloc] initWithChatId: @"@TGS#1JYI4QCH2" chatName: @"18869096849" isGroup: true] config: nil]];
+                } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
+                    NSLog(@"error =%@",errMsg);
                 }];
             }
         }
@@ -93,17 +94,17 @@ YZAppDelegate *appdel;
 {
     //iOS10特有
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-            center.delegate = self;
-            [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-                if (granted) {
-                    // 点击允许
-                  [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-                        NSLog(@"%@", settings);
-                    }];
-          } else {
-                    // 点击不允许
-                    NSLog(@"注册失败");
-         }
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            // 点击允许
+            [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                NSLog(@"%@", settings);
+            }];
+        } else {
+            // 点击不允许
+            NSLog(@"注册失败");
+        }
     }];
 }
 

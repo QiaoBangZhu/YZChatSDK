@@ -42,6 +42,9 @@
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
+#define MyCustomMessageCell_ReuseId @"YZMyCustomCell"
+#define CardMessageCell_ReuseId @"YZCardMsgCell"
+
 @interface YChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate>
 @property (nonatomic, strong) YUIChatController *chat;
 
@@ -58,6 +61,10 @@
     [self addChildViewController:_chat];
     [self.view addSubview:_chat.view];
     _chat.messageController.tableView.backgroundColor = [UIColor colorWithHex:KCommonChatBgColor];
+    [self.chat.messageController.tableView registerClass: [YZMyCustomCell class]
+                                  forCellReuseIdentifier: MyCustomMessageCell_ReuseId];
+    [self.chat.messageController.tableView registerClass: [YZCardMsgCell class]
+                                  forCellReuseIdentifier: CardMessageCell_ReuseId];
     RAC(self, title) = [RACObserve(_conversationData, title) distinctUntilChanged];
     [self checkTitle];
 
@@ -338,11 +345,13 @@
 - (TUIMessageCell *)chatController:(TUIChatController *)controller onShowMessageData:(TUIMessageCellData *)data
 {
     if ([data isKindOfClass:[YZMyCustomCellData class]]) {
-        YZMyCustomCell *myCell = [[YZMyCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyCell"];
+        YZMyCustomCell *myCell = [self.chat.messageController.tableView
+                                  dequeueReusableCellWithIdentifier: MyCustomMessageCell_ReuseId];
         [myCell fillWithData:(YZMyCustomCellData *)data];
         return myCell;
     }else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
-        YZCardMsgCell *cell = [[YZCardMsgCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CardMsgCell"];
+        YZCardMsgCell *cell = [self.chat.messageController.tableView
+                               dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
         [cell fillWithData:(YZCardMsgCellData *)data];
         return cell;
     }
@@ -354,7 +363,7 @@
     if ([cell isKindOfClass:[YZMyCustomCell class]]) {
         YZMyCustomCellData *cellData = [(YZMyCustomCell *)cell customData];
         if (cellData.link) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:cellData.link]];
+            [[UIApplication sharedApplication] openURL: [NSURL URLWithString:cellData.link] options: @{} completionHandler: nil];
         }
     }else if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
         YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];
@@ -419,6 +428,10 @@
 - (BOOL)chatController:(YUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell
 {
     return NO;
+}
+
+- (BOOL)onAtGroupMember {
+    return  NO;
 }
 
 @end
