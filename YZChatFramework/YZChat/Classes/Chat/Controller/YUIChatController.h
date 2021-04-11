@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TUIInputController.h"
 #import "YUIMessageController.h"
+
+#import "TUIInputController.h"
 #import "TUIConversationCell.h"
+#import "TUICallModel.h"
+
+#import "YzChatController.h"
 
 @class YUIChatController;
 
@@ -117,12 +121,13 @@
 
 /**
  *  点击消息头像回调
- *  默认点击头像是打开联系人资料页，如果您实现了此方法，则内部不做任何处理
+ *  默认点击头像是打开联系人资料页
  *
  *  @param controller 会话对象
  *  @param cell 所点击的消息单元
+ *  @return 如果返回YES，则内部不做任何处理
  */
-- (void)chatController:(YUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell;
+- (BOOL)chatController:(YUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell;
 
 /**
  *  点击消息内容回调
@@ -131,6 +136,14 @@
  *  @param cell 所点击的消息单元
  */
 - (void)chatController:(YUIChatController *)controller onSelectMessageContent:(TUIMessageCell *)cell;
+
+
+/**
+ * 触发了@功能
+ *
+ * @return 如果返回YES，则内部不做任何处理
+ */
+- (BOOL)onAtGroupMember;
 
 @end
 
@@ -199,6 +212,9 @@
  */
 - (instancetype)initWithConversation:(TUIConversationCellData *)conversationData;
 
+- (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
+                          config:(YzChatControllerConfig *)config;
+
 /**
  *  发送自定义的个性化消息
  *
@@ -239,6 +255,14 @@
  *  需要注意的是，目前版本仅能保存未发送的文本消息作为草稿。
  */
 - (void)saveDraft;
+
+/**
+ * 触发了@功能并且选择完成员
+ *
+ * @param names 成员姓名列表
+ * @param ids 成员id列表
+ */
+- (void)updateInputTextByUsers:(NSArray <UserModel *> *)users;
 
 @end
 

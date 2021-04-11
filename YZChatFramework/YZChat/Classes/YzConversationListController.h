@@ -7,9 +7,24 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YzIMKitAgent.h"
+
+@class V2TIMConversation;
+
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol YzConversationListControllerDelegate <NSObject>
+@optional
+
+- (void)didSelectConversation:(V2TIMConversation *)conversation indexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface YzConversationListController : UIViewController
+
+@property(nullable, nonatomic, weak) id<YzConversationListControllerDelegate> delegate;
+
+- (instancetype)initWithChatType:(YzChatType)chatType;
 
 @end
 

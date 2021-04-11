@@ -114,7 +114,7 @@ typedef void (^loginFail)(void);
 
 typedef NS_OPTIONS(NSUInteger, YzChatType) {
     // 单聊
-    YzChatTypeSingle = 1 << 0,
+    YzChatTypeC2C = 1 << 0,
     // 群聊
     YzChatTypeGroup  = 1 << 1,
 };

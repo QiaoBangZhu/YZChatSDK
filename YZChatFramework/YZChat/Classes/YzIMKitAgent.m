@@ -93,12 +93,12 @@
 }
 
 // 某些会话的关键信息发生变化（未读计数发生变化、最后一条消息被更新等等）
-- (void)onConversationChanged:(NSNotification *)notification {
-    [self updateConversionList: notification];
+- (void)onConversationChanged:(NSNotification *)notify {
+    [self updateConversionList: notify];
 }
 
-- (void)updateConversionList:(NSNotification *)notification {
-    NSMutableArray *list = (NSMutableArray *)notification.object;
+- (void)updateConversionList:(NSNotification *)notify {
+    NSMutableArray *list = (NSMutableArray *)notify.object;
     NSUInteger count = 0;
     for (V2TIMConversation *conversation in list) {
         count += conversation.unreadCount;

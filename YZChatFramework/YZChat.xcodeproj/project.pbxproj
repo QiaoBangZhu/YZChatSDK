@@ -571,6 +571,8 @@
 		E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3272619DFE600B4E6C1 /* YzFileManager.m */; };
 		E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AA3282619DFE600B4E6C1 /* YzFileManager.h */; };
+		E5D849FE2622E0C5006806E6 /* TUIConversationCellData+Conversation.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */; };
+		E5D849FF2622E0C5006806E6 /* TUIConversationCellData+Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */; };
 		E5E68CBA262060CD0061751B /* YzConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CB8262060CD0061751B /* YzConversationListController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5E68CBB262060CD0061751B /* YzConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CB9262060CD0061751B /* YzConversationListController.m */; };
 		E5E68CBE262061340061751B /* YzChatController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CBC262061340061751B /* YzChatController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1161,6 +1163,8 @@
 		E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E57AA3272619DFE600B4E6C1 /* YzFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzFileManager.m; sourceTree = "<group>"; };
 		E57AA3282619DFE600B4E6C1 /* YzFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzFileManager.h; sourceTree = "<group>"; };
+		E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUIConversationCellData+Conversation.h"; sourceTree = "<group>"; };
+		E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TUIConversationCellData+Conversation.m"; sourceTree = "<group>"; };
 		E5E68CB8262060CD0061751B /* YzConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzConversationListController.h; sourceTree = "<group>"; };
 		E5E68CB9262060CD0061751B /* YzConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzConversationListController.m; sourceTree = "<group>"; };
 		E5E68CBC262061340061751B /* YzChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzChatController.h; sourceTree = "<group>"; };
@@ -1377,20 +1381,22 @@
 			children = (
 				E57AA3262619DFCA00B4E6C1 /* FileManager */,
 				30A9887125A449F00082D3C9 /* QRCode */,
-				30A9886125A449F00082D3C9 /* YBAssistiveTouchLib */,
 				30A9887B25A449F00082D3C9 /* WechatActionSheet */,
+				30A9886125A449F00082D3C9 /* YBAssistiveTouchLib */,
 				30A9886E25A449F00082D3C9 /* CommonConstant.h */,
 				E5EDCA7A261B3C3D00465C96 /* MKMapView+ZoomLevel.h */,
 				E5EDCA7B261B3C3D00465C96 /* MKMapView+ZoomLevel.m */,
-				30A9886F25A449F00082D3C9 /* YChatSettingStore.m */,
-				30A9888225A449F00082D3C9 /* YZPAirSandbox.h */,
-				30A9887025A449F00082D3C9 /* YZPAirSandbox.m */,
 				30A9887A25A449F00082D3C9 /* TCConstants.h */,
-				30A9886025A449F00082D3C9 /* YZUtil.h */,
-				30A9888025A449F00082D3C9 /* YZUtil.m */,
+				E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */,
+				E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */,
 				30A9888325A449F00082D3C9 /* YChatSettingStore.h */,
+				30A9886F25A449F00082D3C9 /* YChatSettingStore.m */,
 				30A9885E25A449F00082D3C9 /* YChatValidInput.h */,
 				30A9887E25A449F00082D3C9 /* YChatValidInput.m */,
+				30A9888225A449F00082D3C9 /* YZPAirSandbox.h */,
+				30A9887025A449F00082D3C9 /* YZPAirSandbox.m */,
+				30A9886025A449F00082D3C9 /* YZUtil.h */,
+				30A9888025A449F00082D3C9 /* YZUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1446,8 +1452,8 @@
 		30A9887B25A449F00082D3C9 /* WechatActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				30A9887C25A449F00082D3C9 /* WeChatActionSheet.m */,
 				30A9887D25A449F00082D3C9 /* WeChatActionSheet.h */,
+				30A9887C25A449F00082D3C9 /* WeChatActionSheet.m */,
 			);
 			path = WechatActionSheet;
 			sourceTree = "<group>";
@@ -2507,6 +2513,7 @@
 				30A98B6F25A449F20082D3C9 /* TScrollView.h in Headers */,
 				30A98B8825A449F20082D3C9 /* TUIVideoViewController.h in Headers */,
 				30A98BA325A449F20082D3C9 /* THelper.h in Headers */,
+				E5D849FE2622E0C5006806E6 /* TUIConversationCellData+Conversation.h in Headers */,
 				30A98B7F25A449F20082D3C9 /* TDateEditController.h in Headers */,
 				30A98C6425A449F30082D3C9 /* TIMGroupInfo+DataProvider.h in Headers */,
 				30A98B7D25A449F20082D3C9 /* TUIImageViewController.h in Headers */,
@@ -3079,6 +3086,7 @@
 				30A98BA725A449F20082D3C9 /* TUIContactSelectController.m in Sources */,
 				30A98A7F25A449F20082D3C9 /* UIView+Foundation.m in Sources */,
 				30A98BA425A449F20082D3C9 /* TPopView.m in Sources */,
+				E5D849FF2622E0C5006806E6 /* TUIConversationCellData+Conversation.m in Sources */,
 				30A98BAB25A449F20082D3C9 /* TContactViewModel.m in Sources */,
 				30A98B6125A449F20082D3C9 /* ContactsViewController.m in Sources */,
 				30A98B8325A449F20082D3C9 /* TDateEditController.m in Sources */,

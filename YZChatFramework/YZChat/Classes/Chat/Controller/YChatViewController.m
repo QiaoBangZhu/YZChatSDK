@@ -42,16 +42,6 @@
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
-// MLeaksFinder 会对这个类误报，这里需要关闭一下
-@implementation UIImagePickerController (Leak)
-
-- (BOOL)willDealloc {
-    return NO;
-}
-
-@end
-
-
 @interface YChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate>
 @property (nonatomic, strong) YUIChatController *chat;
 
@@ -61,6 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     _chat = [[YUIChatController alloc] initWithConversation:self.conversationData];
     _chat.delegate = self;
     
@@ -425,9 +416,9 @@
     [_chat sendMessage:msg];
 }
 
-//- (void)chatController:(TUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell
-//{
-//
-//}
+- (BOOL)chatController:(YUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell
+{
+    return NO;
+}
 
 @end

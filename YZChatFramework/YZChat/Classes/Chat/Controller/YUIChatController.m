@@ -7,14 +7,14 @@
 //
 
 #import "YUIChatController.h"
-#import "THeader.h"
+
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
+
+#import "THeader.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "MMLayout/UIView+MMLayout.h"
 #import "TUIGroupPendencyViewModel.h"
-#import "YUIMessageController.h"
-#import "YUISelectMemberViewController.h"
 #import "TUITextMessageCellData.h"
 #import "TUIImageMessageCellData.h"
 #import "TUIVideoMessageCellData.h"
@@ -23,18 +23,23 @@
 #import "TUIFriendProfileControllerServiceProtocol.h"
 #import "TUIUserProfileControllerServiceProtocol.h"
 #import "TCServiceManager.h"
-#import "Toast/Toast.h"
 #import "THelper.h"
 #import "UIColor+TUIDarkMode.h"
 #import "TUICallManager.h"
+
+#import "YUIMessageController.h"
 #import "YZProfileViewController.h"
 #import "YZMapViewController.h"
 #import "YZLocationMessageCellData.h"
 #import "YChatDocumentPickerViewController.h"
-#import <QMUIKit/QMUIKit.h>
+#import "YUISelectMemberViewController.h"
 #import "YZBaseManager.h"
+#import "TUIConversationCellData+Conversation.h"
 
-@interface YUIChatController ()<YMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate>
+@interface YUIChatController ()<YMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate> {
+    YzChatControllerConfig *_chatConfig;
+    YzChatInfo *_chatInfo;
+}
 @property (nonatomic, strong) TUIConversationCellData *conversationData;
 @property (nonatomic, strong) UIView *tipsView;
 @property (nonatomic, strong) UILabel *pendencyLabel;
@@ -49,13 +54,11 @@
 
 @implementation YUIChatController
 
-- (instancetype)initWithConversation:(TUIConversationCellData *)conversationData;
-{
+- (instancetype)initWithConversation:(TUIConversationCellData *)conversationData {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _conversationData = conversationData;
-
-        NSMutableArray *moreMenus = [NSMutableArray array];
+        NSMutableArray *moreMenus = [[NSMutableArray alloc] init];
         [moreMenus addObject:[TUIInputMoreCellData photoData]];
         [moreMenus addObject:[TUIInputMoreCellData pictureData]];
         [moreMenus addObject:[TUIInputMoreCellData videoData]];
@@ -70,14 +73,73 @@
 
         _moreMenus = moreMenus;
 
-        if (self.conversationData.groupID.length > 0) {
-            _pendencyViewModel = [TUIGroupPendencyViewModel new];
+        if (conversationData.groupID.length > 0) {
+            _pendencyViewModel = [[TUIGroupPendencyViewModel alloc] init];
             _pendencyViewModel.groupId = _conversationData.groupID;
         }
-        
-        self.atUserList = [NSMutableArray array];
+
+        _atUserList = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
+                          config:(YzChatControllerConfig *)config {
+    self = [super initWithNibName:nil bundle:nil];
+    _chatInfo = chatInfo;
+    _chatConfig = config;
+    if (self) {
+        NSMutableArray *moreMenus = [[NSMutableArray alloc] init];
+        if (!config.disableSendPhotoAction) {
+            [moreMenus addObject:[TUIInputMoreCellData photoData]];
+        }
+        if (!config.disableCaptureAction) {
+            [moreMenus addObject:[TUIInputMoreCellData pictureData]];
+        }
+        if (!config.disableVideoRecordAction) {
+            [moreMenus addObject:[TUIInputMoreCellData videoData]];
+        }
+        if (!config.disableSendFileAction) {
+            [moreMenus addObject:[TUIInputMoreCellData fileData]];
+        }
+        if (!config.disableVideoCall) {
+            [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
+        }
+        if (!config.disableAudioCall) {
+            [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
+        }
+        if (!config.disableSendLocationAction) {
+            [moreMenus addObject:[TUIInputMoreCellData locationData]];
+        }
+
+        _moreMenus = moreMenus;
+
+        if (chatInfo.isGroup) {
+            _pendencyViewModel = [[TUIGroupPendencyViewModel alloc] init];
+            _pendencyViewModel.groupId = chatInfo.chatId;
+        }
+
+        _atUserList = [[NSMutableArray alloc] init];
+    }
+    [self fetchConversation];
+
+    return  self;
+}
+
+/// 获取会话信息
+- (void)fetchConversation {
+    NSString *conversationId = [(_chatInfo.isGroup ? @"group_" : @"c2c_") stringByAppendingString: _chatInfo.chatId];
+    @weakify(self)
+    [[V2TIMManager sharedInstance] getConversation: conversationId succ:^(V2TIMConversation *conv) {
+        @strongify(self)
+        TUIConversationCellData *data = [TUIConversationCellData makeDataByConversation: conv];
+        self.conversationData = data;
+        [self.messageController setConversation: data];
+        self.inputController.inputBar.inputTextView.text = data.draftText;
+        [self getPendencyList];
+    } fail:^(int code, NSString *desc) {
+        [THelper makeToastError: code msg: desc];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -99,15 +161,13 @@
     self.responseKeyboard = NO;
 }
 
-- (void)willMoveToParentViewController:(UIViewController *)parent
-{
+- (void)willMoveToParentViewController:(UIViewController *)parent {
     if (parent == nil) {
         [self saveDraft];
     }
 }
 
-- (void)setupViews
-{
+- (void)setupViews {
     self.view.backgroundColor = [UIColor d_colorWithColorLight:TController_Background_Color dark:TController_Background_Color_Dark];
 
     @weakify(self)
@@ -117,11 +177,14 @@
     _messageController.delegate = self;
     [self addChildViewController:_messageController];
     [self.view addSubview:_messageController.view];
-    [_messageController setConversation:self.conversationData];
 
     //input
     _inputController = [[TUIInputController alloc] init];
     _inputController.view.frame = CGRectMake(0, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight, self.view.frame.size.width, TTextView_Height + Bottom_SafeHeight);
+    if (_chatConfig.disableChatInput) {
+        _messageController.view.frame = self.view.bounds;
+        _inputController.view.hidden = YES;
+    }
     _inputController.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _inputController.delegate = self;
     [RACObserve(self, moreMenus) subscribeNext:^(NSArray *x) {
@@ -130,7 +193,11 @@
     }];
     [self addChildViewController:_inputController];
     [self.view addSubview:_inputController.view];
-    _inputController.inputBar.inputTextView.text = self.conversationData.draftText;
+
+    if (self.conversationData) {
+        [self.messageController setConversation: self.conversationData];
+        self.inputController.inputBar.inputTextView.text = self.conversationData.draftText;
+    }
     self.tipsView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tipsView.backgroundColor = RGB(246, 234, 190);
     [self.view addSubview:self.tipsView];
@@ -173,50 +240,62 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPendencyList) name:TUIKitNotification_onReceiveJoinApplication object:nil];
     
     //群 @ ,UI 细节比较多，放在二期实现
-//    if (self.conversationData.groupID.length > 0 && self.conversationData.atMsgSeqList.count > 0) {
-//        self.atBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.mm_w - 100, 100, 100, 40)];
-//        [self.atBtn setTitle:@"有人@我" forState:UIControlStateNormal];
-//        [self.atBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//        [self.atBtn setBackgroundColor:[UIColor whiteColor]];
-//        [self.atBtn addTarget:self action:@selector(loadMessageToAT) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view addSubview:_atBtn];
-//    }
+    //    if (self.conversationData.groupID.length > 0 && self.conversationData.atMsgSeqList.count > 0) {
+    //        self.atBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.mm_w - 100, 100, 100, 40)];
+    //        [self.atBtn setTitle:@"有人@我" forState:UIControlStateNormal];
+    //        [self.atBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    //        [self.atBtn setBackgroundColor:[UIColor whiteColor]];
+    //        [self.atBtn addTarget:self action:@selector(loadMessageToAT) forControlEvents:UIControlEventTouchUpInside];
+    //        [self.view addSubview:_atBtn];
+    //    }
 }
 
-- (void)getPendencyList
-{
-    if (self.conversationData.groupID.length > 0)
-        [self.pendencyViewModel loadData];
+- (void)getPendencyList {
+    if (self.conversationData.groupID.length > 0) [self.pendencyViewModel loadData];
 }
 
-- (void)openPendency:(id)sender
-{
+- (void)openPendency:(id)sender {
     TUIGroupPendencyController *vc = [[TUIGroupPendencyController alloc] init];
     vc.viewModel = self.pendencyViewModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)inputController:(TUIInputController *)inputController didChangeHeight:(CGFloat)height
-{
-    if (!self.responseKeyboard) {
-        return;
+- (void)updateInputTextByUsers:(NSArray<UserModel *> *)users {
+    NSMutableString *atText = [[NSMutableString alloc] init];
+    for (int i = 0; i < users.count; i++) {
+        UserModel *user = users[i];
+        [self.atUserList addObject: user];
+        if (i == 0) {
+            [atText appendString:[NSString stringWithFormat:@"%@ ",user.name]];
+        } else {
+            [atText appendString:[NSString stringWithFormat:@"@%@ ",user.name]];
+        }
     }
-    __weak typeof(self) ws = self;
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        CGRect msgFrame = ws.messageController.view.frame;
-        msgFrame.size.height = ws.view.frame.size.height - height;
-        ws.messageController.view.frame = msgFrame;
+    NSString *inputText = self.inputController.inputBar.inputTextView.text;
+    self.inputController.inputBar.inputTextView.text = [NSString stringWithFormat:@"%@%@ ",inputText,atText];
+    [self.inputController.inputBar updateTextViewFrame];
+    [self.inputController.inputBar.inputTextView becomeFirstResponder];
+}
 
-        CGRect inputFrame = ws.inputController.view.frame;
+- (void)inputController:(TUIInputController *)inputController didChangeHeight:(CGFloat)height {
+    if (!self.responseKeyboard) return;
+
+    @weakify(self);
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        @strongify(self);
+        CGRect msgFrame = self.messageController.view.frame;
+        msgFrame.size.height = self.view.frame.size.height - height;
+        self.messageController.view.frame = msgFrame;
+
+        CGRect inputFrame = self.inputController.view.frame;
         inputFrame.origin.y = msgFrame.origin.y + msgFrame.size.height;
         inputFrame.size.height = height;
-        ws.inputController.view.frame = inputFrame;
-        [ws.messageController scrollToBottom:NO];
+        self.inputController.view.frame = inputFrame;
+        [self.messageController scrollToBottom:NO];
     } completion:nil];
 }
 
-- (void)inputController:(TUIInputController *)inputController didSendMessage:(TUIMessageCellData *)msg
-{
+- (void)inputController:(TUIInputController *)inputController didSendMessage:(TUIMessageCellData *)msg {
     if ([msg isKindOfClass:[TUITextMessageCellData class]]) {
         NSMutableArray *userIDList = [NSMutableArray array];
         for (UserModel *model in self.atUserList) {
@@ -234,36 +313,27 @@
     }
 }
 
-- (void)inputControllerDidInputAt:(TUIInputController *)inputController
-{
+- (void)inputControllerDidInputAt:(TUIInputController *)inputController {
     // 检测到 @ 字符的输入
     if (_conversationData.groupID.length > 0) {
+        // 自定义@
+        if ([self.delegate respondsToSelector: @selector(onAtGroupMember)]) {
+            if ([self.delegate onAtGroupMember]) return;
+        }
         YUISelectMemberViewController *vc = [[YUISelectMemberViewController alloc] init];
         vc.groupId = _conversationData.groupID;
         vc.name = @"选择提醒人";
         vc.optionalStyle = TUISelectMemberOptionalStyleAtAll;
+        @weakify(self)
         vc.selectedFinished = ^(NSMutableArray<UserModel *> * _Nonnull modelList) {
-            NSMutableString *atText = [[NSMutableString alloc] init];
-            for (int i = 0; i < modelList.count; i++) {
-                UserModel *model = modelList[i];
-                [self.atUserList addObject:model];
-                if (i == 0) {
-                    [atText appendString:[NSString stringWithFormat:@"%@ ",model.name]];
-                } else {
-                    [atText appendString:[NSString stringWithFormat:@"@%@ ",model.name]];
-                }
-            }
-            NSString *inputText = self.inputController.inputBar.inputTextView.text;
-            self.inputController.inputBar.inputTextView.text = [NSString stringWithFormat:@"%@%@ ",inputText,atText];
-            [self.inputController.inputBar updateTextViewFrame];
-            [self.inputController.inputBar.inputTextView becomeFirstResponder];
+            @strongify(self)
+            [self updateInputTextByUsers: modelList];
         };
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
-- (void)inputController:(TUIInputController *)inputController didDeleteAt:(NSString *)atText
-{
+- (void)inputController:(TUIInputController *)inputController didDeleteAt:(NSString *)atText {
     // 删除了 @ 信息，atText 格式为：@xxx空格
     for (UserModel *user in self.atUserList) {
         if ([atText rangeOfString:user.name].location != NSNotFound) {
@@ -273,20 +343,17 @@
     }
 }
 
-- (void)sendMessage:(TUIMessageCellData *)message
-{
+- (void)sendMessage:(TUIMessageCellData *)message {
     [_messageController sendMessage:message];
 }
 
-- (void)saveDraft
-{
+- (void)saveDraft {
     NSString *draft = self.inputController.inputBar.inputTextView.text;
     draft = [draft stringByTrimmingCharactersInSet: NSCharacterSet.whitespaceAndNewlineCharacterSet];
     [[V2TIMManager sharedInstance] setConversationDraft:self.conversationData.conversationID draftText:draft succ:nil fail:nil];
 }
 
-- (void)inputController:(TUIInputController *)inputController didSelectMoreCell:(TUIInputMoreCell *)cell
-{
+- (void)inputController:(TUIInputController *)inputController didSelectMoreCell:(TUIInputMoreCell *)cell {
     if (cell.data == [TUIInputMoreCellData photoData]) {
         [self selectPhotoForSend];
     }
@@ -305,21 +372,20 @@
     if (cell.data == [TUIInputMoreCellData audioCallData]) {
         [self audioCall];
     }
-//    if (cell.data == [TUIInputMoreCellData locationData]) {
-//        [self sendLocation];
-//    }
+    //    if (cell.data == [TUIInputMoreCellData locationData]) {
+    //        [self sendLocation];
+    //    }
     if(_delegate && [_delegate respondsToSelector:@selector(chatController:onSelectMoreCell:)]){
         [_delegate chatController:self onSelectMoreCell:cell];
     }
 }
 
-- (void)didTapInMessageController:(YUIMessageController *)controller
-{
+- (void)didTapInMessageController:(YUIMessageController *)controller {
     [_inputController reset];
 }
 
-- (BOOL)messageController:(YUIMessageController *)controller willShowMenuInCell:(TUIMessageCell *)cell
-{
+- (BOOL)messageController:(YUIMessageController *)controller
+       willShowMenuInCell:(TUIMessageCell *)cell {
     if([_inputController.inputBar.inputTextView isFirstResponder]){
         _inputController.inputBar.inputTextView.overrideNextResponder = cell;
         return YES;
@@ -327,30 +393,29 @@
     return NO;
 }
 
-- (TUIMessageCellData *)messageController:(YUIMessageController *)controller onNewMessage:(V2TIMMessage *)data
-{
+- (TUIMessageCellData *)messageController:(YUIMessageController *)controller
+                             onNewMessage:(V2TIMMessage *)data {
     if ([self.delegate respondsToSelector:@selector(chatController:onNewMessage:)]) {
         return [self.delegate chatController:self onNewMessage:data];
     }
     return nil;
 }
 
-- (TUIMessageCell *)messageController:(YUIMessageController *)controller onShowMessageData:(TUIMessageCellData *)data
-{
+- (TUIMessageCell *)messageController:(YUIMessageController *)controller
+                    onShowMessageData:(TUIMessageCellData *)data {
     if ([self.delegate respondsToSelector:@selector(chatController:onShowMessageData:)]) {
         return [self.delegate chatController:self onShowMessageData:data];
     }
     return nil;
 }
 
-- (void)messageController:(YUIMessageController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell
-{
+- (void)messageController:(YUIMessageController *)controller
+    onSelectMessageAvatar:(TUIMessageCell *)cell {
     if (cell.messageData.identifier == nil)
         return;
 
     if ([self.delegate respondsToSelector:@selector(chatController:onSelectMessageAvatar:)]) {
-        [self.delegate chatController:self onSelectMessageAvatar:cell];
-        return;
+        if ([self.delegate chatController:self onSelectMessageAvatar:cell]) return;
     }
     if (_isLoading) {
         return;
@@ -395,8 +460,8 @@
     }];
 }
 
-- (void)messageController:(YUIMessageController *)controller onSelectMessageContent:(TUIMessageCell *)cell
-{
+- (void)messageController:(YUIMessageController *)controller
+   onSelectMessageContent:(TUIMessageCell *)cell {
     if ([self.delegate respondsToSelector:@selector(chatController:onSelectMessageContent:)]) {
         [self.delegate chatController:self onSelectMessageContent:cell];
         return;
@@ -404,14 +469,12 @@
 }
 
 
-- (void)didHideMenuInMessageController:(YUIMessageController *)controller
-{
+- (void)didHideMenuInMessageController:(YUIMessageController *)controller {
     _inputController.inputBar.inputTextView.overrideNextResponder = nil;
 }
 
 // ----------------------------------
-- (void)selectPhotoForSend
-{
+- (void)selectPhotoForSend {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -419,8 +482,7 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (void)takePictureForSend
-{
+- (void)takePictureForSend {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.cameraCaptureMode =UIImagePickerControllerCameraCaptureModePhoto;
@@ -429,8 +491,7 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (void)takeVideoForSend
-{
+- (void)takeVideoForSend {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -441,16 +502,14 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (void)selectFileForSend
-{
+- (void)selectFileForSend {
     YChatDocumentPickerViewController *picker = [[YChatDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeData] inMode:UIDocumentPickerModeOpen];
     picker.delegate = self;
     [self presentViewController:picker animated:YES completion:nil];
 
 }
 
-- (void)videoCall
-{
+- (void)videoCall {
     if (![[TUICallManager shareInstance] checkAudioAuthorization] || ![[TUICallManager shareInstance] checkVideoAuthorization]) {
         [THelper makeToast:@"请开启麦克风和摄像头权限"];
         return;
@@ -459,8 +518,7 @@
     [[TUICallManager shareInstance] call:self.conversationData.groupID userID:self.conversationData.userID callType:CallType_Video];
 }
 
-- (void)audioCall
-{
+- (void)audioCall {
     if (![[TUICallManager shareInstance] checkAudioAuthorization]) {
         [THelper makeToast:@"请开启麦克风权限"];
         return;
@@ -470,25 +528,25 @@
 }
 
 - (void)sendLocation {
-    YZMapViewController * mapvc = [[YZMapViewController alloc]init];
+    YZMapViewController * map = [[YZMapViewController alloc]init];
     @weakify(self)
-    mapvc.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
-      @strongify(self)
-      [self.navigationController popViewControllerAnimated:true];
-      YZLocationMessageCellData* cellData = [[YZLocationMessageCellData alloc]initWithDirection:MsgDirectionOutgoing];
-      cellData.text = [NSString stringWithFormat:@"%@##%@",name,address];
-      cellData.latitude = latitude;
-      cellData.longitude = longitude;
-      [self sendMessage:cellData];
-      if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
-         [self.delegate chatController:self didSendMessage:cellData];
-      }
-  };
-    [self.navigationController pushViewController:mapvc animated:YES];
+    map.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
+        @strongify(self)
+        [self.navigationController popViewControllerAnimated:true];
+        YZLocationMessageCellData* cellData = [[YZLocationMessageCellData alloc]initWithDirection:MsgDirectionOutgoing];
+        cellData.text = [NSString stringWithFormat:@"%@##%@",name,address];
+        cellData.latitude = latitude;
+        cellData.longitude = longitude;
+        [self sendMessage:cellData];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
+            [self.delegate chatController:self didSendMessage:cellData];
+        }
+    };
+    [self.navigationController pushViewController:map animated:YES];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     // 快速点的时候会回调多次
     @weakify(self)
     picker.delegate = nil;
@@ -533,32 +591,32 @@
                 // mov to mp4
                 AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:url options:nil];
                 AVAssetExportSession *exportSession = [[AVAssetExportSession alloc]initWithAsset:avAsset presetName:AVAssetExportPresetHighestQuality];
-                 exportSession.outputURL = newUrl;
-                 exportSession.outputFileType = AVFileTypeMPEG4;
-                 exportSession.shouldOptimizeForNetworkUse = YES;
+                exportSession.outputURL = newUrl;
+                exportSession.outputFileType = AVFileTypeMPEG4;
+                exportSession.shouldOptimizeForNetworkUse = YES;
 
-                 [exportSession exportAsynchronouslyWithCompletionHandler:^{
-                 switch ([exportSession status])
-                 {
-                      case AVAssetExportSessionStatusFailed:
-                           NSLog(@"Export session failed");
-                           break;
-                      case AVAssetExportSessionStatusCancelled:
-                           NSLog(@"Export canceled");
-                           break;
-                      case AVAssetExportSessionStatusCompleted:
-                      {
-                           //Video conversion finished
-                           NSLog(@"Successful!");
-                          dispatch_async(dispatch_get_main_queue(), ^{
-                              [self sendVideoWithUrl:newUrl];
-                          });
-                      }
-                           break;
-                      default:
-                           break;
-                  }
-                 }];
+                [exportSession exportAsynchronouslyWithCompletionHandler:^{
+                    switch ([exportSession status])
+                    {
+                        case AVAssetExportSessionStatusFailed:
+                            NSLog(@"Export session failed");
+                            break;
+                        case AVAssetExportSessionStatusCancelled:
+                            NSLog(@"Export canceled");
+                            break;
+                        case AVAssetExportSessionStatusCompleted:
+                        {
+                            //Video conversion finished
+                            NSLog(@"Successful!");
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self sendVideoWithUrl:newUrl];
+                            });
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                }];
             } else {
                 [self sendVideoWithUrl:url];
             }
@@ -587,7 +645,7 @@
     NSData *imageData = UIImagePNGRepresentation(image);
     NSString *imagePath = [TUIKit_Video_Path stringByAppendingString:[THelper genSnapshotName:nil]];
     [[NSFileManager defaultManager] createFileAtPath:imagePath contents:imageData attributes:nil];
-    
+
     TUIVideoMessageCellData *uiVideo = [[TUIVideoMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
     uiVideo.snapshotPath = imagePath;
     uiVideo.snapshotItem = [[TUISnapshotItem alloc] init];
@@ -601,7 +659,7 @@
     uiVideo.videoItem.type = url.pathExtension;
     uiVideo.uploadProgress = 0;
     if (duration <= 0) {
-        [QMUITips showError:@"视频太短"];
+        [THelper makeToast: @"视频太短"];
         return;
     }
     [self sendMessage:uiVideo];
@@ -611,13 +669,11 @@
     }
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url
-{
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     [url startAccessingSecurityScopedResource];
     NSFileCoordinator *coordinator = [[NSFileCoordinator alloc] init];
     NSError *error;
@@ -629,7 +685,7 @@
         NSString *filePath = [TUIKit_File_Path stringByAppendingString:fileName];
         [[NSFileManager defaultManager] createFileAtPath:filePath contents:fileData attributes:nil];
         if([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
-          long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
+            long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
             TUIFileMessageCellData *uiFile = [[TUIFileMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
             uiFile.path = filePath;
             uiFile.fileName = fileName;
@@ -646,8 +702,7 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller
-{
+- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 

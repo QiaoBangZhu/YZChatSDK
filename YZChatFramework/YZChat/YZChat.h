@@ -18,3 +18,6 @@ FOUNDATION_EXPORT const unsigned char YZChatVersionString[];
 #import <YZChat/YzCustomMsg.h>
 #import <YZChat/YzIMKitAgent.h>
 
+#import <YZChat/YzConversationListController.h>
+#import <YZChat/YzChatController.h>
+
