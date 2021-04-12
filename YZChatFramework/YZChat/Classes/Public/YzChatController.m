@@ -243,14 +243,18 @@
         map.locationData = data;
         [self.navigationController pushViewController:map animated:YES];
     }
-//    else if ([cell isKindOfClass:[YZCardMsgCell class]]) {
-//        YZCardMsgCellData* cellData = [(YZCardMsgCell *)cell msgData];
-//        if (cellData.link) {
-//            YZWebViewController* web = [[YZWebViewController alloc]init];
-//            web.url = [NSURL URLWithString:cellData.link];
-//            [self.navigationController pushViewController:web animated:YES];
-//        }
-//    }
+    else if ([cell isKindOfClass:[YzCustomMessageCell class]]) {
+
+        YzCustomMessageCellData *cellData = (YzCustomMessageCellData *)cell.messageData;
+        if ([cellData.customMessageData isKindOfClass: [YZCardMsgData class]]) {
+            YZCardMsgData *msg = (YZCardMsgData *)cellData.customMessageData;
+            if (msg.link) {
+                YZWebViewController* web = [[YZWebViewController alloc]init];
+                web.url = [NSURL URLWithString: msg.link];
+                [self.navigationController pushViewController:web animated:YES];
+            }
+        }
+    }
 }
 
 - (BOOL)chatController:(YUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell {
