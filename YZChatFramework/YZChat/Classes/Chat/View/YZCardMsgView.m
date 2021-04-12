@@ -6,7 +6,7 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "YZCardMsgCell.h"
+#import "YZCardMsgView.h"
 
 #import "UIColor+TUIDarkMode.h"
 #import "THeader.h"

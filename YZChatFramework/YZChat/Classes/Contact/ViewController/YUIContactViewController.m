@@ -32,7 +32,7 @@
 #import <ImSDKForiOS/ImSDK.h>
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
-#import "YZCardMsgCellData.h"
+#import "YZCardMsgData.h"
 #import "YZUtil.h"
 #import "TUICallUtils.h"
 #import "TUISystemMessageCellData.h"

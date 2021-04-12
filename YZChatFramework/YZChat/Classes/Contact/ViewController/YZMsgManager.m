@@ -13,7 +13,7 @@
 #import <ImSDKForiOS/ImSDK.h>
 
 #import "YZMsgManager.h"
-#import "YZCardMsgCell.h"
+#import "YZCardMsgView.h"
 #import "YZUtil.h"
 #import "YzCustomMessageCellData.h"
 

@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "YChatViewController.h"
 
-#import "YZCardMsgCellData.h"
+#import "YZCardMsgData.h"
 #import "YZUtil.h"
 #import "TUICallUtils.h"
 #import "TUISystemMessageCellData.h"

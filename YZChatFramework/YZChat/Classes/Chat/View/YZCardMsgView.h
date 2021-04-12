@@ -1,5 +1,5 @@
 //
-//  YZCardMsgCell.h
+//  YZCardMsgView.h
 //  YChat
 //
 //  Created by magic on 2020/11/26.
@@ -8,7 +8,7 @@
 
 #import "TUIMessageCell.h"
 
-#import "YZCardMsgCellData.h"
+#import "YZCardMsgData.h"
 #import "YzCustomMessageView.h"
 
 NS_ASSUME_NONNULL_BEGIN

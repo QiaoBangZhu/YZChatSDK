@@ -6,7 +6,7 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "YZCardMsgCellData.h"
+#import "YZCardMsgData.h"
 
 @implementation YZCardMsgData
 

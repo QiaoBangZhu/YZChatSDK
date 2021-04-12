@@ -26,7 +26,7 @@
 #import "YzCustomMessageCell.h"
 #import "YzCustomMessageCellData.h"
 #import "YzCustomMsg.h"
-#import "YZCardMsgCell.h"
+#import "YZCardMsgView.h"
 
 @implementation YzChatInfo
 
