@@ -5,15 +5,16 @@
 //  Created by magic on 2021/1/8.
 //
 
-#import "YZMsgManager.h"
-#import "YZCardMsgCellData.h"
-#import "YZUtil.h"
 #import "TUICallUtils.h"
 #import "TUISystemMessageCellData.h"
 #import "THelper.h"
 #import "TUIKit.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import <ImSDKForiOS/ImSDK.h>
+
+#import "YZMsgManager.h"
+#import "YZUtil.h"
+#import "YzCustomMessageCellData.h"
 
 @implementation YZMsgManager
 
@@ -48,12 +49,9 @@
         [THelper makeToast:@"图片地址不能为空"];
         return;
     }
-    
-    YZCardMsgCellData *cellData = [[YZCardMsgCellData alloc] initWithDirection:MsgDirectionOutgoing];
-    cellData.title = msg.title;
-    cellData.link = msg.link;
-    cellData.des = msg.desc;
-    cellData.logo = msg.logo;
+
+    YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection: MsgDirectionOutgoing];
+    cellData.customMessageData = msg;
     cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage:[YZUtil dictionary2JsonData:@{@"version": @(TextLink_Version),@"businessID": CardLink,@"title":msg.title,@"link":msg.link,@"desc":msg.desc, @"logo": msg.logo}]];
     
     V2TIMMessage *imMsg = cellData.innerMessage;

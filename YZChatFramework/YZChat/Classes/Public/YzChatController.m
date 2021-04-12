@@ -202,9 +202,8 @@
 - (TUIMessageCellData *)chatController:(YUIChatController *)controller
                           onNewMessage:(V2TIMMessage *)msg {
     if (msg.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
-        NSDictionary *param = [YZUtil jsonData2Dictionary:msg.customElem.data];
-        if (param != nil) {
-            NSInteger version = [param[@"version"] integerValue];
+        NSDictionary *param = [YZUtil jsonData2Dictionary: msg.customElem.data];
+        if (param) {
             NSString *businessID = param[@"businessID"];
             NSString *text = param[@"title"];
             NSString *link = param[@"link"];
