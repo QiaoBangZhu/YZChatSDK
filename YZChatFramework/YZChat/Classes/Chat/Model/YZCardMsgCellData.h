@@ -21,12 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface YZCardMsgCellData : TUIMessageCellData
-@property NSString *title;
-@property NSString *des;
-@property NSString *logo;
-@property NSString *link;
-
-@end
-
 NS_ASSUME_NONNULL_END

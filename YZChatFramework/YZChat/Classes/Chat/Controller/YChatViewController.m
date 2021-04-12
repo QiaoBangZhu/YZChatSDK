@@ -39,10 +39,24 @@
 #import "YZWebViewController.h"
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
+#import "YzCustomMessageCell.h"
+#import "YzCustomMessageView.h"
 
 #define CardMessageCell_ReuseId @"YZCardMsgCell"
 
-@interface YChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate>
+@interface RegisteredCustomMessageClasses : NSObject
+
+@property (nonatomic, assign) Class viewClass;
+@property (nonatomic, assign) Class dataClass;
+
+@end
+
+@implementation RegisteredCustomMessageClasses
+@end
+
+@interface YChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate> {
+    NSMutableDictionary <NSString *, RegisteredCustomMessageClasses *> * _registeredCustomMessageClass;
+}
 @property (nonatomic, strong) YUIChatController *chat;
 
 @end
@@ -52,15 +66,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    _registeredCustomMessageClass = [[NSMutableDictionary alloc] init];
     _chat = [[YUIChatController alloc] initWithConversation:self.conversationData];
     _chat.delegate = self;
     
     [self addChildViewController:_chat];
     [self.view addSubview:_chat.view];
     _chat.messageController.tableView.backgroundColor = [UIColor colorWithHex:KCommonChatBgColor];
-    [self.chat.messageController.tableView registerClass: [YZCardMsgCell class]
-                                  forCellReuseIdentifier: CardMessageCell_ReuseId];
     RAC(self, title) = [RACObserve(_conversationData, title) distinctUntilChanged];
+    [self registerViewClass: [YZCardMsgView class] forDataClass: [YZCardMsgData self]];
     [self checkTitle];
 
 //    NSMutableArray *moreMenus = [NSMutableArray arrayWithArray:_chat.moreMenus];
@@ -101,6 +115,19 @@
     [TUITextMessageCellData setOutgoingTextColor:[UIColor blackColor]];
     
     [TUITextMessageCellData setIncommingTextColor:[UIColor blackColor]];
+}
+
+- (void)registerViewClass:(Class)viewClass forDataClass:(Class)dataClass {
+    NSAssert([viewClass isSubclassOfClass: [YzCustomMessageView class]],
+             @"自定义消息视图类型，需继承自 YzCustomMessageView");
+    NSAssert([dataClass isSubclassOfClass: [YzCustomMessageData class]],
+             @"自定义消息数据类型，需继承自 YzCustomMessageData");
+    RegisteredCustomMessageClasses *classes = [[RegisteredCustomMessageClasses alloc] init];
+    classes.viewClass = viewClass;
+    classes.dataClass = dataClass;
+    NSString *key = NSStringFromClass(dataClass);
+    _registeredCustomMessageClass[key] = classes;
+    [self.chat.messageController.tableView registerClass: [YzCustomMessageCell class] forCellReuseIdentifier: key];
 }
 
 - (void)onCallingCancel:(NSNotification *)noti {
@@ -271,11 +298,13 @@
         NSString *link = @"http://yzmsri.com/";
         NSString *desc = @"欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！";
         NSString * logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
-        YZCardMsgCellData *cellData = [[YZCardMsgCellData alloc] initWithDirection:MsgDirectionOutgoing];
-        cellData.title = text;
-        cellData.link = link;
-        cellData.des = desc;
-        cellData.logo = logo;
+        YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+        YZCardMsgData *msg = [[YZCardMsgData alloc] init];
+        msg.title = text;
+        msg.link = link;
+        msg.des = desc;
+        msg.logo = logo;
+        cellData.customMessageData = msg;
         cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage:[YZUtil dictionary2JsonData:@{@"version": @(TextLink_Version),@"businessID": CardLink,@"title":text,@"link":link,@"desc":desc, @"logo": logo}]];
         [chatController sendMessage:cellData];
 
@@ -299,9 +328,8 @@
 - (TUIMessageCellData *)chatController:(TUIChatController *)controller onNewMessage:(V2TIMMessage *)msg
 {
     if (msg.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
-        NSDictionary *param = [YZUtil jsonData2Dictionary:msg.customElem.data];
-        if (param != nil) {
-            NSInteger version = [param[@"version"] integerValue];
+        NSDictionary *param = [YZUtil jsonData2Dictionary: msg.customElem.data];
+        if (param) {
             NSString *businessID = param[@"businessID"];
             NSString *text = param[@"title"];
             NSString *link = param[@"link"];
@@ -309,27 +337,13 @@
                 return nil;
             }
             if ([businessID isEqualToString:CardLink]) {
-                if (version <= TextLink_Version) {
-                    YZCardMsgCellData *cellData = [[YZCardMsgCellData alloc] initWithDirection:msg.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-                    cellData.innerMessage = msg;
-                    cellData.msgID = msg.msgID;
-                    cellData.title = param[@"title"];
-                    cellData.des = param[@"desc"];
-                    cellData.link = param[@"link"];
-                    cellData.logo = param[@"logo"];
-                    cellData.avatarUrl = [NSURL URLWithString:msg.faceURL];
-                    return cellData;
-                }
-            } else {
-                // 兼容下老版本
-                YZCardMsgCellData *cellData = [[YZCardMsgCellData alloc] initWithDirection:msg.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-                cellData.innerMessage = msg;
-                cellData.msgID = msg.msgID;
-                cellData.title = param[@"title"];
-                cellData.link = param[@"link"];
-                cellData.des = param[@"desc"];
-                cellData.logo = param[@"logo"];
-                cellData.avatarUrl = [NSURL URLWithString:msg.faceURL];
+                YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: msg];
+                YZCardMsgData *custom = [[YZCardMsgData alloc] init];
+                custom.title = text;
+                custom.des = param[@"desc"];
+                custom.link = link;
+                custom.logo = param[@"logo"];
+                cellData.customMessageData = custom;
                 return cellData;
             }
         }
@@ -339,10 +353,13 @@
 
 - (TUIMessageCell *)chatController:(TUIChatController *)controller onShowMessageData:(TUIMessageCellData *)data
 {
-    if ([data isKindOfClass:[YZCardMsgCellData class]]) {
-        YZCardMsgCell *cell = [controller.messageController.tableView
-                               dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
-        [cell fillWithData:(YZCardMsgCellData *)data];
+    if ([data isKindOfClass:[YzCustomMessageCellData class]]) {
+        Class viewClass = _registeredCustomMessageClass[data.reuseId].viewClass;
+        YzCustomMessageCell *cell = [controller.messageController.tableView
+                                     dequeueReusableCellWithIdentifier: data.reuseId];
+        cell.customerViewClass = viewClass;
+        [cell.customerView fillWithData: ((YzCustomMessageCellData *)data).customMessageData];
+        [cell fillWithData: data];
         return cell;
     }
     return nil;
@@ -355,12 +372,17 @@
         YZMapInfoViewController* mapvc = [[YZMapInfoViewController alloc]init];
         mapvc.locationData = data;
         [self.navigationController pushViewController:mapvc animated:YES];
-    }else if ([cell isKindOfClass:[YZCardMsgCell class]]) {
-        YZCardMsgCellData* cellData = [(YZCardMsgCell *)cell msgData];
-        if (cellData.link) {
-            YZWebViewController* webvc = [[YZWebViewController alloc]init];
-            webvc.url = [NSURL URLWithString:cellData.link];
-            [self.navigationController pushViewController:webvc animated:YES];
+    }
+    // 自定义消息
+    else if ([cell isKindOfClass:[YzCustomMessageCell class]]) {
+        YzCustomMessageCellData *cellData = (YzCustomMessageCellData *)cell.messageData;
+        if ([cellData.customMessageData isKindOfClass: [YZCardMsgData class]]) {
+            YZCardMsgData *msg = (YZCardMsgData *)cellData.customMessageData;
+            if (msg.link) {
+                YZWebViewController* web = [[YZWebViewController alloc]init];
+                web.url = [NSURL URLWithString: msg.link];
+                [self.navigationController pushViewController:web animated:YES];
+            }
         }
     }
 }

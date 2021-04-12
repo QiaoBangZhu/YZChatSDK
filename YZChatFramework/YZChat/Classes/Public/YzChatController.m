@@ -63,20 +63,20 @@
 
 @end
 
-@interface RegisteredCustomMessageClasses : NSObject
+@interface YRegisteredCustomMessageClasses : NSObject
 
 @property (nonatomic, assign) Class viewClass;
 @property (nonatomic, assign) Class dataClass;
 
 @end
 
-@implementation RegisteredCustomMessageClasses
+@implementation YRegisteredCustomMessageClasses
 @end
 
 @interface YzChatController () <YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate> {
     YzChatInfo *_chatInfo;
     YzChatControllerConfig *_chatConfig;
-    NSMutableDictionary <NSString *, RegisteredCustomMessageClasses *> * _registeredCustomMessageClass;
+    NSMutableDictionary <NSString *, YRegisteredCustomMessageClasses *> * _registeredCustomMessageClass;
 }
 
 @property (nonatomic, strong) TUIConversationCellData *conversationCellData;
@@ -105,6 +105,7 @@
 }
 
 - (void)setupChatController {
+    self.chatController = [[YUIChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
     self.chatController.delegate = self;
     [self addChildViewController: self.chatController];
     [self.view addSubview: self.chatController.view];
@@ -147,21 +148,13 @@
              @"自定义消息视图类型，需继承自 YzCustomMessageView");
     NSAssert([dataClass isSubclassOfClass: [YzCustomMessageData class]],
              @"自定义消息数据类型，需继承自 YzCustomMessageData");
-    RegisteredCustomMessageClasses *classes = [[RegisteredCustomMessageClasses alloc] init];
+    YRegisteredCustomMessageClasses *classes = [[YRegisteredCustomMessageClasses alloc] init];
     classes.viewClass = viewClass;
     classes.dataClass = dataClass;
     NSString *key = NSStringFromClass(dataClass);
     _registeredCustomMessageClass[key] = classes;
     [self.chatController.messageController.tableView registerClass: [YzCustomMessageCell class]
                                             forCellReuseIdentifier: key];
-}
-
-- (YUIChatController *)chatController {
-    if (!_chatController) {
-        _chatController = [[YUIChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
-    }
-
-    return  _chatController;
 }
 
 #pragma mark - YUIChatControllerDelegate
