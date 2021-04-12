@@ -20,8 +20,6 @@
 #import "TUIConversationCellData+Conversation.h"
 #import "YZCardMsgCellData.h"
 #import "YZUtil.h"
-#import "YZMyCustomCell.h"
-#import "YZMyCustomCellData.h"
 #import "YZCardMsgCell.h"
 #import "YZCardMsgCellData.h"
 #import "YZMapViewController.h"
@@ -33,7 +31,6 @@
 #import "YzCustomMessageCellData.h"
 #import "YzCustomMsg.h"
 
-#define MyCustomMessageCell_ReuseId @"YZMyCustomCell"
 #define CardMessageCell_ReuseId @"YZCardMsgCell"
 
 @implementation YzChatInfo
@@ -118,8 +115,6 @@
     [self addChildViewController: self.chatController];
     [self.view addSubview: self.chatController.view];
     self.chatController.messageController.tableView.backgroundColor = [UIColor colorWithHex: KCommonChatBgColor];
-    [self.chatController.messageController.tableView registerClass: [YZMyCustomCell class]
-                                            forCellReuseIdentifier: MyCustomMessageCell_ReuseId];
     [self.chatController.messageController.tableView registerClass: [YZCardMsgCell class]
                                             forCellReuseIdentifier: CardMessageCell_ReuseId];
     for (NSString *key in _registeredCustomMessageClass) {
@@ -243,13 +238,6 @@
         [cell fillWithData: data];
         return cell;
     }
-    else
-        if ([data isKindOfClass:[YZMyCustomCellData class]]) {
-        YZMyCustomCell *myCell = [controller.messageController.tableView
-                                  dequeueReusableCellWithIdentifier: MyCustomMessageCell_ReuseId];
-        [myCell fillWithData:(YZMyCustomCellData *)data];
-        return myCell;
-    }
     else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
         YZCardMsgCell *cell = [controller.messageController.tableView
                                dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
@@ -260,13 +248,7 @@
 }
 
 - (void)chatController:(YUIChatController *)controller onSelectMessageContent:(TUIMessageCell *)cell {
-    if ([cell isKindOfClass:[YZMyCustomCell class]]) {
-        YZMyCustomCellData *cellData = [(YZMyCustomCell *)cell customData];
-        if (cellData.link) {
-            [[UIApplication sharedApplication] openURL:
-             [NSURL URLWithString: cellData.link] options: @{} completionHandler: nil];
-        }
-    }else if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
+    if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
         YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];
         YZMapInfoViewController* map = [[YZMapInfoViewController alloc]init];
         map.locationData = data;

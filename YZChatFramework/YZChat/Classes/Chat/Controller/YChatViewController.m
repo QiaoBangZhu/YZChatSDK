@@ -23,11 +23,9 @@
 #import "TUIKit.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "MMLayout/UIView+MMLayout.h"
-#import "YZMyCustomCell.h"
 #import "YZUtil.h"
 #import "THelper.h"
 #import "TCConstants.h"
-#import "YZMyCustomCellData.h"
 #import "UIColor+ColorExtension.h"
 #import "YChatNetworkEngine.h"
 #import "YUserInfo.h"
@@ -42,7 +40,6 @@
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
-#define MyCustomMessageCell_ReuseId @"YZMyCustomCell"
 #define CardMessageCell_ReuseId @"YZCardMsgCell"
 
 @interface YChatViewController ()<YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate>
@@ -61,8 +58,6 @@
     [self addChildViewController:_chat];
     [self.view addSubview:_chat.view];
     _chat.messageController.tableView.backgroundColor = [UIColor colorWithHex:KCommonChatBgColor];
-    [self.chat.messageController.tableView registerClass: [YZMyCustomCell class]
-                                  forCellReuseIdentifier: MyCustomMessageCell_ReuseId];
     [self.chat.messageController.tableView registerClass: [YZCardMsgCell class]
                                   forCellReuseIdentifier: CardMessageCell_ReuseId];
     RAC(self, title) = [RACObserve(_conversationData, title) distinctUntilChanged];
@@ -344,12 +339,7 @@
 
 - (TUIMessageCell *)chatController:(TUIChatController *)controller onShowMessageData:(TUIMessageCellData *)data
 {
-    if ([data isKindOfClass:[YZMyCustomCellData class]]) {
-        YZMyCustomCell *myCell = [controller.messageController.tableView
-                                  dequeueReusableCellWithIdentifier: MyCustomMessageCell_ReuseId];
-        [myCell fillWithData:(YZMyCustomCellData *)data];
-        return myCell;
-    }else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
+    if ([data isKindOfClass:[YZCardMsgCellData class]]) {
         YZCardMsgCell *cell = [controller.messageController.tableView
                                dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
         [cell fillWithData:(YZCardMsgCellData *)data];
@@ -360,12 +350,7 @@
 
 - (void)chatController:(TUIChatController *)controller onSelectMessageContent:(TUIMessageCell *)cell
 {
-    if ([cell isKindOfClass:[YZMyCustomCell class]]) {
-        YZMyCustomCellData *cellData = [(YZMyCustomCell *)cell customData];
-        if (cellData.link) {
-            [[UIApplication sharedApplication] openURL: [NSURL URLWithString:cellData.link] options: @{} completionHandler: nil];
-        }
-    }else if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
+    if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
         YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];
         YZMapInfoViewController* mapvc = [[YZMapInfoViewController alloc]init];
         mapvc.locationData = data;

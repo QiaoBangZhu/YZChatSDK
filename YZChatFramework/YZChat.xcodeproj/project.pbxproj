@@ -222,10 +222,8 @@
 		30A98B3225A449F20082D3C9 /* YUIMessageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988CC25A449F00082D3C9 /* YUIMessageController.h */; };
 		30A98B3325A449F20082D3C9 /* YUIChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988CD25A449F00082D3C9 /* YUIChatController.m */; };
 		30A98B3425A449F20082D3C9 /* YChatViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988CE25A449F00082D3C9 /* YChatViewController.h */; };
-		30A98B3525A449F20082D3C9 /* YZMyCustomCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988D025A449F00082D3C9 /* YZMyCustomCellData.m */; };
 		30A98B3625A449F20082D3C9 /* YZLocationMessageCellData.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988D125A449F00082D3C9 /* YZLocationMessageCellData.h */; };
 		30A98B3725A449F20082D3C9 /* YZCardMsgCellData.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988D225A449F00082D3C9 /* YZCardMsgCellData.h */; };
-		30A98B3825A449F20082D3C9 /* YZMyCustomCellData.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988D325A449F00082D3C9 /* YZMyCustomCellData.h */; };
 		30A98B3925A449F20082D3C9 /* YZCardMsgCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988D425A449F00082D3C9 /* YZCardMsgCellData.m */; };
 		30A98B3A25A449F20082D3C9 /* YZLocationMessageCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988D525A449F00082D3C9 /* YZLocationMessageCellData.m */; };
 		30A98B3B25A449F20082D3C9 /* YZVideoCallUserView.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988D725A449F00082D3C9 /* YZVideoCallUserView.h */; };
@@ -233,13 +231,11 @@
 		30A98B3D25A449F20082D3C9 /* YZCardMsgCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988D925A449F00082D3C9 /* YZCardMsgCell.h */; };
 		30A98B3E25A449F20082D3C9 /* YUISelectMemberCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988DA25A449F00082D3C9 /* YUISelectMemberCell.h */; };
 		30A98B3F25A449F20082D3C9 /* YGroupMembersTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988DB25A449F00082D3C9 /* YGroupMembersTableViewCell.h */; };
-		30A98B4025A449F20082D3C9 /* YZMyCustomCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988DC25A449F00082D3C9 /* YZMyCustomCell.h */; };
 		30A98B4125A449F20082D3C9 /* YZAudioMeetUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988DD25A449F00082D3C9 /* YZAudioMeetUserCell.m */; };
 		30A98B4225A449F20082D3C9 /* YZVideoCallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988DE25A449F00082D3C9 /* YZVideoCallUserView.m */; };
 		30A98B4325A449F20082D3C9 /* YZCardMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988DF25A449F00082D3C9 /* YZCardMsgCell.m */; };
 		30A98B4425A449F20082D3C9 /* YZLocationMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988E025A449F00082D3C9 /* YZLocationMessageCell.h */; };
 		30A98B4525A449F20082D3C9 /* YGroupMembersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988E125A449F00082D3C9 /* YGroupMembersTableViewCell.m */; };
-		30A98B4625A449F20082D3C9 /* YZMyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988E225A449F00082D3C9 /* YZMyCustomCell.m */; };
 		30A98B4725A449F20082D3C9 /* YUISelectMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988E325A449F00082D3C9 /* YUISelectMemberCell.m */; };
 		30A98B4825A449F20082D3C9 /* YZAudioMeetUserCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988E425A449F00082D3C9 /* YZAudioMeetUserCell.h */; };
 		30A98B4925A449F20082D3C9 /* YZAddressBookCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988E725A449F00082D3C9 /* YZAddressBookCellData.m */; };
@@ -816,10 +812,8 @@
 		30A988CC25A449F00082D3C9 /* YUIMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIMessageController.h; sourceTree = "<group>"; };
 		30A988CD25A449F00082D3C9 /* YUIChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIChatController.m; sourceTree = "<group>"; };
 		30A988CE25A449F00082D3C9 /* YChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YChatViewController.h; sourceTree = "<group>"; };
-		30A988D025A449F00082D3C9 /* YZMyCustomCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMyCustomCellData.m; sourceTree = "<group>"; };
 		30A988D125A449F00082D3C9 /* YZLocationMessageCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZLocationMessageCellData.h; sourceTree = "<group>"; };
 		30A988D225A449F00082D3C9 /* YZCardMsgCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCardMsgCellData.h; sourceTree = "<group>"; };
-		30A988D325A449F00082D3C9 /* YZMyCustomCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMyCustomCellData.h; sourceTree = "<group>"; };
 		30A988D425A449F00082D3C9 /* YZCardMsgCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZCardMsgCellData.m; sourceTree = "<group>"; };
 		30A988D525A449F00082D3C9 /* YZLocationMessageCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZLocationMessageCellData.m; sourceTree = "<group>"; };
 		30A988D725A449F00082D3C9 /* YZVideoCallUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZVideoCallUserView.h; sourceTree = "<group>"; };
@@ -827,13 +821,11 @@
 		30A988D925A449F00082D3C9 /* YZCardMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCardMsgCell.h; sourceTree = "<group>"; };
 		30A988DA25A449F00082D3C9 /* YUISelectMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUISelectMemberCell.h; sourceTree = "<group>"; };
 		30A988DB25A449F00082D3C9 /* YGroupMembersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGroupMembersTableViewCell.h; sourceTree = "<group>"; };
-		30A988DC25A449F00082D3C9 /* YZMyCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMyCustomCell.h; sourceTree = "<group>"; };
 		30A988DD25A449F00082D3C9 /* YZAudioMeetUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZAudioMeetUserCell.m; sourceTree = "<group>"; };
 		30A988DE25A449F00082D3C9 /* YZVideoCallUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZVideoCallUserView.m; sourceTree = "<group>"; };
 		30A988DF25A449F00082D3C9 /* YZCardMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZCardMsgCell.m; sourceTree = "<group>"; };
 		30A988E025A449F00082D3C9 /* YZLocationMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZLocationMessageCell.h; sourceTree = "<group>"; };
 		30A988E125A449F00082D3C9 /* YGroupMembersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGroupMembersTableViewCell.m; sourceTree = "<group>"; };
-		30A988E225A449F00082D3C9 /* YZMyCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMyCustomCell.m; sourceTree = "<group>"; };
 		30A988E325A449F00082D3C9 /* YUISelectMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUISelectMemberCell.m; sourceTree = "<group>"; };
 		30A988E425A449F00082D3C9 /* YZAudioMeetUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZAudioMeetUserCell.h; sourceTree = "<group>"; };
 		30A988E725A449F00082D3C9 /* YZAddressBookCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZAddressBookCellData.m; sourceTree = "<group>"; };
@@ -1598,8 +1590,6 @@
 			children = (
 				30A988D225A449F00082D3C9 /* YZCardMsgCellData.h */,
 				30A988D425A449F00082D3C9 /* YZCardMsgCellData.m */,
-				30A988D325A449F00082D3C9 /* YZMyCustomCellData.h */,
-				30A988D025A449F00082D3C9 /* YZMyCustomCellData.m */,
 				30A988D525A449F00082D3C9 /* YZLocationMessageCellData.m */,
 				30A988D125A449F00082D3C9 /* YZLocationMessageCellData.h */,
 				E513A1A62623EE5F00621FAF /* YzCustomMessageCellData.h */,
@@ -1611,8 +1601,6 @@
 		30A988D625A449F00082D3C9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				30A988DC25A449F00082D3C9 /* YZMyCustomCell.h */,
-				30A988E225A449F00082D3C9 /* YZMyCustomCell.m */,
 				30A988D925A449F00082D3C9 /* YZCardMsgCell.h */,
 				30A988DF25A449F00082D3C9 /* YZCardMsgCell.m */,
 				30A988D725A449F00082D3C9 /* YZVideoCallUserView.h */,
@@ -2590,7 +2578,6 @@
 				30A98B8925A449F20082D3C9 /* TTextEditController.h in Headers */,
 				30A98AE325A449F20082D3C9 /* YScannerView.h in Headers */,
 				30A98C3725A449F20082D3C9 /* TUIMenuView.h in Headers */,
-				30A98B4025A449F20082D3C9 /* YZMyCustomCell.h in Headers */,
 				30A98AFC25A449F20082D3C9 /* YZContactSearchViewController.h in Headers */,
 				30A98B5925A449F20082D3C9 /* YUIGroupConversationListController.h in Headers */,
 				30A98C7025A449F30082D3C9 /* if_rom.h in Headers */,
@@ -2672,7 +2659,6 @@
 				30A98C0825A449F20082D3C9 /* TUIBubbleMessageCell.h in Headers */,
 				30A98BB125A449F20082D3C9 /* TContactViewModel.h in Headers */,
 				30A98A7925A449F20082D3C9 /* NSBundle+YZBundle.h in Headers */,
-				30A98B3825A449F20082D3C9 /* YZMyCustomCellData.h in Headers */,
 				306754F525A80C4C0045CCC7 /* YZMsgManager.h in Headers */,
 				30A98C4C25A449F30082D3C9 /* TUIMessageDataProviderService.h in Headers */,
 				30A98B7E25A449F20082D3C9 /* TUIAvatarViewController.h in Headers */,
@@ -2993,7 +2979,6 @@
 				30A98AF925A449F20082D3C9 /* YZSearchViewController.m in Sources */,
 				30A98BE625A449F20082D3C9 /* TUIGroupPendencyViewModel.m in Sources */,
 				30A98BA825A449F20082D3C9 /* TContactSelectViewModel.m in Sources */,
-				30A98B3525A449F20082D3C9 /* YZMyCustomCellData.m in Sources */,
 				30A98B4125A449F20082D3C9 /* YZAudioMeetUserCell.m in Sources */,
 				30A98BDB25A449F20082D3C9 /* TUIJoinGroupMessageCellData.m in Sources */,
 				30A98B6625A449F20082D3C9 /* FriendRequestViewController.m in Sources */,
@@ -3018,7 +3003,6 @@
 				30A98B1C25A449F20082D3C9 /* YBaseTableViewController.m in Sources */,
 				30A98C5525A449F30082D3C9 /* TUIConversationListController.m in Sources */,
 				30A98C7825A449F30082D3C9 /* EMVoiceConverter.mm in Sources */,
-				30A98B4625A449F20082D3C9 /* YZMyCustomCell.m in Sources */,
 				30A98C3225A449F20082D3C9 /* TUIFaceView.m in Sources */,
 				30A98B4325A449F20082D3C9 /* YZCardMsgCell.m in Sources */,
 				30A98BF525A449F20082D3C9 /* TUIInputBar.m in Sources */,
