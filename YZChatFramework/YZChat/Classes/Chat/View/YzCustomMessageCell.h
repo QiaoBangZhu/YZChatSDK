@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YzCustomMessageCell : TUIMessageCell
 
-@property (nonatomic, assign) Class customerViewClass;
-@property (nonatomic, strong) YzCustomMessageView *customerView;
+@property (nonatomic, assign) Class customViewClass;
+@property (nonatomic, strong) YzCustomMessageView *customView;
 
 @end
 

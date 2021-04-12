@@ -357,8 +357,8 @@
         Class viewClass = _registeredCustomMessageClass[data.reuseId].viewClass;
         YzCustomMessageCell *cell = [controller.messageController.tableView
                                      dequeueReusableCellWithIdentifier: data.reuseId];
-        cell.customerViewClass = viewClass;
-        [cell.customerView fillWithData: ((YzCustomMessageCellData *)data).customMessageData];
+        cell.customViewClass = viewClass;
+        [cell.customView fillWithData: ((YzCustomMessageCellData *)data).customMessageData];
         [cell fillWithData: data];
         return cell;
     }

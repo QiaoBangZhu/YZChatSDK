@@ -11,12 +11,12 @@
 
 @implementation YzCustomMessageCell
 
-- (YzCustomMessageView *)customerView {
-    if (!_customerView) {
-        _customerView = [[self.customerViewClass alloc] init];
+- (YzCustomMessageView *)customView {
+    if (!_customView) {
+        _customView = [[self.customViewClass alloc] init];
 
-        [self.container addSubview: _customerView];
-        [_customerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.container addSubview: _customView];
+        [_customView mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.top.equalTo(@7);
 //            make.bottom.equalTo(@-8);
 //            make.leading.trailing.equalTo(@0);
@@ -24,7 +24,7 @@
         }];
     }
 
-    return _customerView;
+    return _customView;
 }
 
 - (void)layoutSubviews {
