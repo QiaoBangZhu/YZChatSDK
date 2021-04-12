@@ -13,6 +13,7 @@
 #import <ImSDKForiOS/ImSDK.h>
 
 #import "YZMsgManager.h"
+#import "YZCardMsgCell.h"
 #import "YZUtil.h"
 #import "YzCustomMessageCellData.h"
 
@@ -51,7 +52,12 @@
     }
 
     YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection: MsgDirectionOutgoing];
-    cellData.customMessageData = msg;
+    YZCardMsgData *custom = [[YZCardMsgData alloc] init];
+    custom.title = msg.title;
+    custom.des = msg.desc;
+    custom.link = msg.link;
+    custom.logo = msg.logo;
+    cellData.customMessageData = custom;
     cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage:[YZUtil dictionary2JsonData:@{@"version": @(TextLink_Version),@"businessID": CardLink,@"title":msg.title,@"link":msg.link,@"desc":msg.desc, @"logo": msg.logo}]];
     
     V2TIMMessage *imMsg = cellData.innerMessage;

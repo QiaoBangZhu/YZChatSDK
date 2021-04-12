@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, YzCustomMsgType)
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YzCustomMsg : YzCustomMessageData
+@interface YzCustomMsg : NSObject
 /*消息类型*/
 @property (nonatomic,assign)YzCustomMsgType businessID;
 /**标题*/
