@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+/**
+ * 自定义消息内容控件
+ */
 @interface YzCustomMessageView : UIView
 
 @property (nonatomic, strong, readonly) YzCustomMessageData *data;

@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YzCustomMessageView.h"
+
 @class V2TIMConversation;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -108,11 +110,32 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)onAtGroupMember;
 
+
+/**
+ *  点击自定义会话消息内容回调
+ *
+ *  @param customMessageView 所点击的消息单元
+ */
+- (void)onSelectedCustomMessageView:(YzCustomMessageView *)customMessageView;
+
+@end
+
+@protocol YzChatControllerDataSource <NSObject>
+
+/**
+ * 自定义消息二进制数据
+ *
+ * @param data 自定义消息二进制数据
+ * @return 自定义消息
+ */
+- (YzCustomMessageData * _Nullable)customMessageForData:(NSData *)data;
+
 @end
 
 @interface YzChatController : UIViewController
 
 @property(nullable, nonatomic, weak) id<YzChatControllerDelegate> delegate;
+@property(nullable, nonatomic, weak) id<YzChatControllerDataSource> dataSource;
 
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
                           config:(nullable YzChatControllerConfig *)config;

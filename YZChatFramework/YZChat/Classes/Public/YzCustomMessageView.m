@@ -18,7 +18,7 @@
 @implementation YzCustomMessageView
 
 - (void)fillWithData:(YzCustomMessageData *)data {
-
+    _data = data;
 }
 
 @end

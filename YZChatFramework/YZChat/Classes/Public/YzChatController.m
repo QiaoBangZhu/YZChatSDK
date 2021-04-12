@@ -23,7 +23,6 @@
 #import "YZLocationMessageCell.h"
 #import "YZMapInfoViewController.h"
 #import "YZWebViewController.h"
-#import "YzCustomMessageView.h"
 #import "YzCustomMessageCell.h"
 #import "YzCustomMessageCellData.h"
 #import "YzCustomMsg.h"
@@ -101,17 +100,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = _chatInfo.chatName;
-    [self registerViewClass: [YZCardMsgView class] forDataClass: [YZCardMsgData self]];
     [self setupChatController];
+    [self registerViewClass: [YZCardMsgView class] forDataClass: [YZCardMsgData self]];
 }
 
 - (void)setupChatController {
-    self.chatController = [[YUIChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
     self.chatController.delegate = self;
     [self addChildViewController: self.chatController];
     [self.view addSubview: self.chatController.view];
     self.chatController.messageController.tableView.backgroundColor = [UIColor colorWithHex: KCommonChatBgColor];
-    for (NSString *key in _registeredCustomMessageClass) {
+    for (NSString * key in _registeredCustomMessageClass) {
         [self.chatController.messageController.tableView registerClass: [YzCustomMessageCell class]
                                                 forCellReuseIdentifier: key];
     }
@@ -152,7 +150,18 @@
     RegisteredCustomMessageClasses *classes = [[RegisteredCustomMessageClasses alloc] init];
     classes.viewClass = viewClass;
     classes.dataClass = dataClass;
-    _registeredCustomMessageClass[NSStringFromClass(dataClass)] = classes;
+    NSString *key = NSStringFromClass(dataClass);
+    _registeredCustomMessageClass[key] = classes;
+    [self.chatController.messageController.tableView registerClass: [YzCustomMessageCell class]
+                                            forCellReuseIdentifier: key];
+}
+
+- (YUIChatController *)chatController {
+    if (!_chatController) {
+        _chatController = [[YUIChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
+    }
+
+    return  _chatController;
 }
 
 #pragma mark - YUIChatControllerDelegate
@@ -179,10 +188,10 @@
         [chatController sendMessage:cellData];
         
     }else if([cell.data.title isEqualToString:@"发送位置"]) {
-        YZMapViewController* mapvc = [[YZMapViewController alloc]init];
+        YZMapViewController* map = [[YZMapViewController alloc]init];
         @weakify(self)
-        [self.navigationController pushViewController:mapvc animated:YES];
-        mapvc.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
+        [self.navigationController pushViewController:map animated:YES];
+        map.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
             @strongify(self)
             [self.navigationController popToViewController:self animated:YES];
             YZLocationMessageCellData* cellData = [[YZLocationMessageCellData alloc]initWithDirection:MsgDirectionOutgoing];
@@ -197,6 +206,7 @@
 
 - (TUIMessageCellData *)chatController:(YUIChatController *)controller
                           onNewMessage:(V2TIMMessage *)msg {
+    /// 自定义消息
     if (msg.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
         NSDictionary *param = [YZUtil jsonData2Dictionary: msg.customElem.data];
         if (param) {
@@ -213,6 +223,15 @@
                 custom.des = param[@"desc"];
                 custom.link = link;
                 custom.logo = param[@"logo"];
+                cellData.customMessageData = custom;
+                return cellData;
+            }
+        }
+        // 用户自定
+        else if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {
+            YzCustomMessageData *custom = [self.dataSource customMessageForData: msg.customElem.data];
+            if (custom) {
+                YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: msg];
                 cellData.customMessageData = custom;
                 return cellData;
             }
@@ -243,8 +262,8 @@
         map.locationData = data;
         [self.navigationController pushViewController:map animated:YES];
     }
+    // 自定义消息
     else if ([cell isKindOfClass:[YzCustomMessageCell class]]) {
-
         YzCustomMessageCellData *cellData = (YzCustomMessageCellData *)cell.messageData;
         if ([cellData.customMessageData isKindOfClass: [YZCardMsgData class]]) {
             YZCardMsgData *msg = (YZCardMsgData *)cellData.customMessageData;
@@ -252,6 +271,12 @@
                 YZWebViewController* web = [[YZWebViewController alloc]init];
                 web.url = [NSURL URLWithString: msg.link];
                 [self.navigationController pushViewController:web animated:YES];
+            }
+        }
+        // 用户自定义
+        else {
+            if (self.delegate && [self.delegate respondsToSelector: @selector(onSelectedCustomMessageView:)]) {
+                [self.delegate onSelectedCustomMessageView: [(YzCustomMessageCell *)cell customerView]];
             }
         }
     }
