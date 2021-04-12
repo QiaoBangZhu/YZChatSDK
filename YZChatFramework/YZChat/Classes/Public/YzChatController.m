@@ -28,6 +28,10 @@
 #import "YZLocationMessageCell.h"
 #import "YZMapInfoViewController.h"
 #import "YZWebViewController.h"
+#import "YzCustomMessageView.h"
+#import "YzCustomMessageCell.h"
+#import "YzCustomMessageCellData.h"
+#import "YzCustomMsg.h"
 
 #define MyCustomMessageCell_ReuseId @"YZMyCustomCell"
 #define CardMessageCell_ReuseId @"YZCardMsgCell"
@@ -67,9 +71,20 @@
 
 @end
 
+@interface RegisteredCustomMessageClasses : NSObject
+
+@property (nonatomic, assign) Class viewClass;
+@property (nonatomic, assign) Class dataClass;
+
+@end
+
+@implementation RegisteredCustomMessageClasses
+@end
+
 @interface YzChatController () <YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate> {
     YzChatInfo *_chatInfo;
     YzChatControllerConfig *_chatConfig;
+    NSMutableDictionary <NSString *, RegisteredCustomMessageClasses *> * _registeredCustomMessageClass;
 }
 
 @property (nonatomic, strong) TUIConversationCellData *conversationCellData;
@@ -85,6 +100,7 @@
     if (self) {
         _chatInfo = chatInfo;
         _chatConfig = config ?: [[YzChatControllerConfig alloc] init];
+        _registeredCustomMessageClass = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -92,6 +108,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = _chatInfo.chatName;
+    [self registerViewClass: [YZCardMsgView class] forDataClass: [YZCardMsgData self]];
     [self setupChatController];
 }
 
@@ -105,6 +122,10 @@
                                             forCellReuseIdentifier: MyCustomMessageCell_ReuseId];
     [self.chatController.messageController.tableView registerClass: [YZCardMsgCell class]
                                             forCellReuseIdentifier: CardMessageCell_ReuseId];
+    for (NSString *key in _registeredCustomMessageClass) {
+        [self.chatController.messageController.tableView registerClass: [YzCustomMessageCell class]
+                                                forCellReuseIdentifier: key];
+    }
     
     [TUIBubbleMessageCellData setOutgoingBubble:[YZChatResource(@"SenderTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
     
@@ -119,6 +140,8 @@
     [TUITextMessageCellData setIncommingTextColor:[UIColor blackColor]];
 }
 
+#pragma mark - Public
+
 - (void)updateInputTextByNames:(NSArray<NSString *> *)names
                            ids:(NSArray<NSString *> *)ids {
     NSUInteger count = MIN(ids.count, ids.count);
@@ -130,6 +153,17 @@
         user.avatar = @"";
     }
     [self.chatController updateInputTextByUsers: users];
+}
+
+- (void)registerViewClass:(Class)viewClass forDataClass:(Class)dataClass {
+    NSAssert([viewClass isSubclassOfClass: [YzCustomMessageView class]],
+             @"自定义消息视图类型，需继承自 YzCustomMessageView");
+    NSAssert([dataClass isSubclassOfClass: [YzCustomMessageData class]],
+             @"自定义消息数据类型，需继承自 YzCustomMessageData");
+    RegisteredCustomMessageClasses *classes = [[RegisteredCustomMessageClasses alloc] init];
+    classes.viewClass = viewClass;
+    classes.dataClass = dataClass;
+    _registeredCustomMessageClass[NSStringFromClass(dataClass)] = classes;
 }
 
 #pragma mark - YUIChatControllerDelegate
@@ -183,27 +217,13 @@
                 return nil;
             }
             if ([businessID isEqualToString:CardLink]) {
-                if (version <= TextLink_Version) {
-                    YZCardMsgCellData *cellData = [[YZCardMsgCellData alloc] initWithDirection:msg.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-                    cellData.innerMessage = msg;
-                    cellData.msgID = msg.msgID;
-                    cellData.title = param[@"title"];
-                    cellData.des = param[@"desc"];
-                    cellData.link = param[@"link"];
-                    cellData.logo = param[@"logo"];
-                    cellData.avatarUrl = [NSURL URLWithString:msg.faceURL];
-                    return cellData;
-                }
-            } else {
-                // 兼容下老版本
-                YZCardMsgCellData *cellData = [[YZCardMsgCellData alloc] initWithDirection:msg.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
-                cellData.innerMessage = msg;
-                cellData.msgID = msg.msgID;
-                cellData.title = param[@"title"];
-                cellData.link = param[@"link"];
-                cellData.des = param[@"desc"];
-                cellData.logo = param[@"logo"];
-                cellData.avatarUrl = [NSURL URLWithString:msg.faceURL];
+                YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: msg];
+                YZCardMsgData *custom = [[YZCardMsgData alloc] init];
+                custom.title = text;
+                custom.des = param[@"desc"];
+                custom.link = link;
+                custom.logo = param[@"logo"];
+                cellData.customMessageData = custom;
                 return cellData;
             }
         }
@@ -213,12 +233,24 @@
 
 - (TUIMessageCell *)chatController:(YUIChatController *)controller
                  onShowMessageData:(TUIMessageCellData *)data {
-    if ([data isKindOfClass:[YZMyCustomCellData class]]) {
+    if ([data isKindOfClass:[YzCustomMessageCellData class]]) {
+
+        Class viewClass = _registeredCustomMessageClass[data.reuseId].viewClass;
+        YzCustomMessageCell *cell = [controller.messageController.tableView
+                                     dequeueReusableCellWithIdentifier: data.reuseId];
+        cell.customerViewClass = viewClass;
+        [cell.customerView fillWithData: ((YzCustomMessageCellData *)data).customMessageData];
+        [cell fillWithData: data];
+        return cell;
+    }
+    else
+        if ([data isKindOfClass:[YZMyCustomCellData class]]) {
         YZMyCustomCell *myCell = [controller.messageController.tableView
                                   dequeueReusableCellWithIdentifier: MyCustomMessageCell_ReuseId];
         [myCell fillWithData:(YZMyCustomCellData *)data];
         return myCell;
-    }else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
+    }
+    else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
         YZCardMsgCell *cell = [controller.messageController.tableView
                                dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
         [cell fillWithData:(YZCardMsgCellData *)data];

@@ -564,6 +564,8 @@
 		30A98C8E25A449F30082D3C9 /* YAppCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A98A5D25A449F20082D3C9 /* YAppCollectionViewCell.m */; };
 		30A98C8F25A449F30082D3C9 /* YWorkZoneTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A5E25A449F20082D3C9 /* YWorkZoneTableViewCell.h */; };
 		7C84D0845AB46B8B8C3712B1 /* libPods-YZChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A37634C8EC53DB96F536046 /* libPods-YZChat.a */; };
+		E513A1A82623EE5F00621FAF /* YzCustomMessageCellData.h in Headers */ = {isa = PBXBuildFile; fileRef = E513A1A62623EE5F00621FAF /* YzCustomMessageCellData.h */; };
+		E513A1A92623EE5F00621FAF /* YzCustomMessageCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = E513A1A72623EE5F00621FAF /* YzCustomMessageCellData.m */; };
 		E527E3DC258393C800531586 /* YZChat.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E3DA258393C800531586 /* YZChat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9E92583A5B300531586 /* SysUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E52583A5B300531586 /* SysUser.m */; };
 		E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E62583A5B300531586 /* YzIMKitAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -573,6 +575,8 @@
 		E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AA3282619DFE600B4E6C1 /* YzFileManager.h */; };
 		E5BFE7082623DC9400013973 /* YzCustomMessageView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BFE7062623DC9400013973 /* YzCustomMessageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5BFE7092623DC9400013973 /* YzCustomMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BFE7072623DC9400013973 /* YzCustomMessageView.m */; };
+		E5BFE70D2623E84900013973 /* YzCustomMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */; };
+		E5BFE70E2623E84900013973 /* YzCustomMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */; };
 		E5D849FE2622E0C5006806E6 /* TUIConversationCellData+Conversation.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */; };
 		E5D849FF2622E0C5006806E6 /* TUIConversationCellData+Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */; };
 		E5E68CBA262060CD0061751B /* YzConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CB8262060CD0061751B /* YzConversationListController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1155,6 +1159,8 @@
 		30A98A5E25A449F20082D3C9 /* YWorkZoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWorkZoneTableViewCell.h; sourceTree = "<group>"; };
 		8A37634C8EC53DB96F536046 /* libPods-YZChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.debug.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.debug.xcconfig"; sourceTree = "<group>"; };
+		E513A1A62623EE5F00621FAF /* YzCustomMessageCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageCellData.h; sourceTree = "<group>"; };
+		E513A1A72623EE5F00621FAF /* YzCustomMessageCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageCellData.m; sourceTree = "<group>"; };
 		E527E3D7258393C800531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E527E3DA258393C800531586 /* YZChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZChat.h; sourceTree = "<group>"; };
 		E527E3DB258393C800531586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1167,6 +1173,8 @@
 		E57AA3282619DFE600B4E6C1 /* YzFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzFileManager.h; sourceTree = "<group>"; };
 		E5BFE7062623DC9400013973 /* YzCustomMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageView.h; sourceTree = "<group>"; };
 		E5BFE7072623DC9400013973 /* YzCustomMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageView.m; sourceTree = "<group>"; };
+		E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageCell.h; sourceTree = "<group>"; };
+		E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageCell.m; sourceTree = "<group>"; };
 		E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUIConversationCellData+Conversation.h"; sourceTree = "<group>"; };
 		E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TUIConversationCellData+Conversation.m"; sourceTree = "<group>"; };
 		E5E68CB8262060CD0061751B /* YzConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzConversationListController.h; sourceTree = "<group>"; };
@@ -1594,6 +1602,8 @@
 				30A988D025A449F00082D3C9 /* YZMyCustomCellData.m */,
 				30A988D525A449F00082D3C9 /* YZLocationMessageCellData.m */,
 				30A988D125A449F00082D3C9 /* YZLocationMessageCellData.h */,
+				E513A1A62623EE5F00621FAF /* YzCustomMessageCellData.h */,
+				E513A1A72623EE5F00621FAF /* YzCustomMessageCellData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1615,6 +1625,8 @@
 				30A988E325A449F00082D3C9 /* YUISelectMemberCell.m */,
 				30A988DB25A449F00082D3C9 /* YGroupMembersTableViewCell.h */,
 				30A988E125A449F00082D3C9 /* YGroupMembersTableViewCell.m */,
+				E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */,
+				E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2516,6 +2528,7 @@
 				30A98A8E25A449F20082D3C9 /* YChat_Precompile.h in Headers */,
 				30A98C1D25A449F20082D3C9 /* TUIVideoRenderView.h in Headers */,
 				30A98B3F25A449F20082D3C9 /* YGroupMembersTableViewCell.h in Headers */,
+				E5BFE70D2623E84900013973 /* YzCustomMessageCell.h in Headers */,
 				30A98B1925A449F20082D3C9 /* YBaseTableViewController.h in Headers */,
 				30A98BD025A449F20082D3C9 /* TUIBubbleMessageCellData.h in Headers */,
 				30A98BB825A449F20082D3C9 /* TCommonContactCellData.h in Headers */,
@@ -2650,6 +2663,7 @@
 				30A98C3925A449F20082D3C9 /* TUIGroupMembersView.h in Headers */,
 				30A98A6B25A449F20082D3C9 /* YChatUploadManager.h in Headers */,
 				E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */,
+				E513A1A82623EE5F00621FAF /* YzCustomMessageCellData.h in Headers */,
 				30A98BC225A449F20082D3C9 /* TUIContactActionCellData.h in Headers */,
 				30A98A7325A449F20082D3C9 /* NSObject+YChatTypeConversion.h in Headers */,
 				30A98AA325A449F20082D3C9 /* YZChangePasswordViewController.h in Headers */,
@@ -2888,6 +2902,7 @@
 				30A98BBF25A449F20082D3C9 /* TCommonContactCellData.m in Sources */,
 				309A44CF25A83DDD00741EDC /* YzCustomMsg.m in Sources */,
 				30A98B2725A449F20082D3C9 /* YChatViewController.m in Sources */,
+				E5BFE70E2623E84900013973 /* YzCustomMessageCell.m in Sources */,
 				30A98BF625A449F20082D3C9 /* TUIRecordView.m in Sources */,
 				30A98A7E25A449F20082D3C9 /* NSDate+YChatExtension.m in Sources */,
 				30A98B4E25A449F20082D3C9 /* YZAddFriendHeaderCell.m in Sources */,
@@ -3041,6 +3056,7 @@
 				30A98A6925A449F20082D3C9 /* YChatRequestMan.m in Sources */,
 				30A98C3F25A449F20082D3C9 /* TUIGroupMemberCell.m in Sources */,
 				30A98B9125A449F20082D3C9 /* TUIButtonCell.m in Sources */,
+				E513A1A92623EE5F00621FAF /* YzCustomMessageCellData.m in Sources */,
 				30A98B6725A449F20082D3C9 /* GroupRequestViewController.m in Sources */,
 				30A98C3425A449F20082D3C9 /* TUIMessageController.m in Sources */,
 				30A98BFE25A449F20082D3C9 /* TUIFaceCell.m in Sources */,

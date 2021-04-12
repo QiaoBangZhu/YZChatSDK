@@ -8,7 +8,18 @@
 
 #import "TUIMessageCellData.h"
 
+#import "YzCustomMessageCellData.h"
+
 NS_ASSUME_NONNULL_BEGIN
+
+@interface YZCardMsgData : YzCustomMessageData
+
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *des;
+@property (nonatomic, copy) NSString *logo;
+@property (nonatomic, copy) NSString *link;
+
+@end
 
 @interface YZCardMsgCellData : TUIMessageCellData
 @property NSString *title;

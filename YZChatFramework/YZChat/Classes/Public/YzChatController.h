@@ -126,6 +126,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateInputTextByNames:(NSArray <NSString *> *)names
                            ids:(NSArray <NSString *> *)ids;
 
+/**
+ * 注册自定义消息视图和与其绑定的数据
+ *
+ * @param viewClass 自定义消息视图类型，需继承自 YzCustomMessageView
+ * @param dataClass 自定义消息数据类型，需继承自 YzCustomMessageData
+ */
+- (void)registerViewClass:(Class)viewClass forDataClass:(Class)dataClass;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,7 +9,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface YzCustomMessageData : NSObject
+
+/**
+ *  内容大小
+ *  返回一个气泡内容的视图大小。
+ */
+- (CGSize)contentSize;
+
+@end
+
 @interface YzCustomMessageView : UIView
+
+@property (nonatomic, strong, readonly) YzCustomMessageData *data;
+
+- (void)fillWithData:(YzCustomMessageData *)data;
 
 @end
 

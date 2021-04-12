@@ -7,7 +7,18 @@
 
 #import "YzCustomMessageView.h"
 
+@implementation YzCustomMessageData
+
+- (CGSize)contentSize {
+    return CGSizeZero;
+}
+
+@end
+
 @implementation YzCustomMessageView
 
+- (void)fillWithData:(YzCustomMessageData *)data {
+
+}
 
 @end

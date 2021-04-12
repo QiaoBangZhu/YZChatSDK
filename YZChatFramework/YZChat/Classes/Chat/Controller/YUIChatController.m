@@ -375,8 +375,8 @@
     //    if (cell.data == [TUIInputMoreCellData locationData]) {
     //        [self sendLocation];
     //    }
-    if(_delegate && [_delegate respondsToSelector:@selector(chatController:onSelectMoreCell:)]){
-        [_delegate chatController:self onSelectMoreCell:cell];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(chatController:onSelectMoreCell:)]){
+        [self.delegate chatController:self onSelectMoreCell:cell];
     }
 }
 
@@ -411,8 +411,7 @@
 
 - (void)messageController:(YUIMessageController *)controller
     onSelectMessageAvatar:(TUIMessageCell *)cell {
-    if (cell.messageData.identifier == nil)
-        return;
+    if (cell.messageData.identifier == nil) return;
 
     if ([self.delegate respondsToSelector:@selector(chatController:onSelectMessageAvatar:)]) {
         if ([self.delegate chatController:self onSelectMessageAvatar:cell]) return;
@@ -468,12 +467,12 @@
     }
 }
 
-
 - (void)didHideMenuInMessageController:(YUIMessageController *)controller {
     _inputController.inputBar.inputTextView.overrideNextResponder = nil;
 }
 
-// ----------------------------------
+#pragma mark - TUIInputController
+
 - (void)selectPhotoForSend {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
