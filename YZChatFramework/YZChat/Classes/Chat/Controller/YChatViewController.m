@@ -345,12 +345,12 @@
 - (TUIMessageCell *)chatController:(TUIChatController *)controller onShowMessageData:(TUIMessageCellData *)data
 {
     if ([data isKindOfClass:[YZMyCustomCellData class]]) {
-        YZMyCustomCell *myCell = [self.chat.messageController.tableView
+        YZMyCustomCell *myCell = [controller.messageController.tableView
                                   dequeueReusableCellWithIdentifier: MyCustomMessageCell_ReuseId];
         [myCell fillWithData:(YZMyCustomCellData *)data];
         return myCell;
     }else if ([data isKindOfClass:[YZCardMsgCellData class]]) {
-        YZCardMsgCell *cell = [self.chat.messageController.tableView
+        YZCardMsgCell *cell = [controller.messageController.tableView
                                dequeueReusableCellWithIdentifier: CardMessageCell_ReuseId];
         [cell fillWithData:(YZCardMsgCellData *)data];
         return cell;
