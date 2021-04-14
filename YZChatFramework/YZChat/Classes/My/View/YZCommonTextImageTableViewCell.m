@@ -12,7 +12,7 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "CommonConstant.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "NSBundle+YZBundle.h"
 
 @implementation CommonTextCellData
@@ -115,7 +115,7 @@
         self.thumbnail.image = textData.thumbnail;
     } else {
         // Fallback on earlier versions
-        self.thumbnail.image = [textData.thumbnail qmui_imageWithTintColor:[UIColor colorWithHex:kCommonIconGrayColor]];
+        self.thumbnail.image = [textData.thumbnail cigam_imageWithTintColor:[UIColor colorWithHex:kCommonIconGrayColor]];
     }
     
     if (textData.showAccessory) {

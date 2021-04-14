@@ -10,7 +10,7 @@
 #import "CommonConstant.h"
 #import <Masonry/Masonry.h>
 #import <WebKit/WebKit.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "UIColor+ColorExtension.h"
 #import "CommonConstant.h"
 #import "YChatNetworkEngine.h"
@@ -84,7 +84,7 @@
     }];
 
     [self.webView loadRequest:[NSURLRequest requestWithURL:_url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30]];
-    [QMUITips showLoading:@"加载中" inView:self.view];
+    [CIGAMTips showLoading:@"加载中" inView:self.view];
 }
 
 - (WKWebView *)webView {
@@ -155,7 +155,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    [QMUITips hideAllTips];
+    [CIGAMTips hideAllTips];
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{

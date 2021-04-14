@@ -6,12 +6,12 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "QMUITableViewCell.h"
+#import "CIGAMKit.h"
 #import "YUserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZFriendListTableViewCell : QMUITableViewCell
+@interface YZFriendListTableViewCell : CIGAMTableViewCell
 @property UIImageView *avatarView;
 @property UILabel *titleLabel;
 @property UILabel *subTitleLabel;

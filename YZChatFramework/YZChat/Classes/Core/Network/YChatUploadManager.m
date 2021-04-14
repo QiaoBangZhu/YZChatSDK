@@ -9,7 +9,7 @@
 #import "YChatUploadManager.h"
 #import <AFNetworking.h>
 #import "YChatRequestBuilder.h"
-#import <QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YChatSettingStore.h"
 
 @implementation YChatUploadManager
@@ -36,13 +36,13 @@ DEF_SINGLETON(YChatUploadManager);
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
         if (onComplete) {
            if ([resultDic[@"error"] boolValue]) {
-               [QMUITips showError: resultDic[@"msg"]];
+               [CIGAMTips showError: resultDic[@"msg"]];
            }else {
                onComplete(resultDic,YES);
            }
        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [QMUITips showError: error.localizedDescription];
+            [CIGAMTips showError: error.localizedDescription];
     }];
 }
 

@@ -15,7 +15,7 @@
 #import "TUICall.h"
 #import "TUICall+TRTC.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YZBaseManager.h"
 #import "YZUtil.h"
 #import "CommonConstant.h"
@@ -38,8 +38,8 @@
 @property(nonatomic,assign) NSInteger collectionCount;
 @property(nonatomic,strong) UIButton *hangup;
 @property(nonatomic,strong) UIButton *accept;
-@property(nonatomic,strong) QMUIButton *mute;
-@property(nonatomic,strong) QMUIButton *handsfree;
+@property(nonatomic,strong) CIGAMButton *mute;
+@property(nonatomic,strong) CIGAMButton *handsfree;
 @property(nonatomic,strong) UILabel  *callTimeLabel;
 @property(nonatomic,strong) UILabel  *otherMembersLabel;
 @property(nonatomic,strong) dispatch_source_t timer;
@@ -65,8 +65,8 @@
     NSInteger _collectionCount;
     UIButton *_hangup;
     UIButton *_accept;
-    QMUIButton *_mute;
-    QMUIButton *_handsfree;
+    CIGAMButton *_mute;
+    CIGAMButton *_handsfree;
 }
 
 - (instancetype)initWithSponsor:(CallUserModel *)sponsor userList:(NSMutableArray<CallUserModel *> *)userList isInGroup:(BOOL)isInGrp {
@@ -376,23 +376,23 @@
     return _accept;
 }
 
-- (QMUIButton *)mute {
+- (CIGAMButton *)mute {
     if (!_mute.superview) {
-        _mute = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _mute = [CIGAMButton buttonWithType:UIButtonTypeCustom];
         [_mute setImage:YZChatResource(@"ic_mute") forState:UIControlStateNormal];
         [_mute addTarget:self action:@selector(muteClick) forControlEvents:UIControlEventTouchUpInside];
         [_mute setTitle:@"静音" forState:UIControlStateNormal];
         _mute.titleLabel.font = [UIFont systemFontOfSize:12];
         _mute.hidden = YES;
         [self.view addSubview:_mute];
-        _mute.imagePosition = QMUIButtonImagePositionTop;
+        _mute.imagePosition = CIGAMButtonImagePositionTop;
     }
     return _mute;
 }
 
-- (QMUIButton *)handsfree {
+- (CIGAMButton *)handsfree {
     if (!_handsfree.superview) {
-        _handsfree = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _handsfree = [CIGAMButton buttonWithType:UIButtonTypeCustom];
         [_handsfree setImage:YZChatResource(@"ic_handsfree_on") forState:UIControlStateNormal];
         [_handsfree setImage:YZChatResource(@"ic_handsfree") forState:UIControlStateSelected];
         [_handsfree addTarget:self action:@selector(handsfreeClick) forControlEvents:UIControlEventTouchUpInside];
@@ -402,7 +402,7 @@
         [_handsfree setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         _handsfree.titleLabel.font = [UIFont systemFontOfSize:12];
         [self.view addSubview:_handsfree];
-        _handsfree.imagePosition = QMUIButtonImagePositionTop;
+        _handsfree.imagePosition = CIGAMButtonImagePositionTop;
     }
     return _handsfree;
 }

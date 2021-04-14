@@ -9,7 +9,7 @@
 #import "YZTextEditViewController.h"
 #import "THeader.h"
 #import "UIColor+ColorExtension.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YChatValidInput.h"
 
 @interface YTextField : UITextField
@@ -86,26 +86,26 @@
 - (void)onSave {
     if (_type == EditTypeEmail) {
         if (![YChatValidInput isEmail:self.inputTextField.text]) {
-            [QMUITips showError:@"请输入正确的邮箱"];
+            [CIGAMTips showError:@"请输入正确的邮箱"];
             return;
         }
     }
     if (_type == EditTypeNickname) {
         if ([self.inputTextField.text length] > 10) {
-            [QMUITips showError:@"昵称不能超过10个字"];
+            [CIGAMTips showError:@"昵称不能超过10个字"];
             return;
         }
     }
     if (_type == EditTypeFriendRemark) {
         if ([self.inputTextField.text length] > 6) {
-            [QMUITips showError:@"昵称不能超过6个字"];
+            [CIGAMTips showError:@"昵称不能超过6个字"];
             return;
         }
     }
     
     if (_type == EditTypeSignture) {
         if ([self.inputTextField.text length] > 30) {
-            [QMUITips showError:@"个性签名不能超过30个字"];
+            [CIGAMTips showError:@"个性签名不能超过30个字"];
             return;
         }
     }

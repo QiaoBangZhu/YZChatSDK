@@ -581,6 +581,315 @@
 		E5E68CBF262061340061751B /* YzChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CBD262061340061751B /* YzChatController.m */; };
 		E5EDCA7C261B3C3D00465C96 /* MKMapView+ZoomLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = E5EDCA7A261B3C3D00465C96 /* MKMapView+ZoomLevel.h */; };
 		E5EDCA7D261B3C3D00465C96 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EDCA7B261B3C3D00465C96 /* MKMapView+ZoomLevel.m */; };
+		E5FE23032626A2DC00FB1A84 /* CIGAMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */; };
+		E5FE23042626A2DC00FB1A84 /* CIGAMLab.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21BB2626A2DB00FB1A84 /* CIGAMLab.h */; };
+		E5FE23052626A2DC00FB1A84 /* CIGAMConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21BC2626A2DB00FB1A84 /* CIGAMConfiguration.m */; };
+		E5FE23062626A2DC00FB1A84 /* CIGAMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21BD2626A2DB00FB1A84 /* CIGAMRuntime.m */; };
+		E5FE23072626A2DC00FB1A84 /* CIGAMConfigurationMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21BE2626A2DB00FB1A84 /* CIGAMConfigurationMacros.h */; };
+		E5FE23082626A2DC00FB1A84 /* CIGAMCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21BF2626A2DB00FB1A84 /* CIGAMCore.h */; };
+		E5FE23092626A2DC00FB1A84 /* CIGAMHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C02626A2DB00FB1A84 /* CIGAMHelper.h */; };
+		E5FE230A2626A2DC00FB1A84 /* CIGAMRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C12626A2DB00FB1A84 /* CIGAMRuntime.h */; };
+		E5FE230B2626A2DC00FB1A84 /* CIGAMConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C22626A2DB00FB1A84 /* CIGAMConfiguration.h */; };
+		E5FE230C2626A2DC00FB1A84 /* CIGAMCommonDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C32626A2DB00FB1A84 /* CIGAMCommonDefines.h */; };
+		E5FE230D2626A2DC00FB1A84 /* CIGAMCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21C52626A2DB00FB1A84 /* CIGAMCommonViewController.m */; };
+		E5FE230E2626A2DC00FB1A84 /* CIGAMNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C62626A2DB00FB1A84 /* CIGAMNavigationController.h */; };
+		E5FE230F2626A2DC00FB1A84 /* CIGAMTabBarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C72626A2DB00FB1A84 /* CIGAMTabBarViewController.h */; };
+		E5FE23102626A2DC00FB1A84 /* CIGAMCommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21C82626A2DB00FB1A84 /* CIGAMCommonTableViewController.m */; };
+		E5FE23112626A2DC00FB1A84 /* CIGAMCommonViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21C92626A2DB00FB1A84 /* CIGAMCommonViewController.h */; };
+		E5FE23122626A2DC00FB1A84 /* CIGAMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21CA2626A2DB00FB1A84 /* CIGAMNavigationController.m */; };
+		E5FE23132626A2DC00FB1A84 /* CIGAMCommonTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21CB2626A2DB00FB1A84 /* CIGAMCommonTableViewController.h */; };
+		E5FE23142626A2DC00FB1A84 /* CIGAMTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21CC2626A2DB00FB1A84 /* CIGAMTabBarViewController.m */; };
+		E5FE23152626A2DC00FB1A84 /* CIGAMCollectionViewPagingLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21CE2626A2DB00FB1A84 /* CIGAMCollectionViewPagingLayout.m */; };
+		E5FE23162626A2DC00FB1A84 /* CIGAMToolbarButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21D02626A2DB00FB1A84 /* CIGAMToolbarButton.h */; };
+		E5FE23172626A2DC00FB1A84 /* CIGAMLinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21D12626A2DB00FB1A84 /* CIGAMLinkButton.m */; };
+		E5FE23182626A2DC00FB1A84 /* CIGAMButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21D22626A2DB00FB1A84 /* CIGAMButton.h */; };
+		E5FE23192626A2DC00FB1A84 /* CIGAMNavigationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21D32626A2DB00FB1A84 /* CIGAMNavigationButton.m */; };
+		E5FE231A2626A2DC00FB1A84 /* CIGAMGhostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21D42626A2DB00FB1A84 /* CIGAMGhostButton.m */; };
+		E5FE231B2626A2DC00FB1A84 /* CIGAMFillButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21D52626A2DB00FB1A84 /* CIGAMFillButton.m */; };
+		E5FE231C2626A2DC00FB1A84 /* CIGAMToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21D62626A2DB00FB1A84 /* CIGAMToolbarButton.m */; };
+		E5FE231D2626A2DC00FB1A84 /* CIGAMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21D72626A2DB00FB1A84 /* CIGAMButton.m */; };
+		E5FE231E2626A2DC00FB1A84 /* CIGAMLinkButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21D82626A2DB00FB1A84 /* CIGAMLinkButton.h */; };
+		E5FE231F2626A2DC00FB1A84 /* CIGAMGhostButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21D92626A2DB00FB1A84 /* CIGAMGhostButton.h */; };
+		E5FE23202626A2DC00FB1A84 /* CIGAMNavigationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21DA2626A2DB00FB1A84 /* CIGAMNavigationButton.h */; };
+		E5FE23212626A2DC00FB1A84 /* CIGAMFillButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21DB2626A2DB00FB1A84 /* CIGAMFillButton.h */; };
+		E5FE23222626A2DC00FB1A84 /* CIGAMTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21DC2626A2DB00FB1A84 /* CIGAMTableViewCell.h */; };
+		E5FE23232626A2DC00FB1A84 /* CIGAMStaticTableViewCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21DE2626A2DB00FB1A84 /* CIGAMStaticTableViewCellDataSource.m */; };
+		E5FE23242626A2DC00FB1A84 /* CIGAMStaticTableViewCellData.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21DF2626A2DB00FB1A84 /* CIGAMStaticTableViewCellData.h */; };
+		E5FE23252626A2DC00FB1A84 /* UITableView+CIGAMStaticCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21E02626A2DB00FB1A84 /* UITableView+CIGAMStaticCell.h */; };
+		E5FE23262626A2DC00FB1A84 /* CIGAMStaticTableViewCellDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21E12626A2DB00FB1A84 /* CIGAMStaticTableViewCellDataSource.h */; };
+		E5FE23272626A2DC00FB1A84 /* CIGAMStaticTableViewCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21E22626A2DB00FB1A84 /* CIGAMStaticTableViewCellData.m */; };
+		E5FE23282626A2DC00FB1A84 /* UITableView+CIGAMStaticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21E32626A2DB00FB1A84 /* UITableView+CIGAMStaticCell.m */; };
+		E5FE23292626A2DC00FB1A84 /* CIGAMPopupMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21E52626A2DB00FB1A84 /* CIGAMPopupMenuView.m */; };
+		E5FE232A2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21E62626A2DB00FB1A84 /* CIGAMPopupMenuBaseItem.h */; };
+		E5FE232B2626A2DC00FB1A84 /* CIGAMPopupMenuButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21E72626A2DB00FB1A84 /* CIGAMPopupMenuButtonItem.h */; };
+		E5FE232C2626A2DC00FB1A84 /* CIGAMPopupMenuItemProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21E82626A2DB00FB1A84 /* CIGAMPopupMenuItemProtocol.h */; };
+		E5FE232D2626A2DC00FB1A84 /* CIGAMPopupMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21E92626A2DB00FB1A84 /* CIGAMPopupMenuView.h */; };
+		E5FE232E2626A2DC00FB1A84 /* CIGAMPopupMenuButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21EA2626A2DB00FB1A84 /* CIGAMPopupMenuButtonItem.m */; };
+		E5FE232F2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21EB2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.m */; };
+		E5FE23302626A2DC00FB1A84 /* CIGAMEmotionInputManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21EC2626A2DC00FB1A84 /* CIGAMEmotionInputManager.m */; };
+		E5FE23312626A2DD00FB1A84 /* CIGAMWeakObjectContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21ED2626A2DC00FB1A84 /* CIGAMWeakObjectContainer.h */; };
+		E5FE23322626A2DD00FB1A84 /* CIGAMMoreOperationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21EE2626A2DC00FB1A84 /* CIGAMMoreOperationController.h */; };
+		E5FE23332626A2DD00FB1A84 /* CIGAMSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21EF2626A2DC00FB1A84 /* CIGAMSlider.h */; };
+		E5FE23342626A2DD00FB1A84 /* CIGAMSearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21F02626A2DC00FB1A84 /* CIGAMSearchBar.h */; };
+		E5FE23352626A2DD00FB1A84 /* CIGAMLogManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21F12626A2DC00FB1A84 /* CIGAMLogManagerViewController.m */; };
+		E5FE23362626A2DD00FB1A84 /* CIGAMConsoleToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21F32626A2DC00FB1A84 /* CIGAMConsoleToolbar.h */; };
+		E5FE23372626A2DD00FB1A84 /* CIGAMConsoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21F42626A2DC00FB1A84 /* CIGAMConsoleViewController.m */; };
+		E5FE23382626A2DD00FB1A84 /* CIGAMConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21F52626A2DC00FB1A84 /* CIGAMConsole.h */; };
+		E5FE23392626A2DD00FB1A84 /* CIGAMLog+CIGAMConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21F62626A2DC00FB1A84 /* CIGAMLog+CIGAMConsole.m */; };
+		E5FE233A2626A2DD00FB1A84 /* CIGAMConsoleToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21F72626A2DC00FB1A84 /* CIGAMConsoleToolbar.m */; };
+		E5FE233B2626A2DD00FB1A84 /* CIGAMConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21F82626A2DC00FB1A84 /* CIGAMConsole.m */; };
+		E5FE233C2626A2DD00FB1A84 /* CIGAMConsoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21F92626A2DC00FB1A84 /* CIGAMConsoleViewController.h */; };
+		E5FE233D2626A2DD00FB1A84 /* CIGAMLog+CIGAMConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21FA2626A2DC00FB1A84 /* CIGAMLog+CIGAMConsole.h */; };
+		E5FE233E2626A2DD00FB1A84 /* CIGAMToastAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21FC2626A2DC00FB1A84 /* CIGAMToastAnimator.h */; };
+		E5FE233F2626A2DD00FB1A84 /* CIGAMToastBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21FD2626A2DC00FB1A84 /* CIGAMToastBackgroundView.m */; };
+		E5FE23402626A2DD00FB1A84 /* CIGAMToastContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21FE2626A2DC00FB1A84 /* CIGAMToastContentView.h */; };
+		E5FE23412626A2DD00FB1A84 /* CIGAMToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21FF2626A2DC00FB1A84 /* CIGAMToastView.h */; };
+		E5FE23422626A2DD00FB1A84 /* CIGAMToastAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22002626A2DC00FB1A84 /* CIGAMToastAnimator.m */; };
+		E5FE23432626A2DD00FB1A84 /* CIGAMToastBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22012626A2DC00FB1A84 /* CIGAMToastBackgroundView.h */; };
+		E5FE23442626A2DD00FB1A84 /* CIGAMToastContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22022626A2DC00FB1A84 /* CIGAMToastContentView.m */; };
+		E5FE23452626A2DD00FB1A84 /* CIGAMToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22032626A2DC00FB1A84 /* CIGAMToastView.m */; };
+		E5FE23462626A2DD00FB1A84 /* CIGAMCellSizeKeyCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22052626A2DC00FB1A84 /* CIGAMCellSizeKeyCache.h */; };
+		E5FE23472626A2DD00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22062626A2DC00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.h */; };
+		E5FE23482626A2DD00FB1A84 /* CIGAMCellSizeKeyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22072626A2DC00FB1A84 /* CIGAMCellSizeKeyCache.m */; };
+		E5FE23492626A2DD00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22082626A2DC00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.m */; };
+		E5FE234A2626A2DD00FB1A84 /* CIGAMTableViewHeaderFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22092626A2DC00FB1A84 /* CIGAMTableViewHeaderFooterView.h */; };
+		E5FE234B2626A2DD00FB1A84 /* CIGAMImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE220B2626A2DC00FB1A84 /* CIGAMImagePreviewViewController.m */; };
+		E5FE234C2626A2DD00FB1A84 /* CIGAMImagePreviewView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE220C2626A2DC00FB1A84 /* CIGAMImagePreviewView.h */; };
+		E5FE234D2626A2DD00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE220D2626A2DC00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.h */; };
+		E5FE234E2626A2DD00FB1A84 /* CIGAMImagePreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE220E2626A2DC00FB1A84 /* CIGAMImagePreviewViewController.h */; };
+		E5FE234F2626A2DD00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE220F2626A2DC00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.m */; };
+		E5FE23502626A2DD00FB1A84 /* CIGAMImagePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22102626A2DC00FB1A84 /* CIGAMImagePreviewView.m */; };
+		E5FE23512626A2DD00FB1A84 /* CIGAMTips.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22112626A2DC00FB1A84 /* CIGAMTips.m */; };
+		E5FE23522626A2DD00FB1A84 /* CIGAMMarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22122626A2DC00FB1A84 /* CIGAMMarqueeLabel.m */; };
+		E5FE23532626A2DD00FB1A84 /* CIGAMEasings.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22142626A2DC00FB1A84 /* CIGAMEasings.h */; };
+		E5FE23542626A2DD00FB1A84 /* CIGAMDisplayLinkAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22152626A2DC00FB1A84 /* CIGAMDisplayLinkAnimation.h */; };
+		E5FE23552626A2DD00FB1A84 /* CIGAMAnimationHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22162626A2DC00FB1A84 /* CIGAMAnimationHelper.h */; };
+		E5FE23562626A2DD00FB1A84 /* CIGAMDisplayLinkAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22172626A2DC00FB1A84 /* CIGAMDisplayLinkAnimation.m */; };
+		E5FE23572626A2DD00FB1A84 /* CIGAMAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22182626A2DC00FB1A84 /* CIGAMAnimationHelper.m */; };
+		E5FE23582626A2DD00FB1A84 /* CIGAMTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22192626A2DC00FB1A84 /* CIGAMTestView.h */; };
+		E5FE23592626A2DD00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE221A2626A2DC00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.m */; };
+		E5FE235A2626A2DD00FB1A84 /* CIGAMAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE221B2626A2DC00FB1A84 /* CIGAMAppearance.h */; };
+		E5FE235B2626A2DD00FB1A84 /* CIGAMFloatLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE221C2626A2DC00FB1A84 /* CIGAMFloatLayoutView.m */; };
+		E5FE235C2626A2DD00FB1A84 /* CIGAMAssetsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE221E2626A2DC00FB1A84 /* CIGAMAssetsManager.h */; };
+		E5FE235D2626A2DD00FB1A84 /* CIGAMAssetsGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE221F2626A2DC00FB1A84 /* CIGAMAssetsGroup.h */; };
+		E5FE235E2626A2DD00FB1A84 /* CIGAMAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22202626A2DC00FB1A84 /* CIGAMAsset.h */; };
+		E5FE235F2626A2DD00FB1A84 /* CIGAMAssetsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22212626A2DC00FB1A84 /* CIGAMAssetsManager.m */; };
+		E5FE23602626A2DD00FB1A84 /* CIGAMAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22222626A2DC00FB1A84 /* CIGAMAsset.m */; };
+		E5FE23612626A2DD00FB1A84 /* CIGAMAssetsGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22232626A2DC00FB1A84 /* CIGAMAssetsGroup.m */; };
+		E5FE23622626A2DD00FB1A84 /* CIGAMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22242626A2DC00FB1A84 /* CIGAMGridView.m */; };
+		E5FE23632626A2DD00FB1A84 /* CIGAMTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22252626A2DC00FB1A84 /* CIGAMTextField.h */; };
+		E5FE23642626A2DD00FB1A84 /* CIGAMDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22262626A2DC00FB1A84 /* CIGAMDialogViewController.m */; };
+		E5FE23652626A2DD00FB1A84 /* CIGAMWindowSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22272626A2DC00FB1A84 /* CIGAMWindowSizeMonitor.m */; };
+		E5FE23662626A2DD00FB1A84 /* CIGAMKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22282626A2DC00FB1A84 /* CIGAMKeyboardManager.h */; };
+		E5FE23672626A2DD00FB1A84 /* CIGAMSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22292626A2DC00FB1A84 /* CIGAMSegmentedControl.h */; };
+		E5FE23682626A2DD00FB1A84 /* UINavigationController+NavigationBarTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE222B2626A2DC00FB1A84 /* UINavigationController+NavigationBarTransition.h */; };
+		E5FE23692626A2DD00FB1A84 /* UINavigationBar+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE222C2626A2DC00FB1A84 /* UINavigationBar+Transition.m */; };
+		E5FE236A2626A2DD00FB1A84 /* UINavigationController+NavigationBarTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE222D2626A2DC00FB1A84 /* UINavigationController+NavigationBarTransition.m */; };
+		E5FE236B2626A2DD00FB1A84 /* UINavigationBar+Transition.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE222E2626A2DC00FB1A84 /* UINavigationBar+Transition.h */; };
+		E5FE236C2626A2DD00FB1A84 /* CIGAMEmotionView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE222F2626A2DC00FB1A84 /* CIGAMEmotionView.h */; };
+		E5FE236D2626A2DD00FB1A84 /* CIGAMNavigationTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22302626A2DC00FB1A84 /* CIGAMNavigationTitleView.h */; };
+		E5FE236E2626A2DD00FB1A84 /* CIGAMEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22312626A2DC00FB1A84 /* CIGAMEmptyView.m */; };
+		E5FE236F2626A2DD00FB1A84 /* CIGAMSearchController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22322626A2DC00FB1A84 /* CIGAMSearchController.h */; };
+		E5FE23702626A2DD00FB1A84 /* CIGAMPieProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22332626A2DC00FB1A84 /* CIGAMPieProgressView.h */; };
+		E5FE23712626A2DD00FB1A84 /* CIGAMZoomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22342626A2DC00FB1A84 /* CIGAMZoomImageView.m */; };
+		E5FE23722626A2DD00FB1A84 /* CIGAMModalPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22352626A2DC00FB1A84 /* CIGAMModalPresentationViewController.m */; };
+		E5FE23732626A2DD00FB1A84 /* CALayer+CIGAMViewAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22362626A2DC00FB1A84 /* CALayer+CIGAMViewAnimation.h */; };
+		E5FE23742626A2DD00FB1A84 /* CAAnimation+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22372626A2DC00FB1A84 /* CAAnimation+CIGAM.m */; };
+		E5FE23752626A2DD00FB1A84 /* CIGAMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22382626A2DC00FB1A84 /* CIGAMLabel.m */; };
+		E5FE23762626A2DD00FB1A84 /* CIGAMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22392626A2DC00FB1A84 /* CIGAMTableView.m */; };
+		E5FE23772626A2DD00FB1A84 /* CIGAMTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE223A2626A2DC00FB1A84 /* CIGAMTextView.m */; };
+		E5FE23782626A2DD00FB1A84 /* CIGAMCellHeightCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE223B2626A2DC00FB1A84 /* CIGAMCellHeightCache.h */; };
+		E5FE23792626A2DD00FB1A84 /* CIGAMPopupContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE223C2626A2DC00FB1A84 /* CIGAMPopupContainerView.h */; };
+		E5FE237A2626A2DD00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE223E2626A2DC00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.m */; };
+		E5FE237B2626A2DD00FB1A84 /* CIGAMCellHeightKeyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE223F2626A2DC00FB1A84 /* CIGAMCellHeightKeyCache.m */; };
+		E5FE237C2626A2DD00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22402626A2DC00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.h */; };
+		E5FE237D2626A2DD00FB1A84 /* CIGAMCellHeightKeyCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22412626A2DC00FB1A84 /* CIGAMCellHeightKeyCache.h */; };
+		E5FE237E2626A2DD00FB1A84 /* CIGAMImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22432626A2DC00FB1A84 /* CIGAMImagePickerCollectionViewCell.m */; };
+		E5FE237F2626A2DD00FB1A84 /* CIGAMImagePickerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22442626A2DC00FB1A84 /* CIGAMImagePickerHelper.m */; };
+		E5FE23802626A2DD00FB1A84 /* CIGAMAlbumViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22452626A2DC00FB1A84 /* CIGAMAlbumViewController.h */; };
+		E5FE23812626A2DD00FB1A84 /* CIGAMImagePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22462626A2DC00FB1A84 /* CIGAMImagePickerViewController.h */; };
+		E5FE23822626A2DD00FB1A84 /* CIGAMImagePickerPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22472626A2DC00FB1A84 /* CIGAMImagePickerPreviewViewController.h */; };
+		E5FE23832626A2DD00FB1A84 /* CIGAMImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22482626A2DC00FB1A84 /* CIGAMImagePickerViewController.m */; };
+		E5FE23842626A2DD00FB1A84 /* CIGAMAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22492626A2DC00FB1A84 /* CIGAMAlbumViewController.m */; };
+		E5FE23852626A2DD00FB1A84 /* CIGAMImagePickerHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE224A2626A2DC00FB1A84 /* CIGAMImagePickerHelper.h */; };
+		E5FE23862626A2DD00FB1A84 /* CIGAMImagePickerCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE224B2626A2DC00FB1A84 /* CIGAMImagePickerCollectionViewCell.h */; };
+		E5FE23872626A2DD00FB1A84 /* CIGAMImagePickerPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE224C2626A2DC00FB1A84 /* CIGAMImagePickerPreviewViewController.m */; };
+		E5FE23882626A2DD00FB1A84 /* CIGAMVisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE224D2626A2DC00FB1A84 /* CIGAMVisualEffectView.m */; };
+		E5FE23892626A2DD00FB1A84 /* CIGAMOrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE224E2626A2DC00FB1A84 /* CIGAMOrderedDictionary.h */; };
+		E5FE238A2626A2DD00FB1A84 /* CIGAMAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE224F2626A2DC00FB1A84 /* CIGAMAlertController.m */; };
+		E5FE238B2626A2DD00FB1A84 /* CIGAMMarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22502626A2DC00FB1A84 /* CIGAMMarqueeLabel.h */; };
+		E5FE238C2626A2DD00FB1A84 /* CIGAMTips.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22512626A2DC00FB1A84 /* CIGAMTips.h */; };
+		E5FE238D2626A2DD00FB1A84 /* CIGAMTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22522626A2DC00FB1A84 /* CIGAMTableViewHeaderFooterView.m */; };
+		E5FE238E2626A2DD00FB1A84 /* CIGAMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22532626A2DC00FB1A84 /* CIGAMSearchBar.m */; };
+		E5FE238F2626A2DD00FB1A84 /* CIGAMLogManagerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22542626A2DC00FB1A84 /* CIGAMLogManagerViewController.h */; };
+		E5FE23902626A2DD00FB1A84 /* CIGAMTableViewProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22552626A2DC00FB1A84 /* CIGAMTableViewProtocols.h */; };
+		E5FE23912626A2DD00FB1A84 /* CIGAMMoreOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22562626A2DC00FB1A84 /* CIGAMMoreOperationController.m */; };
+		E5FE23922626A2DD00FB1A84 /* CIGAMSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22572626A2DC00FB1A84 /* CIGAMSlider.m */; };
+		E5FE23932626A2DD00FB1A84 /* CIGAMEmotionInputManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22582626A2DC00FB1A84 /* CIGAMEmotionInputManager.h */; };
+		E5FE23942626A2DD00FB1A84 /* CIGAMWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22592626A2DC00FB1A84 /* CIGAMWeakObjectContainer.m */; };
+		E5FE23952626A2DD00FB1A84 /* CIGAMCollectionViewPagingLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE225A2626A2DC00FB1A84 /* CIGAMCollectionViewPagingLayout.h */; };
+		E5FE23962626A2DD00FB1A84 /* CIGAMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE225B2626A2DC00FB1A84 /* CIGAMTableViewCell.m */; };
+		E5FE23972626A2DD00FB1A84 /* CIGAMWindowSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE225C2626A2DC00FB1A84 /* CIGAMWindowSizeMonitor.h */; };
+		E5FE23982626A2DD00FB1A84 /* CIGAMThemePrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE225E2626A2DC00FB1A84 /* CIGAMThemePrivate.m */; };
+		E5FE23992626A2DD00FB1A84 /* CIGAMThemeManagerCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE225F2626A2DC00FB1A84 /* CIGAMThemeManagerCenter.h */; };
+		E5FE239A2626A2DD00FB1A84 /* UIViewController+CIGAMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22602626A2DC00FB1A84 /* UIViewController+CIGAMTheme.h */; };
+		E5FE239B2626A2DD00FB1A84 /* CIGAMThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22612626A2DC00FB1A84 /* CIGAMThemeManager.m */; };
+		E5FE239C2626A2DD00FB1A84 /* UIColor+CIGAMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22622626A2DC00FB1A84 /* UIColor+CIGAMTheme.m */; };
+		E5FE239D2626A2DD00FB1A84 /* UIView+CIGAMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22632626A2DC00FB1A84 /* UIView+CIGAMTheme.m */; };
+		E5FE239E2626A2DD00FB1A84 /* UIVisualEffect+CIGAMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22642626A2DC00FB1A84 /* UIVisualEffect+CIGAMTheme.m */; };
+		E5FE239F2626A2DD00FB1A84 /* UIImage+CIGAMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22652626A2DC00FB1A84 /* UIImage+CIGAMTheme.h */; };
+		E5FE23A02626A2DD00FB1A84 /* CIGAMThemeManagerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22662626A2DC00FB1A84 /* CIGAMThemeManagerCenter.m */; };
+		E5FE23A12626A2DD00FB1A84 /* UIViewController+CIGAMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22672626A2DC00FB1A84 /* UIViewController+CIGAMTheme.m */; };
+		E5FE23A22626A2DD00FB1A84 /* CIGAMThemePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22682626A2DC00FB1A84 /* CIGAMThemePrivate.h */; };
+		E5FE23A32626A2DD00FB1A84 /* UIView+CIGAMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22692626A2DC00FB1A84 /* UIView+CIGAMTheme.h */; };
+		E5FE23A42626A2DD00FB1A84 /* UIColor+CIGAMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE226A2626A2DC00FB1A84 /* UIColor+CIGAMTheme.h */; };
+		E5FE23A52626A2DD00FB1A84 /* CIGAMThemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE226B2626A2DC00FB1A84 /* CIGAMThemeManager.h */; };
+		E5FE23A62626A2DD00FB1A84 /* UIVisualEffect+CIGAMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE226C2626A2DC00FB1A84 /* UIVisualEffect+CIGAMTheme.h */; };
+		E5FE23A72626A2DD00FB1A84 /* UIImage+CIGAMTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE226D2626A2DC00FB1A84 /* UIImage+CIGAMTheme.m */; };
+		E5FE23A82626A2DD00FB1A84 /* CIGAMTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE226E2626A2DC00FB1A84 /* CIGAMTheme.h */; };
+		E5FE23A92626A2DD00FB1A84 /* CIGAMDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE226F2626A2DC00FB1A84 /* CIGAMDialogViewController.h */; };
+		E5FE23AA2626A2DD00FB1A84 /* CIGAMMultipleDelegates.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22712626A2DC00FB1A84 /* CIGAMMultipleDelegates.m */; };
+		E5FE23AB2626A2DD00FB1A84 /* NSObject+CIGAMMultipleDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22722626A2DC00FB1A84 /* NSObject+CIGAMMultipleDelegates.h */; };
+		E5FE23AC2626A2DD00FB1A84 /* NSObject+CIGAMMultipleDelegates.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22732626A2DC00FB1A84 /* NSObject+CIGAMMultipleDelegates.m */; };
+		E5FE23AD2626A2DD00FB1A84 /* CIGAMMultipleDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22742626A2DC00FB1A84 /* CIGAMMultipleDelegates.h */; };
+		E5FE23AE2626A2DD00FB1A84 /* CIGAMGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22752626A2DC00FB1A84 /* CIGAMGridView.h */; };
+		E5FE23AF2626A2DD00FB1A84 /* CIGAMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22762626A2DC00FB1A84 /* CIGAMTextField.m */; };
+		E5FE23B02626A2DD00FB1A84 /* CIGAMAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22772626A2DC00FB1A84 /* CIGAMAppearance.m */; };
+		E5FE23B12626A2DD00FB1A84 /* CIGAMTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22782626A2DC00FB1A84 /* CIGAMTestView.m */; };
+		E5FE23B22626A2DD00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22792626A2DC00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.h */; };
+		E5FE23B32626A2DD00FB1A84 /* CIGAMFloatLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE227A2626A2DC00FB1A84 /* CIGAMFloatLayoutView.h */; };
+		E5FE23B42626A2DD00FB1A84 /* CIGAMLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE227C2626A2DC00FB1A84 /* CIGAMLogger.h */; };
+		E5FE23B52626A2DD00FB1A84 /* CIGAMLogNameManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE227D2626A2DC00FB1A84 /* CIGAMLogNameManager.h */; };
+		E5FE23B62626A2DD00FB1A84 /* CIGAMLogItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE227E2626A2DC00FB1A84 /* CIGAMLogItem.h */; };
+		E5FE23B72626A2DD00FB1A84 /* CIGAMLog.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE227F2626A2DC00FB1A84 /* CIGAMLog.h */; };
+		E5FE23B82626A2DD00FB1A84 /* CIGAMLogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22802626A2DC00FB1A84 /* CIGAMLogItem.m */; };
+		E5FE23B92626A2DD00FB1A84 /* CIGAMLogNameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22812626A2DC00FB1A84 /* CIGAMLogNameManager.m */; };
+		E5FE23BA2626A2DD00FB1A84 /* CIGAMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22822626A2DC00FB1A84 /* CIGAMLogger.m */; };
+		E5FE23BB2626A2DD00FB1A84 /* UIView+CIGAMBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22842626A2DC00FB1A84 /* UIView+CIGAMBadge.m */; };
+		E5FE23BC2626A2DD00FB1A84 /* UIBarItem+CIGAMBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22852626A2DC00FB1A84 /* UIBarItem+CIGAMBadge.h */; };
+		E5FE23BD2626A2DD00FB1A84 /* CIGAMBadgeProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22862626A2DC00FB1A84 /* CIGAMBadgeProtocol.h */; };
+		E5FE23BE2626A2DD00FB1A84 /* UIBarItem+CIGAMBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22872626A2DC00FB1A84 /* UIBarItem+CIGAMBadge.m */; };
+		E5FE23BF2626A2DD00FB1A84 /* UIView+CIGAMBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22882626A2DC00FB1A84 /* UIView+CIGAMBadge.h */; };
+		E5FE23C02626A2DD00FB1A84 /* CIGAMPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22892626A2DC00FB1A84 /* CIGAMPieProgressView.m */; };
+		E5FE23C12626A2DD00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE228B2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.h */; };
+		E5FE23C22626A2DD00FB1A84 /* CIGAMScrollAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE228C2626A2DC00FB1A84 /* CIGAMScrollAnimator.h */; };
+		E5FE23C32626A2DD00FB1A84 /* CIGAMNavigationBarScrollingAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE228D2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingAnimator.h */; };
+		E5FE23C42626A2DD00FB1A84 /* CIGAMScrollAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE228E2626A2DC00FB1A84 /* CIGAMScrollAnimator.m */; };
+		E5FE23C52626A2DD00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE228F2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.m */; };
+		E5FE23C62626A2DD00FB1A84 /* CIGAMNavigationBarScrollingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22902626A2DC00FB1A84 /* CIGAMNavigationBarScrollingAnimator.m */; };
+		E5FE23C72626A2DD00FB1A84 /* CIGAMEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22912626A2DC00FB1A84 /* CIGAMEmptyView.h */; };
+		E5FE23C82626A2DD00FB1A84 /* CIGAMSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22922626A2DC00FB1A84 /* CIGAMSearchController.m */; };
+		E5FE23C92626A2DD00FB1A84 /* CIGAMNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22932626A2DC00FB1A84 /* CIGAMNavigationTitleView.m */; };
+		E5FE23CA2626A2DD00FB1A84 /* CIGAMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22942626A2DC00FB1A84 /* CIGAMSegmentedControl.m */; };
+		E5FE23CB2626A2DD00FB1A84 /* CIGAMEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22952626A2DC00FB1A84 /* CIGAMEmotionView.m */; };
+		E5FE23CC2626A2DD00FB1A84 /* CIGAMKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22962626A2DC00FB1A84 /* CIGAMKeyboardManager.m */; };
+		E5FE23CD2626A2DD00FB1A84 /* CIGAMOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22972626A2DC00FB1A84 /* CIGAMOrderedDictionary.m */; };
+		E5FE23CE2626A2DD00FB1A84 /* CIGAMAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22982626A2DC00FB1A84 /* CIGAMAlertController.h */; };
+		E5FE23CF2626A2DD00FB1A84 /* CIGAMVisualEffectView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22992626A2DC00FB1A84 /* CIGAMVisualEffectView.h */; };
+		E5FE23D02626A2DD00FB1A84 /* CIGAMPopupContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE229A2626A2DC00FB1A84 /* CIGAMPopupContainerView.m */; };
+		E5FE23D12626A2DD00FB1A84 /* CIGAMCellHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE229B2626A2DC00FB1A84 /* CIGAMCellHeightCache.m */; };
+		E5FE23D22626A2DD00FB1A84 /* CIGAMTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE229C2626A2DC00FB1A84 /* CIGAMTextView.h */; };
+		E5FE23D32626A2DD00FB1A84 /* CIGAMTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE229D2626A2DC00FB1A84 /* CIGAMTableView.h */; };
+		E5FE23D42626A2DD00FB1A84 /* CIGAMLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE229E2626A2DC00FB1A84 /* CIGAMLabel.h */; };
+		E5FE23D52626A2DD00FB1A84 /* CALayer+CIGAMViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE229F2626A2DC00FB1A84 /* CALayer+CIGAMViewAnimation.m */; };
+		E5FE23D62626A2DD00FB1A84 /* CIGAMModalPresentationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22A02626A2DC00FB1A84 /* CIGAMModalPresentationViewController.h */; };
+		E5FE23D72626A2DD00FB1A84 /* CAAnimation+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22A12626A2DC00FB1A84 /* CAAnimation+CIGAM.h */; };
+		E5FE23D82626A2DD00FB1A84 /* CIGAMZoomImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22A22626A2DC00FB1A84 /* CIGAMZoomImageView.h */; };
+		E5FE23D92626A2DD00FB1A84 /* CIGAMKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22A32626A2DC00FB1A84 /* CIGAMKit.h */; };
+		E5FE23DA2626A2DD00FB1A84 /* UITabBarItem+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22A52626A2DC00FB1A84 /* UITabBarItem+CIGAM.m */; };
+		E5FE23DB2626A2DD00FB1A84 /* NSURL+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22A62626A2DC00FB1A84 /* NSURL+CIGAM.m */; };
+		E5FE23DC2626A2DD00FB1A84 /* UITraitCollection+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22A72626A2DC00FB1A84 /* UITraitCollection+CIGAM.m */; };
+		E5FE23DD2626A2DD00FB1A84 /* UISearchController+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22A82626A2DC00FB1A84 /* UISearchController+CIGAM.m */; };
+		E5FE23DE2626A2DD00FB1A84 /* UILabel+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22A92626A2DC00FB1A84 /* UILabel+CIGAM.h */; };
+		E5FE23DF2626A2DD00FB1A84 /* UIBezierPath+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22AA2626A2DC00FB1A84 /* UIBezierPath+CIGAM.h */; };
+		E5FE23E02626A2DD00FB1A84 /* NSAttributedString+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22AB2626A2DC00FB1A84 /* NSAttributedString+CIGAM.m */; };
+		E5FE23E12626A2DD00FB1A84 /* UIInterface+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22AC2626A2DC00FB1A84 /* UIInterface+CIGAM.m */; };
+		E5FE23E22626A2DD00FB1A84 /* UIColor+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22AD2626A2DC00FB1A84 /* UIColor+CIGAM.h */; };
+		E5FE23E32626A2DD00FB1A84 /* NSMethodSignature+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22AE2626A2DC00FB1A84 /* NSMethodSignature+CIGAM.h */; };
+		E5FE23E42626A2DD00FB1A84 /* CALayer+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22AF2626A2DC00FB1A84 /* CALayer+CIGAM.h */; };
+		E5FE23E52626A2DD00FB1A84 /* UIMenuController+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22B02626A2DC00FB1A84 /* UIMenuController+CIGAM.m */; };
+		E5FE23E62626A2DD00FB1A84 /* NSNumber+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22B12626A2DC00FB1A84 /* NSNumber+CIGAM.h */; };
+		E5FE23E72626A2DD00FB1A84 /* UICollectionView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22B22626A2DC00FB1A84 /* UICollectionView+CIGAM.m */; };
+		E5FE23E82626A2DD00FB1A84 /* UITextView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22B32626A2DC00FB1A84 /* UITextView+CIGAM.m */; };
+		E5FE23E92626A2DD00FB1A84 /* UIWindow+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22B42626A2DC00FB1A84 /* UIWindow+CIGAM.h */; };
+		E5FE23EA2626A2DD00FB1A84 /* NSArray+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22B52626A2DC00FB1A84 /* NSArray+CIGAM.h */; };
+		E5FE23EB2626A2DD00FB1A84 /* UIBarItem+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22B62626A2DC00FB1A84 /* UIBarItem+CIGAM.h */; };
+		E5FE23EC2626A2DD00FB1A84 /* UIButton+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22B72626A2DC00FB1A84 /* UIButton+CIGAM.m */; };
+		E5FE23ED2626A2DD00FB1A84 /* UIActivityIndicatorView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22B82626A2DC00FB1A84 /* UIActivityIndicatorView+CIGAM.m */; };
+		E5FE23EE2626A2DD00FB1A84 /* UITextField+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22B92626A2DC00FB1A84 /* UITextField+CIGAM.h */; };
+		E5FE23EF2626A2DD00FB1A84 /* UITableViewHeaderFooterView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22BA2626A2DC00FB1A84 /* UITableViewHeaderFooterView+CIGAM.h */; };
+		E5FE23F02626A2DD00FB1A84 /* UITextInputTraits+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22BB2626A2DC00FB1A84 /* UITextInputTraits+CIGAM.h */; };
+		E5FE23F12626A2DD00FB1A84 /* NSPointerArray+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22BC2626A2DC00FB1A84 /* NSPointerArray+CIGAM.m */; };
+		E5FE23F22626A2DD00FB1A84 /* UISearchBar+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22BD2626A2DC00FB1A84 /* UISearchBar+CIGAM.h */; };
+		E5FE23F32626A2DD00FB1A84 /* UIVisualEffectView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22BE2626A2DC00FB1A84 /* UIVisualEffectView+CIGAM.m */; };
+		E5FE23F42626A2DD00FB1A84 /* UIView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22BF2626A2DC00FB1A84 /* UIView+CIGAM.h */; };
+		E5FE23F52626A2DD00FB1A84 /* UIFont+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22C02626A2DC00FB1A84 /* UIFont+CIGAM.m */; };
+		E5FE23F62626A2DD00FB1A84 /* UIView+CIGAMBorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C12626A2DC00FB1A84 /* UIView+CIGAMBorder.h */; };
+		E5FE23F72626A2DD00FB1A84 /* NSCharacterSet+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C22626A2DC00FB1A84 /* NSCharacterSet+CIGAM.h */; };
+		E5FE23F82626A2DD00FB1A84 /* UINavigationBar+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C32626A2DC00FB1A84 /* UINavigationBar+CIGAM.h */; };
+		E5FE23F92626A2DD00FB1A84 /* UINavigationController+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C42626A2DC00FB1A84 /* UINavigationController+CIGAM.h */; };
+		E5FE23FA2626A2DD00FB1A84 /* UIGestureRecognizer+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C52626A2DC00FB1A84 /* UIGestureRecognizer+CIGAM.h */; };
+		E5FE23FB2626A2DD00FB1A84 /* NSParagraphStyle+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C62626A2DC00FB1A84 /* NSParagraphStyle+CIGAM.h */; };
+		E5FE23FC2626A2DD00FB1A84 /* UINavigationItem+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22C72626A2DC00FB1A84 /* UINavigationItem+CIGAM.m */; };
+		E5FE23FD2626A2DD00FB1A84 /* UIImageView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C82626A2DC00FB1A84 /* UIImageView+CIGAM.h */; };
+		E5FE23FE2626A2DD00FB1A84 /* UICollectionViewCell+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22C92626A2DC00FB1A84 /* UICollectionViewCell+CIGAM.h */; };
+		E5FE23FF2626A2DD00FB1A84 /* UIControl+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22CA2626A2DC00FB1A84 /* UIControl+CIGAM.m */; };
+		E5FE24002626A2DD00FB1A84 /* UISwitch+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22CB2626A2DC00FB1A84 /* UISwitch+CIGAM.m */; };
+		E5FE24012626A2DD00FB1A84 /* UIViewController+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22CC2626A2DC00FB1A84 /* UIViewController+CIGAM.m */; };
+		E5FE24022626A2DD00FB1A84 /* UIScrollView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22CD2626A2DC00FB1A84 /* UIScrollView+CIGAM.h */; };
+		E5FE24032626A2DD00FB1A84 /* NSString+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22CE2626A2DC00FB1A84 /* NSString+CIGAM.m */; };
+		E5FE24042626A2DD00FB1A84 /* NSObject+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22CF2626A2DC00FB1A84 /* NSObject+CIGAM.h */; };
+		E5FE24052626A2DD00FB1A84 /* UITableViewCell+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22D02626A2DC00FB1A84 /* UITableViewCell+CIGAM.m */; };
+		E5FE24062626A2DD00FB1A84 /* UITabBar+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22D12626A2DC00FB1A84 /* UITabBar+CIGAM.m */; };
+		E5FE24072626A2DD00FB1A84 /* UIImage+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22D22626A2DC00FB1A84 /* UIImage+CIGAM.m */; };
+		E5FE24082626A2DD00FB1A84 /* UITableView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22D32626A2DC00FB1A84 /* UITableView+CIGAM.h */; };
+		E5FE24092626A2DD00FB1A84 /* UIMenuController+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22D42626A2DC00FB1A84 /* UIMenuController+CIGAM.h */; };
+		E5FE240A2626A2DD00FB1A84 /* CALayer+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22D52626A2DC00FB1A84 /* CALayer+CIGAM.m */; };
+		E5FE240B2626A2DD00FB1A84 /* UIInterface+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22D62626A2DC00FB1A84 /* UIInterface+CIGAM.h */; };
+		E5FE240C2626A2DD00FB1A84 /* NSAttributedString+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22D72626A2DC00FB1A84 /* NSAttributedString+CIGAM.h */; };
+		E5FE240D2626A2DD00FB1A84 /* UIColor+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22D82626A2DC00FB1A84 /* UIColor+CIGAM.m */; };
+		E5FE240E2626A2DD00FB1A84 /* NSMethodSignature+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22D92626A2DC00FB1A84 /* NSMethodSignature+CIGAM.m */; };
+		E5FE240F2626A2DD00FB1A84 /* UIBezierPath+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22DA2626A2DC00FB1A84 /* UIBezierPath+CIGAM.m */; };
+		E5FE24102626A2DD00FB1A84 /* UILabel+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22DB2626A2DC00FB1A84 /* UILabel+CIGAM.m */; };
+		E5FE24112626A2DD00FB1A84 /* UISearchController+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22DC2626A2DC00FB1A84 /* UISearchController+CIGAM.h */; };
+		E5FE24122626A2DD00FB1A84 /* NSURL+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22DD2626A2DC00FB1A84 /* NSURL+CIGAM.h */; };
+		E5FE24132626A2DD00FB1A84 /* UITraitCollection+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22DE2626A2DC00FB1A84 /* UITraitCollection+CIGAM.h */; };
+		E5FE24142626A2DD00FB1A84 /* UITabBarItem+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22DF2626A2DC00FB1A84 /* UITabBarItem+CIGAM.h */; };
+		E5FE24152626A2DD00FB1A84 /* UITextInputTraits+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E02626A2DC00FB1A84 /* UITextInputTraits+CIGAM.m */; };
+		E5FE24162626A2DD00FB1A84 /* UITextField+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E12626A2DC00FB1A84 /* UITextField+CIGAM.m */; };
+		E5FE24172626A2DD00FB1A84 /* UITableViewHeaderFooterView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E22626A2DC00FB1A84 /* UITableViewHeaderFooterView+CIGAM.m */; };
+		E5FE24182626A2DD00FB1A84 /* UIActivityIndicatorView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22E32626A2DC00FB1A84 /* UIActivityIndicatorView+CIGAM.h */; };
+		E5FE24192626A2DD00FB1A84 /* UIBarItem+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E42626A2DC00FB1A84 /* UIBarItem+CIGAM.m */; };
+		E5FE241A2626A2DD00FB1A84 /* UIButton+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22E52626A2DC00FB1A84 /* UIButton+CIGAM.h */; };
+		E5FE241B2626A2DD00FB1A84 /* NSArray+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E62626A2DC00FB1A84 /* NSArray+CIGAM.m */; };
+		E5FE241C2626A2DD00FB1A84 /* UIWindow+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22E72626A2DC00FB1A84 /* UIWindow+CIGAM.m */; };
+		E5FE241D2626A2DD00FB1A84 /* UITextView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22E82626A2DC00FB1A84 /* UITextView+CIGAM.h */; };
+		E5FE241E2626A2DD00FB1A84 /* UICollectionView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22E92626A2DC00FB1A84 /* UICollectionView+CIGAM.h */; };
+		E5FE241F2626A2DD00FB1A84 /* NSNumber+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22EA2626A2DC00FB1A84 /* NSNumber+CIGAM.m */; };
+		E5FE24202626A2DD00FB1A84 /* UINavigationItem+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22EB2626A2DC00FB1A84 /* UINavigationItem+CIGAM.h */; };
+		E5FE24212626A2DD00FB1A84 /* NSParagraphStyle+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22EC2626A2DC00FB1A84 /* NSParagraphStyle+CIGAM.m */; };
+		E5FE24222626A2DD00FB1A84 /* UIGestureRecognizer+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22ED2626A2DC00FB1A84 /* UIGestureRecognizer+CIGAM.m */; };
+		E5FE24232626A2DD00FB1A84 /* UINavigationController+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22EE2626A2DC00FB1A84 /* UINavigationController+CIGAM.m */; };
+		E5FE24242626A2DD00FB1A84 /* UINavigationBar+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22EF2626A2DC00FB1A84 /* UINavigationBar+CIGAM.m */; };
+		E5FE24252626A2DD00FB1A84 /* NSCharacterSet+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22F02626A2DC00FB1A84 /* NSCharacterSet+CIGAM.m */; };
+		E5FE24262626A2DD00FB1A84 /* UIView+CIGAMBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22F12626A2DC00FB1A84 /* UIView+CIGAMBorder.m */; };
+		E5FE24272626A2DD00FB1A84 /* UIFont+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22F22626A2DC00FB1A84 /* UIFont+CIGAM.h */; };
+		E5FE24282626A2DD00FB1A84 /* UIView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22F32626A2DC00FB1A84 /* UIView+CIGAM.m */; };
+		E5FE24292626A2DD00FB1A84 /* UISearchBar+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22F42626A2DC00FB1A84 /* UISearchBar+CIGAM.m */; };
+		E5FE242A2626A2DD00FB1A84 /* UIVisualEffectView+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22F52626A2DC00FB1A84 /* UIVisualEffectView+CIGAM.h */; };
+		E5FE242B2626A2DD00FB1A84 /* NSPointerArray+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22F62626A2DC00FB1A84 /* NSPointerArray+CIGAM.h */; };
+		E5FE242C2626A2DD00FB1A84 /* UIImage+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22F72626A2DC00FB1A84 /* UIImage+CIGAM.h */; };
+		E5FE242D2626A2DD00FB1A84 /* UITableView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22F82626A2DC00FB1A84 /* UITableView+CIGAM.m */; };
+		E5FE242E2626A2DD00FB1A84 /* UITabBar+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22F92626A2DC00FB1A84 /* UITabBar+CIGAM.h */; };
+		E5FE242F2626A2DD00FB1A84 /* UITableViewCell+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22FA2626A2DC00FB1A84 /* UITableViewCell+CIGAM.h */; };
+		E5FE24302626A2DD00FB1A84 /* NSString+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22FB2626A2DC00FB1A84 /* NSString+CIGAM.h */; };
+		E5FE24312626A2DD00FB1A84 /* NSObject+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22FC2626A2DC00FB1A84 /* NSObject+CIGAM.m */; };
+		E5FE24322626A2DD00FB1A84 /* UIScrollView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE22FD2626A2DC00FB1A84 /* UIScrollView+CIGAM.m */; };
+		E5FE24332626A2DD00FB1A84 /* UIViewController+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22FE2626A2DC00FB1A84 /* UIViewController+CIGAM.h */; };
+		E5FE24342626A2DD00FB1A84 /* UIControl+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE22FF2626A2DC00FB1A84 /* UIControl+CIGAM.h */; };
+		E5FE24352626A2DD00FB1A84 /* UISwitch+CIGAM.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE23002626A2DC00FB1A84 /* UISwitch+CIGAM.h */; };
+		E5FE24362626A2DD00FB1A84 /* UICollectionViewCell+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE23012626A2DC00FB1A84 /* UICollectionViewCell+CIGAM.m */; };
+		E5FE24372626A2DD00FB1A84 /* UIImageView+CIGAM.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE23022626A2DC00FB1A84 /* UIImageView+CIGAM.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1175,6 +1484,315 @@
 		E5E68CBD262061340061751B /* YzChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzChatController.m; sourceTree = "<group>"; };
 		E5EDCA7A261B3C3D00465C96 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		E5EDCA7B261B3C3D00465C96 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
+		E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMHelper.m; sourceTree = "<group>"; };
+		E5FE21BB2626A2DB00FB1A84 /* CIGAMLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLab.h; sourceTree = "<group>"; };
+		E5FE21BC2626A2DB00FB1A84 /* CIGAMConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMConfiguration.m; sourceTree = "<group>"; };
+		E5FE21BD2626A2DB00FB1A84 /* CIGAMRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMRuntime.m; sourceTree = "<group>"; };
+		E5FE21BE2626A2DB00FB1A84 /* CIGAMConfigurationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMConfigurationMacros.h; sourceTree = "<group>"; };
+		E5FE21BF2626A2DB00FB1A84 /* CIGAMCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCore.h; sourceTree = "<group>"; };
+		E5FE21C02626A2DB00FB1A84 /* CIGAMHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMHelper.h; sourceTree = "<group>"; };
+		E5FE21C12626A2DB00FB1A84 /* CIGAMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMRuntime.h; sourceTree = "<group>"; };
+		E5FE21C22626A2DB00FB1A84 /* CIGAMConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMConfiguration.h; sourceTree = "<group>"; };
+		E5FE21C32626A2DB00FB1A84 /* CIGAMCommonDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCommonDefines.h; sourceTree = "<group>"; };
+		E5FE21C52626A2DB00FB1A84 /* CIGAMCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMCommonViewController.m; sourceTree = "<group>"; };
+		E5FE21C62626A2DB00FB1A84 /* CIGAMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMNavigationController.h; sourceTree = "<group>"; };
+		E5FE21C72626A2DB00FB1A84 /* CIGAMTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTabBarViewController.h; sourceTree = "<group>"; };
+		E5FE21C82626A2DB00FB1A84 /* CIGAMCommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMCommonTableViewController.m; sourceTree = "<group>"; };
+		E5FE21C92626A2DB00FB1A84 /* CIGAMCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCommonViewController.h; sourceTree = "<group>"; };
+		E5FE21CA2626A2DB00FB1A84 /* CIGAMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMNavigationController.m; sourceTree = "<group>"; };
+		E5FE21CB2626A2DB00FB1A84 /* CIGAMCommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCommonTableViewController.h; sourceTree = "<group>"; };
+		E5FE21CC2626A2DB00FB1A84 /* CIGAMTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTabBarViewController.m; sourceTree = "<group>"; };
+		E5FE21CE2626A2DB00FB1A84 /* CIGAMCollectionViewPagingLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMCollectionViewPagingLayout.m; sourceTree = "<group>"; };
+		E5FE21D02626A2DB00FB1A84 /* CIGAMToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMToolbarButton.h; sourceTree = "<group>"; };
+		E5FE21D12626A2DB00FB1A84 /* CIGAMLinkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMLinkButton.m; sourceTree = "<group>"; };
+		E5FE21D22626A2DB00FB1A84 /* CIGAMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMButton.h; sourceTree = "<group>"; };
+		E5FE21D32626A2DB00FB1A84 /* CIGAMNavigationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMNavigationButton.m; sourceTree = "<group>"; };
+		E5FE21D42626A2DB00FB1A84 /* CIGAMGhostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMGhostButton.m; sourceTree = "<group>"; };
+		E5FE21D52626A2DB00FB1A84 /* CIGAMFillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMFillButton.m; sourceTree = "<group>"; };
+		E5FE21D62626A2DB00FB1A84 /* CIGAMToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMToolbarButton.m; sourceTree = "<group>"; };
+		E5FE21D72626A2DB00FB1A84 /* CIGAMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMButton.m; sourceTree = "<group>"; };
+		E5FE21D82626A2DB00FB1A84 /* CIGAMLinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLinkButton.h; sourceTree = "<group>"; };
+		E5FE21D92626A2DB00FB1A84 /* CIGAMGhostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMGhostButton.h; sourceTree = "<group>"; };
+		E5FE21DA2626A2DB00FB1A84 /* CIGAMNavigationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMNavigationButton.h; sourceTree = "<group>"; };
+		E5FE21DB2626A2DB00FB1A84 /* CIGAMFillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMFillButton.h; sourceTree = "<group>"; };
+		E5FE21DC2626A2DB00FB1A84 /* CIGAMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTableViewCell.h; sourceTree = "<group>"; };
+		E5FE21DE2626A2DB00FB1A84 /* CIGAMStaticTableViewCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMStaticTableViewCellDataSource.m; sourceTree = "<group>"; };
+		E5FE21DF2626A2DB00FB1A84 /* CIGAMStaticTableViewCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMStaticTableViewCellData.h; sourceTree = "<group>"; };
+		E5FE21E02626A2DB00FB1A84 /* UITableView+CIGAMStaticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CIGAMStaticCell.h"; sourceTree = "<group>"; };
+		E5FE21E12626A2DB00FB1A84 /* CIGAMStaticTableViewCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMStaticTableViewCellDataSource.h; sourceTree = "<group>"; };
+		E5FE21E22626A2DB00FB1A84 /* CIGAMStaticTableViewCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMStaticTableViewCellData.m; sourceTree = "<group>"; };
+		E5FE21E32626A2DB00FB1A84 /* UITableView+CIGAMStaticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CIGAMStaticCell.m"; sourceTree = "<group>"; };
+		E5FE21E52626A2DB00FB1A84 /* CIGAMPopupMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMPopupMenuView.m; sourceTree = "<group>"; };
+		E5FE21E62626A2DB00FB1A84 /* CIGAMPopupMenuBaseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMPopupMenuBaseItem.h; sourceTree = "<group>"; };
+		E5FE21E72626A2DB00FB1A84 /* CIGAMPopupMenuButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMPopupMenuButtonItem.h; sourceTree = "<group>"; };
+		E5FE21E82626A2DB00FB1A84 /* CIGAMPopupMenuItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMPopupMenuItemProtocol.h; sourceTree = "<group>"; };
+		E5FE21E92626A2DB00FB1A84 /* CIGAMPopupMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMPopupMenuView.h; sourceTree = "<group>"; };
+		E5FE21EA2626A2DB00FB1A84 /* CIGAMPopupMenuButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMPopupMenuButtonItem.m; sourceTree = "<group>"; };
+		E5FE21EB2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMPopupMenuBaseItem.m; sourceTree = "<group>"; };
+		E5FE21EC2626A2DC00FB1A84 /* CIGAMEmotionInputManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMEmotionInputManager.m; sourceTree = "<group>"; };
+		E5FE21ED2626A2DC00FB1A84 /* CIGAMWeakObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMWeakObjectContainer.h; sourceTree = "<group>"; };
+		E5FE21EE2626A2DC00FB1A84 /* CIGAMMoreOperationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMMoreOperationController.h; sourceTree = "<group>"; };
+		E5FE21EF2626A2DC00FB1A84 /* CIGAMSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMSlider.h; sourceTree = "<group>"; };
+		E5FE21F02626A2DC00FB1A84 /* CIGAMSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMSearchBar.h; sourceTree = "<group>"; };
+		E5FE21F12626A2DC00FB1A84 /* CIGAMLogManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMLogManagerViewController.m; sourceTree = "<group>"; };
+		E5FE21F32626A2DC00FB1A84 /* CIGAMConsoleToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMConsoleToolbar.h; sourceTree = "<group>"; };
+		E5FE21F42626A2DC00FB1A84 /* CIGAMConsoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMConsoleViewController.m; sourceTree = "<group>"; };
+		E5FE21F52626A2DC00FB1A84 /* CIGAMConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMConsole.h; sourceTree = "<group>"; };
+		E5FE21F62626A2DC00FB1A84 /* CIGAMLog+CIGAMConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIGAMLog+CIGAMConsole.m"; sourceTree = "<group>"; };
+		E5FE21F72626A2DC00FB1A84 /* CIGAMConsoleToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMConsoleToolbar.m; sourceTree = "<group>"; };
+		E5FE21F82626A2DC00FB1A84 /* CIGAMConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMConsole.m; sourceTree = "<group>"; };
+		E5FE21F92626A2DC00FB1A84 /* CIGAMConsoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMConsoleViewController.h; sourceTree = "<group>"; };
+		E5FE21FA2626A2DC00FB1A84 /* CIGAMLog+CIGAMConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIGAMLog+CIGAMConsole.h"; sourceTree = "<group>"; };
+		E5FE21FC2626A2DC00FB1A84 /* CIGAMToastAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMToastAnimator.h; sourceTree = "<group>"; };
+		E5FE21FD2626A2DC00FB1A84 /* CIGAMToastBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMToastBackgroundView.m; sourceTree = "<group>"; };
+		E5FE21FE2626A2DC00FB1A84 /* CIGAMToastContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMToastContentView.h; sourceTree = "<group>"; };
+		E5FE21FF2626A2DC00FB1A84 /* CIGAMToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMToastView.h; sourceTree = "<group>"; };
+		E5FE22002626A2DC00FB1A84 /* CIGAMToastAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMToastAnimator.m; sourceTree = "<group>"; };
+		E5FE22012626A2DC00FB1A84 /* CIGAMToastBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMToastBackgroundView.h; sourceTree = "<group>"; };
+		E5FE22022626A2DC00FB1A84 /* CIGAMToastContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMToastContentView.m; sourceTree = "<group>"; };
+		E5FE22032626A2DC00FB1A84 /* CIGAMToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMToastView.m; sourceTree = "<group>"; };
+		E5FE22052626A2DC00FB1A84 /* CIGAMCellSizeKeyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCellSizeKeyCache.h; sourceTree = "<group>"; };
+		E5FE22062626A2DC00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CIGAMCellSizeKeyCache.h"; sourceTree = "<group>"; };
+		E5FE22072626A2DC00FB1A84 /* CIGAMCellSizeKeyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMCellSizeKeyCache.m; sourceTree = "<group>"; };
+		E5FE22082626A2DC00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CIGAMCellSizeKeyCache.m"; sourceTree = "<group>"; };
+		E5FE22092626A2DC00FB1A84 /* CIGAMTableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTableViewHeaderFooterView.h; sourceTree = "<group>"; };
+		E5FE220B2626A2DC00FB1A84 /* CIGAMImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePreviewViewController.m; sourceTree = "<group>"; };
+		E5FE220C2626A2DC00FB1A84 /* CIGAMImagePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePreviewView.h; sourceTree = "<group>"; };
+		E5FE220D2626A2DC00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePreviewViewTransitionAnimator.h; sourceTree = "<group>"; };
+		E5FE220E2626A2DC00FB1A84 /* CIGAMImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePreviewViewController.h; sourceTree = "<group>"; };
+		E5FE220F2626A2DC00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePreviewViewTransitionAnimator.m; sourceTree = "<group>"; };
+		E5FE22102626A2DC00FB1A84 /* CIGAMImagePreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePreviewView.m; sourceTree = "<group>"; };
+		E5FE22112626A2DC00FB1A84 /* CIGAMTips.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTips.m; sourceTree = "<group>"; };
+		E5FE22122626A2DC00FB1A84 /* CIGAMMarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMMarqueeLabel.m; sourceTree = "<group>"; };
+		E5FE22142626A2DC00FB1A84 /* CIGAMEasings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMEasings.h; sourceTree = "<group>"; };
+		E5FE22152626A2DC00FB1A84 /* CIGAMDisplayLinkAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMDisplayLinkAnimation.h; sourceTree = "<group>"; };
+		E5FE22162626A2DC00FB1A84 /* CIGAMAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAnimationHelper.h; sourceTree = "<group>"; };
+		E5FE22172626A2DC00FB1A84 /* CIGAMDisplayLinkAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMDisplayLinkAnimation.m; sourceTree = "<group>"; };
+		E5FE22182626A2DC00FB1A84 /* CIGAMAnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAnimationHelper.m; sourceTree = "<group>"; };
+		E5FE22192626A2DC00FB1A84 /* CIGAMTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTestView.h; sourceTree = "<group>"; };
+		E5FE221A2626A2DC00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIGAMLogger+CIGAMConfigurationTemplate.m"; sourceTree = "<group>"; };
+		E5FE221B2626A2DC00FB1A84 /* CIGAMAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAppearance.h; sourceTree = "<group>"; };
+		E5FE221C2626A2DC00FB1A84 /* CIGAMFloatLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMFloatLayoutView.m; sourceTree = "<group>"; };
+		E5FE221E2626A2DC00FB1A84 /* CIGAMAssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAssetsManager.h; sourceTree = "<group>"; };
+		E5FE221F2626A2DC00FB1A84 /* CIGAMAssetsGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAssetsGroup.h; sourceTree = "<group>"; };
+		E5FE22202626A2DC00FB1A84 /* CIGAMAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAsset.h; sourceTree = "<group>"; };
+		E5FE22212626A2DC00FB1A84 /* CIGAMAssetsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAssetsManager.m; sourceTree = "<group>"; };
+		E5FE22222626A2DC00FB1A84 /* CIGAMAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAsset.m; sourceTree = "<group>"; };
+		E5FE22232626A2DC00FB1A84 /* CIGAMAssetsGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAssetsGroup.m; sourceTree = "<group>"; };
+		E5FE22242626A2DC00FB1A84 /* CIGAMGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMGridView.m; sourceTree = "<group>"; };
+		E5FE22252626A2DC00FB1A84 /* CIGAMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTextField.h; sourceTree = "<group>"; };
+		E5FE22262626A2DC00FB1A84 /* CIGAMDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMDialogViewController.m; sourceTree = "<group>"; };
+		E5FE22272626A2DC00FB1A84 /* CIGAMWindowSizeMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMWindowSizeMonitor.m; sourceTree = "<group>"; };
+		E5FE22282626A2DC00FB1A84 /* CIGAMKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMKeyboardManager.h; sourceTree = "<group>"; };
+		E5FE22292626A2DC00FB1A84 /* CIGAMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMSegmentedControl.h; sourceTree = "<group>"; };
+		E5FE222B2626A2DC00FB1A84 /* UINavigationController+NavigationBarTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NavigationBarTransition.h"; sourceTree = "<group>"; };
+		E5FE222C2626A2DC00FB1A84 /* UINavigationBar+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Transition.m"; sourceTree = "<group>"; };
+		E5FE222D2626A2DC00FB1A84 /* UINavigationController+NavigationBarTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NavigationBarTransition.m"; sourceTree = "<group>"; };
+		E5FE222E2626A2DC00FB1A84 /* UINavigationBar+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Transition.h"; sourceTree = "<group>"; };
+		E5FE222F2626A2DC00FB1A84 /* CIGAMEmotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMEmotionView.h; sourceTree = "<group>"; };
+		E5FE22302626A2DC00FB1A84 /* CIGAMNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMNavigationTitleView.h; sourceTree = "<group>"; };
+		E5FE22312626A2DC00FB1A84 /* CIGAMEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMEmptyView.m; sourceTree = "<group>"; };
+		E5FE22322626A2DC00FB1A84 /* CIGAMSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMSearchController.h; sourceTree = "<group>"; };
+		E5FE22332626A2DC00FB1A84 /* CIGAMPieProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMPieProgressView.h; sourceTree = "<group>"; };
+		E5FE22342626A2DC00FB1A84 /* CIGAMZoomImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMZoomImageView.m; sourceTree = "<group>"; };
+		E5FE22352626A2DC00FB1A84 /* CIGAMModalPresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMModalPresentationViewController.m; sourceTree = "<group>"; };
+		E5FE22362626A2DC00FB1A84 /* CALayer+CIGAMViewAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CIGAMViewAnimation.h"; sourceTree = "<group>"; };
+		E5FE22372626A2DC00FB1A84 /* CAAnimation+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22382626A2DC00FB1A84 /* CIGAMLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMLabel.m; sourceTree = "<group>"; };
+		E5FE22392626A2DC00FB1A84 /* CIGAMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTableView.m; sourceTree = "<group>"; };
+		E5FE223A2626A2DC00FB1A84 /* CIGAMTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTextView.m; sourceTree = "<group>"; };
+		E5FE223B2626A2DC00FB1A84 /* CIGAMCellHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCellHeightCache.h; sourceTree = "<group>"; };
+		E5FE223C2626A2DC00FB1A84 /* CIGAMPopupContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMPopupContainerView.h; sourceTree = "<group>"; };
+		E5FE223E2626A2DC00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CIGAMCellHeightKeyCache.m"; sourceTree = "<group>"; };
+		E5FE223F2626A2DC00FB1A84 /* CIGAMCellHeightKeyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMCellHeightKeyCache.m; sourceTree = "<group>"; };
+		E5FE22402626A2DC00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CIGAMCellHeightKeyCache.h"; sourceTree = "<group>"; };
+		E5FE22412626A2DC00FB1A84 /* CIGAMCellHeightKeyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCellHeightKeyCache.h; sourceTree = "<group>"; };
+		E5FE22432626A2DC00FB1A84 /* CIGAMImagePickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePickerCollectionViewCell.m; sourceTree = "<group>"; };
+		E5FE22442626A2DC00FB1A84 /* CIGAMImagePickerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePickerHelper.m; sourceTree = "<group>"; };
+		E5FE22452626A2DC00FB1A84 /* CIGAMAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAlbumViewController.h; sourceTree = "<group>"; };
+		E5FE22462626A2DC00FB1A84 /* CIGAMImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePickerViewController.h; sourceTree = "<group>"; };
+		E5FE22472626A2DC00FB1A84 /* CIGAMImagePickerPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePickerPreviewViewController.h; sourceTree = "<group>"; };
+		E5FE22482626A2DC00FB1A84 /* CIGAMImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePickerViewController.m; sourceTree = "<group>"; };
+		E5FE22492626A2DC00FB1A84 /* CIGAMAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAlbumViewController.m; sourceTree = "<group>"; };
+		E5FE224A2626A2DC00FB1A84 /* CIGAMImagePickerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePickerHelper.h; sourceTree = "<group>"; };
+		E5FE224B2626A2DC00FB1A84 /* CIGAMImagePickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMImagePickerCollectionViewCell.h; sourceTree = "<group>"; };
+		E5FE224C2626A2DC00FB1A84 /* CIGAMImagePickerPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMImagePickerPreviewViewController.m; sourceTree = "<group>"; };
+		E5FE224D2626A2DC00FB1A84 /* CIGAMVisualEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMVisualEffectView.m; sourceTree = "<group>"; };
+		E5FE224E2626A2DC00FB1A84 /* CIGAMOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMOrderedDictionary.h; sourceTree = "<group>"; };
+		E5FE224F2626A2DC00FB1A84 /* CIGAMAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAlertController.m; sourceTree = "<group>"; };
+		E5FE22502626A2DC00FB1A84 /* CIGAMMarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMMarqueeLabel.h; sourceTree = "<group>"; };
+		E5FE22512626A2DC00FB1A84 /* CIGAMTips.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTips.h; sourceTree = "<group>"; };
+		E5FE22522626A2DC00FB1A84 /* CIGAMTableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTableViewHeaderFooterView.m; sourceTree = "<group>"; };
+		E5FE22532626A2DC00FB1A84 /* CIGAMSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMSearchBar.m; sourceTree = "<group>"; };
+		E5FE22542626A2DC00FB1A84 /* CIGAMLogManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLogManagerViewController.h; sourceTree = "<group>"; };
+		E5FE22552626A2DC00FB1A84 /* CIGAMTableViewProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTableViewProtocols.h; sourceTree = "<group>"; };
+		E5FE22562626A2DC00FB1A84 /* CIGAMMoreOperationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMMoreOperationController.m; sourceTree = "<group>"; };
+		E5FE22572626A2DC00FB1A84 /* CIGAMSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMSlider.m; sourceTree = "<group>"; };
+		E5FE22582626A2DC00FB1A84 /* CIGAMEmotionInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMEmotionInputManager.h; sourceTree = "<group>"; };
+		E5FE22592626A2DC00FB1A84 /* CIGAMWeakObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMWeakObjectContainer.m; sourceTree = "<group>"; };
+		E5FE225A2626A2DC00FB1A84 /* CIGAMCollectionViewPagingLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMCollectionViewPagingLayout.h; sourceTree = "<group>"; };
+		E5FE225B2626A2DC00FB1A84 /* CIGAMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTableViewCell.m; sourceTree = "<group>"; };
+		E5FE225C2626A2DC00FB1A84 /* CIGAMWindowSizeMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMWindowSizeMonitor.h; sourceTree = "<group>"; };
+		E5FE225E2626A2DC00FB1A84 /* CIGAMThemePrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMThemePrivate.m; sourceTree = "<group>"; };
+		E5FE225F2626A2DC00FB1A84 /* CIGAMThemeManagerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMThemeManagerCenter.h; sourceTree = "<group>"; };
+		E5FE22602626A2DC00FB1A84 /* UIViewController+CIGAMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CIGAMTheme.h"; sourceTree = "<group>"; };
+		E5FE22612626A2DC00FB1A84 /* CIGAMThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMThemeManager.m; sourceTree = "<group>"; };
+		E5FE22622626A2DC00FB1A84 /* UIColor+CIGAMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIGAMTheme.m"; sourceTree = "<group>"; };
+		E5FE22632626A2DC00FB1A84 /* UIView+CIGAMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CIGAMTheme.m"; sourceTree = "<group>"; };
+		E5FE22642626A2DC00FB1A84 /* UIVisualEffect+CIGAMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIVisualEffect+CIGAMTheme.m"; sourceTree = "<group>"; };
+		E5FE22652626A2DC00FB1A84 /* UIImage+CIGAMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CIGAMTheme.h"; sourceTree = "<group>"; };
+		E5FE22662626A2DC00FB1A84 /* CIGAMThemeManagerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMThemeManagerCenter.m; sourceTree = "<group>"; };
+		E5FE22672626A2DC00FB1A84 /* UIViewController+CIGAMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CIGAMTheme.m"; sourceTree = "<group>"; };
+		E5FE22682626A2DC00FB1A84 /* CIGAMThemePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMThemePrivate.h; sourceTree = "<group>"; };
+		E5FE22692626A2DC00FB1A84 /* UIView+CIGAMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CIGAMTheme.h"; sourceTree = "<group>"; };
+		E5FE226A2626A2DC00FB1A84 /* UIColor+CIGAMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CIGAMTheme.h"; sourceTree = "<group>"; };
+		E5FE226B2626A2DC00FB1A84 /* CIGAMThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMThemeManager.h; sourceTree = "<group>"; };
+		E5FE226C2626A2DC00FB1A84 /* UIVisualEffect+CIGAMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIVisualEffect+CIGAMTheme.h"; sourceTree = "<group>"; };
+		E5FE226D2626A2DC00FB1A84 /* UIImage+CIGAMTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CIGAMTheme.m"; sourceTree = "<group>"; };
+		E5FE226E2626A2DC00FB1A84 /* CIGAMTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTheme.h; sourceTree = "<group>"; };
+		E5FE226F2626A2DC00FB1A84 /* CIGAMDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMDialogViewController.h; sourceTree = "<group>"; };
+		E5FE22712626A2DC00FB1A84 /* CIGAMMultipleDelegates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMMultipleDelegates.m; sourceTree = "<group>"; };
+		E5FE22722626A2DC00FB1A84 /* NSObject+CIGAMMultipleDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CIGAMMultipleDelegates.h"; sourceTree = "<group>"; };
+		E5FE22732626A2DC00FB1A84 /* NSObject+CIGAMMultipleDelegates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CIGAMMultipleDelegates.m"; sourceTree = "<group>"; };
+		E5FE22742626A2DC00FB1A84 /* CIGAMMultipleDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMMultipleDelegates.h; sourceTree = "<group>"; };
+		E5FE22752626A2DC00FB1A84 /* CIGAMGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMGridView.h; sourceTree = "<group>"; };
+		E5FE22762626A2DC00FB1A84 /* CIGAMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTextField.m; sourceTree = "<group>"; };
+		E5FE22772626A2DC00FB1A84 /* CIGAMAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMAppearance.m; sourceTree = "<group>"; };
+		E5FE22782626A2DC00FB1A84 /* CIGAMTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMTestView.m; sourceTree = "<group>"; };
+		E5FE22792626A2DC00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIGAMLogger+CIGAMConfigurationTemplate.h"; sourceTree = "<group>"; };
+		E5FE227A2626A2DC00FB1A84 /* CIGAMFloatLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMFloatLayoutView.h; sourceTree = "<group>"; };
+		E5FE227C2626A2DC00FB1A84 /* CIGAMLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLogger.h; sourceTree = "<group>"; };
+		E5FE227D2626A2DC00FB1A84 /* CIGAMLogNameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLogNameManager.h; sourceTree = "<group>"; };
+		E5FE227E2626A2DC00FB1A84 /* CIGAMLogItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLogItem.h; sourceTree = "<group>"; };
+		E5FE227F2626A2DC00FB1A84 /* CIGAMLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLog.h; sourceTree = "<group>"; };
+		E5FE22802626A2DC00FB1A84 /* CIGAMLogItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMLogItem.m; sourceTree = "<group>"; };
+		E5FE22812626A2DC00FB1A84 /* CIGAMLogNameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMLogNameManager.m; sourceTree = "<group>"; };
+		E5FE22822626A2DC00FB1A84 /* CIGAMLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMLogger.m; sourceTree = "<group>"; };
+		E5FE22842626A2DC00FB1A84 /* UIView+CIGAMBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CIGAMBadge.m"; sourceTree = "<group>"; };
+		E5FE22852626A2DC00FB1A84 /* UIBarItem+CIGAMBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarItem+CIGAMBadge.h"; sourceTree = "<group>"; };
+		E5FE22862626A2DC00FB1A84 /* CIGAMBadgeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMBadgeProtocol.h; sourceTree = "<group>"; };
+		E5FE22872626A2DC00FB1A84 /* UIBarItem+CIGAMBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarItem+CIGAMBadge.m"; sourceTree = "<group>"; };
+		E5FE22882626A2DC00FB1A84 /* UIView+CIGAMBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CIGAMBadge.h"; sourceTree = "<group>"; };
+		E5FE22892626A2DC00FB1A84 /* CIGAMPieProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMPieProgressView.m; sourceTree = "<group>"; };
+		E5FE228B2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMNavigationBarScrollingSnapAnimator.h; sourceTree = "<group>"; };
+		E5FE228C2626A2DC00FB1A84 /* CIGAMScrollAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMScrollAnimator.h; sourceTree = "<group>"; };
+		E5FE228D2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMNavigationBarScrollingAnimator.h; sourceTree = "<group>"; };
+		E5FE228E2626A2DC00FB1A84 /* CIGAMScrollAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMScrollAnimator.m; sourceTree = "<group>"; };
+		E5FE228F2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMNavigationBarScrollingSnapAnimator.m; sourceTree = "<group>"; };
+		E5FE22902626A2DC00FB1A84 /* CIGAMNavigationBarScrollingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMNavigationBarScrollingAnimator.m; sourceTree = "<group>"; };
+		E5FE22912626A2DC00FB1A84 /* CIGAMEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMEmptyView.h; sourceTree = "<group>"; };
+		E5FE22922626A2DC00FB1A84 /* CIGAMSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMSearchController.m; sourceTree = "<group>"; };
+		E5FE22932626A2DC00FB1A84 /* CIGAMNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMNavigationTitleView.m; sourceTree = "<group>"; };
+		E5FE22942626A2DC00FB1A84 /* CIGAMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMSegmentedControl.m; sourceTree = "<group>"; };
+		E5FE22952626A2DC00FB1A84 /* CIGAMEmotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMEmotionView.m; sourceTree = "<group>"; };
+		E5FE22962626A2DC00FB1A84 /* CIGAMKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMKeyboardManager.m; sourceTree = "<group>"; };
+		E5FE22972626A2DC00FB1A84 /* CIGAMOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMOrderedDictionary.m; sourceTree = "<group>"; };
+		E5FE22982626A2DC00FB1A84 /* CIGAMAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMAlertController.h; sourceTree = "<group>"; };
+		E5FE22992626A2DC00FB1A84 /* CIGAMVisualEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMVisualEffectView.h; sourceTree = "<group>"; };
+		E5FE229A2626A2DC00FB1A84 /* CIGAMPopupContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMPopupContainerView.m; sourceTree = "<group>"; };
+		E5FE229B2626A2DC00FB1A84 /* CIGAMCellHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMCellHeightCache.m; sourceTree = "<group>"; };
+		E5FE229C2626A2DC00FB1A84 /* CIGAMTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTextView.h; sourceTree = "<group>"; };
+		E5FE229D2626A2DC00FB1A84 /* CIGAMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMTableView.h; sourceTree = "<group>"; };
+		E5FE229E2626A2DC00FB1A84 /* CIGAMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLabel.h; sourceTree = "<group>"; };
+		E5FE229F2626A2DC00FB1A84 /* CALayer+CIGAMViewAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CIGAMViewAnimation.m"; sourceTree = "<group>"; };
+		E5FE22A02626A2DC00FB1A84 /* CIGAMModalPresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMModalPresentationViewController.h; sourceTree = "<group>"; };
+		E5FE22A12626A2DC00FB1A84 /* CAAnimation+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22A22626A2DC00FB1A84 /* CIGAMZoomImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMZoomImageView.h; sourceTree = "<group>"; };
+		E5FE22A32626A2DC00FB1A84 /* CIGAMKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMKit.h; sourceTree = "<group>"; };
+		E5FE22A52626A2DC00FB1A84 /* UITabBarItem+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22A62626A2DC00FB1A84 /* NSURL+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22A72626A2DC00FB1A84 /* UITraitCollection+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITraitCollection+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22A82626A2DC00FB1A84 /* UISearchController+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchController+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22A92626A2DC00FB1A84 /* UILabel+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22AA2626A2DC00FB1A84 /* UIBezierPath+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22AB2626A2DC00FB1A84 /* NSAttributedString+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22AC2626A2DC00FB1A84 /* UIInterface+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIInterface+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22AD2626A2DC00FB1A84 /* UIColor+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22AE2626A2DC00FB1A84 /* NSMethodSignature+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMethodSignature+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22AF2626A2DC00FB1A84 /* CALayer+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22B02626A2DC00FB1A84 /* UIMenuController+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIMenuController+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22B12626A2DC00FB1A84 /* NSNumber+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22B22626A2DC00FB1A84 /* UICollectionView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22B32626A2DC00FB1A84 /* UITextView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22B42626A2DC00FB1A84 /* UIWindow+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22B52626A2DC00FB1A84 /* NSArray+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22B62626A2DC00FB1A84 /* UIBarItem+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarItem+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22B72626A2DC00FB1A84 /* UIButton+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22B82626A2DC00FB1A84 /* UIActivityIndicatorView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22B92626A2DC00FB1A84 /* UITextField+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22BA2626A2DC00FB1A84 /* UITableViewHeaderFooterView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewHeaderFooterView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22BB2626A2DC00FB1A84 /* UITextInputTraits+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextInputTraits+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22BC2626A2DC00FB1A84 /* NSPointerArray+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22BD2626A2DC00FB1A84 /* UISearchBar+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22BE2626A2DC00FB1A84 /* UIVisualEffectView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIVisualEffectView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22BF2626A2DC00FB1A84 /* UIView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C02626A2DC00FB1A84 /* UIFont+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22C12626A2DC00FB1A84 /* UIView+CIGAMBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CIGAMBorder.h"; sourceTree = "<group>"; };
+		E5FE22C22626A2DC00FB1A84 /* NSCharacterSet+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C32626A2DC00FB1A84 /* UINavigationBar+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C42626A2DC00FB1A84 /* UINavigationController+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C52626A2DC00FB1A84 /* UIGestureRecognizer+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C62626A2DC00FB1A84 /* NSParagraphStyle+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSParagraphStyle+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C72626A2DC00FB1A84 /* UINavigationItem+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22C82626A2DC00FB1A84 /* UIImageView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22C92626A2DC00FB1A84 /* UICollectionViewCell+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22CA2626A2DC00FB1A84 /* UIControl+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22CB2626A2DC00FB1A84 /* UISwitch+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22CC2626A2DC00FB1A84 /* UIViewController+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22CD2626A2DC00FB1A84 /* UIScrollView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22CE2626A2DC00FB1A84 /* NSString+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22CF2626A2DC00FB1A84 /* NSObject+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22D02626A2DC00FB1A84 /* UITableViewCell+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22D12626A2DC00FB1A84 /* UITabBar+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22D22626A2DC00FB1A84 /* UIImage+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22D32626A2DC00FB1A84 /* UITableView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22D42626A2DC00FB1A84 /* UIMenuController+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIMenuController+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22D52626A2DC00FB1A84 /* CALayer+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22D62626A2DC00FB1A84 /* UIInterface+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIInterface+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22D72626A2DC00FB1A84 /* NSAttributedString+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22D82626A2DC00FB1A84 /* UIColor+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22D92626A2DC00FB1A84 /* NSMethodSignature+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMethodSignature+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22DA2626A2DC00FB1A84 /* UIBezierPath+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22DB2626A2DC00FB1A84 /* UILabel+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22DC2626A2DC00FB1A84 /* UISearchController+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchController+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22DD2626A2DC00FB1A84 /* NSURL+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22DE2626A2DC00FB1A84 /* UITraitCollection+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITraitCollection+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22DF2626A2DC00FB1A84 /* UITabBarItem+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22E02626A2DC00FB1A84 /* UITextInputTraits+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextInputTraits+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22E12626A2DC00FB1A84 /* UITextField+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22E22626A2DC00FB1A84 /* UITableViewHeaderFooterView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewHeaderFooterView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22E32626A2DC00FB1A84 /* UIActivityIndicatorView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22E42626A2DC00FB1A84 /* UIBarItem+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarItem+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22E52626A2DC00FB1A84 /* UIButton+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22E62626A2DC00FB1A84 /* NSArray+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22E72626A2DC00FB1A84 /* UIWindow+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22E82626A2DC00FB1A84 /* UITextView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22E92626A2DC00FB1A84 /* UICollectionView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22EA2626A2DC00FB1A84 /* NSNumber+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22EB2626A2DC00FB1A84 /* UINavigationItem+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22EC2626A2DC00FB1A84 /* NSParagraphStyle+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSParagraphStyle+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22ED2626A2DC00FB1A84 /* UIGestureRecognizer+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22EE2626A2DC00FB1A84 /* UINavigationController+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22EF2626A2DC00FB1A84 /* UINavigationBar+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22F02626A2DC00FB1A84 /* NSCharacterSet+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22F12626A2DC00FB1A84 /* UIView+CIGAMBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CIGAMBorder.m"; sourceTree = "<group>"; };
+		E5FE22F22626A2DC00FB1A84 /* UIFont+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22F32626A2DC00FB1A84 /* UIView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22F42626A2DC00FB1A84 /* UISearchBar+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22F52626A2DC00FB1A84 /* UIVisualEffectView+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIVisualEffectView+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22F62626A2DC00FB1A84 /* NSPointerArray+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPointerArray+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22F72626A2DC00FB1A84 /* UIImage+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22F82626A2DC00FB1A84 /* UITableView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22F92626A2DC00FB1A84 /* UITabBar+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22FA2626A2DC00FB1A84 /* UITableViewCell+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22FB2626A2DC00FB1A84 /* NSString+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22FC2626A2DC00FB1A84 /* NSObject+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22FD2626A2DC00FB1A84 /* UIScrollView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE22FE2626A2DC00FB1A84 /* UIViewController+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE22FF2626A2DC00FB1A84 /* UIControl+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE23002626A2DC00FB1A84 /* UISwitch+CIGAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+CIGAM.h"; sourceTree = "<group>"; };
+		E5FE23012626A2DC00FB1A84 /* UICollectionViewCell+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CIGAM.m"; sourceTree = "<group>"; };
+		E5FE23022626A2DC00FB1A84 /* UIImageView+CIGAM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CIGAM.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2389,15 +3007,16 @@
 		E527E4E42583A17700531586 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E5BFE70A2623DCD000013973 /* Public */,
 				30A988B025A449F00082D3C9 /* Base */,
 				30A988B725A449F00082D3C9 /* Chat */,
+				E5FE21B82626A2DB00FB1A84 /* CIGAMKit */,
 				30A988E525A449F00082D3C9 /* Contact */,
 				30A9888425A449F00082D3C9 /* Conversation */,
 				30A987E225A449EF0082D3C9 /* Core */,
 				30A9890D25A449F00082D3C9 /* IMUIKit */,
 				30A9882725A449EF0082D3C9 /* Model */,
 				30A9882C25A449F00082D3C9 /* My */,
+				E5BFE70A2623DCD000013973 /* Public */,
 				30A9885C25A449F00082D3C9 /* Utils */,
 				30A98A5325A449F20082D3C9 /* Work */,
 			);
@@ -2432,6 +3051,490 @@
 			path = Public;
 			sourceTree = "<group>";
 		};
+		E5FE21B82626A2DB00FB1A84 /* CIGAMKit */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22A32626A2DC00FB1A84 /* CIGAMKit.h */,
+				E5FE21CD2626A2DB00FB1A84 /* CIGAMComponents */,
+				E5FE21B92626A2DB00FB1A84 /* CIGAMCore */,
+				E5FE21C42626A2DB00FB1A84 /* CIGAMMainFrame */,
+				E5FE22A42626A2DC00FB1A84 /* UIKitExtensions */,
+			);
+			path = CIGAMKit;
+			sourceTree = "<group>";
+		};
+		E5FE21B92626A2DB00FB1A84 /* CIGAMCore */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */,
+				E5FE21BB2626A2DB00FB1A84 /* CIGAMLab.h */,
+				E5FE21BC2626A2DB00FB1A84 /* CIGAMConfiguration.m */,
+				E5FE21BD2626A2DB00FB1A84 /* CIGAMRuntime.m */,
+				E5FE21BE2626A2DB00FB1A84 /* CIGAMConfigurationMacros.h */,
+				E5FE21BF2626A2DB00FB1A84 /* CIGAMCore.h */,
+				E5FE21C02626A2DB00FB1A84 /* CIGAMHelper.h */,
+				E5FE21C12626A2DB00FB1A84 /* CIGAMRuntime.h */,
+				E5FE21C22626A2DB00FB1A84 /* CIGAMConfiguration.h */,
+				E5FE21C32626A2DB00FB1A84 /* CIGAMCommonDefines.h */,
+			);
+			path = CIGAMCore;
+			sourceTree = "<group>";
+		};
+		E5FE21C42626A2DB00FB1A84 /* CIGAMMainFrame */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21C52626A2DB00FB1A84 /* CIGAMCommonViewController.m */,
+				E5FE21C62626A2DB00FB1A84 /* CIGAMNavigationController.h */,
+				E5FE21C72626A2DB00FB1A84 /* CIGAMTabBarViewController.h */,
+				E5FE21C82626A2DB00FB1A84 /* CIGAMCommonTableViewController.m */,
+				E5FE21C92626A2DB00FB1A84 /* CIGAMCommonViewController.h */,
+				E5FE21CA2626A2DB00FB1A84 /* CIGAMNavigationController.m */,
+				E5FE21CB2626A2DB00FB1A84 /* CIGAMCommonTableViewController.h */,
+				E5FE21CC2626A2DB00FB1A84 /* CIGAMTabBarViewController.m */,
+			);
+			path = CIGAMMainFrame;
+			sourceTree = "<group>";
+		};
+		E5FE21CD2626A2DB00FB1A84 /* CIGAMComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE221D2626A2DC00FB1A84 /* AssetLibrary */,
+				E5FE22A12626A2DC00FB1A84 /* CAAnimation+CIGAM.h */,
+				E5FE22372626A2DC00FB1A84 /* CAAnimation+CIGAM.m */,
+				E5FE22362626A2DC00FB1A84 /* CALayer+CIGAMViewAnimation.h */,
+				E5FE229F2626A2DC00FB1A84 /* CALayer+CIGAMViewAnimation.m */,
+				E5FE22982626A2DC00FB1A84 /* CIGAMAlertController.h */,
+				E5FE224F2626A2DC00FB1A84 /* CIGAMAlertController.m */,
+				E5FE22132626A2DC00FB1A84 /* CIGAMAnimation */,
+				E5FE221B2626A2DC00FB1A84 /* CIGAMAppearance.h */,
+				E5FE22772626A2DC00FB1A84 /* CIGAMAppearance.m */,
+				E5FE22832626A2DC00FB1A84 /* CIGAMBadge */,
+				E5FE21CF2626A2DB00FB1A84 /* CIGAMButton */,
+				E5FE223B2626A2DC00FB1A84 /* CIGAMCellHeightCache.h */,
+				E5FE229B2626A2DC00FB1A84 /* CIGAMCellHeightCache.m */,
+				E5FE223D2626A2DC00FB1A84 /* CIGAMCellHeightKeyCache */,
+				E5FE22042626A2DC00FB1A84 /* CIGAMCellSizeKeyCache */,
+				E5FE225A2626A2DC00FB1A84 /* CIGAMCollectionViewPagingLayout.h */,
+				E5FE21CE2626A2DB00FB1A84 /* CIGAMCollectionViewPagingLayout.m */,
+				E5FE21F22626A2DC00FB1A84 /* CIGAMConsole */,
+				E5FE226F2626A2DC00FB1A84 /* CIGAMDialogViewController.h */,
+				E5FE22262626A2DC00FB1A84 /* CIGAMDialogViewController.m */,
+				E5FE22582626A2DC00FB1A84 /* CIGAMEmotionInputManager.h */,
+				E5FE21EC2626A2DC00FB1A84 /* CIGAMEmotionInputManager.m */,
+				E5FE222F2626A2DC00FB1A84 /* CIGAMEmotionView.h */,
+				E5FE22952626A2DC00FB1A84 /* CIGAMEmotionView.m */,
+				E5FE22912626A2DC00FB1A84 /* CIGAMEmptyView.h */,
+				E5FE22312626A2DC00FB1A84 /* CIGAMEmptyView.m */,
+				E5FE227A2626A2DC00FB1A84 /* CIGAMFloatLayoutView.h */,
+				E5FE221C2626A2DC00FB1A84 /* CIGAMFloatLayoutView.m */,
+				E5FE22752626A2DC00FB1A84 /* CIGAMGridView.h */,
+				E5FE22242626A2DC00FB1A84 /* CIGAMGridView.m */,
+				E5FE220A2626A2DC00FB1A84 /* CIGAMImagePreviewView */,
+				E5FE22282626A2DC00FB1A84 /* CIGAMKeyboardManager.h */,
+				E5FE22962626A2DC00FB1A84 /* CIGAMKeyboardManager.m */,
+				E5FE229E2626A2DC00FB1A84 /* CIGAMLabel.h */,
+				E5FE22382626A2DC00FB1A84 /* CIGAMLabel.m */,
+				E5FE227B2626A2DC00FB1A84 /* CIGAMLog */,
+				E5FE22792626A2DC00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.h */,
+				E5FE221A2626A2DC00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.m */,
+				E5FE22542626A2DC00FB1A84 /* CIGAMLogManagerViewController.h */,
+				E5FE21F12626A2DC00FB1A84 /* CIGAMLogManagerViewController.m */,
+				E5FE22502626A2DC00FB1A84 /* CIGAMMarqueeLabel.h */,
+				E5FE22122626A2DC00FB1A84 /* CIGAMMarqueeLabel.m */,
+				E5FE22A02626A2DC00FB1A84 /* CIGAMModalPresentationViewController.h */,
+				E5FE22352626A2DC00FB1A84 /* CIGAMModalPresentationViewController.m */,
+				E5FE21EE2626A2DC00FB1A84 /* CIGAMMoreOperationController.h */,
+				E5FE22562626A2DC00FB1A84 /* CIGAMMoreOperationController.m */,
+				E5FE22702626A2DC00FB1A84 /* CIGAMMultipleDelegates */,
+				E5FE22302626A2DC00FB1A84 /* CIGAMNavigationTitleView.h */,
+				E5FE22932626A2DC00FB1A84 /* CIGAMNavigationTitleView.m */,
+				E5FE224E2626A2DC00FB1A84 /* CIGAMOrderedDictionary.h */,
+				E5FE22972626A2DC00FB1A84 /* CIGAMOrderedDictionary.m */,
+				E5FE22332626A2DC00FB1A84 /* CIGAMPieProgressView.h */,
+				E5FE22892626A2DC00FB1A84 /* CIGAMPieProgressView.m */,
+				E5FE223C2626A2DC00FB1A84 /* CIGAMPopupContainerView.h */,
+				E5FE229A2626A2DC00FB1A84 /* CIGAMPopupContainerView.m */,
+				E5FE21E42626A2DB00FB1A84 /* CIGAMPopupMenuView */,
+				E5FE228A2626A2DC00FB1A84 /* CIGAMScrollAnimator */,
+				E5FE21F02626A2DC00FB1A84 /* CIGAMSearchBar.h */,
+				E5FE22532626A2DC00FB1A84 /* CIGAMSearchBar.m */,
+				E5FE22322626A2DC00FB1A84 /* CIGAMSearchController.h */,
+				E5FE22922626A2DC00FB1A84 /* CIGAMSearchController.m */,
+				E5FE22292626A2DC00FB1A84 /* CIGAMSegmentedControl.h */,
+				E5FE22942626A2DC00FB1A84 /* CIGAMSegmentedControl.m */,
+				E5FE21EF2626A2DC00FB1A84 /* CIGAMSlider.h */,
+				E5FE22572626A2DC00FB1A84 /* CIGAMSlider.m */,
+				E5FE229D2626A2DC00FB1A84 /* CIGAMTableView.h */,
+				E5FE22392626A2DC00FB1A84 /* CIGAMTableView.m */,
+				E5FE21DC2626A2DB00FB1A84 /* CIGAMTableViewCell.h */,
+				E5FE225B2626A2DC00FB1A84 /* CIGAMTableViewCell.m */,
+				E5FE22092626A2DC00FB1A84 /* CIGAMTableViewHeaderFooterView.h */,
+				E5FE22522626A2DC00FB1A84 /* CIGAMTableViewHeaderFooterView.m */,
+				E5FE22552626A2DC00FB1A84 /* CIGAMTableViewProtocols.h */,
+				E5FE22192626A2DC00FB1A84 /* CIGAMTestView.h */,
+				E5FE22782626A2DC00FB1A84 /* CIGAMTestView.m */,
+				E5FE22252626A2DC00FB1A84 /* CIGAMTextField.h */,
+				E5FE22762626A2DC00FB1A84 /* CIGAMTextField.m */,
+				E5FE229C2626A2DC00FB1A84 /* CIGAMTextView.h */,
+				E5FE223A2626A2DC00FB1A84 /* CIGAMTextView.m */,
+				E5FE225D2626A2DC00FB1A84 /* CIGAMTheme */,
+				E5FE22512626A2DC00FB1A84 /* CIGAMTips.h */,
+				E5FE22112626A2DC00FB1A84 /* CIGAMTips.m */,
+				E5FE22992626A2DC00FB1A84 /* CIGAMVisualEffectView.h */,
+				E5FE224D2626A2DC00FB1A84 /* CIGAMVisualEffectView.m */,
+				E5FE21ED2626A2DC00FB1A84 /* CIGAMWeakObjectContainer.h */,
+				E5FE22592626A2DC00FB1A84 /* CIGAMWeakObjectContainer.m */,
+				E5FE225C2626A2DC00FB1A84 /* CIGAMWindowSizeMonitor.h */,
+				E5FE22272626A2DC00FB1A84 /* CIGAMWindowSizeMonitor.m */,
+				E5FE22A22626A2DC00FB1A84 /* CIGAMZoomImageView.h */,
+				E5FE22342626A2DC00FB1A84 /* CIGAMZoomImageView.m */,
+				E5FE22422626A2DC00FB1A84 /* ImagePickerLibrary */,
+				E5FE222A2626A2DC00FB1A84 /* NavigationBarTransition */,
+				E5FE21DD2626A2DB00FB1A84 /* StaticTableView */,
+				E5FE21FB2626A2DC00FB1A84 /* ToastView */,
+			);
+			path = CIGAMComponents;
+			sourceTree = "<group>";
+		};
+		E5FE21CF2626A2DB00FB1A84 /* CIGAMButton */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21D02626A2DB00FB1A84 /* CIGAMToolbarButton.h */,
+				E5FE21D12626A2DB00FB1A84 /* CIGAMLinkButton.m */,
+				E5FE21D22626A2DB00FB1A84 /* CIGAMButton.h */,
+				E5FE21D32626A2DB00FB1A84 /* CIGAMNavigationButton.m */,
+				E5FE21D42626A2DB00FB1A84 /* CIGAMGhostButton.m */,
+				E5FE21D52626A2DB00FB1A84 /* CIGAMFillButton.m */,
+				E5FE21D62626A2DB00FB1A84 /* CIGAMToolbarButton.m */,
+				E5FE21D72626A2DB00FB1A84 /* CIGAMButton.m */,
+				E5FE21D82626A2DB00FB1A84 /* CIGAMLinkButton.h */,
+				E5FE21D92626A2DB00FB1A84 /* CIGAMGhostButton.h */,
+				E5FE21DA2626A2DB00FB1A84 /* CIGAMNavigationButton.h */,
+				E5FE21DB2626A2DB00FB1A84 /* CIGAMFillButton.h */,
+			);
+			path = CIGAMButton;
+			sourceTree = "<group>";
+		};
+		E5FE21DD2626A2DB00FB1A84 /* StaticTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21DE2626A2DB00FB1A84 /* CIGAMStaticTableViewCellDataSource.m */,
+				E5FE21DF2626A2DB00FB1A84 /* CIGAMStaticTableViewCellData.h */,
+				E5FE21E02626A2DB00FB1A84 /* UITableView+CIGAMStaticCell.h */,
+				E5FE21E12626A2DB00FB1A84 /* CIGAMStaticTableViewCellDataSource.h */,
+				E5FE21E22626A2DB00FB1A84 /* CIGAMStaticTableViewCellData.m */,
+				E5FE21E32626A2DB00FB1A84 /* UITableView+CIGAMStaticCell.m */,
+			);
+			path = StaticTableView;
+			sourceTree = "<group>";
+		};
+		E5FE21E42626A2DB00FB1A84 /* CIGAMPopupMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21E52626A2DB00FB1A84 /* CIGAMPopupMenuView.m */,
+				E5FE21E62626A2DB00FB1A84 /* CIGAMPopupMenuBaseItem.h */,
+				E5FE21E72626A2DB00FB1A84 /* CIGAMPopupMenuButtonItem.h */,
+				E5FE21E82626A2DB00FB1A84 /* CIGAMPopupMenuItemProtocol.h */,
+				E5FE21E92626A2DB00FB1A84 /* CIGAMPopupMenuView.h */,
+				E5FE21EA2626A2DB00FB1A84 /* CIGAMPopupMenuButtonItem.m */,
+				E5FE21EB2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.m */,
+			);
+			path = CIGAMPopupMenuView;
+			sourceTree = "<group>";
+		};
+		E5FE21F22626A2DC00FB1A84 /* CIGAMConsole */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21F32626A2DC00FB1A84 /* CIGAMConsoleToolbar.h */,
+				E5FE21F42626A2DC00FB1A84 /* CIGAMConsoleViewController.m */,
+				E5FE21F52626A2DC00FB1A84 /* CIGAMConsole.h */,
+				E5FE21F62626A2DC00FB1A84 /* CIGAMLog+CIGAMConsole.m */,
+				E5FE21F72626A2DC00FB1A84 /* CIGAMConsoleToolbar.m */,
+				E5FE21F82626A2DC00FB1A84 /* CIGAMConsole.m */,
+				E5FE21F92626A2DC00FB1A84 /* CIGAMConsoleViewController.h */,
+				E5FE21FA2626A2DC00FB1A84 /* CIGAMLog+CIGAMConsole.h */,
+			);
+			path = CIGAMConsole;
+			sourceTree = "<group>";
+		};
+		E5FE21FB2626A2DC00FB1A84 /* ToastView */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE21FC2626A2DC00FB1A84 /* CIGAMToastAnimator.h */,
+				E5FE21FD2626A2DC00FB1A84 /* CIGAMToastBackgroundView.m */,
+				E5FE21FE2626A2DC00FB1A84 /* CIGAMToastContentView.h */,
+				E5FE21FF2626A2DC00FB1A84 /* CIGAMToastView.h */,
+				E5FE22002626A2DC00FB1A84 /* CIGAMToastAnimator.m */,
+				E5FE22012626A2DC00FB1A84 /* CIGAMToastBackgroundView.h */,
+				E5FE22022626A2DC00FB1A84 /* CIGAMToastContentView.m */,
+				E5FE22032626A2DC00FB1A84 /* CIGAMToastView.m */,
+			);
+			path = ToastView;
+			sourceTree = "<group>";
+		};
+		E5FE22042626A2DC00FB1A84 /* CIGAMCellSizeKeyCache */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22052626A2DC00FB1A84 /* CIGAMCellSizeKeyCache.h */,
+				E5FE22062626A2DC00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.h */,
+				E5FE22072626A2DC00FB1A84 /* CIGAMCellSizeKeyCache.m */,
+				E5FE22082626A2DC00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.m */,
+			);
+			path = CIGAMCellSizeKeyCache;
+			sourceTree = "<group>";
+		};
+		E5FE220A2626A2DC00FB1A84 /* CIGAMImagePreviewView */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE220B2626A2DC00FB1A84 /* CIGAMImagePreviewViewController.m */,
+				E5FE220C2626A2DC00FB1A84 /* CIGAMImagePreviewView.h */,
+				E5FE220D2626A2DC00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.h */,
+				E5FE220E2626A2DC00FB1A84 /* CIGAMImagePreviewViewController.h */,
+				E5FE220F2626A2DC00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.m */,
+				E5FE22102626A2DC00FB1A84 /* CIGAMImagePreviewView.m */,
+			);
+			path = CIGAMImagePreviewView;
+			sourceTree = "<group>";
+		};
+		E5FE22132626A2DC00FB1A84 /* CIGAMAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22142626A2DC00FB1A84 /* CIGAMEasings.h */,
+				E5FE22152626A2DC00FB1A84 /* CIGAMDisplayLinkAnimation.h */,
+				E5FE22162626A2DC00FB1A84 /* CIGAMAnimationHelper.h */,
+				E5FE22172626A2DC00FB1A84 /* CIGAMDisplayLinkAnimation.m */,
+				E5FE22182626A2DC00FB1A84 /* CIGAMAnimationHelper.m */,
+			);
+			path = CIGAMAnimation;
+			sourceTree = "<group>";
+		};
+		E5FE221D2626A2DC00FB1A84 /* AssetLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE221E2626A2DC00FB1A84 /* CIGAMAssetsManager.h */,
+				E5FE221F2626A2DC00FB1A84 /* CIGAMAssetsGroup.h */,
+				E5FE22202626A2DC00FB1A84 /* CIGAMAsset.h */,
+				E5FE22212626A2DC00FB1A84 /* CIGAMAssetsManager.m */,
+				E5FE22222626A2DC00FB1A84 /* CIGAMAsset.m */,
+				E5FE22232626A2DC00FB1A84 /* CIGAMAssetsGroup.m */,
+			);
+			path = AssetLibrary;
+			sourceTree = "<group>";
+		};
+		E5FE222A2626A2DC00FB1A84 /* NavigationBarTransition */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE222B2626A2DC00FB1A84 /* UINavigationController+NavigationBarTransition.h */,
+				E5FE222C2626A2DC00FB1A84 /* UINavigationBar+Transition.m */,
+				E5FE222D2626A2DC00FB1A84 /* UINavigationController+NavigationBarTransition.m */,
+				E5FE222E2626A2DC00FB1A84 /* UINavigationBar+Transition.h */,
+			);
+			path = NavigationBarTransition;
+			sourceTree = "<group>";
+		};
+		E5FE223D2626A2DC00FB1A84 /* CIGAMCellHeightKeyCache */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE223E2626A2DC00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.m */,
+				E5FE223F2626A2DC00FB1A84 /* CIGAMCellHeightKeyCache.m */,
+				E5FE22402626A2DC00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.h */,
+				E5FE22412626A2DC00FB1A84 /* CIGAMCellHeightKeyCache.h */,
+			);
+			path = CIGAMCellHeightKeyCache;
+			sourceTree = "<group>";
+		};
+		E5FE22422626A2DC00FB1A84 /* ImagePickerLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22432626A2DC00FB1A84 /* CIGAMImagePickerCollectionViewCell.m */,
+				E5FE22442626A2DC00FB1A84 /* CIGAMImagePickerHelper.m */,
+				E5FE22452626A2DC00FB1A84 /* CIGAMAlbumViewController.h */,
+				E5FE22462626A2DC00FB1A84 /* CIGAMImagePickerViewController.h */,
+				E5FE22472626A2DC00FB1A84 /* CIGAMImagePickerPreviewViewController.h */,
+				E5FE22482626A2DC00FB1A84 /* CIGAMImagePickerViewController.m */,
+				E5FE22492626A2DC00FB1A84 /* CIGAMAlbumViewController.m */,
+				E5FE224A2626A2DC00FB1A84 /* CIGAMImagePickerHelper.h */,
+				E5FE224B2626A2DC00FB1A84 /* CIGAMImagePickerCollectionViewCell.h */,
+				E5FE224C2626A2DC00FB1A84 /* CIGAMImagePickerPreviewViewController.m */,
+			);
+			path = ImagePickerLibrary;
+			sourceTree = "<group>";
+		};
+		E5FE225D2626A2DC00FB1A84 /* CIGAMTheme */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE225E2626A2DC00FB1A84 /* CIGAMThemePrivate.m */,
+				E5FE225F2626A2DC00FB1A84 /* CIGAMThemeManagerCenter.h */,
+				E5FE22602626A2DC00FB1A84 /* UIViewController+CIGAMTheme.h */,
+				E5FE22612626A2DC00FB1A84 /* CIGAMThemeManager.m */,
+				E5FE22622626A2DC00FB1A84 /* UIColor+CIGAMTheme.m */,
+				E5FE22632626A2DC00FB1A84 /* UIView+CIGAMTheme.m */,
+				E5FE22642626A2DC00FB1A84 /* UIVisualEffect+CIGAMTheme.m */,
+				E5FE22652626A2DC00FB1A84 /* UIImage+CIGAMTheme.h */,
+				E5FE22662626A2DC00FB1A84 /* CIGAMThemeManagerCenter.m */,
+				E5FE22672626A2DC00FB1A84 /* UIViewController+CIGAMTheme.m */,
+				E5FE22682626A2DC00FB1A84 /* CIGAMThemePrivate.h */,
+				E5FE22692626A2DC00FB1A84 /* UIView+CIGAMTheme.h */,
+				E5FE226A2626A2DC00FB1A84 /* UIColor+CIGAMTheme.h */,
+				E5FE226B2626A2DC00FB1A84 /* CIGAMThemeManager.h */,
+				E5FE226C2626A2DC00FB1A84 /* UIVisualEffect+CIGAMTheme.h */,
+				E5FE226D2626A2DC00FB1A84 /* UIImage+CIGAMTheme.m */,
+				E5FE226E2626A2DC00FB1A84 /* CIGAMTheme.h */,
+			);
+			path = CIGAMTheme;
+			sourceTree = "<group>";
+		};
+		E5FE22702626A2DC00FB1A84 /* CIGAMMultipleDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22712626A2DC00FB1A84 /* CIGAMMultipleDelegates.m */,
+				E5FE22722626A2DC00FB1A84 /* NSObject+CIGAMMultipleDelegates.h */,
+				E5FE22732626A2DC00FB1A84 /* NSObject+CIGAMMultipleDelegates.m */,
+				E5FE22742626A2DC00FB1A84 /* CIGAMMultipleDelegates.h */,
+			);
+			path = CIGAMMultipleDelegates;
+			sourceTree = "<group>";
+		};
+		E5FE227B2626A2DC00FB1A84 /* CIGAMLog */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE227C2626A2DC00FB1A84 /* CIGAMLogger.h */,
+				E5FE227D2626A2DC00FB1A84 /* CIGAMLogNameManager.h */,
+				E5FE227E2626A2DC00FB1A84 /* CIGAMLogItem.h */,
+				E5FE227F2626A2DC00FB1A84 /* CIGAMLog.h */,
+				E5FE22802626A2DC00FB1A84 /* CIGAMLogItem.m */,
+				E5FE22812626A2DC00FB1A84 /* CIGAMLogNameManager.m */,
+				E5FE22822626A2DC00FB1A84 /* CIGAMLogger.m */,
+			);
+			path = CIGAMLog;
+			sourceTree = "<group>";
+		};
+		E5FE22832626A2DC00FB1A84 /* CIGAMBadge */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22842626A2DC00FB1A84 /* UIView+CIGAMBadge.m */,
+				E5FE22852626A2DC00FB1A84 /* UIBarItem+CIGAMBadge.h */,
+				E5FE22862626A2DC00FB1A84 /* CIGAMBadgeProtocol.h */,
+				E5FE22872626A2DC00FB1A84 /* UIBarItem+CIGAMBadge.m */,
+				E5FE22882626A2DC00FB1A84 /* UIView+CIGAMBadge.h */,
+			);
+			path = CIGAMBadge;
+			sourceTree = "<group>";
+		};
+		E5FE228A2626A2DC00FB1A84 /* CIGAMScrollAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE228B2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.h */,
+				E5FE228C2626A2DC00FB1A84 /* CIGAMScrollAnimator.h */,
+				E5FE228D2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingAnimator.h */,
+				E5FE228E2626A2DC00FB1A84 /* CIGAMScrollAnimator.m */,
+				E5FE228F2626A2DC00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.m */,
+				E5FE22902626A2DC00FB1A84 /* CIGAMNavigationBarScrollingAnimator.m */,
+			);
+			path = CIGAMScrollAnimator;
+			sourceTree = "<group>";
+		};
+		E5FE22A42626A2DC00FB1A84 /* UIKitExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5FE22A52626A2DC00FB1A84 /* UITabBarItem+CIGAM.m */,
+				E5FE22A62626A2DC00FB1A84 /* NSURL+CIGAM.m */,
+				E5FE22A72626A2DC00FB1A84 /* UITraitCollection+CIGAM.m */,
+				E5FE22A82626A2DC00FB1A84 /* UISearchController+CIGAM.m */,
+				E5FE22A92626A2DC00FB1A84 /* UILabel+CIGAM.h */,
+				E5FE22AA2626A2DC00FB1A84 /* UIBezierPath+CIGAM.h */,
+				E5FE22AB2626A2DC00FB1A84 /* NSAttributedString+CIGAM.m */,
+				E5FE22AC2626A2DC00FB1A84 /* UIInterface+CIGAM.m */,
+				E5FE22AD2626A2DC00FB1A84 /* UIColor+CIGAM.h */,
+				E5FE22AE2626A2DC00FB1A84 /* NSMethodSignature+CIGAM.h */,
+				E5FE22AF2626A2DC00FB1A84 /* CALayer+CIGAM.h */,
+				E5FE22B02626A2DC00FB1A84 /* UIMenuController+CIGAM.m */,
+				E5FE22B12626A2DC00FB1A84 /* NSNumber+CIGAM.h */,
+				E5FE22B22626A2DC00FB1A84 /* UICollectionView+CIGAM.m */,
+				E5FE22B32626A2DC00FB1A84 /* UITextView+CIGAM.m */,
+				E5FE22B42626A2DC00FB1A84 /* UIWindow+CIGAM.h */,
+				E5FE22B52626A2DC00FB1A84 /* NSArray+CIGAM.h */,
+				E5FE22B62626A2DC00FB1A84 /* UIBarItem+CIGAM.h */,
+				E5FE22B72626A2DC00FB1A84 /* UIButton+CIGAM.m */,
+				E5FE22B82626A2DC00FB1A84 /* UIActivityIndicatorView+CIGAM.m */,
+				E5FE22B92626A2DC00FB1A84 /* UITextField+CIGAM.h */,
+				E5FE22BA2626A2DC00FB1A84 /* UITableViewHeaderFooterView+CIGAM.h */,
+				E5FE22BB2626A2DC00FB1A84 /* UITextInputTraits+CIGAM.h */,
+				E5FE22BC2626A2DC00FB1A84 /* NSPointerArray+CIGAM.m */,
+				E5FE22BD2626A2DC00FB1A84 /* UISearchBar+CIGAM.h */,
+				E5FE22BE2626A2DC00FB1A84 /* UIVisualEffectView+CIGAM.m */,
+				E5FE22BF2626A2DC00FB1A84 /* UIView+CIGAM.h */,
+				E5FE22C02626A2DC00FB1A84 /* UIFont+CIGAM.m */,
+				E5FE22C12626A2DC00FB1A84 /* UIView+CIGAMBorder.h */,
+				E5FE22C22626A2DC00FB1A84 /* NSCharacterSet+CIGAM.h */,
+				E5FE22C32626A2DC00FB1A84 /* UINavigationBar+CIGAM.h */,
+				E5FE22C42626A2DC00FB1A84 /* UINavigationController+CIGAM.h */,
+				E5FE22C52626A2DC00FB1A84 /* UIGestureRecognizer+CIGAM.h */,
+				E5FE22C62626A2DC00FB1A84 /* NSParagraphStyle+CIGAM.h */,
+				E5FE22C72626A2DC00FB1A84 /* UINavigationItem+CIGAM.m */,
+				E5FE22C82626A2DC00FB1A84 /* UIImageView+CIGAM.h */,
+				E5FE22C92626A2DC00FB1A84 /* UICollectionViewCell+CIGAM.h */,
+				E5FE22CA2626A2DC00FB1A84 /* UIControl+CIGAM.m */,
+				E5FE22CB2626A2DC00FB1A84 /* UISwitch+CIGAM.m */,
+				E5FE22CC2626A2DC00FB1A84 /* UIViewController+CIGAM.m */,
+				E5FE22CD2626A2DC00FB1A84 /* UIScrollView+CIGAM.h */,
+				E5FE22CE2626A2DC00FB1A84 /* NSString+CIGAM.m */,
+				E5FE22CF2626A2DC00FB1A84 /* NSObject+CIGAM.h */,
+				E5FE22D02626A2DC00FB1A84 /* UITableViewCell+CIGAM.m */,
+				E5FE22D12626A2DC00FB1A84 /* UITabBar+CIGAM.m */,
+				E5FE22D22626A2DC00FB1A84 /* UIImage+CIGAM.m */,
+				E5FE22D32626A2DC00FB1A84 /* UITableView+CIGAM.h */,
+				E5FE22D42626A2DC00FB1A84 /* UIMenuController+CIGAM.h */,
+				E5FE22D52626A2DC00FB1A84 /* CALayer+CIGAM.m */,
+				E5FE22D62626A2DC00FB1A84 /* UIInterface+CIGAM.h */,
+				E5FE22D72626A2DC00FB1A84 /* NSAttributedString+CIGAM.h */,
+				E5FE22D82626A2DC00FB1A84 /* UIColor+CIGAM.m */,
+				E5FE22D92626A2DC00FB1A84 /* NSMethodSignature+CIGAM.m */,
+				E5FE22DA2626A2DC00FB1A84 /* UIBezierPath+CIGAM.m */,
+				E5FE22DB2626A2DC00FB1A84 /* UILabel+CIGAM.m */,
+				E5FE22DC2626A2DC00FB1A84 /* UISearchController+CIGAM.h */,
+				E5FE22DD2626A2DC00FB1A84 /* NSURL+CIGAM.h */,
+				E5FE22DE2626A2DC00FB1A84 /* UITraitCollection+CIGAM.h */,
+				E5FE22DF2626A2DC00FB1A84 /* UITabBarItem+CIGAM.h */,
+				E5FE22E02626A2DC00FB1A84 /* UITextInputTraits+CIGAM.m */,
+				E5FE22E12626A2DC00FB1A84 /* UITextField+CIGAM.m */,
+				E5FE22E22626A2DC00FB1A84 /* UITableViewHeaderFooterView+CIGAM.m */,
+				E5FE22E32626A2DC00FB1A84 /* UIActivityIndicatorView+CIGAM.h */,
+				E5FE22E42626A2DC00FB1A84 /* UIBarItem+CIGAM.m */,
+				E5FE22E52626A2DC00FB1A84 /* UIButton+CIGAM.h */,
+				E5FE22E62626A2DC00FB1A84 /* NSArray+CIGAM.m */,
+				E5FE22E72626A2DC00FB1A84 /* UIWindow+CIGAM.m */,
+				E5FE22E82626A2DC00FB1A84 /* UITextView+CIGAM.h */,
+				E5FE22E92626A2DC00FB1A84 /* UICollectionView+CIGAM.h */,
+				E5FE22EA2626A2DC00FB1A84 /* NSNumber+CIGAM.m */,
+				E5FE22EB2626A2DC00FB1A84 /* UINavigationItem+CIGAM.h */,
+				E5FE22EC2626A2DC00FB1A84 /* NSParagraphStyle+CIGAM.m */,
+				E5FE22ED2626A2DC00FB1A84 /* UIGestureRecognizer+CIGAM.m */,
+				E5FE22EE2626A2DC00FB1A84 /* UINavigationController+CIGAM.m */,
+				E5FE22EF2626A2DC00FB1A84 /* UINavigationBar+CIGAM.m */,
+				E5FE22F02626A2DC00FB1A84 /* NSCharacterSet+CIGAM.m */,
+				E5FE22F12626A2DC00FB1A84 /* UIView+CIGAMBorder.m */,
+				E5FE22F22626A2DC00FB1A84 /* UIFont+CIGAM.h */,
+				E5FE22F32626A2DC00FB1A84 /* UIView+CIGAM.m */,
+				E5FE22F42626A2DC00FB1A84 /* UISearchBar+CIGAM.m */,
+				E5FE22F52626A2DC00FB1A84 /* UIVisualEffectView+CIGAM.h */,
+				E5FE22F62626A2DC00FB1A84 /* NSPointerArray+CIGAM.h */,
+				E5FE22F72626A2DC00FB1A84 /* UIImage+CIGAM.h */,
+				E5FE22F82626A2DC00FB1A84 /* UITableView+CIGAM.m */,
+				E5FE22F92626A2DC00FB1A84 /* UITabBar+CIGAM.h */,
+				E5FE22FA2626A2DC00FB1A84 /* UITableViewCell+CIGAM.h */,
+				E5FE22FB2626A2DC00FB1A84 /* NSString+CIGAM.h */,
+				E5FE22FC2626A2DC00FB1A84 /* NSObject+CIGAM.m */,
+				E5FE22FD2626A2DC00FB1A84 /* UIScrollView+CIGAM.m */,
+				E5FE22FE2626A2DC00FB1A84 /* UIViewController+CIGAM.h */,
+				E5FE22FF2626A2DC00FB1A84 /* UIControl+CIGAM.h */,
+				E5FE23002626A2DC00FB1A84 /* UISwitch+CIGAM.h */,
+				E5FE23012626A2DC00FB1A84 /* UICollectionViewCell+CIGAM.m */,
+				E5FE23022626A2DC00FB1A84 /* UIImageView+CIGAM.m */,
+			);
+			path = UIKitExtensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2439,98 +3542,166 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5FE23E42626A2DD00FB1A84 /* CALayer+CIGAM.h in Headers */,
+				E5FE23EF2626A2DD00FB1A84 /* UITableViewHeaderFooterView+CIGAM.h in Headers */,
+				E5FE23FA2626A2DD00FB1A84 /* UIGestureRecognizer+CIGAM.h in Headers */,
+				E5FE23112626A2DC00FB1A84 /* CIGAMCommonViewController.h in Headers */,
 				E5E68CBE262061340061751B /* YzChatController.h in Headers */,
 				E5BFE7082623DC9400013973 /* YzCustomMessageView.h in Headers */,
 				E5E68CBA262060CD0061751B /* YzConversationListController.h in Headers */,
 				30A98BC925A449F20082D3C9 /* TUIContactSelectController.h in Headers */,
+				E5FE23A92626A2DD00FB1A84 /* CIGAMDialogViewController.h in Headers */,
+				E5FE23092626A2DC00FB1A84 /* CIGAMHelper.h in Headers */,
+				E5FE23CE2626A2DD00FB1A84 /* CIGAMAlertController.h in Headers */,
 				30A98B0025A449F20082D3C9 /* YZSearchConversationViewController.h in Headers */,
+				E5FE24112626A2DD00FB1A84 /* UISearchController+CIGAM.h in Headers */,
 				309A44D025A83DDD00741EDC /* YzCustomMsg.h in Headers */,
 				3087B65125E60096002F9A44 /* SysUser.h in Headers */,
 				30A98B9825A449F20082D3C9 /* NSString+TUICommon.h in Headers */,
+				E5FE23212626A2DC00FB1A84 /* CIGAMFillButton.h in Headers */,
 				30A98C2D25A449F20082D3C9 /* TUICall+TRTC.h in Headers */,
 				30A98AEA25A449F20082D3C9 /* WeChatActionSheet.h in Headers */,
+				E5FE23A52626A2DD00FB1A84 /* CIGAMThemeManager.h in Headers */,
+				E5FE241A2626A2DD00FB1A84 /* UIButton+CIGAM.h in Headers */,
 				30A98B2225A449F20082D3C9 /* YChatDocumentPickerViewController.h in Headers */,
 				30A98C4325A449F20082D3C9 /* TUIGroupInfoDataProviderServiceProtocol.h in Headers */,
+				E5FE23AE2626A2DD00FB1A84 /* CIGAMGridView.h in Headers */,
 				30A98B7525A449F20082D3C9 /* TPopCell.h in Headers */,
 				30A98AF025A449F20082D3C9 /* YChatSettingStore.h in Headers */,
 				30A98C0B25A449F20082D3C9 /* TUITextMessageCell.h in Headers */,
 				30A98BAA25A449F20082D3C9 /* TUINewFriendViewModel.h in Headers */,
 				30A98A6225A449F20082D3C9 /* YChatResponseCode.h in Headers */,
+				E5FE238F2626A2DD00FB1A84 /* CIGAMLogManagerViewController.h in Headers */,
 				30A98C4525A449F30082D3C9 /* TUIMessageDataProviderServiceProtocol.h in Headers */,
+				E5FE23FD2626A2DD00FB1A84 /* UIImageView+CIGAM.h in Headers */,
 				30A98A9825A449F20082D3C9 /* ZClearNavigationBar.h in Headers */,
+				E5FE23932626A2DD00FB1A84 /* CIGAMEmotionInputManager.h in Headers */,
+				E5FE24352626A2DD00FB1A84 /* UISwitch+CIGAM.h in Headers */,
+				E5FE234D2626A2DD00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.h in Headers */,
+				E5FE23B42626A2DD00FB1A84 /* CIGAMLogger.h in Headers */,
+				E5FE239F2626A2DD00FB1A84 /* UIImage+CIGAMTheme.h in Headers */,
 				30A98B9425A449F20082D3C9 /* TUIProfileCardCell.h in Headers */,
 				30A98B4B25A449F20082D3C9 /* YZAddressBookCellData.h in Headers */,
+				E5FE23852626A2DD00FB1A84 /* CIGAMImagePickerHelper.h in Headers */,
 				30A98BFF25A449F20082D3C9 /* TUIFaceMessageCell.h in Headers */,
+				E5FE23A62626A2DD00FB1A84 /* UIVisualEffect+CIGAMTheme.h in Headers */,
 				30A98AA725A449F20082D3C9 /* YZProfileViewController.h in Headers */,
 				30A98BF725A449F20082D3C9 /* TUIInputController.h in Headers */,
+				E5FE23E22626A2DD00FB1A84 /* UIColor+CIGAM.h in Headers */,
 				30A98BD425A449F20082D3C9 /* TUIVideoMessageCellData.h in Headers */,
+				E5FE23542626A2DD00FB1A84 /* CIGAMDisplayLinkAnimation.h in Headers */,
+				E5FE23F72626A2DD00FB1A84 /* NSCharacterSet+CIGAM.h in Headers */,
+				E5FE232B2626A2DC00FB1A84 /* CIGAMPopupMenuButtonItem.h in Headers */,
 				30A98ACA25A449F20082D3C9 /* YZLine.h in Headers */,
+				E5FE241D2626A2DD00FB1A84 /* UITextView+CIGAM.h in Headers */,
+				E5FE23DF2626A2DD00FB1A84 /* UIBezierPath+CIGAM.h in Headers */,
+				E5FE23532626A2DD00FB1A84 /* CIGAMEasings.h in Headers */,
+				E5FE23072626A2DC00FB1A84 /* CIGAMConfigurationMacros.h in Headers */,
 				30A98AD025A449F20082D3C9 /* YChatValidInput.h in Headers */,
+				E5FE23462626A2DD00FB1A84 /* CIGAMCellSizeKeyCache.h in Headers */,
+				E5FE23892626A2DD00FB1A84 /* CIGAMOrderedDictionary.h in Headers */,
+				E5FE23132626A2DC00FB1A84 /* CIGAMCommonTableViewController.h in Headers */,
 				30A98C8C25A449F30082D3C9 /* YAppCollectionViewCell.h in Headers */,
 				30A98C1B25A449F20082D3C9 /* TUIVideoCallViewController.h in Headers */,
 				30A98AFB25A449F20082D3C9 /* QRScanViewController.h in Headers */,
 				30A98ACC25A449F20082D3C9 /* YZCommonTextImageTableViewCell.h in Headers */,
+				E5FE23EE2626A2DD00FB1A84 /* UITextField+CIGAM.h in Headers */,
 				30A98C7E25A449F30082D3C9 /* TUIError.h in Headers */,
 				30A98C6125A449F30082D3C9 /* TIMMessage+DataProvider.h in Headers */,
 				30A98B5425A449F20082D3C9 /* YUIBlackListViewController.h in Headers */,
 				30A98B7825A449F20082D3C9 /* TPopView.h in Headers */,
 				30A98A9225A449F20082D3C9 /* ZNavigationPushVerticalAnimation.h in Headers */,
 				30A98C3C25A449F20082D3C9 /* TUIGroupMemberController.h in Headers */,
+				E5FE24082626A2DD00FB1A84 /* UITableView+CIGAM.h in Headers */,
 				30A98BD125A449F20082D3C9 /* TUIFileMessageCellData.h in Headers */,
 				30A98C8F25A449F30082D3C9 /* YWorkZoneTableViewCell.h in Headers */,
 				30A98BCF25A449F20082D3C9 /* TUIJoinGroupMessageCellData.h in Headers */,
 				30A98A8525A449F20082D3C9 /* UIView+Extensions.h in Headers */,
+				E5FE230C2626A2DC00FB1A84 /* CIGAMCommonDefines.h in Headers */,
 				30A98AFE25A449F20082D3C9 /* YConversationViewController.h in Headers */,
 				30A98BBE25A449F20082D3C9 /* TCommonPendencyCellData.h in Headers */,
 				30A98B3D25A449F20082D3C9 /* YZCardMsgView.h in Headers */,
 				30A98BB425A449F20082D3C9 /* TUINewFriendViewController.h in Headers */,
+				E5FE23822626A2DD00FB1A84 /* CIGAMImagePickerPreviewViewController.h in Headers */,
 				30A98BCE25A449F20082D3C9 /* TUITextMessageCellData.h in Headers */,
+				E5FE23222626A2DC00FB1A84 /* CIGAMTableViewCell.h in Headers */,
+				E5FE23A22626A2DD00FB1A84 /* CIGAMThemePrivate.h in Headers */,
 				30A98B9525A449F20082D3C9 /* TUIButtonCell.h in Headers */,
 				30A98B8F25A449F20082D3C9 /* TCommonCell.h in Headers */,
+				E5FE23DE2626A2DD00FB1A84 /* UILabel+CIGAM.h in Headers */,
 				30A98A6525A449F20082D3C9 /* YChatNetworkEngine.h in Headers */,
+				E5FE23A32626A2DD00FB1A84 /* UIView+CIGAMTheme.h in Headers */,
+				E5FE233C2626A2DD00FB1A84 /* CIGAMConsoleViewController.h in Headers */,
+				E5FE23F22626A2DD00FB1A84 /* UISearchBar+CIGAM.h in Headers */,
+				E5FE239A2626A2DD00FB1A84 /* UIViewController+CIGAMTheme.h in Headers */,
 				30A98BD325A449F20082D3C9 /* TUISystemMessageCellData.h in Headers */,
+				E5FE23972626A2DD00FB1A84 /* CIGAMWindowSizeMonitor.h in Headers */,
+				E5FE236B2626A2DD00FB1A84 /* UINavigationBar+Transition.h in Headers */,
 				30A98B4D25A449F20082D3C9 /* YZAddressBookTableViewCell.h in Headers */,
 				30A98BE925A449F20082D3C9 /* TUIGroupPendencyCell.h in Headers */,
 				30A98B1025A449F20082D3C9 /* YPopCell.h in Headers */,
 				30A98AF425A449F20082D3C9 /* YUIConversationListController.h in Headers */,
+				E5FE23EA2626A2DD00FB1A84 /* NSArray+CIGAM.h in Headers */,
+				E5FE24122626A2DD00FB1A84 /* NSURL+CIGAM.h in Headers */,
 				30A98AA925A449F20082D3C9 /* YZTextEditViewController.h in Headers */,
 				30A98C3E25A449F20082D3C9 /* TUIGroupInfoController.h in Headers */,
+				E5FE237C2626A2DD00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.h in Headers */,
+				E5FE242B2626A2DD00FB1A84 /* NSPointerArray+CIGAM.h in Headers */,
 				30A98C2225A449F20082D3C9 /* TUIAudioCallViewController.h in Headers */,
 				30A98C2325A449F20082D3C9 /* TUIAudioCallUserCell.h in Headers */,
+				E5FE23432626A2DD00FB1A84 /* CIGAMToastBackgroundView.h in Headers */,
 				30A98BEF25A449F20082D3C9 /* TUIMessageCell.h in Headers */,
+				E5FE234A2626A2DD00FB1A84 /* CIGAMTableViewHeaderFooterView.h in Headers */,
 				30A98B3625A449F20082D3C9 /* YZLocationMessageCellData.h in Headers */,
 				30A98AE125A449F20082D3C9 /* QRCodeManager.h in Headers */,
+				E5FE23CF2626A2DD00FB1A84 /* CIGAMVisualEffectView.h in Headers */,
 				30A98B7025A449F20082D3C9 /* TResponderTextView.h in Headers */,
+				E5FE23B62626A2DD00FB1A84 /* CIGAMLogItem.h in Headers */,
 				30A98C6025A449F30082D3C9 /* TIMConversation+DataProvider.h in Headers */,
+				E5FE242A2626A2DD00FB1A84 /* UIVisualEffectView+CIGAM.h in Headers */,
 				30A98BCB25A449F20082D3C9 /* TUIContactController.h in Headers */,
 				30A98C1325A449F20082D3C9 /* TUISelectMemberViewController.h in Headers */,
+				E5FE23632626A2DD00FB1A84 /* CIGAMTextField.h in Headers */,
 				30A98C4425A449F20082D3C9 /* TUIUserProfileDataProviderServiceProtocol.h in Headers */,
 				30A98B1B25A449F20082D3C9 /* YBaseViewController.h in Headers */,
 				30A98BD725A449F20082D3C9 /* TUIImageMessageCellData.h in Headers */,
 				30A98C6C25A449F30082D3C9 /* TCServiceManager.h in Headers */,
+				E5FE23162626A2DC00FB1A84 /* CIGAMToolbarButton.h in Headers */,
 				30A98C4E25A449F30082D3C9 /* TUIUserProfileDataProviderService.h in Headers */,
 				30A98A6C25A449F20082D3C9 /* UIButton+Captcha.h in Headers */,
+				E5FE230E2626A2DC00FB1A84 /* CIGAMNavigationController.h in Headers */,
 				30A98B5E25A449F20082D3C9 /* YUIContactViewController.h in Headers */,
+				E5FE23992626A2DD00FB1A84 /* CIGAMThemeManagerCenter.h in Headers */,
+				E5FE23362626A2DD00FB1A84 /* CIGAMConsoleToolbar.h in Headers */,
 				30A98B2825A449F20082D3C9 /* YUIChatController.h in Headers */,
+				E5FE23262626A2DC00FB1A84 /* CIGAMStaticTableViewCellDataSource.h in Headers */,
+				E5FE23B52626A2DD00FB1A84 /* CIGAMLogNameManager.h in Headers */,
 				30A98BCD25A449F20082D3C9 /* TUIBlackListController.h in Headers */,
 				30A98A8E25A449F20082D3C9 /* YChat_Precompile.h in Headers */,
 				30A98C1D25A449F20082D3C9 /* TUIVideoRenderView.h in Headers */,
 				30A98B3F25A449F20082D3C9 /* YGroupMembersTableViewCell.h in Headers */,
 				E5BFE70D2623E84900013973 /* YzCustomMessageCell.h in Headers */,
 				30A98B1925A449F20082D3C9 /* YBaseTableViewController.h in Headers */,
+				E5FE23582626A2DD00FB1A84 /* CIGAMTestView.h in Headers */,
 				30A98BD025A449F20082D3C9 /* TUIBubbleMessageCellData.h in Headers */,
+				E5FE23242626A2DC00FB1A84 /* CIGAMStaticTableViewCellData.h in Headers */,
 				30A98BB825A449F20082D3C9 /* TCommonContactCellData.h in Headers */,
 				30A98A9C25A449F20082D3C9 /* ZWhiteNavigationBar.h in Headers */,
 				30A98C0925A449F20082D3C9 /* TUIFileMessageCell.h in Headers */,
 				30A98A9E25A449F20082D3C9 /* ZNavigationPopFadeAnimation.h in Headers */,
 				30A98B5325A449F20082D3C9 /* SearchFriendViewController.h in Headers */,
+				E5FE23AD2626A2DD00FB1A84 /* CIGAMMultipleDelegates.h in Headers */,
 				30A98B3125A449F20082D3C9 /* YGroupMemberController.h in Headers */,
 				30A98BF425A449F20082D3C9 /* TUIInputMoreCell.h in Headers */,
 				30A98B6F25A449F20082D3C9 /* TScrollView.h in Headers */,
+				E5FE23A82626A2DD00FB1A84 /* CIGAMTheme.h in Headers */,
+				E5FE23C12626A2DD00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.h in Headers */,
 				30A98B8825A449F20082D3C9 /* TUIVideoViewController.h in Headers */,
+				E5FE23342626A2DD00FB1A84 /* CIGAMSearchBar.h in Headers */,
 				30A98BA325A449F20082D3C9 /* THelper.h in Headers */,
 				E5D849FE2622E0C5006806E6 /* TUIConversationCellData+Conversation.h in Headers */,
 				30A98B7F25A449F20082D3C9 /* TDateEditController.h in Headers */,
+				E5FE24342626A2DD00FB1A84 /* UIControl+CIGAM.h in Headers */,
 				30A98C6425A449F30082D3C9 /* TIMGroupInfo+DataProvider.h in Headers */,
 				30A98B7D25A449F20082D3C9 /* TUIImageViewController.h in Headers */,
 				30A98A7B25A449F20082D3C9 /* NSDictionary+YChatExtension.h in Headers */,
@@ -2538,45 +3709,68 @@
 				30A98BE125A449F20082D3C9 /* TUIFaceMessageCellData.h in Headers */,
 				30A98AAB25A449F20082D3C9 /* YZMyViewController.h in Headers */,
 				30A98B5D25A449F20082D3C9 /* GroupRequestViewController.h in Headers */,
+				E5FE23702626A2DD00FB1A84 /* CIGAMPieProgressView.h in Headers */,
+				E5FE235D2626A2DD00FB1A84 /* CIGAMAssetsGroup.h in Headers */,
 				30A98A8825A449F20082D3C9 /* NSDate+Utilities.h in Headers */,
 				30A98BA225A449F20082D3C9 /* TAddCell.h in Headers */,
 				30A98A6125A449F20082D3C9 /* YChatRequestMan.h in Headers */,
 				30A98BA925A449F20082D3C9 /* TUIBlackListViewModel.h in Headers */,
+				E5FE23312626A2DD00FB1A84 /* CIGAMWeakObjectContainer.h in Headers */,
 				30A98B5725A449F20082D3C9 /* FriendRequestViewController.h in Headers */,
 				30A98AF525A449F20082D3C9 /* YUIFileViewController.h in Headers */,
+				E5FE23EB2626A2DD00FB1A84 /* UIBarItem+CIGAM.h in Headers */,
 				E5EDCA7C261B3C3D00465C96 /* MKMapView+ZoomLevel.h in Headers */,
 				30A98A7225A449F20082D3C9 /* NSData+YChatExtension.h in Headers */,
 				30A98BA025A449F20082D3C9 /* TModifyView.h in Headers */,
+				E5FE23C72626A2DD00FB1A84 /* CIGAMEmptyView.h in Headers */,
 				30A98C5E25A449F30082D3C9 /* TIMUserProfile+DataProvider.h in Headers */,
 				30A98B4F25A449F20082D3C9 /* YZCommonPendencyCell.h in Headers */,
 				30A98B0E25A449F20082D3C9 /* YChatIMCreateGroupMemberInfo.h in Headers */,
 				30A98AC225A449F20082D3C9 /* YZProfileCardCell.h in Headers */,
 				30A98AFA25A449F20082D3C9 /* YZTransferGrpOwnerViewController.h in Headers */,
+				E5FE24042626A2DD00FB1A84 /* NSObject+CIGAM.h in Headers */,
 				30A98B3725A449F20082D3C9 /* YZCardMsgData.h in Headers */,
+				E5FE23B22626A2DD00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.h in Headers */,
 				30A98C5925A449F30082D3C9 /* TUIConversationCellData.h in Headers */,
 				30A98C7925A449F30082D3C9 /* TUIKit.h in Headers */,
+				E5FE23D42626A2DD00FB1A84 /* CIGAMLabel.h in Headers */,
 				30A98B0225A449F20082D3C9 /* YZMapInfoViewController.h in Headers */,
+				E5FE23D32626A2DD00FB1A84 /* CIGAMTableView.h in Headers */,
+				E5FE23782626A2DD00FB1A84 /* CIGAMCellHeightCache.h in Headers */,
+				E5FE23042626A2DC00FB1A84 /* CIGAMLab.h in Headers */,
 				30A98B7B25A449F20082D3C9 /* TAddCollectionCell.h in Headers */,
 				30A98C7A25A449F30082D3C9 /* TUIKitConfig.h in Headers */,
 				30A98C6A25A449F30082D3C9 /* TCServiceProtocol.h in Headers */,
 				30A98AF325A449F20082D3C9 /* QDCommonTableViewController.h in Headers */,
 				30A98ABD25A449F20082D3C9 /* YZAreaView.h in Headers */,
+				E5FE23B32626A2DD00FB1A84 /* CIGAMFloatLayoutView.h in Headers */,
 				30A98AFD25A449F20082D3C9 /* YZAddressBookViewController.h in Headers */,
 				30A98B0D25A449F20082D3C9 /* YConversationListViewModel.h in Headers */,
 				30A98ACD25A449F20082D3C9 /* YZSearchFriendsTableViewCell.h in Headers */,
 				30A98C3525A449F20082D3C9 /* TUIMenuCell.h in Headers */,
 				30A98BEE25A449F20082D3C9 /* TUIMessageCellLayout.h in Headers */,
 				30A98AA125A449F20082D3C9 /* YBaseModel.h in Headers */,
+				E5FE24022626A2DD00FB1A84 /* UIScrollView+CIGAM.h in Headers */,
+				E5FE23082626A2DC00FB1A84 /* CIGAMCore.h in Headers */,
 				30A98AB025A449F20082D3C9 /* YZChooseCityViewController.h in Headers */,
+				E5FE236C2626A2DD00FB1A84 /* CIGAMEmotionView.h in Headers */,
 				30A98B9E25A449F20082D3C9 /* TUnReadView.h in Headers */,
 				30A98B7625A449F20082D3C9 /* UIImage+TUIKIT.h in Headers */,
+				E5FE230F2626A2DC00FB1A84 /* CIGAMTabBarViewController.h in Headers */,
 				30A98B4825A449F20082D3C9 /* YZAudioMeetUserCell.h in Headers */,
+				E5FE242E2626A2DD00FB1A84 /* UITabBar+CIGAM.h in Headers */,
+				E5FE24092626A2DD00FB1A84 /* UIMenuController+CIGAM.h in Headers */,
 				30A98AF225A449F20082D3C9 /* YZMyQRCodeViewController.h in Headers */,
 				30A98C2E25A449F20082D3C9 /* TUICallUtils.h in Headers */,
 				30A98B1125A449F20082D3C9 /* YZMapListTableViewCell.h in Headers */,
+				E5FE23F92626A2DD00FB1A84 /* UINavigationController+CIGAM.h in Headers */,
 				30A98B2F25A449F20082D3C9 /* YContactSelectViewController.h in Headers */,
 				30A98B8925A449F20082D3C9 /* TTextEditController.h in Headers */,
+				E5FE24142626A2DD00FB1A84 /* UITabBarItem+CIGAM.h in Headers */,
 				30A98AE325A449F20082D3C9 /* YScannerView.h in Headers */,
+				E5FE238B2626A2DD00FB1A84 /* CIGAMMarqueeLabel.h in Headers */,
+				E5FE24332626A2DD00FB1A84 /* UIViewController+CIGAM.h in Headers */,
+				E5FE23AB2626A2DD00FB1A84 /* NSObject+CIGAMMultipleDelegates.h in Headers */,
 				30A98C3725A449F20082D3C9 /* TUIMenuView.h in Headers */,
 				30A98AFC25A449F20082D3C9 /* YZContactSearchViewController.h in Headers */,
 				30A98B5925A449F20082D3C9 /* YUIGroupConversationListController.h in Headers */,
@@ -2587,18 +3781,28 @@
 				30A98ADD25A449F20082D3C9 /* CommonConstant.h in Headers */,
 				30A98C6D25A449F30082D3C9 /* TCContext.h in Headers */,
 				30A98B3025A449F20082D3C9 /* YUserProfileController.h in Headers */,
+				E5FE23C22626A2DD00FB1A84 /* CIGAMScrollAnimator.h in Headers */,
 				30A98A8225A449F20082D3C9 /* UIBarButtonItem+Extensions.h in Headers */,
 				30A98BD525A449F20082D3C9 /* TUIMessageCellData.h in Headers */,
 				30A98C0225A449F20082D3C9 /* TUIVoiceMessageCell.h in Headers */,
+				E5FE24202626A2DD00FB1A84 /* UINavigationItem+CIGAM.h in Headers */,
+				E5FE234E2626A2DD00FB1A84 /* CIGAMImagePreviewViewController.h in Headers */,
+				E5FE23E92626A2DD00FB1A84 /* UIWindow+CIGAM.h in Headers */,
+				E5FE23BF2626A2DD00FB1A84 /* UIView+CIGAMBadge.h in Headers */,
+				E5FE23332626A2DD00FB1A84 /* CIGAMSlider.h in Headers */,
+				E5FE23182626A2DC00FB1A84 /* CIGAMButton.h in Headers */,
 				30A98AD925A449F20082D3C9 /* YBFuncItemManager.h in Headers */,
 				30A98B3B25A449F20082D3C9 /* YZVideoCallUserView.h in Headers */,
 				30A98B3E25A449F20082D3C9 /* YUISelectMemberCell.h in Headers */,
+				E5FE241E2626A2DD00FB1A84 /* UICollectionView+CIGAM.h in Headers */,
 				30A98C3125A449F20082D3C9 /* TUIChatController.h in Headers */,
 				30A98BA525A449F20082D3C9 /* TUILocalStorage.h in Headers */,
 				30A98AB825A449F20082D3C9 /* YZFriendListTableViewCell.h in Headers */,
 				30A98C3025A449F20082D3C9 /* TUICallManager.h in Headers */,
 				30A98B6025A449F20082D3C9 /* NewFriendViewController.h in Headers */,
 				30A98BC825A449F20082D3C9 /* TUIContactListPicker.h in Headers */,
+				E5FE23382626A2DD00FB1A84 /* CIGAMConsole.h in Headers */,
+				E5FE236D2626A2DD00FB1A84 /* CIGAMNavigationTitleView.h in Headers */,
 				30A98B6D25A449F20082D3C9 /* TAddHelper.h in Headers */,
 				30A98C6E25A449F30082D3C9 /* TCAnnotation.h in Headers */,
 				30A98BFC25A449F20082D3C9 /* TUIMessageController.h in Headers */,
@@ -2606,21 +3810,30 @@
 				30A98C3A25A449F20082D3C9 /* TUIGroupMembersCell.h in Headers */,
 				30A98B3425A449F20082D3C9 /* YChatViewController.h in Headers */,
 				30A98AEF25A449F20082D3C9 /* YZPAirSandbox.h in Headers */,
+				E5FE23BC2626A2DD00FB1A84 /* UIBarItem+CIGAMBadge.h in Headers */,
 				30A98B5625A449F20082D3C9 /* ContactsViewController.h in Headers */,
 				30A98BF825A449F20082D3C9 /* TUIInputBar.h in Headers */,
 				30A98AC325A449F20082D3C9 /* YZFieldInputView.h in Headers */,
+				E5FE23252626A2DC00FB1A84 /* UITableView+CIGAMStaticCell.h in Headers */,
 				3087B3A925E3B14B002F9A44 /* YZSettingViewController.h in Headers */,
 				30A98C5025A449F30082D3C9 /* TUIGroupInfoDataProviderService.h in Headers */,
 				30A98A8925A449F20082D3C9 /* UIColor+ColorExtension.h in Headers */,
+				E5FE235E2626A2DD00FB1A84 /* CIGAMAsset.h in Headers */,
 				30A98B2325A449F20082D3C9 /* YGroupInfoController.h in Headers */,
 				30A98B2E25A449F20082D3C9 /* YUISelectMemberViewController.h in Headers */,
+				E5FE23E32626A2DD00FB1A84 /* NSMethodSignature+CIGAM.h in Headers */,
 				30A98AA625A449F20082D3C9 /* YZModifyMobileViewController.h in Headers */,
 				30A98C2625A449F20082D3C9 /* TUICall.h in Headers */,
 				30A98B8C25A449F20082D3C9 /* TCommonSwitchCell.h in Headers */,
 				30A98C7F25A449F30082D3C9 /* TUIImageCache.h in Headers */,
 				30A98BDE25A449F20082D3C9 /* TUIGroupLiveMessageCellData.h in Headers */,
 				30A98C3B25A449F20082D3C9 /* TUIGroupMemberCell.h in Headers */,
+				E5FE24302626A2DD00FB1A84 /* NSString+CIGAM.h in Headers */,
 				30A98ABA25A449F20082D3C9 /* YCommonTextCell.h in Headers */,
+				E5FE23412626A2DD00FB1A84 /* CIGAMToastView.h in Headers */,
+				E5FE23862626A2DD00FB1A84 /* CIGAMImagePickerCollectionViewCell.h in Headers */,
+				E5FE23D92626A2DD00FB1A84 /* CIGAMKit.h in Headers */,
+				E5FE23D62626A2DD00FB1A84 /* CIGAMModalPresentationViewController.h in Headers */,
 				30A98BA625A449F20082D3C9 /* TUIGroupConversationListController.h in Headers */,
 				30A98C0D25A449F20082D3C9 /* TUIVideoMessageCell.h in Headers */,
 				30A98A8B25A449F20082D3C9 /* UIImage+Foundation.h in Headers */,
@@ -2628,38 +3841,58 @@
 				30A98BE525A449F20082D3C9 /* TUIGroupPendencyCellData.h in Headers */,
 				30A98AC725A449F20082D3C9 /* YUserInfoAvatarTableViewCell.h in Headers */,
 				30A98BAD25A449F20082D3C9 /* TContactSelectViewModel.h in Headers */,
+				E5FE234C2626A2DD00FB1A84 /* CIGAMImagePreviewView.h in Headers */,
 				30A98C5425A449F30082D3C9 /* CreatGroupAvatar.h in Headers */,
 				30A98B7125A449F20082D3C9 /* NSDate+TUIKIT.h in Headers */,
+				E5FE235C2626A2DD00FB1A84 /* CIGAMAssetsManager.h in Headers */,
 				30A98BF225A449F20082D3C9 /* TUIMoreView.h in Headers */,
 				30A98C2B25A449F20082D3C9 /* TUICall+Signal.h in Headers */,
+				E5FE23BD2626A2DD00FB1A84 /* CIGAMBadgeProtocol.h in Headers */,
 				30A98C8925A449F30082D3C9 /* YWorkZoneViewController.h in Headers */,
 				30A98A9125A449F20082D3C9 /* ZNavigationBar.h in Headers */,
 				30A98C7225A449F30082D3C9 /* EMVoiceConverter.h in Headers */,
 				30A98B8D25A449F20082D3C9 /* TCommonAvatarCell.h in Headers */,
+				E5FE231E2626A2DC00FB1A84 /* CIGAMLinkButton.h in Headers */,
+				E5FE242C2626A2DD00FB1A84 /* UIImage+CIGAM.h in Headers */,
 				30A98AB725A449F20082D3C9 /* YUIButtonTableViewCell.h in Headers */,
 				30A98BAC25A449F20082D3C9 /* TUIGroupConversationListViewModel.h in Headers */,
 				30A98B5A25A449F20082D3C9 /* SearchMyContactsViewController.h in Headers */,
 				30A98B6825A449F20082D3C9 /* YCustomSearchController.h in Headers */,
 				E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */,
 				30A98BF025A449F20082D3C9 /* TUIFaceView.h in Headers */,
+				E5FE23F82626A2DD00FB1A84 /* UINavigationBar+CIGAM.h in Headers */,
+				E5FE23E62626A2DD00FB1A84 /* NSNumber+CIGAM.h in Headers */,
+				E5FE230A2626A2DC00FB1A84 /* CIGAMRuntime.h in Headers */,
+				E5FE23F62626A2DD00FB1A84 /* UIView+CIGAMBorder.h in Headers */,
 				30A98A7C25A449F20082D3C9 /* NSString+YChatExtension.h in Headers */,
 				30A98AE825A449F20082D3C9 /* TCConstants.h in Headers */,
 				30A98AB325A449F20082D3C9 /* YZWebViewController.h in Headers */,
 				30A98C4225A449F20082D3C9 /* TUIUserProfileControllerServiceProtocol.h in Headers */,
 				30A98A9025A449F20082D3C9 /* ZNavigationPushFadeAnimation.h in Headers */,
+				E5FE232D2626A2DC00FB1A84 /* CIGAMPopupMenuView.h in Headers */,
 				30A98C3925A449F20082D3C9 /* TUIGroupMembersView.h in Headers */,
 				30A98A6B25A449F20082D3C9 /* YChatUploadManager.h in Headers */,
+				E5FE23732626A2DD00FB1A84 /* CALayer+CIGAMViewAnimation.h in Headers */,
 				E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */,
 				E513A1A82623EE5F00621FAF /* YzCustomMessageCellData.h in Headers */,
+				E5FE23FB2626A2DD00FB1A84 /* NSParagraphStyle+CIGAM.h in Headers */,
+				E5FE23D22626A2DD00FB1A84 /* CIGAMTextView.h in Headers */,
 				30A98BC225A449F20082D3C9 /* TUIContactActionCellData.h in Headers */,
+				E5FE23322626A2DD00FB1A84 /* CIGAMMoreOperationController.h in Headers */,
 				30A98A7325A449F20082D3C9 /* NSObject+YChatTypeConversion.h in Headers */,
+				E5FE237D2626A2DD00FB1A84 /* CIGAMCellHeightKeyCache.h in Headers */,
 				30A98AA325A449F20082D3C9 /* YZChangePasswordViewController.h in Headers */,
+				E5FE23902626A2DD00FB1A84 /* CIGAMTableViewProtocols.h in Headers */,
 				30A98C7325A449F30082D3C9 /* interf_dec.h in Headers */,
 				30A98C1025A449F20082D3C9 /* TUIJoinGroupMessageCell.h in Headers */,
 				30A98C0825A449F20082D3C9 /* TUIBubbleMessageCell.h in Headers */,
+				E5FE23672626A2DD00FB1A84 /* CIGAMSegmentedControl.h in Headers */,
 				30A98BB125A449F20082D3C9 /* TContactViewModel.h in Headers */,
+				E5FE23472626A2DD00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.h in Headers */,
+				E5FE231F2626A2DC00FB1A84 /* CIGAMGhostButton.h in Headers */,
 				30A98A7925A449F20082D3C9 /* NSBundle+YZBundle.h in Headers */,
 				306754F525A80C4C0045CCC7 /* YZMsgManager.h in Headers */,
+				E5FE242F2626A2DD00FB1A84 /* UITableViewCell+CIGAM.h in Headers */,
 				30A98C4C25A449F30082D3C9 /* TUIMessageDataProviderService.h in Headers */,
 				30A98B7E25A449F20082D3C9 /* TUIAvatarViewController.h in Headers */,
 				30A98AE725A449F20082D3C9 /* YDefaultPortraitView.h in Headers */,
@@ -2669,20 +3902,33 @@
 				30A98B9625A449F20082D3C9 /* TCommonTextCell.h in Headers */,
 				E527E3DC258393C800531586 /* YZChat.h in Headers */,
 				30A98B0F25A449F20082D3C9 /* YPopView.h in Headers */,
+				E5FE23682626A2DD00FB1A84 /* UINavigationController+NavigationBarTransition.h in Headers */,
+				E5FE24182626A2DD00FB1A84 /* UIActivityIndicatorView+CIGAM.h in Headers */,
 				30A98B3225A449F20082D3C9 /* YUIMessageController.h in Headers */,
+				E5FE233D2626A2DD00FB1A84 /* CIGAMLog+CIGAMConsole.h in Headers */,
+				E5FE23952626A2DD00FB1A84 /* CIGAMCollectionViewPagingLayout.h in Headers */,
 				30A98AC825A449F20082D3C9 /* YZButtonTableViewCell.h in Headers */,
 				30A98B6925A449F20082D3C9 /* SearchGroupViewController.h in Headers */,
 				30A98B5F25A449F20082D3C9 /* YZFriendProfileViewController.h in Headers */,
+				E5FE23F02626A2DD00FB1A84 /* UITextInputTraits+CIGAM.h in Headers */,
+				E5FE230B2626A2DC00FB1A84 /* CIGAMConfiguration.h in Headers */,
+				E5FE23802626A2DD00FB1A84 /* CIGAMAlbumViewController.h in Headers */,
 				30A98A8A25A449F20082D3C9 /* NSArray+YChatExtension.h in Headers */,
+				E5FE24132626A2DD00FB1A84 /* UITraitCollection+CIGAM.h in Headers */,
 				30A98AD225A449F20082D3C9 /* YZUtil.h in Headers */,
 				30A98A6825A449F20082D3C9 /* YChatRequestBuilder.h in Headers */,
 				30A98B5025A449F20082D3C9 /* YZAddFriendHeaderCell.h in Headers */,
 				30A98C7525A449F30082D3C9 /* interf_enc.h in Headers */,
+				E5FE23B72626A2DD00FB1A84 /* CIGAMLog.h in Headers */,
 				30A98B1225A449F20082D3C9 /* YZSearchBarView.h in Headers */,
+				E5FE232A2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.h in Headers */,
 				30A98C5825A449F30082D3C9 /* TUIConversationCell.h in Headers */,
 				30A98AA225A449F20082D3C9 /* YUserInfo.h in Headers */,
 				30A98B2A25A449F20082D3C9 /* YUIGroupInfoController.h in Headers */,
+				E5FE23792626A2DD00FB1A84 /* CIGAMPopupContainerView.h in Headers */,
+				E5FE232C2626A2DC00FB1A84 /* CIGAMPopupMenuItemProtocol.h in Headers */,
 				30A98C5325A449F30082D3C9 /* TConversationListViewModel.h in Headers */,
+				E5FE23F42626A2DD00FB1A84 /* UIView+CIGAM.h in Headers */,
 				30A98C7725A449F30082D3C9 /* amrFileCodec.h in Headers */,
 				30A98C6225A449F30082D3C9 /* NSString+DataProvider.h in Headers */,
 				30A98C4A25A449F30082D3C9 /* UIColor+TUIDarkMode.h in Headers */,
@@ -2696,24 +3942,36 @@
 				30A98BC525A449F20082D3C9 /* TCommonContactSelectCell.h in Headers */,
 				30A98A6F25A449F20082D3C9 /* NSDate+YChatExtension.h in Headers */,
 				30A98A6D25A449F20082D3C9 /* UIColor+Foundation.h in Headers */,
+				E5FE23552626A2DD00FB1A84 /* CIGAMAnimationHelper.h in Headers */,
 				30A98C1425A449F20082D3C9 /* TUIMemberPanelCell.h in Headers */,
 				30A98BE425A449F20082D3C9 /* TUIGroupPendencyViewModel.h in Headers */,
+				E5FE23C32626A2DD00FB1A84 /* CIGAMNavigationBarScrollingAnimator.h in Headers */,
+				E5FE23A42626A2DD00FB1A84 /* UIColor+CIGAMTheme.h in Headers */,
 				30A98A9425A449F20082D3C9 /* ZNavigationViewController.h in Headers */,
 				30A98B8625A449F20082D3C9 /* TUIFileViewController.h in Headers */,
+				E5FE23662626A2DD00FB1A84 /* CIGAMKeyboardManager.h in Headers */,
 				30A98AD325A449F20082D3C9 /* YBSuspensionManager.h in Headers */,
 				30A98A6625A449F20082D3C9 /* YChatURLRequest.h in Headers */,
 				30A98AB625A449F20082D3C9 /* YZCityModel.h in Headers */,
 				30A98ADC25A449F20082D3C9 /* YBCollectionViewController.h in Headers */,
+				E5FE24272626A2DD00FB1A84 /* UIFont+CIGAM.h in Headers */,
 				30A98AD825A449F20082D3C9 /* YBSuspensionView.h in Headers */,
 				30A98B8725A449F20082D3C9 /* TNavigationController.h in Headers */,
+				E5FE23D82626A2DD00FB1A84 /* CIGAMZoomImageView.h in Headers */,
+				E5FE236F2626A2DD00FB1A84 /* CIGAMSearchController.h in Headers */,
+				E5FE233E2626A2DD00FB1A84 /* CIGAMToastAnimator.h in Headers */,
 				30A98B5825A449F20082D3C9 /* SearchMyFriendsViewController.h in Headers */,
 				30A98A6725A449F20082D3C9 /* YChatHTTPClient.h in Headers */,
 				30A98BC325A449F20082D3C9 /* TCommonContactSelectCellData.h in Headers */,
 				30A98BC025A449F20082D3C9 /* TCommonPendencyCell.h in Headers */,
+				E5FE23FE2626A2DD00FB1A84 /* UICollectionViewCell+CIGAM.h in Headers */,
+				E5FE240B2626A2DD00FB1A84 /* UIInterface+CIGAM.h in Headers */,
 				30A98BB625A449F20082D3C9 /* TContactListPickerCell.h in Headers */,
 				30A98B1325A449F20082D3C9 /* YZTransferGrpOwnerCell.h in Headers */,
 				30A98C1C25A449F20082D3C9 /* TUIVideoCallUserCell.h in Headers */,
+				E5FE23402626A2DD00FB1A84 /* CIGAMToastContentView.h in Headers */,
 				30A98C8A25A449F30082D3C9 /* YWorkZoneModel.h in Headers */,
+				E5FE23202626A2DC00FB1A84 /* CIGAMNavigationButton.h in Headers */,
 				30A98B4A25A449F20082D3C9 /* YZContactsModel.h in Headers */,
 				30A98A7A25A449F20082D3C9 /* UIImage+YChatExtension.h in Headers */,
 				30A98BE825A449F20082D3C9 /* TUIGroupPendencyController.h in Headers */,
@@ -2721,16 +3979,21 @@
 				30A98C7125A449F30082D3C9 /* dec_if.h in Headers */,
 				30A98A6E25A449F20082D3C9 /* UIView+Foundation.h in Headers */,
 				30A98B1D25A449F20082D3C9 /* YZBaseManager.h in Headers */,
+				E5FE23D72626A2DD00FB1A84 /* CAAnimation+CIGAM.h in Headers */,
 				30A98AD725A449F20082D3C9 /* NSObject+YBSuspensionView.h in Headers */,
 				30A98C0625A449F20082D3C9 /* TUIGroupLiveMessageCell.h in Headers */,
 				30A98ACE25A449F20082D3C9 /* YZTextFieldInputView.h in Headers */,
 				30A98C4925A449F30082D3C9 /* UIImage+TUIDarkMode.h in Headers */,
 				30A98C0F25A449F20082D3C9 /* TUISystemMessageCell.h in Headers */,
 				30A98C2025A449F20082D3C9 /* TUIAudioCalledView.h in Headers */,
+				E5FE240C2626A2DD00FB1A84 /* NSAttributedString+CIGAM.h in Headers */,
 				30A98A7D25A449F20082D3C9 /* UIButton+Foundation.h in Headers */,
+				E5FE235A2626A2DD00FB1A84 /* CIGAMAppearance.h in Headers */,
 				30A98B7225A449F20082D3C9 /* TUITabBarController.h in Headers */,
 				30A98B0925A449F20082D3C9 /* YZSearchViewController.h in Headers */,
+				E5FE238C2626A2DD00FB1A84 /* CIGAMTips.h in Headers */,
 				30A98AE025A449F20082D3C9 /* YQRInfoHandle.h in Headers */,
+				E5FE23812626A2DD00FB1A84 /* CIGAMImagePickerViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2746,7 +4009,6 @@
 				E527E3D3258393C800531586 /* Sources */,
 				E527E3D4258393C800531586 /* Frameworks */,
 				E527E3D5258393C800531586 /* Resources */,
-				8025B8E63C396D572DEBC44E /* [CP] Copy Pods Resources */,
 				E5CA71F725845B0300719F72 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -2825,23 +4087,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8025B8E63C396D572DEBC44E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YZChat/Pods-YZChat-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YZChat/Pods-YZChat-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat/Pods-YZChat-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2852,36 +4097,55 @@
 				30A98C0725A449F20082D3C9 /* TUIImageMessageCell.m in Sources */,
 				30A98A6A25A449F20082D3C9 /* YChatNetworkEngine.m in Sources */,
 				30A98C6525A449F30082D3C9 /* TIMUserProfile+DataProvider.m in Sources */,
+				E5FE23DC2626A2DD00FB1A84 /* UITraitCollection+CIGAM.m in Sources */,
 				30A98C0325A449F20082D3C9 /* TUITextMessageCell.m in Sources */,
+				E5FE23392626A2DD00FB1A84 /* CIGAMLog+CIGAMConsole.m in Sources */,
+				E5FE237F2626A2DD00FB1A84 /* CIGAMImagePickerHelper.m in Sources */,
 				30A98AC125A449F20082D3C9 /* YZCommonTextImageTableViewCell.m in Sources */,
+				E5FE233F2626A2DD00FB1A84 /* CIGAMToastBackgroundView.m in Sources */,
 				30A98C6B25A449F30082D3C9 /* TCAnnotation.m in Sources */,
 				30A98C3625A449F20082D3C9 /* TUIMoreView.m in Sources */,
+				E5FE24192626A2DD00FB1A84 /* UIBarItem+CIGAM.m in Sources */,
 				30A98A8D25A449F20082D3C9 /* NSDictionary+YChatExtension.m in Sources */,
+				E5FE23572626A2DD00FB1A84 /* CIGAMAnimationHelper.m in Sources */,
 				30A98BB925A449F20082D3C9 /* TUIContactActionCellData.m in Sources */,
 				30A98C3D25A449F20082D3C9 /* TUIGroupMembersView.m in Sources */,
 				30A98AD625A449F20082D3C9 /* YBSuspensionManager.m in Sources */,
 				30A98B2B25A449F20082D3C9 /* YUIImageViewController.m in Sources */,
+				E5FE23102626A2DC00FB1A84 /* CIGAMCommonTableViewController.m in Sources */,
 				30A98C8B25A449F30082D3C9 /* YWorkZoneModel.m in Sources */,
 				30A98C0E25A449F20082D3C9 /* TUIGroupLiveMessageCell.m in Sources */,
 				30A98B6C25A449F20082D3C9 /* YUIContactViewController.m in Sources */,
+				E5FE231B2626A2DC00FB1A84 /* CIGAMFillButton.m in Sources */,
 				30A98A7625A449F20082D3C9 /* NSArray+YChatExtension.m in Sources */,
 				30A98B0C25A449F20082D3C9 /* YChatIMCreateGroupMemberInfo.m in Sources */,
+				E5FE24252626A2DD00FB1A84 /* NSCharacterSet+CIGAM.m in Sources */,
 				30A98B8025A449F20082D3C9 /* TNavigationController.m in Sources */,
+				E5FE23CA2626A2DD00FB1A84 /* CIGAMSegmentedControl.m in Sources */,
 				30A98C7B25A449F30082D3C9 /* TUIError.m in Sources */,
 				30A98B4925A449F20082D3C9 /* YZAddressBookCellData.m in Sources */,
+				E5FE23052626A2DC00FB1A84 /* CIGAMConfiguration.m in Sources */,
 				30A98B2125A449F20082D3C9 /* YUISelectMemberViewController.m in Sources */,
 				30A98AA025A449F20082D3C9 /* YBaseModel.m in Sources */,
+				E5FE24312626A2DD00FB1A84 /* NSObject+CIGAM.m in Sources */,
 				30A98ADF25A449F20082D3C9 /* YZPAirSandbox.m in Sources */,
 				30A98ACB25A449F20082D3C9 /* YZProfileCardCell.m in Sources */,
 				30A98AD525A449F20082D3C9 /* YBSuspensionView.m in Sources */,
 				30A98AA525A449F20082D3C9 /* YZChooseCityViewController.m in Sources */,
 				30A98A9325A449F20082D3C9 /* ZWhiteNavigationBar.m in Sources */,
+				E5FE23E72626A2DD00FB1A84 /* UICollectionView+CIGAM.m in Sources */,
+				E5FE23BE2626A2DD00FB1A84 /* UIBarItem+CIGAMBadge.m in Sources */,
+				E5FE24032626A2DD00FB1A84 /* NSString+CIGAM.m in Sources */,
 				30A98AB125A449F20082D3C9 /* YZMyViewController.m in Sources */,
 				30A98BB525A449F20082D3C9 /* TUIBlackListController.m in Sources */,
 				30A98BBD25A449F20082D3C9 /* TCommonContactSelectCell.m in Sources */,
+				E5FE23142626A2DC00FB1A84 /* CIGAMTabBarViewController.m in Sources */,
+				E5FE23B12626A2DD00FB1A84 /* CIGAMTestView.m in Sources */,
 				30A98BC125A449F20082D3C9 /* TContactListPickerCell.m in Sources */,
 				30A98BEB25A449F20082D3C9 /* TUIGroupPendencyController.m in Sources */,
 				30A98C1125A449F20082D3C9 /* TUIBubbleMessageCell.m in Sources */,
+				E5FE23C82626A2DD00FB1A84 /* CIGAMSearchController.m in Sources */,
+				E5FE23A02626A2DD00FB1A84 /* CIGAMThemeManagerCenter.m in Sources */,
 				30A98C1725A449F20082D3C9 /* TUISelectMemberViewController.m in Sources */,
 				30A98B8425A449F20082D3C9 /* TUIAvatarViewController.m in Sources */,
 				3087B3A825E3B14B002F9A44 /* YZSettingViewController.m in Sources */,
@@ -2889,105 +4153,161 @@
 				309A44CF25A83DDD00741EDC /* YzCustomMsg.m in Sources */,
 				30A98B2725A449F20082D3C9 /* YChatViewController.m in Sources */,
 				E5BFE70E2623E84900013973 /* YzCustomMessageCell.m in Sources */,
+				E5FE23D52626A2DD00FB1A84 /* CALayer+CIGAMViewAnimation.m in Sources */,
 				30A98BF625A449F20082D3C9 /* TUIRecordView.m in Sources */,
+				E5FE23C52626A2DD00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.m in Sources */,
+				E5FE236E2626A2DD00FB1A84 /* CIGAMEmptyView.m in Sources */,
+				E5FE24212626A2DD00FB1A84 /* NSParagraphStyle+CIGAM.m in Sources */,
 				30A98A7E25A449F20082D3C9 /* NSDate+YChatExtension.m in Sources */,
+				E5FE239C2626A2DD00FB1A84 /* UIColor+CIGAMTheme.m in Sources */,
+				E5FE23372626A2DD00FB1A84 /* CIGAMConsoleViewController.m in Sources */,
+				E5FE23032626A2DC00FB1A84 /* CIGAMHelper.m in Sources */,
 				30A98B4E25A449F20082D3C9 /* YZAddFriendHeaderCell.m in Sources */,
 				30A98B0525A449F20082D3C9 /* QDCommonTableViewController.m in Sources */,
+				E5FE23352626A2DD00FB1A84 /* CIGAMLogManagerViewController.m in Sources */,
+				E5FE241C2626A2DD00FB1A84 /* UIWindow+CIGAM.m in Sources */,
+				E5FE241F2626A2DD00FB1A84 /* NSNumber+CIGAM.m in Sources */,
 				30A98C2925A449F20082D3C9 /* TUICall+TRTC.m in Sources */,
 				30A98A6425A449F20082D3C9 /* YChatUploadManager.m in Sources */,
 				30A98B5125A449F20082D3C9 /* YZAddressBookTableViewCell.m in Sources */,
+				E5FE24172626A2DD00FB1A84 /* UITableViewHeaderFooterView+CIGAM.m in Sources */,
 				30A98B4225A449F20082D3C9 /* YZVideoCallUserView.m in Sources */,
+				E5FE234F2626A2DD00FB1A84 /* CIGAMImagePreviewViewTransitionAnimator.m in Sources */,
+				E5FE23712626A2DD00FB1A84 /* CIGAMZoomImageView.m in Sources */,
 				30A98AC425A449F20082D3C9 /* YZFriendListTableViewCell.m in Sources */,
+				E5FE23EC2626A2DD00FB1A84 /* UIButton+CIGAM.m in Sources */,
+				E5FE234B2626A2DD00FB1A84 /* CIGAMImagePreviewViewController.m in Sources */,
 				30A98ABB25A449F20082D3C9 /* YZButtonTableViewCell.m in Sources */,
 				30A98A8725A449F20082D3C9 /* NSBundle+YZBundle.m in Sources */,
 				30A98B7A25A449F20082D3C9 /* TAddCell.m in Sources */,
 				30A98B0425A449F20082D3C9 /* YUIConversationListController.m in Sources */,
+				E5FE24222626A2DD00FB1A84 /* UIGestureRecognizer+CIGAM.m in Sources */,
 				30A98A7125A449F20082D3C9 /* UIView+Extensions.m in Sources */,
 				30A98C4F25A449F30082D3C9 /* TUIMessageDataProviderService.m in Sources */,
 				306754F625A80C4C0045CCC7 /* YZMsgManager.m in Sources */,
 				30A98A8325A449F20082D3C9 /* NSObject+YChatTypeConversion.m in Sources */,
 				30A98A9525A449F20082D3C9 /* ZNavigationPopFadeAnimation.m in Sources */,
 				30A98BAF25A449F20082D3C9 /* TUINewFriendViewModel.m in Sources */,
+				E5FE23C02626A2DD00FB1A84 /* CIGAMPieProgressView.m in Sources */,
+				E5FE23912626A2DD00FB1A84 /* CIGAMMoreOperationController.m in Sources */,
 				30A98BC425A449F20082D3C9 /* TCommonPendencyCellData.m in Sources */,
 				30A98A9A25A449F20082D3C9 /* ZNavigationBar.m in Sources */,
 				30A98C3825A449F20082D3C9 /* TUIGroupInfoController.m in Sources */,
 				30A98C8E25A449F30082D3C9 /* YAppCollectionViewCell.m in Sources */,
 				30A98AF125A449F20082D3C9 /* YConversationViewController.m in Sources */,
+				E5FE23AA2626A2DD00FB1A84 /* CIGAMMultipleDelegates.m in Sources */,
 				30A98B2525A449F20082D3C9 /* YUserProfileController.m in Sources */,
 				30A98C0125A449F20082D3C9 /* TUIVideoMessageCell.m in Sources */,
+				E5FE23612626A2DD00FB1A84 /* CIGAMAssetsGroup.m in Sources */,
 				30A98B7325A449F20082D3C9 /* TModifyView.m in Sources */,
 				30A98BB725A449F20082D3C9 /* TCommonPendencyCell.m in Sources */,
 				30A98C1F25A449F20082D3C9 /* TUIAudioCallViewController.m in Sources */,
 				30A98B1A25A449F20082D3C9 /* YZBaseManager.m in Sources */,
+				E5FE23842626A2DD00FB1A84 /* CIGAMAlbumViewController.m in Sources */,
 				30A98B0625A449F20082D3C9 /* YZContactSearchViewController.m in Sources */,
 				30A98B0B25A449F20082D3C9 /* YConversationListViewModel.m in Sources */,
 				30A98B6325A449F20082D3C9 /* SearchFriendViewController.m in Sources */,
+				E5FE233B2626A2DD00FB1A84 /* CIGAMConsole.m in Sources */,
 				30A98C5B25A449F30082D3C9 /* CreatGroupAvatar.m in Sources */,
 				30A98C0425A449F20082D3C9 /* TUIJoinGroupMessageCell.m in Sources */,
 				30A98AB225A449F20082D3C9 /* YZTextEditViewController.m in Sources */,
 				30A98C0A25A449F20082D3C9 /* TUIFaceMessageCell.m in Sources */,
 				30A98C7C25A449F30082D3C9 /* TUIImageCache.m in Sources */,
+				E5FE23C62626A2DD00FB1A84 /* CIGAMNavigationBarScrollingAnimator.m in Sources */,
 				30A98BF125A449F20082D3C9 /* TUIChatController.m in Sources */,
 				30A98B6B25A449F20082D3C9 /* YZFriendProfileViewController.m in Sources */,
 				30A98A8F25A449F20082D3C9 /* ZClearNavigationBar.m in Sources */,
 				30A98A9B25A449F20082D3C9 /* ZNavigationViewController.m in Sources */,
+				E5FE24002626A2DD00FB1A84 /* UISwitch+CIGAM.m in Sources */,
 				30A98BEA25A449F20082D3C9 /* TUIGroupPendencyCell.m in Sources */,
 				30A98AF825A449F20082D3C9 /* YZSearchConversationViewController.m in Sources */,
+				E5FE240F2626A2DD00FB1A84 /* UIBezierPath+CIGAM.m in Sources */,
 				30A98C1925A449F20082D3C9 /* TUIVideoCallUserCell.m in Sources */,
 				30A98A8125A449F20082D3C9 /* UIButton+Captcha.m in Sources */,
 				30A98A7025A449F20082D3C9 /* UIButton+Foundation.m in Sources */,
 				30A98B0725A449F20082D3C9 /* YZAddressBookViewController.m in Sources */,
 				30A98B1E25A449F20082D3C9 /* YBaseViewController.m in Sources */,
+				E5FE23622626A2DD00FB1A84 /* CIGAMGridView.m in Sources */,
 				30A98C5225A449F30082D3C9 /* TConversationListViewModel.m in Sources */,
 				30A98AB525A449F20082D3C9 /* YZCityModel.m in Sources */,
+				E5FE23872626A2DD00FB1A84 /* CIGAMImagePickerPreviewViewController.m in Sources */,
 				30A98ABC25A449F20082D3C9 /* YUserInfoAvatarTableViewCell.m in Sources */,
 				30A98C6325A449F30082D3C9 /* TIMConversation+DataProvider.m in Sources */,
 				30A98B5225A449F20082D3C9 /* YZCommonPendencyCell.m in Sources */,
 				30A98A7825A449F20082D3C9 /* UIColor+ColorExtension.m in Sources */,
 				30A98BAE25A449F20082D3C9 /* TUIBlackListViewModel.m in Sources */,
 				30A98C1A25A449F20082D3C9 /* TUIVideoRenderView.m in Sources */,
+				E5FE23562626A2DD00FB1A84 /* CIGAMDisplayLinkAnimation.m in Sources */,
 				E5E68CBB262060CD0061751B /* YzConversationListController.m in Sources */,
 				30A98C4825A449F30082D3C9 /* UIImage+TUIDarkMode.m in Sources */,
+				E5FE23512626A2DD00FB1A84 /* CIGAMTips.m in Sources */,
 				30A98C6625A449F30082D3C9 /* NSString+DataProvider.m in Sources */,
+				E5FE237B2626A2DD00FB1A84 /* CIGAMCellHeightKeyCache.m in Sources */,
 				30A98B7425A449F20082D3C9 /* TUnReadView.m in Sources */,
+				E5FE230D2626A2DC00FB1A84 /* CIGAMCommonViewController.m in Sources */,
 				30A98B9B25A449F20082D3C9 /* NSDate+TUIKIT.m in Sources */,
+				E5FE240D2626A2DD00FB1A84 /* UIColor+CIGAM.m in Sources */,
 				30A98AF625A449F20082D3C9 /* YZMapInfoViewController.m in Sources */,
 				30A98ABF25A449F20082D3C9 /* YZTextFieldInputView.m in Sources */,
 				30A98C7625A449F30082D3C9 /* amrFileCodec.mm in Sources */,
 				30A98BE325A449F20082D3C9 /* TUIVideoMessageCellData.m in Sources */,
+				E5FE23F32626A2DD00FB1A84 /* UIVisualEffectView+CIGAM.m in Sources */,
 				30A98B1525A449F20082D3C9 /* YPopCell.m in Sources */,
+				E5FE24282626A2DD00FB1A84 /* UIView+CIGAM.m in Sources */,
 				30A98A6325A449F20082D3C9 /* YChatRequestBuilder.m in Sources */,
 				30A98AA425A449F20082D3C9 /* YZAboutViewController.m in Sources */,
+				E5FE23272626A2DC00FB1A84 /* CIGAMStaticTableViewCellData.m in Sources */,
 				30A98C5D25A449F30082D3C9 /* TUIKit.m in Sources */,
+				E5FE24292626A2DD00FB1A84 /* UISearchBar+CIGAM.m in Sources */,
+				E5FE24242626A2DD00FB1A84 /* UINavigationBar+CIGAM.m in Sources */,
 				30A98A7425A449F20082D3C9 /* UIBarButtonItem+Extensions.m in Sources */,
 				30A98BBC25A449F20082D3C9 /* TUIContactActionCell.m in Sources */,
+				E5FE23BA2626A2DD00FB1A84 /* CIGAMLogger.m in Sources */,
 				30A98AF725A449F20082D3C9 /* YZMapViewController.m in Sources */,
 				30A98B1825A449F20082D3C9 /* YZSearchBarView.m in Sources */,
+				E5FE23DB2626A2DD00FB1A84 /* NSURL+CIGAM.m in Sources */,
 				30A98B4525A449F20082D3C9 /* YGroupMembersTableViewCell.m in Sources */,
+				E5FE24262626A2DD00FB1A84 /* UIView+CIGAMBorder.m in Sources */,
+				E5FE23122626A2DC00FB1A84 /* CIGAMNavigationController.m in Sources */,
 				30A98B6525A449F20082D3C9 /* SearchMyFriendsViewController.m in Sources */,
 				30A98BBB25A449F20082D3C9 /* TCommonContactCell.m in Sources */,
+				E5FE23762626A2DD00FB1A84 /* CIGAMTableView.m in Sources */,
 				30A98B3925A449F20082D3C9 /* YZCardMsgData.m in Sources */,
 				30A98AAA25A449F20082D3C9 /* YZWebViewController.m in Sources */,
+				E5FE23452626A2DD00FB1A84 /* CIGAMToastView.m in Sources */,
+				E5FE24072626A2DD00FB1A84 /* UIImage+CIGAM.m in Sources */,
 				30A98A9F25A449F20082D3C9 /* YUserInfo.m in Sources */,
 				30A98C8D25A449F30082D3C9 /* YWorkZoneTableViewCell.m in Sources */,
+				E5FE23652626A2DD00FB1A84 /* CIGAMWindowSizeMonitor.m in Sources */,
+				E5FE23CB2626A2DD00FB1A84 /* CIGAMEmotionView.m in Sources */,
+				E5FE23F12626A2DD00FB1A84 /* NSPointerArray+CIGAM.m in Sources */,
 				30A98C8825A449F30082D3C9 /* YWorkZoneViewController.m in Sources */,
+				E5FE23602626A2DD00FB1A84 /* CIGAMAsset.m in Sources */,
 				30A98AE925A449F20082D3C9 /* WeChatActionSheet.m in Sources */,
 				30A98B8225A449F20082D3C9 /* TTextEditController.m in Sources */,
 				30A98B0325A449F20082D3C9 /* YUIFileViewController.m in Sources */,
+				E5FE232E2626A2DC00FB1A84 /* CIGAMPopupMenuButtonItem.m in Sources */,
 				30A98B5C25A449F20082D3C9 /* YCustomSearchController.m in Sources */,
+				E5FE231A2626A2DC00FB1A84 /* CIGAMGhostButton.m in Sources */,
 				30A98BBA25A449F20082D3C9 /* TCommonContactSelectCellData.m in Sources */,
 				30A98AF925A449F20082D3C9 /* YZSearchViewController.m in Sources */,
 				30A98BE625A449F20082D3C9 /* TUIGroupPendencyViewModel.m in Sources */,
 				30A98BA825A449F20082D3C9 /* TContactSelectViewModel.m in Sources */,
+				E5FE23482626A2DD00FB1A84 /* CIGAMCellSizeKeyCache.m in Sources */,
+				E5FE239B2626A2DD00FB1A84 /* CIGAMThemeManager.m in Sources */,
 				30A98B4125A449F20082D3C9 /* YZAudioMeetUserCell.m in Sources */,
 				30A98BDB25A449F20082D3C9 /* TUIJoinGroupMessageCellData.m in Sources */,
 				30A98B6625A449F20082D3C9 /* FriendRequestViewController.m in Sources */,
 				30A98AAF25A449F20082D3C9 /* YZModifyMobileViewController.m in Sources */,
+				E5FE23882626A2DD00FB1A84 /* CIGAMVisualEffectView.m in Sources */,
 				30A98C5625A449F30082D3C9 /* TUIConversationCell.m in Sources */,
 				30A98B1725A449F20082D3C9 /* YZTransferGrpOwnerCell.m in Sources */,
 				30A98AFF25A449F20082D3C9 /* YZMyQRCodeViewController.m in Sources */,
 				30A98B9C25A449F20082D3C9 /* UIImage+TUIKIT.m in Sources */,
+				E5FE24232626A2DD00FB1A84 /* UINavigationController+CIGAM.m in Sources */,
+				E5FE23752626A2DD00FB1A84 /* CIGAMLabel.m in Sources */,
 				30A98C0025A449F20082D3C9 /* TUIFileMessageCell.m in Sources */,
+				E5FE23E52626A2DD00FB1A84 /* UIMenuController+CIGAM.m in Sources */,
 				30A98C2125A449F20082D3C9 /* TUIAudioCallUserCell.m in Sources */,
 				30A98C6825A449F30082D3C9 /* TCContext.m in Sources */,
 				30A98BED25A449F20082D3C9 /* TUIMessageCellLayout.m in Sources */,
@@ -2996,31 +4316,46 @@
 				30A98C4025A449F20082D3C9 /* TUIGroupMembersCell.m in Sources */,
 				30A98C5725A449F30082D3C9 /* TUIConversationCellData.m in Sources */,
 				30A98BD625A449F20082D3C9 /* TUIFaceMessageCellData.m in Sources */,
+				E5FE23D12626A2DD00FB1A84 /* CIGAMCellHeightCache.m in Sources */,
+				E5FE23492626A2DD00FB1A84 /* UICollectionView+CIGAMCellSizeKeyCache.m in Sources */,
 				30A98BCC25A449F20082D3C9 /* TUINewFriendViewController.m in Sources */,
 				30A98A8625A449F20082D3C9 /* UIImage+YChatExtension.m in Sources */,
+				E5FE23722626A2DD00FB1A84 /* CIGAMModalPresentationViewController.m in Sources */,
 				30A98C2525A449F20082D3C9 /* TUICallManager.m in Sources */,
+				E5FE24062626A2DD00FB1A84 /* UITabBar+CIGAM.m in Sources */,
+				E5FE24152626A2DD00FB1A84 /* UITextInputTraits+CIGAM.m in Sources */,
 				30A98BDD25A449F20082D3C9 /* TUISystemMessageCellData.m in Sources */,
 				30A98B1C25A449F20082D3C9 /* YBaseTableViewController.m in Sources */,
+				E5FE23FC2626A2DD00FB1A84 /* UINavigationItem+CIGAM.m in Sources */,
 				30A98C5525A449F30082D3C9 /* TUIConversationListController.m in Sources */,
+				E5FE235F2626A2DD00FB1A84 /* CIGAMAssetsManager.m in Sources */,
 				30A98C7825A449F30082D3C9 /* EMVoiceConverter.mm in Sources */,
 				30A98C3225A449F20082D3C9 /* TUIFaceView.m in Sources */,
 				30A98B4325A449F20082D3C9 /* YZCardMsgView.m in Sources */,
+				E5FE233A2626A2DD00FB1A84 /* CIGAMConsoleToolbar.m in Sources */,
+				E5FE23742626A2DD00FB1A84 /* CAAnimation+CIGAM.m in Sources */,
 				30A98BF525A449F20082D3C9 /* TUIInputBar.m in Sources */,
+				E5FE240A2626A2DD00FB1A84 /* CALayer+CIGAM.m in Sources */,
 				30A98C0525A449F20082D3C9 /* TUISystemMessageCell.m in Sources */,
 				30A98AB925A449F20082D3C9 /* YZFieldInputView.m in Sources */,
+				E5FE240E2626A2DD00FB1A84 /* NSMethodSignature+CIGAM.m in Sources */,
 				30A98ADA25A449F20082D3C9 /* YBCollectionViewController.m in Sources */,
 				30A98A7525A449F20082D3C9 /* UIImage+Foundation.m in Sources */,
 				30A98BD925A449F20082D3C9 /* TUIFileMessageCellData.m in Sources */,
 				30A98ADB25A449F20082D3C9 /* YBFuncItemManager.m in Sources */,
 				30A98C5125A449F30082D3C9 /* TNaviBarIndicatorView.m in Sources */,
+				E5FE23C42626A2DD00FB1A84 /* CIGAMScrollAnimator.m in Sources */,
 				30A98C4725A449F30082D3C9 /* UIColor+TUIDarkMode.m in Sources */,
 				30A98AC925A449F20082D3C9 /* YCommonTextCell.m in Sources */,
 				30A98AE625A449F20082D3C9 /* YScannerView.m in Sources */,
+				E5FE23942626A2DD00FB1A84 /* CIGAMWeakObjectContainer.m in Sources */,
 				30A98B7C25A449F20082D3C9 /* TUIFileViewController.m in Sources */,
 				30A98BDF25A449F20082D3C9 /* TUIVoiceMessageCellData.m in Sources */,
 				30A98C1E25A449F20082D3C9 /* TUIVideoCallViewController.m in Sources */,
 				30A98B7925A449F20082D3C9 /* THelper.m in Sources */,
+				E5FE23982626A2DD00FB1A84 /* CIGAMThemePrivate.m in Sources */,
 				30A98C4D25A449F30082D3C9 /* TUIUserProfileDataProviderService.m in Sources */,
+				E5FE23E12626A2DD00FB1A84 /* UIInterface+CIGAM.m in Sources */,
 				30A98B6225A449F20082D3C9 /* YUIBlackListViewController.m in Sources */,
 				30A98B9225A449F20082D3C9 /* TCommonSwitchCell.m in Sources */,
 				30A98A8025A449F20082D3C9 /* UIColor+Foundation.m in Sources */,
@@ -3037,20 +4372,36 @@
 				30A98BE725A449F20082D3C9 /* TUIGroupPendencyCellData.m in Sources */,
 				30A98C4125A449F20082D3C9 /* TUIGroupMemberController.m in Sources */,
 				30A98AC625A449F20082D3C9 /* YZAreaView.m in Sources */,
+				E5FE23772626A2DD00FB1A84 /* CIGAMTextView.m in Sources */,
 				30A98A6925A449F20082D3C9 /* YChatRequestMan.m in Sources */,
+				E5FE238E2626A2DD00FB1A84 /* CIGAMSearchBar.m in Sources */,
+				E5FE238D2626A2DD00FB1A84 /* CIGAMTableViewHeaderFooterView.m in Sources */,
 				30A98C3F25A449F20082D3C9 /* TUIGroupMemberCell.m in Sources */,
 				30A98B9125A449F20082D3C9 /* TUIButtonCell.m in Sources */,
+				E5FE239D2626A2DD00FB1A84 /* UIView+CIGAMTheme.m in Sources */,
+				E5FE23292626A2DC00FB1A84 /* CIGAMPopupMenuView.m in Sources */,
 				E513A1A92623EE5F00621FAF /* YzCustomMessageCellData.m in Sources */,
+				E5FE24322626A2DD00FB1A84 /* UIScrollView+CIGAM.m in Sources */,
+				E5FE24362626A2DD00FB1A84 /* UICollectionViewCell+CIGAM.m in Sources */,
+				E5FE237E2626A2DD00FB1A84 /* CIGAMImagePickerCollectionViewCell.m in Sources */,
 				30A98B6725A449F20082D3C9 /* GroupRequestViewController.m in Sources */,
+				E5FE23642626A2DD00FB1A84 /* CIGAMDialogViewController.m in Sources */,
 				30A98C3425A449F20082D3C9 /* TUIMessageController.m in Sources */,
+				E5FE23282626A2DC00FB1A84 /* UITableView+CIGAMStaticCell.m in Sources */,
 				30A98BFE25A449F20082D3C9 /* TUIFaceCell.m in Sources */,
 				30A98C2725A449F20082D3C9 /* TUICall+Signal.m in Sources */,
 				E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */,
 				30A98B9925A449F20082D3C9 /* TAddHelper.m in Sources */,
+				E5FE23502626A2DD00FB1A84 /* CIGAMImagePreviewView.m in Sources */,
+				E5FE23CC2626A2DD00FB1A84 /* CIGAMKeyboardManager.m in Sources */,
+				E5FE23962626A2DD00FB1A84 /* CIGAMTableViewCell.m in Sources */,
 				30A98AE225A449F20082D3C9 /* YDefaultPortraitView.m in Sources */,
 				30A98BD225A449F20082D3C9 /* TUIGroupLiveMessageCellData.m in Sources */,
+				E5FE24012626A2DD00FB1A84 /* UIViewController+CIGAM.m in Sources */,
+				E5FE23B02626A2DD00FB1A84 /* CIGAMAppearance.m in Sources */,
 				30A98BB225A449F20082D3C9 /* TUIContactListPicker.m in Sources */,
 				30A98B2625A449F20082D3C9 /* YContactSelectViewController.m in Sources */,
+				E5FE23C92626A2DD00FB1A84 /* CIGAMNavigationTitleView.m in Sources */,
 				30A98C5F25A449F30082D3C9 /* TIMGroupInfo+DataProvider.m in Sources */,
 				30A98A6025A449F20082D3C9 /* YChatURLRequest.m in Sources */,
 				30A98BE025A449F20082D3C9 /* TUIImageMessageCellData.m in Sources */,
@@ -3059,45 +4410,74 @@
 				30A98A5F25A449F20082D3C9 /* YChatHTTPClient.m in Sources */,
 				30A98B8125A449F20082D3C9 /* TUIVideoViewController.m in Sources */,
 				30A98B9325A449F20082D3C9 /* TCommonAvatarCell.m in Sources */,
+				E5FE23F52626A2DD00FB1A84 /* UIFont+CIGAM.m in Sources */,
+				E5FE23E82626A2DD00FB1A84 /* UITextView+CIGAM.m in Sources */,
 				30A98B8B25A449F20082D3C9 /* TResponderTextView.m in Sources */,
+				E5FE23302626A2DC00FB1A84 /* CIGAMEmotionInputManager.m in Sources */,
 				30A98C7D25A449F30082D3C9 /* TUIKitConfig.m in Sources */,
+				E5FE23062626A2DC00FB1A84 /* CIGAMRuntime.m in Sources */,
+				E5FE23522626A2DD00FB1A84 /* CIGAMMarqueeLabel.m in Sources */,
 				30A98B8E25A449F20082D3C9 /* TUIProfileCardCell.m in Sources */,
 				30A98B3C25A449F20082D3C9 /* YZLocationMessageCell.m in Sources */,
+				E5FE23DA2626A2DD00FB1A84 /* UITabBarItem+CIGAM.m in Sources */,
+				E5FE23B82626A2DD00FB1A84 /* CIGAMLogItem.m in Sources */,
 				30A98B1625A449F20082D3C9 /* YZMapListTableViewCell.m in Sources */,
 				30A98BB325A449F20082D3C9 /* TUIContactController.m in Sources */,
+				E5FE236A2626A2DD00FB1A84 /* UINavigationController+NavigationBarTransition.m in Sources */,
 				30A98C1825A449F20082D3C9 /* TUISelectMemberCell.m in Sources */,
 				30A98ADE25A449F20082D3C9 /* YChatSettingStore.m in Sources */,
+				E5FE231C2626A2DC00FB1A84 /* CIGAMToolbarButton.m in Sources */,
 				E5BFE7092623DC9400013973 /* YzCustomMessageView.m in Sources */,
 				30A98AC025A449F20082D3C9 /* YZSearchFriendsTableViewCell.m in Sources */,
 				30A98B9A25A449F20082D3C9 /* TUITabBarController.m in Sources */,
+				E5FE23E02626A2DD00FB1A84 /* NSAttributedString+CIGAM.m in Sources */,
+				E5FE23832626A2DD00FB1A84 /* CIGAMImagePickerViewController.m in Sources */,
+				E5FE23152626A2DC00FB1A84 /* CIGAMCollectionViewPagingLayout.m in Sources */,
+				E5FE235B2626A2DD00FB1A84 /* CIGAMFloatLayoutView.m in Sources */,
+				E5FE24102626A2DD00FB1A84 /* UILabel+CIGAM.m in Sources */,
 				30A98B9725A449F20082D3C9 /* TCommonCell.m in Sources */,
 				30A98BFB25A449F20082D3C9 /* TUIMenuCell.m in Sources */,
 				30A98A8425A449F20082D3C9 /* NSData+YChatExtension.m in Sources */,
+				E5FE232F2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.m in Sources */,
+				E5FE23BB2626A2DD00FB1A84 /* UIView+CIGAMBadge.m in Sources */,
 				30A98AE425A449F20082D3C9 /* QRCodeManager.m in Sources */,
 				30A98B6A25A449F20082D3C9 /* SearchMyContactsViewController.m in Sources */,
 				30A98B6E25A449F20082D3C9 /* NSString+TUICommon.m in Sources */,
 				30A98B4C25A449F20082D3C9 /* YZContactsModel.m in Sources */,
+				E5FE23692626A2DD00FB1A84 /* UINavigationBar+Transition.m in Sources */,
 				E527E9E92583A5B300531586 /* SysUser.m in Sources */,
 				30A98B2425A449F20082D3C9 /* YGroupMemberController.m in Sources */,
 				30A98A9925A449F20082D3C9 /* ZNavigationPushVerticalAnimation.m in Sources */,
 				30A98BCA25A449F20082D3C9 /* TUIGroupConversationListController.m in Sources */,
 				30A98AE525A449F20082D3C9 /* YQRInfoHandle.m in Sources */,
 				30A98B3A25A449F20082D3C9 /* YZLocationMessageCellData.m in Sources */,
+				E5FE23442626A2DD00FB1A84 /* CIGAMToastContentView.m in Sources */,
+				E5FE23592626A2DD00FB1A84 /* CIGAMLogger+CIGAMConfigurationTemplate.m in Sources */,
+				E5FE241B2626A2DD00FB1A84 /* NSArray+CIGAM.m in Sources */,
 				E5E68CBF262061340061751B /* YzChatController.m in Sources */,
+				E5FE23D02626A2DD00FB1A84 /* CIGAMPopupContainerView.m in Sources */,
+				E5FE237A2626A2DD00FB1A84 /* UITableView+CIGAMCellHeightKeyCache.m in Sources */,
 				30A98C2825A449F20082D3C9 /* TUICallUtils.m in Sources */,
 				30A98B4725A449F20082D3C9 /* YUISelectMemberCell.m in Sources */,
 				30A98AEB25A449F20082D3C9 /* YChatValidInput.m in Sources */,
 				30A98C1625A449F20082D3C9 /* TUIMemberPanelCell.m in Sources */,
+				E5FE23422626A2DD00FB1A84 /* CIGAMToastAnimator.m in Sources */,
+				E5FE23192626A2DC00FB1A84 /* CIGAMNavigationButton.m in Sources */,
+				E5FE24162626A2DD00FB1A84 /* UITextField+CIGAM.m in Sources */,
 				30A98AAE25A449F20082D3C9 /* YZProfileViewController.m in Sources */,
 				30A98B9D25A449F20082D3C9 /* TPopCell.m in Sources */,
 				30A98C2425A449F20082D3C9 /* TUIAudioCalledView.m in Sources */,
+				E5FE23CD2626A2DD00FB1A84 /* CIGAMOrderedDictionary.m in Sources */,
 				30A98A8C25A449F20082D3C9 /* NSString+YChatExtension.m in Sources */,
 				30A98BFD25A449F20082D3C9 /* TUIMenuView.m in Sources */,
 				30A98ABE25A449F20082D3C9 /* YZLine.m in Sources */,
+				E5FE24372626A2DD00FB1A84 /* UIImageView+CIGAM.m in Sources */,
 				30A98B2925A449F20082D3C9 /* YUIMessageController.m in Sources */,
 				30A98A7725A449F20082D3C9 /* NSDate+Utilities.m in Sources */,
 				30A98C0C25A449F20082D3C9 /* TUIVoiceMessageCell.m in Sources */,
+				E5FE23922626A2DD00FB1A84 /* CIGAMSlider.m in Sources */,
 				30A98C2F25A449F20082D3C9 /* TUICallModel.m in Sources */,
+				E5FE231D2626A2DC00FB1A84 /* CIGAMButton.m in Sources */,
 				30A98C2C25A449F20082D3C9 /* TUICall.m in Sources */,
 				30A98BA725A449F20082D3C9 /* TUIContactSelectController.m in Sources */,
 				30A98A7F25A449F20082D3C9 /* UIView+Foundation.m in Sources */,
@@ -3106,24 +4486,38 @@
 				30A98BAB25A449F20082D3C9 /* TContactViewModel.m in Sources */,
 				30A98B6125A449F20082D3C9 /* ContactsViewController.m in Sources */,
 				30A98B8325A449F20082D3C9 /* TDateEditController.m in Sources */,
+				E5FE23DD2626A2DD00FB1A84 /* UISearchController+CIGAM.m in Sources */,
+				E5FE23AC2626A2DD00FB1A84 /* NSObject+CIGAMMultipleDelegates.m in Sources */,
+				E5FE23B92626A2DD00FB1A84 /* CIGAMLogNameManager.m in Sources */,
+				E5FE23172626A2DC00FB1A84 /* CIGAMLinkButton.m in Sources */,
 				30A98B0A25A449F20082D3C9 /* YZTransferGrpOwnerViewController.m in Sources */,
+				E5FE238A2626A2DD00FB1A84 /* CIGAMAlertController.m in Sources */,
+				E5FE23ED2626A2DD00FB1A84 /* UIActivityIndicatorView+CIGAM.m in Sources */,
 				30A98AC525A449F20082D3C9 /* YUIButtonTableViewCell.m in Sources */,
 				30A98C6925A449F30082D3C9 /* TCServiceManager.m in Sources */,
 				30A98AAC25A449F20082D3C9 /* YZChangePasswordViewController.m in Sources */,
 				30A98BDC25A449F20082D3C9 /* TUITextMessageCellData.m in Sources */,
+				E5FE242D2626A2DD00FB1A84 /* UITableView+CIGAM.m in Sources */,
 				30A98B7725A449F20082D3C9 /* TUILocalStorage.m in Sources */,
 				30A98AED25A449F20082D3C9 /* YZUtil.m in Sources */,
 				30A98AD425A449F20082D3C9 /* NSObject+YBSuspensionView.m in Sources */,
 				30A98B2D25A449F20082D3C9 /* YChatDocumentPickerViewController.m in Sources */,
+				E5FE239E2626A2DD00FB1A84 /* UIVisualEffect+CIGAMTheme.m in Sources */,
 				30A98C6725A449F30082D3C9 /* TIMMessage+DataProvider.m in Sources */,
 				30A98B8525A449F20082D3C9 /* TUIImageViewController.m in Sources */,
+				E5FE23FF2626A2DD00FB1A84 /* UIControl+CIGAM.m in Sources */,
+				E5FE23232626A2DC00FB1A84 /* CIGAMStaticTableViewCellDataSource.m in Sources */,
+				E5FE23A72626A2DD00FB1A84 /* UIImage+CIGAMTheme.m in Sources */,
 				30A98B5525A449F20082D3C9 /* NewFriendViewController.m in Sources */,
 				E5EDCA7D261B3C3D00465C96 /* MKMapView+ZoomLevel.m in Sources */,
 				30A98B3325A449F20082D3C9 /* YUIChatController.m in Sources */,
 				30A98B1F25A449F20082D3C9 /* YUIGroupInfoController.m in Sources */,
+				E5FE24052626A2DD00FB1A84 /* UITableViewCell+CIGAM.m in Sources */,
 				30A98C3325A449F20082D3C9 /* TUIMessageCell.m in Sources */,
+				E5FE23AF2626A2DD00FB1A84 /* CIGAMTextField.m in Sources */,
 				30A98B9025A449F20082D3C9 /* TCommonTextCell.m in Sources */,
 				30A98BF925A449F20082D3C9 /* TUIInputMoreCell.m in Sources */,
+				E5FE23A12626A2DD00FB1A84 /* UIViewController+CIGAMTheme.m in Sources */,
 				30A98A9725A449F20082D3C9 /* ZNavigationPushFadeAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

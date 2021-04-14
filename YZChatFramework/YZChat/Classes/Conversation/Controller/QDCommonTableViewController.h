@@ -6,8 +6,8 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 
-@interface QDCommonTableViewController : QMUICommonTableViewController
+@interface QDCommonTableViewController : CIGAMCommonTableViewController
 
 @end

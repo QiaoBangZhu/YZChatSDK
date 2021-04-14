@@ -16,7 +16,7 @@
 #import <SDWebImage/SDWebImage.h>
 #import "YDefaultPortraitView.h"
 #import "YChatRequestBuilder.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
 
@@ -326,9 +326,9 @@
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error == nil) {
-        [QMUITips showSucceed:@"保存成功"];
+        [CIGAMTips showSucceed:@"保存成功"];
     } else {
-        [QMUITips showError:@"保存失败"];
+        [CIGAMTips showError:@"保存失败"];
     }
 }
 

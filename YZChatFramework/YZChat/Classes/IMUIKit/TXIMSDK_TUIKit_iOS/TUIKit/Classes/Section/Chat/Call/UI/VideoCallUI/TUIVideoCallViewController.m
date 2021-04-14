@@ -17,7 +17,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "YZUtil.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import <TMRTC/TMRTC.h>
 #import "UIColor+Foundation.h"
 #import "YZVideoCallUserView.h"
@@ -40,9 +40,9 @@
 @property(nonatomic,assign) NSInteger collectionCount;
 @property(nonatomic,strong) UIButton *hangup;
 @property(nonatomic,strong) UIButton *accept;
-@property(nonatomic,strong) QMUIButton *mute;
-@property(nonatomic,strong) QMUIButton *handsfree;
-@property(nonatomic,strong) QMUIButton *cameraSwitch;
+@property(nonatomic,strong) CIGAMButton *mute;
+@property(nonatomic,strong) CIGAMButton *handsfree;
+@property(nonatomic,strong) CIGAMButton *cameraSwitch;
 @property(nonatomic,strong) UILabel *callTimeLabel;
 @property(nonatomic,strong) UIView *localPreView;
 @property(nonatomic,strong) UIView *sponsorPanel;
@@ -506,9 +506,9 @@
     return _hangup;
 }
 
-- (QMUIButton *)cameraSwitch {
+- (CIGAMButton *)cameraSwitch {
     if (!_cameraSwitch.superview) {
-        _cameraSwitch = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _cameraSwitch = [CIGAMButton buttonWithType:UIButtonTypeCustom];
         [_cameraSwitch setImage:YZChatResource(@"icon_camera_off") forState:UIControlStateNormal];
         [_cameraSwitch setImage:YZChatResource(@"icon_camera_on") forState:UIControlStateSelected];
         [_cameraSwitch addTarget:self action:@selector(cameraSwitchClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -517,7 +517,7 @@
         [_cameraSwitch setTitleColor:[UIColor colorWithRed:249/255.0 green:250/255.0 blue:249/255.0 alpha:1.0] forState:UIControlStateNormal];
         [_cameraSwitch setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         _cameraSwitch.selected = true;
-        _cameraSwitch.imagePosition = QMUIButtonImagePositionTop;
+        _cameraSwitch.imagePosition = CIGAMButtonImagePositionTop;
         _cameraSwitch.spacingBetweenImageAndTitle = 8;
         [self.view addSubview:_cameraSwitch];
     }
@@ -535,9 +535,9 @@
     return _accept;
 }
 
-- (QMUIButton *)mute {
+- (CIGAMButton *)mute {
     if (!_mute.superview) {
-        _mute = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _mute = [CIGAMButton buttonWithType:UIButtonTypeCustom];
         [_mute setImage:YZChatResource(@"ic_mute") forState:UIControlStateNormal];
         [_mute addTarget:self action:@selector(muteClick) forControlEvents:UIControlEventTouchUpInside];
         _mute.hidden = YES;
@@ -545,16 +545,16 @@
         _mute.titleLabel.font = [UIFont systemFontOfSize:12];
         [_mute setTitleColor:[UIColor colorWithRed:249/255.0 green:250/255.0 blue:249/255.0 alpha:1.0] forState:UIControlStateNormal];
         [_mute setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        _mute.imagePosition = QMUIButtonImagePositionTop;
+        _mute.imagePosition = CIGAMButtonImagePositionTop;
         _mute.spacingBetweenImageAndTitle = 8;
         [self.view addSubview:_mute];
     }
     return _mute;
 }
 
-- (QMUIButton *)handsfree {
+- (CIGAMButton *)handsfree {
     if (!_handsfree.superview) {
-        _handsfree = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _handsfree = [CIGAMButton buttonWithType:UIButtonTypeCustom];
         [_handsfree setImage:YZChatResource(@"ic_handsfree_on") forState:UIControlStateNormal];
         [_handsfree setImage:YZChatResource(@"ic_handsfree") forState:UIControlStateSelected];
         [_handsfree setTitle:@"免提" forState:UIControlStateNormal];
@@ -563,7 +563,7 @@
         [_handsfree setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [_handsfree addTarget:self action:@selector(handsfreeClick) forControlEvents:UIControlEventTouchUpInside];
         _handsfree.hidden = YES;
-        _handsfree.imagePosition = QMUIButtonImagePositionTop;
+        _handsfree.imagePosition = CIGAMButtonImagePositionTop;
         _handsfree.spacingBetweenImageAndTitle = 8;
         [self.view addSubview:_handsfree];
     }

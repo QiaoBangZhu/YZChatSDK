@@ -72,7 +72,7 @@
     [self.navigationController pushViewController:frc animated:YES];
 }
 
-- (void)searchController:(QMUISearchController *)searchController updateResultsForSearchString:(NSString *)searchString {
+- (void)searchController:(CIGAMSearchController *)searchController updateResultsForSearchString:(NSString *)searchString {
     [self.searchList removeAllObjects];
     [YChatNetworkEngine requestUserListWithParam:searchString completion:^(NSDictionary *result, NSError *error) {
         if (!error) {

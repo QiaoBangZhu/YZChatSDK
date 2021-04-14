@@ -15,7 +15,7 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "MMLayout/UIView+MMLayout.h"
 #import "UIColor+TUIDarkMode.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "UIColor+Foundation.h"
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
@@ -49,14 +49,14 @@
 
     _micButton = [[UIButton alloc] init];
     [_micButton addTarget:self action:@selector(clickVoiceBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_micButton setImage:[YZChatResource(@"ToolViewInputVoice") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_micButton setImage:[YZChatResource(@"ToolViewInputVoice") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
+    [_micButton setImage:[YZChatResource(@"ToolViewInputVoice") cigam_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
+    [_micButton setImage:[YZChatResource(@"ToolViewInputVoice") cigam_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
     [self addSubview:_micButton];
 
     _faceButton = [[UIButton alloc] init];
     [_faceButton addTarget:self action:@selector(clickFaceBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];    [self addSubview:_faceButton];
+    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") cigam_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
+    [_faceButton setImage:[YZChatResource(@"ToolViewEmotion") cigam_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];    [self addSubview:_faceButton];
 
     _keyboardButton = [[UIButton alloc] init];
     [_keyboardButton addTarget:self action:@selector(clickKeyboardBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -67,8 +67,8 @@
 
     _moreButton = [[UIButton alloc] init];
     [_moreButton addTarget:self action:@selector(clickMoreBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [_moreButton setImage:[YZChatResource(@"TypeSelectorBtn_Black") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
-    [_moreButton setImage:[YZChatResource(@"TypeSelectorBtnHL_Black") qmui_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
+    [_moreButton setImage:[YZChatResource(@"TypeSelectorBtn_Black") cigam_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateNormal];
+    [_moreButton setImage:[YZChatResource(@"TypeSelectorBtnHL_Black") cigam_imageWithTintColor:[UIColor colorWithHex:KCommonBlackColor]] forState:UIControlStateHighlighted];
     [self addSubview:_moreButton];
 
     _recordButton = [[UIButton alloc] init];

@@ -11,7 +11,7 @@
 #import "TScrollView.h"
 #import "MMLayout/UIView+MMLayout.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "WeChatActionSheet.h"
 #import <Photos/Photos.h>
 
@@ -231,10 +231,10 @@
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error) {
-        [QMUITips showError:error.localizedDescription];
+        [CIGAMTips showError:error.localizedDescription];
         NSLog(@"保存图片出错%@", error.localizedDescription);
     }else {
-        [QMUITips showSucceed:@"保存成功"];
+        [CIGAMTips showSucceed:@"保存成功"];
     }
 }
 

@@ -16,7 +16,7 @@
 #import "YZMapListTableViewCell.h"
 #import "CommonConstant.h"
 #import "UIColor+ColorExtension.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
@@ -25,15 +25,15 @@
 
 static NSString *annotationIdentifier = @"annotationIdentifier";
 
-@interface YZMapViewController ()<UITableViewDelegate, UITableViewDataSource,QMUIKeyboardManagerDelegate,AMapSearchDelegate,UISearchBarDelegate, MKMapViewDelegate>
+@interface YZMapViewController ()<UITableViewDelegate, UITableViewDataSource,CIGAMKeyboardManagerDelegate,AMapSearchDelegate,UISearchBarDelegate, MKMapViewDelegate>
 
 @property (nonatomic, strong)UITableView    * tableView;
 @property (nonatomic, strong)NSMutableArray * addressList;
 @property (nonatomic, strong)MKMapView      * mapView;
 @property (nonatomic, strong)UIView         * bottomView;
-@property (nonatomic, strong)QMUIKeyboardManager *keyboardManager;
-@property (nonatomic, strong)QMUISearchBar  * searchBar;
-@property (nonatomic, strong)QMUIButton     * backUserLocationBtn;
+@property (nonatomic, strong)CIGAMKeyboardManager *keyboardManager;
+@property (nonatomic, strong)CIGAMSearchBar  * searchBar;
+@property (nonatomic, strong)CIGAMButton     * backUserLocationBtn;
 @property (nonatomic, strong)UIButton       * doneBtn;
 
 @property (nonatomic, assign)CLLocationCoordinate2D userLocation;
@@ -123,7 +123,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     [self.bottomView addSubview:self.searchBar];
     [self.bottomView addSubview:self.tableView];
 
-    self.keyboardManager = [[QMUIKeyboardManager alloc]initWithDelegate:self];
+    self.keyboardManager = [[CIGAMKeyboardManager alloc]initWithDelegate:self];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.doneBtn];
 }
 
@@ -161,10 +161,10 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     return _mapView;
 }
 
-- (QMUIButton *)backUserLocationBtn {
+- (CIGAMButton *)backUserLocationBtn {
     if (!_backUserLocationBtn) {
-        _backUserLocationBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
-        _backUserLocationBtn.qmui_outsideEdge = UIEdgeInsetsMake(-10, -10, -10, -10);
+        _backUserLocationBtn = [CIGAMButton buttonWithType:UIButtonTypeCustom];
+        _backUserLocationBtn.cigam_outsideEdge = UIEdgeInsetsMake(-10, -10, -10, -10);
         [_backUserLocationBtn setImage:YZChatResource(@"schedule_icon_map_back_user_location") forState:UIControlStateNormal];
         [_backUserLocationBtn addTarget:self action:@selector(backUserLocation) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -195,10 +195,10 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     return _search;
 }
 
-- (QMUISearchBar *)searchBar {
+- (CIGAMSearchBar *)searchBar {
     if (!_searchBar) {
-        _searchBar = [[QMUISearchBar alloc]init];
-        _searchBar.backgroundImage = [UIImage qmui_imageWithColor:[UIColor colorWithHex:KCommonBackgroundColor]];
+        _searchBar = [[CIGAMSearchBar alloc]init];
+        _searchBar.backgroundImage = [UIImage cigam_imageWithColor:[UIColor colorWithHex:KCommonBackgroundColor]];
         _searchBar.delegate = self;
         _searchBar.placeholder = @"搜索地点";
     }
@@ -287,7 +287,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     }
 }
 
-- (void)keyboardWillShowWithUserInfo:(QMUIKeyboardUserInfo *)keyboardUserInfo {
+- (void)keyboardWillShowWithUserInfo:(CIGAMKeyboardUserInfo *)keyboardUserInfo {
     CGFloat height = _mapView.frame.size.height/2;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:keyboardUserInfo.animationDuration];
@@ -299,7 +299,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     [UIView commitAnimations];
 }
 
-- (void)keyboardWillHideWithUserInfo:(QMUIKeyboardUserInfo *)keyboardUserInfo {
+- (void)keyboardWillHideWithUserInfo:(CIGAMKeyboardUserInfo *)keyboardUserInfo {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:keyboardUserInfo.animationDuration];
     [UIView setAnimationCurve:keyboardUserInfo.animationCurve];
@@ -314,7 +314,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     _pois = [response.pois mutableCopy];
     self.selectedIndexPath = _selectedIndexPath;
     [self.tableView reloadData];
-    [self.tableView qmui_scrollToTopAnimated:true];
+    [self.tableView cigam_scrollToTopAnimated:true];
 }
 
 -(void)backUserLocation {
@@ -324,7 +324,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     if (!self.isSearching) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     }
-    [self.tableView qmui_scrollToTopAnimated: YES];
+    [self.tableView cigam_scrollToTopAnimated: YES];
 }
 
 #pragma mark mapViewDelegate
@@ -355,7 +355,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
     CLLocationCoordinate2D centerCoordinate = mapView.region.center;
     [self searchAmapPOIAroundSearchRequest:centerCoordinate];
 
-    [self.tableView qmui_scrollToTop];
+    [self.tableView cigam_scrollToTop];
 
     if (!self.isSearching) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];

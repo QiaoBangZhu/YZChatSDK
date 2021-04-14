@@ -7,7 +7,7 @@
 //
 
 #import "YZTransferGrpOwnerViewController.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YChatNetworkEngine.h"
 #import "YZTransferGrpOwnerCell.h"
 #import <ImSDKForiOS/ImSDK.h>
@@ -86,11 +86,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TGroupMemberCellData *info = _isSearching == true ? self.searchList[indexPath.row] : self.dataArray[indexPath.row];
     [[V2TIMManager sharedInstance] transferGroupOwner:self.groupInfo.groupID member:info.identifier succ:^{
-        [QMUITips showWithText:@"转让成功"];
+        [CIGAMTips showWithText:@"转让成功"];
         self.finished = true;
         [self.navigationController popViewControllerAnimated:true];
     } fail:^(int code, NSString *desc) {
-        [QMUITips showError:desc];
+        [CIGAMTips showError:desc];
     }];
 }
 

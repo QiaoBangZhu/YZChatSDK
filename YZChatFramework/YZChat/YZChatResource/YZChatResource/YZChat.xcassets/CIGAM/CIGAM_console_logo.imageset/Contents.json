@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "CIGAM_console_logo.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

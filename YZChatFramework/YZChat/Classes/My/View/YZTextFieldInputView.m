@@ -9,7 +9,7 @@
 #import "YZTextFieldInputView.h"
 #import <Masonry/Masonry.h>
 #import "UIColor+ColorExtension.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "NSBundle+YZBundle.h"
 
 @interface YZTextFieldInputView()
@@ -160,7 +160,7 @@
     if (!_codeButton) {
         _codeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _codeButton.titleLabel.font = [UIFont systemFontOfSize:12];
-        _codeButton.qmui_outsideEdge = UIEdgeInsetsMake(-10, 0, -10, 0);
+        _codeButton.cigam_outsideEdge = UIEdgeInsetsMake(-10, 0, -10, 0);
         [_codeButton setTitleColor:[UIColor colorWithHex:kCommonBlueTextColor] forState:UIControlStateNormal];
         [_codeButton addTarget:self action:@selector(codeBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [_codeButton setTitle:@"发送验证码" forState:UIControlStateNormal];

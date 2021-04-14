@@ -26,7 +26,7 @@
 #import "UIColor+ColorExtension.h"
 #import "WeChatActionSheet.h"
 #import "TUICallManager.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "TUICallManager.h"
 #import "YZTextEditViewController.h"
 #import "YContactSelectViewController.h"
@@ -178,7 +178,7 @@
                 self.user = info;
                 [self loadData];
             }else {
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];

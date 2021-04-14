@@ -89,7 +89,7 @@
                 self.user = info;
                 [self loadData];
             }else {
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];

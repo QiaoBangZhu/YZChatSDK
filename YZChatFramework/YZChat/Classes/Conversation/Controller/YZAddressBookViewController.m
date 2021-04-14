@@ -16,7 +16,7 @@
 #import <Contacts/Contacts.h>
 #import <ContactsUI/ContactsUI.h>
 
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YChatNetworkEngine.h"
 #import "YUserInfo.h"
 #import "YZAddressBookTableViewCell.h"
@@ -163,7 +163,7 @@
     for (NSMutableArray *list in [dataDict allValues]) {
         [list sortUsingSelector:@selector(compare:)];
     }
-    [QMUITips hideAllTips];
+    [CIGAMTips hideAllTips];
     self.groupList = groupList;
     self.dataDict = dataDict;
 }
@@ -173,7 +173,7 @@
        if (isAuthorized) {
            NSLog(@"有权限，打开通讯录");
            dispatch_async(dispatch_get_main_queue(), ^{
-               [QMUITips showLoadingInView:[UIApplication sharedApplication].keyWindow];
+               [CIGAMTips showLoadingInView:[UIApplication sharedApplication].keyWindow];
            });
            
            CNContactStore *contactStore = [[CNContactStore alloc] init];
@@ -221,12 +221,12 @@
                [self fetchContactsInfoFromImServer];
            }else {
                dispatch_async(dispatch_get_main_queue(), ^{
-                   [QMUITips showLoadingInView:[UIApplication sharedApplication].keyWindow];
+                   [CIGAMTips showLoadingInView:[UIApplication sharedApplication].keyWindow];
                    [self showTips];
                });
            }
        }else {
-           [QMUITips showWithText:@"请到设置>隐私>通讯录打开本应用的权限设置"];
+           [CIGAMTips showWithText:@"请到设置>隐私>通讯录打开本应用的权限设置"];
        }
    }];
 }
@@ -254,7 +254,7 @@
         else if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized){
             block(YES);
         }else {
-            [QMUITips showWithText:@"请到设置>隐私>通讯录打开本应用的权限设置"];
+            [CIGAMTips showWithText:@"请到设置>隐私>通讯录打开本应用的权限设置"];
         }
     }
 }
@@ -353,11 +353,11 @@
             [YChatNetworkEngine requestInviteFriendBy:data.mobile Completion:^(NSDictionary *result, NSError *error) {
                 if (!error) {
                     if ([result[@"code"] intValue] == 200) {
-                        [QMUITips showSucceed:result[@"data"]];
+                        [CIGAMTips showSucceed:result[@"data"]];
                         data.type = 4;
                         [cell fillWithData:data];
                     }else {
-                        [QMUITips showSucceed:result[@"msg"]];
+                        [CIGAMTips showSucceed:result[@"msg"]];
                     }
                 }
             }];

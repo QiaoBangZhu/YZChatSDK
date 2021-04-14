@@ -7,7 +7,7 @@
 //
 
 #import "YCustomSearchController.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 
 @interface YCustomSearchController ()
 @property(nonatomic, strong) UIView *customDimmingView;

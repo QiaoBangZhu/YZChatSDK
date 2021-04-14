@@ -6,12 +6,12 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "QMUITableViewCell.h"
+#import "CIGAMKit.h"
 #import "TUIGroupMemberCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TransferGrpOwnerCell : QMUITableViewCell
+@interface TransferGrpOwnerCell : CIGAMTableViewCell
 @property UIImageView *avatarView;
 @property UILabel *titleLabel;
 

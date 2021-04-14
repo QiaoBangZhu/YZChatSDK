@@ -11,7 +11,7 @@
 #import "YScannerView.h"
 #import "QRCodeManager.h"
 #import "YQRInfoHandle.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "UIColor+ColorExtension.h"
 
 @interface QRScanViewController ()<AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,YScannerViewDelegate>
@@ -80,7 +80,7 @@
 #pragma mark-- UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
-    [QMUITips showLoading:@"扫描中" inView:self.view];
+    [CIGAMTips showLoading:@"扫描中" inView:self.view];
     UIImage *pickImage = info[UIImagePickerControllerOriginalImage];
     CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode
                                               context:nil
@@ -97,7 +97,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
                                    } else {
                                        [self rcd_didReadFromAlbumFailed];
                                    }
-                                    [QMUITips hideAllTips];
+                                    [CIGAMTips hideAllTips];
                                }];
 }
 

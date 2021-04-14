@@ -15,7 +15,7 @@
 #import <Masonry/Masonry.h>
 #import "YWorkZoneModel.h"
 #import "ReactiveObjC/ReactiveObjC.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YZWebViewController.h"
 #import <TMRTC/TMRTC.h>
 #import "YZBaseManager.h"
@@ -82,10 +82,10 @@
 - (void)requestData {
     [self.data removeAllObjects];
     @weakify(self);
-    [QMUITips showLoadingInView:self.view];
+    [CIGAMTips showLoadingInView:self.view];
     [YChatNetworkEngine requestToolBoxWithUserId:[YChatSettingStore sharedInstance].getUserId completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
-            [QMUITips hideAllTips];
+            [CIGAMTips hideAllTips];
             if ([result[@"code"]intValue] == 200) {
                 @strongify(self);
                 [self.data removeAllObjects];
@@ -95,7 +95,7 @@
                 }
                 [self.tableView reloadData];
             }else {
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];
@@ -163,7 +163,7 @@
         [self configureAuthServce];
         
         if([[[TMRTCAppDelegate sharedRTC] authService] login]) {
-            [QMUITips showLoadingInView:self.view];
+            [CIGAMTips showLoadingInView:self.view];
         } else {
             NSLog(@"not init!");
         }
@@ -197,7 +197,7 @@
                     [self showWebView:url title:app.toolName needUA: NO];
                 }
             }else {
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];
@@ -212,7 +212,7 @@
                     [self showWebView:url title:app.toolName needUA:[app.toolCode isEqualToString:@"code003"] ? true : false];
                 }
             }else {
-                [QMUITips showError:result[@"Message"]];
+                [CIGAMTips showError:result[@"Message"]];
             }
         }
     }];
@@ -280,7 +280,7 @@
 
 - (void)auth:(nonnull TMRTCAuthService *)auth didFinishLoginWithError:(nullable NSError *)error {
     if (error) {
-        [QMUITips showError:error.localizedDescription];
+        [CIGAMTips showError:error.localizedDescription];
     }else {
         UIViewController *viewController = [[TMRTCAppDelegate sharedRTC] rootViewController];
         [self presentViewController:viewController animated:YES completion:nil];
@@ -289,7 +289,7 @@
 
 - (void)auth:(nonnull TMRTCAuthService *)auth didFinishLogoutWithError:(nullable NSError *)error {
     if (error) {
-        [QMUITips showError:error.localizedDescription];
+        [CIGAMTips showError:error.localizedDescription];
     }
 }
 

@@ -15,7 +15,7 @@
 #import "UIImage+TUIKIT.h"
 #import "UIColor+ColorExtension.h"
 
-@interface YZAddFriendHeaderCell()<QMUITextViewDelegate>
+@interface YZAddFriendHeaderCell()<CIGAMTextViewDelegate>
 
 
 @end
@@ -128,9 +128,9 @@
     
 }
 
-- (QMUITextView *)textView {
+- (CIGAMTextView *)textView {
     if (!_textView) {
-        _textView = [[QMUITextView alloc] init];
+        _textView = [[CIGAMTextView alloc] init];
         _textView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
         _textView.scrollsToTop = NO;
         _textView.placeholder = @"发送给对方的验证消息";

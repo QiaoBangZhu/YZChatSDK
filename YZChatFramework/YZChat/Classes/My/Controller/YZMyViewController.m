@@ -19,7 +19,7 @@
 #import "QRScanViewController.h"
 #import "UIImage+YChatExtension.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "NSBundle+YZBundle.h"
 #import "YUserInfo.h"
 #import "THeader.h"

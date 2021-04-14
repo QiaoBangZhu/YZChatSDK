@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QMUIKit.h>
+#import "CIGAMKit.h"
 #import <Masonry.h>
 #import "YZLine.h"
 
@@ -21,12 +21,12 @@ typedef enum {
 
 @interface YZFieldInputView : UIView
 
-@property (nonatomic, strong)QMUITextField *textField;
+@property (nonatomic, strong)CIGAMTextField *textField;
 @property (nonatomic, assign)InputType type;
 @property (nonatomic, strong)UIImage* image;
 @property (nonatomic, strong)UIImage* highlightedImage;
 @property (nonatomic, strong)UIImageView* iconView;
-@property (nonatomic, strong)QMUIGhostButton* codeButton;
+@property (nonatomic, strong)CIGAMGhostButton* codeButton;
 @property (nonatomic, strong)YZLine* line;
 
 - (instancetype)initWith:(InputType)type image:(UIImage*)image highlightImage:(UIImage*)hightImage;

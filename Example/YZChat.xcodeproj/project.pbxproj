@@ -503,9 +503,9 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				32FEA4D164749C64CA6CF37A /* [CP] Copy Pods Resources */,
 				E5195CB725888B680056AFB6 /* Embed Frameworks */,
 				E546038E2589B3BF00B4121B /* Modify Frameworks */,
+				DA012A1CAF2D0F223176B2FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -524,7 +524,6 @@
 				E5CA75052584BE1B00719F72 /* Sources */,
 				E5CA75092584BE1B00719F72 /* Frameworks */,
 				E5CA750B2584BE1B00719F72 /* Resources */,
-				E5CA75102584BE1B00719F72 /* [CP] Copy Pods Resources */,
 				E5CA75112584BE1B00719F72 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -602,7 +601,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		32FEA4D164749C64CA6CF37A /* [CP] Copy Pods Resources */ = {
+		DA012A1CAF2D0F223176B2FD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -658,24 +657,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5CA75102584BE1B00719F72 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example_Pod/Pods-YZChat_Example_Pod-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/QMUIKit/QMUIResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QMUIResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example_Pod/Pods-YZChat_Example_Pod-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E5CA75112584BE1B00719F72 /* [CP] Embed Pods Frameworks */ = {

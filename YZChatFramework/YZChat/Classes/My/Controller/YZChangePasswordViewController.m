@@ -15,7 +15,7 @@
 #import "THeader.h"
 #import "YChatNetworkEngine.h"
 #import "ReactiveObjC/ReactiveObjC.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 
 @interface YZChangePasswordViewController ()
 @property (nonatomic, strong)YZTextFieldInputView *oldPwdField;
@@ -138,17 +138,17 @@
 
 - (void)confirmBtnAction {
     if (![self.newPwdField.textField.text isEqualToString:self.confirmPwdField.textField.text]) {
-        [QMUITips showError:@"前后密码不一致"];
+        [CIGAMTips showError:@"前后密码不一致"];
         return;
     }
 
     [YChatNetworkEngine requestModifyPasswordWithUserId:self.userInfo.userId oldPwd:self.oldPwdField.textField.text newPassword:self.newPwdField.textField.text completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             if ([result[@"code"] intValue] == 200) {
-                [QMUITips showWithText:@"成功"];
+                [CIGAMTips showWithText:@"成功"];
                 [self.navigationController popViewControllerAnimated:true];
             }else {
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];

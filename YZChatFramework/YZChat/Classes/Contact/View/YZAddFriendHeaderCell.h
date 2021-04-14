@@ -7,7 +7,7 @@
 //
 
 #import "TCommonCell.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YZProfileCardCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImageView  *avatar;
 @property (nonatomic, strong) UILabel      *name;
 @property (nonatomic, strong) UILabel      *mobile;
-@property (nonatomic, strong) QMUITextView *textView;
+@property (nonatomic, strong) CIGAMTextView *textView;
 @property (nonatomic, strong) ProfileCardCellData *cardData;
 @property (nonatomic, assign) id<AddFriendHeaderCellDelegate>delegate;
 

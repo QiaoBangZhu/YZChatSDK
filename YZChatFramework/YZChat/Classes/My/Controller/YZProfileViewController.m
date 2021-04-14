@@ -22,7 +22,7 @@
 #import "YZTextEditViewController.h"
 #import "YChatNetworkEngine.h"
 
-#import <QMUIKit.h>
+#import "CIGAMKit.h"
 #import "WeChatActionSheet.h"
 #import "YzFileManager.h"
 #import "UIImage+YChatExtension.h"
@@ -394,7 +394,7 @@
                     self.profile.userIcon = headImageUrl;
                     [self requestEditUserInfo];
                 }else {
-                    [QMUITips showError:json[@"msg"]];
+                    [CIGAMTips showError:json[@"msg"]];
                 }
               
             }
@@ -420,7 +420,7 @@
                 @strongify(self)
                 [[YChatSettingStore sharedInstance]saveUserInfo:self.profile];
                 [self setupData];
-                [QMUITips showWithText:@"修改成功"];
+                [CIGAMTips showWithText:@"修改成功"];
             }
         }
     }];

@@ -31,7 +31,7 @@
 #import "UIColor+ColorExtension.h"
 #import "YZTextEditViewController.h"
 #import "YChatNetworkEngine.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YChatNetworkEngine.h"
 #import "YZTransferGrpOwnerViewController.h"
 #import <ImSDKForiOS/ImSDK.h>
@@ -376,7 +376,7 @@
             }];
         }];
     }else {
-        [QMUITips showError:@"您没有权限修改"];
+        [CIGAMTips showError:@"您没有权限修改"];
     }
 }
 
@@ -400,7 +400,7 @@
             }];
         }];
     }else {
-        [QMUITips showError:@"您没有权限修改"];
+        [CIGAMTips showError:@"您没有权限修改"];
     }
 }
 

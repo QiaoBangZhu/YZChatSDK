@@ -27,7 +27,7 @@
 #import "UIColor+TUIDarkMode.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 
 #import <ImSDKForiOS/ImSDK.h>
 #import "NSBundle+YZBundle.h"

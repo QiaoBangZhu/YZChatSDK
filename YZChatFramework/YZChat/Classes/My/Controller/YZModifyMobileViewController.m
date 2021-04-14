@@ -10,7 +10,7 @@
 #import "UIBarButtonItem+Extensions.h"
 #import "UIColor+ColorExtension.h"
 #import "YZTextFieldInputView.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import <Masonry/Masonry.h>
 #import "THeader.h"
 #import "YChatNetworkEngine.h"
@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong)YZTextFieldInputView *phoneField;
 @property (nonatomic, strong)YZTextFieldInputView *smsCodeField;
-@property (nonatomic, strong)QMUIButton         *confirmBtn;
+@property (nonatomic, strong)CIGAMButton         *confirmBtn;
 @property (nonatomic, strong)YUserInfo           *userInfo;
 
 @end
@@ -97,9 +97,9 @@
     }
 }
 
-- (QMUIButton*)confirmBtn {
+- (CIGAMButton*)confirmBtn {
     if (!_confirmBtn) {
-        _confirmBtn = [QMUIButton buttonWithType:UIButtonTypeCustom];
+        _confirmBtn = [CIGAMButton buttonWithType:UIButtonTypeCustom];
         [_confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
         [_confirmBtn addTarget:self action:@selector(confirmBtnAction) forControlEvents:UIControlEventTouchUpInside];
         [_confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -115,11 +115,11 @@
     [YChatNetworkEngine requestChangeMobileWithUserId:self.userInfo.userId mobile:self.phoneField.textField.text oldMobile:self.userInfo.mobile smsCode:self.smsCodeField.textField.text completion:^(NSDictionary *result, NSError *error) {
         if (!error) {
             if ([result[@"code"] intValue] == 200) {
-                [QMUITips showSucceed:@"成功"];
+                [CIGAMTips showSucceed:@"成功"];
                 self.userInfo.mobile = self.phoneField.textField.text;
                 [[YChatSettingStore sharedInstance]saveUserInfo:self.userInfo];
             }else {
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];
@@ -127,16 +127,16 @@
 
 - (void)selectedCodeBtn:(UIButton *)btn {
     if ([_phoneField.textField.text length] == 0) {
-        [QMUITips showWithText:@"请输入手机号码"];
+        [CIGAMTips showWithText:@"请输入手机号码"];
         return;
     }
     [YChatNetworkEngine requestUserCodeWithMobile:self.phoneField.textField.text type:SmscodeTypeModifyPhone completion:^(NSDictionary *result, NSError *error) {
         [UIButton settimer:btn];
         if (!error) {
             if ([result[@"code"]intValue] == 200) {
-                [QMUITips showSucceed:@"发送成功"];
+                [CIGAMTips showSucceed:@"发送成功"];
             }else{
-                [QMUITips showError:result[@"msg"]];
+                [CIGAMTips showError:result[@"msg"]];
             }
         }
     }];

@@ -9,7 +9,7 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "MMLayout/UIView+MMLayout.h"
 #import <Masonry/Masonry.h>
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "WeChatActionSheet.h"
 
 @import MediaPlayer;
@@ -212,7 +212,7 @@
        NSLog(@"保存视频失败%@", error.localizedDescription);
    }
    else {
-       [QMUITips showSucceed:@"保存视频成功"];
+       [CIGAMTips showSucceed:@"保存视频成功"];
    }
  
 }

@@ -9,7 +9,7 @@
 #import "YZFieldInputView.h"
 #import "UIColor+ColorExtension.h"
 
-@interface YZFieldInputView() <QMUITextFieldDelegate>
+@interface YZFieldInputView() <CIGAMTextFieldDelegate>
 
 @end
 
@@ -142,19 +142,19 @@
     return _iconView;
 }
 
-- (QMUIButton *)codeButton {
+- (CIGAMButton *)codeButton {
     if (!_codeButton) {
-        _codeButton = [QMUIGhostButton buttonWithType:UIButtonTypeCustom];
+        _codeButton = [CIGAMGhostButton buttonWithType:UIButtonTypeCustom];
         _codeButton.titleLabel.font = [UIFont systemFontOfSize:12];
-        _codeButton.qmui_outsideEdge = UIEdgeInsetsMake(-10, 0, -10, 0);
+        _codeButton.cigam_outsideEdge = UIEdgeInsetsMake(-10, 0, -10, 0);
         [_codeButton setTitle:@"发送验证码" forState:UIControlStateNormal];
     }
     return _codeButton;
 }
 
-- (QMUITextField *)textField {
+- (CIGAMTextField *)textField {
     if (!_textField) {
-        _textField = [[QMUITextField alloc]init];
+        _textField = [[CIGAMTextField alloc]init];
         _textField.font = [UIFont systemFontOfSize:14];
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }

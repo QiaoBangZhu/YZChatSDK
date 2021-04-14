@@ -29,7 +29,7 @@
 #import "UIColor+ColorExtension.h"
 #import "YChatNetworkEngine.h"
 #import "YUserInfo.h"
-#import <QMUIKit/QMUIKit.h>
+#import "CIGAMKit.h"
 #import "YZMapViewController.h"
 #import "YZLocationMessageCellData.h"
 #import "YZLocationMessageCell.h"
@@ -145,7 +145,7 @@
                YUserInfo* info = [YUserInfo yy_modelWithDictionary:result[@"data"]];
                [THelper makeToast:[NSString stringWithFormat:@"%@ 取消了通话",info.nickName]];
            }else {
-               [QMUITips showError: result[@"msg"]];
+               [CIGAMTips showError: result[@"msg"]];
            }
        }
     }];

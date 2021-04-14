@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = 'YZChat/YZChat.framework', 'YZChat/Vendors/*.framework'
 
   s.dependency 'AFNetworking', '~> 4.0'
-  s.dependency 'QMUIKit'
+#  s.dependency 'QMUIKit'
   s.dependency 'Masonry'
 #  s.dependency 'YYModel'
 #  s.dependency 'YYText'
