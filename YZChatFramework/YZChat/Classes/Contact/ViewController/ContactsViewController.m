@@ -111,20 +111,8 @@
     
     [RACObserve(self.contactVc.viewModel, pendencyCnt) subscribeNext:^(NSNumber *x) {
         self.firstGroupData[0].readNum = [x integerValue];
-//        TUITabBarItem * item = app.tabController.tabBarItems[1];
-        
-        TUITabBarItem* item = (TUITabBarItem*)[YZBaseManager shareInstance].tabController.tabBarItems[1];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([x integerValue] > 0) {
-                if ([x integerValue] > 99) {
-                    item.controller.tabBarItem.badgeValue = @"99+";
-                }else {
-                    item.controller.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", (long)[x integerValue]];
-                }
-            }else {
-                item.controller.tabBarItem.badgeValue = nil;
-            }
+            [[YZBaseManager shareInstance].tabController setContactsBadge: x.integerValue];
         });
     }];
 }

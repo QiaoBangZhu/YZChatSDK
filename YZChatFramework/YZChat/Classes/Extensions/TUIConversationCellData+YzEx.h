@@ -1,5 +1,5 @@
 //
-//  TUIConversationCellData+Conversation.h
+//  TUIConversationCellData+YzEx.h
 //  YZChat
 //
 //  Created by 安笑 on 2021/4/11.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUIConversationCellData (Conversation)
+@interface TUIConversationCellData (YzEx)
 
 + (TUIConversationCellData *)makeDataByConversation:(V2TIMConversation *)conversation;
 

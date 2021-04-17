@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -154,10 +154,8 @@
 		30A98AED25A449F20082D3C9 /* YZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888025A449F00082D3C9 /* YZUtil.m */; };
 		30A98AEF25A449F20082D3C9 /* YZPAirSandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888225A449F00082D3C9 /* YZPAirSandbox.h */; };
 		30A98AF025A449F20082D3C9 /* YChatSettingStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888325A449F00082D3C9 /* YChatSettingStore.h */; };
-		30A98AF125A449F20082D3C9 /* YConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888625A449F00082D3C9 /* YConversationViewController.m */; };
 		30A98AF225A449F20082D3C9 /* YZMyQRCodeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888725A449F00082D3C9 /* YZMyQRCodeViewController.h */; };
 		30A98AF325A449F20082D3C9 /* QDCommonTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888825A449F00082D3C9 /* QDCommonTableViewController.h */; };
-		30A98AF425A449F20082D3C9 /* YUIConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888925A449F00082D3C9 /* YUIConversationListController.h */; };
 		30A98AF525A449F20082D3C9 /* YUIFileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9888A25A449F00082D3C9 /* YUIFileViewController.h */; };
 		30A98AF625A449F20082D3C9 /* YZMapInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888B25A449F00082D3C9 /* YZMapInfoViewController.m */; };
 		30A98AF725A449F20082D3C9 /* YZMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9888C25A449F00082D3C9 /* YZMapViewController.m */; };
@@ -167,22 +165,18 @@
 		30A98AFB25A449F20082D3C9 /* QRScanViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889025A449F00082D3C9 /* QRScanViewController.h */; };
 		30A98AFC25A449F20082D3C9 /* YZContactSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889125A449F00082D3C9 /* YZContactSearchViewController.h */; };
 		30A98AFD25A449F20082D3C9 /* YZAddressBookViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889225A449F00082D3C9 /* YZAddressBookViewController.h */; };
-		30A98AFE25A449F20082D3C9 /* YConversationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889325A449F00082D3C9 /* YConversationViewController.h */; };
 		30A98AFF25A449F20082D3C9 /* YZMyQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889425A449F00082D3C9 /* YZMyQRCodeViewController.m */; };
 		30A98B0025A449F20082D3C9 /* YZSearchConversationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889525A449F00082D3C9 /* YZSearchConversationViewController.h */; };
 		30A98B0125A449F20082D3C9 /* YZMapViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889625A449F00082D3C9 /* YZMapViewController.h */; };
 		30A98B0225A449F20082D3C9 /* YZMapInfoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889725A449F00082D3C9 /* YZMapInfoViewController.h */; };
 		30A98B0325A449F20082D3C9 /* YUIFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889825A449F00082D3C9 /* YUIFileViewController.m */; };
-		30A98B0425A449F20082D3C9 /* YUIConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889925A449F00082D3C9 /* YUIConversationListController.m */; };
 		30A98B0525A449F20082D3C9 /* QDCommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889A25A449F00082D3C9 /* QDCommonTableViewController.m */; };
 		30A98B0625A449F20082D3C9 /* YZContactSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889B25A449F00082D3C9 /* YZContactSearchViewController.m */; };
 		30A98B0725A449F20082D3C9 /* YZAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889C25A449F00082D3C9 /* YZAddressBookViewController.m */; };
 		30A98B0825A449F20082D3C9 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889D25A449F00082D3C9 /* QRScanViewController.m */; };
 		30A98B0925A449F20082D3C9 /* YZSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9889E25A449F00082D3C9 /* YZSearchViewController.h */; };
 		30A98B0A25A449F20082D3C9 /* YZTransferGrpOwnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9889F25A449F00082D3C9 /* YZTransferGrpOwnerViewController.m */; };
-		30A98B0B25A449F20082D3C9 /* YConversationListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988A125A449F00082D3C9 /* YConversationListViewModel.m */; };
 		30A98B0C25A449F20082D3C9 /* YChatIMCreateGroupMemberInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988A225A449F00082D3C9 /* YChatIMCreateGroupMemberInfo.m */; };
-		30A98B0D25A449F20082D3C9 /* YConversationListViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988A325A449F00082D3C9 /* YConversationListViewModel.h */; };
 		30A98B0E25A449F20082D3C9 /* YChatIMCreateGroupMemberInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988A425A449F00082D3C9 /* YChatIMCreateGroupMemberInfo.h */; };
 		30A98B0F25A449F20082D3C9 /* YPopView.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988A625A449F00082D3C9 /* YPopView.h */; };
 		30A98B1025A449F20082D3C9 /* YPopCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988A725A449F00082D3C9 /* YPopCell.h */; };
@@ -196,10 +190,10 @@
 		30A98B1825A449F20082D3C9 /* YZSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988AF25A449F00082D3C9 /* YZSearchBarView.m */; };
 		30A98B1925A449F20082D3C9 /* YBaseTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988B125A449F00082D3C9 /* YBaseTableViewController.h */; };
 		30A98B1A25A449F20082D3C9 /* YZBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B225A449F00082D3C9 /* YZBaseManager.m */; };
-		30A98B1B25A449F20082D3C9 /* YBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988B325A449F00082D3C9 /* YBaseViewController.h */; };
+		30A98B1B25A449F20082D3C9 /* YzCommonViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988B325A449F00082D3C9 /* YzCommonViewController.h */; };
 		30A98B1C25A449F20082D3C9 /* YBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B425A449F00082D3C9 /* YBaseTableViewController.m */; };
 		30A98B1D25A449F20082D3C9 /* YZBaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988B525A449F00082D3C9 /* YZBaseManager.h */; };
-		30A98B1E25A449F20082D3C9 /* YBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B625A449F00082D3C9 /* YBaseViewController.m */; };
+		30A98B1E25A449F20082D3C9 /* YzCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B625A449F00082D3C9 /* YzCommonViewController.m */; };
 		30A98B1F25A449F20082D3C9 /* YUIGroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B925A449F00082D3C9 /* YUIGroupInfoController.m */; };
 		30A98B2025A449F20082D3C9 /* YUIImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988BA25A449F00082D3C9 /* YUIImageViewController.h */; };
 		30A98B2125A449F20082D3C9 /* YUISelectMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988BB25A449F00082D3C9 /* YUISelectMemberViewController.m */; };
@@ -560,27 +554,38 @@
 		30A98C8E25A449F30082D3C9 /* YAppCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A98A5D25A449F20082D3C9 /* YAppCollectionViewCell.m */; };
 		30A98C8F25A449F30082D3C9 /* YWorkZoneTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A98A5E25A449F20082D3C9 /* YWorkZoneTableViewCell.h */; };
 		7C84D0845AB46B8B8C3712B1 /* libPods-YZChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A37634C8EC53DB96F536046 /* libPods-YZChat.a */; };
+		E50E037F2627D49F006C0FF7 /* CIGAMConfigurationTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = E50E037D2627D49F006C0FF7 /* CIGAMConfigurationTemplate.h */; };
+		E50E03802627D49F006C0FF7 /* CIGAMConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = E50E037E2627D49F006C0FF7 /* CIGAMConfigurationTemplate.m */; };
+		E50E03832627EAD8006C0FF7 /* YzNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E50E03812627EAD8006C0FF7 /* YzNavigationController.h */; };
+		E50E03842627EAD8006C0FF7 /* YzNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50E03822627EAD8006C0FF7 /* YzNavigationController.m */; };
+		E50E039B2628089B006C0FF7 /* YzTabBarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E50E03992628089B006C0FF7 /* YzTabBarViewController.h */; };
+		E50E039C2628089B006C0FF7 /* YzTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50E039A2628089B006C0FF7 /* YzTabBarViewController.m */; };
 		E513A1A82623EE5F00621FAF /* YzCustomMessageCellData.h in Headers */ = {isa = PBXBuildFile; fileRef = E513A1A62623EE5F00621FAF /* YzCustomMessageCellData.h */; };
 		E513A1A92623EE5F00621FAF /* YzCustomMessageCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = E513A1A72623EE5F00621FAF /* YzCustomMessageCellData.m */; };
 		E527E3DC258393C800531586 /* YZChat.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E3DA258393C800531586 /* YZChat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9E92583A5B300531586 /* SysUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E52583A5B300531586 /* SysUser.m */; };
 		E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E62583A5B300531586 /* YzIMKitAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9EC2583A5B300531586 /* YzIMKitAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E82583A5B300531586 /* YzIMKitAgent.m */; };
+		E56D1363262AB35600C73E8E /* YzExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D1362262AB35600C73E8E /* YzExtensions.h */; };
+		E56D1366262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */; };
+		E56D1367262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */; };
 		E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3272619DFE600B4E6C1 /* YzFileManager.m */; };
 		E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AA3282619DFE600B4E6C1 /* YzFileManager.h */; };
+		E5AFD69326287D30002C9586 /* YzInternalConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AFD69126287D30002C9586 /* YzInternalConversationListController.h */; };
+		E5AFD69426287D30002C9586 /* YzInternalConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AFD69226287D30002C9586 /* YzInternalConversationListController.m */; };
 		E5BFE7082623DC9400013973 /* YzCustomMessageView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BFE7062623DC9400013973 /* YzCustomMessageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5BFE7092623DC9400013973 /* YzCustomMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BFE7072623DC9400013973 /* YzCustomMessageView.m */; };
 		E5BFE70D2623E84900013973 /* YzCustomMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */; };
 		E5BFE70E2623E84900013973 /* YzCustomMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */; };
-		E5D849FE2622E0C5006806E6 /* TUIConversationCellData+Conversation.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */; };
-		E5D849FF2622E0C5006806E6 /* TUIConversationCellData+Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */; };
+		E5D849FE2622E0C5006806E6 /* TUIConversationCellData+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */; };
+		E5D849FF2622E0C5006806E6 /* TUIConversationCellData+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */; };
 		E5E68CBA262060CD0061751B /* YzConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CB8262060CD0061751B /* YzConversationListController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5E68CBB262060CD0061751B /* YzConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CB9262060CD0061751B /* YzConversationListController.m */; };
 		E5E68CBE262061340061751B /* YzChatController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CBC262061340061751B /* YzChatController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5E68CBF262061340061751B /* YzChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CBD262061340061751B /* YzChatController.m */; };
-		E5EDCA7C261B3C3D00465C96 /* MKMapView+ZoomLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = E5EDCA7A261B3C3D00465C96 /* MKMapView+ZoomLevel.h */; };
-		E5EDCA7D261B3C3D00465C96 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EDCA7B261B3C3D00465C96 /* MKMapView+ZoomLevel.m */; };
+		E5EDCA7C261B3C3D00465C96 /* MKMapView+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E5EDCA7A261B3C3D00465C96 /* MKMapView+YzEx.h */; };
+		E5EDCA7D261B3C3D00465C96 /* MKMapView+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EDCA7B261B3C3D00465C96 /* MKMapView+YzEx.m */; };
 		E5FE23032626A2DC00FB1A84 /* CIGAMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */; };
 		E5FE23042626A2DC00FB1A84 /* CIGAMLab.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FE21BB2626A2DB00FB1A84 /* CIGAMLab.h */; };
 		E5FE23052626A2DC00FB1A84 /* CIGAMConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21BC2626A2DB00FB1A84 /* CIGAMConfiguration.m */; };
@@ -1053,10 +1058,8 @@
 		30A9888025A449F00082D3C9 /* YZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZUtil.m; sourceTree = "<group>"; };
 		30A9888225A449F00082D3C9 /* YZPAirSandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPAirSandbox.h; sourceTree = "<group>"; };
 		30A9888325A449F00082D3C9 /* YChatSettingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YChatSettingStore.h; sourceTree = "<group>"; };
-		30A9888625A449F00082D3C9 /* YConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YConversationViewController.m; sourceTree = "<group>"; };
 		30A9888725A449F00082D3C9 /* YZMyQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMyQRCodeViewController.h; sourceTree = "<group>"; };
 		30A9888825A449F00082D3C9 /* QDCommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonTableViewController.h; sourceTree = "<group>"; };
-		30A9888925A449F00082D3C9 /* YUIConversationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIConversationListController.h; sourceTree = "<group>"; };
 		30A9888A25A449F00082D3C9 /* YUIFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIFileViewController.h; sourceTree = "<group>"; };
 		30A9888B25A449F00082D3C9 /* YZMapInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMapInfoViewController.m; sourceTree = "<group>"; };
 		30A9888C25A449F00082D3C9 /* YZMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMapViewController.m; sourceTree = "<group>"; };
@@ -1066,22 +1069,18 @@
 		30A9889025A449F00082D3C9 /* QRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
 		30A9889125A449F00082D3C9 /* YZContactSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZContactSearchViewController.h; sourceTree = "<group>"; };
 		30A9889225A449F00082D3C9 /* YZAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZAddressBookViewController.h; sourceTree = "<group>"; };
-		30A9889325A449F00082D3C9 /* YConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YConversationViewController.h; sourceTree = "<group>"; };
 		30A9889425A449F00082D3C9 /* YZMyQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMyQRCodeViewController.m; sourceTree = "<group>"; };
 		30A9889525A449F00082D3C9 /* YZSearchConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSearchConversationViewController.h; sourceTree = "<group>"; };
 		30A9889625A449F00082D3C9 /* YZMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMapViewController.h; sourceTree = "<group>"; };
 		30A9889725A449F00082D3C9 /* YZMapInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMapInfoViewController.h; sourceTree = "<group>"; };
 		30A9889825A449F00082D3C9 /* YUIFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIFileViewController.m; sourceTree = "<group>"; };
-		30A9889925A449F00082D3C9 /* YUIConversationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIConversationListController.m; sourceTree = "<group>"; };
 		30A9889A25A449F00082D3C9 /* QDCommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDCommonTableViewController.m; sourceTree = "<group>"; };
 		30A9889B25A449F00082D3C9 /* YZContactSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZContactSearchViewController.m; sourceTree = "<group>"; };
 		30A9889C25A449F00082D3C9 /* YZAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZAddressBookViewController.m; sourceTree = "<group>"; };
 		30A9889D25A449F00082D3C9 /* QRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
 		30A9889E25A449F00082D3C9 /* YZSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSearchViewController.h; sourceTree = "<group>"; };
 		30A9889F25A449F00082D3C9 /* YZTransferGrpOwnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZTransferGrpOwnerViewController.m; sourceTree = "<group>"; };
-		30A988A125A449F00082D3C9 /* YConversationListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YConversationListViewModel.m; sourceTree = "<group>"; };
 		30A988A225A449F00082D3C9 /* YChatIMCreateGroupMemberInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YChatIMCreateGroupMemberInfo.m; sourceTree = "<group>"; };
-		30A988A325A449F00082D3C9 /* YConversationListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YConversationListViewModel.h; sourceTree = "<group>"; };
 		30A988A425A449F00082D3C9 /* YChatIMCreateGroupMemberInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YChatIMCreateGroupMemberInfo.h; sourceTree = "<group>"; };
 		30A988A625A449F00082D3C9 /* YPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPopView.h; sourceTree = "<group>"; };
 		30A988A725A449F00082D3C9 /* YPopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPopCell.h; sourceTree = "<group>"; };
@@ -1095,10 +1094,10 @@
 		30A988AF25A449F00082D3C9 /* YZSearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSearchBarView.m; sourceTree = "<group>"; };
 		30A988B125A449F00082D3C9 /* YBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBaseTableViewController.h; sourceTree = "<group>"; };
 		30A988B225A449F00082D3C9 /* YZBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZBaseManager.m; sourceTree = "<group>"; };
-		30A988B325A449F00082D3C9 /* YBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBaseViewController.h; sourceTree = "<group>"; };
+		30A988B325A449F00082D3C9 /* YzCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzCommonViewController.h; sourceTree = "<group>"; };
 		30A988B425A449F00082D3C9 /* YBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBaseTableViewController.m; sourceTree = "<group>"; };
 		30A988B525A449F00082D3C9 /* YZBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBaseManager.h; sourceTree = "<group>"; };
-		30A988B625A449F00082D3C9 /* YBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBaseViewController.m; sourceTree = "<group>"; };
+		30A988B625A449F00082D3C9 /* YzCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzCommonViewController.m; sourceTree = "<group>"; };
 		30A988B925A449F00082D3C9 /* YUIGroupInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIGroupInfoController.m; sourceTree = "<group>"; };
 		30A988BA25A449F00082D3C9 /* YUIImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIImageViewController.h; sourceTree = "<group>"; };
 		30A988BB25A449F00082D3C9 /* YUISelectMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUISelectMemberViewController.m; sourceTree = "<group>"; };
@@ -1460,6 +1459,12 @@
 		30A98A5E25A449F20082D3C9 /* YWorkZoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWorkZoneTableViewCell.h; sourceTree = "<group>"; };
 		8A37634C8EC53DB96F536046 /* libPods-YZChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat.debug.xcconfig"; path = "Target Support Files/Pods-YZChat/Pods-YZChat.debug.xcconfig"; sourceTree = "<group>"; };
+		E50E037D2627D49F006C0FF7 /* CIGAMConfigurationTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIGAMConfigurationTemplate.h; sourceTree = "<group>"; };
+		E50E037E2627D49F006C0FF7 /* CIGAMConfigurationTemplate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIGAMConfigurationTemplate.m; sourceTree = "<group>"; };
+		E50E03812627EAD8006C0FF7 /* YzNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzNavigationController.h; sourceTree = "<group>"; };
+		E50E03822627EAD8006C0FF7 /* YzNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzNavigationController.m; sourceTree = "<group>"; };
+		E50E03992628089B006C0FF7 /* YzTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzTabBarViewController.h; sourceTree = "<group>"; };
+		E50E039A2628089B006C0FF7 /* YzTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzTabBarViewController.m; sourceTree = "<group>"; };
 		E513A1A62623EE5F00621FAF /* YzCustomMessageCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageCellData.h; sourceTree = "<group>"; };
 		E513A1A72623EE5F00621FAF /* YzCustomMessageCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageCellData.m; sourceTree = "<group>"; };
 		E527E3D7258393C800531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1469,21 +1474,26 @@
 		E527E9E62583A5B300531586 /* YzIMKitAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzIMKitAgent.h; sourceTree = "<group>"; };
 		E527E9E72583A5B300531586 /* SysUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysUser.h; sourceTree = "<group>"; };
 		E527E9E82583A5B300531586 /* YzIMKitAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzIMKitAgent.m; sourceTree = "<group>"; };
+		E56D1362262AB35600C73E8E /* YzExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzExtensions.h; sourceTree = "<group>"; };
+		E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CIGAMPopupMenuView+YzEx.h"; sourceTree = "<group>"; };
+		E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CIGAMPopupMenuView+YzEx.m"; sourceTree = "<group>"; };
 		E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E57AA3272619DFE600B4E6C1 /* YzFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzFileManager.m; sourceTree = "<group>"; };
 		E57AA3282619DFE600B4E6C1 /* YzFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzFileManager.h; sourceTree = "<group>"; };
+		E5AFD69126287D30002C9586 /* YzInternalConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzInternalConversationListController.h; sourceTree = "<group>"; };
+		E5AFD69226287D30002C9586 /* YzInternalConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzInternalConversationListController.m; sourceTree = "<group>"; };
 		E5BFE7062623DC9400013973 /* YzCustomMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageView.h; sourceTree = "<group>"; };
 		E5BFE7072623DC9400013973 /* YzCustomMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageView.m; sourceTree = "<group>"; };
 		E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageCell.h; sourceTree = "<group>"; };
 		E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageCell.m; sourceTree = "<group>"; };
-		E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUIConversationCellData+Conversation.h"; sourceTree = "<group>"; };
-		E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TUIConversationCellData+Conversation.m"; sourceTree = "<group>"; };
+		E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUIConversationCellData+YzEx.h"; sourceTree = "<group>"; };
+		E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TUIConversationCellData+YzEx.m"; sourceTree = "<group>"; };
 		E5E68CB8262060CD0061751B /* YzConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzConversationListController.h; sourceTree = "<group>"; };
 		E5E68CB9262060CD0061751B /* YzConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzConversationListController.m; sourceTree = "<group>"; };
 		E5E68CBC262061340061751B /* YzChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzChatController.h; sourceTree = "<group>"; };
 		E5E68CBD262061340061751B /* YzChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzChatController.m; sourceTree = "<group>"; };
-		E5EDCA7A261B3C3D00465C96 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
-		E5EDCA7B261B3C3D00465C96 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
+		E5EDCA7A261B3C3D00465C96 /* MKMapView+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+YzEx.h"; sourceTree = "<group>"; };
+		E5EDCA7B261B3C3D00465C96 /* MKMapView+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+YzEx.m"; sourceTree = "<group>"; };
 		E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMHelper.m; sourceTree = "<group>"; };
 		E5FE21BB2626A2DB00FB1A84 /* CIGAMLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIGAMLab.h; sourceTree = "<group>"; };
 		E5FE21BC2626A2DB00FB1A84 /* CIGAMConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMConfiguration.m; sourceTree = "<group>"; };
@@ -2006,11 +2016,7 @@
 				30A9887B25A449F00082D3C9 /* WechatActionSheet */,
 				30A9886125A449F00082D3C9 /* YBAssistiveTouchLib */,
 				30A9886E25A449F00082D3C9 /* CommonConstant.h */,
-				E5EDCA7A261B3C3D00465C96 /* MKMapView+ZoomLevel.h */,
-				E5EDCA7B261B3C3D00465C96 /* MKMapView+ZoomLevel.m */,
 				30A9887A25A449F00082D3C9 /* TCConstants.h */,
-				E5D849FC2622E0C5006806E6 /* TUIConversationCellData+Conversation.h */,
-				E5D849FD2622E0C5006806E6 /* TUIConversationCellData+Conversation.m */,
 				30A9888325A449F00082D3C9 /* YChatSettingStore.h */,
 				30A9886F25A449F00082D3C9 /* YChatSettingStore.m */,
 				30A9885E25A449F00082D3C9 /* YChatValidInput.h */,
@@ -2095,18 +2101,16 @@
 			children = (
 				30A9888825A449F00082D3C9 /* QDCommonTableViewController.h */,
 				30A9889A25A449F00082D3C9 /* QDCommonTableViewController.m */,
+				E5AFD69126287D30002C9586 /* YzInternalConversationListController.h */,
+				E5AFD69226287D30002C9586 /* YzInternalConversationListController.m */,
 				30A9889025A449F00082D3C9 /* QRScanViewController.h */,
 				30A9889D25A449F00082D3C9 /* QRScanViewController.m */,
-				30A9888925A449F00082D3C9 /* YUIConversationListController.h */,
-				30A9889925A449F00082D3C9 /* YUIConversationListController.m */,
 				30A9888A25A449F00082D3C9 /* YUIFileViewController.h */,
 				30A9889825A449F00082D3C9 /* YUIFileViewController.m */,
 				30A9889225A449F00082D3C9 /* YZAddressBookViewController.h */,
 				30A9889C25A449F00082D3C9 /* YZAddressBookViewController.m */,
 				30A9889125A449F00082D3C9 /* YZContactSearchViewController.h */,
 				30A9889B25A449F00082D3C9 /* YZContactSearchViewController.m */,
-				30A9889325A449F00082D3C9 /* YConversationViewController.h */,
-				30A9888625A449F00082D3C9 /* YConversationViewController.m */,
 				30A9889725A449F00082D3C9 /* YZMapInfoViewController.h */,
 				30A9888B25A449F00082D3C9 /* YZMapInfoViewController.m */,
 				30A9889625A449F00082D3C9 /* YZMapViewController.h */,
@@ -2126,9 +2130,7 @@
 		30A988A025A449F00082D3C9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30A988A125A449F00082D3C9 /* YConversationListViewModel.m */,
 				30A988A225A449F00082D3C9 /* YChatIMCreateGroupMemberInfo.m */,
-				30A988A325A449F00082D3C9 /* YConversationListViewModel.h */,
 				30A988A425A449F00082D3C9 /* YChatIMCreateGroupMemberInfo.h */,
 			);
 			path = Model;
@@ -2156,10 +2158,16 @@
 			children = (
 				30A988B525A449F00082D3C9 /* YZBaseManager.h */,
 				30A988B225A449F00082D3C9 /* YZBaseManager.m */,
-				30A988B325A449F00082D3C9 /* YBaseViewController.h */,
-				30A988B625A449F00082D3C9 /* YBaseViewController.m */,
+				30A988B325A449F00082D3C9 /* YzCommonViewController.h */,
+				30A988B625A449F00082D3C9 /* YzCommonViewController.m */,
+				E50E03812627EAD8006C0FF7 /* YzNavigationController.h */,
+				E50E03822627EAD8006C0FF7 /* YzNavigationController.m */,
+				E50E03992628089B006C0FF7 /* YzTabBarViewController.h */,
+				E50E039A2628089B006C0FF7 /* YzTabBarViewController.m */,
 				30A988B425A449F00082D3C9 /* YBaseTableViewController.m */,
 				30A988B125A449F00082D3C9 /* YBaseTableViewController.h */,
+				E50E037D2627D49F006C0FF7 /* CIGAMConfigurationTemplate.h */,
+				E50E037E2627D49F006C0FF7 /* CIGAMConfigurationTemplate.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -3007,6 +3015,7 @@
 		E527E4E42583A17700531586 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E56D1361262AB30400C73E8E /* Extensions */,
 				30A988B025A449F00082D3C9 /* Base */,
 				30A988B725A449F00082D3C9 /* Chat */,
 				E5FE21B82626A2DB00FB1A84 /* CIGAMKit */,
@@ -3021,6 +3030,20 @@
 				30A98A5325A449F20082D3C9 /* Work */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		E56D1361262AB30400C73E8E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E56D1362262AB35600C73E8E /* YzExtensions.h */,
+				E5EDCA7A261B3C3D00465C96 /* MKMapView+YzEx.h */,
+				E5EDCA7B261B3C3D00465C96 /* MKMapView+YzEx.m */,
+				E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */,
+				E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */,
+				E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */,
+				E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E57AA3262619DFCA00B4E6C1 /* FileManager */ = {
@@ -3618,7 +3641,6 @@
 				30A98BCF25A449F20082D3C9 /* TUIJoinGroupMessageCellData.h in Headers */,
 				30A98A8525A449F20082D3C9 /* UIView+Extensions.h in Headers */,
 				E5FE230C2626A2DC00FB1A84 /* CIGAMCommonDefines.h in Headers */,
-				30A98AFE25A449F20082D3C9 /* YConversationViewController.h in Headers */,
 				30A98BBE25A449F20082D3C9 /* TCommonPendencyCellData.h in Headers */,
 				30A98B3D25A449F20082D3C9 /* YZCardMsgView.h in Headers */,
 				30A98BB425A449F20082D3C9 /* TUINewFriendViewController.h in Headers */,
@@ -3640,7 +3662,6 @@
 				30A98B4D25A449F20082D3C9 /* YZAddressBookTableViewCell.h in Headers */,
 				30A98BE925A449F20082D3C9 /* TUIGroupPendencyCell.h in Headers */,
 				30A98B1025A449F20082D3C9 /* YPopCell.h in Headers */,
-				30A98AF425A449F20082D3C9 /* YUIConversationListController.h in Headers */,
 				E5FE23EA2626A2DD00FB1A84 /* NSArray+CIGAM.h in Headers */,
 				E5FE24122626A2DD00FB1A84 /* NSURL+CIGAM.h in Headers */,
 				30A98AA925A449F20082D3C9 /* YZTextEditViewController.h in Headers */,
@@ -3656,14 +3677,16 @@
 				30A98AE125A449F20082D3C9 /* QRCodeManager.h in Headers */,
 				E5FE23CF2626A2DD00FB1A84 /* CIGAMVisualEffectView.h in Headers */,
 				30A98B7025A449F20082D3C9 /* TResponderTextView.h in Headers */,
+				E50E037F2627D49F006C0FF7 /* CIGAMConfigurationTemplate.h in Headers */,
 				E5FE23B62626A2DD00FB1A84 /* CIGAMLogItem.h in Headers */,
 				30A98C6025A449F30082D3C9 /* TIMConversation+DataProvider.h in Headers */,
 				E5FE242A2626A2DD00FB1A84 /* UIVisualEffectView+CIGAM.h in Headers */,
 				30A98BCB25A449F20082D3C9 /* TUIContactController.h in Headers */,
 				30A98C1325A449F20082D3C9 /* TUISelectMemberViewController.h in Headers */,
 				E5FE23632626A2DD00FB1A84 /* CIGAMTextField.h in Headers */,
+				E56D1363262AB35600C73E8E /* YzExtensions.h in Headers */,
 				30A98C4425A449F20082D3C9 /* TUIUserProfileDataProviderServiceProtocol.h in Headers */,
-				30A98B1B25A449F20082D3C9 /* YBaseViewController.h in Headers */,
+				30A98B1B25A449F20082D3C9 /* YzCommonViewController.h in Headers */,
 				30A98BD725A449F20082D3C9 /* TUIImageMessageCellData.h in Headers */,
 				30A98C6C25A449F30082D3C9 /* TCServiceManager.h in Headers */,
 				E5FE23162626A2DC00FB1A84 /* CIGAMToolbarButton.h in Headers */,
@@ -3699,7 +3722,7 @@
 				30A98B8825A449F20082D3C9 /* TUIVideoViewController.h in Headers */,
 				E5FE23342626A2DD00FB1A84 /* CIGAMSearchBar.h in Headers */,
 				30A98BA325A449F20082D3C9 /* THelper.h in Headers */,
-				E5D849FE2622E0C5006806E6 /* TUIConversationCellData+Conversation.h in Headers */,
+				E5D849FE2622E0C5006806E6 /* TUIConversationCellData+YzEx.h in Headers */,
 				30A98B7F25A449F20082D3C9 /* TDateEditController.h in Headers */,
 				E5FE24342626A2DD00FB1A84 /* UIControl+CIGAM.h in Headers */,
 				30A98C6425A449F30082D3C9 /* TIMGroupInfo+DataProvider.h in Headers */,
@@ -3708,6 +3731,7 @@
 				30A98C1225A449F20082D3C9 /* TUIImageMessageCell.h in Headers */,
 				30A98BE125A449F20082D3C9 /* TUIFaceMessageCellData.h in Headers */,
 				30A98AAB25A449F20082D3C9 /* YZMyViewController.h in Headers */,
+				E5AFD69326287D30002C9586 /* YzInternalConversationListController.h in Headers */,
 				30A98B5D25A449F20082D3C9 /* GroupRequestViewController.h in Headers */,
 				E5FE23702626A2DD00FB1A84 /* CIGAMPieProgressView.h in Headers */,
 				E5FE235D2626A2DD00FB1A84 /* CIGAMAssetsGroup.h in Headers */,
@@ -3719,7 +3743,7 @@
 				30A98B5725A449F20082D3C9 /* FriendRequestViewController.h in Headers */,
 				30A98AF525A449F20082D3C9 /* YUIFileViewController.h in Headers */,
 				E5FE23EB2626A2DD00FB1A84 /* UIBarItem+CIGAM.h in Headers */,
-				E5EDCA7C261B3C3D00465C96 /* MKMapView+ZoomLevel.h in Headers */,
+				E5EDCA7C261B3C3D00465C96 /* MKMapView+YzEx.h in Headers */,
 				30A98A7225A449F20082D3C9 /* NSData+YChatExtension.h in Headers */,
 				30A98BA025A449F20082D3C9 /* TModifyView.h in Headers */,
 				E5FE23C72626A2DD00FB1A84 /* CIGAMEmptyView.h in Headers */,
@@ -3743,9 +3767,9 @@
 				30A98C6A25A449F30082D3C9 /* TCServiceProtocol.h in Headers */,
 				30A98AF325A449F20082D3C9 /* QDCommonTableViewController.h in Headers */,
 				30A98ABD25A449F20082D3C9 /* YZAreaView.h in Headers */,
+				E56D1366262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h in Headers */,
 				E5FE23B32626A2DD00FB1A84 /* CIGAMFloatLayoutView.h in Headers */,
 				30A98AFD25A449F20082D3C9 /* YZAddressBookViewController.h in Headers */,
-				30A98B0D25A449F20082D3C9 /* YConversationListViewModel.h in Headers */,
 				30A98ACD25A449F20082D3C9 /* YZSearchFriendsTableViewCell.h in Headers */,
 				30A98C3525A449F20082D3C9 /* TUIMenuCell.h in Headers */,
 				30A98BEE25A449F20082D3C9 /* TUIMessageCellLayout.h in Headers */,
@@ -3894,6 +3918,7 @@
 				306754F525A80C4C0045CCC7 /* YZMsgManager.h in Headers */,
 				E5FE242F2626A2DD00FB1A84 /* UITableViewCell+CIGAM.h in Headers */,
 				30A98C4C25A449F30082D3C9 /* TUIMessageDataProviderService.h in Headers */,
+				E50E039B2628089B006C0FF7 /* YzTabBarViewController.h in Headers */,
 				30A98B7E25A449F20082D3C9 /* TUIAvatarViewController.h in Headers */,
 				30A98AE725A449F20082D3C9 /* YDefaultPortraitView.h in Headers */,
 				30A98BFA25A449F20082D3C9 /* TUIRecordView.h in Headers */,
@@ -3922,6 +3947,7 @@
 				E5FE23B72626A2DD00FB1A84 /* CIGAMLog.h in Headers */,
 				30A98B1225A449F20082D3C9 /* YZSearchBarView.h in Headers */,
 				E5FE232A2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.h in Headers */,
+				E50E03832627EAD8006C0FF7 /* YzNavigationController.h in Headers */,
 				30A98C5825A449F30082D3C9 /* TUIConversationCell.h in Headers */,
 				30A98AA225A449F20082D3C9 /* YUserInfo.h in Headers */,
 				30A98B2A25A449F20082D3C9 /* YUIGroupInfoController.h in Headers */,
@@ -4180,7 +4206,6 @@
 				30A98ABB25A449F20082D3C9 /* YZButtonTableViewCell.m in Sources */,
 				30A98A8725A449F20082D3C9 /* NSBundle+YZBundle.m in Sources */,
 				30A98B7A25A449F20082D3C9 /* TAddCell.m in Sources */,
-				30A98B0425A449F20082D3C9 /* YUIConversationListController.m in Sources */,
 				E5FE24222626A2DD00FB1A84 /* UIGestureRecognizer+CIGAM.m in Sources */,
 				30A98A7125A449F20082D3C9 /* UIView+Extensions.m in Sources */,
 				30A98C4F25A449F30082D3C9 /* TUIMessageDataProviderService.m in Sources */,
@@ -4194,7 +4219,6 @@
 				30A98A9A25A449F20082D3C9 /* ZNavigationBar.m in Sources */,
 				30A98C3825A449F20082D3C9 /* TUIGroupInfoController.m in Sources */,
 				30A98C8E25A449F30082D3C9 /* YAppCollectionViewCell.m in Sources */,
-				30A98AF125A449F20082D3C9 /* YConversationViewController.m in Sources */,
 				E5FE23AA2626A2DD00FB1A84 /* CIGAMMultipleDelegates.m in Sources */,
 				30A98B2525A449F20082D3C9 /* YUserProfileController.m in Sources */,
 				30A98C0125A449F20082D3C9 /* TUIVideoMessageCell.m in Sources */,
@@ -4205,7 +4229,6 @@
 				30A98B1A25A449F20082D3C9 /* YZBaseManager.m in Sources */,
 				E5FE23842626A2DD00FB1A84 /* CIGAMAlbumViewController.m in Sources */,
 				30A98B0625A449F20082D3C9 /* YZContactSearchViewController.m in Sources */,
-				30A98B0B25A449F20082D3C9 /* YConversationListViewModel.m in Sources */,
 				30A98B6325A449F20082D3C9 /* SearchFriendViewController.m in Sources */,
 				E5FE233B2626A2DD00FB1A84 /* CIGAMConsole.m in Sources */,
 				30A98C5B25A449F30082D3C9 /* CreatGroupAvatar.m in Sources */,
@@ -4226,7 +4249,7 @@
 				30A98A8125A449F20082D3C9 /* UIButton+Captcha.m in Sources */,
 				30A98A7025A449F20082D3C9 /* UIButton+Foundation.m in Sources */,
 				30A98B0725A449F20082D3C9 /* YZAddressBookViewController.m in Sources */,
-				30A98B1E25A449F20082D3C9 /* YBaseViewController.m in Sources */,
+				30A98B1E25A449F20082D3C9 /* YzCommonViewController.m in Sources */,
 				E5FE23622626A2DD00FB1A84 /* CIGAMGridView.m in Sources */,
 				30A98C5225A449F30082D3C9 /* TConversationListViewModel.m in Sources */,
 				30A98AB525A449F20082D3C9 /* YZCityModel.m in Sources */,
@@ -4242,6 +4265,7 @@
 				30A98C4825A449F30082D3C9 /* UIImage+TUIDarkMode.m in Sources */,
 				E5FE23512626A2DD00FB1A84 /* CIGAMTips.m in Sources */,
 				30A98C6625A449F30082D3C9 /* NSString+DataProvider.m in Sources */,
+				E50E03802627D49F006C0FF7 /* CIGAMConfigurationTemplate.m in Sources */,
 				E5FE237B2626A2DD00FB1A84 /* CIGAMCellHeightKeyCache.m in Sources */,
 				30A98B7425A449F20082D3C9 /* TUnReadView.m in Sources */,
 				E5FE230D2626A2DC00FB1A84 /* CIGAMCommonViewController.m in Sources */,
@@ -4265,6 +4289,7 @@
 				E5FE23BA2626A2DD00FB1A84 /* CIGAMLogger.m in Sources */,
 				30A98AF725A449F20082D3C9 /* YZMapViewController.m in Sources */,
 				30A98B1825A449F20082D3C9 /* YZSearchBarView.m in Sources */,
+				E56D1367262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m in Sources */,
 				E5FE23DB2626A2DD00FB1A84 /* NSURL+CIGAM.m in Sources */,
 				30A98B4525A449F20082D3C9 /* YGroupMembersTableViewCell.m in Sources */,
 				E5FE24262626A2DD00FB1A84 /* UIView+CIGAMBorder.m in Sources */,
@@ -4482,7 +4507,8 @@
 				30A98BA725A449F20082D3C9 /* TUIContactSelectController.m in Sources */,
 				30A98A7F25A449F20082D3C9 /* UIView+Foundation.m in Sources */,
 				30A98BA425A449F20082D3C9 /* TPopView.m in Sources */,
-				E5D849FF2622E0C5006806E6 /* TUIConversationCellData+Conversation.m in Sources */,
+				E5D849FF2622E0C5006806E6 /* TUIConversationCellData+YzEx.m in Sources */,
+				E50E03842627EAD8006C0FF7 /* YzNavigationController.m in Sources */,
 				30A98BAB25A449F20082D3C9 /* TContactViewModel.m in Sources */,
 				30A98B6125A449F20082D3C9 /* ContactsViewController.m in Sources */,
 				30A98B8325A449F20082D3C9 /* TDateEditController.m in Sources */,
@@ -4497,6 +4523,7 @@
 				30A98C6925A449F30082D3C9 /* TCServiceManager.m in Sources */,
 				30A98AAC25A449F20082D3C9 /* YZChangePasswordViewController.m in Sources */,
 				30A98BDC25A449F20082D3C9 /* TUITextMessageCellData.m in Sources */,
+				E5AFD69426287D30002C9586 /* YzInternalConversationListController.m in Sources */,
 				E5FE242D2626A2DD00FB1A84 /* UITableView+CIGAM.m in Sources */,
 				30A98B7725A449F20082D3C9 /* TUILocalStorage.m in Sources */,
 				30A98AED25A449F20082D3C9 /* YZUtil.m in Sources */,
@@ -4509,7 +4536,7 @@
 				E5FE23232626A2DC00FB1A84 /* CIGAMStaticTableViewCellDataSource.m in Sources */,
 				E5FE23A72626A2DD00FB1A84 /* UIImage+CIGAMTheme.m in Sources */,
 				30A98B5525A449F20082D3C9 /* NewFriendViewController.m in Sources */,
-				E5EDCA7D261B3C3D00465C96 /* MKMapView+ZoomLevel.m in Sources */,
+				E5EDCA7D261B3C3D00465C96 /* MKMapView+YzEx.m in Sources */,
 				30A98B3325A449F20082D3C9 /* YUIChatController.m in Sources */,
 				30A98B1F25A449F20082D3C9 /* YUIGroupInfoController.m in Sources */,
 				E5FE24052626A2DD00FB1A84 /* UITableViewCell+CIGAM.m in Sources */,
@@ -4517,6 +4544,7 @@
 				E5FE23AF2626A2DD00FB1A84 /* CIGAMTextField.m in Sources */,
 				30A98B9025A449F20082D3C9 /* TCommonTextCell.m in Sources */,
 				30A98BF925A449F20082D3C9 /* TUIInputMoreCell.m in Sources */,
+				E50E039C2628089B006C0FF7 /* YzTabBarViewController.m in Sources */,
 				E5FE23A12626A2DD00FB1A84 /* UIViewController+CIGAMTheme.m in Sources */,
 				30A98A9725A449F20082D3C9 /* ZNavigationPushFadeAnimation.m in Sources */,
 			);

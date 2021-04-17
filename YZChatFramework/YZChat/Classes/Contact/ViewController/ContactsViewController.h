@@ -6,11 +6,11 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
-#import "YBaseViewController.h"
+#import "YzCommonViewController.h"
 @class YzCustomMsg;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ContactsViewController : YBaseViewController
+@interface ContactsViewController : YzCommonViewController
 @property (nonatomic, strong)YzCustomMsg *customMsg;
 
 @end

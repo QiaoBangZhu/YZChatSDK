@@ -17,7 +17,7 @@
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 #import "UIColor+ColorExtension.h"
-#import "TUIConversationCellData+Conversation.h"
+#import "TUIConversationCellData+YzEx.h"
 #import "YZUtil.h"
 #import "YZMapViewController.h"
 #import "YZLocationMessageCell.h"

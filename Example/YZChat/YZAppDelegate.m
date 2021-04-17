@@ -82,6 +82,7 @@ YZAppDelegate *appdel;
                 [[YzIMKitAgent shareInstance] registerWithSysUser:user loginSuccess:^{
                     [[YzIMKitAgent shareInstance] startAutoWithCurrentVc: nil];
 //                    self.window.rootViewController = [[MAGICNavigationViewController alloc] initWithRootViewController: [[YzChatController alloc] initWithChatInfo: [[YzChatInfo alloc] initWithChatId: @"@TGS#1JYI4QCH2" chatName: @"18869096849" isGroup: true] config: nil]];
+//                    self.window.rootViewController = [[MAGICNavigationViewController alloc] initWithRootViewController: [[YzConversationListController alloc] initWithChatType: YzChatTypeC2C]];
                 } loginFailed:^(NSInteger errCode, NSString * _Nonnull errMsg) {
                     NSLog(@"error =%@",errMsg);
                 }];

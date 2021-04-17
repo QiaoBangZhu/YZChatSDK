@@ -34,7 +34,7 @@
 #import "YChatDocumentPickerViewController.h"
 #import "YUISelectMemberViewController.h"
 #import "YZBaseManager.h"
-#import "TUIConversationCellData+Conversation.h"
+#import "TUIConversationCellData+YzEx.h"
 
 @interface YUIChatController ()<YMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate> {
     YzChatControllerConfig *_chatConfig;

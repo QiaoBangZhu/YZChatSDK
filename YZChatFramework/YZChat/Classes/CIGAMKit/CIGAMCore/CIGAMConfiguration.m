@@ -20,6 +20,8 @@
 #import "UIViewController+CIGAM.h"
 #import "CIGAMKit.h"
 
+#import "CIGAMConfigurationTemplate.h"
+
 // 在 iOS 8 - 11 上实际测量得到
 // Measured on iOS 8 - 11
 const CGSize kCIGAMUINavigationBarBackIndicatorImageSize = {13, 21};
@@ -77,15 +79,17 @@ static BOOL CIGAM_hasAppliedInitialTemplate;
     if (CIGAM_hasAppliedInitialTemplate) {
         return;
     }
-    _active = YES;
+
     CIGAM_hasAppliedInitialTemplate = YES;
+    _active = YES;
+    [[[CIGAMConfigurationTemplate alloc] init] applyConfigurationTemplate];
 }
 
 #pragma mark - Initialize default values
 
 - (void)initDefaultConfiguration {
     
-    #pragma mark - Global Color
+#pragma mark - Global Color
     
     self.clearColor = UIColorMakeWithRGBA(255, 255, 255, 0);
     self.whiteColor = UIColorMake(255, 255, 255);
@@ -110,12 +114,12 @@ static BOOL CIGAM_hasAppliedInitialTemplate;
     self.testColorGreen = UIColorMakeWithRGBA(0, 255, 0, .3);
     self.testColorBlue = UIColorMakeWithRGBA(0, 0, 255, .3);
     
-    #pragma mark - UIControl
+#pragma mark - UIControl
     
     self.controlHighlightedAlpha = 0.5f;
     self.controlDisabledAlpha = 0.5f;
     
-    #pragma mark - UIButton
+#pragma mark - UIButton
     
     self.buttonHighlightedAlpha = self.controlHighlightedAlpha;
     self.buttonDisabledAlpha = self.controlDisabledAlpha;
@@ -133,39 +137,38 @@ static BOOL CIGAM_hasAppliedInitialTemplate;
     self.fillButtonColorGray = self.grayColor;
     self.fillButtonColorWhite = self.whiteColor;
     
-    #pragma mark - UITextField & UITextView
+#pragma mark - UITextField & UITextView
     
     self.textFieldTextInsets = UIEdgeInsetsMake(0, 7, 0, 7);
     
-    #pragma mark - NavigationBar
-    
+#pragma mark - NavigationBar
+
     self.navBarHighlightedAlpha = 0.2f;
     self.navBarDisabledAlpha = 0.2f;
     self.sizeNavBarBackIndicatorImageAutomatically = YES;
     self.navBarCloseButtonImage = [UIImage cigam_imageWithShape:CIGAMImageShapeNavClose size:CGSizeMake(16, 16) tintColor:self.navBarTintColor];
-    
+
     self.navBarLoadingMarginRight = 3;
     self.navBarAccessoryViewMarginLeft = 5;
     self.navBarActivityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     self.navBarAccessoryViewTypeDisclosureIndicatorImage = [[UIImage cigam_imageWithShape:CIGAMImageShapeTriangle size:CGSizeMake(8, 5) tintColor:self.navBarTitleColor] cigam_imageWithOrientation:UIImageOrientationDown];
     
-    
-    #pragma mark - Toolbar
+#pragma mark - Toolbar
     
     self.toolBarHighlightedAlpha = 0.4f;
     self.toolBarDisabledAlpha = 0.4f;
     
-    #pragma mark - SearchBar
+#pragma mark - SearchBar
     
     self.searchBarPlaceholderColor = self.placeholderColor;
     self.searchBarTextFieldCornerRadius = 2.0;
     
-    #pragma mark - TableView / TableViewCell
+#pragma mark - TableView / TableViewCell
     
     self.tableViewEstimatedHeightEnabled = YES;
     
     self.tableViewSeparatorColor = self.separatorColor;
-    
+
     self.tableViewCellNormalHeight = UITableViewAutomaticDimension;
     self.tableViewCellSelectedBackgroundColor = UIColorMake(238, 239, 241);
     self.tableViewCellWarningBackgroundColor = self.yellowColor;
@@ -208,23 +211,23 @@ static BOOL CIGAM_hasAppliedInitialTemplate;
     self.tableViewInsetGroupedSectionHeaderContentInset = self.tableViewGroupedSectionHeaderContentInset;
     self.tableViewInsetGroupedSectionFooterContentInset = self.tableViewGroupedSectionFooterContentInset;
     
-    #pragma mark - UIWindowLevel
+#pragma mark - UIWindowLevel
     self.windowLevelCIGAMAlertView = UIWindowLevelAlert - 4.0;
     self.windowLevelCIGAMConsole = 1;
     
-    #pragma mark - CIGAMLog
+#pragma mark - CIGAMLog
     self.shouldPrintDefaultLog = YES;
     self.shouldPrintInfoLog = YES;
     self.shouldPrintWarnLog = YES;
     self.shouldPrintCIGAMWarnLogToConsole = IS_DEBUG;
     
-    #pragma mark - CIGAMBadge
+#pragma mark - CIGAMBadge
     self.badgeOffset = CIGAMBadgeInvalidateOffset;
     self.badgeOffsetLandscape = CIGAMBadgeInvalidateOffset;
     self.updatesIndicatorOffset = CIGAMBadgeInvalidateOffset;
     self.updatesIndicatorOffsetLandscape = CIGAMBadgeInvalidateOffset;
     
-    #pragma mark - Others
+#pragma mark - Others
     
     self.supportedOrientationMask = UIInterfaceOrientationMaskAll;
     self.needsBackBarButtonItemTitle = YES;
@@ -404,9 +407,9 @@ static BOOL CIGAM_hasAppliedInitialTemplate;
         if (!CGSizeEqualToSize(customBackIndicatorImageSize, systemBackIndicatorImageSize)) {
             CGFloat imageExtensionVerticalFloat = CGFloatGetCenter(systemBackIndicatorImageSize.height, customBackIndicatorImageSize.height);
             _navBarBackIndicatorImage = [[_navBarBackIndicatorImage cigam_imageWithSpacingExtensionInsets:UIEdgeInsetsMake(imageExtensionVerticalFloat,
-                                                                                                                          0,
-                                                                                                                          imageExtensionVerticalFloat,
-                                                                                                                          systemBackIndicatorImageSize.width - customBackIndicatorImageSize.width)] imageWithRenderingMode:_navBarBackIndicatorImage.renderingMode];
+                                                                                                                           0,
+                                                                                                                           imageExtensionVerticalFloat,
+                                                                                                                           systemBackIndicatorImageSize.width - customBackIndicatorImageSize.width)] imageWithRenderingMode:_navBarBackIndicatorImage.renderingMode];
         }
     }
     
@@ -667,7 +670,7 @@ static BOOL CIGAM_hasAppliedInitialTemplate;
         [self updateTabBarAppearance];
     } else {
         // iOS 12 及以下使用 tintColor 实现，但 tintColor 并没有声明 UI_APPEARANCE_SELECTOR，所以暂不使用 appearance 的方式去修改（虽然 appearance 方式实测是生效的）
-//        UITabBar.cigam_appearanceConfigured.tintColor = tabBarItemImageColorSelected;
+        //        UITabBar.cigam_appearanceConfigured.tintColor = tabBarItemImageColorSelected;
         [self.appearanceUpdatingTabBarControllers enumerateObjectsUsingBlock:^(UITabBarController * _Nonnull tabBarController, NSUInteger idx, BOOL * _Nonnull stop) {
             tabBarController.tabBar.tintColor = tabBarItemImageColorSelected;
         }];

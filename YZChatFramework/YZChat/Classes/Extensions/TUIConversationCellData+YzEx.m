@@ -1,11 +1,11 @@
 //
-//  TUIConversationCellData+Conversation.m
+//  TUIConversationCellData+YzEx.m
 //  YZChat
 //
 //  Created by 安笑 on 2021/4/11.
 //
 
-#import "TUIConversationCellData+Conversation.h"
+#import "TUIConversationCellData+YzEx.h"
 
 #import "THeader.h"
 #import "TUIKit.h"

@@ -14,7 +14,7 @@
 #import "UIColor+ColorExtension.h"
 #import "NSBundle+YZBundle.h"
 #import "CommonConstant.h"
-#import "MKMapView+ZoomLevel.h"
+#import "MKMapView+YzEx.h"
 
 @interface YZMapInfoViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 

@@ -45,7 +45,7 @@
 - (void)tapGesture:(UIGestureRecognizer *)gesture
 {
     if (self.data.cselector) {
-        UIViewController *vc = self.mm_viewController;
+        NSObject *vc = self.data.responder ?: self.mm_viewController;
         if ([vc respondsToSelector:self.data.cselector]) {
             self.selected = YES;
 #pragma clang diagnostic push

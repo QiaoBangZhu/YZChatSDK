@@ -9,7 +9,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-#import "MKMapView+ZoomLevel.h"
+#import "MKMapView+YzEx.h"
 
 #import "YZMapViewController.h"
 #import <Masonry/Masonry.h>

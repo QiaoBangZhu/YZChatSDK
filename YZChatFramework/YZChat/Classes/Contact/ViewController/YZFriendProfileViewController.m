@@ -32,7 +32,6 @@
 #import "YContactSelectViewController.h"
 #import "YChatIMCreateGroupMemberInfo.h"
 #import "YZBaseManager.h"
-#import "YConversationViewController.h"
 #import <Masonry/Masonry.h>
 #import "YUIButtonTableViewCell.h"
 #import "NSBundle+YZBundle.h"

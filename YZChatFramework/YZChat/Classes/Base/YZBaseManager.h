@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "TUITabBarController.h"
+#import "YzTabBarViewController.h"
 #import "YUserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,13 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YZBaseManager : NSObject
 @property (nonatomic, strong)YUserInfo *userInfo;
 @property (nonatomic, strong)NSData   *deviceToken;
-@property (nonatomic, strong)TUITabBarController * tabController;
+@property (nonatomic, strong)YzTabBarViewController * tabController;
 @property (nonatomic,   copy)NSString* appId;
 @property (nonatomic, strong)UIViewController* rootViewController;
 
 + (YZBaseManager *)shareInstance;
 
-- (TUITabBarController *)getMainController;
+- (YzTabBarViewController *)getMainController;
 
 - (void)logout;
 

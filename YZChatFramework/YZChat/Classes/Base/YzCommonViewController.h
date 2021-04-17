@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CIGAMKit.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YBaseViewController : UIViewController
+@interface YzCommonViewController : CIGAMCommonViewController
 @property (nonatomic, copy)NSString *titleName;
 @property (nonatomic, assign)BOOL isFromOtherApp;
 @end

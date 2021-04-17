@@ -15,7 +15,6 @@
 #import <ImSDKForiOS/ImSDK.h>
 #import "TUIConversationCellData.h"
 #import "YChatViewController.h"
-#import "YConversationViewController.h"
 #import "TNavigationController.h"
 #import "ContactsViewController.h"
 #import "YWorkZoneViewController.h"
@@ -60,7 +59,7 @@
     [YZBaseManager shareInstance].appId = appId;
     [self configureTUIKit];
     [self configureObserver];
-    [self configureNavigationBar];
+//    [self configureNavigationBar];
     [self configureAmap];
 }
 
@@ -219,10 +218,8 @@
         return;
     }
     [YZBaseManager shareInstance].rootViewController = rootVc;
-    TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];
-    TNavigationController* nav = (TNavigationController*)tab.viewControllers[0];
-    YConversationViewController * convc = (YConversationViewController*)nav.viewControllers[0];
-    convc.isNeedCloseBtn = YES;
+    YzTabBarViewController* tab = [[YZBaseManager shareInstance] getMainController];
+    tab.conversationListController.isNeedCloseBarButton = YES;
     tab.modalPresentationStyle =UIModalPresentationFullScreen;
     [rootVc presentViewController:tab animated:YES completion:nil];
 }
@@ -245,11 +242,9 @@
     YChatViewController *chat = [[YChatViewController alloc] init];
     chat.conversationData = data;
     if(finishToConversation){
-        TUITabBarController* tab = [[YZBaseManager shareInstance] getMainController];
-        TNavigationController* nav = (TNavigationController*)tab.viewControllers[0];
-        YConversationViewController * convc = (YConversationViewController*)nav.viewControllers[0];
-        convc.isNeedCloseBtn = YES;
-        [nav pushViewController:chat animated:YES];
+        YzTabBarViewController* tab = [[YZBaseManager shareInstance] getMainController];
+        tab.conversationListController.isNeedCloseBarButton = YES;
+        [tab.conversationListController.navigationController pushViewController:chat animated:YES];
         return tab;
     }
     return  chat;
@@ -327,7 +322,7 @@
             self.groupID = entity[@"sender"];
         }
         if ([[V2TIMManager sharedInstance] getLoginStatus] == V2TIM_STATUS_LOGINED) {
-            [self onReceiveNomalMsgAPNs];
+            [self onReceiveNormalMsgAPNs];
         }
     }
     // action : 2 音视频通话推送
@@ -362,19 +357,21 @@
     }
 }
 
-- (void)onReceiveNomalMsgAPNs {
-    if (self.groupID.length > 0 || self.userID.length > 0) {
-        TUITabBarController *tab = [[YZBaseManager shareInstance]getMainController];
-        if (tab.selectedIndex != 0) {
-            [tab setSelectedIndex:0];
-        }
-        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
-        UINavigationController *nav = (UINavigationController *)tab.selectedViewController;
-        YConversationViewController *vc = (YConversationViewController *)nav.viewControllers.firstObject;
-        [vc pushToChatViewController:self.groupID userID:self.userID];
-        self.groupID = nil;
-        self.userID = nil;
-    }
+- (void)onReceiveNormalMsgAPNs {
+    if (!self.groupID && !self.userID) return;
+
+    YzTabBarViewController *tab = [[YZBaseManager shareInstance] getMainController];
+    [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+
+    YChatViewController *chat = [[YChatViewController alloc] init];
+    TUIConversationCellData *conversationData = [[TUIConversationCellData alloc] init];
+    conversationData.groupID = self.groupID;
+    conversationData.userID = self.userID;
+    chat.conversationData = conversationData;
+    [tab.conversationListController.navigationController pushViewController:chat animated:YES];
+
+    self.groupID = nil;
+    self.userID = nil;
 }
 
 - (void)onReceiveGroupCallAPNs {
@@ -446,7 +443,7 @@
                 [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
             }
             //普通消息推送
-            [self onReceiveNomalMsgAPNs];
+            [self onReceiveNormalMsgAPNs];
             //音视频消息推送
             [self onReceiveGroupCallAPNs];
         } fail:^(int code, NSString *msg) {
