@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YZLocationMessageCellData : TUIMessageCellData
-@property NSString *text;
-@property UIImage *mapImage;
-@property double longitude;
-@property double latitude;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, strong) UIImage *mapImage;
+@property (nonatomic, assign) double longitude;
+@property (nonatomic, assign) double latitude;
 
 @end
 

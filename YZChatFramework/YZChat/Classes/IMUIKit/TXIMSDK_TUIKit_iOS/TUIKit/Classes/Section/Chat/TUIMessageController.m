@@ -842,6 +842,10 @@
 
 - (void)showImageMessage:(TUIImageMessageCell *)cell
 {
+    if (self.delegate && [self.delegate respondsToSelector: @selector(showImageMessage:)]) {
+        [self.delegate showImageMessage: cell];
+        return;
+    }
     TUIImageViewController *image = [[TUIImageViewController alloc] init];
     image.data = [cell imageData];
     [self.navigationController pushViewController:image animated:YES];
@@ -856,6 +860,10 @@
 
 - (void)showFileMessage:(TUIFileMessageCell *)cell
 {
+    if (self.delegate && [self.delegate respondsToSelector: @selector(showFileMessage:)]) {
+        [self.delegate showFileMessage: cell];
+        return;
+    }
     TUIFileViewController *file = [[TUIFileViewController alloc] init];
     file.data = [cell fileData];
     [self.navigationController pushViewController:file animated:YES];

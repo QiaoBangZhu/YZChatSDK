@@ -6,6 +6,7 @@
 //
 
 
+#import "TUIMessageController.h"
 #import "TUIConversationCellData.h"
 #import "TUICallModel.h"
 #import "TUIInputController.h"
@@ -15,7 +16,7 @@
 #import "YzCustomMessageCellData.h"
 #import "YzCustomMessageCell.h"
 
-#import "YUIMessageController.h"
+//#import "YUIMessageController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -71,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  负责消息气泡的展示，同时负责响应用户对于消息气泡的交互，比如：点击消息发送者头像、轻点消息、长按消息等操作。
  *  聊天消息控制器的详细信息请参考 Section\Chat\TUIMessageController.h
  */
-@property YUIMessageController *messageController;
+@property TUIMessageController *messageController;
 
 /**
  *  TUIKit 信息输入控制器。

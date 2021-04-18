@@ -43,8 +43,10 @@
 #import "YUserProfileController.h"
 #import "YZMapInfoViewController.h"
 #import "YZWebViewController.h"
+#import "YUIImageViewController.h"
+#import "YUIFileViewController.h"
 
-@interface YzInternalChatController () <YMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate> {
+@interface YzInternalChatController () <TMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate> {
     YzChatControllerConfig *_chatConfig;
     YzChatInfo *_chatInfo;
     BOOL _isInternal;
@@ -341,13 +343,13 @@
     }];
 }
 
-#pragma mark - YMessageControllerDelegate
+#pragma mark - TMessageControllerDelegate
 
-- (void)didTapInMessageController:(YUIMessageController *)controller {
+- (void)didTapInMessageController:(TUIMessageController *)controller {
     [self.inputController reset];
 }
 
-- (BOOL)messageController:(YUIMessageController *)controller
+- (BOOL)messageController:(TUIMessageController *)controller
        willShowMenuInCell:(TUIMessageCell *)cell {
     if([self.inputController.inputBar.inputTextView isFirstResponder]){
         self.inputController.inputBar.inputTextView.overrideNextResponder = cell;
@@ -356,7 +358,7 @@
     return NO;
 }
 
-- (TUIMessageCellData *)messageController:(YUIMessageController *)controller
+- (TUIMessageCellData *)messageController:(TUIMessageController *)controller
                              onNewMessage:(V2TIMMessage *)data {
     if (data.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
         NSDictionary *param = [YZUtil jsonData2Dictionary: data.customElem.data];
@@ -391,9 +393,16 @@
     return nil;
 }
 
-- (TUIMessageCell *)messageController:(YUIMessageController *)controller
+- (TUIMessageCell *)messageController:(TUIMessageController *)controller
                     onShowMessageData:(TUIMessageCellData *)data {
-    if ([data isKindOfClass:[YzCustomMessageCellData class]]) {
+    if ([data isKindOfClass: [YZLocationMessageCellData class]]) {
+        YzCustomMessageCell *cell = [controller.tableView dequeueReusableCellWithIdentifier: LocationMessageCell_ReuseId];
+
+        [cell fillWithData: data];
+        return cell;
+    }
+    // 自定义
+    else if ([data isKindOfClass:[YzCustomMessageCellData class]]) {
         Class viewClass = _registeredCustomMessageClass[data.reuseId];
         YzCustomMessageCell *cell = [controller.tableView dequeueReusableCellWithIdentifier: data.reuseId];
         cell.customViewClass = viewClass;
@@ -404,7 +413,7 @@
     return nil;
 }
 
-- (void)messageController:(YUIMessageController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell {
+- (void)messageController:(TUIMessageController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell {
     if (cell.messageData.identifier == nil) return;
     
     if ([self.delegate respondsToSelector:@selector(onUserIconClick:)]) {
@@ -451,7 +460,7 @@
     }];
 }
 
-- (void)messageController:(YUIMessageController *)controller onSelectMessageContent:(TUIMessageCell *)cell {
+- (void)messageController:(TUIMessageController *)controller onSelectMessageContent:(TUIMessageCell *)cell {
     if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
         YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];
         YZMapInfoViewController* map = [[YZMapInfoViewController alloc]init];
@@ -478,10 +487,21 @@
     }
 }
 
-- (void)didHideMenuInMessageController:(YUIMessageController *)controller {
+- (void)didHideMenuInMessageController:(TUIMessageController *)controller {
     self.inputController.inputBar.inputTextView.overrideNextResponder = nil;
 }
 
+- (void)showImageMessage:(TUIImageMessageCell *)cell {
+    YUIImageViewController *image = [[YUIImageViewController alloc] init];
+    image.data = [cell imageData];
+    [self.navigationController pushViewController: image animated: YES];
+}
+
+- (void)showFileMessage:(TUIFileMessageCell *)cell {
+    YUIFileViewController *file = [[YUIFileViewController alloc] init];
+    file.data = [cell fileData];
+    [self.navigationController pushViewController: file animated: YES];
+}
 
 #pragma mark - TInputControllerDelegate
 
@@ -531,15 +551,11 @@
         [self videoCall];
     } else if (cell.data == [TUIInputMoreCellData audioCallData]) {
         [self audioCall];
-    } else if ([cell.data.title isEqualToString:@"发送位置"]) {
+    } else if (cell.data == [TUIInputMoreCellData locationData]) {
         [self sendLocation];
     } else if ([cell.data.title isEqualToString:@"发送卡片"]) {
         [self sendCard];
     }
-    
-    //    if(self.delegate && [self.delegate respondsToSelector:@selector(chatController:onSelectMoreCell:)]){
-    //        [self.delegate chatController:self onSelectMoreCell:cell];
-    //    }
 }
 
 - (void)inputControllerDidInputAt:(TUIInputController *)inputController {
@@ -833,7 +849,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 - (void)initSubviews {
     [super initSubviews];
     
-    self.messageController = [[YUIMessageController alloc] init];
+    self.messageController = [[TUIMessageController alloc] init];
     self.inputController = [[TUIInputController alloc] init];
     
     if (!_isInternal) return;
@@ -855,6 +871,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     self.messageController.delegate = self;
     [self addChildViewController: self.messageController];
     [self.view addSubview: self.messageController.view];
+    [self.messageController.tableView registerClass:[YZLocationMessageCell class] forCellReuseIdentifier: LocationMessageCell_ReuseId];
     for (NSString *key in _registeredCustomMessageClass) {
         [self registerClass: _registeredCustomMessageClass[key] forCustomMessageViewReuseIdentifier: key];
     }

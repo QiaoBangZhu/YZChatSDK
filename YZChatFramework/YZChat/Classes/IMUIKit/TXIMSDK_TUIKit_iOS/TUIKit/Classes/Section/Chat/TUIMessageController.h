@@ -13,6 +13,8 @@
 #import <UIKit/UIKit.h>
 #import "TUIMessageCell.h"
 
+@class TUIImageMessageCell;
+@class TUIFileMessageCell;
 
 @class TUIConversationCellData;
 @class TUIMessageController;
@@ -95,12 +97,9 @@
  */
 - (void)messageController:(TUIMessageController *)controller onSelectMessageContent:(TUIMessageCell *)cell;
 
-/**
- *  点击入群消息中用户名称时的回调委托。例如：“小明加入群组”，本回调在用户点击“小明”时触发。
- *
- *  @param controller 委托者，消息控制器
- *  @param cell 所点击的入群消息单元
- */
+- (void)showImageMessage:(TUIImageMessageCell *)cell;
+- (void)showFileMessage:(TUIFileMessageCell *)cell;
+
 @end
 
 /////////////////////////////////////////////////////////////////////////////////
