@@ -12,6 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YzCustomMessageData : NSObject
 
 /**
+ * 消息气泡标识符
+ *
+ * @default
+ */
+@property (nonatomic, copy) NSString *reuseIdentifier;
+
+/**
  *  内容大小
  *  返回一个气泡内容的视图大小。
  */

@@ -34,6 +34,7 @@
 #import "SearchMyFriendsViewController.h"
 #import "YContactSelectViewController.h"
 #import "QRScanViewController.h"
+#import "YzInternalChatController.h"
 
 typedef NS_ENUM(NSInteger, GroupMessageType) {
     GroupMessageTypeRecycled = 1,//群已经回收
@@ -59,7 +60,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 
 @implementation YzInternalConversationListController
 
-#pragma mark - init
+#pragma mark - 初始化
 
 - (instancetype)initWithChatType:(YzChatType)chatType {
     self = [super init];
@@ -407,8 +408,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 
 - (void)didSelectConversation:(TUIConversationCell *)cell {
     if (_isInternal) {
-        YChatViewController *chat = [[YChatViewController alloc] init];
-        chat.conversationData = cell.convData;
+        YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: cell.convData];
         [self.navigationController pushViewController:chat animated:YES];
 
         return;

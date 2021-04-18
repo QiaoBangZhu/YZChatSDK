@@ -9,6 +9,10 @@
 
 @implementation YzCustomMessageData
 
+- (NSString *)reuseIdentifier {
+    return  @"";
+}
+
 - (CGSize)contentSize {
     return CGSizeZero;
 }

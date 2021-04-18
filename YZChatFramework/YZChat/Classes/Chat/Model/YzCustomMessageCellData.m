@@ -43,7 +43,7 @@
 }
 
 - (NSString *)reuseId {
-    return NSStringFromClass([self.customMessageData class]);
+    return self.customMessageData.reuseIdentifier;
 }
 
 - (CGSize)contentSize {

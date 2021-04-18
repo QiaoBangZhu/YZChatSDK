@@ -7,26 +7,10 @@
 
 #import "YzChatController.h"
 
-#import <ImSDKForiOS/ImSDK.h>
 #import <ReactiveObjC/ReactiveObjC.h>
-#import "THelper.h"
-#import "THeader.h"
-#import "TUITextMessageCellData.h"
 
-#import "YUIChatController.h"
+#import "YzInternalChatController.h"
 #import "CommonConstant.h"
-#import "NSBundle+YZBundle.h"
-#import "UIColor+ColorExtension.h"
-#import "TUIConversationCellData+YzEx.h"
-#import "YZUtil.h"
-#import "YZMapViewController.h"
-#import "YZLocationMessageCell.h"
-#import "YZMapInfoViewController.h"
-#import "YZWebViewController.h"
-#import "YzCustomMessageCell.h"
-#import "YzCustomMessageCellData.h"
-#import "YzCustomMsg.h"
-#import "YZCardMsgView.h"
 
 @implementation YzChatInfo
 
@@ -63,24 +47,12 @@
 
 @end
 
-@interface YRegisteredCustomMessageClasses : NSObject
-
-@property (nonatomic, assign) Class viewClass;
-@property (nonatomic, assign) Class dataClass;
-
-@end
-
-@implementation YRegisteredCustomMessageClasses
-@end
-
-@interface YzChatController () <YUIChatControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate> {
+@interface YzChatController () <YzInternalChatControllerDataSource, YzInternalChatControllerDelegate> {
     YzChatInfo *_chatInfo;
     YzChatControllerConfig *_chatConfig;
-    NSMutableDictionary <NSString *, YRegisteredCustomMessageClasses *> * _registeredCustomMessageClass;
 }
 
-@property (nonatomic, strong) TUIConversationCellData *conversationCellData;
-@property (nonatomic, strong) YUIChatController *chatController;
+@property (nonatomic, strong) YzInternalChatController *chatController;
 
 @end
 
@@ -92,7 +64,6 @@
     if (self) {
         _chatInfo = chatInfo;
         _chatConfig = config ?: [[YzChatControllerConfig alloc] init];
-        _registeredCustomMessageClass = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -101,37 +72,36 @@
     [super viewDidLoad];
     self.title = _chatInfo.chatName;
     [self setupChatController];
-    [self registerViewClass: [YZCardMsgView class] forDataClass: [YZCardMsgData self]];
+
+    if (!_chatInfo.chatName.length) {
+        @weakify(self)
+        [[RACObserve(self.chatController, title) distinctUntilChanged] subscribeNext:^(NSString *title) {
+            @strongify(self)
+            self.title = title;
+    //        if (self.delegate && [self.delegate respondsToSelector: @selector(onTitleChanged:)]) {
+    //            [self.delegate onTitleChanged: title];
+    //        }
+        }];
+    }
 }
 
 - (void)setupChatController {
-    self.chatController = [[YUIChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
+    self.chatController = [[YzInternalChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
     self.chatController.delegate = self;
+    self.chatController.dataSource = self;
     [self addChildViewController: self.chatController];
     [self.view addSubview: self.chatController.view];
-    self.chatController.messageController.tableView.backgroundColor = [UIColor colorWithHex: KCommonChatBgColor];
-    for (NSString * key in _registeredCustomMessageClass) {
-        [self.chatController.messageController.tableView registerClass: [YzCustomMessageCell class]
-                                                forCellReuseIdentifier: key];
-    }
-    
-    [TUIBubbleMessageCellData setOutgoingBubble:[YZChatResource(@"SenderTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
-    
-    [TUIBubbleMessageCellData setOutgoingHighlightedBubble:[YZChatResource(@"SenderTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 20, 22, 20) resizingMode:UIImageResizingModeStretch]];
-    
-    [TUIBubbleMessageCellData setIncommingBubble:[YZChatResource(@"ReceiverTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 22, 22, 22) resizingMode:UIImageResizingModeStretch]];
-    [TUIBubbleMessageCellData setIncommingHighlightedBubble:[YZChatResource(@"ReceiverTextNodeBkg") resizableImageWithCapInsets:UIEdgeInsetsMake(30, 22, 22, 22) resizingMode:UIImageResizingModeStretch]];
-    
-    // 设置发送文字消息的字体和颜色；设置接收的方法类似
-    [TUITextMessageCellData setOutgoingTextColor:[UIColor blackColor]];
-    
-    [TUITextMessageCellData setIncommingTextColor:[UIColor blackColor]];
 }
 
 #pragma mark - Public
 
-- (void)updateInputTextByNames:(NSArray<NSString *> *)names
-                           ids:(NSArray<NSString *> *)ids {
+- (void)registerClass:(nullable Class)viewClass forCustomMessageViewReuseIdentifier:(NSString *)identifier {
+    NSAssert([viewClass isSubclassOfClass: [YzCustomMessageView class]], @"自定义消息视图类型，需继承自 YzCustomMessageView");
+    [self.chatController registerClass: viewClass forCustomMessageViewReuseIdentifier: identifier];
+}
+
+
+- (void)updateInputTextByNames:(NSArray<NSString *> *)names ids:(NSArray<NSString *> *)ids {
     NSUInteger count = MIN(ids.count, ids.count);
     NSMutableArray *users = [[NSMutableArray alloc] init];
     for (int i = 0; i < count; i++) {
@@ -143,141 +113,25 @@
     [self.chatController updateInputTextByUsers: users];
 }
 
-- (void)registerViewClass:(Class)viewClass forDataClass:(Class)dataClass {
-    NSAssert([viewClass isSubclassOfClass: [YzCustomMessageView class]],
-             @"自定义消息视图类型，需继承自 YzCustomMessageView");
-    NSAssert([dataClass isSubclassOfClass: [YzCustomMessageData class]],
-             @"自定义消息数据类型，需继承自 YzCustomMessageData");
-    YRegisteredCustomMessageClasses *classes = [[YRegisteredCustomMessageClasses alloc] init];
-    classes.viewClass = viewClass;
-    classes.dataClass = dataClass;
-    NSString *key = NSStringFromClass(dataClass);
-    _registeredCustomMessageClass[key] = classes;
-    [self.chatController.messageController.tableView registerClass: [YzCustomMessageCell class]
-                                            forCellReuseIdentifier: key];
-}
+#pragma mark - YzInternalChatControllerDataSource
 
-#pragma mark - YUIChatControllerDelegate
-
-- (void)chatController:(YUIChatController *)controller
-        didSendMessage:(TUIMessageCellData *)msgCellData {
-}
-
-- (void)chatController:(YUIChatController *)chatController
-      onSelectMoreCell:(TUIInputMoreCell *)cell {
-    if ([cell.data.title isEqualToString:@"发送卡片"]) {
-        NSString *text = @"元信IM生态工具元信";//IM生态工具元信IM生态工具元信IM生态工具元信IM生态工具
-        NSString *link = @"http://yzmsri.com/";
-        NSString *desc = @"欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！";
-        NSString * logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
-        YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-        YZCardMsgData *msg = [[YZCardMsgData alloc] init];
-        msg.title = text;
-        msg.link = link;
-        msg.des = desc;
-        msg.logo = logo;
-        cellData.customMessageData = msg;
-        cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage:[YZUtil dictionary2JsonData:@{@"version": @(TextLink_Version),@"businessID": CardLink,@"title":text,@"link":link,@"desc":desc, @"logo": logo}]];
-        [chatController sendMessage:cellData];
-        
-    }else if([cell.data.title isEqualToString:@"发送位置"]) {
-        YZMapViewController* map = [[YZMapViewController alloc]init];
-        @weakify(self)
-        [self.navigationController pushViewController:map animated:YES];
-        map.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
-            @strongify(self)
-            [self.navigationController popToViewController:self animated:YES];
-            YZLocationMessageCellData* cellData = [[YZLocationMessageCellData alloc]initWithDirection:MsgDirectionOutgoing];
-            cellData.text = [NSString stringWithFormat:@"%@##%@",name,address];
-            cellData.latitude = latitude;
-            cellData.longitude = longitude;
-            [chatController sendMessage:cellData];
-            [chatController.messageController scrollToBottom:NO];
-        };
-    }
-}
-
-- (TUIMessageCellData *)chatController:(YUIChatController *)controller
-                          onNewMessage:(V2TIMMessage *)msg {
-    /// 自定义消息
-    if (msg.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
-        NSDictionary *param = [YZUtil jsonData2Dictionary: msg.customElem.data];
-        if (param) {
-            NSString *businessID = param[@"businessID"];
-            NSString *text = param[@"title"];
-            NSString *link = param[@"link"];
-            if (text.length == 0 || link.length == 0) {
-                return nil;
-            }
-            if ([businessID isEqualToString:CardLink]) {
-                YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: msg];
-                YZCardMsgData *custom = [[YZCardMsgData alloc] init];
-                custom.title = text;
-                custom.des = param[@"desc"];
-                custom.link = link;
-                custom.logo = param[@"logo"];
-                cellData.customMessageData = custom;
-                return cellData;
-            }
-        }
-        // 用户自定
-        else if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {
-            YzCustomMessageData *custom = [self.dataSource customMessageForData: msg.customElem.data];
-            if (custom) {
-                YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: msg];
-                cellData.customMessageData = custom;
-                return cellData;
-            }
-        }
-    }
-    return nil;
-}
-
-- (TUIMessageCell *)chatController:(YUIChatController *)controller
-                 onShowMessageData:(TUIMessageCellData *)data {
-    if ([data isKindOfClass:[YzCustomMessageCellData class]]) {
-        Class viewClass = _registeredCustomMessageClass[data.reuseId].viewClass;
-        YzCustomMessageCell *cell = [controller.messageController.tableView
-                                     dequeueReusableCellWithIdentifier: data.reuseId];
-        cell.customViewClass = viewClass;
-        [cell.customView fillWithData: ((YzCustomMessageCellData *)data).customMessageData];
-        [cell fillWithData: data];
-        return cell;
+- (YzCustomMessageData *)customMessageForData:(NSData *)data {
+    if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {
+        YzCustomMessageData *custom = [self.dataSource customMessageForData: data];
+        Class cls = self.chatController.registeredCustomMessageClass[custom.reuseIdentifier];
+        NSAssert(cls != nil, @"%@ 自定义消息视图未注册", custom);
+        return custom;
     }
 
     return nil;
 }
 
-- (void)chatController:(YUIChatController *)controller onSelectMessageContent:(TUIMessageCell *)cell {
-    if ([cell isKindOfClass:[YZLocationMessageCell class]]) {
-        YZLocationMessageCellData* data = [(YZLocationMessageCell *)cell locationData];
-        YZMapInfoViewController* map = [[YZMapInfoViewController alloc]init];
-        map.locationData = data;
-        [self.navigationController pushViewController:map animated:YES];
-    }
-    // 自定义消息
-    else if ([cell isKindOfClass:[YzCustomMessageCell class]]) {
-        YzCustomMessageCellData *cellData = (YzCustomMessageCellData *)cell.messageData;
-        if ([cellData.customMessageData isKindOfClass: [YZCardMsgData class]]) {
-            YZCardMsgData *msg = (YZCardMsgData *)cellData.customMessageData;
-            if (msg.link) {
-                YZWebViewController* web = [[YZWebViewController alloc]init];
-                web.url = [NSURL URLWithString: msg.link];
-                [self.navigationController pushViewController:web animated:YES];
-            }
-        }
-        // 用户自定义
-        else {
-            if (self.delegate && [self.delegate respondsToSelector: @selector(onSelectedCustomMessageView:)]) {
-                [self.delegate onSelectedCustomMessageView: [(YzCustomMessageCell *)cell customView]];
-            }
-        }
-    }
-}
 
-- (BOOL)chatController:(YUIChatController *)controller onSelectMessageAvatar:(TUIMessageCell *)cell {
-    if ([self.delegate respondsToSelector: @selector(onUserIconClick:)]) {
-        [self.delegate onUserIconClick: cell.messageData.identifier];
+#pragma mark - YzInternalChatControllerDelegate
+
+- (BOOL)onUserIconClick:(NSString *)userId {
+    if (self.delegate && [self.delegate respondsToSelector: @selector(onUserIconClick:)]) {
+        [self.delegate onUserIconClick: userId];
         return YES;
     }
 
@@ -285,11 +139,18 @@
 }
 
 - (BOOL)onAtGroupMember {
-    if ([self.delegate respondsToSelector: @selector(onAtGroupMember)]) {
-        return [self.delegate onAtGroupMember];
+    if (self.delegate && [self.delegate respondsToSelector: @selector(onAtGroupMember)]) {
+        [self.delegate onAtGroupMember];
+        return YES;
     }
 
     return NO;
+}
+
+- (void)onSelectedCustomMessageView:(YzCustomMessageView *)customMessageView {
+    if (self.delegate && [self.delegate respondsToSelector: @selector(onSelectedCustomMessageView:)]) {
+        [self.delegate onSelectedCustomMessageView: customMessageView];
+    }
 }
 
 @end

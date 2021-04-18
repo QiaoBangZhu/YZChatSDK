@@ -98,7 +98,7 @@
                                                  name:TUIKitNotification_onChangeUnReadCount
                                                object:nil];
     //呼叫方主动取消呼叫的监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallingCancel:) name:TUIKitNotification_Call_Cancled object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallingCancel:) name:TUIKitNotification_Call_Cancelled object:nil];
     
     //
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopNotify) name:@"POPTOCONVERSIONLIISTNOTIFY" object:nil];

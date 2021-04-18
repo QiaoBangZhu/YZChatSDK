@@ -224,7 +224,7 @@ typedef NS_ENUM(NSInteger,VideoUserRemoveReason){
     if ([self.callVC isKindOfClass:[TUIAudioCallViewController class]]) {
         [(TUIAudioCallViewController *)self.callVC disMiss];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TUIKitNotification_Call_Cancled" object:@{@"uid": uid}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TUIKitNotification_Call_Cancelled" object:@{@"uid": uid}];
 //    [THelper makeToast:[NSString stringWithFormat:@"%@ 取消了通话",uid]];
 }
    

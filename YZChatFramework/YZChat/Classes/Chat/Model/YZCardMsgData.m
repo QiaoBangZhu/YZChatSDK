@@ -10,6 +10,10 @@
 
 @implementation YZCardMsgData
 
+- (NSString *)reuseIdentifier {
+    return @"YZCardMsgCell";
+}
+
 - (CGSize)contentSize {
     CGRect rect = [self.title boundingRectWithSize:CGSizeMake(220, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:15] } context:nil];
     CGSize size = CGSizeMake(ceilf(rect.size.width)+1, ceilf(rect.size.height));

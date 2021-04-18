@@ -33,7 +33,7 @@ static  NSString * const scheme = @"tg.tripg.com";
 #define YZChatResource(name) [UIImage imageNamed:name inBundle:[NSBundle yzBundle] compatibleWithTraitCollection:nil]
 
 //取消了视频或者语音通话
-#define TUIKitNotification_Call_Cancled @"TUIKitNotification_Call_Cancled"
+#define TUIKitNotification_Call_Cancelled @"TUIKitNotification_Call_Cancelled"
 
 static NSString * const userAgreementUrl = @"https://yinsi.yzmetax.com/agreement.html";
 static NSString * const privacyPolicyUrl = @"https://yinsi.yzmetax.com/conceal.html";

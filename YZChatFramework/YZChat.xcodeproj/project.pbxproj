@@ -569,6 +569,8 @@
 		E56D1363262AB35600C73E8E /* YzExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D1362262AB35600C73E8E /* YzExtensions.h */; };
 		E56D1366262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */; };
 		E56D1367262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */; };
+		E56D13FA262B26F600C73E8E /* YzInternalChatController.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D13F8262B26F600C73E8E /* YzInternalChatController.h */; };
+		E56D13FB262B26F600C73E8E /* YzInternalChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D13F9262B26F600C73E8E /* YzInternalChatController.m */; };
 		E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3272619DFE600B4E6C1 /* YzFileManager.m */; };
 		E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AA3282619DFE600B4E6C1 /* YzFileManager.h */; };
@@ -1477,6 +1479,8 @@
 		E56D1362262AB35600C73E8E /* YzExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzExtensions.h; sourceTree = "<group>"; };
 		E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CIGAMPopupMenuView+YzEx.h"; sourceTree = "<group>"; };
 		E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CIGAMPopupMenuView+YzEx.m"; sourceTree = "<group>"; };
+		E56D13F8262B26F600C73E8E /* YzInternalChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzInternalChatController.h; sourceTree = "<group>"; };
+		E56D13F9262B26F600C73E8E /* YzInternalChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzInternalChatController.m; sourceTree = "<group>"; };
 		E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E57AA3272619DFE600B4E6C1 /* YzFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzFileManager.m; sourceTree = "<group>"; };
 		E57AA3282619DFE600B4E6C1 /* YzFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzFileManager.h; sourceTree = "<group>"; };
@@ -2187,6 +2191,8 @@
 			children = (
 				30A988BC25A449F00082D3C9 /* YChatDocumentPickerViewController.h */,
 				30A988C725A449F00082D3C9 /* YChatDocumentPickerViewController.m */,
+				E56D13F8262B26F600C73E8E /* YzInternalChatController.h */,
+				E56D13F9262B26F600C73E8E /* YzInternalChatController.m */,
 				30A988CE25A449F00082D3C9 /* YChatViewController.h */,
 				30A988C125A449F00082D3C9 /* YChatViewController.m */,
 				30A988C925A449F00082D3C9 /* YContactSelectViewController.h */,
@@ -3873,6 +3879,7 @@
 				30A98C2B25A449F20082D3C9 /* TUICall+Signal.h in Headers */,
 				E5FE23BD2626A2DD00FB1A84 /* CIGAMBadgeProtocol.h in Headers */,
 				30A98C8925A449F30082D3C9 /* YWorkZoneViewController.h in Headers */,
+				E56D13FA262B26F600C73E8E /* YzInternalChatController.h in Headers */,
 				30A98A9125A449F20082D3C9 /* ZNavigationBar.h in Headers */,
 				30A98C7225A449F30082D3C9 /* EMVoiceConverter.h in Headers */,
 				30A98B8D25A449F20082D3C9 /* TCommonAvatarCell.h in Headers */,
@@ -4461,6 +4468,7 @@
 				E5FE235B2626A2DD00FB1A84 /* CIGAMFloatLayoutView.m in Sources */,
 				E5FE24102626A2DD00FB1A84 /* UILabel+CIGAM.m in Sources */,
 				30A98B9725A449F20082D3C9 /* TCommonCell.m in Sources */,
+				E56D13FB262B26F600C73E8E /* YzInternalChatController.m in Sources */,
 				30A98BFB25A449F20082D3C9 /* TUIMenuCell.m in Sources */,
 				30A98A8425A449F20082D3C9 /* NSData+YChatExtension.m in Sources */,
 				E5FE232F2626A2DC00FB1A84 /* CIGAMPopupMenuBaseItem.m in Sources */,

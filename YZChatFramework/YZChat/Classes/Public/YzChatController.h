@@ -150,12 +150,12 @@ NS_ASSUME_NONNULL_BEGIN
                            ids:(NSArray <NSString *> *)ids;
 
 /**
- * 注册自定义消息视图和与其绑定的数据
+ * 注册自定义消息视图
  *
  * @param viewClass 自定义消息视图类型，需继承自 YzCustomMessageView
- * @param dataClass 自定义消息数据类型，需继承自 YzCustomMessageData
+ * @param identifier 复用标识
  */
-- (void)registerViewClass:(Class)viewClass forDataClass:(Class)dataClass;
+- (void)registerClass:(nullable Class)viewClass forCustomMessageViewReuseIdentifier:(NSString *)identifier;
 
 @end
 
