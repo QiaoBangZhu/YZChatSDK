@@ -7,9 +7,10 @@
 //
 
 #import "YZLocationMessageCell.h"
-#import "UIColor+ColorExtension.h"
-#import <Masonry/Masonry.h>
+
 #import "MMLayout/UIView+MMLayout.h"
+
+#import "UIColor+ColorExtension.h"
 #import "CommonConstant.h"
 #import "NSBundle+YZBundle.h"
 
@@ -72,7 +73,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     CGRect containFrame = self.container.frame;
     containFrame.size.height -= 15;
     self.container.frame = containFrame;
@@ -80,35 +81,12 @@
     CGRect readReceiptFrame = self.readReceiptLabel.frame;
     readReceiptFrame.origin.y -= 15;
     self.readReceiptLabel.frame = readReceiptFrame;
-    
-    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@6);
-        make.right.equalTo(@-7);
-        make.top.equalTo(@7);
-        make.bottom.equalTo(@-7);
-    }];
-    
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@16);
-        make.top.equalTo(@12);
-        make.right.lessThanOrEqualTo(@-16);
-    }];
 
-    [self.addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel.mas_left);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(4);
-        make.height.equalTo(@12);
-        make.right.lessThanOrEqualTo(@-16);
-    }];
-
-    [self.mapImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(@0);
-        make.top.equalTo(self.addressLabel.mas_bottom).offset(12);
-    }];
-    
-    [self.shadowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-    }];
+    self.shadowImageView.mm_fill();
+    self.bgView.mm_fill().mm_left(6).mm_top(7).mm_flexToRight(7).mm_flexToBottom(7);
+    self.titleLabel.mm_sizeToFit().mm_left(16).mm_top(12).mm_width(MIN(self.bgView.mm_w - 32, self.titleLabel.mm_w));
+    self.addressLabel.mm_sizeToFit().mm_left(16).mm_top(self.titleLabel.mm_maxY + 4).mm_width(MIN(self.bgView.mm_w - 32, self.addressLabel.mm_w));
+    self.mapImageView.mm_fill().mm_top(self.addressLabel.mm_maxY + 12).mm_flexToBottom(0);
 }
 
 @end
