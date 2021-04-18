@@ -554,6 +554,7 @@
 		E527E9E92583A5B300531586 /* SysUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E52583A5B300531586 /* SysUser.m */; };
 		E527E9EA2583A5B300531586 /* YzIMKitAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = E527E9E62583A5B300531586 /* YzIMKitAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E527E9EC2583A5B300531586 /* YzIMKitAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E527E9E82583A5B300531586 /* YzIMKitAgent.m */; };
+		E5463D7F262C84350088D541 /* YzCommonImport.h in Headers */ = {isa = PBXBuildFile; fileRef = E5463D7E262C84350088D541 /* YzCommonImport.h */; };
 		E56D1363262AB35600C73E8E /* YzExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D1362262AB35600C73E8E /* YzExtensions.h */; };
 		E56D1366262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */; };
 		E56D1367262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */; };
@@ -1452,6 +1453,7 @@
 		E527E9E62583A5B300531586 /* YzIMKitAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzIMKitAgent.h; sourceTree = "<group>"; };
 		E527E9E72583A5B300531586 /* SysUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysUser.h; sourceTree = "<group>"; };
 		E527E9E82583A5B300531586 /* YzIMKitAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzIMKitAgent.m; sourceTree = "<group>"; };
+		E5463D7E262C84350088D541 /* YzCommonImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCommonImport.h; sourceTree = "<group>"; };
 		E56D1362262AB35600C73E8E /* YzExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzExtensions.h; sourceTree = "<group>"; };
 		E56D1364262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CIGAMPopupMenuView+YzEx.h"; sourceTree = "<group>"; };
 		E56D1365262AB3D100C73E8E /* CIGAMPopupMenuView+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CIGAMPopupMenuView+YzEx.m"; sourceTree = "<group>"; };
@@ -2005,6 +2007,7 @@
 				30A9887025A449F00082D3C9 /* YZPAirSandbox.m */,
 				30A9886025A449F00082D3C9 /* YZUtil.h */,
 				30A9888025A449F00082D3C9 /* YZUtil.m */,
+				E5463D7E262C84350088D541 /* YzCommonImport.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3867,6 +3870,7 @@
 				E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */,
 				E513A1A82623EE5F00621FAF /* YzCustomMessageCellData.h in Headers */,
 				E5FE23FB2626A2DD00FB1A84 /* NSParagraphStyle+CIGAM.h in Headers */,
+				E5463D7F262C84350088D541 /* YzCommonImport.h in Headers */,
 				E5FE23D22626A2DD00FB1A84 /* CIGAMTextView.h in Headers */,
 				30A98BC225A449F20082D3C9 /* TUIContactActionCellData.h in Headers */,
 				E5FE23322626A2DD00FB1A84 /* CIGAMMoreOperationController.h in Headers */,
