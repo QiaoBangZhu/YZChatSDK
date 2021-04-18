@@ -13,7 +13,7 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "THeader.h"
 #import "TTextEditController.h"
-#import "YChatViewController.h"
+#import "YzInternalChatController.h"
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "TUIKit.h"
 #import "TUIAvatarViewController.h"
@@ -460,8 +460,7 @@
     data.conversationID = [NSString stringWithFormat:@"c2c_%@",self.userFullInfo.userID];
     data.userID = self.friendProfile.userID;
     data.title = [self.friendProfile.userFullInfo showName];
-    YChatViewController *chat = [[YChatViewController alloc] init];
-    chat.conversationData = data;
+    YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: data];
     [self.navigationController pushViewController:chat animated:YES];
 }
 
@@ -641,8 +640,7 @@
                 TUIConversationCellData *cellData = [[TUIConversationCellData alloc] init];
                 cellData.groupID = groupID;
                 cellData.title = groupName;
-                YChatViewController *chat = [[YChatViewController alloc] init];
-                chat.conversationData = cellData;
+                YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: cellData];
                 [self.navigationController pushViewController:chat animated:YES];
                 
                 //删除nav堆栈内其他无关vc用于从聊天页面直接返回会话列表页面

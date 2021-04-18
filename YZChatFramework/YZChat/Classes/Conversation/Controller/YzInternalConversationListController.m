@@ -25,7 +25,6 @@
 
 #import "YzExtensions.h"
 #import "YzConversationListController.h"
-#import "YChatViewController.h"
 #import "UIColor+ColorExtension.h"
 #import "YChatNetworkEngine.h"
 #import "YChatIMCreateGroupMemberInfo.h"
@@ -346,8 +345,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
                 TUIConversationCellData *cellData = [[TUIConversationCellData alloc] init];
                 cellData.groupID = groupID;
                 cellData.title = groupName;
-                YChatViewController *chat = [[YChatViewController alloc] init];
-                chat.conversationData = cellData;
+                YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: cellData];
                 [self.navigationController pushViewController:chat animated:YES];
 
                 NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];

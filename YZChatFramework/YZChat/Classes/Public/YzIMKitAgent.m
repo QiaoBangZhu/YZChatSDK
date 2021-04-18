@@ -14,7 +14,7 @@
 #import "YChatSettingStore.h"
 #import <ImSDKForiOS/ImSDK.h>
 #import "TUIConversationCellData.h"
-#import "YChatViewController.h"
+#import "YzInternalChatController.h"
 #import "TNavigationController.h"
 #import "ContactsViewController.h"
 #import "YWorkZoneViewController.h"
@@ -239,8 +239,7 @@
     data.conversationID = [NSString stringWithFormat:@"c2c_%@",@""];
     data.userID = toChatId;
     data.title = chatName;
-    YChatViewController *chat = [[YChatViewController alloc] init];
-    chat.conversationData = data;
+    YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: data];
     if(finishToConversation){
         YzTabBarViewController* tab = [[YZBaseManager shareInstance] getMainController];
         tab.conversationListController.isNeedCloseBarButton = YES;
@@ -363,11 +362,10 @@
     YzTabBarViewController *tab = [[YZBaseManager shareInstance] getMainController];
     [UIApplication sharedApplication].keyWindow.rootViewController = tab;
 
-    YChatViewController *chat = [[YChatViewController alloc] init];
-    TUIConversationCellData *conversationData = [[TUIConversationCellData alloc] init];
-    conversationData.groupID = self.groupID;
-    conversationData.userID = self.userID;
-    chat.conversationData = conversationData;
+    TUIConversationCellData *data = [[TUIConversationCellData alloc] init];
+    data.groupID = self.groupID;
+    data.userID = self.userID;
+    YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: data];
     [tab.conversationListController.navigationController pushViewController:chat animated:YES];
 
     self.groupID = nil;

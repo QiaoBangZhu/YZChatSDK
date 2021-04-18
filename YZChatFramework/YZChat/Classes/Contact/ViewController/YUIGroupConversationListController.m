@@ -9,7 +9,7 @@
 #import "YUIGroupConversationListController.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
-#import "YChatViewController.h"
+#import "YzInternalChatController.h"
 
 #import "YZCardMsgData.h"
 #import "YZUtil.h"
@@ -79,8 +79,7 @@
         [self sendCardMsgFromOtherAppWithData:conversationData];
         return;
     }
-    YChatViewController *chat = [[YChatViewController alloc] init];
-    chat.conversationData = conversationData;
+    YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: conversationData];
     
     [self.navigationController pushViewController:chat animated:YES];
 }

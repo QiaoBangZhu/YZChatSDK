@@ -14,7 +14,7 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "MMLayout/UIView+MMLayout.h"
-#import "YChatViewController.h"
+#import "YzInternalChatController.h"
 #import "FriendRequestViewController.h"
 #import "TCommonTextCell.h"
 #import "TIMUserProfile+DataProvider.h"
@@ -283,8 +283,7 @@
     data.conversationID = [NSString stringWithFormat:@"c2c_%@",self.userFullInfo.userID];
     data.userID = self.userFullInfo.userID;
     data.title = [self.userFullInfo showName];
-    YChatViewController *chat = [[YChatViewController alloc] init];
-    chat.conversationData = data;
+    YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: data];
     [self.navigationController pushViewController:chat animated:YES];
 }
 
