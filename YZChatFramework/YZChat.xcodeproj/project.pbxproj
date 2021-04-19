@@ -563,6 +563,8 @@
 		E57AA2AE26197A1B00B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3292619DFE600B4E6C1 /* YzFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3272619DFE600B4E6C1 /* YzFileManager.m */; };
 		E57AA32A2619DFE600B4E6C1 /* YzFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AA3282619DFE600B4E6C1 /* YzFileManager.h */; };
+		E5ACD5E7262D189700362FC7 /* YzCommonTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5ACD5E5262D189700362FC7 /* YzCommonTableViewController.h */; };
+		E5ACD5E8262D189700362FC7 /* YzCommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ACD5E6262D189700362FC7 /* YzCommonTableViewController.m */; };
 		E5AFD69326287D30002C9586 /* YzInternalConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5AFD69126287D30002C9586 /* YzInternalConversationListController.h */; };
 		E5AFD69426287D30002C9586 /* YzInternalConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AFD69226287D30002C9586 /* YzInternalConversationListController.m */; };
 		E5BFE7082623DC9400013973 /* YzCustomMessageView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BFE7062623DC9400013973 /* YzCustomMessageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1462,6 +1464,8 @@
 		E57AA2AD26197A1A00B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E57AA3272619DFE600B4E6C1 /* YzFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzFileManager.m; sourceTree = "<group>"; };
 		E57AA3282619DFE600B4E6C1 /* YzFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzFileManager.h; sourceTree = "<group>"; };
+		E5ACD5E5262D189700362FC7 /* YzCommonTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCommonTableViewController.h; sourceTree = "<group>"; };
+		E5ACD5E6262D189700362FC7 /* YzCommonTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCommonTableViewController.m; sourceTree = "<group>"; };
 		E5AFD69126287D30002C9586 /* YzInternalConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzInternalConversationListController.h; sourceTree = "<group>"; };
 		E5AFD69226287D30002C9586 /* YzInternalConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzInternalConversationListController.m; sourceTree = "<group>"; };
 		E5BFE7062623DC9400013973 /* YzCustomMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageView.h; sourceTree = "<group>"; };
@@ -2139,6 +2143,8 @@
 				30A988B225A449F00082D3C9 /* YZBaseManager.m */,
 				30A988B325A449F00082D3C9 /* YzCommonViewController.h */,
 				30A988B625A449F00082D3C9 /* YzCommonViewController.m */,
+				E5ACD5E5262D189700362FC7 /* YzCommonTableViewController.h */,
+				E5ACD5E6262D189700362FC7 /* YzCommonTableViewController.m */,
 				E50E03812627EAD8006C0FF7 /* YzNavigationController.h */,
 				E50E03822627EAD8006C0FF7 /* YzNavigationController.m */,
 				E50E03992628089B006C0FF7 /* YzTabBarViewController.h */,
@@ -3848,6 +3854,7 @@
 				30A98B8D25A449F20082D3C9 /* TCommonAvatarCell.h in Headers */,
 				E5FE231E2626A2DC00FB1A84 /* CIGAMLinkButton.h in Headers */,
 				E5FE242C2626A2DD00FB1A84 /* UIImage+CIGAM.h in Headers */,
+				E5ACD5E7262D189700362FC7 /* YzCommonTableViewController.h in Headers */,
 				30A98AB725A449F20082D3C9 /* YUIButtonTableViewCell.h in Headers */,
 				30A98BAC25A449F20082D3C9 /* TUIGroupConversationListViewModel.h in Headers */,
 				30A98B5A25A449F20082D3C9 /* SearchMyContactsViewController.h in Headers */,
@@ -4392,6 +4399,7 @@
 				E5FE23B02626A2DD00FB1A84 /* CIGAMAppearance.m in Sources */,
 				30A98BB225A449F20082D3C9 /* TUIContactListPicker.m in Sources */,
 				30A98B2625A449F20082D3C9 /* YContactSelectViewController.m in Sources */,
+				E5ACD5E8262D189700362FC7 /* YzCommonTableViewController.m in Sources */,
 				E5FE23C92626A2DD00FB1A84 /* CIGAMNavigationTitleView.m in Sources */,
 				30A98C5F25A449F30082D3C9 /* TIMGroupInfo+DataProvider.m in Sources */,
 				30A98A6025A449F20082D3C9 /* YChatURLRequest.m in Sources */,

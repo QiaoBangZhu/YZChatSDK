@@ -82,7 +82,7 @@
     UILabel* tips = [[UILabel alloc]init];
     tips.text = @"扫一扫二维码,加我为好友";
     tips.font = [UIFont systemFontOfSize:12];
-    tips.textColor = [UIColor colorWithHex:KCommonlittleLightGrayColor];
+    tips.textColor = [UIColor colorWithHex:KCommonLittleLightGrayColor];
     [self.qrBgView addSubview:tips];
     
     [self.qrBgView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -59,6 +59,8 @@
 //    self.titleLabel.text = titleName;
 }
 
-
+- (void)showEmptyViewWithText:(NSString *)text {
+    [self showEmptyViewWithText: text detailText: nil buttonTitle: nil buttonAction: nil];
+}
 
 @end

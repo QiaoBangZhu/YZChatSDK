@@ -42,7 +42,7 @@
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
         _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
         [_tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-        [_tableView setSectionIndexColor:[UIColor colorWithHex:KCommonlittleLightGrayColor]];
+        [_tableView setSectionIndexColor:[UIColor colorWithHex:KCommonLittleLightGrayColor]];
         [self.view addSubview:_tableView];
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(@0);

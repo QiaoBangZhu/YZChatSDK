@@ -63,7 +63,7 @@ static NSString * const privacyPolicyUrl = @"https://yinsi.yzmetax.com/conceal.h
 #define kCommonGrayTextColor            (0x787878)       //浅灰色
 #define KCommonSepareteLineColor        (0xE9EBEC)       //浅色
 #define KCommonBorderColor              (0xA8AFBA)       //灰色
-#define KCommonlittleLightGrayColor     (0xAAAAAA)       //一点灰
+#define KCommonLittleLightGrayColor     (0xAAAAAA)       //一点灰
 #define KCommonYellowColor              (0xfdac3b)       //黄色
 #define KCommonTimeColor                (0xC7CBD5)       //浅色
 #define KCommonInputBorderColor         (0xD9D9D9)       //边框颜色

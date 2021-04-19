@@ -162,7 +162,7 @@
         _selectTable.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
         _selectTable.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
         [_selectTable setSectionIndexBackgroundColor:[UIColor clearColor]];
-        [_selectTable setSectionIndexColor:[UIColor colorWithHex:KCommonlittleLightGrayColor]];
+        [_selectTable setSectionIndexColor:[UIColor colorWithHex:KCommonLittleLightGrayColor]];
         [self.view addSubview:_selectTable];
         _selectTable.mm_width(self.view.mm_w).mm_top(self.topStartPosition + 0).mm_flexToBottom(0);
     }

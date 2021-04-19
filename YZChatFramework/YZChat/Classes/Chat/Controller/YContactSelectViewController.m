@@ -7,293 +7,166 @@
 //
 
 #import "YContactSelectViewController.h"
-#import "TCommonContactSelectCell.h"
-#import "TContactSelectViewModel.h"
-#import "ReactiveObjC.h"
-#import "MMLayout/UIView+MMLayout.h"
-#import "TUIContactListPicker.h"
-#import "UIImage+TUIKIT.h"
-#import "THeader.h"
-#import "Toast/Toast.h"
-#import "THelper.h"
-#import "UIColor+TUIDarkMode.h"
-#import "UIColor+ColorExtension.h"
-#import "CommonConstant.h"
-#import <Masonry/Masonry.h>
-#import "YZSearchBarView.h"
-#import <ImSDKForiOS/ImSDK.h>
 
-#import "TCommonContactCellData.h"
+#import "MMLayout/UIView+MMLayout.h"
+#import <ReactiveObjC/ReactiveObjC.h>
+
+#import "TCommonContactSelectCell.h"
+#import "THelper.h"
+
+#import "YzCommonImport.h"
 
 static NSString *kReuseIdentifier = @"ContactSelectCell";
 
-@interface YContactSelectViewController ()<UITableViewDelegate,UITableViewDataSource,SearchBarDelegate>
-@property UITableView *tableView;
-@property UIView *emptyView;
-@property TUIContactListPicker *pickerView;
-@property NSMutableArray *selectArray;
-@property (nonatomic, strong) UIButton *confirmBtn;
-@property(nonatomic,strong) YZSearchBarView  *searchBar;
-@property(nonatomic,strong) NSMutableArray *searchList;
-@property(nonatomic, strong)NSMutableArray *dataArray;
+@interface YContactSelectViewController ()
+
+@property (nonatomic, strong) NSMutableArray *selectArray;
+@property (nonatomic, strong) NSArray <TCommonContactSelectCellData *>*searchList;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, copy) NSString *keywords;
+
 @end
 
 @implementation YContactSelectViewController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self initData];
-    }
-    return self;
-}
+- (void)didInitialize {
+    [super didInitialize];
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self initData];
-    }
-    return self;
-}
-
-- (void)initData
-{
+    self.viewModel = [[TContactSelectViewModel alloc] init];
     self.maxSelectCount = INT_MAX;
-    self.selectArray = @[].mutableCopy;
-    self.searchList = @[].mutableCopy;
-    self.dataArray = @[].mutableCopy;
+    self.selectArray = [[NSMutableArray alloc] init];
+    self.searchList = [[NSArray alloc] init];
+    self.dataArray = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 30)];
-    [rightButton setTitleColor:[UIColor colorWithHex:kCommonBlueTextColor] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(finishTask) forControlEvents:UIControlEventTouchUpInside];
-    _confirmBtn = rightButton;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    
-    [self.view addSubview:self.searchBar];
-
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    [self.view addSubview:_tableView];
-    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(@0);
-        make.top.equalTo(self.searchBar.mas_bottom);
-    }];
-    
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [_tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-    [_tableView setSectionIndexColor:[UIColor colorWithHex:KCommonlittleLightGrayColor]];
-    [_tableView setBackgroundColor:self.view.backgroundColor];
-    //cell无数据时，不显示间隔线
-    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
-    [_tableView setTableFooterView:v];
-    _tableView.separatorInset = UIEdgeInsetsZero;
-    [_tableView registerClass:[TCommonContactSelectCell class] forCellReuseIdentifier:kReuseIdentifier];
-
-    _emptyView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.view addSubview:_emptyView];
-    _emptyView.mm_fill();
-    _emptyView.hidden = YES;
-
-    UILabel *tipsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_emptyView addSubview:tipsLabel];
-    tipsLabel.text = @"联系人列表空，请先添加好友";
-    tipsLabel.mm_sizeToFit().mm_center();
-
-
-//    _pickerView = [[TUIContactListPicker alloc] initWithFrame:CGRectZero];
-//    [self.view addSubview:_pickerView];
-//    [_pickerView.accessoryBtn addTarget:self action:@selector(finishTask) forControlEvents:UIControlEventTouchUpInside];
 
     [self setupBinds];
-
     if (self.sourceIds) {
         [self.viewModel setSourceIds:self.sourceIds];
     } else {
         [self.viewModel loadContacts];
     }
-    self.view.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
 }
 
-- (void)setupBinds
-{
+#pragma mark - 用户交互
+
+- (void)setupBinds {
     @weakify(self)
     [RACObserve(self.viewModel, isLoadFinished) subscribeNext:^(NSNumber *finished) {
         @strongify(self)
-        if ([finished boolValue]) {
+        if ( [finished boolValue]) {
             if (self.isFromFriendProfile) {
-                for (NSString* groupname in self.viewModel.groupList) {
-                    for (TCommonContactSelectCellData *data in self.viewModel.dataDict[groupname]) {
+                for (NSString* group in self.viewModel.groupList) {
+                    for (TCommonContactSelectCellData *data in self.viewModel.dataDict[group]) {
                         if ([data.identifier isEqualToString: self.friendProfileCellData.identifier]) {
                             data.selected = YES;
                             if (![self.selectArray containsObject:data]) {
                                 [self.selectArray addObject:data];
-                                [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
                                 break;
                             }
                         }
                     }
                 }
+
+                [self updateConfirmText];
             }
 
             [self.tableView reloadData];
         }
     }];
-    [RACObserve(self.viewModel, groupList) subscribeNext:^(NSArray *group) {
+
+    [[RACObserve(self.viewModel, groupList) skip: 1] subscribeNext:^(NSArray *group) {
         @strongify(self)
-        self.emptyView.hidden = (group.count > 0);
+        if (group.count > 0) {
+            [self hideEmptyView];
+        } else {
+            [self showEmptyViewWithText: @"联系人列表空，请先添加好友"];
+        }
     }];
-    
+
     [RACObserve(self.viewModel, searchDataArray) subscribeNext:^(NSArray *searchDataArray) {
         @strongify(self)
         if ([searchDataArray count] > 0) {
             [self.dataArray addObjectsFromArray:searchDataArray];
         }
     }];
+
+    [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
+     subscribeNext:^(NSString  *_Nullable keywords) {
+        [self textDidChange: keywords];
+    }];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-//    _pickerView.mm_width(self.view.mm_w).mm_height(60+_pickerView.mm_safeAreaBottomGap).mm_bottom(0);
-    _tableView.mm_width(self.view.mm_w).mm_flexToBottom(self.view.mm_b);
-}
-
-- (YZSearchBarView *)searchBar {
-    if (!_searchBar) {
-        _searchBar = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0,0, KScreenWidth,44)];
-        _searchBar.backgroundColor = [UIColor whiteColor];
-        _searchBar.placeholder = @"请输入昵称/备注";
-        _searchBar.isShowCancle = NO;
-        _searchBar.isCanEdit = YES;
-        _searchBar.delegate = self;
+- (void)confirmSelected {
+    if (self.finishBlock && [self.selectArray count] >0) {
+        self.finishBlock(self.selectArray);
     }
-    return _searchBar;
 }
 
+#pragma mark - UITableViewDataSource, UITableViewDelegate
 
-- (TContactSelectViewModel *)viewModel {
-    if (_viewModel == nil) {
-        _viewModel = [TContactSelectViewModel new];
-    }
-    return _viewModel;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (tableView == self.tableView) return self.viewModel.groupList.count;
+    return 1;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
-{
-    return [self.searchList count] > 0 ? [self.searchList count] : self.viewModel.groupList.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if ([self.searchList count] > 0) {
-        return 1;
-    }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView != self.tableView) return self.searchList.count;
     NSString *group = self.viewModel.groupList[section];
-    NSArray *list = self.viewModel.dataDict[group];
-    return list.count;
+    return self.viewModel.dataDict[group].count;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-#define TEXT_TAG 1
-    static NSString *headerViewId = @"ContactDrawerView";
-    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewId];
-    if (!headerView)
-    {
-        headerView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerViewId];
-        UIView * bgView = [[UIView alloc]init];
-        bgView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-        [headerView addSubview:bgView];
-        
-        [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(@0);
-        }];
-        
-        headerView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        textLabel.tag = TEXT_TAG;
-        textLabel.font = [UIFont systemFontOfSize:16];
-        textLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
-        [bgView addSubview:textLabel];
-        textLabel.mm_fill().mm_left(12);
-        textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    }
-    UILabel *label = [headerView viewWithTag:TEXT_TAG];
-    if ([self.searchList count] == 0) {
-        label.text = self.viewModel.groupList[section];
-    }
-    return headerView;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (tableView == self.tableView) return self.viewModel.groupList[section];
+    return nil;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 56;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 15;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == self.tableView) return 25;
+    return 0;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return CGFLOAT_MIN;
-//}
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return  self.viewModel.groupList;
+    if (tableView == self.tableView) return self.viewModel.groupList;
+    return nil;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TCommonContactSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
-    if ([self.searchList count] > 0) {
+    if (tableView != self.tableView) {
         TCommonContactSelectCellData* data = self.searchList[indexPath.section];
         if (data.enabled) {
+            data.responder = self;
             data.cselector = @selector(didSelectContactCell:);
         } else {
-            data.cselector = NULL;
+            data.cselector = nil;
+            data.responder = nil;
         }
-        
-//        if (self.isFromFriendProfile && (data.identifier == self.friendProfileCellData.identifier)) {
-//            data.selected = YES;
-//            if (![self.selectArray containsObject:data]) {
-//                [self.selectArray addObject:data];
-//                [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
-//            }
-//        }
+
         [cell fillWithData:data];
         return  cell;
     }
+
     NSString *group = self.viewModel.groupList[indexPath.section];
-    NSArray *list = self.viewModel.dataDict[group];
-    TCommonContactSelectCellData *data = list[indexPath.row];
+    TCommonContactSelectCellData *data = self.viewModel.dataDict[group][indexPath.row];
     if (data.enabled) {
         data.cselector = @selector(didSelectContactCell:);
     } else {
-        data.cselector = NULL;
+        data.cselector = nil;
     }
-//    if (self.isFromFriendProfile && ([data.identifier isEqualToString: self.friendProfileCellData.identifier])) {
-//        data.selected = YES;
-//        if (![self.selectArray containsObject:data]) {
-//            [self.selectArray addObject:data];
-//            [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
-//        }
-//    }
+
     [cell fillWithData:data];
     return cell;
 }
 
-- (void)didSelectContactCell:(TCommonContactSelectCell *)cell
-{
+- (void)didSelectContactCell:(TCommonContactSelectCell *)cell {
     TCommonContactSelectCellData *data = cell.selectData;
     if (!data.isSelected) {
         if (self.selectArray.count + 1 > self.maxSelectCount) {
@@ -311,43 +184,93 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
     } else {
         [self.selectArray removeObject:data];
     }
-//    self.pickerView.selectArray = [self.selectArray copy];
-    if ([self.selectArray count] > 0) {
-        [self.confirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld)",self.selectArray.count] forState:UIControlStateNormal];
-    }else {
-        [self.confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
-    }
-   
+
+    [self updateConfirmText];
 }
 
-- (void)finishTask
-{
-    if (self.finishBlock && [self.selectArray count] >0) {
-        self.finishBlock(self.selectArray);
-    }
+#pragma mark - CIGAMSearchControllerDelegate
+
+- (void)searchController:(CIGAMSearchController *)searchController updateResultsForSearchString:(NSString *)searchString {
+    self.keywords = searchString;
 }
 
-- (void)textDidChange:(NSString *)searchText {
-     [self.searchList removeAllObjects];
-     dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
-     dispatch_async(globalQueue, ^{
-     if (searchText != nil && searchText.length > 0) {
-         //遍历需要搜索的所有内容，其中self.dataArray为存放总数据的数组
-         for (TCommonContactSelectCellData *model in self.dataArray) {
-               NSString *tempStr = model.title;
-               if ([tempStr rangeOfString:searchText options:NSCaseInsensitiveSearch].length > 0 ) {
-                 [self.searchList addObject:model];
-               }
-           }
-      }else{
-          self.searchList = [[NSMutableArray alloc]init];
-      }
-       //回到主线程
-      dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
+- (void)willPresentSearchController:(CIGAMSearchController *)searchController {
+    self.searchList = @[];
+    [searchController.tableView reloadData];
+}
+
+- (void)willDismissSearchController:(CIGAMSearchController *)searchController {
+    [self.tableView reloadData];
+}
+
+- (void)textDidChange:(NSString *)text {
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
+    dispatch_async(globalQueue, ^{
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        if (text.length > 0) {
+            for (TCommonContactSelectCellData *model in self.dataArray) {
+                if ([model.title rangeOfString: text options: NSCaseInsensitiveSearch].length > 0 ) {
+                    [temp addObject: model];
+                }
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.searchList = [temp copy];
         });
-      });
+    });
 }
 
+#pragma mark - 页面布局
+
+- (void)setupNavigationItems {
+    [super setupNavigationItems];
+
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem cigam_itemWithTitle: @"确定" target: self action: @selector(confirmSelected)];
+    [self updateConfirmText];
+}
+
+- (void)updateConfirmText {
+    [self.navigationItem.rightBarButtonItem setEnabled: self.selectArray.count > 0];
+    if (self.selectArray.count > 0) {
+        [self.navigationItem.rightBarButtonItem setTitle: [NSString stringWithFormat:@"确定(%ld)",self.selectArray.count]];
+    } else {
+        [self.navigationItem.rightBarButtonItem setTitle: @"确定"];
+    }
+}
+
+- (void)initSubviews {
+    [super initSubviews];
+
+    self.shouldShowSearchBar = YES;
+}
+
+- (void)initSearchController {
+    [super initSearchController];
+
+    [self.searchController.tableView registerClass: [TCommonContactSelectCell class] forCellReuseIdentifier: kReuseIdentifier];
+    self.searchController.launchView = [[UIView alloc] init];
+    self.searchController.launchView.backgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];
+    self.searchBar.placeholder = @"请输入昵称/备注";
+}
+
+- (void)initTableView {
+    [super initTableView];
+
+    [self.tableView setSectionIndexBackgroundColor: [UIColor clearColor]];
+    [self.tableView setSectionIndexColor: [UIColor colorWithHex: KCommonLittleLightGrayColor]];
+    [self.tableView setBackgroundColor: [UIColor colorWithHex: KCommonBackgroundColor]];
+    [self.tableView setSeparatorInset: UIEdgeInsetsZero];
+    [self.tableView registerClass: [TCommonContactSelectCell class] forCellReuseIdentifier: kReuseIdentifier];
+}
+
+#pragma mark - 数据
+
+- (void)setSearchList:(NSArray<TCommonContactSelectCellData *> *)searchList {
+    _searchList = searchList;
+    if (self.searchController.active) {
+        [self.searchController.tableView reloadData];
+    }
+}
 
 @end

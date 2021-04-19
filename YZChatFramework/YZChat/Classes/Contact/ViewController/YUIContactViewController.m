@@ -95,7 +95,7 @@
     _tableView.dataSource = self;
     [_tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
     _tableView.contentInset = UIEdgeInsetsMake(0, 0, 8, 0);
-    [_tableView setSectionIndexColor:[UIColor colorWithHex:KCommonlittleLightGrayColor]];
+    [_tableView setSectionIndexColor:[UIColor colorWithHex:KCommonLittleLightGrayColor]];
     [_tableView setBackgroundColor:self.view.backgroundColor];
     _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
     [self.view addSubview:_tableView];

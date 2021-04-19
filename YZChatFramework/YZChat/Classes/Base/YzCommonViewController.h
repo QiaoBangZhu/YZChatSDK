@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YzCommonViewController : CIGAMCommonViewController
 @property (nonatomic, copy)NSString *titleName;
 @property (nonatomic, assign)BOOL isFromOtherApp;
+
+- (void)showEmptyViewWithText:(NSString *)text;
+
 @end
 
 NS_ASSUME_NONNULL_END

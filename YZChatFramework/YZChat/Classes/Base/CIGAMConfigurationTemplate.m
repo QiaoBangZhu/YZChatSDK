@@ -16,6 +16,8 @@
 #import "CIGAMConfigurationTemplate.h"
 #import "CIGAMKit.h"
 
+#import "UIColor+ColorExtension.h"
+
 @implementation CIGAMConfigurationTemplate
 
 #pragma mark - <CIGAMConfigurationTemplateProtocol>
@@ -175,8 +177,8 @@
     CIGAMCMI.tableViewCellDetailButtonImage = nil; // TableViewCellDetailButtonImage : CIGAMTableViewCell 当 accessoryType 为 UITableViewCellAccessoryDetailButton 或 UITableViewCellAccessoryDetailDisclosureButton 时右边的 i 按钮图片
     CIGAMCMI.tableViewCellSpacingBetweenDetailButtonAndDisclosureIndicator = 12; // TableViewCellSpacingBetweenDetailButtonAndDisclosureIndicator : 列表 cell 右边的 i 按钮和向右箭头之间的间距（仅当两者都使用了自定义图片并且同时显示时才生效）
 
-    CIGAMCMI.tableViewSectionHeaderBackgroundColor = UIColorMake(244, 244, 244);                         // TableViewSectionHeaderBackgroundColor : Plain 类型的 CIGAMTableView sectionHeader 的背景色
-    CIGAMCMI.tableViewSectionFooterBackgroundColor = UIColorMake(244, 244, 244);                         // TableViewSectionFooterBackgroundColor : Plain 类型的 CIGAMTableView sectionFooter 的背景色
+    CIGAMCMI.tableViewSectionHeaderBackgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];                         // TableViewSectionHeaderBackgroundColor : Plain 类型的 CIGAMTableView sectionHeader 的背景色
+    CIGAMCMI.tableViewSectionFooterBackgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];                         // TableViewSectionFooterBackgroundColor : Plain 类型的 CIGAMTableView sectionFooter 的背景色
     CIGAMCMI.tableViewSectionHeaderFont = UIFontBoldMake(12);                                            // TableViewSectionHeaderFont : Plain 类型的 CIGAMTableView sectionHeader 里的文字字体
     CIGAMCMI.tableViewSectionFooterFont = UIFontBoldMake(12);                                            // TableViewSectionFooterFont : Plain 类型的 CIGAMTableView sectionFooter 里的文字字体
     CIGAMCMI.tableViewSectionHeaderTextColor = UIColorGrayDarken;                                        // TableViewSectionHeaderTextColor : Plain 类型的 CIGAMTableView sectionHeader 里的文字颜色
@@ -269,7 +271,7 @@
     CIGAMCMI.navigationBarHiddenInitially = NO;                                  // NavigationBarHiddenInitially : CIGAMNavigationControllerDelegate preferredNavigationBarHidden 的初始值，默认为NO
     CIGAMCMI.shouldFixTabBarTransitionBugInIPhoneX = NO;                         // ShouldFixTabBarTransitionBugInIPhoneX : 是否需要自动修复 iOS 11 下，iPhone X 的设备在 push 界面时，tabBar 会瞬间往上跳的 bug
     CIGAMCMI.shouldFixTabBarSafeAreaInsetsBug = NO;                              // ShouldFixTabBarSafeAreaInsetsBug : 是否要对 iOS 11 及以后的版本修复当存在 UITabBar 时，UIScrollView 的 inset.bottom 可能错误的 bug（issue #218 #934），默认为 YES
-    CIGAMCMI.shouldFixSearchBarMaskViewLayoutBug = NO;                           // ShouldFixSearchBarMaskViewLayoutBug : 是否自动修复 UISearchController.searchBar 被当作 tableHeaderView 使用时可能出现的布局 bug(issue #950)
+    CIGAMCMI.shouldFixSearchBarMaskViewLayoutBug = YES;                           // ShouldFixSearchBarMaskViewLayoutBug : 是否自动修复 UISearchController.searchBar 被当作 tableHeaderView 使用时可能出现的布局 bug(issue #950)
     CIGAMCMI.shouldPrintCIGAMWarnLogToConsole = IS_DEBUG;                         // ShouldPrintCIGAMWarnLogToConsole : 是否在出现 CIGAMLogWarn 时自动把这些 log 以 CIGAMConsole 的方式显示到设备屏幕上
     CIGAMCMI.sendAnalyticsToCIGAMTeam = YES;                                      // SendAnalyticsToCIGAMTeam : 是否允许在 DEBUG 模式下上报 Bundle Identifier 和 Display Name 给 CIGAM 统计用
     CIGAMCMI.dynamicPreferredValueForIPad = NO;                                  // DynamicPreferredValueForIPad : 当 iPad 处于 Slide Over 或 Split View 分屏模式下，宏 `PreferredValueForXXX` 是否把 iPad 视为某种屏幕宽度近似的 iPhone 来取值。
