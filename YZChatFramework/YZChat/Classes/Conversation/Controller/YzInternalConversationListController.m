@@ -478,6 +478,7 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)willPresentSearchController:(CIGAMSearchController *)searchController {
     [self.tabBarController.tabBar setHidden: YES];
     self.searchList = @[];
+    [self.searchController.tableView reloadData];
 }
 
 - (void)willDismissSearchController:(CIGAMSearchController *)searchController {
