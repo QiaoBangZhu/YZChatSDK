@@ -147,9 +147,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupSubviews];
     [self addNotificationCenterObserver];
-    [self bindObserver];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -252,7 +250,9 @@
 
 #pragma mark - 用户交互
 
-- (void)bindObserver {
+- (void)subscribe {
+    [super subscribe];
+
     [self bindConversationTitleObserver];
     @weakify(self)
     [RACObserve(self, moreMenus) subscribeNext:^(NSArray *x) {
@@ -858,6 +858,8 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 }
 
 - (void)setupSubviews {
+    [super setupSubviews];
+
     self.view.backgroundColor = [UIColor d_colorWithColorLight:TController_Background_Color dark:TController_Background_Color_Dark];
     [self configMessageCellData];
     

@@ -95,7 +95,7 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
 
     [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
      subscribeNext:^(NSString  *_Nullable keywords) {
-        [self textDidChange: keywords];
+        [self searchKeywords: keywords];
     }];
 }
 
@@ -203,24 +203,6 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
     [self.tableView reloadData];
 }
 
-- (void)textDidChange:(NSString *)text {
-    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
-    dispatch_async(globalQueue, ^{
-        NSMutableArray *temp = [[NSMutableArray alloc] init];
-        if (text.length > 0) {
-            for (TCommonContactSelectCellData *model in self.dataArray) {
-                if ([model.title rangeOfString: text options: NSCaseInsensitiveSearch].length > 0 ) {
-                    [temp addObject: model];
-                }
-            }
-        }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.searchList = [temp copy];
-        });
-    });
-}
-
 #pragma mark - 页面布局
 
 - (void)setupNavigationItems {
@@ -265,6 +247,25 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
 }
 
 #pragma mark - 数据
+
+- (void)searchKeywords:(NSString *)keywords {
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
+    dispatch_async(globalQueue, ^{
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        if (keywords.length > 0) {
+            for (TCommonContactSelectCellData *model in self.dataArray) {
+                if ([model.title rangeOfString: keywords options: NSCaseInsensitiveSearch].length > 0 ) {
+                    [temp addObject: model];
+                }
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.searchList = [temp copy];
+        });
+    });
+}
+
 
 - (void)setSearchList:(NSArray<TCommonContactSelectCellData *> *)searchList {
     _searchList = searchList;

@@ -46,6 +46,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 @property (nonatomic, strong) NSArray<TUIConversationCellData *> *searchList;
 @property (nonatomic, strong) NSMutableArray<V2TIMConversation *> *localConversationList;
 @property (nonatomic, strong) CIGAMSearchController *searchController;
+@property (nonatomic, copy) NSString *keywords;
 
 @end
 
@@ -81,8 +82,6 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.titleView.title = @"消息";
-    [self setupSubviews];
     [self addNotificationCenterObserver];
     [self fetchConversation];
 }
@@ -213,6 +212,17 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 }
 
 #pragma mark - 用户交互
+
+- (void)subscribe {
+    [super subscribe];
+
+    if (!_isInternal) return;
+
+    [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
+     subscribeNext:^(NSString  *_Nullable keywords) {
+        [self searchKeywords: keywords];
+    }];
+}
 
 - (void)clickAdd:(UIBarButtonItem *)barItem {
     @weakify(self)
@@ -459,21 +469,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 
 - (void)searchController:(CIGAMSearchController *)searchController
 updateResultsForSearchString:(NSString *)searchString {
-    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
-    dispatch_async(globalQueue, ^{
-        NSMutableArray *temp = [[NSMutableArray alloc] init];
-        if (searchString.length > 0) {
-            for (TUIConversationCellData *model in self.dataList) {
-                if ([model.title rangeOfString: searchString options: NSCaseInsensitiveSearch].length > 0 ) {
-                    [temp addObject:model];
-                }
-            }
-        }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.searchList = [temp copy];
-        });
-    });
+    self.keywords = searchString;
 }
 
 - (void)willPresentSearchController:(CIGAMSearchController *)searchController {
@@ -511,6 +507,9 @@ updateResultsForSearchString:(NSString *)searchString {
 }
 
 - (void)setupSubviews {
+    [super setupSubviews];
+
+    self.titleView.title = @"消息";
     self.tableView.backgroundColor = [UIColor d_colorWithColorLight: TController_Background_Color
                                                                dark: TController_Background_Color_Dark];
     self.tableView.tableFooterView = [[UIView alloc] init];
@@ -638,6 +637,24 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)setDataList:(NSArray<TUIConversationCellData *> *)dataList {
     _dataList = dataList;
     [self.tableView reloadData];
+}
+
+- (void)searchKeywords:(NSString *)keywords {
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
+    dispatch_async(globalQueue, ^{
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        if (keywords.length > 0) {
+            for (TUIConversationCellData *model in self.dataList) {
+                if ([model.title rangeOfString: keywords options: NSCaseInsensitiveSearch].length > 0 ) {
+                    [temp addObject:model];
+                }
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.searchList = [temp copy];
+        });
+    });
 }
 
 - (void)setSearchList:(NSArray<TUIConversationCellData *> *)searchList {

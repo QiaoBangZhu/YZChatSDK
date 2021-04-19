@@ -61,7 +61,7 @@
     //如果不加这一行代码，依然可以实现点击反馈，但反馈会有轻微延迟，体验不好。
     contacts.tableView.delaysContentTouches = NO;
     
-    YZSearchBarView* searchBarView = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 52)];
+    YZSearchBarView* searchBarView = [[YZSearchBarView alloc]initWithFrame:CGRectMake(0, 80, KScreenWidth, 52)];
     searchBarView.placeholder = @"昵称/备注";
     searchBarView.isShowCancle = NO;
     

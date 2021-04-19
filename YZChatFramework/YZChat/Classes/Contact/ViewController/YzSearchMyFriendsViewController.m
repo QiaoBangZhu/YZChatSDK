@@ -60,7 +60,7 @@
 
     [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
      subscribeNext:^(NSString  *_Nullable keywords) {
-        [self changedKeywords: keywords];
+        [self searchKeywords: keywords];
     }];
 }
 
@@ -152,7 +152,7 @@ updateResultsForSearchString:(NSString *)searchString {
     }];
 }
 
-- (void)changedKeywords:(NSString *)keywords {
+- (void)searchKeywords:(NSString *)keywords {
     dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
     dispatch_async(globalQueue, ^{
         NSMutableArray *temp = [[NSMutableArray alloc] init];
