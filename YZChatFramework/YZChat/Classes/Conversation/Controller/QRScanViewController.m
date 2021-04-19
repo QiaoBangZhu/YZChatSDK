@@ -197,7 +197,9 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
     // 校验相册权限
     [QRCodeManager rcd_checkAlbumAuthorizationStatusWithGrand:^(BOOL granted) {
         if (granted) {
-            [self pushImagePicker];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self pushImagePicker];
+            });
         }
     }];
 }
