@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YzCommonTableViewController : CIGAMCommonTableViewController
 
+- (void)setupSubviews;
+- (void)subscribe;
+
 - (void)showEmptyViewWithText:(NSString *)text;
 
 @end

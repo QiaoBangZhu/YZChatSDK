@@ -15,7 +15,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self setupSubviews];
+    [self subscribe];
 }
+
+- (void)setupSubviews {}
+
+- (void)subscribe {}
 
 - (void)showEmptyViewWithText:(NSString *)text {
     [self showEmptyViewWithText: text detailText: nil buttonTitle: nil buttonAction: nil];

@@ -29,7 +29,6 @@
 #import "UIBarButtonItem+Extensions.h"
 #import "YZSearchBarView.h"
 #import <Masonry/Masonry.h>
-#import "SearchMyFriendsViewController.h"
 #import "SearchMyContactsViewController.h"
 #import "TUITabBarController.h"
 #import "YZBaseManager.h"
@@ -38,6 +37,8 @@
 #import <Contacts/Contacts.h>
 #import <ContactsUI/ContactsUI.h>
 #import "YzCustomMsg.h"
+
+#import "YzSearchMyFriendsViewController.h"
 
 @interface ContactsViewController ()<CNContactPickerDelegate>
 @property NSArray<TUIContactActionCellData *> *firstGroupData;
@@ -151,8 +152,7 @@
 }
 
 - (void)searchMyFriends {
-    SearchMyFriendsViewController* searchVc = [[SearchMyFriendsViewController alloc]init];
-    [self.navigationController pushViewController:searchVc animated:true];
+    [self.navigationController pushViewController: [[YzSearchMyFriendsViewController alloc] init] animated: true];
 }
 
 

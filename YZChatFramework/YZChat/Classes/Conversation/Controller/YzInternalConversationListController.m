@@ -22,10 +22,10 @@
 #import "YChatIMCreateGroupMemberInfo.h"
 
 // navigation
-#import "SearchMyFriendsViewController.h"
 #import "YContactSelectViewController.h"
 #import "QRScanViewController.h"
 #import "YzInternalChatController.h"
+#import "YzSearchMyFriendsViewController.h"
 
 typedef NS_ENUM(NSInteger, GroupMessageType) {
     GroupMessageTypeRecycled = 1,//群已经回收
@@ -218,8 +218,9 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
     @weakify(self)
     CIGAMPopupMenuButtonItem *friend = [CIGAMPopupMenuButtonItem itemWithImage: nil title: @"添加好友" handler:^(CIGAMPopupMenuButtonItem * _Nonnull aItem) {
         @strongify(self)
-        SearchMyFriendsViewController *add = [[SearchMyFriendsViewController alloc] init];
-        [self.navigationController pushViewController: add animated:YES];
+//        SearchMyFriendsViewController *add = [[SearchMyFriendsViewController alloc] init];
+        YzSearchMyFriendsViewController *add = [[YzSearchMyFriendsViewController alloc] init];
+        [self.navigationController pushViewController: add animated: NO];
         [aItem.menuView hideWithAnimated: YES];
     }];
 

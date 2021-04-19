@@ -40,6 +40,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.avatarView = [[UIImageView alloc] initWithImage:DefaultAvatarImage];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.avatarView];
         self.avatarView.mm_width(50).mm_height(50).mm__centerY(36).mm_left(16);
         if ([TUIKit sharedInstance].config.avatarType == TAvatarTypeRounded) {

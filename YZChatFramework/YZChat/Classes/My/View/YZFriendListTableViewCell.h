@@ -9,14 +9,17 @@
 #import "CIGAMKit.h"
 #import "YUserInfo.h"
 
+#define kReuseIdentifier_FriendListTableViewCell @"ReuseIdentifier_FriendListTableViewCell"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YZFriendListTableViewCell : CIGAMTableViewCell
-@property UIImageView *avatarView;
-@property UILabel *titleLabel;
-@property UILabel *subTitleLabel;
 
-@property (readonly) YUserInfo *contactData;
+@property (nonatomic, strong) UIImageView *avatarView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *subTitleLabel;
+
+@property (nonatomic, strong, readonly) YUserInfo *contactData;
 
 - (void)fillWithData:(YUserInfo *)contactData;
 
