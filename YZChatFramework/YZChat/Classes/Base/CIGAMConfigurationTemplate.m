@@ -160,9 +160,9 @@
 
     CIGAMCMI.tableViewEstimatedHeightEnabled = YES;                              // TableViewEstimatedHeightEnabled : 是否要开启全局 UITableView 的 estimatedRow(Section/Footer)Height
 
-    CIGAMCMI.tableViewBackgroundColor = nil;                                     // TableViewBackgroundColor : Plain 类型的 CIGAMTableView 的背景色颜色
-    CIGAMCMI.tableSectionIndexColor = nil;                                       // TableSectionIndexColor : 列表右边的字母索引条的文字颜色
-    CIGAMCMI.tableSectionIndexBackgroundColor = nil;                             // TableSectionIndexBackgroundColor : 列表右边的字母索引条的背景色
+    CIGAMCMI.tableViewBackgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];                                     // TableViewBackgroundColor : Plain 类型的 CIGAMTableView 的背景色颜色
+    CIGAMCMI.tableSectionIndexColor = [UIColor colorWithHex: KCommonLittleLightGrayColor];                                       // TableSectionIndexColor : 列表右边的字母索引条的文字颜色
+    CIGAMCMI.tableSectionIndexBackgroundColor = UIColorClear;                             // TableSectionIndexBackgroundColor : 列表右边的字母索引条的背景色
     CIGAMCMI.tableSectionIndexTrackingBackgroundColor = nil;                     // TableSectionIndexTrackingBackgroundColor : 列表右边的字母索引条在选中时的背景色
     CIGAMCMI.tableViewSeparatorColor = UIColorSeparator;                         // TableViewSeparatorColor : 列表的分隔线颜色
 

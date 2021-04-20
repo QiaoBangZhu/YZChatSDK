@@ -259,7 +259,7 @@
         @strongify(self)
         [self.inputController.moreView setData:x];
     }];
-    
+
     if (!_isInternal) return;
     if (_isGroup) {
         [RACObserve(self.pendencyViewModel, unReadCnt) subscribeNext:^(NSNumber *count) {

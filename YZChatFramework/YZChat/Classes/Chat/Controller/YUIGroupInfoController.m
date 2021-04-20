@@ -70,7 +70,7 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-        _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
     
         [_tableView registerClass:[TCommonTextCell class] forCellReuseIdentifier:TKeyValueCell_ReuseId];
         [_tableView registerClass:[TUIGroupMembersCell class] forCellReuseIdentifier:TGroupMembersCell_ReuseId];
@@ -106,7 +106,7 @@
     //加入此行，会让反馈更加灵敏
     self.tableView.delaysContentTouches = NO;
     self.tableView.separatorInset = UIEdgeInsetsZero;
-    self.tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+    self.tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
 }
 
 - (void)updateData

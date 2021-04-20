@@ -77,6 +77,10 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
     self.localConversationList = [[NSMutableArray alloc] init];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - 生命周期
 
 - (void)viewDidLoad {
@@ -218,8 +222,10 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 
     if (!_isInternal) return;
 
+    @weakify(self)
     [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
      subscribeNext:^(NSString  *_Nullable keywords) {
+        @strongify(self)
         [self searchKeywords: keywords];
     }];
 }
@@ -475,12 +481,11 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)willPresentSearchController:(CIGAMSearchController *)searchController {
     [self.tabBarController.tabBar setHidden: YES];
     self.searchList = @[];
-    [self.searchController.tableView reloadData];
+    [searchController.tableView reloadData];
 }
 
 - (void)willDismissSearchController:(CIGAMSearchController *)searchController {
     [self.tabBarController.tabBar setHidden: NO];
-    self.searchList = @[];
 }
 
 #pragma mark - 页面布局

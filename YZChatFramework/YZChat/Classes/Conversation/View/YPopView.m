@@ -57,7 +57,7 @@
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor  whiteColor];
     _tableView.tableFooterView = [[UIView alloc] init];
-    _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+    _tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
     _tableView.scrollEnabled = NO;
     [self addSubview:_tableView];
     

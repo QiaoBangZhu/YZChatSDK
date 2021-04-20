@@ -63,7 +63,7 @@
         _tableView.tableFooterView = [UIView new];
         [_tableView registerClass:[YCommonTextCell class] forCellReuseIdentifier:@"textCell"];
         [_tableView registerClass:[YUIButtonTableViewCell class] forCellReuseIdentifier:@"buttonCell"];
-        _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;

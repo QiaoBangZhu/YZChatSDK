@@ -67,7 +67,7 @@
         _tableView.dataSource =  self;
         _tableView.tableFooterView =  [UIView new];
         [_tableView registerClass:[TCommonContactCell class] forCellReuseIdentifier:@"cell"];
-        _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
     }
     return _tableView;

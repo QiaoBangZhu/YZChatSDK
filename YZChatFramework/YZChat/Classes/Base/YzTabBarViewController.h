@@ -8,7 +8,7 @@
 #import "CIGAMKit.h"
 
 #import "YzInternalConversationListController.h"
-#import "ContactsViewController.h"
+#import "YzContactsViewController.h"
 #import "YWorkZoneViewController.h"
 #import "YZMyViewController.h"
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YzTabBarViewController : CIGAMTabBarViewController
 
 @property (nonatomic, strong, nullable) YzInternalConversationListController *conversationListController;
-@property (nonatomic, strong, nullable) ContactsViewController *contactsViewController;
+@property (nonatomic, strong, nullable) YzContactsViewController *contactsViewController;
 @property (nonatomic, strong, nullable) YWorkZoneViewController *workZoneViewController;
 @property (nonatomic, strong, nullable) YZMyViewController *myViewController;
 

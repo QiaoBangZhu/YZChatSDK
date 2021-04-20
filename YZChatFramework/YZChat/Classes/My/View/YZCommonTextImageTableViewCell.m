@@ -49,7 +49,7 @@
         [self.contentView addSubview:_valueLabel];
         
         _line = [[UIView alloc]init];
-        _line.backgroundColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _line.backgroundColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
         [self.contentView addSubview:_line];
         
         _accessoryImageView = [[UIImageView alloc]init];

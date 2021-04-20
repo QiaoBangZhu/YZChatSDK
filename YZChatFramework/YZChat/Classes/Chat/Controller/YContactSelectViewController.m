@@ -95,6 +95,7 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
 
     [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
      subscribeNext:^(NSString  *_Nullable keywords) {
+        @strongify(self)
         [self searchKeywords: keywords];
     }];
 }
@@ -239,9 +240,6 @@ static NSString *kReuseIdentifier = @"ContactSelectCell";
 - (void)initTableView {
     [super initTableView];
 
-    [self.tableView setSectionIndexBackgroundColor: [UIColor clearColor]];
-    [self.tableView setSectionIndexColor: [UIColor colorWithHex: KCommonLittleLightGrayColor]];
-    [self.tableView setBackgroundColor: [UIColor colorWithHex: KCommonBackgroundColor]];
     [self.tableView setSeparatorInset: UIEdgeInsetsZero];
     [self.tableView registerClass: [TCommonContactSelectCell class] forCellReuseIdentifier: kReuseIdentifier];
 }

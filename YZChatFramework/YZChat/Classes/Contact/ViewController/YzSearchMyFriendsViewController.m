@@ -58,8 +58,10 @@
 - (void)subscribe {
     [super subscribe];
 
+    @weakify(self)
     [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
      subscribeNext:^(NSString  *_Nullable keywords) {
+        @strongify(self)
         [self searchKeywords: keywords];
     }];
 }
@@ -116,6 +118,12 @@ updateResultsForSearchString:(NSString *)searchString {
     [super initSubviews];
 
     self.shouldShowSearchBar = YES;
+}
+
+- (void)initTableView {
+    [super initTableView];
+
+    self.tableView.backgroundColor = UIColorWhite;
 }
 
 - (void)initSearchController {

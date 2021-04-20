@@ -37,7 +37,13 @@
 //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
+    [self setupSubviews];
+    [self subscribe];
 }
+
+- (void)setupSubviews {}
+
+- (void)subscribe {}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];

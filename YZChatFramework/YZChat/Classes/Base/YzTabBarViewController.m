@@ -62,7 +62,7 @@
     }
 
     if ((perm & 2) > 0) {
-        self.contactsViewController = [[ContactsViewController alloc] init];
+        self.contactsViewController = [[YzContactsViewController alloc] init];
         YzNavigationController *nav = [[YzNavigationController alloc] initWithRootViewController: self.contactsViewController];
         nav.tabBarItem.image = [self imageForName: @"contacts_normal"];
         nav.tabBarItem.selectedImage = [self selectedImageForName: @"contacts_pressed"];

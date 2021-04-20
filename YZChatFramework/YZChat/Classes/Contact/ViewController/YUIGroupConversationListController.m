@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
     self.tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-    self.tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+    self.tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);

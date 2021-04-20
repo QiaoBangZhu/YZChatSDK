@@ -74,7 +74,7 @@
         areasTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         [areasTableView setDelegate:self];
         [areasTableView setDataSource:self];
-        [areasTableView setSeparatorColor:[UIColor colorWithHex:KCommonSepareteLineColor]];
+        [areasTableView setSeparatorColor:[UIColor colorWithHex:KCommonSeparatorLineColor]];
         areasTableView.tableFooterView = [UIView new];
         [_bottomView addSubview:areasTableView];
 

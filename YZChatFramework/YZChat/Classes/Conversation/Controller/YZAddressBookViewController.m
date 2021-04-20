@@ -83,7 +83,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-        _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
         [_tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
         [_tableView setSectionIndexColor:[UIColor colorWithHex:KCommonLittleLightGrayColor]];
         [self.view addSubview:_tableView];

@@ -70,7 +70,7 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-        _tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
     
         [_tableView registerClass:[TCommonTextCell class] forCellReuseIdentifier:@"textCell"];
         [_tableView registerClass:[TCommonAvatarCell class] forCellReuseIdentifier:@"avatarCell"];

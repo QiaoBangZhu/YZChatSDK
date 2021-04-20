@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface TContactViewModel : NSObject
 
+@property (nonatomic, strong, readonly) NSArray<TCommonContactCellData *> *contacts;
+
 /**
  *  数据字典，负责按姓名首字母归类好友信息（TCommonContactCellData）。
  *  例如，Jack 和 James 被存放在 “J”内。

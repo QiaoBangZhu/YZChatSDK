@@ -160,7 +160,7 @@
         _selectTable.delegate = self;
         _selectTable.dataSource = self;
         _selectTable.backgroundColor = [UIColor colorWithHex:KCommonBackgroundColor];
-        _selectTable.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+        _selectTable.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
         [_selectTable setSectionIndexBackgroundColor:[UIColor clearColor]];
         [_selectTable setSectionIndexColor:[UIColor colorWithHex:KCommonLittleLightGrayColor]];
         [self.view addSubview:_selectTable];

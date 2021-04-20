@@ -16,7 +16,6 @@
 #import "TUIConversationCellData.h"
 #import "YzInternalChatController.h"
 #import "TNavigationController.h"
-#import "ContactsViewController.h"
 #import "YWorkZoneViewController.h"
 #import "YZMyViewController.h"
 #import "TUIKit.h"
@@ -29,6 +28,7 @@
 #import "NSBundle+YZBundle.h"
 #import "UIColor+Foundation.h"
 #import "YZMsgManager.h"
+#import "YzContactsViewController.h"
 
 @interface YzIMKitAgent()
 @property (nonatomic,   copy)NSString* appId;
@@ -258,10 +258,7 @@
         }];
         return nil;
     }else {
-        ContactsViewController* vc = [[ContactsViewController alloc]init];
-        vc.customMsg = message;
-        vc.isFromOtherApp = YES;
-        return vc;
+        return [[YzContactsViewController alloc] initWithCustomMessage: message];
     }
 }
 

@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString *titleName;
 @property (nonatomic, assign)BOOL isFromOtherApp;
 
+- (void)setupSubviews;
+- (void)subscribe;
+
 - (void)showEmptyViewWithText:(NSString *)text;
 
 @end

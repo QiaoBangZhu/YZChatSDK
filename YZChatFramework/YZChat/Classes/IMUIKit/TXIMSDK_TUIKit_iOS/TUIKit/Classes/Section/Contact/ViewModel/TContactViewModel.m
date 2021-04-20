@@ -14,6 +14,7 @@
 //@import ImSDK;
 
 @interface TContactViewModel()
+@property (nonatomic, strong) NSArray<TCommonContactCellData *> *contacts;
 @property NSDictionary<NSString *, NSArray<TCommonContactCellData *> *> *dataDict;
 @property NSArray *groupList;
 @property BOOL isLoadFinished;
@@ -41,9 +42,11 @@
         NSMutableDictionary *dataDict = @{}.mutableCopy;
         NSMutableArray *groupList = @[].mutableCopy;
         NSMutableArray *nonameList = @[].mutableCopy;
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
 
         for (V2TIMFriendInfo *friend in infoList) {
             TCommonContactCellData *data = [[TCommonContactCellData alloc] initWithFriend:friend];
+            [temp addObject: data];
             NSString *group = [[data.title firstPinYin] uppercaseString];
             if (group.length == 0 || !isalpha([group characterAtIndex:0])) {
                 [nonameList addObject:data];
@@ -69,7 +72,8 @@
 
         self.groupList = groupList;
         self.dataDict = dataDict;
-        self.isLoadFinished = YES;;
+        self.isLoadFinished = YES;
+        self.contacts = [temp copy];
     } fail:nil];
 
     // 好友请求

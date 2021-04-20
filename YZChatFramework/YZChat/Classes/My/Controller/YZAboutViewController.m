@@ -53,7 +53,7 @@
       [self.tableView setLayoutMargins:UIEdgeInsetsZero];
    }
    [self.tableView registerClass:[YCommonTextCell class] forCellReuseIdentifier:@"textCell"];
-   self.tableView.separatorColor = [UIColor colorWithHex:KCommonSepareteLineColor];
+   self.tableView.separatorColor = [UIColor colorWithHex:KCommonSeparatorLineColor];
    self.tableView.delegate = self;
    self.tableView.dataSource = self;
 }
