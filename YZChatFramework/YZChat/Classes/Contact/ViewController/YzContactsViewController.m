@@ -26,7 +26,7 @@
 // navigation
 #import "YzGroupConversationListController.h"
 #import "NewFriendViewController.h"
-#import "YUIBlackListViewController.h"
+#import "YzBlackListViewController.h"
 #import "YzSearchMyFriendsViewController.h"
 
 static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
@@ -84,7 +84,7 @@ static NSString *kReuseIdentifier_ContactActionCell = @"ReuseIdentifier_ContactA
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 #pragma mark - 生命周期
@@ -183,8 +183,8 @@ static NSString *kReuseIdentifier_ContactActionCell = @"ReuseIdentifier_ContactA
 
 /// 黑名单
 - (void)clickBlackList:(TCommonContactCell *)cell {
-    YUIBlackListViewController *vc = [[YUIBlackListViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    YzBlackListViewController *viewController = [[YzBlackListViewController alloc] init];
+    [self.navigationController pushViewController: viewController animated: YES];
 }
 
 - (void)selectedFriend:(TCommonContactCell *)cell {
@@ -194,7 +194,7 @@ static NSString *kReuseIdentifier_ContactActionCell = @"ReuseIdentifier_ContactA
         if ([vieController isKindOfClass:[UIViewController class]]) {
             vieController.friendProfile = data.friendProfile;
             vieController.isShowConversationAtTop = YES;
-            [self.navigationController pushViewController: (UIViewController *)vieController animated:YES];
+            [self.navigationController pushViewController: (UIViewController *)vieController animated: YES];
         }
 
         return;
@@ -205,7 +205,7 @@ static NSString *kReuseIdentifier_ContactActionCell = @"ReuseIdentifier_ContactA
     [[YZMsgManager shareInstance] sendMessageWithMsgType: YZSendMsgTypeC2C message: _customMessage userId: data.friendProfile.userID grpId:nil loginSuccess:^{
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated: YES];
         });
     } loginFailed:^(int errCode, NSString *errMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -320,7 +320,6 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)initTableView {
     [super initTableView];
 
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 8, 0);
     self.tableView.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];
     [self.tableView registerClass: [TCommonContactCell class] forCellReuseIdentifier: kReuseIdentifier_ContactCell];
     [self.tableView registerClass: [TUIContactActionCell class] forCellReuseIdentifier: kReuseIdentifier_ContactActionCell];
@@ -332,7 +331,6 @@ updateResultsForSearchString:(NSString *)searchString {
     self.searchController.searchBar.placeholder = @"昵称/备注";
     self.searchController.launchView = [[UIView alloc] init];
     self.searchController.launchView.backgroundColor = self.searchController.tableView.backgroundColor;
-    self.searchController.tableView.contentInset = UIEdgeInsetsMake(0, 0, 8, 0);
     self.searchController.tableView.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];
     [self.searchController.tableView registerClass: [TCommonContactCell class] forCellReuseIdentifier: kReuseIdentifier_ContactCell];
 }

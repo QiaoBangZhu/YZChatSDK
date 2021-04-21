@@ -50,7 +50,7 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 #pragma mark - 生命周期
@@ -179,7 +179,6 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 - (void)initTableView {
     [super initTableView];
 
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 8, 0);
     self.tableView.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];
     [self.tableView registerClass: [TCommonContactCell class] forCellReuseIdentifier: kReuseIdentifier_ContactCell];
 }

@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "TUIFriendProfileControllerServiceProtocol.h"
+
+#import "YzCommonViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZFriendProfileViewController : UIViewController<TUIFriendProfileControllerServiceProtocol>
+@interface YZFriendProfileViewController : YzCommonViewController<TUIFriendProfileControllerServiceProtocol>
 
 @end
 

@@ -78,7 +78,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 #pragma mark - 生命周期
