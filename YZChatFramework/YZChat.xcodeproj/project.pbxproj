@@ -233,7 +233,6 @@
 		30A98B5425A449F20082D3C9 /* YUIBlackListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988F425A449F00082D3C9 /* YUIBlackListViewController.h */; };
 		30A98B5525A449F20082D3C9 /* NewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988F525A449F00082D3C9 /* NewFriendViewController.m */; };
 		30A98B5725A449F20082D3C9 /* FriendRequestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988F725A449F00082D3C9 /* FriendRequestViewController.h */; };
-		30A98B5925A449F20082D3C9 /* YUIGroupConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988F925A449F00082D3C9 /* YUIGroupConversationListController.h */; };
 		30A98B5A25A449F20082D3C9 /* SearchMyContactsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988FA25A449F00082D3C9 /* SearchMyContactsViewController.h */; };
 		30A98B5B25A449F20082D3C9 /* SearchGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988FB25A449F00082D3C9 /* SearchGroupViewController.m */; };
 		30A98B5C25A449F20082D3C9 /* YCustomSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988FC25A449F00082D3C9 /* YCustomSearchController.m */; };
@@ -241,7 +240,6 @@
 		30A98B5F25A449F20082D3C9 /* YZFriendProfileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988FF25A449F00082D3C9 /* YZFriendProfileViewController.h */; };
 		30A98B6025A449F20082D3C9 /* NewFriendViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9890025A449F00082D3C9 /* NewFriendViewController.h */; };
 		30A98B6225A449F20082D3C9 /* YUIBlackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9890225A449F00082D3C9 /* YUIBlackListViewController.m */; };
-		30A98B6425A449F20082D3C9 /* YUIGroupConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9890425A449F00082D3C9 /* YUIGroupConversationListController.m */; };
 		30A98B6625A449F20082D3C9 /* FriendRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9890625A449F00082D3C9 /* FriendRequestViewController.m */; };
 		30A98B6725A449F20082D3C9 /* GroupRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9890725A449F00082D3C9 /* GroupRequestViewController.m */; };
 		30A98B6825A449F20082D3C9 /* YCustomSearchController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9890825A449F00082D3C9 /* YCustomSearchController.h */; };
@@ -567,6 +565,8 @@
 		E5BFE7092623DC9400013973 /* YzCustomMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BFE7072623DC9400013973 /* YzCustomMessageView.m */; };
 		E5BFE70D2623E84900013973 /* YzCustomMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */; };
 		E5BFE70E2623E84900013973 /* YzCustomMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */; };
+		E5C25972263062C00084C0FE /* YzGroupConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5C25970263062C00084C0FE /* YzGroupConversationListController.h */; };
+		E5C25973263062C00084C0FE /* YzGroupConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C25971263062C00084C0FE /* YzGroupConversationListController.m */; };
 		E5D849FE2622E0C5006806E6 /* TUIConversationCellData+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */; };
 		E5D849FF2622E0C5006806E6 /* TUIConversationCellData+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */; };
 		E5E68CBA262060CD0061751B /* YzConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CB8262060CD0061751B /* YzConversationListController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1126,7 +1126,6 @@
 		30A988F425A449F00082D3C9 /* YUIBlackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIBlackListViewController.h; sourceTree = "<group>"; };
 		30A988F525A449F00082D3C9 /* NewFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFriendViewController.m; sourceTree = "<group>"; };
 		30A988F725A449F00082D3C9 /* FriendRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestViewController.h; sourceTree = "<group>"; };
-		30A988F925A449F00082D3C9 /* YUIGroupConversationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIGroupConversationListController.h; sourceTree = "<group>"; };
 		30A988FA25A449F00082D3C9 /* SearchMyContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMyContactsViewController.h; sourceTree = "<group>"; };
 		30A988FB25A449F00082D3C9 /* SearchGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchGroupViewController.m; sourceTree = "<group>"; };
 		30A988FC25A449F00082D3C9 /* YCustomSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCustomSearchController.m; sourceTree = "<group>"; };
@@ -1134,7 +1133,6 @@
 		30A988FF25A449F00082D3C9 /* YZFriendProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFriendProfileViewController.h; sourceTree = "<group>"; };
 		30A9890025A449F00082D3C9 /* NewFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFriendViewController.h; sourceTree = "<group>"; };
 		30A9890225A449F00082D3C9 /* YUIBlackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIBlackListViewController.m; sourceTree = "<group>"; };
-		30A9890425A449F00082D3C9 /* YUIGroupConversationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIGroupConversationListController.m; sourceTree = "<group>"; };
 		30A9890625A449F00082D3C9 /* FriendRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestViewController.m; sourceTree = "<group>"; };
 		30A9890725A449F00082D3C9 /* GroupRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupRequestViewController.m; sourceTree = "<group>"; };
 		30A9890825A449F00082D3C9 /* YCustomSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCustomSearchController.h; sourceTree = "<group>"; };
@@ -1464,6 +1462,8 @@
 		E5BFE7072623DC9400013973 /* YzCustomMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageView.m; sourceTree = "<group>"; };
 		E5BFE70B2623E84900013973 /* YzCustomMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzCustomMessageCell.h; sourceTree = "<group>"; };
 		E5BFE70C2623E84900013973 /* YzCustomMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzCustomMessageCell.m; sourceTree = "<group>"; };
+		E5C25970263062C00084C0FE /* YzGroupConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzGroupConversationListController.h; sourceTree = "<group>"; };
+		E5C25971263062C00084C0FE /* YzGroupConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzGroupConversationListController.m; sourceTree = "<group>"; };
 		E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUIConversationCellData+YzEx.h"; sourceTree = "<group>"; };
 		E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TUIConversationCellData+YzEx.m"; sourceTree = "<group>"; };
 		E5E68CB8262060CD0061751B /* YzConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzConversationListController.h; sourceTree = "<group>"; };
@@ -2255,8 +2255,8 @@
 			children = (
 				E5448D10262DD6BD00854A51 /* YzContactsViewController.h */,
 				E5448D11262DD6BD00854A51 /* YzContactsViewController.m */,
-				30A988F925A449F00082D3C9 /* YUIGroupConversationListController.h */,
-				30A9890425A449F00082D3C9 /* YUIGroupConversationListController.m */,
+				E5C25970263062C00084C0FE /* YzGroupConversationListController.h */,
+				E5C25971263062C00084C0FE /* YzGroupConversationListController.m */,
 				30A988FA25A449F00082D3C9 /* SearchMyContactsViewController.h */,
 				30A988FB25A449F00082D3C9 /* SearchGroupViewController.m */,
 				30A9890025A449F00082D3C9 /* NewFriendViewController.h */,
@@ -3682,6 +3682,7 @@
 				E5FE23A82626A2DD00FB1A84 /* CIGAMTheme.h in Headers */,
 				E5FE23C12626A2DD00FB1A84 /* CIGAMNavigationBarScrollingSnapAnimator.h in Headers */,
 				30A98B8825A449F20082D3C9 /* TUIVideoViewController.h in Headers */,
+				E5C25972263062C00084C0FE /* YzGroupConversationListController.h in Headers */,
 				E5FE23342626A2DD00FB1A84 /* CIGAMSearchBar.h in Headers */,
 				30A98BA325A449F20082D3C9 /* THelper.h in Headers */,
 				E5D849FE2622E0C5006806E6 /* TUIConversationCellData+YzEx.h in Headers */,
@@ -3759,7 +3760,6 @@
 				E5FE23AB2626A2DD00FB1A84 /* NSObject+CIGAMMultipleDelegates.h in Headers */,
 				30A98C3725A449F20082D3C9 /* TUIMenuView.h in Headers */,
 				30A98AFC25A449F20082D3C9 /* YZContactSearchViewController.h in Headers */,
-				30A98B5925A449F20082D3C9 /* YUIGroupConversationListController.h in Headers */,
 				30A98C7025A449F30082D3C9 /* if_rom.h in Headers */,
 				30A98B2025A449F20082D3C9 /* YUIImageViewController.h in Headers */,
 				30A98C2A25A449F20082D3C9 /* TUICallModel.h in Headers */,
@@ -4097,6 +4097,7 @@
 				30A98A8D25A449F20082D3C9 /* NSDictionary+YChatExtension.m in Sources */,
 				E5FE23572626A2DD00FB1A84 /* CIGAMAnimationHelper.m in Sources */,
 				30A98BB925A449F20082D3C9 /* TUIContactActionCellData.m in Sources */,
+				E5C25973263062C00084C0FE /* YzGroupConversationListController.m in Sources */,
 				30A98C3D25A449F20082D3C9 /* TUIGroupMembersView.m in Sources */,
 				30A98AD625A449F20082D3C9 /* YBSuspensionManager.m in Sources */,
 				30A98B2B25A449F20082D3C9 /* YUIImageViewController.m in Sources */,
@@ -4293,7 +4294,6 @@
 				30A98C6825A449F30082D3C9 /* TCContext.m in Sources */,
 				30A98BED25A449F20082D3C9 /* TUIMessageCellLayout.m in Sources */,
 				30A98B5B25A449F20082D3C9 /* SearchGroupViewController.m in Sources */,
-				30A98B6425A449F20082D3C9 /* YUIGroupConversationListController.m in Sources */,
 				30A98C4025A449F20082D3C9 /* TUIGroupMembersCell.m in Sources */,
 				30A98C5725A449F30082D3C9 /* TUIConversationCellData.m in Sources */,
 				30A98BD625A449F20082D3C9 /* TUIFaceMessageCellData.m in Sources */,

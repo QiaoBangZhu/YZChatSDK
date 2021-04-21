@@ -9,6 +9,7 @@
 
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <MMLayout/UIView+MMLayout.h>
+#import <ImSDKForiOS/ImSDK.h>
 
 #import "THeader.h"
 #import "THelper.h"
@@ -23,13 +24,13 @@
 #import "YZMsgManager.h"
 
 // navigation
-#import "YUIGroupConversationListController.h"
+#import "YzGroupConversationListController.h"
 #import "NewFriendViewController.h"
 #import "YUIBlackListViewController.h"
 #import "YzSearchMyFriendsViewController.h"
 
-static NSString *kReuseIdentifier_ContactCell = @"kReuseIdentifier_ContactCell";
-static NSString *kReuseIdentifier_ContactActionCell = @"kReuseIdentifier_ContactActionCell";
+static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
+static NSString *kReuseIdentifier_ContactActionCell = @"ReuseIdentifier_ContactActionCell";
 
 @interface YzContactsViewController () {
     YzCustomMsg *_customMessage;
@@ -176,11 +177,8 @@ static NSString *kReuseIdentifier_ContactActionCell = @"kReuseIdentifier_Contact
 
 /// 我的群聊
 - (void)clickGroupConversation:(TCommonTableViewCell *)cell {
-    YUIGroupConversationListController *vc = [[YUIGroupConversationListController alloc] init];
-    vc.isFromOtherApp = !_isInternal;
-    vc.customMsg = _customMessage;
-    vc.title = @"群聊";
-    [self.navigationController pushViewController:vc animated:YES];
+    YzGroupConversationListController *viewController = [[YzGroupConversationListController alloc] initWithCustomMessage: _customMessage];
+    [self.navigationController pushViewController: viewController animated: YES];
 }
 
 /// 黑名单
