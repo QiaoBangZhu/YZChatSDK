@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "YWorkZoneModel.h"
 
+#import "YzCommonViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZWebViewController : UIViewController
+@interface YZWebViewController : YzCommonViewController
 @property(nonatomic, copy)NSURL * url;
 @property(nonatomic, assign)BOOL needUA;
 @property(nonatomic, assign)BOOL hiddenCloseBtn;

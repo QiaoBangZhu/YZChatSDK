@@ -89,7 +89,7 @@
         make.centerX.equalTo(self.view);
         make.width.offset(320);
         make.height.offset(370);
-        make.top.equalTo(self.view).offset(45);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(45);
     }];
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);

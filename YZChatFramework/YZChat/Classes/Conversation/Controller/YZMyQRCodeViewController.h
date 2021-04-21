@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YzCommonViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YZMyQRCodeViewController : UIViewController
+@interface YZMyQRCodeViewController : YzCommonViewController
 
 - (instancetype)initWithTargetId:(NSString *)targetId;
 

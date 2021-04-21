@@ -49,6 +49,14 @@
     }];
 }
 
+- (UIImage *)navigationBarBackgroundImage {
+    return  [UIImage cigam_imageWithColor: UIColorClear];
+}
+
+- (UIImage *)navigationBarShadowImage {
+    return [UIImage cigam_imageWithColor: UIColorClear size:CGSizeMake(4, PixelOne) cornerRadius:0];
+}
+
 - (void)configureNav {
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:KCommonBackgroundColor];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -75,16 +83,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self configureNav];
+//    [self configureNav];
     [self setupData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
+//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
 }
 
 

@@ -42,15 +42,22 @@
     
 }
 
+- (UIColor *)navigationBarBarTintColor {
+    return [UIColor colorWithHex: KCommonBackgroundColor];
+}
+
+- (UIImage *)navigationBarShadowImage {
+    return [UIImage cigam_imageWithColor: [UIColor colorWithHex: KCommonBackgroundColor] size:CGSizeMake(4, PixelOne) cornerRadius:0];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:KCommonBackgroundColor];
+
     [self requestData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 

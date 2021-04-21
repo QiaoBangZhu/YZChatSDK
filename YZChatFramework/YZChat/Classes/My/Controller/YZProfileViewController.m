@@ -46,14 +46,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configureNav];
+//    [self configureNav];
     [self.view addSubview:self.tableView];
     //如果不加这一行代码，依然可以实现点击反馈，但反馈会有轻微延迟，体验不好。
     self.tableView.delaysContentTouches = NO;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@16);
         make.right.equalTo(@-16);
-        make.top.bottom.equalTo(@24);
+        make.top.equalTo(@0);
+        make.bottom.equalTo(@24);
     }];
     
     [self setupViews];
@@ -76,6 +77,7 @@
         [_tableView registerClass:[TCommonAvatarCell class] forCellReuseIdentifier:@"avatarCell"];
         _tableView.showsVerticalScrollIndicator = false;
         _tableView.alwaysBounceHorizontal = NO;
+        _tableView.contentInset = UIEdgeInsetsMake(24, 0, 0, 0);
         
 //        _tableView.layer.shadowColor = [[UIColor colorWithHex:0xAEAEC0] CGColor];
 //        _tableView.layer.shadowOffset = CGSizeMake(3,3);
