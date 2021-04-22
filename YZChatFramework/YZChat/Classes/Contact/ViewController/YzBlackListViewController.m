@@ -117,7 +117,6 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 - (void)initTableView {
     [super initTableView];
 
-    self.tableView.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];
     [self.tableView registerClass: [TCommonContactCell class] forCellReuseIdentifier: kReuseIdentifier_ContactCell];
 }
 

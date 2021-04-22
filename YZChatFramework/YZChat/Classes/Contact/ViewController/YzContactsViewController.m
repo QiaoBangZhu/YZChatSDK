@@ -320,7 +320,6 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)initTableView {
     [super initTableView];
 
-    self.tableView.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];
     [self.tableView registerClass: [TCommonContactCell class] forCellReuseIdentifier: kReuseIdentifier_ContactCell];
     [self.tableView registerClass: [TUIContactActionCell class] forCellReuseIdentifier: kReuseIdentifier_ContactActionCell];
 }
@@ -331,7 +330,6 @@ updateResultsForSearchString:(NSString *)searchString {
     self.searchController.searchBar.placeholder = @"昵称/备注";
     self.searchController.launchView = [[UIView alloc] init];
     self.searchController.launchView.backgroundColor = self.searchController.tableView.backgroundColor;
-    self.searchController.tableView.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];
     [self.searchController.tableView registerClass: [TCommonContactCell class] forCellReuseIdentifier: kReuseIdentifier_ContactCell];
 }
 

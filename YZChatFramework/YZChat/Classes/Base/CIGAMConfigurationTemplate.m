@@ -44,7 +44,7 @@
     CIGAMCMI.backgroundColor = nil;                                              // UIColorForBackground : 界面背景色，默认用于 CIGAMCommonViewController.view 的背景色
     CIGAMCMI.maskDarkColor = UIColorMakeWithRGBA(0, 0, 0, .35f);                 // UIColorMask : 深色的背景遮罩，默认用于 QMAlertController、CIGAMDialogViewController 等弹出控件的遮罩
     CIGAMCMI.maskLightColor = UIColorMakeWithRGBA(255, 255, 255, .5f);           // UIColorMaskWhite : 浅色的背景遮罩，CIGAMKit 里默认没用到，只是占个位
-    CIGAMCMI.separatorColor = UIColorMake(222, 224, 226);                        // UIColorSeparator : 全局默认的分割线颜色，默认用于列表分隔线颜色、UIView (CIGAMBorder) 分隔线颜色
+    CIGAMCMI.separatorColor = [UIColor colorWithHex: KCommonSeparatorLineColor];                        // UIColorSeparator : 全局默认的分割线颜色，默认用于列表分隔线颜色、UIView (CIGAMBorder) 分隔线颜色
     CIGAMCMI.separatorDashedColor = UIColorMake(17, 17, 17);                     // UIColorSeparatorDashed : 全局默认的虚线分隔线的颜色，默认 CIGAMKit 暂时没用到
     CIGAMCMI.placeholderColor = UIColorMake(196, 200, 208);                      // UIColorPlaceholder，全局的输入框的 placeholder 颜色，默认用于 CIGAMTextField、CIGAMTextView，不影响系统 UIKit 的输入框
 

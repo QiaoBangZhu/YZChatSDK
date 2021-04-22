@@ -34,18 +34,16 @@ typedef NS_ENUM(NSInteger, GroupMessageType) {
     GroupMessageTypeDismissGroup = 4,//解散群
 };
 
-static NSString *kConversationCell_ReuseId = @"ConversationCell";
+static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_ConversationCell";
 
 @interface YzInternalConversationListController () <UITableViewDataSource, UITableViewDelegate, CIGAMSearchControllerDelegate> {
     YzChatType _chatType;
     BOOL _isInternal;
 }
 
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<TUIConversationCellData *> *dataList;
 @property (nonatomic, strong) NSArray<TUIConversationCellData *> *searchList;
 @property (nonatomic, strong) NSMutableArray<V2TIMConversation *> *localConversationList;
-@property (nonatomic, strong) CIGAMSearchController *searchController;
 @property (nonatomic, copy) NSString *keywords;
 
 @end
@@ -234,7 +232,6 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
     @weakify(self)
     CIGAMPopupMenuButtonItem *friend = [CIGAMPopupMenuButtonItem itemWithImage: nil title: @"添加好友" handler:^(CIGAMPopupMenuButtonItem * _Nonnull aItem) {
         @strongify(self)
-//        SearchMyFriendsViewController *add = [[SearchMyFriendsViewController alloc] init];
         YzSearchMyFriendsViewController *add = [[YzSearchMyFriendsViewController alloc] init];
         [self.navigationController pushViewController: add animated: NO];
         [aItem.menuView hideWithAnimated: YES];
@@ -431,7 +428,7 @@ static NSString *kConversationCell_ReuseId = @"ConversationCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TUIConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:kConversationCell_ReuseId forIndexPath:indexPath];
+    TUIConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier_ConversationCell forIndexPath:indexPath];
 
     NSArray *dataList = tableView == self.tableView ? self.dataList : self.searchList;
     TUIConversationCellData *data = [dataList objectAtIndex: indexPath.row];
@@ -507,35 +504,31 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)initSubviews {
     [super initSubviews];
 
-    self.tableView = [[UITableView alloc] initWithFrame: self.view.bounds];
-    self.searchController = [[CIGAMSearchController alloc] initWithContentsViewController: self];
+    if (_isInternal) {
+        self.shouldShowSearchBar = YES;
+    }
+}
+
+- (void)initTableView {
+    [super initTableView];
+
+    [self.tableView registerClass:[TUIConversationCell class] forCellReuseIdentifier: kReuseIdentifier_ConversationCell];
+}
+
+- (void)initSearchController {
+    [super initSearchController];
+
+    if (_isInternal) {
+        self.searchController.launchView = [[UIView alloc] init];
+        self.searchController.launchView.backgroundColor = self.searchController.tableView.backgroundColor;
+        [self.searchController.tableView registerClass:[TUIConversationCell class] forCellReuseIdentifier: kReuseIdentifier_ConversationCell];
+    }
 }
 
 - (void)setupSubviews {
     [super setupSubviews];
 
     self.titleView.title = @"消息";
-    self.tableView.backgroundColor = [UIColor d_colorWithColorLight: TController_Background_Color
-                                                               dark: TController_Background_Color_Dark];
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[TUIConversationCell class] forCellReuseIdentifier: kConversationCell_ReuseId];
-
-    [self.view addSubview: self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-    }];
-
-    if (_isInternal) {
-        self.searchController.tableView.backgroundColor = self.tableView.backgroundColor;
-        self.searchController.searchBar.cigam_usedAsTableHeaderView = YES;
-        self.tableView.tableHeaderView = self.searchController.searchBar;
-        self.searchController.launchView = [[UIView alloc] init];
-        self.searchController.launchView.backgroundColor = self.tableView.backgroundColor;
-        [self.searchController.tableView registerClass:[TUIConversationCell class] forCellReuseIdentifier: kConversationCell_ReuseId];
-        self.searchController.searchResultsDelegate = self;
-    }
 }
 
 #pragma mark - 数据

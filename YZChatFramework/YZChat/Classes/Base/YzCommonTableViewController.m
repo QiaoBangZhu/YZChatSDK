@@ -7,6 +7,8 @@
 
 #import "YzCommonTableViewController.h"
 
+#import <IQKeyboardManager/IQKeyboardManager.h>
+
 @interface YzCommonTableViewController ()
 
 @end
@@ -18,6 +20,20 @@
 
     [self setupSubviews];
     [self subscribe];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear: animated];
+
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
 }
 
 - (void)setupSubviews {}

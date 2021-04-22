@@ -59,8 +59,6 @@
     [YZBaseManager shareInstance].appId = appId;
     [self configureTUIKit];
     [self configureObserver];
-//    [self configureNavigationBar];
-    [self configureAmap];
 }
 
 # pragma mark -- configure
@@ -110,41 +108,6 @@
     if ([self.messageWatcher respondsToSelector: @selector(updateConversion)]) {
         [self.messageWatcher updateConversion];
     }
-}
-
-- (void)configureNavigationBar {
-    //隐藏返回标题文字
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateNormal];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]}forState:UIControlStateHighlighted];
-    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
-    [UINavigationBar appearance].translucent = NO;
-
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-
-    UIImage* backButtonImage = [YZChatResource(@"icon_back") imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal];
-    if (@available(iOS 11.0, *)) {
-        [UINavigationBar appearance].backIndicatorImage = backButtonImage;
-        [UINavigationBar appearance].backIndicatorTransitionMaskImage = backButtonImage;
-    }else {
-        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    }
-    //    if (@available(iOS 11.0, *)) {
-    //        NSError *error;
-    //           [UIViewController aspect_hookSelector:@selector(viewDidLoad) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo) {
-    //               UIViewController *controller = aspectInfo.instance;
-    //               controller.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    //           } error:&error];
-    //           if (error) NSLog(@"%@", error);
-    //    }else {
-    //        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, backButtonImage.size.width, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    //    }
-
-}
-
-//高德地图
-- (void)configureAmap {
-    [AMapServices sharedServices].apiKey = amapKey;
 }
 
 # pragma mark -- Method

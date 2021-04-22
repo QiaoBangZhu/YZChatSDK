@@ -19,9 +19,6 @@ static const int SDKAPPID = 1400432221;
 //元讯的appId
 static NSString*  const ychatAppId = @"de241446a50499bb77a8684cf610fd04";
 
-//高德地图
-static NSString * const amapKey = @"7892fa637e3dffeb7f7352790a510398";
-
 //腾讯会议相关参数
 static NSString * const kSdkId = @"2009233371";
 static NSString * const kSdkToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMDA5MjMzMzcxIiwiaWF0IjoxNjAxMjgyNTY2LCJleHAiOjE2MDY1NTI5NjYsImF1ZCI6IlRlbmNlbnQgTWVldGluZyIsInN1YiI6Inl1YW56aGlfdGVzdDAxIn0.9DXh4MFF490mVipau7QgotrFvCe-tupj3JtefbTLQ44";

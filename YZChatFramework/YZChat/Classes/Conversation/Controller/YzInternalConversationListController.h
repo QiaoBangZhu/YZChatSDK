@@ -6,7 +6,8 @@
 //
 
 #import "YzConversationListController.h"
-#import "YzCommonViewController.h"
+
+#import "YzCommonTableViewController.h"
 
 @class V2TIMConversation;
 
@@ -20,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface YzInternalConversationListController : YzCommonViewController
+@interface YzInternalConversationListController : YzCommonTableViewController
 
 @property(nullable, nonatomic, weak) id<YzInternalConversationListControllerDelegate> delegate;
 

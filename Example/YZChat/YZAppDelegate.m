@@ -7,6 +7,9 @@
 //
 
 #import "YZAppDelegate.h"
+
+#import <AMapFoundationKit/AMapServices.h>
+
 #import "ReactiveObjC/ReactiveObjC.h"
 #import <QMUIKit/QMUIKit.h>
 #import "YZLoginViewController.h"
@@ -41,6 +44,7 @@ YZAppDelegate *appdel;
 
     [self registNotification];
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [AMapServices sharedServices].apiKey = @"7892fa637e3dffeb7f7352790a510398";
 
     [[YzIMKitAgent shareInstance]initAppId:yzchatAppId];
     self.window.rootViewController = [self getLoginController];
