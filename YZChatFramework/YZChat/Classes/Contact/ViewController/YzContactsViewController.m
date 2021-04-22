@@ -354,10 +354,11 @@ updateResultsForSearchString:(NSString *)searchString {
                     [temp addObject: model];
                 }
             }
-        }
 
-        if (temp.count == 0 && keywords.length > 0) {
-            [self fetchFriendsInfoByMobile: keywords];
+            if (temp.count == 0 &&
+                [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9]*"] evaluateWithObject: keywords]) {
+                [self fetchFriendsInfoByMobile: keywords];
+            }
         }
 
         dispatch_async(dispatch_get_main_queue(), ^{
