@@ -92,8 +92,17 @@ static NSString *kReuseIdentifier_ContactActionCell = @"ReuseIdentifier_ContactA
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = _isInternal ? @"通讯录" : @"请选择";
     [self addNotificationCenterObserver];
     [self.viewModel loadContacts];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+
+    if (self.searchController.isActive) {
+        [self.tabBarController.tabBar setHidden: YES];
+    }
 }
 
 #pragma mark - NSNotificationCenter
@@ -336,7 +345,6 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)setupSubviews {
     [super setupSubviews];
 
-    self.titleView.title = _isInternal ? @"通讯录" : @"请选择";
     self.view.backgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];
 }
 

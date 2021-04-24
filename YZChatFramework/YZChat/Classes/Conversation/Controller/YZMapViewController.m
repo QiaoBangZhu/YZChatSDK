@@ -70,12 +70,12 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _keyboardManager.delegateEnabled = YES;
+    self.keyboardManager.delegateEnabled = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    _keyboardManager.delegateEnabled = NO;
+    self.keyboardManager.delegateEnabled = NO;
 }
 
 - (void)makeConstraint {
@@ -133,6 +133,7 @@ static NSString *annotationIdentifier = @"annotationIdentifier";
             self.locationBlock(self.selectedPOI.name, self.selectedPOI.address, self.selectedPOI.location.latitude, self.selectedPOI.location.longitude);
         }
     }
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (UIButton *)doneBtn {

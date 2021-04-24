@@ -13,8 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YzCommonViewController : CIGAMCommonViewController
-@property (nonatomic, copy)NSString *titleName;
-@property (nonatomic, assign)BOOL isFromOtherApp;
 
 - (void)setupSubviews;
 - (void)subscribe;

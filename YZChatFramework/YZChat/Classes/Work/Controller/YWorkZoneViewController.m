@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.titleName = @"工作台";
+    self.title = @"工作台";
     self.data = [[NSMutableArray alloc]init];
     [self setupView];
     [self makeConstraint];

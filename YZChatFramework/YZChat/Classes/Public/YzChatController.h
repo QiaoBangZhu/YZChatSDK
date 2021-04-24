@@ -97,11 +97,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * 点击头像
- * 默认点击头像是打开联系人资料页，如果实现了此方法，则内部不做任何处理
+ *
+ * 默认点击头像是打开联系人资料页
  *
  * @param userId 头像用户id
+ * @return 如果返回YES，则内部不做任何处理
  */
-- (void)onUserIconClick:(NSString *)userId;
+- (BOOL)onUserIconClick:(NSString *)userId;
 
 /**
  * 触发了@功能
@@ -110,11 +112,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)onAtGroupMember;
 
+/**
+ *  更新自定义会话消息内容回调
+ *
+ *  @param customMessageView 所更新的自定义会话消息视图
+ */
+- (void)updatedCustomMessageView:(YzCustomMessageView *)customMessageView;
 
 /**
  *  点击自定义会话消息内容回调
  *
- *  @param customMessageView 所点击的消息单元
+ *  @param customMessageView 所点击的自定义会话消息视图
  */
 - (void)onSelectedCustomMessageView:(YzCustomMessageView *)customMessageView;
 
@@ -137,8 +145,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable, nonatomic, weak) id<YzChatControllerDelegate> delegate;
 @property(nullable, nonatomic, weak) id<YzChatControllerDataSource> dataSource;
 
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
-                          config:(nullable YzChatControllerConfig *)config;
+                          config:(nullable YzChatControllerConfig *)config NS_DESIGNATED_INITIALIZER;
 
 /**
  * 触发了@功能并且选择完成员

@@ -13,17 +13,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol YzInternalConversationListControllerDelegate <NSObject>
-@optional
-
-- (void)onTitleChanged:(NSString *)title;
-- (void)didSelectConversation:(V2TIMConversation *)conversation indexPath:(NSIndexPath *)indexPath;
-
-@end
-
 @interface YzInternalConversationListController : YzCommonTableViewController
 
-@property(nullable, nonatomic, weak) id<YzInternalConversationListControllerDelegate> delegate;
+@property(nullable, nonatomic, weak) id<YzConversationListControllerDelegate> delegate;
 
 @property (nonatomic, assign) BOOL isNeedCloseBarButton;
 

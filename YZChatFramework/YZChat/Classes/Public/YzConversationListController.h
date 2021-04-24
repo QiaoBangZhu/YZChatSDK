@@ -16,7 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol YzConversationListControllerDelegate <NSObject>
 @optional
 
-- (void)didSelectConversation:(V2TIMConversation *)conversation indexPath:(NSIndexPath *)indexPath;
+/**
+ * 点击某个会话cell
+ *
+ * @param conversation 会话信息
+ * @param indexPath 下标
+ *
+ * @return 如果返回YES，则内部不做任何处理
+ */
+- (BOOL)didSelectConversation:(V2TIMConversation *)conversation indexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -24,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nullable, nonatomic, weak) id<YzConversationListControllerDelegate> delegate;
 
-- (instancetype)initWithChatType:(YzChatType)chatType;
+- (instancetype)initWithChatType:(YzChatType)chatType NS_DESIGNATED_INITIALIZER;
 
 @end
 

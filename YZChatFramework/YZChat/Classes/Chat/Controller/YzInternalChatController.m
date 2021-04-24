@@ -641,7 +641,6 @@
     @weakify(self)
     map.locationBlock = ^(NSString *name, NSString *address, double latitude, double longitude) {
         @strongify(self)
-        [self.navigationController popToViewController: self animated: YES];
         YZLocationMessageCellData* cellData = [[YZLocationMessageCellData alloc] initWithDirection: MsgDirectionOutgoing];
         cellData.text = [NSString stringWithFormat: @"%@##%@", name, address];
         cellData.latitude = latitude;

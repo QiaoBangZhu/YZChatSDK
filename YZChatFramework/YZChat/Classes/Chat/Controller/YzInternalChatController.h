@@ -20,51 +20,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol YzInternalChatControllerDelegate <NSObject>
-@optional
-
-/**
- * 点击头像
- * 默认点击头像是打开联系人资料页
- *
- * @param userId 头像用户id
- * @return 如果返回YES，则内部不做任何处理
- */
-- (BOOL)onUserIconClick:(NSString *)userId;
-
-/**
- * 触发了@功能
- *
- * @return 如果返回YES，则内部不做任何处理
- */
-- (BOOL)onAtGroupMember;
-
-
-/**
- *  点击自定义会话消息内容回调
- *
- *  @param customMessageView 所点击的消息单元
- */
-- (void)onSelectedCustomMessageView:(YzCustomMessageView *)customMessageView;
-
-@end
-
-@protocol YzInternalChatControllerDataSource <NSObject>
-
-/**
- * 自定义消息二进制数据
- *
- * @param data 自定义消息二进制数据
- * @return 自定义消息
- */
-- (YzCustomMessageData * _Nullable)customMessageForData:(NSData *)data;
-
-@end
-
 @interface YzInternalChatController : YzCommonViewController
 
-@property(nullable, nonatomic, weak) id<YzInternalChatControllerDelegate> delegate;
-@property(nullable, nonatomic, weak) id<YzInternalChatControllerDataSource> dataSource;
+@property(nullable, nonatomic, weak) id<YzChatControllerDelegate> delegate;
+@property(nullable, nonatomic, weak) id<YzChatControllerDataSource> dataSource;
 @property(nonatomic, strong, readonly) NSMutableDictionary <NSString *, Class> * registeredCustomMessageClass;
 
 /**

@@ -3,12 +3,6 @@ Pod::Spec.new do |s|
   s.version          = '1.0.15'
   s.summary          = 'This is a UISDK for chat.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
   TODO: Add long description of the pod here.
                         DESC
@@ -17,7 +11,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'Copyright', :text => 'Copyright © 2021 yzmetax. All Rights Reserved.\n' }
   s.author           = { 'QiaoBangZhu' => 'magic0230@qq.com' }
   s.source = { :http => 'https://wangpan.yzmetax.com/yz_ios_sdk_1.0.15.zip' }
-  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64' }
 
   s.platform = :ios
   s.ios.deployment_target = '11.0'

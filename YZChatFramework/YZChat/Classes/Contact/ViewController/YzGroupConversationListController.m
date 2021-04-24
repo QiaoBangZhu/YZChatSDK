@@ -58,6 +58,7 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"群聊";
     [self addNotificationCenterObserver];
     [self.viewModel loadConversation];
 }
@@ -186,7 +187,6 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 - (void)setupSubviews {
     [super setupSubviews];
 
-    self.titleView.title = @"群聊";
     self.view.backgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];
 }
 

@@ -47,26 +47,53 @@
 
 @end
 
-@interface YzChatController () <YzInternalChatControllerDataSource, YzInternalChatControllerDelegate> {
+@interface YzChatController () <CIGAMNavigationControllerDelegate> {
     YzChatInfo *_chatInfo;
     YzChatControllerConfig *_chatConfig;
 }
 
 @property (nonatomic, strong) YzInternalChatController *chatController;
+@property (nonatomic, strong) CIGAMNavigationTitleView *titleView;
 
 @end
 
 @implementation YzChatController
 
+#pragma mark - 初始化
+
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
                           config:(nullable YzChatControllerConfig *)config {
-    self = [super init];
+    self = [super initWithNibName: nil bundle: nil];
     if (self) {
+        chatInfo.chatId = chatInfo.chatId ?: @"";
         _chatInfo = chatInfo;
         _chatConfig = config ?: [[YzChatControllerConfig alloc] init];
+        [self didInitialize];
     }
     return self;
 }
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    return [self initWithChatInfo: [[YzChatInfo alloc] init] config: nil];
+}
+
+- (instancetype)init {
+    return [self initWithChatInfo: [[YzChatInfo alloc] init] config: nil];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    return [self initWithChatInfo: [[YzChatInfo alloc] init] config: nil];
+}
+
+- (void)didInitialize {
+    self.titleView = [[CIGAMNavigationTitleView alloc] init];
+    self.titleView.title = self.title;
+    self.navigationItem.titleView = self.titleView;
+
+    self.extendedLayoutIncludesOpaqueBars = YES;
+}
+
+#pragma mark - 生命周期
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,17 +105,12 @@
         [[RACObserve(self.chatController, title) distinctUntilChanged] subscribeNext:^(NSString *title) {
             @strongify(self)
             self.title = title;
-    //        if (self.delegate && [self.delegate respondsToSelector: @selector(onTitleChanged:)]) {
-    //            [self.delegate onTitleChanged: title];
-    //        }
         }];
     }
 }
 
 - (void)setupChatController {
     self.chatController = [[YzInternalChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
-    self.chatController.delegate = self;
-    self.chatController.dataSource = self;
     [self addChildViewController: self.chatController];
     [self.view addSubview: self.chatController.view];
 }
@@ -96,7 +118,6 @@
 #pragma mark - Public
 
 - (void)registerClass:(nullable Class)viewClass forCustomMessageViewReuseIdentifier:(NSString *)identifier {
-    NSAssert([viewClass isSubclassOfClass: [YzCustomMessageView class]], @"自定义消息视图类型，需继承自 YzCustomMessageView");
     [self.chatController registerClass: viewClass forCustomMessageViewReuseIdentifier: identifier];
 }
 
@@ -113,44 +134,14 @@
     [self.chatController updateInputTextByUsers: users];
 }
 
-#pragma mark - YzInternalChatControllerDataSource
-
-- (YzCustomMessageData *)customMessageForData:(NSData *)data {
-    if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {
-        YzCustomMessageData *custom = [self.dataSource customMessageForData: data];
-        Class cls = self.chatController.registeredCustomMessageClass[custom.reuseIdentifier];
-        NSAssert(cls != nil, @"%@ 自定义消息视图未注册", custom);
-        return custom;
-    }
-
-    return nil;
+- (void)setDataSource:(id<YzChatControllerDataSource>)dataSource {
+    _dataSource = dataSource;
+    self.chatController.dataSource = dataSource;
 }
 
-
-#pragma mark - YzInternalChatControllerDelegate
-
-- (BOOL)onUserIconClick:(NSString *)userId {
-    if (self.delegate && [self.delegate respondsToSelector: @selector(onUserIconClick:)]) {
-        [self.delegate onUserIconClick: userId];
-        return YES;
-    }
-
-    return NO;
-}
-
-- (BOOL)onAtGroupMember {
-    if (self.delegate && [self.delegate respondsToSelector: @selector(onAtGroupMember)]) {
-        [self.delegate onAtGroupMember];
-        return YES;
-    }
-
-    return NO;
-}
-
-- (void)onSelectedCustomMessageView:(YzCustomMessageView *)customMessageView {
-    if (self.delegate && [self.delegate respondsToSelector: @selector(onSelectedCustomMessageView:)]) {
-        [self.delegate onSelectedCustomMessageView: customMessageView];
-    }
+- (void)setDelegate:(id<YzChatControllerDelegate>)delegate {
+    _delegate = delegate;
+    self.chatController.delegate = delegate;
 }
 
 @end

@@ -3073,13 +3073,13 @@
 		E5FE21C42626A2DB00FB1A84 /* CIGAMMainFrame */ = {
 			isa = PBXGroup;
 			children = (
-				E5FE21C52626A2DB00FB1A84 /* CIGAMCommonViewController.m */,
-				E5FE21C62626A2DB00FB1A84 /* CIGAMNavigationController.h */,
-				E5FE21C72626A2DB00FB1A84 /* CIGAMTabBarViewController.h */,
+				E5FE21CB2626A2DB00FB1A84 /* CIGAMCommonTableViewController.h */,
 				E5FE21C82626A2DB00FB1A84 /* CIGAMCommonTableViewController.m */,
 				E5FE21C92626A2DB00FB1A84 /* CIGAMCommonViewController.h */,
+				E5FE21C52626A2DB00FB1A84 /* CIGAMCommonViewController.m */,
+				E5FE21C62626A2DB00FB1A84 /* CIGAMNavigationController.h */,
 				E5FE21CA2626A2DB00FB1A84 /* CIGAMNavigationController.m */,
-				E5FE21CB2626A2DB00FB1A84 /* CIGAMCommonTableViewController.h */,
+				E5FE21C72626A2DB00FB1A84 /* CIGAMTabBarViewController.h */,
 				E5FE21CC2626A2DB00FB1A84 /* CIGAMTabBarViewController.m */,
 			);
 			path = CIGAMMainFrame;

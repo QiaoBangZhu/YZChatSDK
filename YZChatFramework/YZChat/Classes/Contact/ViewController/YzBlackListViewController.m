@@ -43,6 +43,7 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"黑名单";
     [self addNotificationCenterObserver];
     [self.viewModel loadBlackList];
 }
@@ -124,7 +125,6 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 - (void)setupSubviews {
     [super setupSubviews];
 
-    self.titleView.title = @"黑名单";
     self.view.backgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];
 }
 

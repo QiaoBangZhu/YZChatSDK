@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "YZLocationMessageCellData.h"
 
+#import "YzCommonViewController.h"
+
 typedef void (^SelectedLocationBlock) (NSString *name, NSString *address, double latitude, double longitude);
 
-@interface YZMapViewController : UIViewController
-@property (nonatomic, copy)SelectedLocationBlock locationBlock;
+@interface YZMapViewController : YzCommonViewController
 
+@property (nonatomic, copy)SelectedLocationBlock locationBlock;
 
 @end

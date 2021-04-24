@@ -59,12 +59,6 @@
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
 }
 
-- (void)setTitleName:(NSString *)titleName {
-    _titleName = titleName;
-    self.title = titleName;
-//    self.titleLabel.text = titleName;
-}
-
 - (void)showEmptyViewWithText:(NSString *)text {
     [self showEmptyViewWithText: text detailText: nil buttonTitle: nil buttonAction: nil];
 }

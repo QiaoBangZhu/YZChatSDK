@@ -84,8 +84,17 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"消息";
     [self addNotificationCenterObserver];
     [self fetchConversation];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+
+    if (self.searchController.isActive) {
+        [self.tabBarController.tabBar setHidden: YES];
+    }
 }
 
 #pragma mark - NSNotificationCenter
@@ -206,10 +215,7 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
     }
 
     if (title) {
-        self.titleView.title = title;
-        if (self.delegate && [self.delegate respondsToSelector: @selector(onTitleChanged:)]) {
-            [self.delegate onTitleChanged: title];
-        }
+        self.title = title;
     }
 }
 
@@ -217,8 +223,6 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 
 - (void)subscribe {
     [super subscribe];
-
-    if (!_isInternal) return;
 
     @weakify(self)
     [[[RACObserve(self, keywords) distinctUntilChanged] throttle: 0.25]
@@ -411,20 +415,19 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 }
 
 - (void)didSelectConversation:(TUIConversationCell *)cell {
-    if (_isInternal) {
-        YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: cell.convData];
-        [self.navigationController pushViewController:chat animated:YES];
-
-        return;
-    }
-
     NSIndexPath *indexPath = [self.tableView indexPathForCell: cell];
     if(indexPath && self.delegate &&
        [self.delegate respondsToSelector: @selector(didSelectConversation:indexPath:)]) {
-        [self.delegate didSelectConversation: self.localConversationList[indexPath.row]
-                                   indexPath: indexPath];
-
+        if ([self.delegate didSelectConversation: self.localConversationList[indexPath.row]
+                                       indexPath: indexPath]) {
+            return;
+        }
     }
+
+    YzInternalChatController *chat = [[YzInternalChatController alloc] initWithConversation: cell.convData];
+    [self.navigationController pushViewController:chat animated:YES];
+
+    return;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -504,9 +507,7 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)initSubviews {
     [super initSubviews];
 
-    if (_isInternal) {
-        self.shouldShowSearchBar = YES;
-    }
+    self.shouldShowSearchBar = YES;
 }
 
 - (void)initTableView {
@@ -518,17 +519,13 @@ updateResultsForSearchString:(NSString *)searchString {
 - (void)initSearchController {
     [super initSearchController];
 
-    if (_isInternal) {
-        self.searchController.launchView = [[UIView alloc] init];
-        self.searchController.launchView.backgroundColor = self.searchController.tableView.backgroundColor;
-        [self.searchController.tableView registerClass:[TUIConversationCell class] forCellReuseIdentifier: kReuseIdentifier_ConversationCell];
-    }
+    self.searchController.launchView = [[UIView alloc] init];
+    self.searchController.launchView.backgroundColor = self.searchController.tableView.backgroundColor;
+    [self.searchController.tableView registerClass:[TUIConversationCell class] forCellReuseIdentifier: kReuseIdentifier_ConversationCell];
 }
 
 - (void)setupSubviews {
     [super setupSubviews];
-
-    self.titleView.title = @"消息";
 }
 
 #pragma mark - 数据
