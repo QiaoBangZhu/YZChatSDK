@@ -64,7 +64,7 @@
     [super fillWithData: data];
     self.messageData = data;
     self.titleLabel.text = data.title;
-    self.desLabel.text = data.des;
+    self.desLabel.text = data.desc;
 
     [self.logoImageView sd_setImageWithURL:[NSURL URLWithString:data.logo] placeholderImage:YZChatResource(@"defaultAvatarImage") options:SDWebImageHighPriority];
 }

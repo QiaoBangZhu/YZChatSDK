@@ -8,7 +8,35 @@
 
 #import "YZCardMsgData.h"
 
+#import "THeader.h"
+#import "TUICallUtils.h"
+
 @implementation YZCardMsgData
+
+- (instancetype)initWithTitle:(NSString *)title
+                         desc:(NSString *)desc
+                         logo:(NSString *)logo
+                         link:(NSString *)link {
+    if (self = [self init]) {
+        _title = title;
+        _desc = desc;
+        _logo = logo;
+        _link = link;
+    }
+
+    return self;
+}
+
+- (NSData *)data {
+    return [TUICallUtils dictionary2JsonData: @{
+        @"version": @(TextLink_Version),
+        @"businessID": CardLink,
+        @"title": self.title,
+        @"link": self.link,
+        @"desc": self.desc,
+        @"logo": self.logo
+    }];
+}
 
 - (NSString *)reuseIdentifier {
     return @"YZCardMsgCell";

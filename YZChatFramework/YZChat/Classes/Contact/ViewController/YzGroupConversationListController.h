@@ -7,13 +7,13 @@
 
 #import "YzCommonTableViewController.h"
 
-#import "YzCustomMsg.h"
+#import "YzCustomMessageView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YzGroupConversationListController : YzCommonTableViewController
 
-- (instancetype)initWithCustomMessage:(YzCustomMsg *)customMessage;
+- (instancetype)initWithCustomMessage:(YzCustomMessageData *)customMessage;
 
 @end
 

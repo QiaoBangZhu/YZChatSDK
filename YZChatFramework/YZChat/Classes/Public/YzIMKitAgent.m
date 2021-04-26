@@ -27,8 +27,16 @@
 #import "YZUtil.h"
 #import "NSBundle+YZBundle.h"
 #import "UIColor+Foundation.h"
-#import "YZMsgManager.h"
 #import "YzContactsViewController.h"
+#import "TUICallUtils.h"
+
+#import "YZCardMsgData.h"
+#import "YzIMKitAgent+Private.h"
+
+typedef struct {
+    NSUInteger c2c;
+    NSUInteger group;
+} YzUnreadCount;
 
 @interface YzIMKitAgent()
 @property (nonatomic,   copy)NSString* appId;
@@ -39,7 +47,11 @@
 @property(nonatomic,  copy) NSString *userID;
 @property(nonatomic,strong) V2TIMSignalingInfo *signalingInfo;
 @property(nonatomic,strong) NSData   *deviceToken;
-@property(nullable, nonatomic, weak) id<YzMessageWatcher> messageWatcher;
+@property(nullable, nonatomic, weak) id<YzConversationListener> conversationListener;
+
+@property (nonatomic, strong) NSArray<V2TIMConversation *> *conversationList;
+@property (nonatomic, assign) NSUInteger c2cUnreadCount;
+@property (nonatomic, assign) NSUInteger groupUnreadCount;
 
 @end
 
@@ -86,27 +98,23 @@
 
 // 有新的会话（比如收到一个新同事发来的单聊消息、或者被拉入了一个新的群组中
 - (void)onNewConversation:(NSNotification *)notification {
-    [self updateConversionList: notification];
+    [self updateConversationList: notification];
 }
 
 // 某些会话的关键信息发生变化（未读计数发生变化、最后一条消息被更新等等）
 - (void)onConversationChanged:(NSNotification *)notify {
-    [self updateConversionList: notify];
+    [self updateConversationList: notify];
 }
 
-- (void)updateConversionList:(NSNotification *)notify {
-    NSMutableArray *list = (NSMutableArray *)notify.object;
-    NSUInteger count = 0;
-    for (V2TIMConversation *conversation in list) {
-        count += conversation.unreadCount;
-    }
+- (void)updateConversationList:(NSNotification *)notify {
+    [self conversationUnRead:^(NSUInteger c2cUnreadCount, NSUInteger groupUnread) {
+        if ([self.conversationListener respondsToSelector: @selector(updateUnreadCount:groupUnread:)]) {
+            [self.conversationListener updateUnreadCount: c2cUnreadCount groupUnread: groupUnread];
+        }
+    } failure: nil];
 
-    if ([self.messageWatcher respondsToSelector: @selector(updateUnreadCount:)]) {
-        [self.messageWatcher updateUnreadCount: count];
-    }
-
-    if ([self.messageWatcher respondsToSelector: @selector(updateConversion)]) {
-        [self.messageWatcher updateConversion];
+    if ([self.conversationListener respondsToSelector: @selector(updateConversation:)]) {
+        [self.conversationListener updateConversation: notify.object];
     }
 }
 
@@ -212,17 +220,31 @@
     return  chat;
 }
 
-- (UIViewController *)startCustomMessageWithChatId:(NSString *)toChatId chatName:(NSString *)chatName message:(YzCustomMsg *)message {
-    if ([toChatId length] > 0 && [chatName length]> 0) {
-        //直接发送消息
-        [[YZMsgManager shareInstance]sendMessageWithMsgType:YZSendMsgTypeC2C message:message userId:toChatId grpId:nil loginSuccess:^{
-        } loginFailed:^(int errCode, NSString *errMsg) {
-            [THelper makeToastError:errCode msg:errMsg];
-        }];
+- (UIViewController *)startCustomMessageWithChatId:(NSString *)toChatId
+                                          chatName:(NSString *)chatName
+                                           message:(YzCustomMsg *)message
+                                           success:(YzChatSysUserSuccess)success
+                                           failure:(YzChatSysUserFailure)failure {
+
+    if ([message.title length] == 0) {
+        !failure ?: failure(-1, @"标题不能为空");
         return nil;
-    }else {
-        return [[YzContactsViewController alloc] initWithCustomMessage: message];
     }
+    if ([message.link length] == 0) {
+        !failure ?: failure(-1, @"链接不能为空");
+        return nil;
+    }
+    if ([message.desc length] == 0) {
+        !failure ?: failure(-1, @"描述不能为空");
+        return nil;
+    }
+    if ([message.logo length] == 0) {
+        !failure ?: failure(-1, @"图片不能为空");
+        return nil;
+    }
+
+    YZCardMsgData *msg = [[YZCardMsgData alloc] initWithTitle: message.title desc: message.desc logo: message.logo link: message.link];
+    return [self sendCustomMessage: msg toConversation: toChatId success: success failure: failure];
 }
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -441,27 +463,21 @@
     return currentViewController;
 }
 
-/**
- 
- {
- code = 200;
- data =     {
- departName = "\U5e73\U53f0\U7814\U53d1\U4e2d\U5fc3";
- departmentId = de241446a50499bb77a8684cf610fd04;
- functionPerm = 15;
- nickName = "\U5927\U7edf\U9886";
- userIcon = "https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/1607087952606file.png";
- userId = 95e6bd162f019b60ad8380fba5e0db41;
- userSign = "eJwtjdEKgjAYhd9lt4X8-za3KXQRFEFJQdZNd47NWpEsHZpE755ol*c7fOd8yCnLo9bWJCU0AjIfszO2Cq50I05iK7RBQUvARAsojGIKSl3EFozm*Hca8yi8d4akyAE4o5Ti1Ni3d7UlqQCuACYW3HMgKECiAsbkf8Ndh0NdNYfkbmXYVUr067z23abF175v5ep8O2Yyu*hZsQ39sluQ7w-rKDh4";
- };
- msg = "";
- token = 7e19d8fa3c6f8e2a5a4767a2bbf8c4e1;
- }
- 
- 
- 
- 
- */
+#pragma mark - Helper
+
++ (YzUnreadCount)calcUnreadForConversationList:(NSArray<V2TIMConversation *> *)conversationList {
+    NSUInteger c2c = 0, group = 0;
+    for (V2TIMConversation *conversation in conversationList) {
+        if (conversation.userID == nil) {
+            group += conversation.unreadCount;
+        } else {
+            c2c += conversation.unreadCount;
+        }
+    }
+
+    YzUnreadCount unread = { c2c, group };
+    return unread;
+}
 
 @end
 
@@ -471,8 +487,8 @@ const NSUInteger STEP_LENGTH = 100;
 
 @implementation YzIMKitAgent (Conversation)
 
-- (void)addMessageWatcher:(id<YzMessageWatcher>)watcher {
-    self.messageWatcher = watcher;
+- (void)addConversationListener:(id<YzConversationListener>)listener {
+    self.conversationListener = listener;
 }
 
 - (void)loadConversation:(NSUInteger)next
@@ -536,14 +552,74 @@ const NSUInteger STEP_LENGTH = 100;
 
     [[V2TIMManager sharedInstance] getConversationList:0 count:INT_MAX succ:^(NSArray<V2TIMConversation *> *list, uint64_t lastTS, BOOL isFinished) {
 
-        NSUInteger count = 0;
-        for (V2TIMConversation *conversation in list) {
-            count += conversation.unreadCount;
-        }
-        success(count);
+        YzUnreadCount unread = [YzIMKitAgent calcUnreadForConversationList: list];
+        self.c2cUnreadCount = unread.c2c;
+        self.groupUnreadCount = unread.group;
+        success(unread.c2c, unread.group);
 
     } fail:^(int code, NSString *msg) {
         !failure ?: failure(code, msg);
+    }];
+}
+
+- (UIViewController *)sendCustomMessage:(YzCustomMessageData *)message
+                         toConversation:(NSString *)conversationId
+                                success:(YzChatSysUserSuccess)success
+                                failure:(YzChatSysUserFailure)failure {
+    if (!conversationId) {
+        return [[YzContactsViewController alloc] initWithCustomMessage: message];
+    }
+
+    NSString *userId, *groupId;
+    if ([conversationId hasPrefix: @"c2c_"]) {
+        userId = [conversationId substringFromIndex: 4];
+    } else if ([conversationId hasPrefix: @"group_"]) {
+        groupId = [conversationId substringFromIndex: 6];
+    }
+    
+    [self sendCustomMessage: message userId: userId groupId: groupId success: success failure: failure];
+
+    return nil;
+}
+
+@end
+
+#pragma mark - 消息相关
+
+@implementation YzIMKitAgent (Private_Message)
+
+- (void)sendCustomMessage:(YzCustomMessageData*)message
+                   userId:(nullable NSString *)userId
+                  groupId:(nullable NSString *)groupId
+                  success:(YzChatSysUserSuccess)success
+                  failure:(YzChatSysUserFailure)failure {
+
+    if (!userId && !groupId) {
+        !failure ?: failure(-1, @"未找到会话");
+        return;
+    }
+
+    YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection: MsgDirectionOutgoing];
+    cellData.customMessageData = message;
+    cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage: message.data];
+    // 设置推送
+    V2TIMOfflinePushInfo *info = [[V2TIMOfflinePushInfo alloc] init];
+    NSDictionary *ext = @{
+        @"entity": @{
+                @"action": @(APNs_Business_NormalMsg),
+                @"chatType": @(userId  ? 1 : 2),
+                @"sender": userId ? [[V2TIMManager sharedInstance] getLoginUser] : groupId,
+                @"version": @(APNs_Version)
+        }
+    };
+    info.ext = [TUICallUtils dictionary2JsonStr: ext];
+
+    // 发消息
+    [[V2TIMManager sharedInstance] sendMessage: cellData.innerMessage receiver: userId groupID: groupId priority: V2TIM_PRIORITY_DEFAULT onlineUserOnly: NO offlinePushInfo: info progress:^(uint32_t progress) {
+    } succ:^{
+        !success ?: success();
+    } fail:^(int code, NSString *desc) {
+        !failure ?: failure(code, desc);
     }];
 }
 

@@ -14,7 +14,7 @@
 #import "TUIGroupConversationListViewModel.h"
 
 #import "YzCommonImport.h"
-#import "YZMsgManager.h"
+#import "YzIMKitAgent+Private.h"
 
 // navigation
 #import "YzInternalChatController.h"
@@ -22,7 +22,7 @@
 static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 
 @interface YzGroupConversationListController () {
-    YzCustomMsg *_customMessage;
+    YzCustomMessageData *_customMessage;
     BOOL _isInternal;
 }
 
@@ -34,7 +34,7 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
 
 #pragma mark - 初始化
 
-- (instancetype)initWithCustomMessage:(YzCustomMsg *)customMessage {
+- (instancetype)initWithCustomMessage:(YzCustomMessageData *)customMessage {
     _customMessage = customMessage;
     self = [super initWithNibName: nil bundle: nil];
     if (self) {}
@@ -99,12 +99,12 @@ static NSString *kReuseIdentifier_ContactCell = @"ReuseIdentifier_ContactCell";
     }
 
     @weakify(self)
-    [[YZMsgManager shareInstance] sendMessageWithMsgType: YZSendMsgTypeGrp message: _customMessage userId: nil grpId: cellData.groupID loginSuccess:^{
+    [[YzIMKitAgent shareInstance] sendCustomMessage: _customMessage userId: nil groupId: cellData.groupID success:^{
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
-    } loginFailed:^(int errCode, NSString *errMsg) {
+    } failure:^(NSInteger errCode, NSString * _Nonnull errMsg) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [THelper makeToastError: errCode msg: errMsg];
         });

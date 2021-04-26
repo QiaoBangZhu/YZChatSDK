@@ -133,10 +133,6 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
                                                  name:kTopConversationListChangedNotification
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(onChangeUnReadCount:)
-                                                 name:TUIKitNotification_onChangeUnReadCount
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNetworkChanged:)
                                                  name:TUIKitNotification_TIMConnListener
                                                object:nil];
@@ -182,17 +178,6 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
     NSMutableArray *dataList = [NSMutableArray arrayWithArray: self.dataList];
     [self sortDataList: dataList];
     self.dataList = dataList;
-}
-
-- (void)onChangeUnReadCount:(NSNotification *)notify {
-    NSMutableArray *list = (NSMutableArray *)notify.object;
-    int unReadCount = 0;
-    for (V2TIMConversation *conversation in list) {
-        unReadCount += conversation.unreadCount;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[YZBaseManager shareInstance].tabController setConversationBadge: unReadCount];
-    });
 }
 
 - (void)onNetworkChanged:(NSNotification *)notify {
@@ -573,6 +558,7 @@ updateResultsForSearchString:(NSString *)searchString {
     // UI 会话列表根据 lastMessage 时间戳重新排序
     [self sortDataList: dataList];
     self.dataList = dataList;
+    [self changeUnReadCount];
 }
 
 - (void)sortDataList:(NSMutableArray<TUIConversationCellData *> *)dataList {
@@ -592,6 +578,17 @@ updateResultsForSearchString:(NSString *)searchString {
             existTopListSize++;
         }
     }
+}
+
+- (void)changeUnReadCount {
+    int unReadCount = 0;
+    for (V2TIMConversation *conversation in self.localConversationList) {
+        unReadCount += conversation.unreadCount;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[YZBaseManager shareInstance].tabController setConversationBadge: unReadCount];
+        [[NSNotificationCenter defaultCenter] postNotificationName: TUIKitNotification_onChangeUnReadCount object: self.localConversationList];
+    });
 }
 
 - (void)requestGroupMsgTisWithType:(GroupMessageType)type

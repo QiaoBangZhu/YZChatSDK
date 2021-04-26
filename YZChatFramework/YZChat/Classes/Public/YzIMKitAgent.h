@@ -68,8 +68,11 @@ typedef void (^loginFail)(void);
  * @param message  数据模型
  */
 - (UIViewController *)startCustomMessageWithChatId:(NSString*)toChatId
-                                chatName:(NSString*)chatName
-                                message:(YzCustomMsg*)message;
+                                          chatName:(NSString*)chatName
+                                           message:(YzCustomMsg*)message
+                                           success:(YzChatSysUserSuccess)success
+                                           failure:(YzChatSysUserFailure)failure;
+
 /*
  * 获取device Token(必须调用)
  */
@@ -99,16 +102,16 @@ typedef void (^loginFail)(void);
 
 @end
 
-@protocol YzMessageWatcher <NSObject>
-@optional
-
-- (void)updateUnreadCount:(NSUInteger)unreadCount;
-- (void)updateConversion;
-
-@end
-
 @class V2TIMConversation;
 @class V2TIMGroupAtInfo;
+
+@protocol YzConversationListener <NSObject>
+@optional
+
+- (void)updateUnreadCount:(NSUInteger)c2cUnreadCount groupUnread:(NSUInteger)groupUnread;
+- (void)updateConversation:(NSArray<V2TIMConversation *>*)conversationList;
+
+@end
 
 @interface YzIMKitAgent (Conversation)
 
@@ -123,22 +126,54 @@ typedef NS_OPTIONS(NSUInteger, YzChatType) {
 typedef void(^YzChatConversationListSuccess)(NSArray<V2TIMConversation *>*list, NSUInteger next, BOOL isFinished);
 /// 获取单个会话成功回调
 typedef void(^YzChatConversationSuccess)(V2TIMConversation *conversation);
-/// 获取未读消息成功回调
-typedef void(^YzChatUnreadCountSuccess)(NSUInteger unreadCount);
+/// 获取未读消息成功回调，c2cUnreadCount单聊未读数，groupUnread群聊未读数
+typedef void(^YzChatUnreadCountSuccess)(NSUInteger c2cUnreadCount, NSUInteger groupUnread);
 
-- (void)addMessageWatcher:(id<YzMessageWatcher>)watcher;
+/**
+ * 设置会话监听器
+ */
+- (void)addConversationListener:(id<YzConversationListener>)listener;
 
+/**
+ * 获取会话列表
+ * @param next 下一次分页拉取的游标
+ * @param type 会话列表类型
+ * @param success 成功回调
+ * @param failure 失败回调
+ */
 - (void)loadConversation:(NSUInteger)next
                     type:(YzChatType)type
                  success:(YzChatConversationListSuccess)success
-                 failure:(YzChatSysUserFailure)failure;
+                 failure:(nullable YzChatSysUserFailure)failure;
 
-- (void)getConversation:(NSString *)conversionId
+/**
+ * 获取跟某个人的会话（单聊/群聊）
+ * @param conversationId 会话id
+ * @param success 成功回调
+ * @param failure 失败回调
+ */
+- (void)getConversation:(NSString *)conversationId
                 success:(YzChatConversationSuccess)success
-                failure:(YzChatSysUserFailure)failure;
+                failure:(nullable YzChatSysUserFailure)failure;
 
+/**
+ * 获取消息未读数
+ * @param success 成功回调
+ * @param failure 失败回调
+ */
 - (void)conversationUnRead:(YzChatUnreadCountSuccess)success
-                   failure:(YzChatSysUserFailure)failure;
+                   failure:(nullable YzChatSysUserFailure)failure;
+
+/**
+ * 发送自定义消息
+ *
+ * @param message 自定义消息
+ * @param conversationId 会话id
+ */
+- (nullable UIViewController *)sendCustomMessage:(YzCustomMessageData *)message
+                                  toConversation:(nullable NSString *)conversationId
+                                         success:(nullable YzChatSysUserSuccess)success
+                                         failure:(nullable YzChatSysUserFailure)failure;
 
 @end
 

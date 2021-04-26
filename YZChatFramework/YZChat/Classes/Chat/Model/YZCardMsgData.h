@@ -15,9 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YZCardMsgData : YzCustomMessageData
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *des;
+@property (nonatomic, copy) NSString *desc;
 @property (nonatomic, copy) NSString *logo;
 @property (nonatomic, copy) NSString *link;
+
+- (instancetype)initWithTitle:(NSString *)title
+                         desc:(NSString *)desc
+                         logo:(NSString *)logo
+                         link:(NSString *)link;
 
 @end
 

@@ -14,15 +14,23 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 消息气泡标识符
  *
- * @default
+ * 子类重写
  */
 @property (nonatomic, copy) NSString *reuseIdentifier;
 
 /**
- *  内容大小
- *  返回一个气泡内容的视图大小。
+ * 一个气泡内容的视图大小
+ *
+ * 子类重写
  */
 - (CGSize)contentSize;
+
+/**
+ * 自定义消息二进制数据
+ *
+ * 子类重写
+ */
+- (NSData *)data;
 
 @end
 

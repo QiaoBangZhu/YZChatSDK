@@ -366,12 +366,7 @@
             }
             if ([businessID isEqualToString: CardLink]) {
                 YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: data];
-                YZCardMsgData *custom = [[YZCardMsgData alloc] init];
-                custom.title = text;
-                custom.des = param[@"desc"];
-                custom.link = link;
-                custom.logo = param[@"logo"];
-                cellData.customMessageData = custom;
+                cellData.customMessageData = [[YZCardMsgData alloc] initWithTitle: text desc: param[@"desc"] logo: param[@"logo"] link: link];
                 return cellData;
             }
         }
@@ -657,14 +652,10 @@
     NSString *desc = @"欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！";
     NSString * logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
     YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-    YZCardMsgData *msg = [[YZCardMsgData alloc] init];
-    msg.title = text;
-    msg.link = link;
-    msg.des = desc;
-    msg.logo = logo;
-    cellData.customMessageData = msg;
-    cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage:[YZUtil dictionary2JsonData:@{@"version": @(TextLink_Version),@"businessID": CardLink,@"title":text,@"link":link,@"desc":desc, @"logo": logo}]];
-    [self sendMessage:cellData];
+    YZCardMsgData *custom = [[YZCardMsgData alloc] initWithTitle: text desc: desc logo: logo link: link];
+    cellData.customMessageData = custom;
+    cellData.innerMessage = [[V2TIMManager sharedInstance] createCustomMessage: custom.data];
+    [self sendMessage: cellData];
 }
 
 #pragma mark - UIImagePickerControllerDelegate

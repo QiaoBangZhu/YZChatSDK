@@ -7,6 +7,8 @@
 
 #import "YzCustomMessageView.h"
 
+#import <YYModel/YYModel.h>
+
 @implementation YzCustomMessageData
 
 - (NSString *)reuseIdentifier {
@@ -15,6 +17,10 @@
 
 - (CGSize)contentSize {
     return CGSizeZero;
+}
+
+- (NSData *)data {
+    return [self yy_modelToJSONData];
 }
 
 @end
