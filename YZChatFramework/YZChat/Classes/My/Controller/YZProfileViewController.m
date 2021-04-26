@@ -60,12 +60,6 @@
     [self setupViews];
 }
 
-- (void)configureNav {
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
-}
-
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];

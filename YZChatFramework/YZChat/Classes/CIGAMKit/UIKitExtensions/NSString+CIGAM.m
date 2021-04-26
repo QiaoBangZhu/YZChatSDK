@@ -73,7 +73,7 @@
     return nil;
 }
 
-+ (NSString *)hexLetterStringWithInteger:(NSInteger)integer {
++ (NSString *)cigam_hexLetterStringWithInteger:(NSInteger)integer {
     NSAssert(integer < 16, @"要转换的数必须是16进制里的个位数，也即小于16，但你传给我是%@", @(integer));
     
     NSString *letter = nil;
@@ -109,7 +109,7 @@
     for (NSInteger i = 0; i < 9; i++) {
         remainder = integer % 16;
         integer = integer / 16;
-        NSString *letter = [self hexLetterStringWithInteger:remainder];
+        NSString *letter = [self cigam_hexLetterStringWithInteger:remainder];
         hexString = [letter stringByAppendingString:hexString];
         if (integer == 0) {
             break;
@@ -166,7 +166,7 @@
     return length;
 }
 
-- (NSUInteger)transformIndexToDefaultModeWithIndex:(NSUInteger)index {
+- (NSUInteger)cigam_transformIndexToDefaultModeWithIndex:(NSUInteger)index {
     CGFloat strlength = 0.f;
     NSUInteger i = 0;
     for (i = 0; i < self.length; i++) {
@@ -181,7 +181,7 @@
     return 0;
 }
 
-- (NSRange)transformRangeToDefaultModeWithRange:(NSRange)range {
+- (NSRange)cigam_transformRangeToDefaultModeWithRange:(NSRange)range {
     CGFloat strlength = 0.f;
     NSRange resultRange = NSMakeRange(NSNotFound, 0);
     NSUInteger i = 0;
@@ -210,7 +210,7 @@
     NSUInteger length = countingNonASCIICharacterAsTwo ? self.cigam_lengthWhenCountingNonASCIICharacterAsTwo : self.length;
     NSAssert(index < length, @"index out of bounds");
     if (index >= length) return @"";
-    index = countingNonASCIICharacterAsTwo ? [self transformIndexToDefaultModeWithIndex:index] : index;// 实际计算都按照系统默认的 length 规则来
+    index = countingNonASCIICharacterAsTwo ? [self cigam_transformIndexToDefaultModeWithIndex:index] : index;// 实际计算都按照系统默认的 length 规则来
     NSRange range = [self rangeOfComposedCharacterSequenceAtIndex:index];
     BOOL matchedCharacterSequence = range.length > 1;
     return [self substringFromIndex:matchedCharacterSequence && lessValue ? NSMaxRange(range) : range.location];
@@ -224,7 +224,7 @@
     NSUInteger length = countingNonASCIICharacterAsTwo ? self.cigam_lengthWhenCountingNonASCIICharacterAsTwo : self.length;
     NSAssert(index <= length, @"index out of bounds");
     if (index == 0 || index > length) return @"";
-    index = countingNonASCIICharacterAsTwo ? [self transformIndexToDefaultModeWithIndex:index] : index;// 实际计算都按照系统默认的 length 规则来
+    index = countingNonASCIICharacterAsTwo ? [self cigam_transformIndexToDefaultModeWithIndex:index] : index;// 实际计算都按照系统默认的 length 规则来
     NSRange range = [self rangeOfComposedCharacterSequenceAtIndex:index - 1];
     BOOL matchedCharacterSequence = range.length > 1;
     return [self substringToIndex:matchedCharacterSequence && lessValue ? range.location + 1 : NSMaxRange(range)];
@@ -235,7 +235,7 @@
 }
 
 - (NSString *)cigam_substringAvoidBreakingUpCharacterSequencesWithRange:(NSRange)range lessValue:(BOOL)lessValue countingNonASCIICharacterAsTwo:(BOOL)countingNonASCIICharacterAsTwo {
-    range = countingNonASCIICharacterAsTwo ? [self transformRangeToDefaultModeWithRange:range] : range;// 实际计算都按照系统默认的 length 规则来
+    range = countingNonASCIICharacterAsTwo ? [self cigam_transformRangeToDefaultModeWithRange:range] : range;// 实际计算都按照系统默认的 length 规则来
     NSRange characterSequencesRange = lessValue ? [self downRoundRangeOfComposedCharacterSequencesForRange:range] : [self rangeOfComposedCharacterSequencesForRange:range];
     NSString *resultString = [self substringWithRange:characterSequencesRange];
     return resultString;

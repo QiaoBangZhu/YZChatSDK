@@ -12,8 +12,6 @@
 #import "YZChatRequestBuilder.h"
 #import "YZChatResponseCode.h"
 #import "YZ_Precompile.h"
-#import "NSDictionary+YZExtension.h"
-#import "NSDate+YZExtension.h"
 #import "YZCommonConstant.h"
 #import "YZChatSettingStore.h"
 
@@ -94,7 +92,7 @@
             [paramsMd5 appendString:[NSString stringWithFormat:@"&%@=%@", key, value]];
         }else if ([value isKindOfClass:[NSDate class]]) {
             NSDate *time = (NSDate *)value;
-            NSNumber *ndate = [time number];
+            NSNumber *ndate = [NSNumber numberWithDouble:time.timeIntervalSince1970];
             [params1 setObject:ndate forKey:key];
             [paramsMd5 appendString:[NSString stringWithFormat:@"&%@=%@", key, ndate]];
         }
@@ -118,9 +116,12 @@
         return ReqErrorCodeParseError;
     }
     else {
-        if ([dictResult numberAtPath:@"error"] != nil) {
-            id valueRet = [dictResult numberAtPath:@"error" otherwise:@(ReqErrorCodeParseError)];
-            return [valueRet intValue];
+        NSObject *error = [dictResult objectForKey: @"error"];
+        if ([error isKindOfClass: [NSNumber class]]) {
+            return [(NSNumber *) error intValue];
+        }
+        else if ([error isKindOfClass:[NSString class]]) {
+            return [[NSNumber numberWithDouble:[(NSString *) error doubleValue]] intValue] ?: ReqErrorCodeParseError;
         }
     }
     return 0;

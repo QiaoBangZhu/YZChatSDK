@@ -9,7 +9,6 @@
 #import "YZSearchBarView.h"
 #import "UIColor+ColorExtension.h"
 #import <Masonry/Masonry.h>
-#import "UIImage+Foundation.h"
 #import "YZBaseManager.h"
 #import "NSBundle+YZBundle.h"
 
@@ -53,7 +52,7 @@
     if (!_searchBar) {
         _searchBar =  [[UISearchBar alloc]init];
         _searchBar.placeholder = @"搜索";
-        [_searchBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]]];
+        [_searchBar setBackgroundImage:[UIImage cigam_imageWithColor: UIColorWhite]];
         [_searchBar setTintColor:[UIColor colorWithHex:kCommonBlueTextColor]];
         [_searchBar setTranslucent:NO];
         UITextField *tf = [[[self.searchBar.subviews firstObject] subviews] lastObject];

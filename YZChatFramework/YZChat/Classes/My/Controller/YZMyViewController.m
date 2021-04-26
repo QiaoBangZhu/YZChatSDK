@@ -57,12 +57,6 @@
     return [UIImage cigam_imageWithColor: UIColorClear size:CGSizeMake(4, PixelOne) cornerRadius:0];
 }
 
-- (void)configureNav {
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:KCommonBackgroundColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
-}
-
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(16, 0, KScreenWidth-32, KScreenHeight-safeAreaTopHeight) style:UITableViewStylePlain];

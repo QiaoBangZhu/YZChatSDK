@@ -20,20 +20,20 @@
 
 @interface UIImageView ()
 
-@property(nonatomic, strong) CALayer *qimgv_animatedImageLayer;
-@property(nonatomic, strong) CADisplayLink *qimgv_displayLink;
-@property(nonatomic, strong) UIImage *qimgv_animatedImage;
-@property(nonatomic, assign) NSInteger qimgv_currentAnimatedImageIndex;
+@property(nonatomic, strong) CALayer *cigamv_animatedImageLayer;
+@property(nonatomic, strong) CADisplayLink *cigamv_displayLink;
+@property(nonatomic, strong) UIImage *cigamv_animatedImage;
+@property(nonatomic, assign) NSInteger cigamv_currentAnimatedImageIndex;
 @end
 
 @implementation UIImageView (CIGAM)
 
-CIGAMSynthesizeIdStrongProperty(qimgv_animatedImageLayer, setQimgv_animatedImageLayer)
-CIGAMSynthesizeIdStrongProperty(qimgv_displayLink, setQimgv_displayLink)
-CIGAMSynthesizeIdStrongProperty(qimgv_animatedImage, setQimgv_animatedImage)
-CIGAMSynthesizeNSIntegerProperty(qimgv_currentAnimatedImageIndex, setQimgv_currentAnimatedImageIndex)
+CIGAMSynthesizeIdStrongProperty(cigamv_animatedImageLayer, setCigamv_animatedImageLayer)
+CIGAMSynthesizeIdStrongProperty(cigamv_displayLink, setCigamv_displayLink)
+CIGAMSynthesizeIdStrongProperty(cigamv_animatedImage, setCigamv_animatedImage)
+CIGAMSynthesizeNSIntegerProperty(cigamv_currentAnimatedImageIndex, setCigamv_currentAnimatedImageIndex)
 
-- (void)qimgv_swizzleMethods {
+- (void)cigamv_swizzleMethods {
     [CIGAMHelper executeBlock:^{
         OverrideImplementation([UIImageView class], @selector(setImage:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
             return ^(UIImageView *selfObject, UIImage *image) {
@@ -46,14 +46,14 @@ CIGAMSynthesizeNSIntegerProperty(qimgv_currentAnimatedImageIndex, setQimgv_curre
                 };
                 
                 if (selfObject.cigam_smoothAnimation && image.images) {
-                    if (image != selfObject.qimgv_animatedImage) {
+                    if (image != selfObject.cigamv_animatedImage) {
                         callSuperBlock(nil);
-                        selfObject.qimgv_animatedImage = image;
-                        [selfObject qimgv_requestToStartAnimation];
+                        selfObject.cigamv_animatedImage = image;
+                        [selfObject cigamv_requestToStartAnimation];
                     }
                 } else {
-                    selfObject.qimgv_animatedImage = nil;
-                    [selfObject qimgv_stopAnimating];
+                    selfObject.cigamv_animatedImage = nil;
+                    [selfObject cigamv_stopAnimating];
                     callSuperBlock(image);
                 }
             };
@@ -61,8 +61,8 @@ CIGAMSynthesizeNSIntegerProperty(qimgv_currentAnimatedImageIndex, setQimgv_curre
         
         OverrideImplementation([UIImageView class], @selector(image), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
             return ^UIImage *(UIImageView *selfObject) {
-                if (selfObject.qimgv_animatedImage) {
-                    return selfObject.qimgv_animatedImage;
+                if (selfObject.cigamv_animatedImage) {
+                    return selfObject.cigamv_animatedImage;
                 }
                 
                 // call super
@@ -75,32 +75,32 @@ CIGAMSynthesizeNSIntegerProperty(qimgv_currentAnimatedImageIndex, setQimgv_curre
         });
 
         ExtendImplementationOfVoidMethodWithoutArguments([UIImageView class], @selector(layoutSubviews), ^(UIImageView *selfObject) {
-            if (selfObject.qimgv_animatedImageLayer) {
-                selfObject.qimgv_animatedImageLayer.frame = selfObject.bounds;
+            if (selfObject.cigamv_animatedImageLayer) {
+                selfObject.cigamv_animatedImageLayer.frame = selfObject.bounds;
             }
         });
         
         ExtendImplementationOfVoidMethodWithoutArguments([UIImageView class], @selector(didMoveToWindow), ^(UIImageView *selfObject) {
-            [selfObject qimgv_updateAnimationStateAutomatically];
+            [selfObject cigamv_updateAnimationStateAutomatically];
         });
         
         ExtendImplementationOfVoidMethodWithSingleArgument([UIImageView class], @selector(setHidden:), BOOL, ^(UIImageView *selfObject, BOOL hidden) {
-            [selfObject qimgv_updateAnimationStateAutomatically];
+            [selfObject cigamv_updateAnimationStateAutomatically];
         });
         
         ExtendImplementationOfVoidMethodWithSingleArgument([UIImageView class], @selector(setAlpha:), CGFloat, ^(UIImageView *selfObject, CGFloat alpha) {
-            [selfObject qimgv_updateAnimationStateAutomatically];
+            [selfObject cigamv_updateAnimationStateAutomatically];
         });
         
         ExtendImplementationOfVoidMethodWithSingleArgument([UIImageView class], @selector(setFrame:), CGRect, ^(UIImageView *selfObject, CGRect frame) {
-            [selfObject qimgv_updateAnimationStateAutomatically];
+            [selfObject cigamv_updateAnimationStateAutomatically];
         });
         
         OverrideImplementation([UIImageView class], @selector(sizeThatFits:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
             return ^CGSize(UIImageView *selfObject, CGSize size) {
                 
-                if (selfObject.qimgv_animatedImage) {
-                    return selfObject.qimgv_animatedImage.size;
+                if (selfObject.cigamv_animatedImage) {
+                    return selfObject.cigamv_animatedImage.size;
                 }
                 
                 // call super
@@ -112,73 +112,73 @@ CIGAMSynthesizeNSIntegerProperty(qimgv_currentAnimatedImageIndex, setQimgv_curre
         });
         
         ExtendImplementationOfVoidMethodWithSingleArgument([UIImageView class], @selector(setContentMode:), UIViewContentMode, ^(UIImageView *selfObject, UIViewContentMode firstArgv) {
-            if (selfObject.qimgv_animatedImageLayer) {
-                selfObject.qimgv_animatedImageLayer.contentsGravity = [CIGAMHelper layerContentsGravityWithContentMode:firstArgv];
+            if (selfObject.cigamv_animatedImageLayer) {
+                selfObject.cigamv_animatedImageLayer.contentsGravity = [CIGAMHelper layerContentsGravityWithContentMode:firstArgv];
             }
         });
     } oncePerIdentifier:@"UIImageView (CIGAM) smoothAnimation"];
 }
 
-- (BOOL)qimgv_requestToStartAnimation {
-    if (![self qimgv_canStartAnimation]) return NO;
+- (BOOL)cigamv_requestToStartAnimation {
+    if (![self cigamv_canStartAnimation]) return NO;
     
-    if (!self.qimgv_animatedImageLayer) {
-        self.qimgv_animatedImageLayer = [CALayer layer];
-        self.qimgv_animatedImageLayer.contentsGravity = [CIGAMHelper layerContentsGravityWithContentMode:self.contentMode];
-        [self.layer addSublayer:self.qimgv_animatedImageLayer];
+    if (!self.cigamv_animatedImageLayer) {
+        self.cigamv_animatedImageLayer = [CALayer layer];
+        self.cigamv_animatedImageLayer.contentsGravity = [CIGAMHelper layerContentsGravityWithContentMode:self.contentMode];
+        [self.layer addSublayer:self.cigamv_animatedImageLayer];
     }
     
-    if (!self.qimgv_displayLink) {
-        self.qimgv_displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
-        [self.qimgv_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-        NSInteger preferredFramesPerSecond = self.qimgv_animatedImage.images.count / self.qimgv_animatedImage.duration;
-        self.qimgv_displayLink.preferredFramesPerSecond = preferredFramesPerSecond;
-        self.qimgv_currentAnimatedImageIndex = -1;
-        self.qimgv_animatedImageLayer.contents = (__bridge id)self.qimgv_animatedImage.images.firstObject.CGImage;// 对于那种一开始就 pause 的图，displayLayer: 不会被调用，所以看不到图，为了避免这种情况，手动先把第一帧显示出来
+    if (!self.cigamv_displayLink) {
+        self.cigamv_displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
+        [self.cigamv_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+        NSInteger preferredFramesPerSecond = self.cigamv_animatedImage.images.count / self.cigamv_animatedImage.duration;
+        self.cigamv_displayLink.preferredFramesPerSecond = preferredFramesPerSecond;
+        self.cigamv_currentAnimatedImageIndex = -1;
+        self.cigamv_animatedImageLayer.contents = (__bridge id)self.cigamv_animatedImage.images.firstObject.CGImage;// 对于那种一开始就 pause 的图，displayLayer: 不会被调用，所以看不到图，为了避免这种情况，手动先把第一帧显示出来
     }
     
-    self.qimgv_displayLink.paused = self.cigam_pause;
+    self.cigamv_displayLink.paused = self.cigam_pause;
     
     return YES;
 }
 
-- (void)qimgv_stopAnimating {
-    if (self.qimgv_displayLink) {
-        [self.qimgv_displayLink invalidate];
-        self.qimgv_displayLink = nil;
+- (void)cigamv_stopAnimating {
+    if (self.cigamv_displayLink) {
+        [self.cigamv_displayLink invalidate];
+        self.cigamv_displayLink = nil;
     }
-    if (self.qimgv_animatedImageLayer) {
-        [self.qimgv_animatedImageLayer removeFromSuperlayer];
-        self.qimgv_animatedImageLayer = nil;
+    if (self.cigamv_animatedImageLayer) {
+        [self.cigamv_animatedImageLayer removeFromSuperlayer];
+        self.cigamv_animatedImageLayer = nil;
     }
 }
 
-- (void)qimgv_updateAnimationStateAutomatically {
-    if (self.qimgv_animatedImage) {
-        if (![self qimgv_requestToStartAnimation]) {
-            [self qimgv_stopAnimating];
+- (void)cigamv_updateAnimationStateAutomatically {
+    if (self.cigamv_animatedImage) {
+        if (![self cigamv_requestToStartAnimation]) {
+            [self cigamv_stopAnimating];
         }
     }
 }
 
-- (BOOL)qimgv_canStartAnimation {
+- (BOOL)cigamv_canStartAnimation {
     return self.cigam_visible && !CGRectIsEmpty(self.frame);
 }
 
 - (void)handleDisplayLink:(CADisplayLink *)displayLink {
-    self.qimgv_currentAnimatedImageIndex = self.qimgv_currentAnimatedImageIndex < self.qimgv_animatedImage.images.count - 1 ? (self.qimgv_currentAnimatedImageIndex + 1) : 0;
-    self.qimgv_animatedImageLayer.contents = (__bridge id)self.qimgv_animatedImage.images[self.qimgv_currentAnimatedImageIndex].CGImage;
+    self.cigamv_currentAnimatedImageIndex = self.cigamv_currentAnimatedImageIndex < self.cigamv_animatedImage.images.count - 1 ? (self.cigamv_currentAnimatedImageIndex + 1) : 0;
+    self.cigamv_animatedImageLayer.contents = (__bridge id)self.cigamv_animatedImage.images[self.cigamv_currentAnimatedImageIndex].CGImage;
 }
 
 static char kAssociatedObjectKey_smoothAnimation;
 - (void)setCigam_smoothAnimation:(BOOL)cigam_smoothAnimation {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_smoothAnimation, @(cigam_smoothAnimation), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if (cigam_smoothAnimation) {
-        [self qimgv_swizzleMethods];
+        [self cigamv_swizzleMethods];
     }
-    if (cigam_smoothAnimation && self.image.images && self.image != self.qimgv_animatedImage) {
+    if (cigam_smoothAnimation && self.image.images && self.image != self.cigamv_animatedImage) {
         self.image = self.image;// 重新设置图片，触发动画
-    } else if (!cigam_smoothAnimation && self.qimgv_animatedImage) {
+    } else if (!cigam_smoothAnimation && self.cigamv_animatedImage) {
         self.image = self.image;// 交给 setImage 那边把动画清理掉
     }
 }
@@ -191,10 +191,10 @@ static char kAssociatedObjectKey_pause;
 - (void)setCigam_pause:(BOOL)cigam_pause {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_pause, @(cigam_pause), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     if (self.animationImages || self.image.images) {
-        self.qimgv_animatedImageLayer.cigam_pause = cigam_pause;
+        self.cigamv_animatedImageLayer.cigam_pause = cigam_pause;
     }
-    if (self.qimgv_displayLink) {
-        self.qimgv_displayLink.paused = cigam_pause;
+    if (self.cigamv_displayLink) {
+        self.cigamv_displayLink.paused = cigam_pause;
     }
 }
 

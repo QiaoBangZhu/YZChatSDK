@@ -12,8 +12,6 @@
 #import "YChatRequestBuilder.h"
 #import "YChatResponseCode.h"
 #import "YChat_Precompile.h"
-#import "NSDictionary+YChatExtension.h"
-#import "NSDate+YChatExtension.h"
 #import "YChatSettingStore.h"
 
 @implementation YChatRequestMan
@@ -93,7 +91,7 @@
             [paramsMd5 appendString:[NSString stringWithFormat:@"&%@=%@", key, value]];
         }else if ([value isKindOfClass:[NSDate class]]) {
             NSDate *time = (NSDate *)value;
-            NSNumber *ndate = [time number];
+            NSNumber *ndate = [NSNumber numberWithDouble: time.timeIntervalSince1970];
             [params1 setObject:ndate forKey:key];
             [paramsMd5 appendString:[NSString stringWithFormat:@"&%@=%@", key, ndate]];
         }
@@ -117,13 +115,17 @@
         return ReqErrorCodeParseError;
     }
     else {
-        if ([dictResult numberAtPath:@"error"] != nil) {
-            id valueRet = [dictResult numberAtPath:@"error" otherwise:@(ReqErrorCodeParseError)];
-            return [valueRet intValue];
+        NSObject *error = [dictResult objectForKey: @"error"];
+        if ([error isKindOfClass: [NSNumber class]]) {
+            return [(NSNumber *) error intValue];
+        }
+        else if ([error isKindOfClass:[NSString class]]) {
+            return [[NSNumber numberWithDouble:[(NSString *) error doubleValue]] intValue] ?: ReqErrorCodeParseError;
         }
     }
     return 0;
 }
+
 
 + (NSError*)errorCode:(NSInteger)code withDesc:(NSString*)desc task:(NSURLSessionDataTask*)task
 {

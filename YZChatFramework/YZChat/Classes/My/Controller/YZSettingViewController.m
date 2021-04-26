@@ -21,7 +21,6 @@
 #import "YZAboutViewController.h"
 #import "YZBaseManager.h"
 #import <Masonry/Masonry.h>
-#import "UIImage+Foundation.h"
 
 @interface YZSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *data;

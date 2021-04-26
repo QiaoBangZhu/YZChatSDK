@@ -32,18 +32,8 @@
 		30423D01258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEC258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m */; };
 		30423D02258CBD72004AEFAE /* YZChatValidInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEE258CBD72004AEFAE /* YZChatValidInput.m */; };
 		30423D03258CBD72004AEFAE /* YZChatValidInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEE258CBD72004AEFAE /* YZChatValidInput.m */; };
-		30423D04258CBD72004AEFAE /* NSDate+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEF258CBD72004AEFAE /* NSDate+YZExtension.m */; };
-		30423D05258CBD72004AEFAE /* NSDate+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEF258CBD72004AEFAE /* NSDate+YZExtension.m */; };
-		30423D06258CBD72004AEFAE /* NSDictionary+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF2258CBD72004AEFAE /* NSDictionary+YZExtension.m */; };
-		30423D07258CBD72004AEFAE /* NSDictionary+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF2258CBD72004AEFAE /* NSDictionary+YZExtension.m */; };
 		30423D08258CBD72004AEFAE /* NSObject+YZTypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */; };
 		30423D09258CBD72004AEFAE /* NSObject+YZTypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */; };
-		30423D0A258CBD72004AEFAE /* NSDate+YZUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF4258CBD72004AEFAE /* NSDate+YZUtilities.m */; };
-		30423D0B258CBD72004AEFAE /* NSDate+YZUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF4258CBD72004AEFAE /* NSDate+YZUtilities.m */; };
-		30423D0C258CBD72004AEFAE /* NSString+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF6258CBD72004AEFAE /* NSString+YZExtension.m */; };
-		30423D0D258CBD72004AEFAE /* NSString+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF6258CBD72004AEFAE /* NSString+YZExtension.m */; };
-		30423D0E258CBD72004AEFAE /* NSData+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF9258CBD72004AEFAE /* NSData+YZExtension.m */; };
-		30423D0F258CBD72004AEFAE /* NSData+YZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF9258CBD72004AEFAE /* NSData+YZExtension.m */; };
 		30423D93258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423D92258CBEBA004AEFAE /* UIColor+YZFoundation.m */; };
 		30423D94258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423D92258CBEBA004AEFAE /* UIColor+YZFoundation.m */; };
 		307F9D5B2614636400FD89DE /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F9D5A2614636400FD89DE /* YWebViewController.m */; };
@@ -163,22 +153,12 @@
 		30423C32258CB9D0004AEFAE /* YZAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZAppDelegate.m; sourceTree = "<group>"; };
 		30423C33258CB9D0004AEFAE /* YTextFieldInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTextFieldInputView.h; sourceTree = "<group>"; };
 		30423CEA258CBD72004AEFAE /* UIButton+YZCaptcha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+YZCaptcha.m"; sourceTree = "<group>"; };
-		30423CEB258CBD72004AEFAE /* NSDate+YZUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YZUtilities.h"; sourceTree = "<group>"; };
 		30423CEC258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+YZExtensions.m"; sourceTree = "<group>"; };
 		30423CED258CBD72004AEFAE /* YZChatValidInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZChatValidInput.h; sourceTree = "<group>"; };
 		30423CEE258CBD72004AEFAE /* YZChatValidInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZChatValidInput.m; sourceTree = "<group>"; };
-		30423CEF258CBD72004AEFAE /* NSDate+YZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YZExtension.m"; sourceTree = "<group>"; };
-		30423CF0258CBD72004AEFAE /* NSDictionary+YZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+YZExtension.h"; sourceTree = "<group>"; };
-		30423CF1258CBD72004AEFAE /* NSString+YZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YZExtension.h"; sourceTree = "<group>"; };
-		30423CF2258CBD72004AEFAE /* NSDictionary+YZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+YZExtension.m"; sourceTree = "<group>"; };
 		30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YZTypeConversion.m"; sourceTree = "<group>"; };
-		30423CF4258CBD72004AEFAE /* NSDate+YZUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YZUtilities.m"; sourceTree = "<group>"; };
-		30423CF5258CBD72004AEFAE /* NSData+YZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+YZExtension.h"; sourceTree = "<group>"; };
-		30423CF6258CBD72004AEFAE /* NSString+YZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YZExtension.m"; sourceTree = "<group>"; };
 		30423CF7258CBD72004AEFAE /* NSObject+YZTypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YZTypeConversion.h"; sourceTree = "<group>"; };
-		30423CF9258CBD72004AEFAE /* NSData+YZExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+YZExtension.m"; sourceTree = "<group>"; };
 		30423CFB258CBD72004AEFAE /* UIButton+YZCaptcha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+YZCaptcha.h"; sourceTree = "<group>"; };
-		30423CFC258CBD72004AEFAE /* NSDate+YZExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YZExtension.h"; sourceTree = "<group>"; };
 		30423CFD258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+YZExtensions.h"; sourceTree = "<group>"; };
 		30423D91258CBEBA004AEFAE /* UIColor+YZFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YZFoundation.h"; sourceTree = "<group>"; };
 		30423D92258CBEBA004AEFAE /* UIColor+YZFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YZFoundation.m"; sourceTree = "<group>"; };
@@ -335,18 +315,8 @@
 		30423C3E258CBA4E004AEFAE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				30423CF5258CBD72004AEFAE /* NSData+YZExtension.h */,
-				30423CF9258CBD72004AEFAE /* NSData+YZExtension.m */,
-				30423CFC258CBD72004AEFAE /* NSDate+YZExtension.h */,
-				30423CEF258CBD72004AEFAE /* NSDate+YZExtension.m */,
-				30423CEB258CBD72004AEFAE /* NSDate+YZUtilities.h */,
-				30423CF4258CBD72004AEFAE /* NSDate+YZUtilities.m */,
-				30423CF0258CBD72004AEFAE /* NSDictionary+YZExtension.h */,
-				30423CF2258CBD72004AEFAE /* NSDictionary+YZExtension.m */,
 				30423CF7258CBD72004AEFAE /* NSObject+YZTypeConversion.h */,
 				30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */,
-				30423CF1258CBD72004AEFAE /* NSString+YZExtension.h */,
-				30423CF6258CBD72004AEFAE /* NSString+YZExtension.m */,
 				30423CFD258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.h */,
 				30423CEC258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m */,
 				30423CFB258CBD72004AEFAE /* UIButton+YZCaptcha.h */,
@@ -742,7 +712,6 @@
 			files = (
 				E57AA3CE261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */,
 				307F9D5B2614636400FD89DE /* YWebViewController.m in Sources */,
-				30423D0C258CBD72004AEFAE /* NSString+YZExtension.m in Sources */,
 				30423D93258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */,
 				30423C34258CB9D0004AEFAE /* YZLoginViewController.m in Sources */,
 				304239C9258C961A004AEFAE /* YZChatRequestMan.m in Sources */,
@@ -751,14 +720,10 @@
 				304239C3258C961A004AEFAE /* YZChatURLRequest.m in Sources */,
 				30423C3A258CB9D0004AEFAE /* YZAppDelegate.m in Sources */,
 				30A9862E25A422FC0082D3C9 /* AbstractUserModel.m in Sources */,
-				30423D06258CBD72004AEFAE /* NSDictionary+YZExtension.m in Sources */,
 				E57AA3C7261A07B100B4E6C1 /* MAGICViewController.m in Sources */,
 				304239CB258C961A004AEFAE /* YZChatNetworkEngine.m in Sources */,
-				30423D0E258CBD72004AEFAE /* NSData+YZExtension.m in Sources */,
 				30291743260DDC0200627F29 /* YZChatSettingStore.m in Sources */,
 				304239C7258C961A004AEFAE /* YZChatUploadManager.m in Sources */,
-				30423D04258CBD72004AEFAE /* NSDate+YZExtension.m in Sources */,
-				30423D0A258CBD72004AEFAE /* NSDate+YZUtilities.m in Sources */,
 				304239C5258C961A004AEFAE /* YZChatRequestBuilder.m in Sources */,
 				304239C1258C961A004AEFAE /* YZChatHTTPClient.m in Sources */,
 				30423C36258CB9D0004AEFAE /* YTextFieldInputView.m in Sources */,
@@ -773,7 +738,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30423D0D258CBD72004AEFAE /* NSString+YZExtension.m in Sources */,
 				30423D94258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */,
 				30423C35258CB9D0004AEFAE /* YZLoginViewController.m in Sources */,
 				304239CA258C961A004AEFAE /* YZChatRequestMan.m in Sources */,
@@ -781,12 +745,8 @@
 				30423D03258CBD72004AEFAE /* YZChatValidInput.m in Sources */,
 				304239C4258C961A004AEFAE /* YZChatURLRequest.m in Sources */,
 				30423C3B258CB9D0004AEFAE /* YZAppDelegate.m in Sources */,
-				30423D07258CBD72004AEFAE /* NSDictionary+YZExtension.m in Sources */,
 				304239CC258C961A004AEFAE /* YZChatNetworkEngine.m in Sources */,
-				30423D0F258CBD72004AEFAE /* NSData+YZExtension.m in Sources */,
 				304239C8258C961A004AEFAE /* YZChatUploadManager.m in Sources */,
-				30423D05258CBD72004AEFAE /* NSDate+YZExtension.m in Sources */,
-				30423D0B258CBD72004AEFAE /* NSDate+YZUtilities.m in Sources */,
 				304239C6258C961A004AEFAE /* YZChatRequestBuilder.m in Sources */,
 				304239C2258C961A004AEFAE /* YZChatHTTPClient.m in Sources */,
 				E57AA3CF261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */,
@@ -939,7 +899,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../YZChat/Vendors",
-					"$(PROJECT_DIR)/YZChat/Vendors",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
@@ -972,7 +931,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../YZChat/Vendors",
-					"$(PROJECT_DIR)/YZChat/Vendors",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";

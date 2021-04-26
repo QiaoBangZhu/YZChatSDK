@@ -10,7 +10,6 @@
 #import "CommonConstant.h"
 #import "UIColor+Foundation.h"
 #import "UIButton+Foundation.h"
-#import "UIImage+Foundation.h"
 #import <Masonry/Masonry.h>
 
 #define TAG_TITLELABEL_NAVIGATIONBAR   50000
@@ -36,7 +35,9 @@
         self.barButtonDisabledTitleColor = [UIColor colorWithHex:0xB9BBBE];
         self.barButtonHighlightedTitleColor = [UIColor colorWithHex:0xB9BBBE];
         self.containerView = [[UIView alloc] init];
-        self.imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"title_bg"] stretchImage]];
+        UIImage *image = [UIImage imageNamed:@"title_bg"];
+
+        self.imageView = [[UIImageView alloc] initWithImage:[image stretchableImageWithLeftCapWidth:floorf(image.size.width / 2) topCapHeight:floorf(image.size.height / 2)]];
         [self addSubview:self.imageView];
         [self addSubview:self.containerView];
         [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
