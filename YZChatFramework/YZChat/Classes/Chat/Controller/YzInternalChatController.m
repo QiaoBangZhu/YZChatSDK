@@ -119,7 +119,7 @@
         
         _moreMenus = moreMenus;
         _isInternal = NO;
-        _isGroup = chatInfo.isGroup;
+        _isGroup =[ _chatInfo.conversationId hasPrefix: @"group_"];
     }
     [self fetchConversation];
     
@@ -131,11 +131,10 @@
     
     if (_isGroup) {
         _pendencyViewModel = [[TUIGroupPendencyViewModel alloc] init];
-        _pendencyViewModel.groupId = _conversationData.groupID ?: _chatInfo.chatId;
+        _pendencyViewModel.groupId = _conversationData.groupID ?: [_chatInfo.conversationId substringFromIndex: 6];
     }
     _atUserList = [[NSMutableArray alloc] init];
     _registeredCustomMessageClass = [[NSMutableDictionary alloc] init];
-    _registeredCustomMessageClass[@"YZCardMsgCell"] = [YZCardMsgView class];
 }
 
 - (void)dealloc {
@@ -173,7 +172,6 @@
 #pragma mark - Public
 
 - (void)registerClass:(nullable Class)viewClass forCustomMessageViewReuseIdentifier:(NSString *)identifier {
-    NSAssert([viewClass isSubclassOfClass: [YzCustomMessageView class]], @"自定义消息视图类型，需继承自 YzCustomMessageView");
     _registeredCustomMessageClass[identifier] = viewClass;
     [self.messageController.tableView registerClass: [YzCustomMessageCell class] forCellReuseIdentifier: identifier];
 }
@@ -358,20 +356,19 @@
     if (data.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
         NSDictionary *param = [YZUtil jsonData2Dictionary: data.customElem.data];
         if (param) {
-            NSString *businessID = param[@"businessID"];
-            NSString *text = param[@"title"];
-            NSString *link = param[@"link"];
-            if (text.length == 0 || link.length == 0) {
-                return nil;
-            }
+            NSString *businessID = [param[@"businessID"] stringValue];
             if ([businessID isEqualToString: CardLink]) {
+                NSString *text = param[@"title"];
+                NSString *link = param[@"link"];
+                if (text.length == 0 || link.length == 0) return nil;
+
                 YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: data];
                 cellData.customMessageData = [[YZCardMsgData alloc] initWithTitle: text desc: param[@"desc"] logo: param[@"logo"] link: link];
                 return cellData;
             }
         }
         // 用户自定
-        else if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {
+        if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {
             YzCustomMessageData *custom = [self.dataSource customMessageForData: data.customElem.data];
             if (custom) {
                 YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: data];
@@ -398,6 +395,9 @@
         cell.customViewClass = viewClass;
         [cell.customView fillWithData: ((YzCustomMessageCellData *)data).customMessageData];
         [cell fillWithData: data];
+        if (self.delegate && [self.delegate respondsToSelector: @selector(updatedCustomMessageView:)]) {
+            [self.delegate updatedCustomMessageView: cell.customView];
+        }
         return cell;
     }
     return nil;
@@ -650,7 +650,7 @@
     NSString *text = @"元信IM生态工具元信";//IM生态工具元信IM生态工具元信IM生态工具元信IM生态工具
     NSString *link = @"http://yzmsri.com/";
     NSString *desc = @"欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！欢迎加入元信大家庭！";
-    NSString * logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
+    NSString *logo = @"https://yzkj-im.oss-cn-beijing.aliyuncs.com/user/16037885020911603788500745.png";
     YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
     YZCardMsgData *custom = [[YZCardMsgData alloc] initWithTitle: text desc: desc logo: logo link: link];
     cellData.customMessageData = custom;
@@ -859,10 +859,12 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [self addChildViewController: self.messageController];
     [self.view addSubview: self.messageController.view];
     [self.messageController.tableView registerClass:[YZLocationMessageCell class] forCellReuseIdentifier: LocationMessageCell_ReuseId];
-    for (NSString *key in _registeredCustomMessageClass) {
-        [self registerClass: _registeredCustomMessageClass[key] forCustomMessageViewReuseIdentifier: key];
+    NSDictionary *classes = [_registeredCustomMessageClass copy];
+    for (NSString *key in classes) {
+        [self registerClass: classes[key] forCustomMessageViewReuseIdentifier: key];
     }
-    
+    [self registerClass: [YZCardMsgView class] forCustomMessageViewReuseIdentifier: @"YZCardMsgCell"];
+
     //input
     self.inputController.view.frame = CGRectMake(0, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight, self.view.frame.size.width, TTextView_Height + Bottom_SafeHeight);
     self.inputController.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
@@ -912,9 +914,8 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 /// 获取会话信息
 - (void)fetchConversation {
-    NSString *conversationId = [(_chatInfo.isGroup ? @"group_" : @"c2c_") stringByAppendingString: _chatInfo.chatId];
     @weakify(self)
-    [[V2TIMManager sharedInstance] getConversation: conversationId succ:^(V2TIMConversation *conv) {
+    [[V2TIMManager sharedInstance] getConversation: _chatInfo.conversationId succ:^(V2TIMConversation *conv) {
         @strongify(self)
         TUIConversationCellData *data = [TUIConversationCellData makeDataByConversation: conv];
         self.conversationData = data;

@@ -15,20 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YzChatInfo : NSObject
 
-/// 用户id或者群id
-@property (nonatomic, copy) NSString *chatId;
-/// 标题
-@property (nonatomic, copy) NSString *chatName;
-/**
- *  是否是群
- *
- *  @default NO
- */
-@property (nonatomic, assign) BOOL isGroup;
+/// 会话唯一 ID，如果是 C2C 单聊，组成方式为 c2c_userID，如果是群聊，组成方式为 group_groupID
+@property (nonatomic, copy) NSString *conversationId;
+/// 会话展示名称（群组：群名称 >> 群 ID；C2C：对方好友备注 >> 对方昵称 >> 对方的 userID）
+@property (nonatomic, copy) NSString *showName;
 
-- (instancetype)initWithChatId:(NSString *)chatId
-                      chatName:(NSString *)chatName
-                       isGroup:(BOOL)isGroup;
+- (instancetype)initWithConversationId:(NSString *)conversationId
+                              showName:(NSString *)showName;
 
 @end
 

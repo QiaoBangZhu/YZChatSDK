@@ -14,14 +14,11 @@
 
 @implementation YzChatInfo
 
-- (instancetype)initWithChatId:(NSString *)chatId
-                      chatName:(NSString *)chatName
-                       isGroup:(BOOL)isGroup {
-    self = [super init];
-    if (self) {
-        _chatId = chatId;
-        _chatName = chatName;
-        _isGroup = isGroup;
+- (instancetype)initWithConversationId:(NSString *)conversationId
+                              showName:(NSString *)showName {
+    if (self = [super init]) {
+        _conversationId = conversationId;
+        _showName = showName;
     }
     return self;
 }
@@ -65,7 +62,7 @@
                           config:(nullable YzChatControllerConfig *)config {
     self = [super initWithNibName: nil bundle: nil];
     if (self) {
-        chatInfo.chatId = chatInfo.chatId ?: @"";
+        chatInfo.conversationId = chatInfo.conversationId ?: @"";
         _chatInfo = chatInfo;
         _chatConfig = config ?: [[YzChatControllerConfig alloc] init];
         [self didInitialize];
@@ -86,6 +83,7 @@
 }
 
 - (void)didInitialize {
+    self.chatController = [[YzInternalChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
     self.titleView = [[CIGAMNavigationTitleView alloc] init];
     self.titleView.title = self.title;
     self.navigationItem.titleView = self.titleView;
@@ -97,22 +95,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = _chatInfo.chatName;
-    [self setupChatController];
+    
+    self.title = _chatInfo.showName;
+    [self addChildViewController: self.chatController];
+    [self.view addSubview: self.chatController.view];
 
-    if (!_chatInfo.chatName.length) {
+    if (!_chatInfo.showName.length) {
         @weakify(self)
         [[RACObserve(self.chatController, title) distinctUntilChanged] subscribeNext:^(NSString *title) {
             @strongify(self)
             self.title = title;
         }];
     }
-}
-
-- (void)setupChatController {
-    self.chatController = [[YzInternalChatController alloc] initWithChatInfo: _chatInfo config: _chatConfig];
-    [self addChildViewController: self.chatController];
-    [self.view addSubview: self.chatController.view];
 }
 
 #pragma mark - Public

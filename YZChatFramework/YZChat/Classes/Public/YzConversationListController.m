@@ -42,6 +42,7 @@
 }
 
 - (void)didInitialize {
+    self.conversationList = [[YzInternalConversationListController alloc] initWithChatType: _chatType];
     self.titleView = [[CIGAMNavigationTitleView alloc] init];
     self.titleView.title = self.title;
     self.navigationItem.titleView = self.titleView;
@@ -54,9 +55,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.conversationList = [[YzInternalConversationListController alloc] initWithChatType: _chatType];
     [self addChildViewController: self.conversationList];
     [self.view addSubview: self.conversationList.view];
+    self.conversationList.delegate = self.delegate;
 
     [self subscribe];
 }
