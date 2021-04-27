@@ -939,7 +939,7 @@ static char kAssociatedObjectKey_keyboardWillShowNotificationBlock;
 - (void)setCigam_keyboardWillShowNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardWillShowNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardWillShowNotificationBlock, cigam_keyboardWillShowNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardWillShowNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -951,7 +951,7 @@ static char kAssociatedObjectKey_keyboardDidShowNotificationBlock;
 - (void)setCigam_keyboardDidShowNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardDidShowNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardDidShowNotificationBlock, cigam_keyboardDidShowNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardDidShowNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -963,7 +963,7 @@ static char kAssociatedObjectKey_keyboardWillHideNotificationBlock;
 - (void)setCigam_keyboardWillHideNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardWillHideNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardWillHideNotificationBlock, cigam_keyboardWillHideNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardWillHideNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -975,7 +975,7 @@ static char kAssociatedObjectKey_keyboardDidHideNotificationBlock;
 - (void)setCigam_keyboardDidHideNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardDidHideNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardDidHideNotificationBlock, cigam_keyboardDidHideNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardDidHideNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -987,7 +987,7 @@ static char kAssociatedObjectKey_keyboardWillChangeFrameNotificationBlock;
 - (void)setCigam_keyboardWillChangeFrameNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardWillChangeFrameNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardWillChangeFrameNotificationBlock, cigam_keyboardWillChangeFrameNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardWillChangeFrameNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -999,7 +999,7 @@ static char kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock;
 - (void)setCigam_keyboardDidChangeFrameNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardDidChangeFrameNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock, cigam_keyboardDidChangeFrameNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardDidChangeFrameNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1007,7 +1007,7 @@ static char kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock;
     return (void (^)(CIGAMKeyboardUserInfo *))objc_getAssociatedObject(self, &kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock);
 }
 
-- (void)initKeyboardManagerIfNeeded {
+- (void)cigam_initKeyboardManagerIfNeeded {
     if (!self.cigam_keyboardManager) {
         self.cigam_keyboardManager = [[CIGAMKeyboardManager alloc] initWithDelegate:self];
         [self.cigam_keyboardManager addTargetResponder:self];
@@ -1066,7 +1066,7 @@ static char kAssociatedObjectKey_keyboardWillShowNotificationBlock;
 - (void)setCigam_keyboardWillShowNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardWillShowNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardWillShowNotificationBlock, cigam_keyboardWillShowNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardWillShowNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1078,7 +1078,7 @@ static char kAssociatedObjectKey_keyboardDidShowNotificationBlock;
 - (void)setCigam_keyboardDidShowNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardDidShowNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardDidShowNotificationBlock, cigam_keyboardDidShowNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardDidShowNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1090,7 +1090,7 @@ static char kAssociatedObjectKey_keyboardWillHideNotificationBlock;
 - (void)setCigam_keyboardWillHideNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardWillHideNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardWillHideNotificationBlock, cigam_keyboardWillHideNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardWillHideNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1102,7 +1102,7 @@ static char kAssociatedObjectKey_keyboardDidHideNotificationBlock;
 - (void)setCigam_keyboardDidHideNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardDidHideNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardDidHideNotificationBlock, cigam_keyboardDidHideNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardDidHideNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1114,7 +1114,7 @@ static char kAssociatedObjectKey_keyboardWillChangeFrameNotificationBlock;
 - (void)setCigam_keyboardWillChangeFrameNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardWillChangeFrameNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardWillChangeFrameNotificationBlock, cigam_keyboardWillChangeFrameNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardWillChangeFrameNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1126,7 +1126,7 @@ static char kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock;
 - (void)setCigam_keyboardDidChangeFrameNotificationBlock:(void (^)(CIGAMKeyboardUserInfo *))cigam_keyboardDidChangeFrameNotificationBlock {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock, cigam_keyboardDidChangeFrameNotificationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (cigam_keyboardDidChangeFrameNotificationBlock) {
-        [self initKeyboardManagerIfNeeded];
+        [self cigam_initKeyboardManagerIfNeeded];
     }
 }
 
@@ -1134,7 +1134,7 @@ static char kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock;
     return (void (^)(CIGAMKeyboardUserInfo *))objc_getAssociatedObject(self, &kAssociatedObjectKey_keyboardDidChagneFrameNotificationBlock);
 }
 
-- (void)initKeyboardManagerIfNeeded {
+- (void)cigam_initKeyboardManagerIfNeeded {
     if (!self.cigam_keyboardManager) {
         self.cigam_keyboardManager = [[CIGAMKeyboardManager alloc] initWithDelegate:self];
         [self.cigam_keyboardManager addTargetResponder:self];

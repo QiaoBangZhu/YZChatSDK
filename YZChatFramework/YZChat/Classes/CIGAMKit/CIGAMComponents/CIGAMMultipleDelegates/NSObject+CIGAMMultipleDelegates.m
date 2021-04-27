@@ -53,7 +53,7 @@ static char kAssociatedObjectKey_cigamMultipleDelegatesEnabled;
     
     Class targetClass = [self class];
     SEL originDelegateSetter = setterWithGetter(getter);
-    SEL newDelegateSetter = [self newSetterWithGetter:getter];
+    SEL newDelegateSetter = [self cigam_newSetterWithGetter:getter];
     Method originMethod = class_getInstanceMethod(targetClass, originDelegateSetter);
     if (!originMethod) {
         return;
@@ -137,13 +137,13 @@ static char kAssociatedObjectKey_cigamMultipleDelegatesEnabled;
     }];
     if (delegateGetters.count > 0) {
         for (NSString *getterString in delegateGetters) {
-            [self refreshDelegateWithGetter:NSSelectorFromString(getterString)];
+            [self cigam_refreshDelegateWithGetter:NSSelectorFromString(getterString)];
         }
     }
 }
 
-- (void)refreshDelegateWithGetter:(SEL)getter {
-    SEL originSetterSEL = [self newSetterWithGetter:getter];
+- (void)cigam_refreshDelegateWithGetter:(SEL)getter {
+    SEL originSetterSEL = [self cigam_newSetterWithGetter:getter];
     BeginIgnorePerformSelectorLeaksWarning
     id originDelegate = [self performSelector:getter];
     [self performSelector:originSetterSEL withObject:nil];// 先置为 nil 再设置 delegates，从而避免这个问题 https://github.com/Tencent/CIGAM_iOS/issues/305
@@ -152,7 +152,7 @@ static char kAssociatedObjectKey_cigamMultipleDelegatesEnabled;
 }
 
 // 根据 delegate property 的 getter，得到 CIGAMMultipleDelegates 为它的 setter 创建的新 setter 方法，最终交换原方法，因此利用这个方法返回的 SEL，可以调用到原来的 delegate property setter 的实现
-- (SEL)newSetterWithGetter:(SEL)getter {
+- (SEL)cigam_newSetterWithGetter:(SEL)getter {
     return NSSelectorFromString([NSString stringWithFormat:@"cigammd_%@", NSStringFromSelector(setterWithGetter(getter))]);
 }
 

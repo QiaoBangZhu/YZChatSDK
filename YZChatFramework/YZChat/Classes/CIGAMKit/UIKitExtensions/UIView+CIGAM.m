@@ -615,8 +615,8 @@ static char kAssociatedObjectKey_shouldShowDebugColor;
             ExtendImplementationOfVoidMethodWithoutArguments([UIView class], @selector(layoutSubviews), ^(UIView *selfObject) {
                 if (selfObject.cigam_shouldShowDebugColor) {
                     selfObject.cigam_hasDebugColor = YES;
-                    selfObject.backgroundColor = [selfObject debugColor];
-                    [selfObject renderColorWithSubviews:selfObject.subviews];
+                    selfObject.backgroundColor = [selfObject cigam_debugColor];
+                    [selfObject cigam_renderColorWithSubviews:selfObject.subviews];
                 }
             });
         } oncePerIdentifier:@"UIView (CIGAMDebug) shouldShowDebugColor"];
@@ -668,20 +668,20 @@ static char kAssociatedObjectKey_sizeThatFitsBlock;
     return objc_getAssociatedObject(self, &kAssociatedObjectKey_sizeThatFitsBlock);
 }
 
-- (void)renderColorWithSubviews:(NSArray *)subviews {
+- (void)cigam_renderColorWithSubviews:(NSArray *)subviews {
     for (UIView *view in subviews) {
         if ([view isKindOfClass:[UIStackView class]]) {
             UIStackView *stackView = (UIStackView *)view;
-            [self renderColorWithSubviews:stackView.arrangedSubviews];
+            [self cigam_renderColorWithSubviews:stackView.arrangedSubviews];
         }
         view.cigam_hasDebugColor = YES;
         view.cigam_shouldShowDebugColor = self.cigam_shouldShowDebugColor;
         view.cigam_needsDifferentDebugColor = self.cigam_needsDifferentDebugColor;
-        view.backgroundColor = [self debugColor];
+        view.backgroundColor = [self cigam_debugColor];
     }
 }
 
-- (UIColor *)debugColor {
+- (UIColor *)cigam_debugColor {
     if (!self.cigam_needsDifferentDebugColor) {
         return UIColorTestRed;
     } else {

@@ -129,7 +129,7 @@ CIGAMSynthesizeNSIntegerProperty(cigamv_currentAnimatedImageIndex, setCigamv_cur
     }
     
     if (!self.cigamv_displayLink) {
-        self.cigamv_displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
+        self.cigamv_displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(cigam_handleDisplayLink:)];
         [self.cigamv_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
         NSInteger preferredFramesPerSecond = self.cigamv_animatedImage.images.count / self.cigamv_animatedImage.duration;
         self.cigamv_displayLink.preferredFramesPerSecond = preferredFramesPerSecond;
@@ -165,7 +165,7 @@ CIGAMSynthesizeNSIntegerProperty(cigamv_currentAnimatedImageIndex, setCigamv_cur
     return self.cigam_visible && !CGRectIsEmpty(self.frame);
 }
 
-- (void)handleDisplayLink:(CADisplayLink *)displayLink {
+- (void)cigam_handleDisplayLink:(CADisplayLink *)displayLink {
     self.cigamv_currentAnimatedImageIndex = self.cigamv_currentAnimatedImageIndex < self.cigamv_animatedImage.images.count - 1 ? (self.cigamv_currentAnimatedImageIndex + 1) : 0;
     self.cigamv_animatedImageLayer.contents = (__bridge id)self.cigamv_animatedImage.images[self.cigamv_currentAnimatedImageIndex].CGImage;
 }

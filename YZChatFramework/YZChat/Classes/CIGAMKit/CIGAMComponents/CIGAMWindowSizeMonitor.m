@@ -18,24 +18,24 @@
 
 @interface NSObject (CIGAMWindowSizeMonitor_Private)
 
-@property(nonatomic, readonly) NSMutableArray <CIGAMWindowSizeObserverHandler> *qwsm_windowSizeChangeHandlers;
+@property(nonatomic, readonly) NSMutableArray <CIGAMWindowSizeObserverHandler> *cigam_windowSizeChangeHandlers;
 
 @end
 
 @interface UIResponder (CIGAMWindowSizeMonitor_Private)
 
-@property(nonatomic, weak) UIWindow *qwsm_previousWindow;
+@property(nonatomic, weak) UIWindow *cigam_previousWindow;
 
 @end
 
 
 @interface UIWindow (CIGAMWindowSizeMonitor_Private)
 
-@property(nonatomic, assign) CGSize qwsm_previousSize;
-@property(nonatomic, readonly) NSPointerArray *qwsm_sizeObservers;
-@property(nonatomic, readonly) NSPointerArray *qwsm_canReceiveWindowDidTransitionToSizeResponders;
+@property(nonatomic, assign) CGSize cigam_previousSize;
+@property(nonatomic, readonly) NSPointerArray *cigam_sizeObservers;
+@property(nonatomic, readonly) NSPointerArray *cigam_canReceiveWindowDidTransitionToSizeResponders;
 
-- (void)qwsm_addSizeObserver:(NSObject *)observer;
+- (void)cigam_addSizeObserver:(NSObject *)observer;
 
 @end
 
@@ -58,18 +58,18 @@
     };
     
     void * blockFuncPtr = ((__bridge struct Block_literal *)handler)->__FuncPtr;
-    for (CIGAMWindowSizeObserverHandler handler in self.qwsm_windowSizeChangeHandlers) {
+    for (CIGAMWindowSizeObserverHandler handler in self.cigam_windowSizeChangeHandlers) {
         // 由于利用 block 的 __FuncPtr 指针来判断同一个实现的 block 过滤掉，防止重复添加监听
         if (((__bridge struct Block_literal *)handler)->__FuncPtr == blockFuncPtr) {
             return;
         }
     }
     
-    [self.qwsm_windowSizeChangeHandlers addObject:handler];
-    [window qwsm_addSizeObserver:self];
+    [self.cigam_windowSizeChangeHandlers addObject:handler];
+    [window cigam_addSizeObserver:self];
 }
 
-- (NSMutableArray<CIGAMWindowSizeObserverHandler> *)qwsm_windowSizeChangeHandlers {
+- (NSMutableArray<CIGAMWindowSizeObserverHandler> *)cigam_windowSizeChangeHandlers {
     NSMutableArray *_handlers = objc_getAssociatedObject(self, _cmd);
     if (!_handlers) {
         _handlers = [NSMutableArray array];
@@ -82,7 +82,7 @@
 
 @implementation UIWindow (CIGAMWindowSizeMonitor)
 
-CIGAMSynthesizeCGSizeProperty(qwsm_previousSize, setQwsm_previousSize)
+CIGAMSynthesizeCGSizeProperty(cigam_previousSize, setCigam_previousSize)
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -90,11 +90,11 @@ CIGAMSynthesizeCGSizeProperty(qwsm_previousSize, setQwsm_previousSize)
         
         void (^notifyNewSizeBlock)(UIWindow *, CGRect) = ^(UIWindow *selfObject, CGRect firstArgv) {
             CGSize newSize = selfObject.bounds.size;
-            if (!CGSizeEqualToSize(newSize, selfObject.qwsm_previousSize)) {
-                if (!CGSizeEqualToSize(selfObject.qwsm_previousSize, CGSizeZero)) {
-                    [selfObject qwsm_notifyWithNewSize:newSize];
+            if (!CGSizeEqualToSize(newSize, selfObject.cigam_previousSize)) {
+                if (!CGSizeEqualToSize(selfObject.cigam_previousSize, CGSizeZero)) {
+                    [selfObject cigam_notifyWithNewSize:newSize];
                 }
-                selfObject.qwsm_previousSize = selfObject.bounds.size;
+                selfObject.cigam_previousSize = selfObject.bounds.size;
             }
         };
         
@@ -111,11 +111,11 @@ CIGAMSynthesizeCGSizeProperty(qwsm_previousSize, setQwsm_previousSize)
                 
                 if (newWindow) {
                     if ([selfObject respondsToSelector:@selector(windowDidTransitionToSize:)]) {
-                        [newWindow qwsm_addDidTransitionToSizeMethodReceiver:selfObject];
+                        [newWindow cigam_addDidTransitionToSizeMethodReceiver:selfObject];
                     }
                     UIResponder *nextResponder = [selfObject nextResponder];
                     if ([nextResponder isKindOfClass:[UIViewController class]] && [nextResponder respondsToSelector:@selector(windowDidTransitionToSize:)]) {
-                        [newWindow qwsm_addDidTransitionToSizeMethodReceiver:nextResponder];
+                        [newWindow cigam_addDidTransitionToSizeMethodReceiver:nextResponder];
                     }
                 }
                 
@@ -125,47 +125,47 @@ CIGAMSynthesizeCGSizeProperty(qwsm_previousSize, setQwsm_previousSize)
 }
 
 
-- (void)qwsm_addSizeObserver:(NSObject *)observer {
-    if ([self.qwsm_sizeObservers cigam_containsPointer:(__bridge void *)(observer)]) return;
-    [self.qwsm_sizeObservers addPointer:(__bridge void *)(observer)];
+- (void)cigam_addSizeObserver:(NSObject *)observer {
+    if ([self.cigam_sizeObservers cigam_containsPointer:(__bridge void *)(observer)]) return;
+    [self.cigam_sizeObservers addPointer:(__bridge void *)(observer)];
 }
 
-- (void)qwsm_removeSizeObserver:(NSObject *)observer {
-    NSUInteger index = [self.qwsm_sizeObservers cigam_indexOfPointer:(__bridge void *)observer];
+- (void)cigam_removeSizeObserver:(NSObject *)observer {
+    NSUInteger index = [self.cigam_sizeObservers cigam_indexOfPointer:(__bridge void *)observer];
     if (index != NSNotFound) {
-        [self.qwsm_sizeObservers removePointerAtIndex:index];
+        [self.cigam_sizeObservers removePointerAtIndex:index];
     }
 }
 
-- (void)qwsm_addDidTransitionToSizeMethodReceiver:(UIResponder *)receiver {
-    if ([self.qwsm_canReceiveWindowDidTransitionToSizeResponders cigam_containsPointer:(__bridge void *)(receiver)]) return;
-    if (receiver.qwsm_previousWindow && receiver.qwsm_previousWindow != self) {
-        [receiver.qwsm_previousWindow qwsm_removeDidTransitionToSizeMethodReceiver:receiver];
+- (void)cigam_addDidTransitionToSizeMethodReceiver:(UIResponder *)receiver {
+    if ([self.cigam_canReceiveWindowDidTransitionToSizeResponders cigam_containsPointer:(__bridge void *)(receiver)]) return;
+    if (receiver.cigam_previousWindow && receiver.cigam_previousWindow != self) {
+        [receiver.cigam_previousWindow cigam_removeDidTransitionToSizeMethodReceiver:receiver];
     }
-    receiver.qwsm_previousWindow = self;
-    [self.qwsm_canReceiveWindowDidTransitionToSizeResponders addPointer:(__bridge void *)(receiver)];
+    receiver.cigam_previousWindow = self;
+    [self.cigam_canReceiveWindowDidTransitionToSizeResponders addPointer:(__bridge void *)(receiver)];
 }
 
-- (void)qwsm_removeDidTransitionToSizeMethodReceiver:(UIResponder *)receiver {
-    NSUInteger index = [self.qwsm_canReceiveWindowDidTransitionToSizeResponders cigam_indexOfPointer:(__bridge void *)(receiver)];
+- (void)cigam_removeDidTransitionToSizeMethodReceiver:(UIResponder *)receiver {
+    NSUInteger index = [self.cigam_canReceiveWindowDidTransitionToSizeResponders cigam_indexOfPointer:(__bridge void *)(receiver)];
     if (index != NSNotFound) {
-        [self.qwsm_canReceiveWindowDidTransitionToSizeResponders removePointerAtIndex:index];
+        [self.cigam_canReceiveWindowDidTransitionToSizeResponders removePointerAtIndex:index];
     }
 }
 
 
-- (void)qwsm_notifyWithNewSize:(CGSize)newSize {
+- (void)cigam_notifyWithNewSize:(CGSize)newSize {
     // notify sizeObservers
-    for (NSUInteger i = 0, count = self.qwsm_sizeObservers.count; i < count; i++) {
-        NSObject *object = [self.qwsm_sizeObservers pointerAtIndex:i];
-        for (NSUInteger i = 0, count = object.qwsm_windowSizeChangeHandlers.count; i < count; i++) {
-            CIGAMWindowSizeObserverHandler handler = object.qwsm_windowSizeChangeHandlers[i];
+    for (NSUInteger i = 0, count = self.cigam_sizeObservers.count; i < count; i++) {
+        NSObject *object = [self.cigam_sizeObservers pointerAtIndex:i];
+        for (NSUInteger i = 0, count = object.cigam_windowSizeChangeHandlers.count; i < count; i++) {
+            CIGAMWindowSizeObserverHandler handler = object.cigam_windowSizeChangeHandlers[i];
             handler(newSize);
         }
     }
     // send ‘windowDidTransitionToSize:’ to responders
-    for (NSUInteger i = 0, count = self.qwsm_canReceiveWindowDidTransitionToSizeResponders.count; i < count; i++) {
-        UIResponder <CIGAMWindowSizeMonitorProtocol>*responder = [self.qwsm_canReceiveWindowDidTransitionToSizeResponders pointerAtIndex:i];
+    for (NSUInteger i = 0, count = self.cigam_canReceiveWindowDidTransitionToSizeResponders.count; i < count; i++) {
+        UIResponder <CIGAMWindowSizeMonitorProtocol>*responder = [self.cigam_canReceiveWindowDidTransitionToSizeResponders pointerAtIndex:i];
         // call superclass automatically
         Method lastMethod = NULL;
         NSMutableArray <NSValue *>*selectorIMPArray = [NSMutableArray array];
@@ -185,28 +185,28 @@ CIGAMSynthesizeCGSizeProperty(qwsm_previousSize, setQwsm_previousSize)
     }
 }
 
-- (NSPointerArray *)qwsm_sizeObservers {
-    NSPointerArray *qwsm_sizeObservers = objc_getAssociatedObject(self, _cmd);
-    if (!qwsm_sizeObservers) {
-        qwsm_sizeObservers = [NSPointerArray weakObjectsPointerArray];
-        objc_setAssociatedObject(self, _cmd, qwsm_sizeObservers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (NSPointerArray *)cigam_sizeObservers {
+    NSPointerArray *cigam_sizeObservers = objc_getAssociatedObject(self, _cmd);
+    if (!cigam_sizeObservers) {
+        cigam_sizeObservers = [NSPointerArray weakObjectsPointerArray];
+        objc_setAssociatedObject(self, _cmd, cigam_sizeObservers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    return qwsm_sizeObservers;
+    return cigam_sizeObservers;
 }
 
-- (NSPointerArray *)qwsm_canReceiveWindowDidTransitionToSizeResponders {
-    NSPointerArray *qwsm_responders = objc_getAssociatedObject(self, _cmd);
-    if (!qwsm_responders) {
-        qwsm_responders = [NSPointerArray weakObjectsPointerArray];
-        objc_setAssociatedObject(self, _cmd, qwsm_responders, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (NSPointerArray *)cigam_canReceiveWindowDidTransitionToSizeResponders {
+    NSPointerArray *cigam_responders = objc_getAssociatedObject(self, _cmd);
+    if (!cigam_responders) {
+        cigam_responders = [NSPointerArray weakObjectsPointerArray];
+        objc_setAssociatedObject(self, _cmd, cigam_responders, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    return qwsm_responders;
+    return cigam_responders;
 }
 
 @end
 
 @implementation UIResponder (CIGAMWindowSizeMonitor)
 
-CIGAMSynthesizeIdWeakProperty(qwsm_previousWindow, setQwsm_previousWindow)
+CIGAMSynthesizeIdWeakProperty(cigam_previousWindow, setCigam_previousWindow)
 
 @end

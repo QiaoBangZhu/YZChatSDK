@@ -111,7 +111,7 @@ extern void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString 
  *
  *  @return 返回一个合适的 PHFetchOptions
  */
-+ (PHFetchOptions *)createFetchOptionsWithAlbumContentType:(CIGAMAlbumContentType)contentType;
++ (PHFetchOptions *)cigam_createFetchOptionsWithAlbumContentType:(CIGAMAlbumContentType)contentType;
 
 /**
  *  获取所有相册
@@ -122,10 +122,10 @@ extern void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString 
  *
  *  @return 返回包含所有合适相册的数组
  */
-+ (NSArray<PHAssetCollection *> *)fetchAllAlbumsWithAlbumContentType:(CIGAMAlbumContentType)contentType showEmptyAlbum:(BOOL)showEmptyAlbum showSmartAlbum:(BOOL)showSmartAlbum;
++ (NSArray<PHAssetCollection *> *)cigam_fetchAllAlbumsWithAlbumContentType:(CIGAMAlbumContentType)contentType showEmptyAlbum:(BOOL)showEmptyAlbum showSmartAlbum:(BOOL)showSmartAlbum;
 
 /// 获取一个 PHAssetCollection 中创建日期最新的资源
-+ (PHAsset *)fetchLatestAssetWithAssetCollection:(PHAssetCollection *)assetCollection;
++ (PHAsset *)cigam_fetchLatestAssetWithAssetCollection:(PHAssetCollection *)assetCollection;
 
 /**
  *  保存图片或视频到指定的相册
@@ -134,10 +134,10 @@ extern void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString 
  *           原因请参考 CIGAMAssetsManager 对象的保存图片和视频方法的注释。
  *  @warning 无法通过该方法把图片保存到“智能相册”，“智能相册”只能由系统控制资源的增删。
  */
-- (void)addImageToAlbum:(CGImageRef)imageRef albumAssetCollection:(PHAssetCollection *)albumAssetCollection orientation:(UIImageOrientation)orientation completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler;
+- (void)cigam_addImageToAlbum:(CGImageRef)imageRef albumAssetCollection:(PHAssetCollection *)albumAssetCollection orientation:(UIImageOrientation)orientation completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler;
 
-- (void)addImageToAlbum:(NSURL *)imagePathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler;
+- (void)cigam_addImageToAlbum:(NSURL *)imagePathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler;
 
-- (void)addVideoToAlbum:(NSURL *)videoPathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler;
+- (void)cigam_addVideoToAlbum:(NSURL *)videoPathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler;
 
 @end

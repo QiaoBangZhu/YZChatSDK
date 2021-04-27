@@ -91,10 +91,10 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
 
 - (void)enumerateAllAlbumsWithAlbumContentType:(CIGAMAlbumContentType)contentType showEmptyAlbum:(BOOL)showEmptyAlbum showSmartAlbumIfSupported:(BOOL)showSmartAlbumIfSupported usingBlock:(void (^)(CIGAMAssetsGroup *resultAssetsGroup))enumerationBlock {
     // 根据条件获取所有合适的相册，并保存到临时数组中
-    NSArray<PHAssetCollection *> *tempAlbumsArray = [PHPhotoLibrary fetchAllAlbumsWithAlbumContentType:contentType showEmptyAlbum:showEmptyAlbum showSmartAlbum:showSmartAlbumIfSupported];
+    NSArray<PHAssetCollection *> *tempAlbumsArray = [PHPhotoLibrary cigam_fetchAllAlbumsWithAlbumContentType:contentType showEmptyAlbum:showEmptyAlbum showSmartAlbum:showSmartAlbumIfSupported];
     
     // 创建一个 PHFetchOptions，用于 CIGAMAssetsGroup 对资源的排序以及对内容类型进行控制
-    PHFetchOptions *phFetchOptions = [PHPhotoLibrary createFetchOptionsWithAlbumContentType:contentType];
+    PHFetchOptions *phFetchOptions = [PHPhotoLibrary cigam_createFetchOptionsWithAlbumContentType:contentType];
     
     // 遍历结果，生成对应的 CIGAMAssetsGroup，并调用 enumerationBlock
     for (NSUInteger i = 0; i < tempAlbumsArray.count; i++) {
@@ -120,7 +120,7 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
 - (void)saveImageWithImageRef:(CGImageRef)imageRef albumAssetsGroup:(CIGAMAssetsGroup *)albumAssetsGroup orientation:(UIImageOrientation)orientation completionBlock:(CIGAMWriteAssetCompletionBlock)completionBlock {
     PHAssetCollection *albumPhAssetCollection = albumAssetsGroup.phAssetCollection;
     // 把图片加入到指定的相册对应的 PHAssetCollection
-    [[PHPhotoLibrary sharedPhotoLibrary] addImageToAlbum:imageRef
+    [[PHPhotoLibrary sharedPhotoLibrary] cigam_addImageToAlbum:imageRef
                                     albumAssetCollection:albumPhAssetCollection
                                              orientation:orientation
                                        completionHandler:^(BOOL success, NSDate *creationDate, NSError *error) {
@@ -141,7 +141,7 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
 - (void)saveImageWithImagePathURL:(NSURL *)imagePathURL albumAssetsGroup:(CIGAMAssetsGroup *)albumAssetsGroup completionBlock:(CIGAMWriteAssetCompletionBlock)completionBlock {
     PHAssetCollection *albumPhAssetCollection = albumAssetsGroup.phAssetCollection;
     // 把图片加入到指定的相册对应的 PHAssetCollection
-    [[PHPhotoLibrary sharedPhotoLibrary] addImageToAlbum:imagePathURL
+    [[PHPhotoLibrary sharedPhotoLibrary] cigam_addImageToAlbum:imagePathURL
                                     albumAssetCollection:albumPhAssetCollection
                                        completionHandler:^(BOOL success, NSDate *creationDate, NSError *error) {
                                            if (success) {
@@ -161,7 +161,7 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
 - (void)saveVideoWithVideoPathURL:(NSURL *)videoPathURL albumAssetsGroup:(CIGAMAssetsGroup *)albumAssetsGroup completionBlock:(CIGAMWriteAssetCompletionBlock)completionBlock {
     PHAssetCollection *albumPhAssetCollection = albumAssetsGroup.phAssetCollection;
     // 把视频加入到指定的相册对应的 PHAssetCollection
-    [[PHPhotoLibrary sharedPhotoLibrary] addVideoToAlbum:videoPathURL
+    [[PHPhotoLibrary sharedPhotoLibrary] cigam_addVideoToAlbum:videoPathURL
                                     albumAssetCollection:albumPhAssetCollection
                                        completionHandler:^(BOOL success, NSDate *creationDate, NSError *error) {
                                            if (success) {
@@ -190,7 +190,7 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
 
 @implementation PHPhotoLibrary (CIGAM)
 
-+ (PHFetchOptions *)createFetchOptionsWithAlbumContentType:(CIGAMAlbumContentType)contentType {
++ (PHFetchOptions *)cigam_createFetchOptionsWithAlbumContentType:(CIGAMAlbumContentType)contentType {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
     // 根据输入的内容类型过滤相册内的资源
     switch (contentType) {
@@ -212,11 +212,11 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
     return fetchOptions;
 }
 
-+ (NSArray<PHAssetCollection *> *)fetchAllAlbumsWithAlbumContentType:(CIGAMAlbumContentType)contentType showEmptyAlbum:(BOOL)showEmptyAlbum showSmartAlbum:(BOOL)showSmartAlbum {
++ (NSArray<PHAssetCollection *> *)cigam_fetchAllAlbumsWithAlbumContentType:(CIGAMAlbumContentType)contentType showEmptyAlbum:(BOOL)showEmptyAlbum showSmartAlbum:(BOOL)showSmartAlbum {
     NSMutableArray<PHAssetCollection *> *tempAlbumsArray = [[NSMutableArray alloc] init];
     
     // 创建一个 PHFetchOptions，用于创建 CIGAMAssetsGroup 对资源的排序和类型进行控制
-    PHFetchOptions *fetchOptions = [PHPhotoLibrary createFetchOptionsWithAlbumContentType:contentType];
+    PHFetchOptions *fetchOptions = [PHPhotoLibrary cigam_createFetchOptionsWithAlbumContentType:contentType];
     
     PHFetchResult *fetchResult;
     if (showSmartAlbum) {
@@ -288,7 +288,7 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
     return resultAlbumsArray;
 }
 
-+ (PHAsset *)fetchLatestAssetWithAssetCollection:(PHAssetCollection *)assetCollection {
++ (PHAsset *)cigam_fetchLatestAssetWithAssetCollection:(PHAssetCollection *)assetCollection {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
     // 按时间的先后对 PHAssetCollection 内的资源进行排序，最新的资源排在数组最后面
     fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
@@ -298,16 +298,16 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
     return latestAsset;
 }
 
-- (void)addImageToAlbum:(CGImageRef)imageRef albumAssetCollection:(PHAssetCollection *)albumAssetCollection orientation:(UIImageOrientation)orientation completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
+- (void)cigam_addImageToAlbum:(CGImageRef)imageRef albumAssetCollection:(PHAssetCollection *)albumAssetCollection orientation:(UIImageOrientation)orientation completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
     UIImage *targetImage = [UIImage imageWithCGImage:imageRef scale:ScreenScale orientation:orientation];
-    [[PHPhotoLibrary sharedPhotoLibrary] addImageToAlbum:targetImage imagePathURL:nil albumAssetCollection:albumAssetCollection completionHandler:completionHandler];
+    [[PHPhotoLibrary sharedPhotoLibrary] cigam_addImageToAlbum:targetImage imagePathURL:nil albumAssetCollection:albumAssetCollection completionHandler:completionHandler];
 }
 
-- (void)addImageToAlbum:(NSURL *)imagePathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void (^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
-    [[PHPhotoLibrary sharedPhotoLibrary] addImageToAlbum:nil imagePathURL:imagePathURL albumAssetCollection:albumAssetCollection completionHandler:completionHandler];
+- (void)cigam_addImageToAlbum:(NSURL *)imagePathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void (^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
+    [[PHPhotoLibrary sharedPhotoLibrary] cigam_addImageToAlbum:nil imagePathURL:imagePathURL albumAssetCollection:albumAssetCollection completionHandler:completionHandler];
 }
 
-- (void)addImageToAlbum:(UIImage *)image imagePathURL:(NSURL *)imagePathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
+- (void)cigam_addImageToAlbum:(UIImage *)image imagePathURL:(NSURL *)imagePathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
     __block NSDate *creationDate = nil;
     [self performChanges:^{
         // 创建一个以图片生成新的 PHAsset，这时图片已经被添加到“相机胶卷”
@@ -355,7 +355,7 @@ void CIGAMSaveVideoAtPathToSavedPhotosAlbumWithAlbumAssetsGroup(NSString *videoP
 }
 
 
-- (void)addVideoToAlbum:(NSURL *)videoPathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
+- (void)cigam_addVideoToAlbum:(NSURL *)videoPathURL albumAssetCollection:(PHAssetCollection *)albumAssetCollection completionHandler:(void(^)(BOOL success, NSDate *creationDate, NSError *error))completionHandler {
     __block NSDate *creationDate = nil;
     [self performChanges:^{
         // 创建一个以视频生成新的 PHAsset 的请求

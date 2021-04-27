@@ -366,7 +366,7 @@ CIGAMSynthesizeBOOLProperty(cigam_invalidateIndexPathHeightCachedAutomatically, 
 
 @implementation UITableView (CIGAMLayoutCell)
 
-- (__kindof UITableViewCell *)templateCellForReuseIdentifier:(NSString *)identifier {
+- (__kindof UITableViewCell *)cigam_templateCellForReuseIdentifier:(NSString *)identifier {
     NSAssert(identifier.length > 0, @"Expect a valid identifier - %@", identifier);
     NSMutableDictionary *templateCellsByIdentifiers = objc_getAssociatedObject(self, _cmd);
     if (!templateCellsByIdentifiers) {
@@ -396,7 +396,7 @@ CIGAMSynthesizeBOOLProperty(cigam_invalidateIndexPathHeightCachedAutomatically, 
     if (!identifier || contentWidth <= 0) {
         return 0;
     }
-    UITableViewCell *cell = [self templateCellForReuseIdentifier:identifier];
+    UITableViewCell *cell = [self cigam_templateCellForReuseIdentifier:identifier];
     [cell prepareForReuse];
     if (configuration) configuration(cell);
     CGSize fitSize = CGSizeZero;
@@ -670,7 +670,7 @@ CIGAMSynthesizeIdStrongProperty(cigamCollectionCache_allIndexPathHeightCaches, s
 
 @implementation UICollectionView (CIGAMLayoutCell)
 
-- (__kindof UICollectionViewCell *)templateCellForReuseIdentifier:(NSString *)identifier cellClass:(Class)cellClass {
+- (__kindof UICollectionViewCell *)cigma_templateCellForReuseIdentifier:(NSString *)identifier cellClass:(Class)cellClass {
     NSAssert(identifier.length > 0, @"Expect a valid identifier - %@", identifier);
     NSAssert([self.collectionViewLayout isKindOfClass:[UICollectionViewFlowLayout class]], @"only flow layout accept");
     NSAssert([cellClass isSubclassOfClass:[UICollectionViewCell class]], @"must be uicollection view cell");
@@ -695,7 +695,7 @@ CIGAMSynthesizeIdStrongProperty(cigamCollectionCache_allIndexPathHeightCaches, s
     if (!identifier || CGRectIsEmpty(self.bounds)) {
         return 0;
     }
-    UICollectionViewCell *cell = [self templateCellForReuseIdentifier:identifier cellClass:cellClass];
+    UICollectionViewCell *cell = [self cigma_templateCellForReuseIdentifier:identifier cellClass:cellClass];
     [cell prepareForReuse];
     if (configuration) configuration(cell);
     CGSize fitSize = CGSizeZero;

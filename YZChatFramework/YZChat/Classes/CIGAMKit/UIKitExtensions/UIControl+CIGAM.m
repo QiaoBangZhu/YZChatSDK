@@ -84,7 +84,7 @@ static char kAssociatedObjectKey_automaticallyAdjustTouchHighlightedInScrollView
                                 // 如果延迟时间太长，会导致快速点击两次，事件会触发两次
                                 // 对于 3D Touch 的机器，如果点击按钮的时候在按钮上停留事件稍微长一点点，那么 touchesEnded 会被调用两次
                                 // 把 super touchEnded 放到延迟里调用会导致长按无法触发点击，先这么改，再想想怎么办。// [selfObject cigam_touchesEnded:touches withEvent:event];
-                                [selfObject sendActionsForAllTouchEventsIfCan];
+                                [selfObject cigam_sendActionsForAllTouchEventsIfCan];
                                 if (selfObject.highlighted) {
                                     [selfObject setHighlighted:NO];
                                 }
@@ -133,7 +133,7 @@ static char kAssociatedObjectKey_automaticallyAdjustTouchHighlightedInScrollView
 
 // 这段代码需要以一个独立的方法存在，因为一旦有坑，外面可以直接通过runtime调用这个方法
 // 但，不要开放到.h文件里，理论上外面不应该用到它
-- (void)sendActionsForAllTouchEventsIfCan {
+- (void)cigam_sendActionsForAllTouchEventsIfCan {
     self.cigamctl_touchEndCount += 1;
     if (self.cigamctl_touchEndCount == 1) {
         [self sendActionsForControlEvents:UIControlEventAllTouchEvents];

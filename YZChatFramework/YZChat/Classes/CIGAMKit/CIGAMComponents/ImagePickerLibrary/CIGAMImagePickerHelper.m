@@ -73,7 +73,7 @@ static NSString * const kContentTypeOfLastAlbumKeyPrefix = @"CIGAMContentTypeOfL
             PHFetchOptions *phFetchOptions;
             // 旧版本中没有存储 albumContentType，因此为了防止 crash，这里做一下判断
             if (albumContentType) {
-                phFetchOptions = [PHPhotoLibrary createFetchOptionsWithAlbumContentType:albumContentType];
+                phFetchOptions = [PHPhotoLibrary cigam_createFetchOptionsWithAlbumContentType:albumContentType];
             }
             PHAssetCollection *phAssetCollection = [phFetchResult firstObject];
             assetsGroup = [[CIGAMAssetsGroup alloc] initWithPHCollection:phAssetCollection fetchAssetsOptions:phFetchOptions];

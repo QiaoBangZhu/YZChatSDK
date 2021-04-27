@@ -236,7 +236,7 @@
 
 - (NSString *)cigam_substringAvoidBreakingUpCharacterSequencesWithRange:(NSRange)range lessValue:(BOOL)lessValue countingNonASCIICharacterAsTwo:(BOOL)countingNonASCIICharacterAsTwo {
     range = countingNonASCIICharacterAsTwo ? [self cigam_transformRangeToDefaultModeWithRange:range] : range;// 实际计算都按照系统默认的 length 规则来
-    NSRange characterSequencesRange = lessValue ? [self downRoundRangeOfComposedCharacterSequencesForRange:range] : [self rangeOfComposedCharacterSequencesForRange:range];
+    NSRange characterSequencesRange = lessValue ? [self cigam_downRoundRangeOfComposedCharacterSequencesForRange:range] : [self rangeOfComposedCharacterSequencesForRange:range];
     NSString *resultString = [self substringWithRange:characterSequencesRange];
     return resultString;
 }
@@ -245,14 +245,14 @@
     return [self cigam_substringAvoidBreakingUpCharacterSequencesWithRange:range lessValue:YES countingNonASCIICharacterAsTwo:NO];
 }
 
-- (NSRange)downRoundRangeOfComposedCharacterSequencesForRange:(NSRange)range {
+- (NSRange)cigam_downRoundRangeOfComposedCharacterSequencesForRange:(NSRange)range {
     if (range.length == 0) {
         return range;
     }
     
     NSRange resultRange = [self rangeOfComposedCharacterSequencesForRange:range];
     if (NSMaxRange(resultRange) > NSMaxRange(range)) {
-        return [self downRoundRangeOfComposedCharacterSequencesForRange:NSMakeRange(range.location, range.length - 1)];
+        return [self cigam_downRoundRangeOfComposedCharacterSequencesForRange:NSMakeRange(range.location, range.length - 1)];
     }
     return resultRange;
 }
