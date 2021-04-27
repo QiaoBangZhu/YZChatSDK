@@ -107,7 +107,6 @@
 
 /* Begin PBXFileReference section */
 		14D210F1E8F9C9E1E2647038 /* YZChat.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YZChat.podspec; path = ../YZChat.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		1D35C255FCF328DA2397F18B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		30291741260DDC0200627F29 /* YZChatSettingStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZChatSettingStore.h; sourceTree = "<group>"; };
 		30291742260DDC0200627F29 /* YZChatSettingStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YZChatSettingStore.m; sourceTree = "<group>"; };
 		302918552612C39200627F29 /* YZCommonConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCommonConstant.h; sourceTree = "<group>"; };
@@ -373,7 +372,6 @@
 			children = (
 				14D210F1E8F9C9E1E2647038 /* YZChat.podspec */,
 				745A2BEB6C0E4F2A55257390 /* README.md */,
-				1D35C255FCF328DA2397F18B /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
