@@ -21,11 +21,7 @@
 
 #import "MAGICNavigationViewController.h"
 
-#if USE_POD
-#import "YZChat/YZChat.h"
-#else
 #import <YZChat/YZChat.h>
-#endif
 
 @interface YZAppDelegate()<UNUserNotificationCenterDelegate>
 

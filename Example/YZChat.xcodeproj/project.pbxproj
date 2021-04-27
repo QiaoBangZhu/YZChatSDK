@@ -9,33 +9,19 @@
 /* Begin PBXBuildFile section */
 		30291743260DDC0200627F29 /* YZChatSettingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 30291742260DDC0200627F29 /* YZChatSettingStore.m */; };
 		304239C1258C961A004AEFAE /* YZChatHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B4258C961A004AEFAE /* YZChatHTTPClient.m */; };
-		304239C2258C961A004AEFAE /* YZChatHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B4258C961A004AEFAE /* YZChatHTTPClient.m */; };
 		304239C3258C961A004AEFAE /* YZChatURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B5258C961A004AEFAE /* YZChatURLRequest.m */; };
-		304239C4258C961A004AEFAE /* YZChatURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B5258C961A004AEFAE /* YZChatURLRequest.m */; };
 		304239C5258C961A004AEFAE /* YZChatRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B8258C961A004AEFAE /* YZChatRequestBuilder.m */; };
-		304239C6258C961A004AEFAE /* YZChatRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B8258C961A004AEFAE /* YZChatRequestBuilder.m */; };
 		304239C7258C961A004AEFAE /* YZChatUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B9258C961A004AEFAE /* YZChatUploadManager.m */; };
-		304239C8258C961A004AEFAE /* YZChatUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239B9258C961A004AEFAE /* YZChatUploadManager.m */; };
 		304239C9258C961A004AEFAE /* YZChatRequestMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239BE258C961A004AEFAE /* YZChatRequestMan.m */; };
-		304239CA258C961A004AEFAE /* YZChatRequestMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239BE258C961A004AEFAE /* YZChatRequestMan.m */; };
 		304239CB258C961A004AEFAE /* YZChatNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239BF258C961A004AEFAE /* YZChatNetworkEngine.m */; };
-		304239CC258C961A004AEFAE /* YZChatNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 304239BF258C961A004AEFAE /* YZChatNetworkEngine.m */; };
 		30423C34258CB9D0004AEFAE /* YZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423C2C258CB9D0004AEFAE /* YZLoginViewController.m */; };
-		30423C35258CB9D0004AEFAE /* YZLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423C2C258CB9D0004AEFAE /* YZLoginViewController.m */; };
 		30423C36258CB9D0004AEFAE /* YTextFieldInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423C2D258CB9D0004AEFAE /* YTextFieldInputView.m */; };
-		30423C37258CB9D0004AEFAE /* YTextFieldInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423C2D258CB9D0004AEFAE /* YTextFieldInputView.m */; };
 		30423C3A258CB9D0004AEFAE /* YZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423C32258CB9D0004AEFAE /* YZAppDelegate.m */; };
-		30423C3B258CB9D0004AEFAE /* YZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423C32258CB9D0004AEFAE /* YZAppDelegate.m */; };
 		30423CFE258CBD72004AEFAE /* UIButton+YZCaptcha.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEA258CBD72004AEFAE /* UIButton+YZCaptcha.m */; };
-		30423CFF258CBD72004AEFAE /* UIButton+YZCaptcha.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEA258CBD72004AEFAE /* UIButton+YZCaptcha.m */; };
 		30423D00258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEC258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m */; };
-		30423D01258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEC258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m */; };
 		30423D02258CBD72004AEFAE /* YZChatValidInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEE258CBD72004AEFAE /* YZChatValidInput.m */; };
-		30423D03258CBD72004AEFAE /* YZChatValidInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CEE258CBD72004AEFAE /* YZChatValidInput.m */; };
 		30423D08258CBD72004AEFAE /* NSObject+YZTypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */; };
-		30423D09258CBD72004AEFAE /* NSObject+YZTypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */; };
 		30423D93258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423D92258CBEBA004AEFAE /* UIColor+YZFoundation.m */; };
-		30423D94258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423D92258CBEBA004AEFAE /* UIColor+YZFoundation.m */; };
 		307F9D5B2614636400FD89DE /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F9D5A2614636400FD89DE /* YWebViewController.m */; };
 		3095BA2B25A31C8F00A0F37B /* wemeet_app_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3095BA2E25A31E6C00A0F37B /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE725888CF60056AFB6 /* App.framework */; };
@@ -61,7 +47,6 @@
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		60C6BAFB1417D16CF40434F7 /* libPods-YZChat_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0259C5E4901BA29E7304751 /* libPods-YZChat_Example.a */; };
-		6F88C7450BF6E86CD6610EEB /* libPods-YZChat_Example_Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD50314B49491075BAFA296 /* libPods-YZChat_Example_Pod.a */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		E5108A332618E882004D972C /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A312618E882004D972C /* TUIKitResource.bundle */; };
 		E5108A352618E882004D972C /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A322618E882004D972C /* TUIKitFace.bundle */; };
@@ -86,13 +71,7 @@
 		E5195D5F258896520056AFB6 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE125888CF60056AFB6 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E57AA2B026197A3900B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3C7261A07B100B4E6C1 /* MAGICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3C6261A07B100B4E6C1 /* MAGICViewController.m */; };
-		E57AA3C8261A07B100B4E6C1 /* MAGICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3C6261A07B100B4E6C1 /* MAGICViewController.m */; };
 		E57AA3CE261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3CD261A099400B4E6C1 /* MAGICNavigationViewController.m */; };
-		E57AA3CF261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3CD261A099400B4E6C1 /* MAGICNavigationViewController.m */; };
-		E5CA75082584BE1B00719F72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		E5CA750D2584BE1B00719F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		E5CA750E2584BE1B00719F72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
-		E5CA750F2584BE1B00719F72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,7 +106,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B5CA14A05F31D3F98CE2245 /* Pods-YZChat_Example_Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example_Pod.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example_Pod/Pods-YZChat_Example_Pod.release.xcconfig"; sourceTree = "<group>"; };
 		14D210F1E8F9C9E1E2647038 /* YZChat.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YZChat.podspec; path = ../YZChat.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1D35C255FCF328DA2397F18B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		30291741260DDC0200627F29 /* YZChatSettingStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YZChatSettingStore.h; sourceTree = "<group>"; };
@@ -181,7 +159,6 @@
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		745A2BEB6C0E4F2A55257390 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		9CD50314B49491075BAFA296 /* libPods-YZChat_Example_Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat_Example_Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0A936133BF5C1804F12E48 /* Pods-YZChat_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.release.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E5108A312618E882004D972C /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitResource.bundle; path = ../../../YZChatFramework/YZChat/Classes/IMUIKit/TXIMSDK_TUIKit_iOS/TUIKit/Resources/TUIKitResource.bundle; sourceTree = "<group>"; };
@@ -210,10 +187,8 @@
 		E57AA3C6261A07B100B4E6C1 /* MAGICViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAGICViewController.m; sourceTree = "<group>"; };
 		E57AA3CC261A099400B4E6C1 /* MAGICNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGICNavigationViewController.h; sourceTree = "<group>"; };
 		E57AA3CD261A099400B4E6C1 /* MAGICNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAGICNavigationViewController.m; sourceTree = "<group>"; };
-		E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZChat_Example_Pod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CA75392584C0A200719F72 /* YZChat_Example_Pod-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YZChat_Example_Pod-info.plist"; sourceTree = "<group>"; };
 		F0259C5E4901BA29E7304751 /* libPods-YZChat_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YZChat_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3AC8D9D1B333FF5A6EF7A77 /* Pods-YZChat_Example_Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example_Pod.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example_Pod/Pods-YZChat_Example_Pod.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,14 +219,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E5CA75092584BE1B00719F72 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F88C7450BF6E86CD6610EEB /* libPods-YZChat_Example_Pod.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -260,8 +227,6 @@
 			children = (
 				D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */,
 				9E0A936133BF5C1804F12E48 /* Pods-YZChat_Example.release.xcconfig */,
-				F3AC8D9D1B333FF5A6EF7A77 /* Pods-YZChat_Example_Pod.debug.xcconfig */,
-				0B5CA14A05F31D3F98CE2245 /* Pods-YZChat_Example_Pod.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -354,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				6003F58A195388D20070C39A /* YZChat.app */,
-				E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -367,7 +331,6 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				F0259C5E4901BA29E7304751 /* libPods-YZChat_Example.a */,
-				9CD50314B49491075BAFA296 /* libPods-YZChat_Example_Pod.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -486,25 +449,6 @@
 			productReference = 6003F58A195388D20070C39A /* YZChat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E5CA75032584BE1B00719F72 /* YZChat_Example_Pod */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E5CA75122584BE1B00719F72 /* Build configuration list for PBXNativeTarget "YZChat_Example_Pod" */;
-			buildPhases = (
-				E5CA75042584BE1B00719F72 /* [CP] Check Pods Manifest.lock */,
-				E5CA75052584BE1B00719F72 /* Sources */,
-				E5CA75092584BE1B00719F72 /* Frameworks */,
-				E5CA750B2584BE1B00719F72 /* Resources */,
-				E5CA75112584BE1B00719F72 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = YZChat_Example_Pod;
-			productName = YZChat;
-			productReference = E5CA75152584BE1B00719F72 /* YZChat_Example_Pod.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -516,10 +460,6 @@
 				ORGANIZATIONNAME = QiaoBangZhu;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = VTC5S8ALKF;
-						ProvisioningStyle = Manual;
-					};
-					E5CA75032584BE1B00719F72 = {
 						DevelopmentTeam = VTC5S8ALKF;
 						ProvisioningStyle = Manual;
 					};
@@ -539,7 +479,6 @@
 			projectRoot = "";
 			targets = (
 				6003F589195388D20070C39A /* YZChat_Example */,
-				E5CA75032584BE1B00719F72 /* YZChat_Example_Pod */,
 			);
 		};
 /* End PBXProject section */
@@ -555,16 +494,6 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				E5108A332618E882004D972C /* TUIKitResource.bundle in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E5CA750B2584BE1B00719F72 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E5CA750D2584BE1B00719F72 /* LaunchScreen.storyboard in Resources */,
-				E5CA750E2584BE1B00719F72 /* Images.xcassets in Resources */,
-				E5CA750F2584BE1B00719F72 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,80 +535,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"$PLATFORM_NAME\" = iphonesimulator ]; then\n  echo \"No need to strip frameworks for simulator.\"\n  exit 0\nfi\n\necho \"replacing original executable with thinned version\"\nfind \"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\" -name '*.framework' -type d | while read -r FRAMEWORK; do\n    FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n    FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n    for arch in $(lipo -archs $FRAMEWORK_EXECUTABLE_PATH); do\n        if ! printf '%s\\n' ${ARCHS[@]} | egrep -q \"^$arch$\"; then\n            lipo -remove $arch \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH\"\n        fi\n    done\ndone\n";
-		};
-		E5CA75042584BE1B00719F72 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-YZChat_Example_Pod-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5CA75112584BE1B00719F72 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example_Pod/Pods-YZChat_Example_Pod-frameworks.sh",
-				"${PODS_ROOT}/../../YZChat/Vendors/App.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/AuthSDK.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/camera.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/Flutter.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/flutter_plugin_android_lifecycle.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/FMDB.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/image_picker.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/ImSDK.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/ImSDKForiOS.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/omp.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/path_provider.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/sqflite.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/TMRTC.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/WeMeet.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/wemeet_app_sdk.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/xcast.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/xnn.framework",
-				"${PODS_ROOT}/../../YZChat/Vendors/xnn_media.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/App.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AuthSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/camera.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/flutter_plugin_android_lifecycle.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/image_picker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImSDKForiOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/omp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/path_provider.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqflite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TMRTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WeMeet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/wemeet_app_sdk.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xcast.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xnn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xnn_media.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YZChat_Example_Pod/Pods-YZChat_Example_Pod-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		F2753336F64A822723AA177E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -731,30 +586,6 @@
 				30423CFE258CBD72004AEFAE /* UIButton+YZCaptcha.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				30423D00258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E5CA75052584BE1B00719F72 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30423D94258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */,
-				30423C35258CB9D0004AEFAE /* YZLoginViewController.m in Sources */,
-				304239CA258C961A004AEFAE /* YZChatRequestMan.m in Sources */,
-				E57AA3C8261A07B100B4E6C1 /* MAGICViewController.m in Sources */,
-				30423D03258CBD72004AEFAE /* YZChatValidInput.m in Sources */,
-				304239C4258C961A004AEFAE /* YZChatURLRequest.m in Sources */,
-				30423C3B258CB9D0004AEFAE /* YZAppDelegate.m in Sources */,
-				304239CC258C961A004AEFAE /* YZChatNetworkEngine.m in Sources */,
-				304239C8258C961A004AEFAE /* YZChatUploadManager.m in Sources */,
-				304239C6258C961A004AEFAE /* YZChatRequestBuilder.m in Sources */,
-				304239C2258C961A004AEFAE /* YZChatHTTPClient.m in Sources */,
-				E57AA3CF261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */,
-				30423C37258CB9D0004AEFAE /* YTextFieldInputView.m in Sources */,
-				30423D09258CBD72004AEFAE /* NSObject+YZTypeConversion.m in Sources */,
-				30423CFF258CBD72004AEFAE /* UIButton+YZCaptcha.m in Sources */,
-				E5CA75082584BE1B00719F72 /* main.m in Sources */,
-				30423D01258CBD72004AEFAE /* UIBarButtonItem+YZExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,66 +779,6 @@
 			};
 			name = Release;
 		};
-		E5CA75132584BE1B00719F72 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3AC8D9D1B333FF5A6EF7A77 /* Pods-YZChat_Example_Pod.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Z Magic (523398B6VL)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = VTC5S8ALKF;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"USE_POD=1",
-				);
-				INFOPLIST_FILE = "YZChat/YZChat_Example_Pod-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.yxchat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.yuanzhi.yxchat";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		E5CA75142584BE1B00719F72 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B5CA14A05F31D3F98CE2245 /* Pods-YZChat_Example_Pod.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Apple Distribution: Shanghai Yuanzhi Shengrui Technology Research Co., Ltd. (VTC5S8ALKF)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = VTC5S8ALKF;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"USE_POD=1",
-				);
-				INFOPLIST_FILE = "YZChat/YZChat_Example_Pod-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuanzhi.yxchat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.yuanzhi.yxchat";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1025,15 +796,6 @@
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
 				6003F5C1195388D20070C39A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E5CA75122584BE1B00719F72 /* Build configuration list for PBXNativeTarget "YZChat_Example_Pod" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E5CA75132584BE1B00719F72 /* Debug */,
-				E5CA75142584BE1B00719F72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

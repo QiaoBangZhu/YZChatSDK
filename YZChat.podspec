@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 4.0'
 #  s.dependency 'QMUIKit'
   s.dependency 'Masonry'
-#  s.dependency 'YYModel'
+  s.dependency 'YYModel'
 #  s.dependency 'YYText'
   s.dependency 'IQKeyboardManager'
 #  s.dependency 'MJExtension'

@@ -1,6 +1,0 @@
-framework module YZChat {
-  umbrella header "YZChat.h"
-
-  export *
-  module * { export * }
-}

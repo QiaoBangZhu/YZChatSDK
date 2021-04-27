@@ -35,10 +35,6 @@ target 'YZChat_Example' do
   project_pods
 end
 
-target 'YZChat_Example_Pod' do
-  pod 'YZChat', :path => '../'
-end
-
 target 'YZChat' do
   project '../YZChatFramework/YZChat.xcodeproj'
 

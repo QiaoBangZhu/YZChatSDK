@@ -348,17 +348,6 @@ PODS:
   - TXLiteAVSDK_Professional (8.5.10022)
   - YYModel (1.0.4)
   - YYText (1.0.7)
-  - YZChat (1.0.15):
-    - AFNetworking (~> 4.0)
-    - AMapSearch-NO-IDFA
-    - IQKeyboardManager
-    - Masonry
-    - MMLayout (~> 0.2.0)
-    - ReactiveObjC (~> 3.1.1)
-    - SDWebImage (~> 5.9.0)
-    - Toast (~> 4.0.0)
-    - TXLiteAVSDK_Professional
-    - ZXingObjC
   - ZXingObjC (3.6.5):
     - ZXingObjC/All (= 3.6.5)
   - ZXingObjC/All (3.6.5)
@@ -376,7 +365,6 @@ DEPENDENCIES:
   - TXLiteAVSDK_Professional
   - YYModel
   - YYText
-  - YZChat (from `../`)
   - ZXingObjC
 
 SPEC REPOS:
@@ -396,10 +384,6 @@ SPEC REPOS:
     - YYText
     - ZXingObjC
 
-EXTERNAL SOURCES:
-  YZChat:
-    :path: "../"
-
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AMapFoundation-NO-IDFA: 1003dfaeaf9b6489286cc8e642b3da5218a9b88f
@@ -414,9 +398,8 @@ SPEC CHECKSUMS:
   TXLiteAVSDK_Professional: 165018e2f0570d2608d7ea2b785fc273558f9920
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  YZChat: 95bf4b2bc66b6e062b1a4628af569ffedc4b3010
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: 3fa56ab00ef4d2e988892b55b3721c07ff224ab0
+PODFILE CHECKSUM: 9262f44d6483db73d266cb8ff592c7f77011fb0d
 
 COCOAPODS: 1.10.1
