@@ -355,17 +355,15 @@
                              onNewMessage:(V2TIMMessage *)data {
     if (data.elemType == V2TIM_ELEM_TYPE_CUSTOM) {
         NSDictionary *param = [YZUtil jsonData2Dictionary: data.customElem.data];
-        if (param) {
-            NSString *businessID = [param[@"businessID"] stringValue];
-            if ([businessID isEqualToString: CardLink]) {
-                NSString *text = param[@"title"];
-                NSString *link = param[@"link"];
-                if (text.length == 0 || link.length == 0) return nil;
+        NSString *businessID = param[@"businessID"];
+        if ([businessID isKindOfClass: [NSString class]] && [businessID isEqualToString: CardLink]) {
+            NSString *text = param[@"title"];
+            NSString *link = param[@"link"];
+            if (text.length == 0 || link.length == 0) return nil;
 
-                YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: data];
-                cellData.customMessageData = [[YZCardMsgData alloc] initWithTitle: text desc: param[@"desc"] logo: param[@"logo"] link: link];
-                return cellData;
-            }
+            YzCustomMessageCellData *cellData = [[YzCustomMessageCellData alloc] initWithMessage: data];
+            cellData.customMessageData = [[YZCardMsgData alloc] initWithTitle: text desc: param[@"desc"] logo: param[@"logo"] link: link];
+            return cellData;
         }
         // 用户自定
         if (self.dataSource && [self.dataSource respondsToSelector: @selector(customMessageForData:)]) {

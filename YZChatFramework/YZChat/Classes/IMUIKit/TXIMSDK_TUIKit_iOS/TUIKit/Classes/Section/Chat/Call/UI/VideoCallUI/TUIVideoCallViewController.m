@@ -18,7 +18,6 @@
 #import "YZUtil.h"
 #import <Masonry/Masonry.h>
 #import "CIGAMKit.h"
-#import <TMRTC/TMRTC.h>
 #import "UIColor+Foundation.h"
 #import "YZVideoCallUserView.h"
 #import "YChatNetworkEngine.h"

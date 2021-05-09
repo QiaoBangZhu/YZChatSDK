@@ -23,24 +23,6 @@
 		30423D08258CBD72004AEFAE /* NSObject+YZTypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423CF3258CBD72004AEFAE /* NSObject+YZTypeConversion.m */; };
 		30423D93258CBEBA004AEFAE /* UIColor+YZFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30423D92258CBEBA004AEFAE /* UIColor+YZFoundation.m */; };
 		307F9D5B2614636400FD89DE /* YWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307F9D5A2614636400FD89DE /* YWebViewController.m */; };
-		3095BA2B25A31C8F00A0F37B /* wemeet_app_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3095BA2E25A31E6C00A0F37B /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE725888CF60056AFB6 /* App.framework */; };
-		3095BA2F25A31E6C00A0F37B /* AuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF125888CF60056AFB6 /* AuthSDK.framework */; };
-		3095BA3025A31E6C00A0F37B /* camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEE25888CF60056AFB6 /* camera.framework */; };
-		3095BA3125A31E6C00A0F37B /* flutter_plugin_android_lifecycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */; };
-		3095BA3225A31E6C00A0F37B /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE425888CF60056AFB6 /* Flutter.framework */; };
-		3095BA3325A31E6C00A0F37B /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEB25888CF60056AFB6 /* FMDB.framework */; };
-		3095BA3425A31E6C00A0F37B /* image_picker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEF25888CF60056AFB6 /* image_picker.framework */; };
-		3095BA3525A31E6C00A0F37B /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE225888CF60056AFB6 /* ImSDK.framework */; };
-		3095BA3625A31E6C00A0F37B /* ImSDKForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */; };
-		3095BA3725A31E6C00A0F37B /* omp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE825888CF60056AFB6 /* omp.framework */; };
-		3095BA3825A31E6C00A0F37B /* path_provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF025888CF60056AFB6 /* path_provider.framework */; };
-		3095BA3925A31E6C00A0F37B /* sqflite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE525888CF60056AFB6 /* sqflite.framework */; };
-		3095BA3A25A31E6C00A0F37B /* wemeet_app_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */; };
-		3095BA3B25A31E6C00A0F37B /* WeMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CED25888CF60056AFB6 /* WeMeet.framework */; };
-		3095BA3C25A31E6C00A0F37B /* xcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF225888CF60056AFB6 /* xcast.framework */; };
-		3095BA3D25A31E6C00A0F37B /* xnn_media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF325888CF60056AFB6 /* xnn_media.framework */; };
-		3095BA3E25A31E6C00A0F37B /* xnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE125888CF60056AFB6 /* xnn.framework */; };
 		309FBAC5260C8033005CD8C1 /* YZRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 309FBAC4260C8033005CD8C1 /* YZRegViewController.m */; };
 		30A9862E25A422FC0082D3C9 /* AbstractUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A9862D25A422FC0082D3C9 /* AbstractUserModel.m */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
@@ -51,24 +33,42 @@
 		E5108A332618E882004D972C /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A312618E882004D972C /* TUIKitResource.bundle */; };
 		E5108A352618E882004D972C /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5108A322618E882004D972C /* TUIKitFace.bundle */; };
 		E5195CB525888B680056AFB6 /* YZChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E527E480258395CF00531586 /* YZChat.framework */; };
-		E5195D3B258896340056AFB6 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE725888CF60056AFB6 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D3D258896350056AFB6 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF125888CF60056AFB6 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D3F258896370056AFB6 /* camera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEE25888CF60056AFB6 /* camera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D41258896380056AFB6 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D432588963A0056AFB6 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE425888CF60056AFB6 /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D452588963E0056AFB6 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEB25888CF60056AFB6 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D472588963F0056AFB6 /* image_picker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CEF25888CF60056AFB6 /* image_picker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D49258896400056AFB6 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE225888CF60056AFB6 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D4B258896420056AFB6 /* ImSDKForiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D4D258896440056AFB6 /* omp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE825888CF60056AFB6 /* omp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D4F258896450056AFB6 /* path_provider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF025888CF60056AFB6 /* path_provider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D53258896480056AFB6 /* sqflite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE525888CF60056AFB6 /* sqflite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D542588964A0056AFB6 /* TMRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE325888CF60056AFB6 /* TMRTC.framework */; };
-		E5195D552588964A0056AFB6 /* TMRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE325888CF60056AFB6 /* TMRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D592588964D0056AFB6 /* WeMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CED25888CF60056AFB6 /* WeMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D5B2588964F0056AFB6 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF225888CF60056AFB6 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D5D258896500056AFB6 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CF325888CF60056AFB6 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E5195D5F258896520056AFB6 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5195CE125888CF60056AFB6 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9692647E13000BDE699 /* xnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9582647E13000BDE699 /* xnn.framework */; };
+		E51DA96A2647E13000BDE699 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9592647E13000BDE699 /* ImSDK.framework */; };
+		E51DA96B2647E13000BDE699 /* TMRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95A2647E13000BDE699 /* TMRTC.framework */; };
+		E51DA96C2647E13000BDE699 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95B2647E13000BDE699 /* Flutter.framework */; };
+		E51DA96D2647E13000BDE699 /* sqflite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95C2647E13000BDE699 /* sqflite.framework */; };
+		E51DA96E2647E13000BDE699 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95D2647E13000BDE699 /* App.framework */; };
+		E51DA96F2647E13000BDE699 /* omp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95E2647E13000BDE699 /* omp.framework */; };
+		E51DA9702647E13000BDE699 /* wemeet_app_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95F2647E13000BDE699 /* wemeet_app_sdk.framework */; };
+		E51DA9712647E13000BDE699 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9602647E13000BDE699 /* FMDB.framework */; };
+		E51DA9722647E13000BDE699 /* flutter_plugin_android_lifecycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9612647E13000BDE699 /* flutter_plugin_android_lifecycle.framework */; };
+		E51DA9732647E13000BDE699 /* WeMeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9622647E13000BDE699 /* WeMeet.framework */; };
+		E51DA9742647E13000BDE699 /* camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9632647E13000BDE699 /* camera.framework */; };
+		E51DA9752647E13000BDE699 /* image_picker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9642647E13000BDE699 /* image_picker.framework */; };
+		E51DA9762647E13000BDE699 /* path_provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9652647E13000BDE699 /* path_provider.framework */; };
+		E51DA9772647E13000BDE699 /* AuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9662647E13000BDE699 /* AuthSDK.framework */; };
+		E51DA9782647E13000BDE699 /* xcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9672647E13000BDE699 /* xcast.framework */; };
+		E51DA9792647E13000BDE699 /* xnn_media.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9682647E13000BDE699 /* xnn_media.framework */; };
+		E51DA97B2647E14400BDE699 /* ImSDKForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA97A2647E14400BDE699 /* ImSDKForiOS.framework */; };
+		E51DA97C2647E15F00BDE699 /* ImSDKForiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA97A2647E14400BDE699 /* ImSDKForiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA97D2647E15F00BDE699 /* xnn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9582647E13000BDE699 /* xnn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA97E2647E15F00BDE699 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9592647E13000BDE699 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA97F2647E15F00BDE699 /* TMRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95A2647E13000BDE699 /* TMRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9802647E15F00BDE699 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95B2647E13000BDE699 /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9812647E15F00BDE699 /* sqflite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95C2647E13000BDE699 /* sqflite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9822647E15F00BDE699 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95D2647E13000BDE699 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9832647E15F00BDE699 /* omp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95E2647E13000BDE699 /* omp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9842647E15F00BDE699 /* wemeet_app_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA95F2647E13000BDE699 /* wemeet_app_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9852647E15F00BDE699 /* FMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9602647E13000BDE699 /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9862647E15F00BDE699 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9612647E13000BDE699 /* flutter_plugin_android_lifecycle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9872647E15F00BDE699 /* WeMeet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9622647E13000BDE699 /* WeMeet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9882647E15F00BDE699 /* camera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9632647E13000BDE699 /* camera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9892647E15F00BDE699 /* image_picker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9642647E13000BDE699 /* image_picker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA98A2647E15F00BDE699 /* path_provider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9652647E13000BDE699 /* path_provider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA98B2647E15F00BDE699 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9662647E13000BDE699 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA98C2647E15F00BDE699 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9672647E13000BDE699 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA98D2647E15F00BDE699 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9682647E13000BDE699 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E57AA2B026197A3900B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3C7261A07B100B4E6C1 /* MAGICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3C6261A07B100B4E6C1 /* MAGICViewController.m */; };
 		E57AA3CE261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3CD261A099400B4E6C1 /* MAGICNavigationViewController.m */; };
@@ -81,24 +81,24 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E5195D3B258896340056AFB6 /* App.framework in Embed Frameworks */,
-				E5195D432588963A0056AFB6 /* Flutter.framework in Embed Frameworks */,
-				E5195D49258896400056AFB6 /* ImSDK.framework in Embed Frameworks */,
-				E5195D5D258896500056AFB6 /* xnn_media.framework in Embed Frameworks */,
-				E5195D53258896480056AFB6 /* sqflite.framework in Embed Frameworks */,
-				E5195D5F258896520056AFB6 /* xnn.framework in Embed Frameworks */,
-				E5195D472588963F0056AFB6 /* image_picker.framework in Embed Frameworks */,
-				E5195D5B2588964F0056AFB6 /* xcast.framework in Embed Frameworks */,
-				E5195D552588964A0056AFB6 /* TMRTC.framework in Embed Frameworks */,
-				E5195D3F258896370056AFB6 /* camera.framework in Embed Frameworks */,
-				E5195D3D258896350056AFB6 /* AuthSDK.framework in Embed Frameworks */,
-				E5195D4B258896420056AFB6 /* ImSDKForiOS.framework in Embed Frameworks */,
-				E5195D592588964D0056AFB6 /* WeMeet.framework in Embed Frameworks */,
-				E5195D452588963E0056AFB6 /* FMDB.framework in Embed Frameworks */,
-				E5195D41258896380056AFB6 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */,
-				3095BA2B25A31C8F00A0F37B /* wemeet_app_sdk.framework in Embed Frameworks */,
-				E5195D4F258896450056AFB6 /* path_provider.framework in Embed Frameworks */,
-				E5195D4D258896440056AFB6 /* omp.framework in Embed Frameworks */,
+				E51DA97C2647E15F00BDE699 /* ImSDKForiOS.framework in Embed Frameworks */,
+				E51DA97D2647E15F00BDE699 /* xnn.framework in Embed Frameworks */,
+				E51DA97E2647E15F00BDE699 /* ImSDK.framework in Embed Frameworks */,
+				E51DA97F2647E15F00BDE699 /* TMRTC.framework in Embed Frameworks */,
+				E51DA9802647E15F00BDE699 /* Flutter.framework in Embed Frameworks */,
+				E51DA9812647E15F00BDE699 /* sqflite.framework in Embed Frameworks */,
+				E51DA9822647E15F00BDE699 /* App.framework in Embed Frameworks */,
+				E51DA9832647E15F00BDE699 /* omp.framework in Embed Frameworks */,
+				E51DA9842647E15F00BDE699 /* wemeet_app_sdk.framework in Embed Frameworks */,
+				E51DA9852647E15F00BDE699 /* FMDB.framework in Embed Frameworks */,
+				E51DA9862647E15F00BDE699 /* flutter_plugin_android_lifecycle.framework in Embed Frameworks */,
+				E51DA9872647E15F00BDE699 /* WeMeet.framework in Embed Frameworks */,
+				E51DA9882647E15F00BDE699 /* camera.framework in Embed Frameworks */,
+				E51DA9892647E15F00BDE699 /* image_picker.framework in Embed Frameworks */,
+				E51DA98A2647E15F00BDE699 /* path_provider.framework in Embed Frameworks */,
+				E51DA98B2647E15F00BDE699 /* AuthSDK.framework in Embed Frameworks */,
+				E51DA98C2647E15F00BDE699 /* xcast.framework in Embed Frameworks */,
+				E51DA98D2647E15F00BDE699 /* xnn_media.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,24 +162,24 @@
 		D2CA2F41C85A7A914B872345 /* Pods-YZChat_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YZChat_Example.debug.xcconfig"; path = "Target Support Files/Pods-YZChat_Example/Pods-YZChat_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E5108A312618E882004D972C /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitResource.bundle; path = ../../../YZChatFramework/YZChat/Classes/IMUIKit/TXIMSDK_TUIKit_iOS/TUIKit/Resources/TUIKitResource.bundle; sourceTree = "<group>"; };
 		E5108A322618E882004D972C /* TUIKitFace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TUIKitFace.bundle; path = ../../../YZChatFramework/YZChat/Classes/IMUIKit/TXIMSDK_TUIKit_iOS/TUIKit/Resources/TUIKitFace.bundle; sourceTree = "<group>"; };
-		E5195CE125888CF60056AFB6 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
-		E5195CE225888CF60056AFB6 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
-		E5195CE325888CF60056AFB6 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
-		E5195CE425888CF60056AFB6 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
-		E5195CE525888CF60056AFB6 /* sqflite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqflite.framework; sourceTree = "<group>"; };
-		E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDKForiOS.framework; sourceTree = "<group>"; };
-		E5195CE725888CF60056AFB6 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
-		E5195CE825888CF60056AFB6 /* omp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = omp.framework; sourceTree = "<group>"; };
-		E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wemeet_app_sdk.framework; sourceTree = "<group>"; };
-		E5195CEB25888CF60056AFB6 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
-		E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = flutter_plugin_android_lifecycle.framework; sourceTree = "<group>"; };
-		E5195CED25888CF60056AFB6 /* WeMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeMeet.framework; sourceTree = "<group>"; };
-		E5195CEE25888CF60056AFB6 /* camera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = camera.framework; sourceTree = "<group>"; };
-		E5195CEF25888CF60056AFB6 /* image_picker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = image_picker.framework; sourceTree = "<group>"; };
-		E5195CF025888CF60056AFB6 /* path_provider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = path_provider.framework; sourceTree = "<group>"; };
-		E5195CF125888CF60056AFB6 /* AuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthSDK.framework; sourceTree = "<group>"; };
-		E5195CF225888CF60056AFB6 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
-		E5195CF325888CF60056AFB6 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
+		E51DA9582647E13000BDE699 /* xnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn.framework; sourceTree = "<group>"; };
+		E51DA9592647E13000BDE699 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
+		E51DA95A2647E13000BDE699 /* TMRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMRTC.framework; sourceTree = "<group>"; };
+		E51DA95B2647E13000BDE699 /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flutter.framework; sourceTree = "<group>"; };
+		E51DA95C2647E13000BDE699 /* sqflite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = sqflite.framework; sourceTree = "<group>"; };
+		E51DA95D2647E13000BDE699 /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = "<group>"; };
+		E51DA95E2647E13000BDE699 /* omp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = omp.framework; sourceTree = "<group>"; };
+		E51DA95F2647E13000BDE699 /* wemeet_app_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = wemeet_app_sdk.framework; sourceTree = "<group>"; };
+		E51DA9602647E13000BDE699 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FMDB.framework; sourceTree = "<group>"; };
+		E51DA9612647E13000BDE699 /* flutter_plugin_android_lifecycle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = flutter_plugin_android_lifecycle.framework; sourceTree = "<group>"; };
+		E51DA9622647E13000BDE699 /* WeMeet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeMeet.framework; sourceTree = "<group>"; };
+		E51DA9632647E13000BDE699 /* camera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = camera.framework; sourceTree = "<group>"; };
+		E51DA9642647E13000BDE699 /* image_picker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = image_picker.framework; sourceTree = "<group>"; };
+		E51DA9652647E13000BDE699 /* path_provider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = path_provider.framework; sourceTree = "<group>"; };
+		E51DA9662647E13000BDE699 /* AuthSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AuthSDK.framework; sourceTree = "<group>"; };
+		E51DA9672647E13000BDE699 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
+		E51DA9682647E13000BDE699 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
+		E51DA97A2647E14400BDE699 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDKForiOS.framework; path = ../../YZChat/Vendors/ImSDKForiOS.framework; sourceTree = "<group>"; };
 		E527E480258395CF00531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = ../../../YZChatFramework/YZChat/Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E57AA3C5261A07B100B4E6C1 /* MAGICViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGICViewController.h; sourceTree = "<group>"; };
@@ -195,26 +195,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3095BA2E25A31E6C00A0F37B /* App.framework in Frameworks */,
-				3095BA2F25A31E6C00A0F37B /* AuthSDK.framework in Frameworks */,
-				3095BA3025A31E6C00A0F37B /* camera.framework in Frameworks */,
-				3095BA3125A31E6C00A0F37B /* flutter_plugin_android_lifecycle.framework in Frameworks */,
-				3095BA3225A31E6C00A0F37B /* Flutter.framework in Frameworks */,
-				3095BA3325A31E6C00A0F37B /* FMDB.framework in Frameworks */,
-				3095BA3425A31E6C00A0F37B /* image_picker.framework in Frameworks */,
-				3095BA3525A31E6C00A0F37B /* ImSDK.framework in Frameworks */,
-				3095BA3625A31E6C00A0F37B /* ImSDKForiOS.framework in Frameworks */,
-				3095BA3725A31E6C00A0F37B /* omp.framework in Frameworks */,
-				3095BA3825A31E6C00A0F37B /* path_provider.framework in Frameworks */,
-				3095BA3925A31E6C00A0F37B /* sqflite.framework in Frameworks */,
-				3095BA3A25A31E6C00A0F37B /* wemeet_app_sdk.framework in Frameworks */,
-				3095BA3B25A31E6C00A0F37B /* WeMeet.framework in Frameworks */,
-				3095BA3C25A31E6C00A0F37B /* xcast.framework in Frameworks */,
-				3095BA3D25A31E6C00A0F37B /* xnn_media.framework in Frameworks */,
-				3095BA3E25A31E6C00A0F37B /* xnn.framework in Frameworks */,
-				E5195D542588964A0056AFB6 /* TMRTC.framework in Frameworks */,
 				E5195CB525888B680056AFB6 /* YZChat.framework in Frameworks */,
+				E51DA9742647E13000BDE699 /* camera.framework in Frameworks */,
+				E51DA9752647E13000BDE699 /* image_picker.framework in Frameworks */,
+				E51DA9792647E13000BDE699 /* xnn_media.framework in Frameworks */,
+				E51DA96C2647E13000BDE699 /* Flutter.framework in Frameworks */,
+				E51DA96E2647E13000BDE699 /* App.framework in Frameworks */,
+				E51DA9732647E13000BDE699 /* WeMeet.framework in Frameworks */,
+				E51DA97B2647E14400BDE699 /* ImSDKForiOS.framework in Frameworks */,
+				E51DA9782647E13000BDE699 /* xcast.framework in Frameworks */,
+				E51DA96B2647E13000BDE699 /* TMRTC.framework in Frameworks */,
+				E51DA9702647E13000BDE699 /* wemeet_app_sdk.framework in Frameworks */,
+				E51DA9722647E13000BDE699 /* flutter_plugin_android_lifecycle.framework in Frameworks */,
+				E51DA96F2647E13000BDE699 /* omp.framework in Frameworks */,
+				E51DA9762647E13000BDE699 /* path_provider.framework in Frameworks */,
+				E51DA96D2647E13000BDE699 /* sqflite.framework in Frameworks */,
+				E51DA9692647E13000BDE699 /* xnn.framework in Frameworks */,
 				60C6BAFB1417D16CF40434F7 /* libPods-YZChat_Example.a in Frameworks */,
+				E51DA9772647E13000BDE699 /* AuthSDK.framework in Frameworks */,
+				E51DA9712647E13000BDE699 /* FMDB.framework in Frameworks */,
+				E51DA96A2647E13000BDE699 /* ImSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +309,7 @@
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for YZChat */,
 				6003F58C195388D20070C39A /* Frameworks */,
+				E51DA9572647E13000BDE699 /* Vendors */,
 				6003F58B195388D20070C39A /* Products */,
 				2F8C11E322712FFBD0510E3A /* Pods */,
 			);
@@ -349,7 +350,6 @@
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				E5195CE025888CF60056AFB6 /* Vendors */,
 			);
 			name = "Example for YZChat";
 			path = YZChat;
@@ -386,30 +386,29 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		E5195CE025888CF60056AFB6 /* Vendors */ = {
+		E51DA9572647E13000BDE699 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				E5195CE125888CF60056AFB6 /* xnn.framework */,
-				E5195CE225888CF60056AFB6 /* ImSDK.framework */,
-				E5195CE325888CF60056AFB6 /* TMRTC.framework */,
-				E5195CE425888CF60056AFB6 /* Flutter.framework */,
-				E5195CE525888CF60056AFB6 /* sqflite.framework */,
-				E5195CE625888CF60056AFB6 /* ImSDKForiOS.framework */,
-				E5195CE725888CF60056AFB6 /* App.framework */,
-				E5195CE825888CF60056AFB6 /* omp.framework */,
-				E5195CEA25888CF60056AFB6 /* wemeet_app_sdk.framework */,
-				E5195CEB25888CF60056AFB6 /* FMDB.framework */,
-				E5195CEC25888CF60056AFB6 /* flutter_plugin_android_lifecycle.framework */,
-				E5195CED25888CF60056AFB6 /* WeMeet.framework */,
-				E5195CEE25888CF60056AFB6 /* camera.framework */,
-				E5195CEF25888CF60056AFB6 /* image_picker.framework */,
-				E5195CF025888CF60056AFB6 /* path_provider.framework */,
-				E5195CF125888CF60056AFB6 /* AuthSDK.framework */,
-				E5195CF225888CF60056AFB6 /* xcast.framework */,
-				E5195CF325888CF60056AFB6 /* xnn_media.framework */,
+				E51DA97A2647E14400BDE699 /* ImSDKForiOS.framework */,
+				E51DA9582647E13000BDE699 /* xnn.framework */,
+				E51DA9592647E13000BDE699 /* ImSDK.framework */,
+				E51DA95A2647E13000BDE699 /* TMRTC.framework */,
+				E51DA95B2647E13000BDE699 /* Flutter.framework */,
+				E51DA95C2647E13000BDE699 /* sqflite.framework */,
+				E51DA95D2647E13000BDE699 /* App.framework */,
+				E51DA95E2647E13000BDE699 /* omp.framework */,
+				E51DA95F2647E13000BDE699 /* wemeet_app_sdk.framework */,
+				E51DA9602647E13000BDE699 /* FMDB.framework */,
+				E51DA9612647E13000BDE699 /* flutter_plugin_android_lifecycle.framework */,
+				E51DA9622647E13000BDE699 /* WeMeet.framework */,
+				E51DA9632647E13000BDE699 /* camera.framework */,
+				E51DA9642647E13000BDE699 /* image_picker.framework */,
+				E51DA9652647E13000BDE699 /* path_provider.framework */,
+				E51DA9662647E13000BDE699 /* AuthSDK.framework */,
+				E51DA9672647E13000BDE699 /* xcast.framework */,
+				E51DA9682647E13000BDE699 /* xnn_media.framework */,
 			);
-			name = Vendors;
-			path = ../../YZChat/Vendors;
+			path = Vendors;
 			sourceTree = "<group>";
 		};
 		E57AA3C4261A076400B4E6C1 /* Base */ = {
@@ -728,6 +727,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../YZChat/Vendors",
+					"$(PROJECT_DIR)/Vendors",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
@@ -760,6 +760,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../YZChat/Vendors",
+					"$(PROJECT_DIR)/Vendors",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YZChat/YZChat-Prefix.pch";
