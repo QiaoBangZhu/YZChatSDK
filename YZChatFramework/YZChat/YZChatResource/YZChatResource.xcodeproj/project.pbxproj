@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5CA74C02584B38D00719F72 /* 1400269600.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B12584B38C00719F72 /* 1400269600.conf */; };
-		E5CA74C12584B38D00719F72 /* 1400098016.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B22584B38C00719F72 /* 1400098016.conf */; };
-		E5CA74C22584B38D00719F72 /* 1400321069.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B32584B38C00719F72 /* 1400321069.conf */; };
-		E5CA74C32584B38D00719F72 /* 1400143280.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B42584B38C00719F72 /* 1400143280.conf */; };
-		E5CA74C42584B38D00719F72 /* 1400036169.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B52584B38C00719F72 /* 1400036169.conf */; };
-		E5CA74C52584B38D00719F72 /* 1400212767.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B62584B38C00719F72 /* 1400212767.conf */; };
-		E5CA74C62584B38D00719F72 /* 1400115281.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B72584B38C00719F72 /* 1400115281.conf */; };
-		E5CA74C72584B38D00719F72 /* 1400244218.conf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B82584B38C00719F72 /* 1400244218.conf */; };
 		E5CA74C82584B38D00719F72 /* voip_call.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74B92584B38C00719F72 /* voip_call.mp3 */; };
 		E5CA74C92584B38D00719F72 /* 00.caf in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74BA2584B38C00719F72 /* 00.caf */; };
 		E5CA74CA2584B38D00719F72 /* YZChat.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CA74BB2584B38C00719F72 /* YZChat.xcassets */; };
@@ -25,14 +17,6 @@
 
 /* Begin PBXFileReference section */
 		E5CA74852584B0AD00719F72 /* YZChatResource.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YZChatResource.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5CA74B12584B38C00719F72 /* 1400269600.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400269600.conf; sourceTree = "<group>"; };
-		E5CA74B22584B38C00719F72 /* 1400098016.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400098016.conf; sourceTree = "<group>"; };
-		E5CA74B32584B38C00719F72 /* 1400321069.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400321069.conf; sourceTree = "<group>"; };
-		E5CA74B42584B38C00719F72 /* 1400143280.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400143280.conf; sourceTree = "<group>"; };
-		E5CA74B52584B38C00719F72 /* 1400036169.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400036169.conf; sourceTree = "<group>"; };
-		E5CA74B62584B38C00719F72 /* 1400212767.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400212767.conf; sourceTree = "<group>"; };
-		E5CA74B72584B38C00719F72 /* 1400115281.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400115281.conf; sourceTree = "<group>"; };
-		E5CA74B82584B38C00719F72 /* 1400244218.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400244218.conf; sourceTree = "<group>"; };
 		E5CA74B92584B38C00719F72 /* voip_call.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voip_call.mp3; sourceTree = "<group>"; };
 		E5CA74BA2584B38C00719F72 /* 00.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00.caf; sourceTree = "<group>"; };
 		E5CA74BB2584B38C00719F72 /* YZChat.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = YZChat.xcassets; sourceTree = "<group>"; };
@@ -79,24 +63,8 @@
 				E5CA74BF2584B38D00719F72 /* voip_calling_ring.mp3 */,
 				E5CA74BD2584B38C00719F72 /* Info.plist */,
 				E5CA74BB2584B38C00719F72 /* YZChat.xcassets */,
-				E5CA74B02584B38C00719F72 /* conf */,
 			);
 			path = YZChatResource;
-			sourceTree = "<group>";
-		};
-		E5CA74B02584B38C00719F72 /* conf */ = {
-			isa = PBXGroup;
-			children = (
-				E5CA74B12584B38C00719F72 /* 1400269600.conf */,
-				E5CA74B22584B38C00719F72 /* 1400098016.conf */,
-				E5CA74B32584B38C00719F72 /* 1400321069.conf */,
-				E5CA74B42584B38C00719F72 /* 1400143280.conf */,
-				E5CA74B52584B38C00719F72 /* 1400036169.conf */,
-				E5CA74B62584B38C00719F72 /* 1400212767.conf */,
-				E5CA74B72584B38C00719F72 /* 1400115281.conf */,
-				E5CA74B82584B38C00719F72 /* 1400244218.conf */,
-			);
-			path = conf;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,18 +125,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5CA74C92584B38D00719F72 /* 00.caf in Resources */,
-				E5CA74C12584B38D00719F72 /* 1400098016.conf in Resources */,
-				E5CA74C62584B38D00719F72 /* 1400115281.conf in Resources */,
-				E5CA74C52584B38D00719F72 /* 1400212767.conf in Resources */,
 				E5CA74C82584B38D00719F72 /* voip_call.mp3 in Resources */,
-				E5CA74C22584B38D00719F72 /* 1400321069.conf in Resources */,
-				E5CA74C32584B38D00719F72 /* 1400143280.conf in Resources */,
 				E5CA74CD2584B38D00719F72 /* sms-received.caf in Resources */,
 				E5CA74CB2584B38D00719F72 /* 01.caf in Resources */,
-				E5CA74C72584B38D00719F72 /* 1400244218.conf in Resources */,
-				E5CA74C02584B38D00719F72 /* 1400269600.conf in Resources */,
 				E5CA74CA2584B38D00719F72 /* YZChat.xcassets in Resources */,
-				E5CA74C42584B38D00719F72 /* 1400036169.conf in Resources */,
 				E5CA74CE2584B38D00719F72 /* voip_calling_ring.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,7 +152,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -rf ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME} ${SRCROOT}/../Assets\n";
+			shellScript = "rm -rf ${SRCROOT}/../Assets/${WRAPPER_NAME}\ncp -rf ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME} ${SRCROOT}/../Assets\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -69,6 +69,15 @@
 		E51DA98B2647E15F00BDE699 /* AuthSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9662647E13000BDE699 /* AuthSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E51DA98C2647E15F00BDE699 /* xcast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9672647E13000BDE699 /* xcast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E51DA98D2647E15F00BDE699 /* xnn_media.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E51DA9682647E13000BDE699 /* xnn_media.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E51DA9912647FC5500BDE699 /* TempWeMeetController.m in Sources */ = {isa = PBXBuildFile; fileRef = E51DA9902647FC5500BDE699 /* TempWeMeetController.m */; };
+		E51DA99B2648278300BDE699 /* 1400269600.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9932648278300BDE699 /* 1400269600.conf */; };
+		E51DA99C2648278300BDE699 /* 1400098016.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9942648278300BDE699 /* 1400098016.conf */; };
+		E51DA99D2648278300BDE699 /* 1400321069.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9952648278300BDE699 /* 1400321069.conf */; };
+		E51DA99E2648278300BDE699 /* 1400143280.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9962648278300BDE699 /* 1400143280.conf */; };
+		E51DA99F2648278300BDE699 /* 1400036169.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9972648278300BDE699 /* 1400036169.conf */; };
+		E51DA9A02648278300BDE699 /* 1400212767.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9982648278300BDE699 /* 1400212767.conf */; };
+		E51DA9A12648278300BDE699 /* 1400115281.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA9992648278300BDE699 /* 1400115281.conf */; };
+		E51DA9A22648278300BDE699 /* 1400244218.conf in Resources */ = {isa = PBXBuildFile; fileRef = E51DA99A2648278300BDE699 /* 1400244218.conf */; };
 		E57AA2B026197A3900B4E6C1 /* YZChatResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */; };
 		E57AA3C7261A07B100B4E6C1 /* MAGICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3C6261A07B100B4E6C1 /* MAGICViewController.m */; };
 		E57AA3CE261A099400B4E6C1 /* MAGICNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57AA3CD261A099400B4E6C1 /* MAGICNavigationViewController.m */; };
@@ -180,6 +189,16 @@
 		E51DA9672647E13000BDE699 /* xcast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xcast.framework; sourceTree = "<group>"; };
 		E51DA9682647E13000BDE699 /* xnn_media.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = xnn_media.framework; sourceTree = "<group>"; };
 		E51DA97A2647E14400BDE699 /* ImSDKForiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDKForiOS.framework; path = ../../YZChat/Vendors/ImSDKForiOS.framework; sourceTree = "<group>"; };
+		E51DA98F2647FC5500BDE699 /* TempWeMeetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempWeMeetController.h; sourceTree = "<group>"; };
+		E51DA9902647FC5500BDE699 /* TempWeMeetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempWeMeetController.m; sourceTree = "<group>"; };
+		E51DA9932648278300BDE699 /* 1400269600.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400269600.conf; sourceTree = "<group>"; };
+		E51DA9942648278300BDE699 /* 1400098016.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400098016.conf; sourceTree = "<group>"; };
+		E51DA9952648278300BDE699 /* 1400321069.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400321069.conf; sourceTree = "<group>"; };
+		E51DA9962648278300BDE699 /* 1400143280.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400143280.conf; sourceTree = "<group>"; };
+		E51DA9972648278300BDE699 /* 1400036169.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400036169.conf; sourceTree = "<group>"; };
+		E51DA9982648278300BDE699 /* 1400212767.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400212767.conf; sourceTree = "<group>"; };
+		E51DA9992648278300BDE699 /* 1400115281.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400115281.conf; sourceTree = "<group>"; };
+		E51DA99A2648278300BDE699 /* 1400244218.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1400244218.conf; sourceTree = "<group>"; };
 		E527E480258395CF00531586 /* YZChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YZChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YZChatResource.bundle; path = ../../../YZChatFramework/YZChat/Assets/YZChatResource.bundle; sourceTree = "<group>"; };
 		E57AA3C5261A07B100B4E6C1 /* MAGICViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGICViewController.h; sourceTree = "<group>"; };
@@ -338,6 +357,7 @@
 		6003F593195388D20070C39A /* Example for YZChat */ = {
 			isa = PBXGroup;
 			children = (
+				E51DA98E2647FC1800BDE699 /* Temp */,
 				E57AA3C4261A076400B4E6C1 /* Base */,
 				E5108A302618E867004D972C /* Resources */,
 				30A9862A25A422590082D3C9 /* Model */,
@@ -379,6 +399,7 @@
 		E5108A302618E867004D972C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E51DA9922648278300BDE699 /* conf */,
 				E57AA2AF26197A3900B4E6C1 /* YZChatResource.bundle */,
 				E5108A322618E882004D972C /* TUIKitFace.bundle */,
 				E5108A312618E882004D972C /* TUIKitResource.bundle */,
@@ -409,6 +430,30 @@
 				E51DA9682647E13000BDE699 /* xnn_media.framework */,
 			);
 			path = Vendors;
+			sourceTree = "<group>";
+		};
+		E51DA98E2647FC1800BDE699 /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+				E51DA98F2647FC5500BDE699 /* TempWeMeetController.h */,
+				E51DA9902647FC5500BDE699 /* TempWeMeetController.m */,
+			);
+			path = Temp;
+			sourceTree = "<group>";
+		};
+		E51DA9922648278300BDE699 /* conf */ = {
+			isa = PBXGroup;
+			children = (
+				E51DA9932648278300BDE699 /* 1400269600.conf */,
+				E51DA9942648278300BDE699 /* 1400098016.conf */,
+				E51DA9952648278300BDE699 /* 1400321069.conf */,
+				E51DA9962648278300BDE699 /* 1400143280.conf */,
+				E51DA9972648278300BDE699 /* 1400036169.conf */,
+				E51DA9982648278300BDE699 /* 1400212767.conf */,
+				E51DA9992648278300BDE699 /* 1400115281.conf */,
+				E51DA99A2648278300BDE699 /* 1400244218.conf */,
+			);
+			path = conf;
 			sourceTree = "<group>";
 		};
 		E57AA3C4261A076400B4E6C1 /* Base */ = {
@@ -485,11 +530,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E51DA99E2648278300BDE699 /* 1400143280.conf in Resources */,
+				E51DA9A02648278300BDE699 /* 1400212767.conf in Resources */,
+				E51DA99C2648278300BDE699 /* 1400098016.conf in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				E51DA99B2648278300BDE699 /* 1400269600.conf in Resources */,
 				E5108A352618E882004D972C /* TUIKitFace.bundle in Resources */,
+				E51DA99F2648278300BDE699 /* 1400036169.conf in Resources */,
 				E57AA2B026197A3900B4E6C1 /* YZChatResource.bundle in Resources */,
+				E51DA9A12648278300BDE699 /* 1400115281.conf in Resources */,
+				E51DA9A22648278300BDE699 /* 1400244218.conf in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				E5108A332618E882004D972C /* TUIKitResource.bundle in Resources */,
+				E51DA99D2648278300BDE699 /* 1400321069.conf in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +621,7 @@
 				30423C34258CB9D0004AEFAE /* YZLoginViewController.m in Sources */,
 				304239C9258C961A004AEFAE /* YZChatRequestMan.m in Sources */,
 				30423D02258CBD72004AEFAE /* YZChatValidInput.m in Sources */,
+				E51DA9912647FC5500BDE699 /* TempWeMeetController.m in Sources */,
 				309FBAC5260C8033005CD8C1 /* YZRegViewController.m in Sources */,
 				304239C3258C961A004AEFAE /* YZChatURLRequest.m in Sources */,
 				30423C3A258CB9D0004AEFAE /* YZAppDelegate.m in Sources */,

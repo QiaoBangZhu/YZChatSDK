@@ -353,7 +353,7 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
     }];
 }
 
-// TODO: 用途？
+/// FIXME: 用途？
 - (void)clickClose {
     [self dismissViewControllerAnimated: YES completion: nil];
 }

@@ -17,7 +17,6 @@
 #import "ReactiveObjC/ReactiveObjC.h"
 #import "CIGAMKit.h"
 #import "YZWebViewController.h"
-//#import <TMRTC/TMRTC.h>
 #import "YZBaseManager.h"
 #import "NSBundle+YZBundle.h"
 
@@ -83,7 +82,7 @@
         make.bottom.equalTo(@-16);
         make.right.equalTo(@-9);
     }];
- 
+
 }
 
 - (void)requestData {
@@ -162,19 +161,22 @@
     NSString* url = app.toolUrl;
     //腾讯会议
     if ([app.toolCode isEqualToString:@"code001"]) {
-        url = [NSString stringWithFormat:@"%@%@",SSOFormatString,app.sdkToken];
-        self.SSOURLString = url;
-//        self.SSOURLString = @"https://demo4-idp.idaas.tencentcs.com/cidp/login/ai-b17a6f68b4ed47678c62e0e0a3fc3bb0?state=aHR0cHM6Ly9kZW1vNC1pZHAuaWRhYXMudGVuY2VudGNzLmNvbS9jaWRwL3Nzby9haS0xZGIxMzkwOGY5Njc0NTExOWUyYTg5YzVlYjJmNWUwYw==&id_token=eyJraWQiOiI3IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ5dWFuemhpX3Rlc3QwMSIsImlzcyI6InRlbmNlbnQgbWVldGluZyIsIm5hbWUiOiJ5dWFuemhpX3Rlc3QwMSIsImV4cCI6MTYwNjU1Mjk2NiwiaWF0IjoxNjAxMzg3MTY2fQ.XljVdtibXPxg29VM4kDFejlJoSyx1RXoWsXlyZhj_IplgMAtwMctEqVO84seGQxVMKcYUMi-7YiQRTph1-nzg1JuxVvruLVQnYSm3iIWrmj9XgHbbOWVAP1oA5XZfDOHG2QGev4OgWxwS6l1SZNLJLUunHy4UlwTqQvzDbQyZ7-WubJ5balAre30DkYNAyxI2IE5DXOgSpSFeHF30aQiq-4WGxREF84uP--43TXKfd5H76ZyDdluKzmEXoQBJywnK9KOwLOrTB4u7nyB_MnNMH9a33IESwa1ePIZklsQsDnxZnp8M-7o32Pa--D5krq0dR2UeqrHvgqPlRPFVKD9Tg";
-//
-//        [self configureTMRTC];
-//        [self configureAuthServce];
-//
-//        if([[[TMRTCAppDelegate sharedRTC] authService] login]) {
-//            [CIGAMTips showLoadingInView:self.view];
-//        } else {
-//            NSLog(@"not init!");
-//        }
-//        return;
+        Class cls = NSClassFromString(@"TempWeMeetController");
+        if (cls) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+            if ([cls respondsToSelector: @selector(sharedInstance)]) {
+                id sharedInstance = [cls performSelector: @selector(sharedInstance)];
+
+                if ([sharedInstance respondsToSelector: @selector(startWithToken:viewController:)]) {
+                    [sharedInstance performSelector: @selector(startWithToken:viewController:)
+                                         withObject: app.sdkToken
+                                         withObject: self];
+                }
+            }
+#pragma clang diagnostic pop
+        }
+        return;
     }else if([app.toolCode isEqualToString:@"code002"]){
         //网盘
         [self fetchToolToken:app];
@@ -232,78 +234,5 @@
     webView.needUA = isNeedUA;
     [self.navigationController pushViewController:webView animated:true];
 }
-
-
-#pragma mark - TMRTCAuthServiceDataSource
-
-- (void)ssoAuthCodeForAuth:(void (^)(NSString *ssoCode))block {
-
-    NSURL *SSOURL = [NSURL URLWithString:self.SSOURLString];
-    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:SSOURL
-                                                         completionHandler:^(NSData * _Nullable data,
-                                                                             NSURLResponse * _Nullable rsp,
-                                                                             NSError * _Nullable error) {
-       NSHTTPURLResponse *response = (NSHTTPURLResponse *)rsp;
-       if ([response statusCode] != 200) {
-          NSAssert(0, @"response error %ld", (long)[response statusCode]);
-          return;
-       }
-       NSURLComponents *components = [[NSURLComponents alloc] initWithString:[response.URL absoluteString]];
-       for (NSURLQueryItem *queryItem in [components queryItems]) {
-          if ([queryItem.name isEqualToString:@"redirect_uri"]) {
-              // Get scheme
-              NSString *scheme = [queryItem.value stringByRemovingPercentEncoding];
-              NSURLComponents *schemeComponents = [[NSURLComponents alloc] initWithString:scheme];
-              for (NSURLQueryItem *schemeQueryItem in [schemeComponents queryItems]) {
-                  if ([schemeQueryItem.name isEqualToString:@"sso_auth_code"]) {
-                      // Get sso audh code
-                      NSString *code = schemeQueryItem.value;
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          block(code);
-                      });
-                      return;
-                  }
-              }
-          }
-        }
-        NSAssert(0, @"sso_auth_code not found");
-    }];
-    [task resume];
-}
-
-//- (void)configureTMRTC {
-//    TMRTCAppDelegateInitAttributes *attributes = [TMRTCAppDelegateInitAttributes new];
-//    attributes.extensionGroupId = @"com.yuanzhi.chat";
-//    attributes.resourceBundlePath = [[NSBundle mainBundle] pathForResource:@"TMRTCResource" ofType:@"bundle"];
-//    attributes.sdkId = kSdkId;
-//    attributes.sdkToken = kSdkToken;
-//    [[TMRTCAppDelegate sharedRTC] initWithAttributes:attributes];
-//}
-//
-//- (void)configureAuthServce {
-//    [[TMRTCAppDelegate sharedRTC] authService].delegate = self;
-//    [[TMRTCAppDelegate sharedRTC] authService].dataSource = self;
-//}
-//
-//- (void)auth:(nonnull TMRTCAuthService *)auth didFinishLoginWithError:(nullable NSError *)error {
-//    if (error) {
-//        [CIGAMTips showError:error.localizedDescription];
-//    }else {
-//        UIViewController *viewController = [[TMRTCAppDelegate sharedRTC] rootViewController];
-//        [self presentViewController:viewController animated:YES completion:nil];
-//    }
-//}
-//
-//- (void)auth:(nonnull TMRTCAuthService *)auth didFinishLogoutWithError:(nullable NSError *)error {
-//    if (error) {
-//        [CIGAMTips showError:error.localizedDescription];
-//    }
-//}
-//
-//- (void)exit {
-//    [UIApplication sharedApplication].delegate.window.rootViewController = [[YZBaseManager shareInstance] getMainController];
-//      [YZBaseManager shareInstance].tabController.selectedIndex = 2;
-//}
-
 
 @end
