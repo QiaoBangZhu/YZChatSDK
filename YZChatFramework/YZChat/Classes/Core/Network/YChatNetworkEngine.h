@@ -58,7 +58,7 @@ DEF_URL(fetchInviteFriend, user/inviteUser)
 //群相关
 
 /**创建群组*/
-DEF_URL(creatGroup, group/createGroup)
+DEF_URL(createGroup, group/createGroup)
 /**修改群组信息*/
 DEF_URL(updateGroup, group/updateGroup)
 /**解散群组*/
@@ -79,7 +79,7 @@ typedef NS_ENUM(NSInteger, SmscodeType)
     SmscodeTypeModifyPhone = 3,
 };
 
-typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *error);
+typedef void (^YChatURLRequestCompletionBlock)( NSDictionary * result, NSError *error);
 
 @interface YChatNetworkEngine : NSObject
 
@@ -87,22 +87,22 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
 //获取验证码 type 1,注册，2，修改密码，3修改手机号
 +(NSURLSessionDataTask*)requestUserCodeWithMobile:(NSString*)mobile
                                    type:(SmscodeType)type
-                                 completion:(YChatURLRequstCompletionBlock)block;
+                                 completion:(YChatURLRequestCompletionBlock)block;
 
 //注册
 + (NSURLSessionDataTask*)requestUserRegisterWithMobile:(NSString *)mobile
                                              smsCode:(NSString *)smsCode
                                               passWord:(NSString *)password
-                                            completion:(YChatURLRequstCompletionBlock)block;
+                                            completion:(YChatURLRequestCompletionBlock)block;
 //登录
 +(NSURLSessionDataTask*)requestUserLoginMobile:(NSString*)loginMobile
                                         loginPwd:(NSString*)password
-                                      completion:(YChatURLRequstCompletionBlock)block;
+                                      completion:(YChatURLRequestCompletionBlock)block;
 
 
 //获取登录信息
 +(NSURLSessionDataTask *)requestUserInfoWithUserId:(NSString *)userId
-                                           completion:(YChatURLRequstCompletionBlock)block;
+                                           completion:(YChatURLRequestCompletionBlock)block;
 
 
 //修改密码
@@ -110,24 +110,24 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                                    oldPwd:(NSString *)oldPassword
                                               newPassword:(NSString *)newPassword
                                                completion:
-                                                (YChatURLRequstCompletionBlock)block;
+                                                (YChatURLRequestCompletionBlock)block;
 
 //重置密码
 + (NSURLSessionDataTask *)requestResetPasswordWithMobile:(NSString*)mobile
                                                    smsCode:(NSString *)code
                                               password:(NSString *)newPassword
                                                completion:
-                                                (YChatURLRequstCompletionBlock)block;
+                                                (YChatURLRequestCompletionBlock)block;
 //修改登录的手机号码
 + (NSURLSessionDataTask *)requestChangeMobileWithUserId:(NSString*)userId
                                                  mobile:(NSString*)mobile
                                                  oldMobile:(NSString*)mobile
                                                    smsCode:(NSString *)code
                                                completion:
-                                                (YChatURLRequstCompletionBlock)block;
+                                                (YChatURLRequestCompletionBlock)block;
 //添加好友时候查询用户列表(手机号/昵称)
 + (NSURLSessionDataTask *)requestUserListWithParam:(NSString*)param
-                                         completion:(YChatURLRequstCompletionBlock)block;
+                                         completion:(YChatURLRequestCompletionBlock)block;
 //修改用户信息
 + (NSURLSessionDataTask *)requestUpdateUserInfoWithUserId:(NSString*)userId
                                                 avatar:(NSString*)avatar
@@ -140,12 +140,12 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                                      city:(NSString*)city
                                                    gender:(int)gender
                                                 completion:
-                                                (YChatURLRequstCompletionBlock)block;
+                                                (YChatURLRequestCompletionBlock)block;
 
 //获取工具箱信息
 + (NSURLSessionDataTask *)requestToolBoxWithUserId:(NSString*)userId
                                             completion:
-                                            (YChatURLRequstCompletionBlock)block;
+                                            (YChatURLRequestCompletionBlock)block;
 
 //创建群组(不包含群成员信息)
 + (NSURLSessionDataTask *)requestCreateGroupWithOwnerUserId:(NSString *)userId
@@ -156,13 +156,13 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                                   avatarUrl:(NSString *)url
                                                  maxMembers:(NSInteger )count
                                                    joinType:(NSString *)joinType
-                                                 completion:(YChatURLRequstCompletionBlock)block;
+                                                 completion:(YChatURLRequestCompletionBlock)block;
 //创建群组(包含群成员)
 + (NSURLSessionDataTask *)requestCreateMembersGroupWithGroupName:(NSString *)name
                                                             type:(NSString *)type
                                                       memberList:(NSMutableArray *)members
                                                     ownerAccount:(NSString *)owner
-                                                      completion:(YChatURLRequstCompletionBlock)block;
+                                                      completion:(YChatURLRequestCompletionBlock)block;
 
 
 //修改群组信息
@@ -174,10 +174,10 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                                  maxMembers:(NSInteger )count
                                                    joinType:(NSString *)joinType
                                             shutUpAllMember:(BOOL)isShutUp
-                                                 completion:(YChatURLRequstCompletionBlock)block;
+                                                 completion:(YChatURLRequestCompletionBlock)block;
 //解散群
 + (NSURLSessionDataTask *)requestDismissGroupWithGroupId:(NSString *)groupId
-                                         completion:(YChatURLRequstCompletionBlock)block;
+                                         completion:(YChatURLRequestCompletionBlock)block;
 //获取用户加入的群组
 //+ (NSURLSessionDataTask *)requestUserJoinedGroupsInfo:(NSString *)userId
 //                                           limitCount:(NSInteger)count Offset:(NSString *)offset completion:(YChatURLRequstCompletionBlock)block;
@@ -185,21 +185,21 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
 //
 
 + (NSURLSessionDataTask *)requestFetchGroupMsgWithGroupIdList:(NSArray *)groupList
-                                                   completion:(YChatURLRequstCompletionBlock)block;
+                                                   completion:(YChatURLRequestCompletionBlock)block;
 
 //获取工具箱内某一个工具对应的token
 + (NSURLSessionDataTask *)requestToolTokenWithUserId:(NSString *)userId
-                                            toolCode:(NSString *)toolCode toolName:(NSString *)toolName completion:(YChatURLRequstCompletionBlock)block;
+                                            toolCode:(NSString *)toolCode toolName:(NSString *)toolName completion:(YChatURLRequestCompletionBlock)block;
 //获取打车的url
 + (NSURLSessionTask *)requestCarWebUrlWithBaseUrl:(NSString *)baseUrl
                                               url:(NSString *)url
-                                       completion:(YChatURLRequstCompletionBlock)block;
+                                       completion:(YChatURLRequestCompletionBlock)block;
 
 + (NSURLSessionDataTask *)requestFriendsInfoByMobile:(NSString *)mobile
-                                          completion:(YChatURLRequstCompletionBlock)block;
+                                          completion:(YChatURLRequestCompletionBlock)block;
 
 + (NSURLSessionDataTask *)requestFriendsListByMobiles:(NSMutableArray *)mobiles
-                                          completion:(YChatURLRequstCompletionBlock)block;
+                                          completion:(YChatURLRequestCompletionBlock)block;
 
 //使用情况统计
 + (NSURLSessionDataTask *)requestAppUsedInfoByAppId:(NSString *)appId
@@ -207,7 +207,7 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                             AudioMinutes:(NSInteger)aminutes
                                             VideoMinutes:(NSInteger)vminutes
                                             Source:(NSString *)deviceSource
-                                            completion:(YChatURLRequstCompletionBlock)block;
+                                            completion:(YChatURLRequestCompletionBlock)block;
 
 //第三方用户同步用户信息
 + (NSURLSessionDataTask *)requestSysUserInfoWithAppId:(NSString *)appId
@@ -222,16 +222,16 @@ typedef void (^YChatURLRequstCompletionBlock)( NSDictionary * result, NSError *e
                                            departName:(NSString *)departName
                                                  city:(NSString *)city
                                         userSignature:(NSString *)userSignature
-                                           completion:(YChatURLRequstCompletionBlock)block;
+                                           completion:(YChatURLRequestCompletionBlock)block;
 
 + (NSURLSessionDataTask *)requestToolKey:(NSString*)toolDomain
                                  toolKey:(NSString*)toolKey
-                              completion:(YChatURLRequstCompletionBlock)block;
+                              completion:(YChatURLRequestCompletionBlock)block;
 
-+ (NSURLSessionDataTask *)requestFetchCityListWithCompletion:(YChatURLRequstCompletionBlock)block;
++ (NSURLSessionDataTask *)requestFetchCityListWithCompletion:(YChatURLRequestCompletionBlock)block;
 
 + (NSURLSessionDataTask *)requestInviteFriendBy:(NSString*)mobile
-                                     Completion:(YChatURLRequstCompletionBlock)block;
+                                     Completion:(YChatURLRequestCompletionBlock)block;
 
 /**
  

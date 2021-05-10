@@ -15,7 +15,7 @@
 
 @implementation YChatNetworkEngine
 
-+ (NSURLSessionDataTask *)requestUserCodeWithMobile:(NSString *)mobile type:(SmscodeType )type completion:(YChatURLRequstCompletionBlock)block {
++ (NSURLSessionDataTask *)requestUserCodeWithMobile:(NSString *)mobile type:(SmscodeType )type completion:(YChatURLRequestCompletionBlock)block {
     
     NSDictionary* params = @{@"mobile":mobile,
                              @"code":@(type)};
@@ -27,7 +27,7 @@
 + (NSURLSessionDataTask*)requestUserRegisterWithMobile:(NSString *)mobile
                                              smsCode:(NSString *)smsCode
                                               passWord:(NSString *)password
-                                            completion:(YChatURLRequstCompletionBlock)block{
+                                            completion:(YChatURLRequestCompletionBlock)block{
     NSDictionary* params = @{@"mobile":mobile,
                              @"smsCode":smsCode,
                              @"password":password};
@@ -38,7 +38,7 @@
 //登录
 +(NSURLSessionDataTask*)requestUserLoginMobile:(NSString*)loginMobile
                                       loginPwd:(NSString*)password
-                                    completion:(YChatURLRequstCompletionBlock)block {
+                                    completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"mobile":loginMobile,
                              @"password":password};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:login andParams:params];
@@ -47,7 +47,7 @@
 
 //获取用户信息
 +(NSURLSessionDataTask *)requestUserInfoWithUserId:(NSString *)userId
-                                        completion:(YChatURLRequstCompletionBlock)block {
+                                        completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"userId":userId};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchUserInfo andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
@@ -58,7 +58,7 @@
                                                    oldPwd:(NSString *)oldPassword
                                               newPassword:(NSString *)newPassword
                                                completion:
-                                            (YChatURLRequstCompletionBlock)block {
+                                            (YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"userId":userId,
                              @"newPassword": newPassword,
                              @"oldPassword": oldPassword
@@ -72,7 +72,7 @@
                                                    smsCode:(NSString *)code
                                               password:(NSString *)password
                                                completion:
-                                            (YChatURLRequstCompletionBlock)block{
+                                            (YChatURLRequestCompletionBlock)block{
     NSDictionary* params = @{@"mobile":mobile,
                              @"password": password,
                              @"smsCode": code
@@ -86,7 +86,7 @@
                                                  mobile:(NSString*)mobile
                                                  oldMobile:(NSString*)oldmobile
                                                    smsCode:(NSString *)code
-                                               completion:(YChatURLRequstCompletionBlock)block {
+                                               completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"userId":userId,
                              @"oldMobile": oldmobile,
                              @"smsCode": code,
@@ -98,7 +98,7 @@
 
 //添加好友时候查询用户列表
 + (NSURLSessionDataTask *)requestUserListWithParam:(NSString *)param
-                                        completion:(YChatURLRequstCompletionBlock)block{
+                                        completion:(YChatURLRequestCompletionBlock)block{
       NSDictionary* params = @{@"param":param};
       YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchUserList andParams:params];
       return [YChatRequestMan postRequest:request completion:block];
@@ -116,7 +116,7 @@
                                                      city:(NSString*)city
                                                    gender:(int)gender
                                                 completion:
-                                                (YChatURLRequstCompletionBlock)block{
+                                                (YChatURLRequestCompletionBlock)block{
     NSDictionary* params = @{@"userId":userId,
                              @"userIcon":avatar,
                              @"nickName": nickname,
@@ -135,7 +135,7 @@
 //获取工具箱信息
 + (NSURLSessionDataTask *)requestToolBoxWithUserId:(NSString*)userId
                                         completion:
-                                        (YChatURLRequstCompletionBlock)block {
+                                        (YChatURLRequestCompletionBlock)block {
      NSDictionary* params = @{@"userId":userId};
      YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchToolBox andParams:params];
      return [YChatRequestMan postRequest:request completion:block];
@@ -150,7 +150,7 @@
                                                   avatarUrl:(NSString *)url
                                                  maxMembers:(NSInteger )count
                                                    joinType:(NSString *)joinType
-                                                 completion:(YChatURLRequstCompletionBlock)block{
+                                                 completion:(YChatURLRequestCompletionBlock)block{
     NSDictionary* params = @{@"Owner_Account": userId,
                              @"Type": type,
                              @"Name": name,
@@ -160,7 +160,7 @@
                              @"MaxMemberCount": @(count),
                              @"ApplyJoinOption": joinType
     };
-    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:creatGroup andParams:params];
+    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:createGroup andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
     
 }
@@ -169,13 +169,13 @@
 + (NSURLSessionDataTask *)requestCreateMembersGroupWithGroupName:(NSString *)name
                                                             type:(NSString *)type
                                                       memberList:(NSMutableArray *)members ownerAccount:(NSString *)owner
-                                                      completion:(YChatURLRequstCompletionBlock)block {
+                                                      completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"Type": type,
                              @"Name": name,
                              @"MemberList": members,
                              @"Owner_Account": owner,
     };
-    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:creatGroup andParams:params];
+    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:createGroup andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
 }
 
@@ -202,7 +202,7 @@
                                                  maxMembers:(NSInteger )count
                                                    joinType:(NSString *)joinType
                                             shutUpAllMember:(BOOL)isShutUp
-                                                 completion:(YChatURLRequstCompletionBlock)block {
+                                                 completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"GroupId": groupId,
                              @"Name": name,
                              @"Introduction": introduction,
@@ -218,7 +218,7 @@
 
 //解散群组
 + (NSURLSessionDataTask *)requestDismissGroupWithGroupId:(NSString *)groupId
-                                              completion:(YChatURLRequstCompletionBlock)block {
+                                              completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"GroupId": groupId};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:dismissGroup andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
@@ -226,14 +226,14 @@
 
 //获取群资料
 + (NSURLSessionDataTask *)requestFetchGroupMsgWithGroupIdList:(NSArray *)groupList
-                                                   completion:(YChatURLRequstCompletionBlock)block {
+                                                   completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"GroupIdList": groupList};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchGroupInfo andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
 }
 
 + (NSURLSessionDataTask *)requestToolTokenWithUserId:(NSString *)userId
-                                            toolCode:(NSString *)toolCode toolName:(NSString *)toolName completion:(YChatURLRequstCompletionBlock)block{
+                                            toolCode:(NSString *)toolCode toolName:(NSString *)toolName completion:(YChatURLRequestCompletionBlock)block{
     NSDictionary* params = @{@"userId":userId,@"toolCode": toolCode,@"userName": toolName};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchToolToken andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
@@ -241,13 +241,13 @@
 
 + (NSURLSessionDataTask *)requestCarWebUrlWithBaseUrl:(NSString *)baseUrl
                                               url:(NSString *)url
-                                       completion:(YChatURLRequstCompletionBlock)block {
+                                       completion:(YChatURLRequestCompletionBlock)block {
     YChatURLRequest* request = [YChatRequestBuilder requestWithCustumBaseURL:baseUrl URL:url andParams:@{}];
     return [YChatRequestMan postRequest:request completion:block];
 }
 
 + (NSURLSessionDataTask *)requestFriendsInfoByMobile:(NSString *)mobile
-                                          completion:(YChatURLRequstCompletionBlock)block {
+                                          completion:(YChatURLRequestCompletionBlock)block {
     
     NSDictionary* params = @{@"paramVal":mobile,
                              @"userId":[YChatSettingStore sharedInstance].getUserId};
@@ -256,7 +256,7 @@
 }
 
 + (NSURLSessionDataTask *)requestFriendsListByMobiles:(NSMutableArray *)mobiles
-                                          completion:(YChatURLRequstCompletionBlock)block {
+                                          completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"paramVal":mobiles,
                              @"userId":[YChatSettingStore sharedInstance].getUserId};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchUserListByMobiles andParams:params];
@@ -268,7 +268,7 @@
                                             AudioMinutes:(NSInteger)aminutes
                                             VideoMinutes:(NSInteger)vminutes
                                             Source:(NSString *)deviceSource
-                                         completion:(YChatURLRequstCompletionBlock)block {
+                                         completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"appid":appId,
                              @"userId":[YChatSettingStore sharedInstance].getUserId,
                              @"audioMinutes":@(aminutes),
@@ -291,7 +291,7 @@
                                            departName:(NSString *)departName
                                                  city:(NSString *)city
                                         userSignature:(NSString *)userSignature
-                                           completion:(YChatURLRequstCompletionBlock)block {
+                                           completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"appid":appId,
                              @"userId":userId,
                              @"nickName":nickName,
@@ -311,21 +311,21 @@
 
 + (NSURLSessionDataTask *)requestToolKey:(NSString*)toolDomain
                                  toolKey:(NSString*)toolKey
-                              completion:(YChatURLRequstCompletionBlock)block {
+                              completion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{@"toolDomain":toolDomain,
                              @"toolKey":toolKey};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:checkToolKey andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
 }
 
-+ (NSURLSessionDataTask *)requestFetchCityListWithCompletion:(YChatURLRequstCompletionBlock)block {
++ (NSURLSessionDataTask *)requestFetchCityListWithCompletion:(YChatURLRequestCompletionBlock)block {
     NSDictionary* params = @{};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchCityList andParams:params];
     return [YChatRequestMan postRequest:request completion:block];
 }
 
 + (NSURLSessionDataTask *)requestInviteFriendBy:(NSString*)mobile
-                                     Completion:(YChatURLRequstCompletionBlock)block{
+                                     Completion:(YChatURLRequestCompletionBlock)block{
     NSDictionary* params = @{@"mobile": mobile, @"userId": [YChatSettingStore sharedInstance].getUserId};
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:fetchInviteFriend andParams:params];
     return [YChatRequestMan postRequest:request completion:block];

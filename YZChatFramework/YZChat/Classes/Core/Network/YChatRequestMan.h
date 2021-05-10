@@ -18,11 +18,11 @@
 @interface YChatRequestMan : NSObject
 
 + (NSURLSessionDataTask*)postRequest:(YChatURLRequest *)request
-                                completion:(YChatURLRequstCompletionBlock)block;
+                                completion:(YChatURLRequestCompletionBlock)block;
 
 + (NSURLSessionDataTask*)postRequest:(YChatURLRequest *)request
                               mHTTPsClient:(YChatHTTPClient *)mHTTPsClient
-                          completion:(YChatURLRequstCompletionBlock)block;
+                          completion:(YChatURLRequestCompletionBlock)block;
 
 @end
 

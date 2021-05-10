@@ -17,7 +17,7 @@
 @implementation YChatRequestMan
 
 
-+ (NSURLSessionDataTask*)postRequest:(YChatURLRequest *)request completion:(YChatURLRequstCompletionBlock)block {
++ (NSURLSessionDataTask*)postRequest:(YChatURLRequest *)request completion:(YChatURLRequestCompletionBlock)block {
     YChatHTTPClient* mHTTPsClient = [YChatHTTPClient sharedClient];
     
     if ([[YChatSettingStore sharedInstance]getAuthToken]) {
@@ -35,7 +35,7 @@
 
 + (NSURLSessionDataTask*)postRequest:(YChatURLRequest *)request
                               mHTTPsClient:(YChatHTTPClient *)mHTTPsClient
-                                completion:(YChatURLRequstCompletionBlock)block {
+                                completion:(YChatURLRequestCompletionBlock)block {
     NSURL* url = request.URL;
     
     NSURLSessionDataTask* task = [mHTTPsClient POST:url.absoluteString parameters:request.paramDict headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
