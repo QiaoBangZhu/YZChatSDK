@@ -53,19 +53,15 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 #pragma mark - 初始化
 
 - (instancetype)initWithChatType:(YzChatType)chatType {
-    self = [super init];
-    if (self) {
-        _chatType = chatType;
-    }
+    _chatType = chatType;
+    if (self = [super init]) {}
     return self;
 }
 
 - (instancetype)init {
-    self = [super init];
-    if (self) {
-        _chatType = YzChatTypeC2C | YzChatTypeGroup;
-        _isInternal = YES;
-    }
+    _chatType = YzChatTypeC2C | YzChatTypeGroup;
+    _isInternal = YES;
+    if (self = [super init]) {}
     return self;
 }
 
@@ -253,7 +249,7 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
     @weakify(self)
     contacts.finishBlock = ^(NSArray<TCommonContactSelectCellData *> *array) {
         @strongify(self)//GroupType_Work
-        [self addGroup:@"Private" addOption: V2TIM_GROUP_ADD_ANY withContacts: array];
+        [self addGroup:@"Public" addOption: V2TIM_GROUP_ADD_AUTH withContacts: array];
     };
     [self.navigationController pushViewController: contacts animated:YES];
 }
@@ -266,8 +262,10 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
  TIM_GROUP_ADD_ANY         任何人可以加群
  *withContacts:群成员的信息数组。数组内每一个元素分别包含了对应成员的头像、ID等信息。具体信息可参照 TCommonContactSelectCellData 定义
  */
-- (void)addGroup:(NSString *)groupType addOption:(V2TIMGroupAddOpt)addOption withContacts:(NSArray<TCommonContactSelectCellData *>  *)contacts
-{
+- (void)addGroup:(NSString *)groupType
+       addOption:(V2TIMGroupAddOpt)addOption
+    withContacts:(NSArray<TCommonContactSelectCellData *>  *)contacts {
+
     NSString *loginUser = [[V2TIMManager sharedInstance] getLoginUser];
     [[V2TIMManager sharedInstance] getUsersInfo:@[loginUser] succ:^(NSArray<V2TIMUserFullInfo *> *infoList) {
         NSString *showName = loginUser;

@@ -65,70 +65,67 @@
 #pragma mark - 初始化
 
 - (instancetype)initWithConversation:(TUIConversationCellData *)conversationData {
-    self = [super initWithNibName:nil bundle:nil];
-    if (self) {
-        _conversationData = conversationData;
-        NSMutableArray *moreMenus = [[NSMutableArray alloc] init];
-        [moreMenus addObject:[TUIInputMoreCellData photoData]];
-        [moreMenus addObject:[TUIInputMoreCellData pictureData]];
-        [moreMenus addObject:[TUIInputMoreCellData videoData]];
-        [moreMenus addObject:[TUIInputMoreCellData fileData]];
-        if (([YZBaseManager shareInstance].userInfo.functionPerm & 32)> 0) {
-            [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
-        }
-        if (([YZBaseManager shareInstance].userInfo.functionPerm & 16)> 0) {
-            [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
-        }
-        [moreMenus addObject:[TUIInputMoreCellData locationData]];
-        
-        _moreMenus = moreMenus;
-        _isGroup = conversationData.groupID.length > 0;
-        _isInternal = YES;
+    _conversationData = conversationData;
+    NSMutableArray *moreMenus = [[NSMutableArray alloc] init];
+    [moreMenus addObject:[TUIInputMoreCellData photoData]];
+    [moreMenus addObject:[TUIInputMoreCellData pictureData]];
+    [moreMenus addObject:[TUIInputMoreCellData videoData]];
+    [moreMenus addObject:[TUIInputMoreCellData fileData]];
+    if (([YZBaseManager shareInstance].userInfo.functionPerm & 32)> 0) {
+        [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
     }
-    return self;
+    if (([YZBaseManager shareInstance].userInfo.functionPerm & 16)> 0) {
+        [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
+    }
+    [moreMenus addObject:[TUIInputMoreCellData locationData]];
+
+    _moreMenus = moreMenus;
+    _isGroup = conversationData.groupID.length > 0;
+    _isInternal = YES;
+
+    return [super initWithNibName:nil bundle:nil];
 }
 
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo
                           config:(YzChatControllerConfig *)config {
-    self = [super initWithNibName:nil bundle:nil];
     _chatInfo = chatInfo;
     _chatConfig = config;
-    if (self) {
-        NSMutableArray *moreMenus = [[NSMutableArray alloc] init];
-        if (!config.disableSendPhotoAction) {
-            [moreMenus addObject:[TUIInputMoreCellData photoData]];
-        }
-        if (!config.disableCaptureAction) {
-            [moreMenus addObject:[TUIInputMoreCellData pictureData]];
-        }
-        if (!config.disableVideoRecordAction) {
-            [moreMenus addObject:[TUIInputMoreCellData videoData]];
-        }
-        if (!config.disableSendFileAction) {
-            [moreMenus addObject:[TUIInputMoreCellData fileData]];
-        }
-        if (!config.disableVideoCall) {
-            [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
-        }
-        if (!config.disableAudioCall) {
-            [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
-        }
-        if (!config.disableSendLocationAction) {
-            [moreMenus addObject:[TUIInputMoreCellData locationData]];
-        }
-        
-        _moreMenus = moreMenus;
-        _isInternal = NO;
-        _isGroup =[ _chatInfo.conversationId hasPrefix: @"group_"];
+    NSMutableArray *moreMenus = [[NSMutableArray alloc] init];
+    if (!config.disableSendPhotoAction) {
+        [moreMenus addObject:[TUIInputMoreCellData photoData]];
     }
-    [self fetchConversation];
-    
+    if (!config.disableCaptureAction) {
+        [moreMenus addObject:[TUIInputMoreCellData pictureData]];
+    }
+    if (!config.disableVideoRecordAction) {
+        [moreMenus addObject:[TUIInputMoreCellData videoData]];
+    }
+    if (!config.disableSendFileAction) {
+        [moreMenus addObject:[TUIInputMoreCellData fileData]];
+    }
+    if (!config.disableVideoCall) {
+        [moreMenus addObject:[TUIInputMoreCellData videoCallData]];
+    }
+    if (!config.disableAudioCall) {
+        [moreMenus addObject:[TUIInputMoreCellData audioCallData]];
+    }
+    if (!config.disableSendLocationAction) {
+        [moreMenus addObject:[TUIInputMoreCellData locationData]];
+    }
+
+    _moreMenus = moreMenus;
+    _isGroup =[ _chatInfo.conversationId hasPrefix: @"group_"];
+
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        [self fetchConversation];
+    }
+
     return  self;
 }
 
 - (void)didInitialize {
     [super didInitialize];
-    
+
     if (_isGroup) {
         _pendencyViewModel = [[TUIGroupPendencyViewModel alloc] init];
         _pendencyViewModel.groupId = _conversationData.groupID ?: [_chatInfo.conversationId substringFromIndex: 6];
