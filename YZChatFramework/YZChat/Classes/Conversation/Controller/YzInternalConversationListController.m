@@ -248,8 +248,8 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
     contacts.title = @"选择联系人";
     @weakify(self)
     contacts.finishBlock = ^(NSArray<TCommonContactSelectCellData *> *array) {
-        @strongify(self)//GroupType_Work
-        [self addGroup:@"Private" addOption: V2TIM_GROUP_ADD_ANY withContacts: array];
+        @strongify(self)
+        [self addGroup:@"Public" addOption: V2TIM_GROUP_ADD_AUTH withContacts: array];
     };
     [self.navigationController pushViewController: contacts animated:YES];
 }

@@ -554,7 +554,7 @@
     @weakify(self);
     vc.finishBlock = ^(NSArray<TCommonContactSelectCellData *> *array) {
         @strongify(self)
-        [self addGroup:@"Private" addOption:V2TIM_GROUP_ADD_ANY withContacts:array];
+        [self addGroup:@"Public" addOption:V2TIM_GROUP_ADD_AUTH withContacts:array];
     };
 }
 

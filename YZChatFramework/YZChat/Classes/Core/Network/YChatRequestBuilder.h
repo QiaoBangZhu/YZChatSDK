@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-static NSString *YCHAT_REQUEST_BASE_URLS_PRODUCTION = @"https://dev-imapi.yzmetax.com/";
+static NSString *YCHAT_REQUEST_BASE_URLS_PRODUCTION = @"https://imapi.yzmetax.com/";
 
 @interface YChatRequestBuilder : NSObject
 @property(nonatomic, copy, readonly) NSString *requestUrl;

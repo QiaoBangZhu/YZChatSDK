@@ -141,39 +141,17 @@
      return [YChatRequestMan postRequest:request completion:block];
 }
 
-//创建群组(不包含群成员信息)
-+ (NSURLSessionDataTask *)requestCreateGroupWithOwnerUserId:(NSString *)userId
-                                                  groupType:(NSString *)type
-                                                  groupName:(NSString *)name
-                                               introduction:(NSString *)introduction
-                                               notification:(NSString *)notification
-                                                  avatarUrl:(NSString *)url
-                                                 maxMembers:(NSInteger )count
-                                                   joinType:(NSString *)joinType
-                                                 completion:(YChatURLRequestCompletionBlock)block{
-    NSDictionary* params = @{@"Owner_Account": userId,
-                             @"Type": type,
-                             @"Name": name,
-                             @"Introduction": introduction,
-                             @"Notification": notification,
-                             @"FaceUrl": url,
-                             @"MaxMemberCount": @(count),
-                             @"ApplyJoinOption": joinType
-    };
-    YChatURLRequest* request = [YChatRequestBuilder requestWithURL:createGroup andParams:params];
-    return [YChatRequestMan postRequest:request completion:block];
-    
-}
-
 //创建群组（包含成员）
 + (NSURLSessionDataTask *)requestCreateMembersGroupWithGroupName:(NSString *)name
                                                             type:(NSString *)type
-                                                      memberList:(NSMutableArray *)members ownerAccount:(NSString *)owner
+                                                      memberList:(NSMutableArray *)members
+                                                    ownerAccount:(NSString *)owner
                                                       completion:(YChatURLRequestCompletionBlock)block {
-    NSDictionary* params = @{@"Type": type,
-                             @"Name": name,
-                             @"MemberList": members,
-                             @"Owner_Account": owner,
+    NSDictionary* params = @{
+        @"Type": type,
+        @"Name": name,
+        @"MemberList": members,
+        @"Owner_Account": owner,
     };
     YChatURLRequest* request = [YChatRequestBuilder requestWithURL:createGroup andParams:params];
     return [YChatRequestMan postRequest:request completion:block];

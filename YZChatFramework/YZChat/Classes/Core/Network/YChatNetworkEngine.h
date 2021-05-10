@@ -58,13 +58,11 @@ DEF_URL(fetchInviteFriend, user/inviteUser)
 //群相关
 
 /**创建群组*/
-DEF_URL(createGroup, group/createGroup)
+DEF_URL(createGroup, newgroup/createGroup)
 /**修改群组信息*/
 DEF_URL(updateGroup, group/updateGroup)
 /**解散群组*/
-DEF_URL(dismissGroup, group/destroyGroup)
-/**获取用户加入的群组*/
-DEF_URL(fetchMyGroups, group/createGroup)
+DEF_URL(dismissGroup, newgroup/destroyGroupdestroyGroup)
 /**添加群组成员*/
 DEF_URL(addGroupUser, group/addGroupUser)
 /**删除群组成员*/
@@ -147,16 +145,6 @@ typedef void (^YChatURLRequestCompletionBlock)( NSDictionary * result, NSError *
                                             completion:
                                             (YChatURLRequestCompletionBlock)block;
 
-//创建群组(不包含群成员信息)
-+ (NSURLSessionDataTask *)requestCreateGroupWithOwnerUserId:(NSString *)userId
-                                                  groupType:(NSString *)type
-                                                  groupName:(NSString *)name
-                                               introduction:(NSString *)introduction
-                                               notification:(NSString *)notification
-                                                  avatarUrl:(NSString *)url
-                                                 maxMembers:(NSInteger )count
-                                                   joinType:(NSString *)joinType
-                                                 completion:(YChatURLRequestCompletionBlock)block;
 //创建群组(包含群成员)
 + (NSURLSessionDataTask *)requestCreateMembersGroupWithGroupName:(NSString *)name
                                                             type:(NSString *)type
