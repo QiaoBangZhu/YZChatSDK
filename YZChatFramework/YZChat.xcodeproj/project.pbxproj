@@ -166,16 +166,12 @@
 		30A98B1C25A449F20082D3C9 /* YBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B425A449F00082D3C9 /* YBaseTableViewController.m */; };
 		30A98B1D25A449F20082D3C9 /* YZBaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988B525A449F00082D3C9 /* YZBaseManager.h */; };
 		30A98B1E25A449F20082D3C9 /* YzCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B625A449F00082D3C9 /* YzCommonViewController.m */; };
-		30A98B1F25A449F20082D3C9 /* YUIGroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988B925A449F00082D3C9 /* YUIGroupInfoController.m */; };
 		30A98B2025A449F20082D3C9 /* YUIImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988BA25A449F00082D3C9 /* YUIImageViewController.h */; };
 		30A98B2125A449F20082D3C9 /* YUISelectMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988BB25A449F00082D3C9 /* YUISelectMemberViewController.m */; };
-		30A98B2325A449F20082D3C9 /* YGroupInfoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988BD25A449F00082D3C9 /* YGroupInfoController.h */; };
 		30A98B2425A449F20082D3C9 /* YGroupMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988BE25A449F00082D3C9 /* YGroupMemberController.m */; };
 		30A98B2525A449F20082D3C9 /* YUserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988BF25A449F00082D3C9 /* YUserProfileController.m */; };
 		30A98B2625A449F20082D3C9 /* YContactSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988C025A449F00082D3C9 /* YContactSelectViewController.m */; };
-		30A98B2A25A449F20082D3C9 /* YUIGroupInfoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988C425A449F00082D3C9 /* YUIGroupInfoController.h */; };
 		30A98B2B25A449F20082D3C9 /* YUIImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988C525A449F00082D3C9 /* YUIImageViewController.m */; };
-		30A98B2C25A449F20082D3C9 /* YGroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A988C625A449F00082D3C9 /* YGroupInfoController.m */; };
 		30A98B2E25A449F20082D3C9 /* YUISelectMemberViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988C825A449F00082D3C9 /* YUISelectMemberViewController.h */; };
 		30A98B2F25A449F20082D3C9 /* YContactSelectViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988C925A449F00082D3C9 /* YContactSelectViewController.h */; };
 		30A98B3025A449F20082D3C9 /* YUserProfileController.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A988CA25A449F00082D3C9 /* YUserProfileController.h */; };
@@ -550,6 +546,8 @@
 		E5E68CBB262060CD0061751B /* YzConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CB9262060CD0061751B /* YzConversationListController.m */; };
 		E5E68CBE262061340061751B /* YzChatController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CBC262061340061751B /* YzChatController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5E68CBF262061340061751B /* YzChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CBD262061340061751B /* YzChatController.m */; };
+		E5EC09692648C57500A464C9 /* YzGroupInfoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5EC09672648C57500A464C9 /* YzGroupInfoViewController.h */; };
+		E5EC096A2648C57500A464C9 /* YzGroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EC09682648C57500A464C9 /* YzGroupInfoViewController.m */; };
 		E5EDCA7C261B3C3D00465C96 /* MKMapView+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E5EDCA7A261B3C3D00465C96 /* MKMapView+YzEx.h */; };
 		E5EDCA7D261B3C3D00465C96 /* MKMapView+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EDCA7B261B3C3D00465C96 /* MKMapView+YzEx.m */; };
 		E5FE23032626A2DC00FB1A84 /* CIGAMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */; settings = {COMPILER_FLAGS = "-Wno-deprecated-declarations"; }; };
@@ -1036,16 +1034,12 @@
 		30A988B425A449F00082D3C9 /* YBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBaseTableViewController.m; sourceTree = "<group>"; };
 		30A988B525A449F00082D3C9 /* YZBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZBaseManager.h; sourceTree = "<group>"; };
 		30A988B625A449F00082D3C9 /* YzCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzCommonViewController.m; sourceTree = "<group>"; };
-		30A988B925A449F00082D3C9 /* YUIGroupInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIGroupInfoController.m; sourceTree = "<group>"; };
 		30A988BA25A449F00082D3C9 /* YUIImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIImageViewController.h; sourceTree = "<group>"; };
 		30A988BB25A449F00082D3C9 /* YUISelectMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUISelectMemberViewController.m; sourceTree = "<group>"; };
-		30A988BD25A449F00082D3C9 /* YGroupInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGroupInfoController.h; sourceTree = "<group>"; };
 		30A988BE25A449F00082D3C9 /* YGroupMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGroupMemberController.m; sourceTree = "<group>"; };
 		30A988BF25A449F00082D3C9 /* YUserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUserProfileController.m; sourceTree = "<group>"; };
 		30A988C025A449F00082D3C9 /* YContactSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YContactSelectViewController.m; sourceTree = "<group>"; };
-		30A988C425A449F00082D3C9 /* YUIGroupInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUIGroupInfoController.h; sourceTree = "<group>"; };
 		30A988C525A449F00082D3C9 /* YUIImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUIImageViewController.m; sourceTree = "<group>"; };
-		30A988C625A449F00082D3C9 /* YGroupInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGroupInfoController.m; sourceTree = "<group>"; };
 		30A988C825A449F00082D3C9 /* YUISelectMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUISelectMemberViewController.h; sourceTree = "<group>"; };
 		30A988C925A449F00082D3C9 /* YContactSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YContactSelectViewController.h; sourceTree = "<group>"; };
 		30A988CA25A449F00082D3C9 /* YUserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUserProfileController.h; sourceTree = "<group>"; };
@@ -1424,6 +1418,8 @@
 		E5E68CB9262060CD0061751B /* YzConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzConversationListController.m; sourceTree = "<group>"; };
 		E5E68CBC262061340061751B /* YzChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzChatController.h; sourceTree = "<group>"; };
 		E5E68CBD262061340061751B /* YzChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzChatController.m; sourceTree = "<group>"; };
+		E5EC09672648C57500A464C9 /* YzGroupInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzGroupInfoViewController.h; sourceTree = "<group>"; };
+		E5EC09682648C57500A464C9 /* YzGroupInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzGroupInfoViewController.m; sourceTree = "<group>"; };
 		E5EDCA7A261B3C3D00465C96 /* MKMapView+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+YzEx.h"; sourceTree = "<group>"; };
 		E5EDCA7B261B3C3D00465C96 /* MKMapView+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+YzEx.m"; sourceTree = "<group>"; };
 		E5FE21BA2626A2DB00FB1A84 /* CIGAMHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIGAMHelper.m; sourceTree = "<group>"; };
@@ -2098,12 +2094,10 @@
 				E56D13F9262B26F600C73E8E /* YzInternalChatController.m */,
 				30A988C925A449F00082D3C9 /* YContactSelectViewController.h */,
 				30A988C025A449F00082D3C9 /* YContactSelectViewController.m */,
-				30A988BD25A449F00082D3C9 /* YGroupInfoController.h */,
-				30A988C625A449F00082D3C9 /* YGroupInfoController.m */,
 				30A988CB25A449F00082D3C9 /* YGroupMemberController.h */,
 				30A988BE25A449F00082D3C9 /* YGroupMemberController.m */,
-				30A988C425A449F00082D3C9 /* YUIGroupInfoController.h */,
-				30A988B925A449F00082D3C9 /* YUIGroupInfoController.m */,
+				E5EC09672648C57500A464C9 /* YzGroupInfoViewController.h */,
+				E5EC09682648C57500A464C9 /* YzGroupInfoViewController.m */,
 				30A988BA25A449F00082D3C9 /* YUIImageViewController.h */,
 				30A988C525A449F00082D3C9 /* YUIImageViewController.m */,
 				30A988C825A449F00082D3C9 /* YUISelectMemberViewController.h */,
@@ -3523,6 +3517,7 @@
 				E5FE23132626A2DC00FB1A84 /* CIGAMCommonTableViewController.h in Headers */,
 				30A98C8C25A449F30082D3C9 /* YAppCollectionViewCell.h in Headers */,
 				30A98C1B25A449F20082D3C9 /* TUIVideoCallViewController.h in Headers */,
+				E5EC09692648C57500A464C9 /* YzGroupInfoViewController.h in Headers */,
 				30A98AFB25A449F20082D3C9 /* QRScanViewController.h in Headers */,
 				30A98ACC25A449F20082D3C9 /* YZCommonTextImageTableViewCell.h in Headers */,
 				E5FE23EE2626A2DD00FB1A84 /* UITextField+CIGAM.h in Headers */,
@@ -3730,7 +3725,6 @@
 				30A98C5025A449F30082D3C9 /* TUIGroupInfoDataProviderService.h in Headers */,
 				30A98A8925A449F20082D3C9 /* UIColor+ColorExtension.h in Headers */,
 				E5FE235E2626A2DD00FB1A84 /* CIGAMAsset.h in Headers */,
-				30A98B2325A449F20082D3C9 /* YGroupInfoController.h in Headers */,
 				30A98B2E25A449F20082D3C9 /* YUISelectMemberViewController.h in Headers */,
 				E5FE23E32626A2DD00FB1A84 /* NSMethodSignature+CIGAM.h in Headers */,
 				30A98AA625A449F20082D3C9 /* YZModifyMobileViewController.h in Headers */,
@@ -3834,7 +3828,6 @@
 				E50E03832627EAD8006C0FF7 /* YzNavigationController.h in Headers */,
 				30A98C5825A449F30082D3C9 /* TUIConversationCell.h in Headers */,
 				30A98AA225A449F20082D3C9 /* YUserInfo.h in Headers */,
-				30A98B2A25A449F20082D3C9 /* YUIGroupInfoController.h in Headers */,
 				E5FE23792626A2DD00FB1A84 /* CIGAMPopupContainerView.h in Headers */,
 				E5FE232C2626A2DC00FB1A84 /* CIGAMPopupMenuItemProtocol.h in Headers */,
 				30A98C5325A449F30082D3C9 /* TConversationListViewModel.h in Headers */,
@@ -4167,6 +4160,7 @@
 				30A98B4525A449F20082D3C9 /* YGroupMembersTableViewCell.m in Sources */,
 				E5FE24262626A2DD00FB1A84 /* UIView+CIGAMBorder.m in Sources */,
 				E5FE23122626A2DC00FB1A84 /* CIGAMNavigationController.m in Sources */,
+				E5EC096A2648C57500A464C9 /* YzGroupInfoViewController.m in Sources */,
 				30A98BBB25A449F20082D3C9 /* TCommonContactCell.m in Sources */,
 				E5FE23762626A2DD00FB1A84 /* CIGAMTableView.m in Sources */,
 				30A98B3925A449F20082D3C9 /* YZCardMsgData.m in Sources */,
@@ -4260,7 +4254,6 @@
 				30A98BE225A449F20082D3C9 /* TUIMessageCellData.m in Sources */,
 				30A98BA125A449F20082D3C9 /* TAddCollectionCell.m in Sources */,
 				E527E9EC2583A5B300531586 /* YzIMKitAgent.m in Sources */,
-				30A98B2C25A449F20082D3C9 /* YGroupInfoController.m in Sources */,
 				30A98BB025A449F20082D3C9 /* TUIGroupConversationListViewModel.m in Sources */,
 				30A98B0825A449F20082D3C9 /* QRScanViewController.m in Sources */,
 				30A98BE725A449F20082D3C9 /* TUIGroupPendencyCellData.m in Sources */,
@@ -4402,7 +4395,6 @@
 				E5FE23A72626A2DD00FB1A84 /* UIImage+CIGAMTheme.m in Sources */,
 				30A98B5525A449F20082D3C9 /* NewFriendViewController.m in Sources */,
 				E5EDCA7D261B3C3D00465C96 /* MKMapView+YzEx.m in Sources */,
-				30A98B1F25A449F20082D3C9 /* YUIGroupInfoController.m in Sources */,
 				E5FE24052626A2DD00FB1A84 /* UITableViewCell+CIGAM.m in Sources */,
 				30A98C3325A449F20082D3C9 /* TUIMessageCell.m in Sources */,
 				E5FE23AF2626A2DD00FB1A84 /* CIGAMTextField.m in Sources */,

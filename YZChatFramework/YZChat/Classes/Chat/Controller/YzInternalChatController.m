@@ -34,14 +34,15 @@
 #import "YUISelectMemberViewController.h"
 #import "YZMapViewController.h"
 #import "YZProfileViewController.h"
-#import "YGroupInfoController.h"
+//#import "YGroupInfoController.h"
+#import "YzGroupInfoViewController.h"
 #import "YUserProfileController.h"
 #import "YZMapInfoViewController.h"
 #import "YZWebViewController.h"
 #import "YUIImageViewController.h"
 #import "YUIFileViewController.h"
 
-@interface YzInternalChatController () <TMessageControllerDelegate, TInputControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate> {
+@interface YzInternalChatController () <TMessageControllerDelegate, TInputControllerDelegate, YzGroupInfoViewControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate> {
     YzChatControllerConfig *_chatConfig;
     YzChatInfo *_chatInfo;
     BOOL _isInternal;
@@ -299,9 +300,9 @@
 - (void)moreBarButtonClick {
     // 群
     if (_isGroup) {
-        YGroupInfoController *groupInfo = [[YGroupInfoController alloc] init];
-        groupInfo.groupId = self.conversationData.groupID;
-        [self.navigationController pushViewController: groupInfo animated: YES];
+        YzGroupInfoViewController *viewController = [[YzGroupInfoViewController alloc] initWithGroupId: self.conversationData.groupID];
+        viewController.delegate = self;
+        [self.navigationController pushViewController: viewController animated: YES];
         return;
     }
     
@@ -486,6 +487,22 @@
     YUIFileViewController *file = [[YUIFileViewController alloc] init];
     file.data = [cell fileData];
     [self.navigationController pushViewController: file animated: YES];
+}
+
+#pragma mark - YzGroupInfoViewControllerDelegate
+
+- (void)viewController:(YzGroupInfoViewController *)controller didDeleteGroup:(NSString *)groupId {
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    if (viewControllers.count > 2) {
+        [self.navigationController popToViewController: viewControllers[viewControllers.count - 3] animated: YES];
+    }
+}
+
+- (void)viewController:(YzGroupInfoViewController *)controller didQuitGroup:(NSString *)groupId {
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    if (viewControllers.count > 2) {
+        [self.navigationController popToViewController: viewControllers[viewControllers.count - 3] animated: YES];
+    }
 }
 
 #pragma mark - TInputControllerDelegate

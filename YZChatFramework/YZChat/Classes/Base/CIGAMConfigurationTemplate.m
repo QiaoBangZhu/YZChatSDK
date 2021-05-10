@@ -189,8 +189,8 @@
     CIGAMCMI.tableViewSectionFooterContentInset = UIEdgeInsetsMake(4, 15, 4, 15);                        // TableViewSectionFooterContentInset : Plain 类型的 CIGAMTableView sectionFooter 里的内容的 padding
 
     #pragma mark - Grouped TableView
-    CIGAMCMI.tableViewGroupedBackgroundColor = nil;                                                      // TableViewGroupedBackgroundColor : Grouped 类型的 CIGAMTableView 的背景色
-    CIGAMCMI.tableViewGroupedSeparatorColor = TableViewSeparatorColor;                                   // TableViewGroupedSeparatorColor : Grouped 类型的 CIGAMTableView 分隔线颜色
+    CIGAMCMI.tableViewGroupedBackgroundColor = [UIColor colorWithHex: KCommonBackgroundColor];                                                      // TableViewGroupedBackgroundColor : Grouped 类型的 CIGAMTableView 的背景色
+    CIGAMCMI.tableViewGroupedSeparatorColor = UIColorSeparator;                                   // TableViewGroupedSeparatorColor : Grouped 类型的 CIGAMTableView 分隔线颜色
     CIGAMCMI.tableViewGroupedCellTitleLabelColor = TableViewCellTitleLabelColor;                         // TableViewGroupedCellTitleLabelColor : Grouped 类型的 CIGAMTableView cell 里的标题颜色
     CIGAMCMI.tableViewGroupedCellDetailLabelColor = TableViewCellDetailLabelColor;                       // TableViewGroupedCellDetailLabelColor : Grouped 类型的 CIGAMTableView cell 里的副标题颜色
     CIGAMCMI.tableViewGroupedCellBackgroundColor = TableViewCellBackgroundColor;                         // TableViewGroupedCellBackgroundColor : Grouped 类型的 CIGAMTableView cell 背景色
