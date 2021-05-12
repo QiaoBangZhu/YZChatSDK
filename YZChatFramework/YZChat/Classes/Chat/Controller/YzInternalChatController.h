@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  负责消息气泡的展示，同时负责响应用户对于消息气泡的交互，比如：点击消息发送者头像、轻点消息、长按消息等操作。
  *  聊天消息控制器的详细信息请参考 Section\Chat\TUIMessageController.h
  */
-@property TUIMessageController *messageController;
+@property (nonatomic, strong) TUIMessageController *messageController;
 
 /**
  *  TUIKit 信息输入控制器。
@@ -39,13 +39,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  同时 TUIInputController 整合了消息的发送功能，您可以直接使用 TUIInputController 进行消息的输入采集与发送。
  *  信息输入控制器的详细信息请参考 Section\Chat\Input\TUIInputController.h
  */
-@property TUIInputController *inputController;
+@property (nonatomic, strong) TUIInputController *inputController;
 
 /**
  *  更多菜单视图数据的数据组
  *  更多菜单视图包括：拍摄、图片、视频、文件。详细信息请参考 Section\Chat\TUIMoreView.h
  */
-@property NSArray<TUIInputMoreCellData *> *moreMenus;
+@property (nonatomic, strong) NSArray<TUIInputMoreCellData *> *moreMenus;
 
 - (instancetype)initWithConversation:(TUIConversationCellData *)conversationData;
 - (instancetype)initWithChatInfo:(YzChatInfo *)chatInfo config:(YzChatControllerConfig *)config;

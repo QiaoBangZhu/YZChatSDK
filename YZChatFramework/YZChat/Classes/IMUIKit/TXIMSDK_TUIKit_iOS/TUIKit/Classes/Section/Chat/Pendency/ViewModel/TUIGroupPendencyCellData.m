@@ -45,7 +45,7 @@
 {
     [[V2TIMManager sharedInstance] acceptGroupApplication:_pendencyItem reason:@"管理员同意申请" succ:^{
         [THelper makeToast:@"已发送"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TUIGroupPendencyCellData_onPendencyChanged object:nil];;
+        [[NSNotificationCenter defaultCenter] postNotificationName:TUIGroupPendencyCellData_onPendencyChanged object:self];
     } fail:^(int code, NSString *msg) {
         [THelper makeToastError:code msg:msg];
     }];
@@ -55,7 +55,7 @@
 {
     [[V2TIMManager sharedInstance] refuseGroupApplication:_pendencyItem reason:@"管理员拒绝申请" succ:^{
         [THelper makeToast:@"已发送"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TUIGroupPendencyCellData_onPendencyChanged object:nil];;
+        [[NSNotificationCenter defaultCenter] postNotificationName:TUIGroupPendencyCellData_onPendencyChanged object:self];
     } fail:^(int code, NSString *msg) {
         [THelper makeToastError:code msg:msg];
     }];

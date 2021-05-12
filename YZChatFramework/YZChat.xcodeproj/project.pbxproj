@@ -542,6 +542,8 @@
 		E5C2597726306E3D0084C0FE /* YzBlackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C2597526306E3D0084C0FE /* YzBlackListViewController.m */; };
 		E5D849FE2622E0C5006806E6 /* TUIConversationCellData+YzEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */; };
 		E5D849FF2622E0C5006806E6 /* TUIConversationCellData+YzEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */; };
+		E5E07929264ACB2E00866487 /* YzGroupPendencyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E07927264ACB2E00866487 /* YzGroupPendencyViewController.h */; };
+		E5E0792A264ACB2E00866487 /* YzGroupPendencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E07928264ACB2E00866487 /* YzGroupPendencyViewController.m */; };
 		E5E68CBA262060CD0061751B /* YzConversationListController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CB8262060CD0061751B /* YzConversationListController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5E68CBB262060CD0061751B /* YzConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E68CB9262060CD0061751B /* YzConversationListController.m */; };
 		E5E68CBE262061340061751B /* YzChatController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E68CBC262061340061751B /* YzChatController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1414,6 +1416,8 @@
 		E5C2597526306E3D0084C0FE /* YzBlackListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzBlackListViewController.m; sourceTree = "<group>"; };
 		E5D849FC2622E0C5006806E6 /* TUIConversationCellData+YzEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUIConversationCellData+YzEx.h"; sourceTree = "<group>"; };
 		E5D849FD2622E0C5006806E6 /* TUIConversationCellData+YzEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TUIConversationCellData+YzEx.m"; sourceTree = "<group>"; };
+		E5E07927264ACB2E00866487 /* YzGroupPendencyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzGroupPendencyViewController.h; sourceTree = "<group>"; };
+		E5E07928264ACB2E00866487 /* YzGroupPendencyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzGroupPendencyViewController.m; sourceTree = "<group>"; };
 		E5E68CB8262060CD0061751B /* YzConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzConversationListController.h; sourceTree = "<group>"; };
 		E5E68CB9262060CD0061751B /* YzConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YzConversationListController.m; sourceTree = "<group>"; };
 		E5E68CBC262061340061751B /* YzChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YzChatController.h; sourceTree = "<group>"; };
@@ -2092,6 +2096,8 @@
 			children = (
 				E56D13F8262B26F600C73E8E /* YzInternalChatController.h */,
 				E56D13F9262B26F600C73E8E /* YzInternalChatController.m */,
+				E5E07927264ACB2E00866487 /* YzGroupPendencyViewController.h */,
+				E5E07928264ACB2E00866487 /* YzGroupPendencyViewController.m */,
 				30A988C925A449F00082D3C9 /* YContactSelectViewController.h */,
 				30A988C025A449F00082D3C9 /* YContactSelectViewController.m */,
 				30A988CB25A449F00082D3C9 /* YGroupMemberController.h */,
@@ -3877,6 +3883,7 @@
 				E5FE23202626A2DC00FB1A84 /* CIGAMNavigationButton.h in Headers */,
 				30A98B4A25A449F20082D3C9 /* YZContactsModel.h in Headers */,
 				30A98A7A25A449F20082D3C9 /* UIImage+YChatExtension.h in Headers */,
+				E5E07929264ACB2E00866487 /* YzGroupPendencyViewController.h in Headers */,
 				30A98BE825A449F20082D3C9 /* TUIGroupPendencyController.h in Headers */,
 				30A98C5A25A449F30082D3C9 /* TNaviBarIndicatorView.h in Headers */,
 				30A98C7125A449F30082D3C9 /* dec_if.h in Headers */,
@@ -3931,6 +3938,7 @@
 				TargetAttributes = {
 					E527E3D6258393C800531586 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -4165,6 +4173,7 @@
 				E5FE23762626A2DD00FB1A84 /* CIGAMTableView.m in Sources */,
 				30A98B3925A449F20082D3C9 /* YZCardMsgData.m in Sources */,
 				30A98AAA25A449F20082D3C9 /* YZWebViewController.m in Sources */,
+				E5E0792A264ACB2E00866487 /* YzGroupPendencyViewController.m in Sources */,
 				E5FE23452626A2DD00FB1A84 /* CIGAMToastView.m in Sources */,
 				E5FE24072626A2DD00FB1A84 /* UIImage+CIGAM.m in Sources */,
 				30A98A9F25A449F20082D3C9 /* YUserInfo.m in Sources */,
@@ -4531,6 +4540,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8C6E7C4E1C0D968DA187FB26 /* Pods-YZChat.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
@@ -4581,6 +4591,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4589,6 +4601,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 13F403A9DC32792AE6FA9B58 /* Pods-YZChat.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
@@ -4638,6 +4651,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

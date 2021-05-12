@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TUIConversationCellData (YzEx)
 
 + (TUIConversationCellData *)makeDataByConversation:(V2TIMConversation *)conversation;
++ (TUIConversationCellData *)makeDataByConversation:(V2TIMConversation *)conversation
+                                 hasJoinApplication:(BOOL)hasJoinApplication;
 
 @end
 

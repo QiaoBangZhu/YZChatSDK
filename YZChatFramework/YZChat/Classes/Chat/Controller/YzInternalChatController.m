@@ -17,12 +17,10 @@
 #import "THelper.h"
 #import "TCServiceManager.h"
 #import "TUIUserProfileControllerServiceProtocol.h"
-#import "TUIGroupPendencyViewModel.h"
 #import "TUITextMessageCellData.h"
 #import "TUIImageMessageCellData.h"
 #import "TUIVideoMessageCellData.h"
 #import "TUIFileMessageCellData.h"
-#import "TUIGroupPendencyController.h"
 #import "TUnReadView.h"
 
 #import "YzCommonImport.h"
@@ -31,10 +29,10 @@
 #import "YZLocationMessageCell.h"
 
 // navigation
+#import "YzGroupPendencyViewController.h"
 #import "YUISelectMemberViewController.h"
 #import "YZMapViewController.h"
 #import "YZProfileViewController.h"
-//#import "YGroupInfoController.h"
 #import "YzGroupInfoViewController.h"
 #import "YUserProfileController.h"
 #import "YZMapInfoViewController.h"
@@ -52,12 +50,12 @@
 }
 
 @property (nonatomic, strong) TUIConversationCellData *conversationData;
+@property (nonatomic, strong) NSMutableArray<UserModel *> *atUserList;
+@property (nonatomic, strong) TUnReadView *unreadView;
+@property (nonatomic, strong) YzGroupPendencyViewModel *groupPendencyViewModel;
 @property (nonatomic, strong) UIView *tipsView;
 @property (nonatomic, strong) CIGAMLabel *pendencyLabel;
 @property (nonatomic, strong) CIGAMButton *pendencyButton;
-@property (nonatomic, strong) TUIGroupPendencyViewModel *pendencyViewModel;
-@property (nonatomic, strong) NSMutableArray<UserModel *> *atUserList;
-@property (nonatomic, strong) TUnReadView *unreadView;
 
 @end
 
@@ -128,8 +126,8 @@
     [super didInitialize];
 
     if (_isGroup) {
-        _pendencyViewModel = [[TUIGroupPendencyViewModel alloc] init];
-        _pendencyViewModel.groupId = _conversationData.groupID ?: [_chatInfo.conversationId substringFromIndex: 6];
+        NSString *groupId = _conversationData.groupID ?: [_chatInfo.conversationId substringFromIndex: 6];
+        self.groupPendencyViewModel = [[YzGroupPendencyViewModel alloc] initWithGroupId: groupId];
     }
     _atUserList = [[NSMutableArray alloc] init];
     _registeredCustomMessageClass = [[NSMutableDictionary alloc] init];
@@ -203,9 +201,6 @@
                                                object:nil];
     if (!_isInternal) return;
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(getPendencyList) name:TUIKitNotification_onReceiveJoinApplication
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onChangeUnReadCount:)
                                                  name:TUIKitNotification_onChangeUnReadCount
                                                object:nil];
@@ -217,12 +212,6 @@
             self.conversationData.title = conversation.showName;
             break;
         }
-    }
-}
-
-- (void)getPendencyList {
-    if (_isGroup) {
-        [self.pendencyViewModel loadData];
     }
 }
 
@@ -256,9 +245,8 @@
         [self.inputController.moreView setData:x];
     }];
 
-    if (!_isInternal) return;
-    if (_isGroup) {
-        [RACObserve(self.pendencyViewModel, unReadCnt) subscribeNext:^(NSNumber *count) {
+    if (self.groupPendencyViewModel) {
+        [RACObserve(self.groupPendencyViewModel, unReadCount) subscribeNext:^(NSNumber *count) {
             @strongify(self)
             if ([count intValue]) {
                 self.pendencyLabel.text = [NSString stringWithFormat:@"%@条入群请求", count];
@@ -292,8 +280,7 @@
 }
 
 - (void)openPendency:(CIGAMButton *)button {
-    TUIGroupPendencyController *viewController = [[TUIGroupPendencyController alloc] init];
-    viewController.viewModel = self.pendencyViewModel;
+    YzGroupPendencyViewController *viewController = [[YzGroupPendencyViewController alloc] initWithViewModel: self.groupPendencyViewModel];
     [self.navigationController pushViewController: viewController animated:YES];
 }
 
@@ -934,7 +921,6 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
         [self bindConversationTitleObserver];
         [self.messageController setConversation: data];
         self.inputController.inputBar.inputTextView.text = data.draftText;
-        [self getPendencyList];
     } fail:^(int code, NSString *desc) {
         [THelper makeToastError: code msg: desc];
     }];

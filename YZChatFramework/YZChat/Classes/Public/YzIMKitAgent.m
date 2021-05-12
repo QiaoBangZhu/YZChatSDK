@@ -53,6 +53,12 @@ typedef struct {
 @property (nonatomic, assign) NSUInteger c2cUnreadCount;
 @property (nonatomic, assign) NSUInteger groupUnreadCount;
 
+/// 群申请列表
+@property (nonatomic, strong) NSArray <TUIGroupPendencyCellData *>*groupApplicationList;
+/// 有加群申请的群id
+@property (nonatomic, strong) NSSet <NSString *>*groupApplicationGroupIDs;
+@property (nonatomic, assign) BOOL isGroupApplicationLoading;
+
 @end
 
 @implementation YzIMKitAgent
@@ -83,6 +89,10 @@ typedef struct {
 }
 
 - (void)configureObserver {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onUserStatus:)
+                                                 name:TUIKitNotification_TIMUserStatusListener
+                                               object:nil];
     // 有新的会话
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onNewConversation:)
@@ -94,6 +104,12 @@ typedef struct {
                                              selector:@selector(onConversationChanged:)
                                                  name:TUIKitNotification_TIMRefreshListener_Changed
                                                object:nil];
+
+    // 加群申请
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onReceiveJoinApplication:)
+                                                 name:TUIKitNotification_onReceiveJoinApplication
+                                               object:nil];
 }
 
 // 有新的会话（比如收到一个新同事发来的单聊消息、或者被拉入了一个新的群组中）
@@ -104,6 +120,11 @@ typedef struct {
 // 某些会话的关键信息发生变化（未读计数发生变化、最后一条消息被更新等等）
 - (void)onConversationChanged:(NSNotification *)notify {
     [self updateConversationList: notify];
+}
+
+// 收到加群申请
+- (void)onReceiveJoinApplication:(NSNotification *)notify {
+    [self reloadGroupApplicationList];
 }
 
 - (void)updateConversationList:(NSNotification *)notify {
@@ -159,7 +180,11 @@ typedef struct {
                 model.token = result[@"token"];
                 model.mobile = sysUser.mobile;
                 model.companyId = self.appId;
+
                 self.userInfo = model;
+                self.groupApplicationList = @[];
+                self.groupApplicationGroupIDs = [[NSSet alloc] init];
+                
                 [YZBaseManager shareInstance].userInfo = model;
                 [[V2TIMManager sharedInstance] login:self.userInfo.userId userSig:self.userInfo.userSign succ:^{
                     @strongify(self)
@@ -621,6 +646,70 @@ const NSUInteger STEP_LENGTH = 100;
     } fail:^(int code, NSString *desc) {
         !failure ?: failure(code, desc);
     }];
+}
+
+@end
+
+
+#pragma mark - 群组相关
+
+@implementation YzIMKitAgent (Private_Group)
+
+// 重新获取加群申请列表
+- (void)reloadGroupApplicationList {
+    if (self.isGroupApplicationLoading) return;
+
+    self.isGroupApplicationLoading = YES;
+    @weakify(self)
+    [[V2TIMManager sharedInstance] getGroupApplicationList:^(V2TIMGroupApplicationResult *result) {
+        @strongify(self)
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        NSMutableSet *tempSet = [[NSMutableSet alloc] init];
+        for (V2TIMGroupApplication *item in result.applicationList) {
+            if (item.handleStatus == V2TIM_GROUP_APPLICATION_HANDLE_STATUS_UNHANDLED) {
+                TUIGroupPendencyCellData *data = [[TUIGroupPendencyCellData alloc] initWithPendency: item];
+                [temp addObject: data];
+                [tempSet addObject: item.groupID];
+            }
+        }
+        self.groupApplicationList = [temp copy];
+        [self p_updateGroupApplicationGroupIDs: tempSet];
+        self.isGroupApplicationLoading = NO;
+    } fail:nil];
+}
+
+// 同意加群
+- (void)acceptGroupApplication:(TUIGroupPendencyCellData *)data {
+    [data accept];
+    NSMutableSet *tempSet = [[NSMutableSet alloc] init];
+    for (TUIGroupPendencyCellData *data in self.groupApplicationList) {
+        if (!data.isRejectd && !data.isAccepted) {
+            [tempSet addObject: data.groupId];
+        }
+    }
+    [self p_updateGroupApplicationGroupIDs: tempSet];
+}
+
+// 拒绝加群
+- (void)rejectGroupApplication:(TUIGroupPendencyCellData *)data {
+    [data reject];
+    NSMutableArray *temp = [[NSMutableArray alloc] initWithCapacity: self.groupApplicationList.count - 1];
+    NSMutableSet *tempSet = [[NSMutableSet alloc] init];
+    for (TUIGroupPendencyCellData *data in self.groupApplicationList) {
+        if (!data.isRejectd && !data.isAccepted) {
+            [temp addObject: data];
+            [tempSet addObject: data.groupId];
+        }
+    }
+    self.groupApplicationList = [temp copy];
+    [self p_updateGroupApplicationGroupIDs: tempSet];
+}
+
+- (void)p_updateGroupApplicationGroupIDs:(NSMutableSet *)groupIds {
+    if (groupIds.count != self.groupApplicationGroupIDs.count ||
+        ![groupIds isEqualToSet: self.groupApplicationGroupIDs]) {
+        self.groupApplicationGroupIDs = [groupIds copy];
+    }
 }
 
 @end

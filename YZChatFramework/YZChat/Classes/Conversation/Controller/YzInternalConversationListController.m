@@ -18,6 +18,7 @@
 
 #import "YzExtensions.h"
 #import "YzCommonImport.h"
+#import "YzIMKitAgent+Private.h"
 #import "YzConversationListController.h"
 #import "YChatIMCreateGroupMemberInfo.h"
 
@@ -26,6 +27,7 @@
 #import "QRScanViewController.h"
 #import "YzInternalChatController.h"
 #import "YzSearchMyFriendsViewController.h"
+#import "YzGroupPendencyViewController.h"
 
 typedef NS_ENUM(NSInteger, GroupMessageType) {
     GroupMessageTypeRecycled = 1,//群已经回收
@@ -39,12 +41,14 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 @interface YzInternalConversationListController () <UITableViewDataSource, UITableViewDelegate, CIGAMSearchControllerDelegate> {
     YzChatType _chatType;
     BOOL _isInternal;
+    BOOL _isOnlyC2C;
 }
 
 @property (nonatomic, strong) NSArray<TUIConversationCellData *> *dataList;
 @property (nonatomic, strong) NSArray<TUIConversationCellData *> *searchList;
 @property (nonatomic, strong) NSMutableArray<V2TIMConversation *> *localConversationList;
 @property (nonatomic, copy) NSString *keywords;
+@property (nonatomic, strong) CIGAMTableViewCell *groupPendencyCell;
 
 @end
 
@@ -54,6 +58,7 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 
 - (instancetype)initWithChatType:(YzChatType)chatType {
     _chatType = chatType;
+    _isOnlyC2C = !(chatType & YzChatTypeGroup);
     if (self = [super init]) {}
     return self;
 }
@@ -68,6 +73,7 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 - (void)didInitialize {
     [super didInitialize];
 
+    if (!_isOnlyC2C) [[YzIMKitAgent shareInstance] reloadGroupApplicationList];
     self.localConversationList = [[NSMutableArray alloc] init];
 }
 
@@ -173,7 +179,7 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 - (void)topConversationListChanged:(NSNotification *)notify {
     NSMutableArray *dataList = [NSMutableArray arrayWithArray: self.dataList];
     [self sortDataList: dataList];
-    self.dataList = dataList;
+    self.dataList = [dataList copy];
 }
 
 - (void)onNetworkChanged:(NSNotification *)notify {
@@ -211,6 +217,14 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
         @strongify(self)
         [self searchKeywords: keywords];
     }];
+
+    if (!_isOnlyC2C) {
+        [[RACObserve([YzIMKitAgent shareInstance], groupApplicationGroupIDs) skip: 1] subscribeNext:^(NSSet *ids) {
+            @strongify(self)
+            [self.tableView reloadSections: [NSIndexSet indexSetWithIndex: 0] withRowAnimation: UITableViewRowAnimationAutomatic];
+            self.dataList = [[self makeCellData] copy];
+        }];
+    }
 }
 
 - (void)clickAdd:(UIBarButtonItem *)barItem {
@@ -358,20 +372,26 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 
 #pragma mark - UITableViewDataSource && UITableViewDelegate
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (tableView == self.tableView) return 2;
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.tableView) {
+        if (section == 0) return [YzIMKitAgent shareInstance].groupApplicationGroupIDs.count > 0 ? 1 : 0;
         return self.dataList.count;
     }
-
     return  self.searchList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.tableView && indexPath.section == 0) return 30;
     return 72;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return tableView == self.tableView;
+    return tableView == self.tableView && indexPath.section == 1;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
@@ -414,6 +434,10 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.tableView && indexPath.section == 0) {
+        return self.groupPendencyCell;
+    }
+
     TUIConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier_ConversationCell forIndexPath:indexPath];
 
     NSArray *dataList = tableView == self.tableView ? self.dataList : self.searchList;
@@ -424,21 +448,26 @@ static NSString *kReuseIdentifier_ConversationCell = @"ReuseIdentifier_Conversat
     if (!data.cselector) {
         data.cselector = @selector(didSelectConversation:);
     }
+
     [cell fillWithData:data];
-    cell.titleLabel.textColor = [UIColor colorWithHex:KCommonBlackColor];
-    cell.subTitleLabel.textColor = [UIColor colorWithHex:KCommonBorderColor];
-    cell.timeLabel.textColor = [UIColor colorWithHex:KCommonTimeColor];
+    cell.titleLabel.textColor = [UIColor colorWithHex: KCommonBlackColor];
+    cell.timeLabel.textColor = [UIColor colorWithHex: KCommonTimeColor];
 
     //可以在此处修改，也可以在对应cell的初始化中进行修改。用户可以灵活的根据自己的使用需求进行设置。
     cell.changeColorWhenTouched = YES;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView cellForRowAtIndexPath: indexPath] == self.groupPendencyCell) {
+        YzGroupPendencyViewModel *viewModel = [[YzGroupPendencyViewModel alloc] initWithGroupId: nil];
+        YzGroupPendencyViewController *viewController = [[YzGroupPendencyViewController alloc] initWithViewModel: viewModel];
+        [self.navigationController pushViewController: viewController animated: YES];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell respondsToSelector: @selector(setSeparatorInset:)]) {
+    if ([cell respondsToSelector: @selector(setSeparatorInset:)] && indexPath.section == 1) {
         [cell setSeparatorInset: UIEdgeInsetsMake(0, 78, 0, 0)];
         if (indexPath.row == (self.dataList.count - 1)) {
             [cell setSeparatorInset: UIEdgeInsetsZero];
@@ -511,6 +540,26 @@ updateResultsForSearchString:(NSString *)searchString {
     [super setupSubviews];
 }
 
+- (CIGAMTableViewCell *)groupPendencyCell {
+    if (!_groupPendencyCell) {
+        CIGAMTableViewCell *cell = [[CIGAMTableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: nil];
+        cell.contentView.backgroundColor = RGB(246, 234, 190);
+
+        CIGAMLabel *label = [[CIGAMLabel alloc] init];
+        label.text = @"有未处理的群申请";
+        label.textColor = [UIColor colorWithHex: KCommonGraySubTextColor];
+        label.font = UIFontMake(14);
+        [cell.contentView addSubview: label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(cell.contentView);
+        }];
+
+        _groupPendencyCell = cell;
+    }
+
+    return _groupPendencyCell;
+}
+
 #pragma mark - 数据
 
 - (void)fetchConversation {
@@ -523,7 +572,7 @@ updateResultsForSearchString:(NSString *)searchString {
     }];
 }
 
-- (void)updateConversation:(NSArray<V2TIMConversation *> *)conversationList {
+- (void)updateConversation:(nullable NSArray<V2TIMConversation *> *)conversationList {
     YzChatType type = _chatType ?: YzChatTypeC2C | YzChatTypeGroup;
 
     NSMutableDictionary *indexMap = [[NSMutableDictionary alloc] init];
@@ -543,20 +592,26 @@ updateResultsForSearchString:(NSString *)searchString {
             [self.localConversationList addObject: conversation];
         }
     }
-    // 更新 cell data
-    NSMutableArray *dataList = [NSMutableArray array];
+
+    // UI 会话列表根据 lastMessage 时间戳重新排序
+    NSMutableArray *dataList = [self makeCellData];
+    [self sortDataList: dataList];
+    self.dataList = [dataList copy];
+    [self changeUnReadCount];
+}
+
+- (NSMutableArray<TUIConversationCellData *> *)makeCellData {
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
     for (V2TIMConversation *conversation in self.localConversationList) {
-        TUIConversationCellData *data = [TUIConversationCellData makeDataByConversation: conversation];
+        BOOL hasJoinApplication = conversation.groupID && [[YzIMKitAgent shareInstance].groupApplicationGroupIDs containsObject: conversation.groupID];
+        TUIConversationCellData *data = [TUIConversationCellData makeDataByConversation: conversation hasJoinApplication: hasJoinApplication];
         if (data.subTitle == nil || data.time == nil) {
             continue;
         }
-        [dataList addObject: data];
+        [temp addObject: data];
     }
 
-    // UI 会话列表根据 lastMessage 时间戳重新排序
-    [self sortDataList: dataList];
-    self.dataList = dataList;
-    [self changeUnReadCount];
+    return temp;
 }
 
 - (void)sortDataList:(NSMutableArray<TUIConversationCellData *> *)dataList {
@@ -612,9 +667,9 @@ updateResultsForSearchString:(NSString *)searchString {
 }
 
 - (void)removeData:(TUIConversationCellData *)data {
-    NSMutableArray *list = [NSMutableArray arrayWithArray: self.dataList];
-    [list removeObject: data];
-    self.dataList = list;
+    NSMutableArray *temp = [NSMutableArray arrayWithArray: self.dataList];
+    [temp removeObject: data];
+    self.dataList = [temp copy];
     for (V2TIMConversation *conversation in self.localConversationList) {
         if ([conversation.conversationID isEqualToString: data.conversationID]) {
             [self.localConversationList removeObject: conversation];
