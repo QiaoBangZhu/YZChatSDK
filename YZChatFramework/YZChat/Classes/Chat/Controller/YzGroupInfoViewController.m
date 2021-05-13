@@ -34,16 +34,20 @@
 #import "YGroupMemberController.h"
 #import "YZProfileViewController.h"
 #import "YContactSelectViewController.h"
+#import "YzSelectGroupMemberViewController.h"
 
 @interface YzGroupInfoViewController () <TGroupMembersCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray <NSMutableArray *>*cellDatas;
 @property (nonatomic, strong) NSMutableArray *members;
+@property (nonatomic, strong) NSMutableArray *admins;
 @property (nonatomic, strong) V2TIMGroupInfo *groupInfo;
 @property (nonatomic, strong) V2TIMGroupMemberInfo *selfInfo;
 @property (nonatomic, strong) TGroupMembersCellData *groupMembersCellData;
 @property (nonatomic, strong) TCommonTextCellData *groupMembersCountCellData;
 @property (nonatomic, strong) TCommonTextCellData *groupNickNameCellData;
+@property (nonatomic, strong) TCommonTextCellData *groupAdminsCountCellData;
+@property (nonatomic, strong) TGroupMembersCellData *groupAdminsCellData;
 @property (nonatomic, strong) UIView *footerView;
 @property (nonatomic, strong) CIGAMButton *deleteButton;
 
@@ -192,6 +196,19 @@
     }
 }
 
+// 禁言
+- (void)didSelectAllMuted:(TCommonSwitchCell *)cell {
+    self.groupInfo.allMuted = !self.groupInfo.allMuted;
+    V2TIMGroupInfo *info = [[V2TIMGroupInfo alloc] init];
+    info.groupID = self.groupId;
+    info.allMuted = self.groupInfo.allMuted;
+
+    [[V2TIMManager sharedInstance] setGroupInfo: info succ:^{
+    } fail:^(int code, NSString *desc) {
+        [THelper makeToastError: code msg: desc];
+    }];
+}
+
 - (void)didSelectOnTop:(TCommonSwitchCell *)cell {
     if (cell.switcher.on) {
         [[TUILocalStorage sharedInstance] addTopConversation:[NSString stringWithFormat:@"group_%@", _groupId]];
@@ -201,15 +218,28 @@
 }
 
 - (void)groupMembersCell:(TUIGroupMembersCell *)cell didSelectItemAtIndex:(NSInteger)index {
-    TGroupMemberCellData *member = self.groupMembersCellData.members[index];
-    if (member.tag == 0) {
-        [self didSelectMemberAvatar: member.identifier];
-    }
-    else if(member.tag == 1) {
-        [self clickAddMembers];
-    }
-    else if(member.tag == 2) {
-        [self clickDeleteMembers];
+    if ([cell.data isEqual: self.groupMembersCellData]) {
+        TGroupMemberCellData *member = self.groupMembersCellData.members[index];
+        if (member.tag == 0) {
+            [self didSelectMemberAvatar: member.identifier];
+        }
+        else if(member.tag == 1) {
+            [self clickAddMembers];
+        }
+        else if(member.tag == 2) {
+            [self clickDeleteMembers];
+        }
+    } else {
+        TGroupMemberCellData *member = self.groupAdminsCellData.members[index];
+        if (member.tag == 0) {
+            [self didSelectMemberAvatar: member.identifier];
+        }
+        else if(member.tag == 1) {
+            [self clickAddAdmin];
+        }
+        else if(member.tag == 2) {
+            [self clickDeleteAdmin];
+        }
     }
 }
 
@@ -289,37 +319,70 @@
 }
 
 - (void)clickDeleteMembers {
-    YContactSelectViewController *vc = [[YContactSelectViewController alloc] init];
-    vc.title = @"删除联系人";
-    NSMutableArray *ids = [[NSMutableArray alloc] init];
-    for (TGroupMemberCellData *data in self.members) {
-        if (![data.identifier isEqualToString:[[V2TIMManager sharedInstance] getLoginUser]]) {
-            [ids addObject: data.identifier];
-        }
-    }
-    [vc setSourceIds:ids];
+    YzSelectGroupMemberViewController *viewController = [[YzSelectGroupMemberViewController alloc] initWithGroupId: self.groupId filter: V2TIM_GROUP_MEMBER_FILTER_ALL multipleSelection: YES];
+    viewController.title = @"移除成员";
+    viewController.emptyTip = @"暂无可移除成员";
+    [self.navigationController pushViewController: viewController animated: YES];
 
+    NSString *userId = [[V2TIMManager sharedInstance] getLoginUser];
+    [viewController setAvailableFilter:^BOOL(NSString * _Nonnull memberId) {
+        return ![memberId isEqualToString: userId];
+    }];
     @weakify(self)
-    [self.navigationController pushViewController:vc animated:YES];
-    //删除成功后默认返回群组聊天界面
-    vc.finishBlock = ^(NSArray<TCommonContactSelectCellData *> *selectArray) {
+    [viewController setSelectCompleted:^(NSArray<NSString *> * _Nonnull ids) {
         @strongify(self)
+        [self deleteMembers: ids];
         [self.navigationController popToViewController: self animated: YES];
-        [self deleteMembers: selectArray];
-    };
+    }];
 }
 
 - (void)deleteMembers:(NSArray *)members {
-    NSMutableArray *userList = [[NSMutableArray alloc] init];
-    for (TCommonContactSelectCellData *data in members) {
-        [userList addObject: data.identifier];
-    }
-
-    [[V2TIMManager sharedInstance] kickGroupMember: self.groupId memberList: userList reason:@"" succ:^(NSArray<V2TIMGroupMemberOperationResult *> *resultList) {
-        [THelper makeToast:@"删除成功"];
+    [[V2TIMManager sharedInstance] kickGroupMember: self.groupId memberList: members reason:@"" succ:^(NSArray<V2TIMGroupMemberOperationResult *> *resultList) {
+        [THelper makeToast:@"移除成功"];
         [self fetchGroupMemberList];
     } fail:^(int code, NSString *desc) {
-        [THelper makeToastError:code msg:desc];
+        [THelper makeToastError:code msg: desc];
+    }];
+}
+
+// 添加管理员
+- (void)clickAddAdmin {
+    YzSelectGroupMemberViewController *viewController = [[YzSelectGroupMemberViewController alloc] initWithGroupId: self.groupId filter: V2TIM_GROUP_MEMBER_FILTER_COMMON multipleSelection: NO];
+    viewController.title = @"添加管理员";
+    viewController.emptyTip = @"暂无可添加管理员";
+    [self.navigationController pushViewController: viewController animated: YES];
+
+    @weakify(self)
+    [viewController setSelectCompleted:^(NSArray<NSString *> * _Nonnull ids) {
+        @strongify(self)
+        [self setGroupMemberRole: ids[0] newRole: V2TIM_GROUP_MEMBER_ROLE_ADMIN];
+        [self.navigationController popToViewController: self animated: YES];
+    }];
+}
+
+// 删除管理员
+- (void)clickDeleteAdmin {
+    YzSelectGroupMemberViewController *viewController = [[YzSelectGroupMemberViewController alloc] initWithGroupId: self.groupId filter: V2TIM_GROUP_MEMBER_FILTER_ADMIN multipleSelection: NO];
+    viewController.title = @"移除管理员";
+    viewController.emptyTip = @"暂无可移除管理员";
+    [self.navigationController pushViewController: viewController animated: YES];
+
+    @weakify(self)
+    [viewController setSelectCompleted:^(NSArray<NSString *> * _Nonnull ids) {
+        @strongify(self)
+        [self setGroupMemberRole: ids[0] newRole: V2TIM_GROUP_MEMBER_ROLE_MEMBER];
+        [self.navigationController popToViewController: self animated: YES];
+    }];
+}
+
+- (void)setGroupMemberRole:(NSString *)member newRole:(V2TIMGroupMemberRole)newRole {
+    @weakify(self)
+    [[V2TIMManager sharedInstance] setGroupMemberRole: self.groupId member: member newRole: newRole succ:^{
+        @strongify(self);
+        [self fetchGroupMemberList];
+        [THelper makeToast:@"设置成功"];
+    } fail:^(int code, NSString *desc) {
+        [THelper makeToastError: code msg: desc];
     }];
 }
 
@@ -426,14 +489,14 @@
 
 - (UIView *)footerView {
     if (!_footerView) {
-        _footerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.cigam_width, 80)];
+        _footerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.cigam_width, 100)];
         [_footerView addSubview: self.deleteButton];
 
         [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(_footerView);
             make.leading.equalTo(@20);
             make.trailing.equalTo(@-20);
             make.height.equalTo(@40);
+            make.bottom.equalTo(@-20);
         }];
     }
 
@@ -459,7 +522,8 @@
     @weakify(self)
     [[V2TIMManager sharedInstance] getGroupMemberList: self.groupId filter: V2TIM_GROUP_MEMBER_FILTER_ALL nextSeq: 0 succ:^(uint64_t nextSeq, NSArray<V2TIMGroupMemberFullInfo *> *memberList) {
         @strongify(self)
-        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        NSMutableArray *members = [[NSMutableArray alloc] init];
+        NSMutableArray *admins = [[NSMutableArray alloc] init];
         for (V2TIMGroupMemberFullInfo *fullInfo in memberList) {
             if([fullInfo.userID isEqualToString:[V2TIMManager sharedInstance].getLoginUser]){
                 self.selfInfo = fullInfo;
@@ -474,13 +538,19 @@
             } else if (fullInfo.nickName.length > 0) {
                 data.name = fullInfo.nickName;
             }
-            [temp addObject:data];
+            [members addObject: data];
+            if (fullInfo.role == V2TIM_GROUP_MEMBER_ROLE_ADMIN) {
+                [admins addObject: data];
+            }
         }
 
-        self.members = temp;
+        self.members = members;
+        self.admins = admins;
         if (self.groupInfo) {
-            self.groupMembersCellData.members = [self getShowMembers: temp];
-            self.groupMembersCountCellData.value = [NSString stringWithFormat:@"%lu人", (unsigned long)self.members.count];
+            self.groupMembersCellData.members = [self getShowMembers];
+            self.groupMembersCountCellData.value = [NSString stringWithFormat:@"%ld人", members.count];
+            self.groupAdminsCellData.members = [self getShowAdmins];
+            self.groupAdminsCountCellData.value = [NSString stringWithFormat:@"%ld人", admins.count];
             [self.tableView reloadData];
         }
     } fail:^(int code, NSString *msg) {
@@ -492,86 +562,111 @@
     if (self.groupInfo) {
         [self.cellDatas removeAllObjects];
 
-        NSMutableArray *memberArray = [NSMutableArray array];
-        TCommonTextCellData *countData = [[TCommonTextCellData alloc] init];
-        countData.key = @"群成员";
-        countData.value = [NSString stringWithFormat:@"%d人", self.groupInfo.memberCount];
-        countData.cselector = @selector(didSelectMembers);
-        countData.showAccessory = YES;
-        self.groupMembersCountCellData = countData;
-        [memberArray addObject:countData];
-
-        NSMutableArray *tmpArray = [self getShowMembers:self.members];
-        TGroupMembersCellData *membersData = [[TGroupMembersCellData alloc] init];
-        membersData.members = tmpArray;
-        [memberArray addObject:membersData];
-        self.groupMembersCellData = membersData;
-        [self.cellDatas addObject:memberArray];
+        // 群成员
+        {
+            NSMutableArray *temp = [[NSMutableArray alloc] initWithCapacity: 2];
+            {
+                TCommonTextCellData *cellData = [[TCommonTextCellData alloc] init];
+                cellData.key = @"群成员";
+                cellData.value = [NSString stringWithFormat: @"%ld人", self.members.count];
+                cellData.cselector = @selector(didSelectMembers);
+                cellData.showAccessory = YES;
+                self.groupMembersCountCellData = cellData;
+                [temp addObject: cellData];
+            }
+            {
+                TGroupMembersCellData *cellData = [[TGroupMembersCellData alloc] init];
+                cellData.members = [self getShowMembers];
+                self.groupMembersCellData = cellData;
+                [temp addObject: cellData];
+            }
+            [self.cellDatas addObject: temp];
+        }
 
         //group info
-        NSMutableArray *groupInfoArray = [NSMutableArray array];
+        {
+            NSMutableArray *temp = [[NSMutableArray alloc] initWithCapacity: 2];
+            {
+                TCommonTextCellData *cellData = [[TCommonTextCellData alloc] init];
+                cellData.key = @"群聊名称";
+                cellData.value = self.groupInfo.groupName;
+                cellData.cselector = @selector(didSelectGroupName:);
+                cellData.showAccessory = YES;
+                [temp addObject:cellData];
+            }
+            {
+                TCommonTextCellData *cellData = [[TCommonTextCellData alloc] init];
+                cellData.key = @"群公告";
+                cellData.value = self.groupInfo.notification;
+                cellData.cselector = @selector(didSelectGroupNotice:);
+                cellData.showAccessory = YES;
+                [temp addObject:cellData];
+            }
+            [self.cellDatas addObject: temp];
+        }
 
-        TCommonTextCellData *groupChatName = [[TCommonTextCellData alloc] init];
-        groupChatName.key = @"群聊名称";
-        groupChatName.value = self.groupInfo.groupName;
-        groupChatName.cselector = @selector(didSelectGroupName:);
-        groupChatName.showAccessory = YES;
-        [groupInfoArray addObject:groupChatName];
-
-        TCommonTextCellData *groupNotice = [[TCommonTextCellData alloc] init];
-        groupNotice.key = @"我的群公告";
-        groupNotice.value = self.groupInfo.notification;
-        groupNotice.cselector = @selector(didSelectGroupNotice:);
-        groupNotice.showAccessory = YES;
-        [groupInfoArray addObject:groupNotice];
-
-        [self.cellDatas addObject:groupInfoArray];
-
-        NSMutableArray *transferArray = [NSMutableArray array];
-
-        TCommonTextCellData *transferGroupOwner = [[TCommonTextCellData alloc] init];
-        transferGroupOwner.key = @"转让群主";
-        transferGroupOwner.cselector = @selector(didSelectTransferGroupOwner:);
-        transferGroupOwner.showAccessory = YES;
-        [transferArray addObject:transferGroupOwner];
         if ([self.groupInfo isMeOwner]) {
-            [self.cellDatas addObject:transferArray];
+            TCommonTextCellData *cellData = [[TCommonTextCellData alloc] init];
+            cellData.key = @"转让群主";
+            cellData.cselector = @selector(didSelectTransferGroupOwner:);
+            cellData.showAccessory = YES;
+            [self.cellDatas addObject: @[cellData].mutableCopy];
         }
 
         //personal info
-        NSMutableArray *personalArray = [NSMutableArray array];
-        TCommonTextCellData *nickData = [[TCommonTextCellData alloc] init];
-        nickData.key = @"我的群昵称";
-        nickData.value = self.selfInfo.nameCard;
-        nickData.cselector = @selector(didSelectGroupNickname:);
-        nickData.showAccessory = YES;
-        self.groupNickNameCellData = nickData;
-        [personalArray addObject:nickData];
+        {
+            NSMutableArray *temp = [[NSMutableArray alloc] init];
+            {
+                TCommonTextCellData *cellData = [[TCommonTextCellData alloc] init];
+                cellData.key = @"管理员";
+                cellData.value = [NSString stringWithFormat: @"%ld人", self.admins.count];
+                self.groupAdminsCountCellData = cellData;
+                [temp addObject: cellData];
+            }
+            {
+                TGroupMembersCellData *cellData = [[TGroupMembersCellData alloc] init];
+                cellData.members = [self getShowAdmins];
+                self.groupAdminsCellData = cellData;
+                [temp addObject: cellData];
+            }
+            {
+                TCommonTextCellData *cellData = [[TCommonTextCellData alloc] init];
+                cellData.key = @"我的群昵称";
+                cellData.value = self.selfInfo.nameCard;
+                cellData.cselector = @selector(didSelectGroupNickname:);
+                cellData.showAccessory = YES;
+                self.groupNickNameCellData = cellData;
+                [temp addObject: cellData];
+            }
+            {
+                TCommonSwitchCellData *cellData = [[TCommonSwitchCellData alloc] init];
+                cellData.on = self.groupInfo.recvOpt == V2TIM_GROUP_RECEIVE_NOT_NOTIFY_MESSAGE;
+                cellData.title = @"消息免打扰";
+                cellData.cswitchSelector = @selector(didSelectMsgDND:);
+                [temp addObject: cellData];
+            }
 
-        TCommonSwitchCellData *msgDND = [[TCommonSwitchCellData alloc] init];
-        if (self.groupInfo.recvOpt == V2TIM_GROUP_RECEIVE_NOT_NOTIFY_MESSAGE) {
-            msgDND.on = YES;
+            if ([self isOwnerOrAdmin]) {
+                TCommonSwitchCellData *cellData = [[TCommonSwitchCellData alloc] init];
+                cellData.on = self.groupInfo.allMuted;
+                cellData.title = @"全体禁言";
+                cellData.cswitchSelector = @selector(didSelectAllMuted:);
+                [temp addObject: cellData];
+            }
+
+            {
+                TCommonSwitchCellData *cellData = [[TCommonSwitchCellData alloc] init];
+                cellData.on = [[[TUILocalStorage sharedInstance] topConversationList] containsObject: [NSString stringWithFormat:@"group_%@", self.groupId]];
+                cellData.title = @"置顶聊天";
+                cellData.cswitchSelector = @selector(didSelectOnTop:);
+                [temp addObject: cellData];
+            }
+
+            [self.cellDatas addObject: temp];
         }
-        msgDND.title = @"消息免打扰";
-        msgDND.cswitchSelector = @selector(didSelectMsgDND:);
-        [personalArray addObject:msgDND];
 
-        TCommonSwitchCellData *switchData = [[TCommonSwitchCellData alloc] init];
-        if ([[[TUILocalStorage sharedInstance] topConversationList] containsObject:[NSString stringWithFormat:@"group_%@",self.groupId]]) {
-            switchData.on = YES;
-        }
-        switchData.title = @"置顶聊天";
-        switchData.showBottomCorner = YES;
-        switchData.cswitchSelector = @selector(didSelectOnTop:);
-        [personalArray addObject:switchData];
-
-        [self.cellDatas addObject:personalArray];
-
-        if ([self.groupInfo isMeOwner]) {
-            [self.deleteButton setTitle: @"解散该群" forState: UIControlStateNormal];
-        } else {
-            [self.deleteButton setTitle: @"退出群聊" forState: UIControlStateNormal];
-        }
+        NSString *title = [self.groupInfo isMeOwner] ? @"解散该群" :  @"退出群聊";
+        [self.deleteButton setTitle: title forState: UIControlStateNormal];
 
         self.tableView.tableFooterView = self.footerView;
         [self.tableView reloadData];
@@ -612,28 +707,55 @@
 
 #pragma mark - Helper
 
-- (NSMutableArray *)getShowMembers:(NSMutableArray *)members {
+- (NSMutableArray *)getShowMembers {
     int maxCount = TGroupMembersCell_Column_Count * TGroupMembersCell_Row_Count;
     if ([self.groupInfo canRemoveMember]) maxCount--;
     if ([self.groupInfo canRemoveMember]) maxCount--;
-    NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
 
-    for (NSInteger i = 0; i < members.count && i < maxCount; ++i) {
-        [tmpArray addObject:members[i]];
+    for (NSInteger i = 0; i < self.members.count && i < maxCount; ++i) {
+        [temp addObject: self.members[i]];
     }
     if ([self.groupInfo canInviteMember]) {
         TGroupMemberCellData *add = [[TGroupMemberCellData alloc] init];
         add.avatarImage = YZChatResource(@"icon_group_add");
         add.tag = 1;
-        [tmpArray addObject: add];
+        [temp addObject: add];
     }
     if ([self.groupInfo canRemoveMember]) {
         TGroupMemberCellData *delete = [[TGroupMemberCellData alloc] init];
         delete.avatarImage = YZChatResource(@"icon_group_delete");
         delete.tag = 2;
-        [tmpArray addObject: delete];
+        [temp addObject: delete];
     }
-    return tmpArray;
+    return temp;
+}
+
+- (NSMutableArray *)getShowAdmins {
+    int maxCount = TGroupMembersCell_Column_Count * TGroupMembersCell_Row_Count;
+    if (self.groupInfo.isMeOwner) maxCount -= 2;
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+
+    for (NSInteger i = 0; i < self.admins.count && i < maxCount; ++i) {
+        [temp addObject: self.admins[i]];
+    }
+    if (self.groupInfo.isMeOwner) {
+        TGroupMemberCellData *add = [[TGroupMemberCellData alloc] init];
+        add.avatarImage = YZChatResource(@"icon_group_add");
+        add.tag = 1;
+        [temp addObject: add];
+    }
+    if (self.groupInfo.isMeOwner) {
+        TGroupMemberCellData *delete = [[TGroupMemberCellData alloc] init];
+        delete.avatarImage = YZChatResource(@"icon_group_delete");
+        delete.tag = 2;
+        [temp addObject: delete];
+    }
+    return temp;
+}
+
+- (BOOL)isOwnerOrAdmin {
+    return self.groupInfo.role == V2TIM_GROUP_MEMBER_ROLE_ADMIN || self.groupInfo.role == V2TIM_GROUP_MEMBER_ROLE_SUPER;
 }
 
 @end

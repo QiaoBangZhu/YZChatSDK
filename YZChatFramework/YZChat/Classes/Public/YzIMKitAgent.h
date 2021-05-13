@@ -13,10 +13,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//手动退出YZChatSDKUI的通知
-#define YZChatSDKNotification_UserStatusListener @"YZChatSDKNotification_UserStatusListener"
-//强制下线通知
-#define YZChatSDKNotification_ForceOffline @"YZChatSDKNotification_ForceOffline"
+// 强制下线通知
+extern NSString * const kYZChatNotification_ForceOffline;
+
+@protocol YzIMKitAgentListener <NSObject>
+@optional
+
+- (void)logout;
+
+@end
 
 @interface YzIMKitAgent : NSObject
 
@@ -100,7 +105,18 @@ typedef void (^loginFail)(void);
                userSign:(NSString*)usersign
                    fail:(loginFail)fail;
 
+/**
+ * 设置监听器
+ */
+- (void)addListener:(id<YzIMKitAgentListener>)listener;
+
 @end
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//                              Conversation
+//
+/////////////////////////////////////////////////////////////////////////////////
 
 @class V2TIMConversation;
 @class V2TIMGroupAtInfo;

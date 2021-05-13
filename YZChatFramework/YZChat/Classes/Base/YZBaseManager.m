@@ -34,7 +34,7 @@
 - (void)logout {
     [[YChatSettingStore sharedInstance] logout];
     //退出登录
-    [[NSNotificationCenter defaultCenter]postNotificationName:YZChatSDKNotification_UserStatusListener object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName: @"YZChatNotification_UserLogout" object:nil];
 }
 
 - (YzTabBarViewController *)getMainController {

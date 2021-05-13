@@ -33,6 +33,8 @@
 #import "YZCardMsgData.h"
 #import "YzIMKitAgent+Private.h"
 
+NSString * const kYZChatNotification_ForceOffline = @"YZChatSDKNotification_ForceOffline";
+
 typedef struct {
     NSUInteger c2c;
     NSUInteger group;
@@ -42,6 +44,7 @@ typedef struct {
 @property (nonatomic,   copy)NSString* appId;
 @property (nonatomic, strong)SysUser * user;
 @property (nonatomic, strong)YUserInfo* userInfo;
+@property(nullable, nonatomic, weak) id<YzIMKitAgentListener> listener;
 
 @property(nonatomic,  copy) NSString *groupID;
 @property(nonatomic,  copy) NSString *userID;
@@ -414,7 +417,10 @@ typedef struct {
 {
     [[YChatSettingStore sharedInstance] logout];
     //退出登录
-    [[NSNotificationCenter defaultCenter]postNotificationName:YZChatSDKNotification_ForceOffline object:nil];
+    if (self.listener && [self.listener respondsToSelector: @selector(logout)]) {
+        [self.listener logout];
+    }
+    [[NSNotificationCenter defaultCenter]postNotificationName: kYZChatNotification_ForceOffline object: nil];
     [THelper makeToast:@"您的账号已经在其他终端登录"];
 }
 
@@ -488,6 +494,12 @@ typedef struct {
     return currentViewController;
 }
 
+#pragma mark - Public
+
+- (void)addListener:(id<YzIMKitAgentListener>)listener {
+    self.listener = listener;
+}
+
 #pragma mark - Helper
 
 + (YzUnreadCount)calcUnreadForConversationList:(NSArray<V2TIMConversation *> *)conversationList {
@@ -505,6 +517,12 @@ typedef struct {
 }
 
 @end
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//                              Conversation
+//
+/////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark -- 会话相关
 

@@ -50,8 +50,8 @@ YZAppDelegate *appdel;
         [self getLoginController];
     }
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didLogout) name:YZChatSDKNotification_UserStatusListener object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(forceOffline) name:YZChatSDKNotification_ForceOffline object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didLogout) name: @"YZChatNotification_UserLogout" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(forceOffline) name: kYZChatNotification_ForceOffline object:nil];
 
     // Override point for customization after application launch.
     return YES;
